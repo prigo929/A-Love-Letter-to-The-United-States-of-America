@@ -131,8 +131,8 @@ export default async function CultureOverviewPage() {
           <div className="grid gap-12 lg:grid-cols-3 items-start mb-14">
             <blockquote className="lg:col-span-2 text-2xl md:text-3xl font-editorial italic text-[#F5EDD8]/90 leading-relaxed pl-6 border-l-2 border-[#E8391B]">
               {isRo
-                ? "Cel mai intens american divertisment este cel mai greu de exportat — iar cultura pop modernă, construită pentru lume, a fost în tăcere curățată de americanismul ei."
-                : "The most intensely American entertainment is the hardest to export — and modern pop culture, built for the world, has been quietly sanded of its Americanness."}
+                ? "Cel mai intens american divertisment este cel mai greu de exportat, iar cultura pop modernă, construită pentru lume, a fost în tăcere curățată de americanismul ei."
+                : "The most intensely American entertainment is the hardest to export, and modern pop culture, built for the world, has been quietly sanded of its Americanness."}
             </blockquote>
             <div className="space-y-5 font-sans text-base text-[#F5EDD8]/70 leading-relaxed">
               <p>
@@ -142,8 +142,8 @@ export default async function CultureOverviewPage() {
               </p>
               <p>
                 {isRo
-                  ? "Comedia poartă cel mai mult din asta: satira socială o face cel mai particular cultural gen. De aceea Hollywood-ul preferă acțiune și fantasy — cel mai ușor de exportat."
-                  : "Comedy carries the most of it: social satire makes it the most culturally particular genre. It's why Hollywood favors action and fantasy — the easiest to export."}
+                  ? "Comedia poartă cel mai mult din asta: satira socială o face cel mai particular cultural gen. De aceea Hollywood-ul preferă acțiune și fantasy, cel mai ușor de exportat."
+                  : "Comedy carries the most of it: social satire makes it the most culturally particular genre. It's why Hollywood favors action and fantasy, the easiest to export."}
               </p>
             </div>
           </div>

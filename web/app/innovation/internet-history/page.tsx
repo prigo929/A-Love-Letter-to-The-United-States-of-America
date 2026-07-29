@@ -13,7 +13,7 @@ import {
 export const metadata: Metadata = {
   title: "The Internet | Innovation & Technology",
   description:
-    "How America invented the internet — from ARPANET's 1969 first message to the five American platforms that now generate most of the world's internet traffic and revenue.",
+    "How America invented the internet, from ARPANET's 1969 first message to the five American platforms that now generate most of the world's internet traffic and revenue.",
 };
 
 interface InternetCopy {
@@ -49,53 +49,53 @@ const copyEn: InternetCopy = {
   heroTagline: "THE INTERNET",
   heroTitle: "Born\nin America",
   heroSubtitle:
-    "How a US Defense Department project became the global communications backbone — and how five American companies now own the platforms that run it.",
-  thesisTitle: "America Built the Internet — and Still Controls the Infrastructure It Runs On",
+    "How a US Defense Department project became the global communications backbone, and how five American companies now own the platforms that run it.",
+  thesisTitle: "America Built the Internet, and Still Controls the Infrastructure It Runs On",
   thesisParagraph1:
-    "On October 29, 1969, the first message transmitted over ARPANET — a Defense Advanced Research Projects Agency network connecting UCLA to Stanford — crashed the receiving computer after two letters: LO. The intended word was LOGIN. In that accidental truncation, the communications backbone of the modern world was born. ARPANET was funded by the US Department of Defense, built by American universities, and engineered to survive the disruption of any single node by routing data dynamically across a distributed network.",
+    "On October 29, 1969, the first message transmitted over ARPANET, a Defense Advanced Research Projects Agency network connecting UCLA to Stanford, crashed the receiving computer after two letters: LO. The intended word was LOGIN. In that accidental truncation, the communications backbone of the modern world was born. ARPANET was funded by the US Department of Defense, built by American universities, and engineered to survive the disruption of any single node by routing data dynamically across a distributed network.",
   thesisParagraph2:
-    "Today, that original architecture connects 5.4 billion people, and the companies that own and operate the critical infrastructure remain American. Amazon, Google, and Microsoft host approximately 65% of all internet services globally. Google handles over 90% of all search queries on Earth. Meta's platforms reach 3.2 billion daily users. The undersea cables carrying 95% of all international internet traffic are overwhelmingly built and in many cases owned by American corporations. The internet was a US government project — and its privatized successor is a US corporate infrastructure.",
+    "Today, that original architecture connects 5.4 billion people, and the companies that own and operate the critical infrastructure remain American. Amazon, Google, and Microsoft host approximately 65% of all internet services globally. Google handles over 90% of all search queries on Earth. Meta's platforms reach 3.2 billion daily users. The undersea cables carrying 95% of all international internet traffic are overwhelmingly built and in many cases owned by American corporations. The internet was a US government project, and its privatized successor is a US corporate infrastructure.",
   milestonesTitle: "The History of the Internet",
   milestones: [
     {
       title: "ARPANET",
       date: "1969",
       details:
-        "The first message is sent over ARPANET on October 29, 1969, connecting UCLA to Stanford Research Institute. Funded entirely by DARPA — a US Defense Department agency — the packet-switching architecture designed by American engineers becomes the foundation for every network that follows.",
+        "The first message is sent over ARPANET on October 29, 1969, connecting UCLA to Stanford Research Institute. Funded entirely by DARPA, a US Defense Department agency, the packet-switching architecture designed by American engineers becomes the foundation for every network that follows.",
     },
     {
       title: "TCP/IP",
       date: "1974 – 1983",
       details:
-        "Vint Cerf and Bob Kahn (both American) finalize TCP/IP — the universal protocol allowing all computers on Earth to communicate. Every device connected to the internet today, from a smartphone in Lagos to a server in Tokyo, communicates using a protocol invented at Stanford and implemented by DARPA.",
+        "Vint Cerf and Bob Kahn (both American) finalize TCP/IP, the universal protocol allowing all computers on Earth to communicate. Every device connected to the internet today, from a smartphone in Lagos to a server in Tokyo, communicates using a protocol invented at Stanford and implemented by DARPA.",
     },
     {
       title: "The World Wide Web",
       date: "1991 – 1993",
       details:
-        "Tim Berners-Lee invents the Web at CERN in 1991. But it is American engineer Marc Andreessen at the University of Illinois who builds Mosaic in 1993 — the first graphical browser for non-technical users. Andreessen co-founds Netscape and the commercial internet is born in the United States.",
+        "Tim Berners-Lee invents the Web at CERN in 1991. But it is American engineer Marc Andreessen at the University of Illinois who builds Mosaic in 1993, the first graphical browser for non-technical users. Andreessen co-founds Netscape and the commercial internet is born in the United States.",
     },
     {
       title: "The Platform Era",
       date: "2004 – Present",
       details:
-        "Facebook (2004), YouTube (2005), Twitter (2006), AWS (2006), and the iPhone (2007) are all American. By 2025, the five most internet-valuable companies — Apple, Microsoft, Alphabet, Amazon, Meta — are all US-headquartered and collectively generate over $1.6 trillion annually from internet services.",
+        "Facebook (2004), YouTube (2005), Twitter (2006), AWS (2006), and the iPhone (2007) are all American. By 2025, the five most internet-valuable companies, Apple, Microsoft, Alphabet, Amazon, Meta, are all US-headquartered and collectively generate over $1.6 trillion annually from internet services.",
     },
   ],
   platformLabel: "THE AMERICAN INTERNET",
   platformTitle: "Five US Companies Generate Most of the World's Internet Traffic and Revenue",
   platformParagraph1:
-    "The commercial internet is not a neutral, distributed network — it is a heavily concentrated system dominated by American platforms. Google controls over 90% of global search, meaning virtually every query typed into a search box on Earth flows through American servers. Meta's family of apps (Facebook, Instagram, WhatsApp) reaches over 3.2 billion people daily — roughly 40% of the entire human population — using the internet every day.",
+    "The commercial internet is not a neutral, distributed network, it is a heavily concentrated system dominated by American platforms. Google controls over 90% of global search, meaning virtually every query typed into a search box on Earth flows through American servers. Meta's family of apps (Facebook, Instagram, WhatsApp) reaches over 3.2 billion people daily, roughly 40% of the entire human population, using the internet every day.",
   platformParagraph2:
-    "Amazon Web Services, launched in 2006 from Seattle, transformed the internet from a collection of independently hosted websites into a utility running on American infrastructure. AWS hosts Netflix, Airbnb, NASA, the CIA, and millions of businesses across every continent. A significant portion of the internet goes partially offline whenever AWS experiences a major outage — which has happened multiple times — revealing the extraordinary concentration of the global internet's physical layer inside American data centers.",
+    "Amazon Web Services, launched in 2006 from Seattle, transformed the internet from a collection of independently hosted websites into a utility running on American infrastructure. AWS hosts Netflix, Airbnb, NASA, the CIA, and millions of businesses across every continent. A significant portion of the internet goes partially offline whenever AWS experiences a major outage, which has happened multiple times, revealing the extraordinary concentration of the global internet's physical layer inside American data centers.",
   platformSource: "Statista, Cloudflare Radar, SimilarWeb",
   platformSourceUrl: "https://radar.cloudflare.com/",
   infrastructureLabel: "THE PHYSICAL BACKBONE",
   infrastructureTitle: "America Controls the Cables, the DNS, and the Routing of the Global Internet",
   infrastructureParagraph1:
-    "The internet has a physical layer that most users never see: approximately 600 undersea cables carrying 95% of all international internet traffic across the ocean floor. American corporations — Google, Meta, Amazon, and Microsoft — have spent billions of dollars in the past decade building and co-owning the majority of new transoceanic cable systems. The result is that the physical pathway of global communications is increasingly owned by the same American companies that own the applications running on top of it.",
+    "The internet has a physical layer that most users never see: approximately 600 undersea cables carrying 95% of all international internet traffic across the ocean floor. American corporations, Google, Meta, Amazon, and Microsoft, have spent billions of dollars in the past decade building and co-owning the majority of new transoceanic cable systems. The result is that the physical pathway of global communications is increasingly owned by the same American companies that own the applications running on top of it.",
   infrastructureParagraph2:
-    "The internet's addressing and naming system is controlled by ICANN (Internet Corporation for Assigned Names and Numbers), a US nonprofit headquartered in Los Angeles. ICANN manages the global DNS root — the authoritative list of every domain extension (.com, .org, .net, and every country-code TLD) — under a contract historically held with the US Department of Commerce. Every website on Earth depends on a system administered in the United States.",
+    "The internet's addressing and naming system is controlled by ICANN (Internet Corporation for Assigned Names and Numbers), a US nonprofit headquartered in Los Angeles. ICANN manages the global DNS root, the authoritative list of every domain extension (.com, .org, .net, and every country-code TLD), under a contract historically held with the US Department of Commerce. Every website on Earth depends on a system administered in the United States.",
   galleryLabel: "THE INFRASTRUCTURE OF THE INTERNET",
   galleryTitle: "The Physical and Human Architecture of the Connected World",
   gallery: [
@@ -103,21 +103,21 @@ const copyEn: InternetCopy = {
       tag: "Silicon Valley, CA",
       title: "Where the Internet Was Commercialized",
       description:
-        "Silicon Valley — the strip of cities running from San Jose to San Francisco — is where the commercial internet was built. Netscape, Yahoo, Google, Facebook, Apple, and Netflix all launched from this 50-mile corridor. No comparable geographic concentration of internet value creation exists anywhere else on Earth.",
+        "Silicon Valley, the strip of cities running from San Jose to San Francisco, is where the commercial internet was built. Netscape, Yahoo, Google, Facebook, Apple, and Netflix all launched from this 50-mile corridor. No comparable geographic concentration of internet value creation exists anywhere else on Earth.",
       imageSrc: "/images/library/Technology/home-silicon-valley.jpg",
     },
     {
       tag: "Google Data Center, Ohio",
       title: "The Physical Internet",
       description:
-        "Google's data center in Midlothian, Texas is one of dozens of hyperscale facilities that constitute the physical internet. American hyperscalers — Google, Amazon, Microsoft — operate the largest concentrations of computing infrastructure in human history, processing a majority of the world's internet requests from facilities on US soil.",
+        "Google's data center in Midlothian, Texas is one of dozens of hyperscale facilities that constitute the physical internet. American hyperscalers, Google, Amazon, Microsoft, operate the largest concentrations of computing infrastructure in human history, processing a majority of the world's internet requests from facilities on US soil.",
       imageSrc: "/images/library/Technology/Google Data Center Midlothian Texas at Dusk with Water Tanks and GCUB Generator Yard.jpg",
     },
     {
       tag: "Internet Backbone",
       title: "Fiber Optic Cable: The Internet's Nervous System",
       description:
-        "The global internet transmits data at the speed of light through fiber optic cables — glass strands thinner than a human hair, bundled into undersea and underground lines connecting every continent. The majority of the undersea cables built in the past decade have been financed and co-owned by American technology companies, making the physical backbone of the internet increasingly a private American asset.",
+        "The global internet transmits data at the speed of light through fiber optic cables, glass strands thinner than a human hair, bundled into undersea and underground lines connecting every continent. The majority of the undersea cables built in the past decade have been financed and co-owned by American technology companies, making the physical backbone of the internet increasingly a private American asset.",
       imageSrc: "/images/library/Technology/Fiber Optic Cable.jpg",
     },
     {
@@ -138,53 +138,53 @@ const copyRo: InternetCopy = {
   heroTagline: "INTERNETUL",
   heroTitle: "Născut\nîn America",
   heroSubtitle:
-    "Cum un proiect al Departamentului Apărării din SUA a devenit coloana vertebrală globală de comunicații — și cum cinci companii americane dețin acum platformele pe care rulează.",
-  thesisTitle: "America a Construit Internetul — și Controlează Încă Infrastructura pe Care Rulează",
+    "Cum un proiect al Departamentului Apărării din SUA a devenit coloana vertebrală globală de comunicații, și cum cinci companii americane dețin acum platformele pe care rulează.",
+  thesisTitle: "America a Construit Internetul, și Controlează Încă Infrastructura pe Care Rulează",
   thesisParagraph1:
-    "Pe 29 octombrie 1969, primul mesaj transmis prin ARPANET — o rețea a Agenției pentru Proiecte de Cercetare Avansată în Apărare, conectând UCLA la Stanford — a blocat computerul receptor după două litere: LO. Cuvântul intenționat era LOGIN. În acea trunchere accidentală, s-a născut coloana vertebrală de comunicații a lumii moderne. ARPANET a fost finanțat de Departamentul Apărării al SUA, construit de universități americane și proiectat pentru a rezista perturbării oricărui nod prin rutarea dinamică a datelor.",
+    "Pe 29 octombrie 1969, primul mesaj transmis prin ARPANET, o rețea a Agenției pentru Proiecte de Cercetare Avansată în Apărare, conectând UCLA la Stanford, a blocat computerul receptor după două litere: LO. Cuvântul intenționat era LOGIN. În acea trunchere accidentală, s-a născut coloana vertebrală de comunicații a lumii moderne. ARPANET a fost finanțat de Departamentul Apărării al SUA, construit de universități americane și proiectat pentru a rezista perturbării oricărui nod prin rutarea dinamică a datelor.",
   thesisParagraph2:
-    "Astăzi, acea arhitectură originală conectează 5,4 miliarde de persoane, iar companiile care dețin și operează infrastructura critică rămân americane. Amazon, Google și Microsoft găzduiesc aproximativ 65% din toate serviciile internet la nivel global. Google procesează peste 90% din toate interogările de căutare de pe Pământ. Platformele Meta ajung zilnic la 3,2 miliarde de utilizatori. Cablurile submarine care transportă 95% din tot traficul internet internațional sunt în mare parte construite și în multe cazuri deținute de corporații americane. Internetul a fost un proiect al guvernului SUA — iar succesorul său privatizat este o infrastructură corporativă americană.",
+    "Astăzi, acea arhitectură originală conectează 5,4 miliarde de persoane, iar companiile care dețin și operează infrastructura critică rămân americane. Amazon, Google și Microsoft găzduiesc aproximativ 65% din toate serviciile internet la nivel global. Google procesează peste 90% din toate interogările de căutare de pe Pământ. Platformele Meta ajung zilnic la 3,2 miliarde de utilizatori. Cablurile submarine care transportă 95% din tot traficul internet internațional sunt în mare parte construite și în multe cazuri deținute de corporații americane. Internetul a fost un proiect al guvernului SUA, iar succesorul său privatizat este o infrastructură corporativă americană.",
   milestonesTitle: "Istoria Internetului",
   milestones: [
     {
       title: "ARPANET",
       date: "1969",
       details:
-        "Primul mesaj este trimis prin ARPANET pe 29 octombrie 1969, conectând UCLA la Stanford Research Institute. Finanțat integral de DARPA — o agenție a Departamentului Apărării SUA — arhitectura cu comutare de pachete devine fundația pentru fiecare rețea care urmează.",
+        "Primul mesaj este trimis prin ARPANET pe 29 octombrie 1969, conectând UCLA la Stanford Research Institute. Finanțat integral de DARPA, o agenție a Departamentului Apărării SUA, arhitectura cu comutare de pachete devine fundația pentru fiecare rețea care urmează.",
     },
     {
       title: "TCP/IP",
       date: "1974 – 1983",
       details:
-        "Vint Cerf și Bob Kahn (ambii americani) finalizează TCP/IP — protocolul universal care permite tuturor computerelor de pe Pământ să comunice. Fiecare dispozitiv conectat la internet astăzi comunică folosind un protocol inventat la Stanford și implementat de DARPA.",
+        "Vint Cerf și Bob Kahn (ambii americani) finalizează TCP/IP, protocolul universal care permite tuturor computerelor de pe Pământ să comunice. Fiecare dispozitiv conectat la internet astăzi comunică folosind un protocol inventat la Stanford și implementat de DARPA.",
     },
     {
       title: "World Wide Web",
       date: "1991 – 1993",
       details:
-        "Tim Berners-Lee inventează Web-ul la CERN în 1991. Dar inginerul american Marc Andreessen de la Universitatea Illinois construiește Mosaic în 1993 — primul browser grafic pentru utilizatorii non-tehnici. Andreessen co-fondează Netscape și internetul comercial se naște în Statele Unite.",
+        "Tim Berners-Lee inventează Web-ul la CERN în 1991. Dar inginerul american Marc Andreessen de la Universitatea Illinois construiește Mosaic în 1993, primul browser grafic pentru utilizatorii non-tehnici. Andreessen co-fondează Netscape și internetul comercial se naște în Statele Unite.",
     },
     {
       title: "Era Platformelor",
       date: "2004 – Prezent",
       details:
-        "Facebook (2004), YouTube (2005), Twitter (2006), AWS (2006) și iPhone (2007) sunt toate americane. Până în 2025, cele mai valoroase cinci companii de internet — Apple, Microsoft, Alphabet, Amazon, Meta — sunt toate cu sediul în SUA și generează colectiv peste 1,6 trilioane de dolari anual din servicii internet.",
+        "Facebook (2004), YouTube (2005), Twitter (2006), AWS (2006) și iPhone (2007) sunt toate americane. Până în 2025, cele mai valoroase cinci companii de internet, Apple, Microsoft, Alphabet, Amazon, Meta, sunt toate cu sediul în SUA și generează colectiv peste 1,6 trilioane de dolari anual din servicii internet.",
     },
   ],
   platformLabel: "INTERNETUL AMERICAN",
   platformTitle: "Cinci Companii din SUA Generează Cea Mai Mare Parte din Traficul și Veniturile Globale de Internet",
   platformParagraph1:
-    "Internetul comercial nu este o rețea neutră, distribuită — este un sistem puternic concentrat, dominat de platforme americane. Google controlează peste 90% din căutarea globală, ceea ce înseamnă că practic fiecare interogare introdusă într-un motor de căutare de pe Pământ trece prin servere americane. Familia de aplicații a Meta (Facebook, Instagram, WhatsApp) ajunge zilnic la 3,2 miliarde de persoane — aproximativ 40% din întreaga populație umană.",
+    "Internetul comercial nu este o rețea neutră, distribuită, este un sistem puternic concentrat, dominat de platforme americane. Google controlează peste 90% din căutarea globală, ceea ce înseamnă că practic fiecare interogare introdusă într-un motor de căutare de pe Pământ trece prin servere americane. Familia de aplicații a Meta (Facebook, Instagram, WhatsApp) ajunge zilnic la 3,2 miliarde de persoane, aproximativ 40% din întreaga populație umană.",
   platformParagraph2:
-    "Amazon Web Services, lansat în 2006 din Seattle, a transformat internetul dintr-o colecție de site-uri găzduite independent într-o utilitate care rulează pe infrastructura americană. AWS găzduiește Netflix, Airbnb, NASA, CIA și milioane de afaceri pe fiecare continent. O parte semnificativă a internetului se defectează parțial ori de câte ori AWS suferă o întrerupere majoră — ceea ce s-a întâmplat de mai multe ori — revelând concentrarea extraordinară a stratului fizic al internetului global în centrele de date americane.",
+    "Amazon Web Services, lansat în 2006 din Seattle, a transformat internetul dintr-o colecție de site-uri găzduite independent într-o utilitate care rulează pe infrastructura americană. AWS găzduiește Netflix, Airbnb, NASA, CIA și milioane de afaceri pe fiecare continent. O parte semnificativă a internetului se defectează parțial ori de câte ori AWS suferă o întrerupere majoră, ceea ce s-a întâmplat de mai multe ori, revelând concentrarea extraordinară a stratului fizic al internetului global în centrele de date americane.",
   platformSource: "Statista, Cloudflare Radar, SimilarWeb",
   platformSourceUrl: "https://radar.cloudflare.com/",
   infrastructureLabel: "COLOANA VERTEBRALĂ FIZICĂ",
   infrastructureTitle: "America Controlează Cablurile, DNS-ul și Rutarea Internetului Global",
   infrastructureParagraph1:
-    "Internetul are un strat fizic pe care majoritatea utilizatorilor nu îl văd niciodată: aproximativ 600 de cabluri submarine care transportă 95% din tot traficul internet internațional pe fundul oceanului. Corporații americane — Google, Meta, Amazon și Microsoft — au cheltuit miliarde de dolari în ultimul deceniu construind și co-dând sisteme de cabluri transoceanic, făcând calea fizică a comunicațiilor globale un activ privat american.",
+    "Internetul are un strat fizic pe care majoritatea utilizatorilor nu îl văd niciodată: aproximativ 600 de cabluri submarine care transportă 95% din tot traficul internet internațional pe fundul oceanului. Corporații americane, Google, Meta, Amazon și Microsoft, au cheltuit miliarde de dolari în ultimul deceniu construind și co-dând sisteme de cabluri transoceanic, făcând calea fizică a comunicațiilor globale un activ privat american.",
   infrastructureParagraph2:
-    "Sistemul de adresare și denumire a internetului este controlat de ICANN (Internet Corporation for Assigned Names and Numbers), un nonprofit american cu sediul în Los Angeles. ICANN gestionează rădăcina DNS globală — lista autoritativă a fiecărei extensii de domeniu (.com, .org, .net și fiecare TLD național) — sub un contract deținut istoric cu Departamentul de Comerț al SUA. Fiecare site web de pe Pământ depinde de un sistem administrat în Statele Unite.",
+    "Sistemul de adresare și denumire a internetului este controlat de ICANN (Internet Corporation for Assigned Names and Numbers), un nonprofit american cu sediul în Los Angeles. ICANN gestionează rădăcina DNS globală, lista autoritativă a fiecărei extensii de domeniu (.com, .org, .net și fiecare TLD național), sub un contract deținut istoric cu Departamentul de Comerț al SUA. Fiecare site web de pe Pământ depinde de un sistem administrat în Statele Unite.",
   galleryLabel: "INFRASTRUCTURA INTERNETULUI",
   galleryTitle: "Arhitectura Fizică și Umană a Lumii Conectate",
   gallery: [
@@ -192,21 +192,21 @@ const copyRo: InternetCopy = {
       tag: "Silicon Valley, CA",
       title: "Unde a Fost Comercializat Internetul",
       description:
-        "Silicon Valley — fâșia de orașe de la San Jose la San Francisco — este locul unde a fost construit internetul comercial. Netscape, Yahoo, Google, Facebook, Apple și Netflix au lansat toate din acest coridor de 80 de kilometri. Nicio altă concentrare geografică comparabilă de creare a valorii internet nu există în altă parte pe Pământ.",
+        "Silicon Valley, fâșia de orașe de la San Jose la San Francisco, este locul unde a fost construit internetul comercial. Netscape, Yahoo, Google, Facebook, Apple și Netflix au lansat toate din acest coridor de 80 de kilometri. Nicio altă concentrare geografică comparabilă de creare a valorii internet nu există în altă parte pe Pământ.",
       imageSrc: "/images/library/Technology/home-silicon-valley.jpg",
     },
     {
       tag: "Google Data Center, Texas",
       title: "Internetul Fizic",
       description:
-        "Centrul de date Google din Midlothian, Texas este unul dintre zecile de facilități hyperscale care constituie internetul fizic. Hyperscaleri americani — Google, Amazon, Microsoft — operează cele mai mari concentrări de infrastructură de calcul din istoria omenirii, procesând cea mai mare parte a cererilor internet ale lumii din facilități pe teritoriul SUA.",
+        "Centrul de date Google din Midlothian, Texas este unul dintre zecile de facilități hyperscale care constituie internetul fizic. Hyperscaleri americani, Google, Amazon, Microsoft, operează cele mai mari concentrări de infrastructură de calcul din istoria omenirii, procesând cea mai mare parte a cererilor internet ale lumii din facilități pe teritoriul SUA.",
       imageSrc: "/images/library/Technology/Google Data Center Midlothian Texas at Dusk with Water Tanks and GCUB Generator Yard.jpg",
     },
     {
       tag: "Coloana Vertebrală Internet",
       title: "Cablul de Fibră Optică: Sistemul Nervos al Internetului",
       description:
-        "Internetul global transmite date la viteza luminii prin cabluri de fibră optică — fire de sticlă mai subțiri decât un fir de păr, grupate în linii submarine și subterane care conectează fiecare continent. Marea majoritate a cablurilor submarine construite în ultimul deceniu au fost finanțate și co-deținute de companii americane de tehnologie.",
+        "Internetul global transmite date la viteza luminii prin cabluri de fibră optică, fire de sticlă mai subțiri decât un fir de păr, grupate în linii submarine și subterane care conectează fiecare continent. Marea majoritate a cablurilor submarine construite în ultimul deceniu au fost finanțate și co-deținute de companii americane de tehnologie.",
       imageSrc: "/images/library/Technology/Fiber Optic Cable.jpg",
     },
     {
@@ -279,8 +279,8 @@ export default async function InternetHistoryPage() {
                 </span>
                 <p className="text-sm text-white/60 max-w-xs leading-relaxed font-body">
                   {isRo
-                    ? "Oameni conectați la internet în 2024 — pe o rețea născută ca proiect militar american"
-                    : "People connected to the internet in 2024 — on a network born as an American military project"}
+                    ? "Oameni conectați la internet în 2024, pe o rețea născută ca proiect militar american"
+                    : "People connected to the internet in 2024, on a network born as an American military project"}
                 </p>
               </div>
               <div className="flex flex-col items-center">
@@ -410,8 +410,8 @@ export default async function InternetHistoryPage() {
                 },
                 {
                   value: "1969",
-                  label: isRo ? "Primul mesaj ARPANET — de la UCLA la Stanford, ambele din California" : "First ARPANET message — from UCLA to Stanford, both in California",
-                  note: isRo ? "LO — primele două litere înainte ca sistemul să se blocheze" : "LO — the first two letters before the system crashed",
+                  label: isRo ? "Primul mesaj ARPANET, de la UCLA la Stanford, ambele din California" : "First ARPANET message, from UCLA to Stanford, both in California",
+                  note: isRo ? "LO, primele două litere înainte ca sistemul să se blocheze" : "LO, the first two letters before the system crashed",
                 },
               ].map((s, i) => (
                 <div key={i} className="border-t border-white/5 pt-6">
@@ -434,13 +434,13 @@ export default async function InternetHistoryPage() {
           </h2>
           <p className="macro-body mb-6">
             {isRo
-              ? "În 1993, browserul Mosaic — dezvoltat la Universitatea Illinois — a transformat internetul dintr-un instrument academic într-un fenomen de masă. Succesorul său, Netscape Navigator, a declanșat primul „război al browserelor” cu Internet Explorer de la Microsoft, definind ritmul inovației pe web timp de un deceniu."
-              : "In 1993 the Mosaic browser — built at the University of Illinois — turned the internet from an academic tool into a mass phenomenon. Its successor, Netscape Navigator, ignited the first 'browser war' with Microsoft's Internet Explorer, setting the pace of web innovation for a decade."}
+              ? "În 1993, browserul Mosaic, dezvoltat la Universitatea Illinois, a transformat internetul dintr-un instrument academic într-un fenomen de masă. Succesorul său, Netscape Navigator, a declanșat primul „război al browserelor” cu Internet Explorer de la Microsoft, definind ritmul inovației pe web timp de un deceniu."
+              : "In 1993 the Mosaic browser, built at the University of Illinois, turned the internet from an academic tool into a mass phenomenon. Its successor, Netscape Navigator, ignited the first 'browser war' with Microsoft's Internet Explorer, setting the pace of web innovation for a decade."}
           </p>
           <p className="macro-body mb-8">
             {isRo
-              ? "Astăzi, Google Chrome — lansat în 2008 — domină cu peste 65% din piața globală, iar motorul său open-source Chromium stă la baza majorității celorlalte browsere, inclusiv Microsoft Edge. Standardele web deschise (HTML, CSS, JavaScript), administrate de organisme cu sediul preponderent în SUA, rămân limba comună a întregii umanități online."
-              : "Today Google Chrome — launched in 2008 — commands over 65% of the global market, and its open-source Chromium engine powers most other browsers, including Microsoft Edge. The open web standards (HTML, CSS, JavaScript), stewarded by largely US-based bodies, remain the common tongue of everyone online."}
+              ? "Astăzi, Google Chrome, lansat în 2008, domină cu peste 65% din piața globală, iar motorul său open-source Chromium stă la baza majorității celorlalte browsere, inclusiv Microsoft Edge. Standardele web deschise (HTML, CSS, JavaScript), administrate de organisme cu sediul preponderent în SUA, rămân limba comună a întregii umanități online."
+              : "Today Google Chrome, launched in 2008, commands over 65% of the global market, and its open-source Chromium engine powers most other browsers, including Microsoft Edge. The open web standards (HTML, CSS, JavaScript), stewarded by largely US-based bodies, remain the common tongue of everyone online."}
           </p>
           <div className="grid gap-8 sm:grid-cols-3 border-t border-white/10 pt-8">
             {[
@@ -466,8 +466,8 @@ export default async function InternetHistoryPage() {
           </h2>
           <p className="macro-body mb-6">
             {isRo
-              ? "America nu a inventat doar internetul — a inventat și modul de a face bani pe el. Amazon (1994) a redefinit comerțul cu amănuntul, iar AWS a devenit coloana vertebrală a jumătate din web. App Store-ul Apple (2008) și Google Play au creat o economie a aplicațiilor de peste 1 trilion de dolari, construită aproape în întregime pe două platforme americane."
-              : "America didn't just invent the internet — it invented how to make money on it. Amazon (1994) redefined retail, and AWS became the backbone of half the web. Apple's App Store (2008) and Google Play created a $1-trillion-plus app economy built almost entirely on two American platforms."}
+              ? "America nu a inventat doar internetul, a inventat și modul de a face bani pe el. Amazon (1994) a redefinit comerțul cu amănuntul, iar AWS a devenit coloana vertebrală a jumătate din web. App Store-ul Apple (2008) și Google Play au creat o economie a aplicațiilor de peste 1 trilion de dolari, construită aproape în întregime pe două platforme americane."
+              : "America didn't just invent the internet, it invented how to make money on it. Amazon (1994) redefined retail, and AWS became the backbone of half the web. Apple's App Store (2008) and Google Play created a $1-trillion-plus app economy built almost entirely on two American platforms."}
           </p>
           <p className="macro-body mb-8">
             {isRo

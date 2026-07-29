@@ -11,7 +11,7 @@ import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
   title: "Companies & Brands | The American Operating System",
-  description: "Explore the Logo Empire — how Levi's, Coca-Cola, Nike, and Apple shape global consumer systems.",
+  description: "Explore the Logo Empire, how Levi's, Coca-Cola, Nike, and Apple shape global consumer systems.",
 };
 
 export default async function CultureCompaniesBrandsPage() {
@@ -58,7 +58,7 @@ export default async function CultureCompaniesBrandsPage() {
       name: "Levi's",
       value: "1853",
       valueLabel: isRo ? "An fondare" : "Founded",
-      desc: isRo ? "Creatorul uniformei globale a modernității: blugii albaștri — îmbrăcămintea de muncă care a cucerit planeta." : "The creator of modernity's global uniform: blue jeans — workwear that captured the entire planet.",
+      desc: isRo ? "Creatorul uniformei globale a modernității: blugii albaștri, îmbrăcămintea de muncă care a cucerit planeta." : "The creator of modernity's global uniform: blue jeans, workwear that captured the entire planet.",
     },
   ];
 
@@ -79,37 +79,37 @@ export default async function CultureCompaniesBrandsPage() {
       name: "Ford",
       value: "1908",
       valueLabel: isRo ? "Modelul T · Linia de asamblare" : "Model T · Assembly Line",
-      desc: isRo ? "Ford nu a vândut doar mașini — a inventat producția de masă ca paradigmă economică. Modelul T a democratizat mobilitatea personală și a schimbat structura societății americane." : "Ford didn't just sell cars — it invented mass production as an economic paradigm. The Model T democratized personal mobility and reshaped the structure of American society.",
+      desc: isRo ? "Ford nu a vândut doar mașini, a inventat producția de masă ca paradigmă economică. Modelul T a democratizat mobilitatea personală și a schimbat structura societății americane." : "Ford didn't just sell cars, it invented mass production as an economic paradigm. The Model T democratized personal mobility and reshaped the structure of American society.",
     },
     {
       name: "Google",
       value: "92%",
       valueLabel: isRo ? "Cota piața mondială search" : "Global Search Market Share",
-      desc: isRo ? "'A căuta pe Google' este un verb în 50+ de limbi. Infrastructura informațională a planetei — Search, Maps, Gmail, YouTube — toate alimentate de o companie americană." : "'To Google' is a verb in 50+ languages. The information infrastructure of the planet — Search, Maps, Gmail, YouTube — all powered by one American company.",
+      desc: isRo ? "'A căuta pe Google' este un verb în 50+ de limbi. Infrastructura informațională a planetei, Search, Maps, Gmail, YouTube, toate alimentate de o companie americană." : "'To Google' is a verb in 50+ languages. The information infrastructure of the planet, Search, Maps, Gmail, YouTube, all powered by one American company.",
     },
     {
       name: "Disney",
       value: "$200B+",
       valueLabel: isRo ? "Valoare brand + IP" : "Brand + IP Value",
-      desc: isRo ? "Mickey Mouse, Marvel, Star Wars, Pixar, ESPN, National Geographic — Disney controlează mai multă proprietate intelectuală culturală decât orice altă companie de pe planetă. Un imperiu construit pe puterea poveștilor." : "Mickey Mouse, Marvel, Star Wars, Pixar, ESPN, National Geographic — Disney controls more cultural intellectual property than any other company on Earth. An empire built entirely on the power of storytelling.",
+      desc: isRo ? "Mickey Mouse, Marvel, Star Wars, Pixar, ESPN, National Geographic, Disney controlează mai multă proprietate intelectuală culturală decât orice altă companie de pe planetă. Un imperiu construit pe puterea poveștilor." : "Mickey Mouse, Marvel, Star Wars, Pixar, ESPN, National Geographic, Disney controls more cultural intellectual property than any other company on Earth. An empire built entirely on the power of storytelling.",
     },
     {
       name: "McDonald's",
       value: "100+",
       valueLabel: isRo ? "Țări cu restaurante" : "Countries with restaurants",
-      desc: isRo ? "McDonald's nu vinde doar burgeri — exportă un sistem standardizat de experiență culinară la scară globală. Arcurile de aur sunt mai recunoscute decât Crucea Roșie pe toate continentele." : "McDonald's doesn't just sell burgers — it exports a standardized culinary experience system at global scale. The Golden Arches are recognized by more people worldwide than the Red Cross.",
+      desc: isRo ? "McDonald's nu vinde doar burgeri, exportă un sistem standardizat de experiență culinară la scară globală. Arcurile de aur sunt mai recunoscute decât Crucea Roșie pe toate continentele." : "McDonald's doesn't just sell burgers, it exports a standardized culinary experience system at global scale. The Golden Arches are recognized by more people worldwide than the Red Cross.",
     },
     {
       name: "Microsoft",
       value: "$3.1T",
       valueLabel: isRo ? "Capitalizare de piață" : "Market Capitalization",
-      desc: isRo ? "Windows, Office, Azure, Xbox, LinkedIn, GitHub — Microsoft a construit sistemul de operare al economiei globale a cunoașterii. Achiziția Activision Blizzard (2023, 69 miliarde $) a consolidat și imperiul global al gaming-ului." : "Windows, Office, Azure, Xbox, LinkedIn, GitHub — Microsoft built the operating system of the global knowledge economy. The Activision Blizzard acquisition (2023, $69B) consolidated the global gaming empire.",
+      desc: isRo ? "Windows, Office, Azure, Xbox, LinkedIn, GitHub, Microsoft a construit sistemul de operare al economiei globale a cunoașterii. Achiziția Activision Blizzard (2023, 69 miliarde $) a consolidat și imperiul global al gaming-ului." : "Windows, Office, Azure, Xbox, LinkedIn, GitHub, Microsoft built the operating system of the global knowledge economy. The Activision Blizzard acquisition (2023, $69B) consolidated the global gaming empire.",
     },
     {
       name: "Starbucks",
       value: "36,000+",
       valueLabel: isRo ? "Locații globale" : "Global Locations",
-      desc: isRo ? "Starbucks a inventat 'al treilea loc' — nici acasă, nici la birou, ci spațiul neutru al productivității moderne. A exportat cultura cafelei de specialitate și personalizarea beverajelor în 86 de țări." : "Starbucks invented 'the third place' — neither home nor office, but the neutral space of modern productivity. It exported specialty coffee culture and beverage personalization to 86 countries worldwide.",
+      desc: isRo ? "Starbucks a inventat 'al treilea loc', nici acasă, nici la birou, ci spațiul neutru al productivității moderne. A exportat cultura cafelei de specialitate și personalizarea beverajelor în 86 de țări." : "Starbucks invented 'the third place', neither home nor office, but the neutral space of modern productivity. It exported specialty coffee culture and beverage personalization to 86 countries worldwide.",
     },
   ];
 
@@ -191,7 +191,7 @@ export default async function CultureCompaniesBrandsPage() {
           </div>
         </section>
 
-        {/* CREAM: Mega-brands — Walmart, Amazon, Ford, Google */}
+        {/* CREAM: Mega-brands, Walmart, Amazon, Ford, Google */}
         <section className="relative culture-cream-bg text-[#0C0907] pb-0 overflow-hidden border-t border-[#0C0907]/5">
           <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
           <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20 pb-20">
@@ -255,7 +255,7 @@ export default async function CultureCompaniesBrandsPage() {
                 <h2 className="font-macro-display text-3xl md:text-4xl font-black text-white mb-6">{isRo ? "STADIOANELE CA BRAND" : "STADIUMS AS BRAND"}</h2>
                 <p className="font-editorial text-base text-[#F5EDD8]/70 leading-relaxed mb-4">
                   {isRo
-                    ? "Dallas Cowboys sunt cea mai valoroasă franciză sportivă din lume — 10 miliarde de dolari. New York Yankees valorează 7,1 miliarde de dolari. Las Vegas Raiders au construit un stadion de 2 miliarde de dolari finanțat parțial public. Francizele sportive americane generează un ecosistem de 100+ miliarde de dolari incluzând media, merchandising și publicitate."
+                    ? "Dallas Cowboys sunt cea mai valoroasă franciză sportivă din lume, 10 miliarde de dolari. New York Yankees valorează 7,1 miliarde de dolari. Las Vegas Raiders au construit un stadion de 2 miliarde de dolari finanțat parțial public. Francizele sportive americane generează un ecosistem de 100+ miliarde de dolari incluzând media, merchandising și publicitate."
                     : "The Dallas Cowboys are the world's most valuable sports franchise at $10 billion. The New York Yankees are worth $7.1 billion. The Las Vegas Raiders built a $2 billion stadium partly publicly funded. American sports franchises generate a $100B+ ecosystem spanning media rights, merchandise, and global advertising."}
                 </p>
                 <div className="grid grid-cols-3 gap-4 mt-6">
@@ -272,7 +272,7 @@ export default async function CultureCompaniesBrandsPage() {
                 </div>
               </div>
               <div className="relative aspect-16/10 rounded-2xl overflow-hidden">
-                <Image src={SITE_IMAGES.culture.cowboysStadium} alt="AT&T Stadium Dallas Cowboys — world's most valuable sports franchise" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+                <Image src={SITE_IMAGES.culture.cowboysStadium} alt="AT&T Stadium Dallas Cowboys, world's most valuable sports franchise" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
               </div>
             </div>
@@ -282,7 +282,7 @@ export default async function CultureCompaniesBrandsPage() {
           <div className="mb-20">
             <div className="grid gap-10 lg:grid-cols-2 items-center">
               <div className="relative aspect-16/10 rounded-2xl overflow-hidden">
-                <Image src={SITE_IMAGES.culture.mcDonalds} alt="McDonald's restaurant — the Golden Arches empire" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+                <Image src={SITE_IMAGES.culture.mcDonalds} alt="McDonald's restaurant, the Golden Arches empire" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
               </div>
               <div>

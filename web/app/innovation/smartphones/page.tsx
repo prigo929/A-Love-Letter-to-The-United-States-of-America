@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
   title: "Smartphones | Innovation & Technology",
   description:
-    "How America invented the modern smartphone — from the iPhone's 2007 debut to the iOS/Android duopoly that runs 99% of all mobile devices on Earth.",
+    "How America invented the modern smartphone, from the iPhone's 2007 debut to the iOS/Android duopoly that runs 99% of all mobile devices on Earth.",
 };
 
 interface SmartphonesCopy {
@@ -62,9 +62,9 @@ const copyEn: SmartphonesCopy = {
     "How America invented the modern smartphone and now controls the operating systems running in every pocket on Earth.",
   thesisTitle: "America Holds Both Sides of the Mobile Duopoly",
   thesisParagraph1:
-    "On January 9, 2007, Steve Jobs walked onto a stage in San Francisco and introduced the iPhone — describing it as \"an iPod, a phone, and an internet communicator.\" The audience laughed at the audacity. What followed was the single most consequential consumer product launch in human history. Within eighteen months, Apple had shipped the App Store and the mobile internet economy was born. A year after that, Google — headquartered seventeen miles away in Mountain View — released Android to the world.",
+    "On January 9, 2007, Steve Jobs walked onto a stage in San Francisco and introduced the iPhone, describing it as \"an iPod, a phone, and an internet communicator.\" The audience laughed at the audacity. What followed was the single most consequential consumer product launch in human history. Within eighteen months, Apple had shipped the App Store and the mobile internet economy was born. A year after that, Google, headquartered seventeen miles away in Mountain View, released Android to the world.",
   thesisParagraph2:
-    "The result is the most lopsided technology monopoly ever constructed: two American companies, born within a few years of each other in the same geographic corridor of California, now provide the operating system for 99.6% of all smartphones on Earth. Every app downloaded, every mobile transaction processed, every person navigating an unfamiliar city — all of it runs on a platform invented, designed, and controlled in the United States.",
+    "The result is the most lopsided technology monopoly ever constructed: two American companies, born within a few years of each other in the same geographic corridor of California, now provide the operating system for 99.6% of all smartphones on Earth. Every app downloaded, every mobile transaction processed, every person navigating an unfamiliar city, all of it runs on a platform invented, designed, and controlled in the United States.",
   milestonesTitle: "The Chronology of Mobile",
   milestones: [
     {
@@ -77,13 +77,13 @@ const copyEn: SmartphonesCopy = {
       title: "The App Store & Android",
       date: "2008",
       details:
-        "Apple's App Store launches with 500 apps and creates an entirely new software economy. Within months, Google releases Android 1.0 — both American. Together, they establish a duopoly that has never been seriously challenged.",
+        "Apple's App Store launches with 500 apps and creates an entirely new software economy. Within months, Google releases Android 1.0, both American. Together, they establish a duopoly that has never been seriously challenged.",
     },
     {
       title: "64-Bit & Neural Engine",
       date: "2013 – 2017",
       details:
-        "Apple's A7 introduces the world's first 64-bit mobile processor. By 2017, the iPhone X ships a dedicated Neural Engine — the first on-device AI accelerator in a consumer product — enabling Face ID and real-time ML inference.",
+        "Apple's A7 introduces the world's first 64-bit mobile processor. By 2017, the iPhone X ships a dedicated Neural Engine, the first on-device AI accelerator in a consumer product, enabling Face ID and real-time ML inference.",
     },
     {
       title: "5G & AI-Native Mobile",
@@ -95,9 +95,9 @@ const copyEn: SmartphonesCopy = {
   duopolyLabel: "THE 99.6% LOCK",
   duopolyTitle: "The American Operating System Running Every Pocket on Earth",
   duopolyParagraph1:
-    "The mobile operating system market is the most concentrated technology duopoly in history. iOS (Apple, Cupertino, California) and Android (Google, Mountain View, California) together account for 99.6% of all smartphone operating systems globally. No other technology platform — not search, not social media, not cloud — achieves this level of concentrated American control.",
+    "The mobile operating system market is the most concentrated technology duopoly in history. iOS (Apple, Cupertino, California) and Android (Google, Mountain View, California) together account for 99.6% of all smartphone operating systems globally. No other technology platform, not search, not social media, not cloud, achieves this level of concentrated American control.",
   duopolyParagraph2:
-    "Android's open-source licensing strategy proved especially decisive: by offering the OS free to any manufacturer, Google ensured that its platform, advertising, and app ecosystem would become the default infrastructure of global mobile computing. When a farmer in rural India opens a banking app, when a schoolchild in Lagos accesses Wikipedia, when a commuter in São Paulo hails a taxi — they are all running American software.",
+    "Android's open-source licensing strategy proved especially decisive: by offering the OS free to any manufacturer, Google ensured that its platform, advertising, and app ecosystem would become the default infrastructure of global mobile computing. When a farmer in rural India opens a banking app, when a schoolchild in Lagos accesses Wikipedia, when a commuter in São Paulo hails a taxi, they are all running American software.",
   duopolySource: "StatCounter Global Stats",
   duopolySourceUrl: "https://gs.statcounter.com/os-market-share/mobile/worldwide/",
   chipLabel: "APPLE SILICON: THE PERFORMANCE CHOKEHOLD",
@@ -105,7 +105,7 @@ const copyEn: SmartphonesCopy = {
   chipParagraph1:
     "Apple's in-house chip design team, operating out of Cupertino since 2010, has led mobile semiconductor performance benchmarks for over a decade without interruption. Every year the A-series chip releases, it sets a new record for mobile compute density, energy efficiency, and on-device AI inference that Android competitors take 18–24 months to approach.",
   chipParagraph2:
-    "The A18 Pro chip powering the iPhone 16 Pro packs 16 billion transistors on a 3-nanometer node. Its 16-core Neural Engine executes 35 trillion operations per second, enabling real-time camera computational photography, on-device large language model inference, and augmented reality rendering — all simultaneously, without a network connection.",
+    "The A18 Pro chip powering the iPhone 16 Pro packs 16 billion transistors on a 3-nanometer node. Its 16-core Neural Engine executes 35 trillion operations per second, enabling real-time camera computational photography, on-device large language model inference, and augmented reality rendering, all simultaneously, without a network connection.",
   chipSpecs: [
     { label: "Process Node", value: "3nm (TSMC N3E)", accent: true },
     { label: "Transistor Count", value: "16 Billion" },
@@ -122,14 +122,14 @@ const copyEn: SmartphonesCopy = {
     {
       title: "Introducing iPhone Air",
       description:
-        "Apple's thinnest iPhone ever — the iPhone Air — redefines what a premium smartphone can feel like. At just 5.5mm, it achieves structural rigidity through a custom aluminum alloy and a new internal architecture, proving that thinness and performance are no longer in tension.",
+        "Apple's thinnest iPhone ever, the iPhone Air, redefines what a premium smartphone can feel like. At just 5.5mm, it achieves structural rigidity through a custom aluminum alloy and a new internal architecture, proving that thinness and performance are no longer in tension.",
       videoSrc: "/videos/library/Technology/Introducing iPhone Air - Apple.mp4",
       tag: "IPHONE AIR",
     },
     {
       title: "Design Is How It Works",
       description:
-        "Apple's design philosophy, articulated in the voice of Jony Ive: that true design is not surface appearance but the way a product functions. This ethos — inherited from Steve Jobs — is the reason every iPhone generation resets the benchmark for the entire industry.",
+        "Apple's design philosophy, articulated in the voice of Jony Ive: that true design is not surface appearance but the way a product functions. This ethos, inherited from Steve Jobs, is the reason every iPhone generation resets the benchmark for the entire industry.",
       videoSrc: "/videos/library/Technology/Design is how it works - Apple.mp4",
       tag: "DESIGN PHILOSOPHY",
     },
@@ -139,7 +139,7 @@ const copyEn: SmartphonesCopy = {
   appParagraph1:
     "The App Store, launched in July 2008 with 500 applications, became the template for every digital marketplace that followed. Its 30% commission structure, curated review process, and developer SDK were all subsequently copied by Google Play, Steam, the PlayStation Store, and every major digital distribution platform on Earth. Apple invented the rules of how digital economies operate.",
   appParagraph2:
-    "By 2025, the combined iOS and Google Play ecosystem facilitated over $1.2 trillion in developer billings and sales — an economic output comparable to a G20 nation's GDP. Apple alone has paid out over $350 billion to developers since inception. The App Store economy employs an estimated 2.4 million people in the United States alone.",
+    "By 2025, the combined iOS and Google Play ecosystem facilitated over $1.2 trillion in developer billings and sales, an economic output comparable to a G20 nation's GDP. Apple alone has paid out over $350 billion to developers since inception. The App Store economy employs an estimated 2.4 million people in the United States alone.",
   appStats: [
     { label: "Combined App Economy", value: "$1.1T+", accent: true },
     { label: "Apple Developer Payouts (lifetime)", value: "$320B+" },
@@ -155,28 +155,28 @@ const copyEn: SmartphonesCopy = {
       tag: "Apple Park, 2017",
       title: "The Spaceship Campus",
       description:
-        "Apple Park — completed in 2017 at a cost of $5 billion — is the 175-acre headquarters designed by Norman Foster. Its 2.8 million square foot main building houses over 12,000 employees and contains the Steve Jobs Theater, where every iPhone since the iPhone X has been announced.",
+        "Apple Park, completed in 2017 at a cost of $5 billion, is the 175-acre headquarters designed by Norman Foster. Its 2.8 million square foot main building houses over 12,000 employees and contains the Steve Jobs Theater, where every iPhone since the iPhone X has been announced.",
       imageSrc: "/images/library/Technology/Apple Cupertino headquarters from above.jpg",
     },
     {
       tag: "The Product Line",
-      title: "iPhone, iPad, Mac — One Ecosystem",
+      title: "iPhone, iPad, Mac, One Ecosystem",
       description:
-        "Apple's hardware ecosystem is the most tightly integrated in consumer technology. The iPhone, iPad, MacBook, Apple Watch, and AirPods are all designed by the same team, run on in-house silicon, and share the same OS family — creating switching costs unmatched by any other platform.",
+        "Apple's hardware ecosystem is the most tightly integrated in consumer technology. The iPhone, iPad, MacBook, Apple Watch, and AirPods are all designed by the same team, run on in-house silicon, and share the same OS family, creating switching costs unmatched by any other platform.",
       imageSrc: "/images/library/Technology/Apple Products.jpg",
     },
     {
       tag: "Apple Inc., Cupertino",
       title: "Apple Headquarters",
       description:
-        "Apple's original Infinite Loop campus in Cupertino, California — the address where Steve Jobs, Steve Wozniak, and Jony Ive developed the Mac, iPod, and iPhone. The company that started in a Cupertino garage in 1976 became the first company in history to reach a $1 trillion, then $2 trillion, then $3 trillion market capitalization.",
+        "Apple's original Infinite Loop campus in Cupertino, California, the address where Steve Jobs, Steve Wozniak, and Jony Ive developed the Mac, iPod, and iPhone. The company that started in a Cupertino garage in 1976 became the first company in history to reach a $1 trillion, then $2 trillion, then $3 trillion market capitalization.",
       imageSrc: "/images/library/Technology/Apple Headquarters.jpg",
     },
     {
       tag: "Hello Again",
       title: "The Device That Changed Everything",
       description:
-        "The iPhone's \"Hello\" screen — carried across every generation since 2007 — is a deliberate homage to the original 1984 Macintosh's boot sequence. It is the most recognized product image in consumer technology history, symbolizing the moment America put a computer in every pocket on Earth.",
+        "The iPhone's \"Hello\" screen, carried across every generation since 2007, is a deliberate homage to the original 1984 Macintosh's boot sequence. It is the most recognized product image in consumer technology history, symbolizing the moment America put a computer in every pocket on Earth.",
       imageSrc: "/images/library/Technology/iPhone saying Hello on wooden background.jpg",
     },
   ],
@@ -193,9 +193,9 @@ const copyRo: SmartphonesCopy = {
     "Cum America a inventat smartphone-ul modern și controlează acum sistemele de operare din fiecare buzunar de pe Pământ.",
   thesisTitle: "America Deține Ambele Laturi ale Duopolului Mobil",
   thesisParagraph1:
-    "Pe 9 ianuarie 2007, Steve Jobs a urcat pe o scenă din San Francisco și a prezentat iPhone-ul — descriindu-l drept un iPod, un telefon și un comunicator de internet. Publicul a râs de îndrăzneală. Ceea ce a urmat a fost cel mai important lansări de produs de consum din istoria omenirii. În mai puțin de optsprezece luni, Apple lansase și App Store-ul, iar economia internetului mobil se năștea. La un an distanță, Google — cu sediul la șaptesprezece mile mai încolo, în Mountain View — a lansat Android.",
+    "Pe 9 ianuarie 2007, Steve Jobs a urcat pe o scenă din San Francisco și a prezentat iPhone-ul, descriindu-l drept un iPod, un telefon și un comunicator de internet. Publicul a râs de îndrăzneală. Ceea ce a urmat a fost cel mai important lansări de produs de consum din istoria omenirii. În mai puțin de optsprezece luni, Apple lansase și App Store-ul, iar economia internetului mobil se năștea. La un an distanță, Google, cu sediul la șaptesprezece mile mai încolo, în Mountain View, a lansat Android.",
   thesisParagraph2:
-    "Rezultatul este cel mai asimetric monopol tehnologic construit vreodată: două companii americane, născute la câțiva ani distanță una de alta, în același coridor geografic din California, furnizează acum sistemul de operare pentru 99,6% din toate smartphone-urile de pe Pământ. Fiecare aplicație descărcată, fiecare tranzacție mobilă procesată, fiecare persoană care navighează printr-un oraș necunoscut — totul rulează pe o platformă inventată, proiectată și controlată în Statele Unite.",
+    "Rezultatul este cel mai asimetric monopol tehnologic construit vreodată: două companii americane, născute la câțiva ani distanță una de alta, în același coridor geografic din California, furnizează acum sistemul de operare pentru 99,6% din toate smartphone-urile de pe Pământ. Fiecare aplicație descărcată, fiecare tranzacție mobilă procesată, fiecare persoană care navighează printr-un oraș necunoscut, totul rulează pe o platformă inventată, proiectată și controlată în Statele Unite.",
   milestonesTitle: "Cronologia Revoluției Mobile",
   milestones: [
     {
@@ -208,13 +208,13 @@ const copyRo: SmartphonesCopy = {
       title: "App Store și Android",
       date: "2008",
       details:
-        "App Store-ul Apple se lansează cu 500 de aplicații, creând o economie software complet nouă. La scurt timp, Google lansează Android 1.0 — ambele americane. Împreună, ele stabilesc un duopol care nu a fost niciodată serios contestat.",
+        "App Store-ul Apple se lansează cu 500 de aplicații, creând o economie software complet nouă. La scurt timp, Google lansează Android 1.0, ambele americane. Împreună, ele stabilesc un duopol care nu a fost niciodată serios contestat.",
     },
     {
       title: "64-Bit și Motor Neural",
       date: "2013 – 2017",
       details:
-        "A7 de la Apple introduce primul procesor mobil pe 64 de biți din lume. Până în 2017, iPhone X lansează un Motor Neural dedicat — primul accelerator AI pe dispozitiv dintr-un produs de consum — permițând Face ID și inferență ML în timp real.",
+        "A7 de la Apple introduce primul procesor mobil pe 64 de biți din lume. Până în 2017, iPhone X lansează un Motor Neural dedicat, primul accelerator AI pe dispozitiv dintr-un produs de consum, permițând Face ID și inferență ML în timp real.",
     },
     {
       title: "5G și Mobile Nativ AI",
@@ -226,9 +226,9 @@ const copyRo: SmartphonesCopy = {
   duopolyLabel: "CONTROLUL DE 99,6%",
   duopolyTitle: "Sistemul de Operare American Care Rulează în Fiecare Buzunar de pe Pământ",
   duopolyParagraph1:
-    "Piața sistemelor de operare mobile este cel mai concentrat duopol tehnologic din istorie. iOS (Apple, Cupertino, California) și Android (Google, Mountain View, California) reprezintă împreună 99,6% din toate sistemele de operare pentru smartphone-uri la nivel global. Nicio altă platformă tehnologică — nici căutarea, nici rețelele sociale, nici cloud-ul — nu atinge acest nivel de control american concentrat.",
+    "Piața sistemelor de operare mobile este cel mai concentrat duopol tehnologic din istorie. iOS (Apple, Cupertino, California) și Android (Google, Mountain View, California) reprezintă împreună 99,6% din toate sistemele de operare pentru smartphone-uri la nivel global. Nicio altă platformă tehnologică, nici căutarea, nici rețelele sociale, nici cloud-ul, nu atinge acest nivel de control american concentrat.",
   duopolyParagraph2:
-    "Strategia de licențiere open-source a Android s-a dovedit mai ales decisivă: oferind sistemul de operare gratuit oricărui producător, Google s-a asigurat că platforma sa, publicitatea și ecosistemul de aplicații vor deveni infrastructura implicită a calculului mobil global. Când un fermier din India rurală deschide o aplicație bancară, când un elev din Lagos accesează Wikipedia, când un navetist din São Paulo solicită un taxi — toți rulează software american.",
+    "Strategia de licențiere open-source a Android s-a dovedit mai ales decisivă: oferind sistemul de operare gratuit oricărui producător, Google s-a asigurat că platforma sa, publicitatea și ecosistemul de aplicații vor deveni infrastructura implicită a calculului mobil global. Când un fermier din India rurală deschide o aplicație bancară, când un elev din Lagos accesează Wikipedia, când un navetist din São Paulo solicită un taxi, toți rulează software american.",
   duopolySource: "StatCounter Global Stats",
   duopolySourceUrl: "https://gs.statcounter.com/os-market-share/mobile/worldwide/",
   chipLabel: "APPLE SILICON: CONTROLUL PERFORMANȚEI",
@@ -236,7 +236,7 @@ const copyRo: SmartphonesCopy = {
   chipParagraph1:
     "Echipa internă de proiectare a cipurilor Apple, operând din Cupertino din 2010, a condus benchmark-urile de performanță în semiconductori mobili timp de peste un deceniu fără întrerupere. În fiecare an, cipul din seria A stabilește un nou record pentru densitatea de calcul mobil, eficiența energetică și inferența AI pe dispozitiv, pe care concurenții Android le ating abia după 18–24 de luni.",
   chipParagraph2:
-    "Cipul A18 Pro care alimentează iPhone 16 Pro conține 16 miliarde de tranzistori pe un nod de 3 nanometri. Motorul Neural cu 16 nuclee execută 35 de trilioane de operații pe secundă, permițând fotografie computațională în timp real, inferență de modele mari de limbaj pe dispozitiv și randare de realitate augmentată — toate simultan, fără conexiune la rețea.",
+    "Cipul A18 Pro care alimentează iPhone 16 Pro conține 16 miliarde de tranzistori pe un nod de 3 nanometri. Motorul Neural cu 16 nuclee execută 35 de trilioane de operații pe secundă, permițând fotografie computațională în timp real, inferență de modele mari de limbaj pe dispozitiv și randare de realitate augmentată, toate simultan, fără conexiune la rețea.",
   chipSpecs: [
     { label: "Nod de Procesare", value: "3nm (TSMC N3E)", accent: true },
     { label: "Număr Tranzistori", value: "16 Miliarde" },
@@ -253,14 +253,14 @@ const copyRo: SmartphonesCopy = {
     {
       title: "Prezentare iPhone Air",
       description:
-        "Cel mai subțire iPhone al Apple — iPhone Air — redefinește ce poate simți un smartphone premium. La doar 5,5mm grosime, atinge rigiditate structurală printr-un aliaj de aluminiu personalizat și o nouă arhitectură internă, dovedind că subțirimea și performanța nu mai sunt în tensiune.",
+        "Cel mai subțire iPhone al Apple, iPhone Air, redefinește ce poate simți un smartphone premium. La doar 5,5mm grosime, atinge rigiditate structurală printr-un aliaj de aluminiu personalizat și o nouă arhitectură internă, dovedind că subțirimea și performanța nu mai sunt în tensiune.",
       videoSrc: "/videos/library/Technology/Introducing iPhone Air - Apple.mp4",
       tag: "IPHONE AIR",
     },
     {
       title: "Design-ul Este Modul în Care Funcționează",
       description:
-        "Filosofia de design a Apple, articulată în vocea lui Jony Ive: că adevăratul design nu este aspectul de suprafață, ci modul în care funcționează un produs. Acest etos — moștenit de la Steve Jobs — este motivul pentru care fiecare generație iPhone resetează standardul de referință pentru întreaga industrie.",
+        "Filosofia de design a Apple, articulată în vocea lui Jony Ive: că adevăratul design nu este aspectul de suprafață, ci modul în care funcționează un produs. Acest etos, moștenit de la Steve Jobs, este motivul pentru care fiecare generație iPhone resetează standardul de referință pentru întreaga industrie.",
       videoSrc: "/videos/library/Technology/Design is how it works - Apple.mp4",
       tag: "FILOSOFIE DE DESIGN",
     },
@@ -270,7 +270,7 @@ const copyRo: SmartphonesCopy = {
   appParagraph1:
     "App Store, lansat în iulie 2008 cu 500 de aplicații, a devenit șablonul pentru fiecare piață digitală care a urmat. Comisionul său de 30%, procesul de revizuire curatoriat și SDK-ul pentru dezvoltatori au fost ulterior copiate de Google Play, Steam, PlayStation Store și fiecare platformă majoră de distribuție digitală de pe Pământ. Apple a inventat regulile după care funcționează economiile digitale.",
   appParagraph2:
-    "Până în 2025, ecosistemul combinat iOS și Google Play a facilitat peste 1,2 trilioane de dolari în facturare și vânzări ale dezvoltatorilor — un output economic comparabil cu PIB-ul unui stat G20. Apple singur a plătit peste 350 de miliarde de dolari dezvoltatorilor de la înființare. Economia App Store susține un număr estimat de 2,4 milioane de locuri de muncă numai în Statele Unite.",
+    "Până în 2025, ecosistemul combinat iOS și Google Play a facilitat peste 1,2 trilioane de dolari în facturare și vânzări ale dezvoltatorilor, un output economic comparabil cu PIB-ul unui stat G20. Apple singur a plătit peste 350 de miliarde de dolari dezvoltatorilor de la înființare. Economia App Store susține un număr estimat de 2,4 milioane de locuri de muncă numai în Statele Unite.",
   appStats: [
     { label: "Economia Combinată a Aplicațiilor", value: "$1,1T+", accent: true },
     { label: "Plăți Apple către Dezvoltatori (total)", value: "$320 Mld.+" },
@@ -286,28 +286,28 @@ const copyRo: SmartphonesCopy = {
       tag: "Apple Park, 2017",
       title: "Campusul Navă Spațială",
       description:
-        "Apple Park — finalizat în 2017 la costul de 5 miliarde de dolari — este cartierul general de 175 de acri proiectat de Norman Foster. Clădirea principală de 260.000 de metri pătrați găzduiește peste 12.000 de angajați și conține Steve Jobs Theater, unde a fost prezentat fiecare iPhone începând cu iPhone X.",
+        "Apple Park, finalizat în 2017 la costul de 5 miliarde de dolari, este cartierul general de 175 de acri proiectat de Norman Foster. Clădirea principală de 260.000 de metri pătrați găzduiește peste 12.000 de angajați și conține Steve Jobs Theater, unde a fost prezentat fiecare iPhone începând cu iPhone X.",
       imageSrc: "/images/library/Technology/Apple Cupertino headquarters from above.jpg",
     },
     {
       tag: "Linia de Produse",
-      title: "iPhone, iPad, Mac — Un Ecosistem",
+      title: "iPhone, iPad, Mac, Un Ecosistem",
       description:
-        "Ecosistemul hardware al Apple este cel mai integrat din tehnologia de consum. iPhone, iPad, MacBook, Apple Watch și AirPods sunt toate proiectate de aceeași echipă, rulează pe siliciu intern și partajează aceeași familie de sisteme de operare — creând costuri de schimbare fără egal.",
+        "Ecosistemul hardware al Apple este cel mai integrat din tehnologia de consum. iPhone, iPad, MacBook, Apple Watch și AirPods sunt toate proiectate de aceeași echipă, rulează pe siliciu intern și partajează aceeași familie de sisteme de operare, creând costuri de schimbare fără egal.",
       imageSrc: "/images/library/Technology/Apple Products.jpg",
     },
     {
       tag: "Apple Inc., Cupertino",
       title: "Sediul Apple",
       description:
-        "Campusul original Infinite Loop al Apple din Cupertino, California — adresa unde Steve Jobs, Steve Wozniak și Jony Ive au dezvoltat Mac, iPod și iPhone. Compania care a început într-un garaj din Cupertino în 1976 a devenit prima companie din istorie care a atins o capitalizare de 1, 2 și apoi 3 trilioane de dolari.",
+        "Campusul original Infinite Loop al Apple din Cupertino, California, adresa unde Steve Jobs, Steve Wozniak și Jony Ive au dezvoltat Mac, iPod și iPhone. Compania care a început într-un garaj din Cupertino în 1976 a devenit prima companie din istorie care a atins o capitalizare de 1, 2 și apoi 3 trilioane de dolari.",
       imageSrc: "/images/library/Technology/Apple Headquarters.jpg",
     },
     {
       tag: "Hello Din Nou",
       title: "Dispozitivul Care a Schimbat Totul",
       description:
-        "Ecranul iPhone cu mesajul „Hello” — prezent în fiecare generație din 2007 — este un omagiu deliberat adus secvenței de pornire a Macintosh-ului din 1984. Este imaginea de produs cel mai recunoscută în istoria tehnologiei de consum, simbolizând momentul în care America a pus un calculator în fiecare buzunar de pe Pământ.",
+        "Ecranul iPhone cu mesajul „Hello”, prezent în fiecare generație din 2007, este un omagiu deliberat adus secvenței de pornire a Macintosh-ului din 1984. Este imaginea de produs cel mai recunoscută în istoria tehnologiei de consum, simbolizând momentul în care America a pus un calculator în fiecare buzunar de pe Pământ.",
       imageSrc: "/images/library/Technology/iPhone saying Hello on wooden background.jpg",
     },
   ],
@@ -374,8 +374,8 @@ export default async function SmartphonesPage() {
                 </span>
                 <p className="text-sm text-white/60 max-w-xs leading-relaxed font-body">
                   {isRo
-                    ? "Din toate smartphone-urile de pe Pământ rulează pe iOS sau Android — ambele născute în California"
-                    : "Of all smartphones on Earth run iOS or Android — both born in California"}
+                    ? "Din toate smartphone-urile de pe Pământ rulează pe iOS sau Android, ambele născute în California"
+                    : "Of all smartphones on Earth run iOS or Android, both born in California"}
                 </p>
               </div>
               <div className="flex flex-col items-center">
@@ -401,7 +401,7 @@ export default async function SmartphonesPage() {
                 <p className="text-sm text-white/60 max-w-xs leading-relaxed font-body">
                   {isRo
                     ? "Apple este cea mai valoroasă companie publică din istoria omenirii, construită pe iPhone"
-                    : "Apple is the most valuable public company in human history — built on the iPhone"}
+                    : "Apple is the most valuable public company in human history, built on the iPhone"}
                 </p>
               </div>
             </div>
@@ -457,7 +457,7 @@ export default async function SmartphonesPage() {
           </div>
         </section>
 
-        {/* Apple Silicon Section — 2-col spec panel (mirrors GPS section in Space page) */}
+        {/* Apple Silicon Section, 2-col spec panel (mirrors GPS section in Space page) */}
         <section id="apple-silicon" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
           <div className="border-t border-white/5 pt-16">
             <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] font-semibold mb-3 flex items-center gap-2">
@@ -549,7 +549,7 @@ export default async function SmartphonesPage() {
           </div>
         </section>
 
-        {/* App Store Economy Section — 2-col spec panel (mirrors Artemis section in Space page) */}
+        {/* App Store Economy Section, 2-col spec panel (mirrors Artemis section in Space page) */}
         <section id="app-economy" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-32 mb-32">
           <div className="border-t border-white/5 pt-16">
             <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] font-semibold mb-3 flex items-center gap-2">

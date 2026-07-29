@@ -20,7 +20,7 @@ export default async function CultureFashionPage() {
 
   const content = {
     pullQuote: isRo
-      ? "Moda americană nu a început în saloanele elitiste de design — a pornit ca îmbrăcăminte de lucru și echipament sportiv, devenind o declarație democratică de rebeliune."
+      ? "Moda americană nu a început în saloanele elitiste de design, a pornit ca îmbrăcăminte de lucru și echipament sportiv, devenind o declarație democratică de rebeliune."
       : "American fashion did not begin in elite design salons; it started as rugged workwear and athletic gear, evolving into a democratic statement of rebellion.",
     body1: isRo
       ? "Blugii albaștri, creați inițial de Levi Strauss în secolul al XIX-lea ca pantaloni durabili pentru mineri și fermieri, au devenit uniforma universală a modernității. Adoptați de tineri în anii 1950 ca simbol al rebeliunii și casualității, denimul a șters diferențele de clasă socială și a devenit cel mai exportat stil vestimentar de pe planetă."
@@ -51,8 +51,8 @@ export default async function CultureFashionPage() {
       image: SITE_IMAGES.culture.fashionSneakerNike,
       alt: "Black Sneakers Nike Air Force 1 Low with US Flag under them",
       desc: isRo
-        ? "Air Jordan, Chuck Taylor All-Star și Adidas Superstar — pantofii sport americani au redefint luxul urban și identitatea culturală a generațiilor întregi."
-        : "Air Jordan, Chuck Taylor All-Star, and Adidas Superstar — American athletic shoes redefined urban luxury and the cultural identity of entire generations.",
+        ? "Air Jordan, Chuck Taylor All-Star și Adidas Superstar, pantofii sport americani au redefint luxul urban și identitatea culturală a generațiilor întregi."
+        : "Air Jordan, Chuck Taylor All-Star, and Adidas Superstar, American athletic shoes redefined urban luxury and the cultural identity of entire generations.",
     },
     {
       title: isRo ? "Streetwear" : "Streetwear",
@@ -69,8 +69,8 @@ export default async function CultureFashionPage() {
       image: SITE_IMAGES.culture.fashionCowboyBoots,
       alt: "Cowboy boots girl sitting on fence on ranch",
       desc: isRo
-        ? "Cizmele cowboy, pălăria Stetson, Wrangler-ul cu talie înaltă — îmbrăcămintea de ranch texan a cucerit podiumurile de modă la Coachella, Milan și Tokyo."
-        : "Cowboy boots, Stetson hats, high-rise Wranglers — Texas ranch workwear conquered the fashion runways at Coachella, Milan, and Tokyo.",
+        ? "Cizmele cowboy, pălăria Stetson, Wrangler-ul cu talie înaltă, îmbrăcămintea de ranch texan a cucerit podiumurile de modă la Coachella, Milan și Tokyo."
+        : "Cowboy boots, Stetson hats, high-rise Wranglers, Texas ranch workwear conquered the fashion runways at Coachella, Milan, and Tokyo.",
     },
     {
       title: isRo ? "Preppy & Ivy League" : "Preppy & Ivy League",
@@ -78,17 +78,17 @@ export default async function CultureFashionPage() {
       image: SITE_IMAGES.culture.fashionRalphLaurenStore,
       alt: "Ralph Lauren retail store interior with preppy nautical apparel",
       desc: isRo
-        ? "Ralph Lauren a transformat estetica Ivy League — polo, blazer navy, pantaloni chino — în cel mai exportat stil american de lux casual. O viziune despre o Americă aspirațională, vândută în toată lumea."
-        : "Ralph Lauren transformed the Ivy League aesthetic — polo shirts, navy blazers, chino trousers — into America's most exported casual luxury style. A vision of aspirational America, sold worldwide.",
+        ? "Ralph Lauren a transformat estetica Ivy League, polo, blazer navy, pantaloni chino, în cel mai exportat stil american de lux casual. O viziune despre o Americă aspirațională, vândută în toată lumea."
+        : "Ralph Lauren transformed the Ivy League aesthetic, polo shirts, navy blazers, chino trousers, into America's most exported casual luxury style. A vision of aspirational America, sold worldwide.",
     },
     {
       title: isRo ? "Athleisure" : "Athleisure",
       subtitle: isRo ? "Hainele de Sală ca Modă de Zi" : "Gym Clothes as Everyday Fashion",
       image: SITE_IMAGES.culture.basketballDunk,
-      alt: "Basketball player dunking — the athletic culture that spawned athleisure",
+      alt: "Basketball player dunking, the athletic culture that spawned athleisure",
       desc: isRo
-        ? "Lululemon (1998), Under Armour (1996), Nike Dri-FIT — America a inventat conceptul de îmbrăcăminte sport purtată drept fashion casual cotidian. Piața globală de athleisure valorează 600+ miliarde de dolari și crește. Post-2010, leggings de yoga, hoodie-uri de sală și sneakers au înlocuit hainele formale în birouri și restaurante pe tot globul."
-        : "Lululemon (1998), Under Armour (1996), Nike Dri-FIT — America invented the concept of gym-wear as everyday fashion. The global athleisure market tops $600B and keeps growing. Post-2010, yoga leggings, gym hoodies, and performance sneakers replaced formal wear in offices and restaurants worldwide.",
+        ? "Lululemon (1998), Under Armour (1996), Nike Dri-FIT, America a inventat conceptul de îmbrăcăminte sport purtată drept fashion casual cotidian. Piața globală de athleisure valorează 600+ miliarde de dolari și crește. Post-2010, leggings de yoga, hoodie-uri de sală și sneakers au înlocuit hainele formale în birouri și restaurante pe tot globul."
+        : "Lululemon (1998), Under Armour (1996), Nike Dri-FIT, America invented the concept of gym-wear as everyday fashion. The global athleisure market tops $600B and keeps growing. Post-2010, yoga leggings, gym hoodies, and performance sneakers replaced formal wear in offices and restaurants worldwide.",
     },
   ];
 
@@ -107,7 +107,7 @@ export default async function CultureFashionPage() {
 
       <MacroHero
         imageSrc={SITE_IMAGES.culture.fashionJeansSneakers}
-        imageAlt="Blue jeans and white sneakers — the default American uniform"
+        imageAlt="Blue jeans and white sneakers, the default American uniform"
         eyebrow={isRo ? "UNIFORMA REBELIUNII · MODĂ" : "THE UNIFORM OF REBELLION · FASHION"}
         titleLead={isRo ? "MODĂ &" : "FASHION &"}
         titleAccent={isRo ? "STREETWEAR" : "STREETWEAR"}
@@ -241,7 +241,7 @@ export default async function CultureFashionPage() {
                 {
                   name: "Ralph Lauren",
                   era: "Polo Ralph Lauren, 1967",
-                  desc: isRo ? "Ralph Lauren a inventat vânzarea unui vis american — nu doar haine, ci un stil de viață aspirațional. Polo, Rugby, Purple Label — un imperiu de 8 miliarde de dolari construit pe nostalgii WASP și cowboy." : "Ralph Lauren invented selling the American dream — not just clothes, but an aspirational lifestyle. Polo, Rugby, Purple Label — an $8 billion empire built on WASP nostalgia and cowboy romanticism.",
+                  desc: isRo ? "Ralph Lauren a inventat vânzarea unui vis american, nu doar haine, ci un stil de viață aspirațional. Polo, Rugby, Purple Label, un imperiu de 8 miliarde de dolari construit pe nostalgii WASP și cowboy." : "Ralph Lauren invented selling the American dream, not just clothes, but an aspirational lifestyle. Polo, Rugby, Purple Label, an $8 billion empire built on WASP nostalgia and cowboy romanticism.",
                 },
                 {
                   name: "Calvin Klein",
@@ -251,7 +251,7 @@ export default async function CultureFashionPage() {
                 {
                   name: "Donna Karan",
                   era: "DKNY, 1989",
-                  desc: isRo ? "7 pièces essentielles pentru femeia modernă — Donna Karan a inventat garderoba de putere și a creat DKNY ca primul brand aspirațional new-yorkez global." : "Seven easy pieces for the modern woman — Donna Karan invented the power wardrobe and created DKNY as the first globally aspirational New York City brand.",
+                  desc: isRo ? "7 pièces essentielles pentru femeia modernă, Donna Karan a inventat garderoba de putere și a creat DKNY ca primul brand aspirațional new-yorkez global." : "Seven easy pieces for the modern woman, Donna Karan invented the power wardrobe and created DKNY as the first globally aspirational New York City brand.",
                 },
                 {
                   name: "Marc Jacobs",
@@ -266,7 +266,7 @@ export default async function CultureFashionPage() {
                 {
                   name: "Michael Kors",
                   era: "1981–present",
-                  desc: isRo ? "Kors a democratizat luxul casual pentru America suburbanistă — genți accesibile, ceasuri premium, un brand care a redefinit ce înseamnă 'aspirațional accesibil' pe piața globală." : "Kors democratized casual luxury for suburban America — accessible handbags, premium watches, a brand that redefined what 'attainable aspirational' means on the global market.",
+                  desc: isRo ? "Kors a democratizat luxul casual pentru America suburbanistă, genți accesibile, ceasuri premium, un brand care a redefinit ce înseamnă 'aspirațional accesibil' pe piața globală." : "Kors democratized casual luxury for suburban America, accessible handbags, premium watches, a brand that redefined what 'attainable aspirational' means on the global market.",
                 },
                 {
                   name: "Vera Wang",
@@ -276,7 +276,7 @@ export default async function CultureFashionPage() {
                 {
                   name: "Oscar de la Renta",
                   era: "1965–2014",
-                  desc: isRo ? "Croitorul preferat al First Ladies americane — de la Jacqueline Kennedy la Hillary Clinton. De la Renta a combinat eleganța latină cu rafinamentul new-yorkez, devenind garderobierul incontestabil al puterii americane." : "The preferred couturier of American First Ladies — from Jacqueline Kennedy to Hillary Clinton. De la Renta blended Latin elegance with New York refinement, becoming the undisputed tailor of American power.",
+                  desc: isRo ? "Croitorul preferat al First Ladies americane, de la Jacqueline Kennedy la Hillary Clinton. De la Renta a combinat eleganța latină cu rafinamentul new-yorkez, devenind garderobierul incontestabil al puterii americane." : "The preferred couturier of American First Ladies, from Jacqueline Kennedy to Hillary Clinton. De la Renta blended Latin elegance with New York refinement, becoming the undisputed tailor of American power.",
                 },
               ].map((d, i) => (
                 <div key={i} className="bg-white/40 backdrop-blur-md rounded-2xl p-8 border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.03)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.08)] hover:-translate-y-1.5 transition-all duration-500">
@@ -306,32 +306,32 @@ export default async function CultureFashionPage() {
                 {
                   name: isRo ? "Punk & New Wave" : "Punk & New Wave",
                   era: "1970s–1980s · CBGB, New York",
-                  desc: isRo ? "Ramones, Blondie, Patti Smith — din clubul CBGB din New York a ieșit un stil vizual complet: jachete de piele, blugi rupți, zgardă cu țepi și vopsea de păr anarhică. Punk-ul american a exportat rebeliunea estetică pe cinci continente." : "The Ramones, Blondie, Patti Smith — out of NYC's CBGB came a complete visual style: leather jackets, ripped jeans, spiked collars, anarchic hair dye. American punk exported aesthetic rebellion to five continents.",
+                  desc: isRo ? "Ramones, Blondie, Patti Smith, din clubul CBGB din New York a ieșit un stil vizual complet: jachete de piele, blugi rupți, zgardă cu țepi și vopsea de păr anarhică. Punk-ul american a exportat rebeliunea estetică pe cinci continente." : "The Ramones, Blondie, Patti Smith, out of NYC's CBGB came a complete visual style: leather jackets, ripped jeans, spiked collars, anarchic hair dye. American punk exported aesthetic rebellion to five continents.",
                 },
                 {
                   name: "Hip-Hop Fashion",
                   era: "1980s–present · South Bronx",
-                  desc: isRo ? "Adidas Superstar fără șireturi, Kangol, Cazal, lanțuri de aur, Timberland, FUBU, Sean John — hip-hop-ul a creat un sistem vestimentar complet. Astăzi, Supreme, Off-White și Balenciaga construiesc colecții direct pe codul estetic originar din Bronx." : "Adidas Superstar without laces, Kangol, Cazal, gold chains, Timberland, FUBU, Sean John — hip-hop created a complete dress code. Today, Supreme, Off-White, and Balenciaga build collections directly on the aesthetic code originating from the South Bronx.",
+                  desc: isRo ? "Adidas Superstar fără șireturi, Kangol, Cazal, lanțuri de aur, Timberland, FUBU, Sean John, hip-hop-ul a creat un sistem vestimentar complet. Astăzi, Supreme, Off-White și Balenciaga construiesc colecții direct pe codul estetic originar din Bronx." : "Adidas Superstar without laces, Kangol, Cazal, gold chains, Timberland, FUBU, Sean John, hip-hop created a complete dress code. Today, Supreme, Off-White, and Balenciaga build collections directly on the aesthetic code originating from the South Bronx.",
                 },
                 {
                   name: "Grunge",
                   era: "1990s · Seattle, Washington",
-                  desc: isRo ? "Nirvana, Pearl Jam, Soundgarden — flanel, blugi rupți, ghete Doc Martens și păr nespalat au cucerit generația X. Marc Jacobs a dus grunge-ul pe podiumurile Perry Ellis (1992), legitimând definitiv streetwear-ul ca înaltă modă." : "Nirvana, Pearl Jam, Soundgarden — flannel shirts, ripped jeans, Doc Marten boots, and unwashed hair conquered Generation X. Marc Jacobs brought grunge to Perry Ellis runways (1992), permanently legitimizing streetwear as high fashion.",
+                  desc: isRo ? "Nirvana, Pearl Jam, Soundgarden, flanel, blugi rupți, ghete Doc Martens și păr nespalat au cucerit generația X. Marc Jacobs a dus grunge-ul pe podiumurile Perry Ellis (1992), legitimând definitiv streetwear-ul ca înaltă modă." : "Nirvana, Pearl Jam, Soundgarden, flannel shirts, ripped jeans, Doc Marten boots, and unwashed hair conquered Generation X. Marc Jacobs brought grunge to Perry Ellis runways (1992), permanently legitimizing streetwear as high fashion.",
                 },
                 {
                   name: "Valley Girl / Preppy",
                   era: "1980s · California & New England",
-                  desc: isRo ? "L.A. Valley Girl (Clueless, 1995) + tradiția Ivy League New England — polo, cardigan roz, fuste în carouri, sacoș cu monogramă. Estetica 'preppie' a fost repoziționată de Ralph Lauren și reprodusă de mileniala globală pe TikTok 40 de ani mai târziu." : "The L.A. Valley Girl (Clueless, 1995) + New England Ivy League tradition — polo shirts, pink cardigans, plaid skirts, monogram bags. The 'preppy' aesthetic was repositioned by Ralph Lauren and reproduced by global millennials on TikTok 40 years later.",
+                  desc: isRo ? "L.A. Valley Girl (Clueless, 1995) + tradiția Ivy League New England, polo, cardigan roz, fuste în carouri, sacoș cu monogramă. Estetica 'preppie' a fost repoziționată de Ralph Lauren și reprodusă de mileniala globală pe TikTok 40 de ani mai târziu." : "The L.A. Valley Girl (Clueless, 1995) + New England Ivy League tradition, polo shirts, pink cardigans, plaid skirts, monogram bags. The 'preppy' aesthetic was repositioned by Ralph Lauren and reproduced by global millennials on TikTok 40 years later.",
                 },
                 {
                   name: "Y2K & Early 2000s",
                   era: "1999–2006 · Hollywood",
-                  desc: isRo ? "Pantaloni cu talie joasă, topuri de tip tube, ochelari minusculi, logo-uri supradimensionate, denim pe denim — estetica Y2K a revenit triumfal în moda Gen Z. Paris Hilton, Britney Spears și Jennifer Lopez au definit un deceniu întreg de stil global." : "Low-rise jeans, tube tops, micro sunglasses, oversized logos, denim on denim — the Y2K aesthetic made a triumphant return in Gen Z fashion. Paris Hilton, Britney Spears, and Jennifer Lopez defined an entire decade of global style.",
+                  desc: isRo ? "Pantaloni cu talie joasă, topuri de tip tube, ochelari minusculi, logo-uri supradimensionate, denim pe denim, estetica Y2K a revenit triumfal în moda Gen Z. Paris Hilton, Britney Spears și Jennifer Lopez au definit un deceniu întreg de stil global." : "Low-rise jeans, tube tops, micro sunglasses, oversized logos, denim on denim, the Y2K aesthetic made a triumphant return in Gen Z fashion. Paris Hilton, Britney Spears, and Jennifer Lopez defined an entire decade of global style.",
                 },
                 {
                   name: "Normcore & Gorpcore",
                   era: "2010s–present · Internet",
-                  desc: isRo ? "New Balance 990, fleece Patagonia, blugi simpli, pălărie de baseball fără logouri — Normcore (2014) a transformat 'banalul' în manifest estetic. Gorpcore a dus mai departe ideea cu echipament de camping ca fashion statement urban, ambele originate în SUA." : "New Balance 990, Patagonia fleece, plain jeans, no-logo baseball cap — Normcore (2014) transformed 'ordinary' into aesthetic manifesto. Gorpcore extended the idea with camping gear as urban fashion statement, both trends originating in the US.",
+                  desc: isRo ? "New Balance 990, fleece Patagonia, blugi simpli, pălărie de baseball fără logouri, Normcore (2014) a transformat 'banalul' în manifest estetic. Gorpcore a dus mai departe ideea cu echipament de camping ca fashion statement urban, ambele originate în SUA." : "New Balance 990, Patagonia fleece, plain jeans, no-logo baseball cap, Normcore (2014) transformed 'ordinary' into aesthetic manifesto. Gorpcore extended the idea with camping gear as urban fashion statement, both trends originating in the US.",
                 },
               ].map((sub, i) => (
                 <div key={i} className="bg-white/40 backdrop-blur-md rounded-2xl p-8 border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.03)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.08)] hover:-translate-y-1.5 transition-all duration-500">

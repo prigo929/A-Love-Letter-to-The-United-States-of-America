@@ -18,7 +18,7 @@ import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
 
 export const metadata: Metadata = {
   title: "Innovation & Technology",
-  description: "The internet, the personal computer, cloud computing, smartphones, and AI — all born from the American innovation engine.",
+  description: "The internet, the personal computer, cloud computing, smartphones, and AI, all born from the American innovation engine.",
 };
 
 const subPagesEn = [
@@ -330,7 +330,7 @@ export default async function InnovationPage() {
         {/* Iconic Photographs */}
         <IconicPhotographs
           section="innovation"
-          intro="From the first nuclear fireball to the deepest views of the cosmos — the milestones of American science and spaceflight, captured on film."
+          intro="From the first nuclear fireball to the deepest views of the cosmos, the milestones of American science and spaceflight, captured on film."
         />
 
         {/* Deep Dive Section */}

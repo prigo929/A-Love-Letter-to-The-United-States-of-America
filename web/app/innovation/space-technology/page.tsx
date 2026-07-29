@@ -70,7 +70,7 @@ const copyEn: SpaceCopy = {
   heroSubtitle: "How private American enterprise and venture capital revolutionized access to orbit, breaking the launch monopolies of nation-states.",
   thesisTitle: "The Shift to Commercial Space",
   thesisParagraph1: "For decades, space was the exclusive domain of national governments, driven by geopolitical competition and public funds. Today, the space economy is led by American private capital, rapid engineering iterations, and vertical integration. By fostering a regulatory environment that allows failure and fast learning, the United States has unlocked orbit as a commercial marketplace.",
-  thesisParagraph2: "This shift is powered by rapid reuse, mass satellite production, and a private launch cadence. The physical infrastructure of space — once dictated by civil agencies — is now dominated by private fleets launching from American soil, reducing launch costs by an order of magnitude.",
+  thesisParagraph2: "This shift is powered by rapid reuse, mass satellite production, and a private launch cadence. The physical infrastructure of space, once dictated by civil agencies, is now dominated by private fleets launching from American soil, reducing launch costs by an order of magnitude.",
   milestonesTitle: "Key Milestones in Space Tech",
   milestones: [
     {
@@ -112,7 +112,7 @@ const copyEn: SpaceCopy = {
   artemisLabel: "THE DEEP SPACE CORRIDOR",
   artemisTitle: "Starship & Artemis: Re-Engineering Human Frontiers",
   artemisParagraph1: "The second space age is defined by NASA's Artemis project collaborating with private space enterprises to build a high-frequency supply line to the Moon and Mars. Unlike the expendable Saturn V of the Apollo era, the anchor of this new logistical pipeline is SpaceX's Starship. Standing 121 meters tall, Starship is the most massive launch vehicle ever assembled, built to be fully and rapidly reusable to lower launch costs by two orders of magnitude.",
-  artemisParagraph2: "By pioneering in-orbit cryogenic propellant transfer—refueling methane and oxygen in low Earth orbit—Starship bypasses the traditional constraints of gravity wells, enabling the delivery of over 100 metric tons of cargo to the lunar surface. Developed in South Texas (Starbase), Starship is not merely a rocket; it is the core transport vehicle of a logistics network designed to extend permanent human presence into deep space.",
+  artemisParagraph2: "By pioneering in-orbit cryogenic propellant transfer, refueling methane and oxygen in low Earth orbit, Starship bypasses the traditional constraints of gravity wells, enabling the delivery of over 100 metric tons of cargo to the lunar surface. Developed in South Texas (Starbase), Starship is not merely a rocket; it is the core transport vehicle of a logistics network designed to extend permanent human presence into deep space.",
   artemisHeight: "121m Tall Stack",
   artemisThrust: "16.7M lbs Thrust",
   artemisCapacity: "100+ Tons to Orbit",
@@ -127,7 +127,7 @@ const copyRo: SpaceCopy = {
   heroSubtitle: "Cum întreprinderea privată americană și capitalul de risc au revoluționat accesul pe orbită, spărgând monopolul statelor suverane.",
   thesisTitle: "Tranziția către Spațiul Comercial",
   thesisParagraph1: "Timp de decenii, spațiul a fost domeniul exclusiv al guvernelor naționale, stimulat de competiția geopolitică și fondurile publice. Astăzi, economia spațială este condusă de capitalul privat american, iterații rapide de inginerie și integrare verticală. Printr-un mediu de reglementare permisiv care încurajează experimentarea, SUA au deblocat orbita ca o piață comercială.",
-  thesisParagraph2: "Această tranziție este susținută de reutilizarea rapidă, producția în masă de sateliți și o cadență ridicată de lansare. Infrastructura fizică a spațiului — odinioară dictată de agenții guvernamentale — este acum dominată de flote private ce decolează de pe sol american, reducând costurile de lansare.",
+  thesisParagraph2: "Această tranziție este susținută de reutilizarea rapidă, producția în masă de sateliți și o cadență ridicată de lansare. Infrastructura fizică a spațiului, odinioară dictată de agenții guvernamentale, este acum dominată de flote private ce decolează de pe sol american, reducând costurile de lansare.",
   milestonesTitle: "Pilonii Cheie ai Tehnologiei Spațiale",
   milestones: [
     {
@@ -169,7 +169,7 @@ const copyRo: SpaceCopy = {
   artemisLabel: "CORIDORUL SPAȚIULUI ÎNDEPĂRTAT",
   artemisTitle: "Starship și Artemis: Reproiectarea Frontierelor Umane",
   artemisParagraph1: "A doua eră spațială este definită de colaborarea dintre proiectul Artemis al NASA și întreprinderile spațiale private pentru a construi o linie logistică către Lună și Marte. Spre deosebire de Saturn V din era Apollo, piesa centrală a acestei noi structuri logistice este Starship de la SpaceX. Cu o înălțime de 121 de metri, Starship este cel mai masiv vehicul de lansare asamblat vreodată, fiind proiectat pentru reutilizare rapidă și integrală.",
-  artemisParagraph2: "Prin pionieratul transferului de propulsie criogenică pe orbită — realimentarea cu metan și oxigen pe orbita joasă a Pământului — Starship ocolește limitele gravitaționale tradiționale, permițând livrarea a peste 100 de tone pe suprafața lunară. Dezvoltat în Texasul de Sud (Starbase), Starship nu este doar o rachetă; este vehiculul de transport principal al unei rețele logistice menite să extindă prezența umană permanentă în spațiul cosmic.",
+  artemisParagraph2: "Prin pionieratul transferului de propulsie criogenică pe orbită, realimentarea cu metan și oxigen pe orbita joasă a Pământului, Starship ocolește limitele gravitaționale tradiționale, permițând livrarea a peste 100 de tone pe suprafața lunară. Dezvoltat în Texasul de Sud (Starbase), Starship nu este doar o rachetă; este vehiculul de transport principal al unei rețele logistice menite să extindă prezența umană permanentă în spațiul cosmic.",
   artemisHeight: "121m Înălțime Totală",
   artemisThrust: "7.5M kg Tracțiune",
   artemisCapacity: "100+ Tone pe Orbită",

@@ -16,7 +16,7 @@ import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
 
 export const metadata: Metadata = {
   title: "Food & Drinks | The American Operating System",
-  description: "Diners, fast food, BBQ, ice cream — explore the democratic palate and iconic foods invented and popularized in America.",
+  description: "Diners, fast food, BBQ, ice cream, explore the democratic palate and iconic foods invented and popularized in America.",
 };
 
 export default async function FoodAndDrinksPage() {
@@ -28,8 +28,8 @@ export default async function FoodAndDrinksPage() {
       ? "Sistemul culinar american a industrializat consistența și a democratizat accesul la mâncare la scară planetară."
       : "The American culinary system industrialized consistency and democratized access to food on a planetary scale.",
     body1: isRo
-      ? "Diner-ul clasic american reprezintă designul spațial al accesului democratic. Modelul de franciză (McDonald's, Starbucks, Subway) a transformat prepararea mâncării într-un sistem de asamblare de precizie. Pizza americană — NY slice și Chicago deep dish — a reinventat un preparat italian în ceva complet nou. Înghețata, chipsurile de cartofi, brownies-urile, donuts-urile — toate au origini sau popularizări distinctiv americane."
-      : "The American diner represents the spatial design of democratic access. The franchise model (McDonald's, Starbucks, Subway) turned food preparation into a precision assembly system. American pizza — NY slice and Chicago deep dish — reinvented an Italian dish into something entirely new. Ice cream, potato chips, brownies, donuts — all have distinctly American origins or popularization.",
+      ? "Diner-ul clasic american reprezintă designul spațial al accesului democratic. Modelul de franciză (McDonald's, Starbucks, Subway) a transformat prepararea mâncării într-un sistem de asamblare de precizie. Pizza americană, NY slice și Chicago deep dish, a reinventat un preparat italian în ceva complet nou. Înghețata, chipsurile de cartofi, brownies-urile, donuts-urile, toate au origini sau popularizări distinctiv americane."
+      : "The American diner represents the spatial design of democratic access. The franchise model (McDonald's, Starbucks, Subway) turned food preparation into a precision assembly system. American pizza, NY slice and Chicago deep dish, reinvented an Italian dish into something entirely new. Ice cream, potato chips, brownies, donuts, all have distinctly American origins or popularization.",
     body2: isRo
       ? "BBQ-ul american este de fapt patru tradiții regionale complet diferite: brisket afumat texan, coaste din Memphis, pulled pork carolina și burnt ends din Kansas City. Fiecare cu propriul tip de lemn, propriul sos și propria filozofie despre ce înseamnă carnea perfectă."
       : "American BBQ is actually four completely different regional traditions: Texas smoked brisket, Memphis ribs, Carolina pulled pork, and Kansas City burnt ends. Each with its own wood, its own sauce, and its own philosophy about what perfect meat means.",
@@ -56,8 +56,8 @@ export default async function FoodAndDrinksPage() {
       image: SITE_IMAGES.culture.foodBrisket,
       alt: "Texas BBQ brisket",
       desc: isRo
-        ? "Brisket afumat 12–18 ore în lemn de stejar, coaste Memphis glasate cu sos dulce-iute, pulled pork Carolina în stil vinegar-based, burnt ends Kansas City — patru religii culinare distincte cu milioane de adepți."
-        : "12–18 hour oak-smoked brisket, Memphis ribs glazed with sweet-hot sauce, Carolina vinegar-based pulled pork, Kansas City burnt ends — four distinct culinary religions with millions of devoted followers.",
+        ? "Brisket afumat 12–18 ore în lemn de stejar, coaste Memphis glasate cu sos dulce-iute, pulled pork Carolina în stil vinegar-based, burnt ends Kansas City, patru religii culinare distincte cu milioane de adepți."
+        : "12–18 hour oak-smoked brisket, Memphis ribs glazed with sweet-hot sauce, Carolina vinegar-based pulled pork, Kansas City burnt ends, four distinct culinary religions with millions of devoted followers.",
     },
     {
       title: isRo ? "Înghețata" : "Ice Cream",
@@ -65,8 +65,8 @@ export default async function FoodAndDrinksPage() {
       image: SITE_IMAGES.culture.foodIceCreamTruck,
       alt: "American ice cream truck",
       desc: isRo
-        ? "Cornul de înghețată a fost inventat la Expoziția Mondială din St. Louis (1904). Soft serve-ul — inventat de americani. Ben & Jerry's, Häagen-Dazs — branduri americane care domină piața globală de 97 miliarde de dolari."
-        : "The ice cream cone was invented at the St. Louis World's Fair (1904). Soft serve — American invention. Ben & Jerry's, Häagen-Dazs — American brands dominating the $97 billion global market.",
+        ? "Cornul de înghețată a fost inventat la Expoziția Mondială din St. Louis (1904). Soft serve-ul, inventat de americani. Ben & Jerry's, Häagen-Dazs, branduri americane care domină piața globală de 97 miliarde de dolari."
+        : "The ice cream cone was invented at the St. Louis World's Fair (1904). Soft serve, American invention. Ben & Jerry's, Häagen-Dazs, American brands dominating the $97 billion global market.",
     },
     {
       title: isRo ? "Pizza Americană" : "American Pizza",
@@ -74,8 +74,8 @@ export default async function FoodAndDrinksPage() {
       image: SITE_IMAGES.culture.foodPepperoniPizza,
       alt: "Classic American pepperoni pizza",
       desc: isRo
-        ? "Imigranții italieni au adus pizza la New York la începutul secolului XX, dar America a reinventat-o complet. NY slice (1905), Chicago deep dish (1943), Pizza Hut (1958, Kansas), Domino's (1960, Michigan) au exportat-o în 100+ țări. Azi pizza este o industrie globală de 153 miliarde de dolari — cu NY slice și Chicago deep dish ca două invenții distinctiv americane."
-        : "Italian immigrants brought pizza to New York in the early 1900s, but America reinvented it entirely. The NY slice (1905), Chicago deep dish (1943), Pizza Hut (1958, Kansas), Domino's (1960, Michigan) then exported it worldwide. Today pizza is a $153 billion global industry — the NY slice and Chicago deep dish are distinctly American inventions.",
+        ? "Imigranții italieni au adus pizza la New York la începutul secolului XX, dar America a reinventat-o complet. NY slice (1905), Chicago deep dish (1943), Pizza Hut (1958, Kansas), Domino's (1960, Michigan) au exportat-o în 100+ țări. Azi pizza este o industrie globală de 153 miliarde de dolari, cu NY slice și Chicago deep dish ca două invenții distinctiv americane."
+        : "Italian immigrants brought pizza to New York in the early 1900s, but America reinvented it entirely. The NY slice (1905), Chicago deep dish (1943), Pizza Hut (1958, Kansas), Domino's (1960, Michigan) then exported it worldwide. Today pizza is a $153 billion global industry, the NY slice and Chicago deep dish are distinctly American inventions.",
     },
   ];
 
@@ -84,29 +84,29 @@ export default async function FoodAndDrinksPage() {
       title: "Coca-Cola",
       stat: "1886",
       statLabel: isRo ? "An fondare, Atlanta GA" : "Founded, Atlanta GA",
-      desc: isRo ? "Inventată de Dr. John Pemberton. Acum disponibilă în peste 200 de țări — cel mai distribuit produs din lume." : "Invented by Dr. John Pemberton. Now available in 200+ countries — the most distributed product on Earth.",
+      desc: isRo ? "Inventată de Dr. John Pemberton. Acum disponibilă în peste 200 de țări, cel mai distribuit produs din lume." : "Invented by Dr. John Pemberton. Now available in 200+ countries, the most distributed product on Earth.",
     },
     {
       title: "Speakeasy & Cocktail",
       stat: "1920s",
       statLabel: isRo ? "Era Prohibiției" : "Prohibition Era",
-      desc: isRo ? "Barurile clandestine au inventat cocktail-ul modern. Manhattan, Old Fashioned, Martini — toate au origini americane." : "Underground bars invented the modern cocktail. Manhattan, Old Fashioned, Martini — all American in origin.",
+      desc: isRo ? "Barurile clandestine au inventat cocktail-ul modern. Manhattan, Old Fashioned, Martini, toate au origini americane." : "Underground bars invented the modern cocktail. Manhattan, Old Fashioned, Martini, all American in origin.",
     },
     {
       title: isRo ? "Cafea Americană" : "American Coffee",
       stat: "$100B+",
       statLabel: isRo ? "Piața anuală" : "Annual Market",
-      desc: isRo ? "Starbucks a transformat cafeaua într-o experiență aspirațională — 35,000 de cafenele pe 6 continente." : "Starbucks transformed coffee into an aspirational experience — 35,000 locations across 6 continents.",
+      desc: isRo ? "Starbucks a transformat cafeaua într-o experiență aspirațională, 35,000 de cafenele pe 6 continente." : "Starbucks transformed coffee into an aspirational experience, 35,000 locations across 6 continents.",
     },
     {
       title: isRo ? "Bourbon & Tennessee Whiskey" : "Bourbon & Tennessee Whiskey",
       stat: "1791",
       statLabel: isRo ? "Prima distilerie bourbon" : "First bourbon distillery",
-      desc: isRo ? "Jack Daniel's, Maker's Mark, Buffalo Trace — bourbon whiskey este legal produs doar în SUA (actul din 1964). Piața valorează $12+ miliarde și exportă cultura distinctivă a Sudului american." : "Jack Daniel's, Maker's Mark, Buffalo Trace — bourbon is legally producible only in the USA (1964 act of Congress). The industry tops $12B and exports the distinct culture of the American South worldwide.",
+      desc: isRo ? "Jack Daniel's, Maker's Mark, Buffalo Trace, bourbon whiskey este legal produs doar în SUA (actul din 1964). Piața valorează $12+ miliarde și exportă cultura distinctivă a Sudului american." : "Jack Daniel's, Maker's Mark, Buffalo Trace, bourbon is legally producible only in the USA (1964 act of Congress). The industry tops $12B and exports the distinct culture of the American South worldwide.",
     },
   ];
 
-  // Catalogue grid — all dishes
+  // Catalogue grid, all dishes
   const catalogue = [
     { src: SITE_IMAGES.culture.foodPancakes, label: isRo ? "Pancakes" : "Pancakes" },
     { src: SITE_IMAGES.culture.foodHotDogs, label: isRo ? "Hot Dogs" : "Hot Dogs" },
@@ -223,8 +223,8 @@ export default async function FoodAndDrinksPage() {
               </h2>
               <p className="mx-auto mt-6 max-w-2xl font-editorial text-lg text-[#0C0907]/60">
                 {isRo
-                  ? "Friptura, laptele, sandvișul, mărul — atât de obișnuite încât abia le mai vedem ca mâncare. Fiecare are o poveste de origine care se dovedește a fi istorie americană pură. Apasă pe oricare."
-                  : "Steak, milk, the sandwich, the apple — so ordinary we barely see them as food. Each has an origin story that turns out to be pure American history. Click any of them."}
+                  ? "Friptura, laptele, sandvișul, mărul, atât de obișnuite încât abia le mai vedem ca mâncare. Fiecare are o poveste de origine care se dovedește a fi istorie americană pură. Apasă pe oricare."
+                  : "Steak, milk, the sandwich, the apple, so ordinary we barely see them as food. Each has an origin story that turns out to be pure American history. Click any of them."}
               </p>
               <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
             </div>
@@ -245,8 +245,8 @@ export default async function FoodAndDrinksPage() {
               </h2>
               <p className="mx-auto mt-6 max-w-2xl font-editorial text-lg text-[#0C0907]/60">
                 {isRo
-                  ? "Fiecare desert de aici poartă o felie de istorie americană — de la gogoașa creuzetului la vata de zahăr inventată de un dentist. Apasă pe oricare."
-                  : "Every dessert here carries a slab of American history — from the melting-pot donut to the cotton candy a dentist invented. Click any of them."}
+                  ? "Fiecare desert de aici poartă o felie de istorie americană, de la gogoașa creuzetului la vata de zahăr inventată de un dentist. Apasă pe oricare."
+                  : "Every dessert here carries a slab of American history, from the melting-pot donut to the cotton candy a dentist invented. Click any of them."}
               </p>
               <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
             </div>
@@ -271,13 +271,13 @@ export default async function FoodAndDrinksPage() {
             <div className="mx-auto max-w-3xl space-y-6 font-editorial text-lg leading-relaxed text-[#0C0907]/75">
               <p>
                 {isRo
-                  ? "Pizza a început ca mâncare de stradă a țăranilor din Napoli — aluat turtit cu untură și sare, mâncat de zilierii care nu-și permiteau altceva. Peste patru milioane de italieni din sud au emigrat pe Coasta de Est între 1880 și 1920, iar în America au descoperit o abundență de negândit acasă: blocuri de brânză, roșii, carne. Au reconstruit pizza cu acele ingrediente. Spaghetti with meatballs, lasagna și pizza modernă nu sunt tradiții italiene vechi — sunt invenții italo-americane."
-                  : "Pizza began as the peasant street food of Naples — flattened dough with lard and salt, eaten by day laborers who could afford little else. Over four million southern Italians emigrated to the East Coast between 1880 and 1920, and in America they found an abundance unthinkable back home: blocks of cheese, tomatoes, meat. They rebuilt pizza around those ingredients. Spaghetti and meatballs, lasagna, and modern pizza aren't ancient Italian traditions — they're Italian-American inventions."}
+                  ? "Pizza a început ca mâncare de stradă a țăranilor din Napoli, aluat turtit cu untură și sare, mâncat de zilierii care nu-și permiteau altceva. Peste patru milioane de italieni din sud au emigrat pe Coasta de Est între 1880 și 1920, iar în America au descoperit o abundență de negândit acasă: blocuri de brânză, roșii, carne. Au reconstruit pizza cu acele ingrediente. Spaghetti with meatballs, lasagna și pizza modernă nu sunt tradiții italiene vechi, sunt invenții italo-americane."
+                  : "Pizza began as the peasant street food of Naples, flattened dough with lard and salt, eaten by day laborers who could afford little else. Over four million southern Italians emigrated to the East Coast between 1880 and 1920, and in America they found an abundance unthinkable back home: blocks of cheese, tomatoes, meat. They rebuilt pizza around those ingredients. Spaghetti and meatballs, lasagna, and modern pizza aren't ancient Italian traditions, they're Italian-American inventions."}
               </p>
               <p>
                 {isRo
-                  ? "Lombardi's din New York (1905) este de obicei numită prima pizzerie a Americii. Experimentarea a produs stilurile regionale care încă se ceartă între ele. După război, tehnologia a preluat controlul: pizza congelată la supermarket, apoi lanțurile — Pizza Hut vindea peste 100 de milioane de pizza pe an până la sfârșitul anilor '70. Domino's a făscut faimos „30 de minute sau gratis” — deși, de fapt, nu au dat niciodată pizza gratis, iar promisiunea a fost abandonată în 1994 după acuzații că provoacă accidente. Iar Țestoasele Ninja au făcut restul, transformând pizza în mâncarea-simbol a copilăriei americane."
-                  : "Lombardi's in New York (1905) is usually called America's first pizzeria. Experimentation bred the regional styles that still argue with each other. After the war, technology took over: frozen supermarket pizza, then the chains — Pizza Hut was selling over 100 million pizzas a year by the late 1970s. Domino's made '30 minutes or it's free' famous — though it never actually gave away free pizza, and dropped the promise in 1994 after accusations it was causing accidents. And the Teenage Mutant Ninja Turtles did the rest, making pizza the signature food of an American childhood."}
+                  ? "Lombardi's din New York (1905) este de obicei numită prima pizzerie a Americii. Experimentarea a produs stilurile regionale care încă se ceartă între ele. După război, tehnologia a preluat controlul: pizza congelată la supermarket, apoi lanțurile, Pizza Hut vindea peste 100 de milioane de pizza pe an până la sfârșitul anilor '70. Domino's a făscut faimos „30 de minute sau gratis”, deși, de fapt, nu au dat niciodată pizza gratis, iar promisiunea a fost abandonată în 1994 după acuzații că provoacă accidente. Iar Țestoasele Ninja au făcut restul, transformând pizza în mâncarea-simbol a copilăriei americane."
+                  : "Lombardi's in New York (1905) is usually called America's first pizzeria. Experimentation bred the regional styles that still argue with each other. After the war, technology took over: frozen supermarket pizza, then the chains, Pizza Hut was selling over 100 million pizzas a year by the late 1970s. Domino's made '30 minutes or it's free' famous, though it never actually gave away free pizza, and dropped the promise in 1994 after accusations it was causing accidents. And the Teenage Mutant Ninja Turtles did the rest, making pizza the signature food of an American childhood."}
               </p>
             </div>
 
@@ -330,8 +330,8 @@ export default async function FoodAndDrinksPage() {
               </h2>
               <p className="mx-auto mt-6 max-w-2xl font-editorial text-lg text-[#0C0907]/60">
                 {isRo
-                  ? "Hamburgerul, cartoful prăjit, nugget-ul de pui — trei creații americane atât de răspândite încât au devenit simboluri pentru mâncare în sine. Trei feluri diferite de poveste de origine. Apasă pe oricare."
-                  : "The burger, the fry, the chicken nugget — three American creations so widespread they became symbols for food itself. Three different kinds of origin story. Click any of them."}
+                  ? "Hamburgerul, cartoful prăjit, nugget-ul de pui, trei creații americane atât de răspândite încât au devenit simboluri pentru mâncare în sine. Trei feluri diferite de poveste de origine. Apasă pe oricare."
+                  : "The burger, the fry, the chicken nugget, three American creations so widespread they became symbols for food itself. Three different kinds of origin story. Click any of them."}
               </p>
               <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
             </div>
@@ -352,8 +352,8 @@ export default async function FoodAndDrinksPage() {
               </h2>
               <p className="mx-auto mt-6 max-w-2xl font-editorial text-lg text-[#0C0907]/60">
                 {isRo
-                  ? "Clasic, smântână și ceapă, barbecue, sare și oțet — cele patru arome dominante par firești în America, dar sunt profund arbitrare (în Olanda domină ardeiul, în Asia creveții). Fiecare ascunde o poveste despre evoluția culturală a Americii. Apasă pe oricare."
-                  : "Classic, sour cream & onion, barbecue, salt & vinegar — the four dominant American flavors feel natural here, but they're deeply arbitrary (Holland runs on pepper, much of Asia on shrimp). Each one hides a tale of America's cultural evolution. Click any of them."}
+                  ? "Clasic, smântână și ceapă, barbecue, sare și oțet, cele patru arome dominante par firești în America, dar sunt profund arbitrare (în Olanda domină ardeiul, în Asia creveții). Fiecare ascunde o poveste despre evoluția culturală a Americii. Apasă pe oricare."
+                  : "Classic, sour cream & onion, barbecue, salt & vinegar, the four dominant American flavors feel natural here, but they're deeply arbitrary (Holland runs on pepper, much of Asia on shrimp). Each one hides a tale of America's cultural evolution. Click any of them."}
               </p>
               <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
             </div>
@@ -361,7 +361,7 @@ export default async function FoodAndDrinksPage() {
           </div>
         </section>
 
-        {/* CREAM: How American food changed — the Lesser 30 (interactive) */}
+        {/* CREAM: How American food changed, the Lesser 30 (interactive) */}
         <section className="relative culture-cream-bg text-[#0C0907] pb-24 overflow-hidden border-t border-[#0C0907]/5">
           <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
           <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
@@ -410,8 +410,8 @@ export default async function FoodAndDrinksPage() {
                 </p>
                 <p className="mt-3 font-editorial text-[15px] leading-relaxed text-[#0C0907]/70">
                   {isRo
-                    ? "Eticheta nutrițională a sosit în 1992 — și, de atunci, mâncarea a devenit despre ce este, nu doar despre cât costă."
-                    : "The nutrition label arrived in 1992 — and ever since, food has been about what it is, not just what it costs."}
+                    ? "Eticheta nutrițională a sosit în 1992, și, de atunci, mâncarea a devenit despre ce este, nu doar despre cât costă."
+                    : "The nutrition label arrived in 1992, and ever since, food has been about what it is, not just what it costs."}
                 </p>
               </div>
             </div>
@@ -420,8 +420,8 @@ export default async function FoodAndDrinksPage() {
 
             <p className="mx-auto mt-16 max-w-3xl border-t border-[#0C0907]/10 pt-10 text-center font-editorial text-2xl italic leading-snug text-[#0C0907]/70 md:text-[28px]">
               {isRo
-                ? "„Ultimele trei decenii au fost un timp al evoluției, nu al revoluției — dar schimbările subtile sunt tot schimbări.”"
-                : "“The last three decades have been a time of evolution, not revolution — but subtle changes are still changes.”"}
+                ? "„Ultimele trei decenii au fost un timp al evoluției, nu al revoluției, dar schimbările subtile sunt tot schimbări.”"
+                : "“The last three decades have been a time of evolution, not revolution, but subtle changes are still changes.”"}
             </p>
           </div>
         </section>
@@ -456,8 +456,8 @@ export default async function FoodAndDrinksPage() {
                 </h3>
                 <p className="font-editorial text-lg text-[#0C0907]/70 leading-relaxed">
                   {isRo
-                    ? "America a inventat micul dejun modern. Kellogg's Corn Flakes (Battle Creek, Michigan, 1906) a redefinit dimineața. IHOP (1958), Waffle House (1955), Denny's (1953) — all-day breakfast ca instituție democratică. Pancakes cu sirop de arțar, waffle belgiene, ouă Benedict, hash browns, bacon crocant: nicio altă națiune nu mănâncă micul dejun cu atâta religiozitate."
-                    : "America invented the modern breakfast. Kellogg's Corn Flakes (Battle Creek, Michigan, 1906) redefined the morning. IHOP (1958), Waffle House (1955), Denny's (1953) turned the all-day breakfast into a democratic institution. Maple syrup pancakes, waffles, eggs Benedict, hash browns, crispy bacon — no nation eats breakfast with more religious devotion than America."}
+                    ? "America a inventat micul dejun modern. Kellogg's Corn Flakes (Battle Creek, Michigan, 1906) a redefinit dimineața. IHOP (1958), Waffle House (1955), Denny's (1953), all-day breakfast ca instituție democratică. Pancakes cu sirop de arțar, waffle belgiene, ouă Benedict, hash browns, bacon crocant: nicio altă națiune nu mănâncă micul dejun cu atâta religiozitate."
+                    : "America invented the modern breakfast. Kellogg's Corn Flakes (Battle Creek, Michigan, 1906) redefined the morning. IHOP (1958), Waffle House (1955), Denny's (1953) turned the all-day breakfast into a democratic institution. Maple syrup pancakes, waffles, eggs Benedict, hash browns, crispy bacon, no nation eats breakfast with more religious devotion than America."}
                 </p>
               </div>
               <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0_30px_80px_rgb(12,9,7,0.15)]">

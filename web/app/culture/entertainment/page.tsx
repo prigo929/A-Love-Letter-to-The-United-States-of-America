@@ -16,7 +16,7 @@ import { Home, ChevronRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Film, Storytelling & Entertainment | The American Operating System",
   description:
-    "Hollywood, Netflix, Disney, and the full spectrum of American cultural output — cinematic epochs, legendary auteurs, global streaming dominance, and the theme park industrial complex.",
+    "Hollywood, Netflix, Disney, and the full spectrum of American cultural output, cinematic epochs, legendary auteurs, global streaming dominance, and the theme park industrial complex.",
 };
 
 export default async function FilmAndEntertainmentPage() {
@@ -25,12 +25,12 @@ export default async function FilmAndEntertainmentPage() {
 
   const data = getCultureHollywood(locale);
 
-  // Interactive poster vault — movie posters only (clickable lightbox with director/tech details)
+  // Interactive poster vault, movie posters only (clickable lightbox with director/tech details)
   const filmImages = GALLERY_IMAGES.filter(
     (img) => img.category === "Cinema" && img.path.includes("Movie Posters")
   );
 
-  // Music albums — separate from movie posters to avoid duplication
+  // Music albums, separate from movie posters to avoid duplication
   const musicArchive = [
     { src: SITE_IMAGES.culture.vaultMilesDavis,    title: "Miles Davis",    sub: "Kind of Blue" },
     { src: SITE_IMAGES.culture.vaultMichaelJackson,title: "Michael Jackson", sub: "Thriller" },
@@ -54,16 +54,16 @@ export default async function FilmAndEntertainmentPage() {
       stat: "2.7B",
       statLabel: isRo ? "Utilizatori Lunari" : "Monthly Users",
       detail: isRo
-        ? "Platforma video a omenirii — creată, finanțată și construită în Silicon Valley."
-        : "Humanity's video platform — built, funded, and engineered in Silicon Valley.",
+        ? "Platforma video a omenirii, creată, finanțată și construită în Silicon Valley."
+        : "Humanity's video platform, built, funded, and engineered in Silicon Valley.",
     },
     {
       name: "Disney+",
       stat: "150M+",
       statLabel: isRo ? "Abonați" : "Subscribers",
       detail: isRo
-        ? "Marvel, Star Wars, Pixar, National Geographic — proprietate intelectuală americană globalizată."
-        : "Marvel, Star Wars, Pixar, National Geographic — American IP globalized at scale.",
+        ? "Marvel, Star Wars, Pixar, National Geographic, proprietate intelectuală americană globalizată."
+        : "Marvel, Star Wars, Pixar, National Geographic, American IP globalized at scale.",
     },
   ];
 
@@ -111,8 +111,8 @@ export default async function FilmAndEntertainmentPage() {
         titleAccent={isRo ? "VISE" : "FACTORY"}
         description={
           isRo
-            ? "Hollywood a generat codul vizual prin care planeta \u00ee\u0219i spune pove\u0219tile. Netflix, Disney \u0219i YouTube dictează timpul de ecran global — complet \u00een afara controlului de stat."
-            : "Hollywood generated the visual syntax for human dreaming. Netflix, Disney, and YouTube now dictate global screen time — entirely outside state control."
+            ? "Hollywood a generat codul vizual prin care planeta \u00ee\u0219i spune pove\u0219tile. Netflix, Disney \u0219i YouTube dictează timpul de ecran global, complet \u00een afara controlului de stat."
+            : "Hollywood generated the visual syntax for human dreaming. Netflix, Disney, and YouTube now dictate global screen time, entirely outside state control."
         }
         stats={[
           { value: "$120B",  label: isRo ? "Box Office Global"      : "Global Box Office" },
@@ -142,8 +142,8 @@ export default async function FilmAndEntertainmentPage() {
             <p className="font-editorial text-lg text-[#F5EDD8]/70 leading-relaxed mb-4">{data.body}</p>
             <p className="font-editorial text-lg text-[#F5EDD8]/70 leading-relaxed">
               {isRo
-                ? "O singură companie, cum ar fi Netflix, cheltuiește peste 15 miliarde de dolari anual pe conținut — o cifră care depășește bugetele întregi de cultură ale majorității națiunilor europene adunate la un loc."
-                : "A single company like Netflix spends over $15 billion annually on content — a figure that dwarfs the entire cultural budgets of most European nations combined."}
+                ? "O singură companie, cum ar fi Netflix, cheltuiește peste 15 miliarde de dolari anual pe conținut, o cifră care depășește bugetele întregi de cultură ale majorității națiunilor europene adunate la un loc."
+                : "A single company like Netflix spends over $15 billion annually on content, a figure that dwarfs the entire cultural budgets of most European nations combined."}
             </p>
           </div>
           <div className="culture-glass rounded-2xl p-6 border border-white/5 space-y-6 relative overflow-hidden group">
@@ -213,13 +213,13 @@ export default async function FilmAndEntertainmentPage() {
               </h3>
               <p className="font-editorial text-base text-[#0C0907]/70 leading-relaxed mb-4">
                 {isRo
-                  ? "America de Nord domină piața mondială a parcurilor tematice cu o cotă de venituri de 37% în 2025. Este exportul industriei de proprietate intelectuală americane — Marvel, Star Wars, Pixar — transpus în realitate fizică."
-                  : "North America dominates the global theme park market with approximately 37% revenue share in 2025. It is American cultural IP — Marvel, Star Wars, Pixar — built into physical, experiential reality at premium prices."}
+                  ? "America de Nord domină piața mondială a parcurilor tematice cu o cotă de venituri de 37% în 2025. Este exportul industriei de proprietate intelectuală americane, Marvel, Star Wars, Pixar, transpus în realitate fizică."
+                  : "North America dominates the global theme park market with approximately 37% revenue share in 2025. It is American cultural IP, Marvel, Star Wars, Pixar, built into physical, experiential reality at premium prices."}
               </p>
               <p className="font-editorial text-base text-[#0C0907]/70 leading-relaxed">
                 {isRo
-                  ? "Cele 12 parcuri Disney atrag singure peste 34% din vizitatorii mondiali — 140 de milioane anual. Florida Centrală a înregistrat 75 de milioane de vizitatori în 2024, generând aproape 95 de miliarde de dolari impact economic."
-                  : "Disney's 12 parks alone capture over 34% of global theme park attendance — 140 million visitors annually. Central Florida recorded 75 million visitors in 2024 generating nearly $95 billion in total economic impact."}
+                  ? "Cele 12 parcuri Disney atrag singure peste 34% din vizitatorii mondiali, 140 de milioane anual. Florida Centrală a înregistrat 75 de milioane de vizitatori în 2024, generând aproape 95 de miliarde de dolari impact economic."
+                  : "Disney's 12 parks alone capture over 34% of global theme park attendance, 140 million visitors annually. Central Florida recorded 75 million visitors in 2024 generating nearly $95 billion in total economic impact."}
               </p>
               <div className="mt-8 grid grid-cols-3 gap-4">
                 {[
@@ -258,7 +258,7 @@ export default async function FilmAndEntertainmentPage() {
             sizes="(max-width: 768px) 50vw, 16vw"
             photos={americanIcons.map((icon) => ({
               src: icon.src,
-              alt: `${icon.name} — ${icon.note}`,
+              alt: `${icon.name}, ${icon.note}`,
               caption: icon.name,
               aspect: "3/4",
               objectClassName: "object-top",
@@ -266,7 +266,7 @@ export default async function FilmAndEntertainmentPage() {
           />
         </section>
 
-        {/* ── DARK: Music Archive (albums only — film posters are in the interactive vault above) ── */}
+        {/* ── DARK: Music Archive (albums only, film posters are in the interactive vault above) ── */}
         <section className="mb-24">
           <p className="font-body text-xs uppercase tracking-[0.25em] text-glory-gold text-center mb-4 font-semibold">
             {isRo ? "ARHIVA MUZICALĂ · ALBUME DEFINITORII" : "MUSIC ARCHIVE · DEFINING ALBUMS"}
@@ -279,7 +279,7 @@ export default async function FilmAndEntertainmentPage() {
             sizes="16vw"
             photos={musicArchive.map((v) => ({
               src: v.src,
-              alt: `${v.title} — ${v.sub}`,
+              alt: `${v.title}, ${v.sub}`,
               caption: `${v.title} · ${v.sub}`,
               aspect: "1/1",
             }))}
@@ -333,8 +333,8 @@ export default async function FilmAndEntertainmentPage() {
           </h2>
           <p className="font-editorial text-base text-[#F5EDD8]/70 leading-relaxed text-center max-w-2xl mx-auto mb-10">
             {isRo
-              ? "Atari, Xbox, PlayStation, Nintendo of America — industria globală a jocurilor video a fost construită pe codul american. Asteroids (1979) și Pac-Man (1980) au transformat arcadele în cultură de masă. Azi, gaming depășește Hollywood și muzica împreună."
-              : "Atari, Xbox, PlayStation, Nintendo of America — the global video game industry was built on American code. Asteroids (1979) and Pac-Man (1980) turned arcades into mass culture. Today, gaming surpasses Hollywood and music combined."}
+              ? "Atari, Xbox, PlayStation, Nintendo of America, industria globală a jocurilor video a fost construită pe codul american. Asteroids (1979) și Pac-Man (1980) au transformat arcadele în cultură de masă. Azi, gaming depășește Hollywood și muzica împreună."
+              : "Atari, Xbox, PlayStation, Nintendo of America, the global video game industry was built on American code. Asteroids (1979) and Pac-Man (1980) turned arcades into mass culture. Today, gaming surpasses Hollywood and music combined."}
           </p>
           <PhotoLightboxGrid
             gridClassName="grid grid-cols-2 gap-4 max-w-lg mx-auto mb-8"

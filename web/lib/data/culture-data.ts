@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// culture-data.ts — Centralized data for the /culture landing page
+// culture-data.ts, Centralized data for the /culture landing page
 // "America didn't just build a nation. It built the operating system for
-//  modern civilization — through free markets, private enterprise, and
+//  modern civilization, through free markets, private enterprise, and
 //  democratic access."
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -29,7 +29,7 @@ export interface CultureSubpage {
   statLabel: string;
   imageKey: string;
   href: string;
-  /** "large" | "medium" | "small" — controls bento sizing */
+  /** "large" | "medium" | "small", controls bento sizing */
   size: "large" | "medium" | "small";
   description: string;
 }
@@ -85,20 +85,20 @@ export interface CultureThesis {
 
 const THESIS_EN: CultureThesis = {
   pullQuote:
-    "The [hl]genius of America[/hl] is that it turned culture into a market — and then gave that market to the world.",
+    "The [hl]genius of America[/hl] is that it turned culture into a market, and then gave that market to the world.",
   attribution: "Editorial Voice",
   paragraphs: [
-    "Hollywood, Nike, McDonald's, Jazz, and the iPhone weren't planned by a ministry of culture. They were competed into existence by [hl]private actors in open markets[/hl] — studios bidding for audiences, brands racing for shelf space, musicians chasing the crowd. The entire cultural arsenal of the United States is a [hl]byproduct of capitalism, not a policy outcome[/hl].",
+    "Hollywood, Nike, McDonald's, Jazz, and the iPhone weren't planned by a ministry of culture. They were competed into existence by [hl]private actors in open markets[/hl], studios bidding for audiences, brands racing for shelf space, musicians chasing the crowd. The entire cultural arsenal of the United States is a [hl]byproduct of capitalism, not a policy outcome[/hl].",
     "This is what makes American soft power [hl]structurally different[/hl] from every other nation's. France has a Ministry of Culture. China has a propaganda department. America has a consumer market of 330 million people whose preferences, broadcast at planetary scale through English and the internet, [hl]set the default template[/hl] for how the world eats, dresses, watches, listens, and dreams.",
   ],
 };
 
 const THESIS_RO: CultureThesis = {
   pullQuote:
-    "Geniul Americii este că a transformat cultura într-o piață — și apoi a dat acea piață întregii lumi.",
+    "Geniul Americii este că a transformat cultura într-o piață, și apoi a dat acea piață întregii lumi.",
   attribution: "Voce Editorială",
   paragraphs: [
-    "Hollywood, Nike, McDonald's, Jazz-ul și iPhone-ul nu au fost planificate de un minister al culturii. Au fost create prin competiție de [hl]actori privați pe piețe deschise[/hl] — studiouri care licitau pentru audiențe, branduri care se întreceau pentru rafturile magazinelor, muzicieni care urmăreau publicul. Întregul arsenal cultural al Statelor Unite este un [hl]produs secundar al capitalismului, nu un rezultat de politică publică[/hl].",
+    "Hollywood, Nike, McDonald's, Jazz-ul și iPhone-ul nu au fost planificate de un minister al culturii. Au fost create prin competiție de [hl]actori privați pe piețe deschise[/hl], studiouri care licitau pentru audiențe, branduri care se întreceau pentru rafturile magazinelor, muzicieni care urmăreau publicul. Întregul arsenal cultural al Statelor Unite este un [hl]produs secundar al capitalismului, nu un rezultat de politică publică[/hl].",
     "Asta face puterea soft americană [hl]structural diferită[/hl] de cea a oricărei alte națiuni. Franța are un Minister al Culturii. China are un departament de propagandă. America are o piață de consumatori de 330 de milioane de oameni ale căror preferințe, difuzate la scară planetară prin engleză și internet, [hl]stabilesc șablonul implicit[/hl] pentru cum mănâncă, se îmbracă, privește, ascultă și visează lumea.",
   ],
 };
@@ -158,7 +158,7 @@ const SUBPAGES_EN: CultureSubpage[] = [
     imageKey: "film",
     href: "/culture/entertainment",
     size: "small",
-    description: "Hollywood didn't just capture attention — it exported the visual syntax of human dreaming, shaping international narratives and values.",
+    description: "Hollywood didn't just capture attention, it exported the visual syntax of human dreaming, shaping international narratives and values.",
   },
   {
     id: "sports",
@@ -191,7 +191,7 @@ const SUBPAGES_EN: CultureSubpage[] = [
     imageKey: "brands",
     href: "/culture/companies-brands",
     size: "medium",
-    description: "Levi's, Coca-Cola, and Apple are more than corporate marks — they represent structural systems of utility, comfort, and status.",
+    description: "Levi's, Coca-Cola, and Apple are more than corporate marks, they represent structural systems of utility, comfort, and status.",
   },
   {
     id: "food",
@@ -235,7 +235,7 @@ const SUBPAGES_EN: CultureSubpage[] = [
     imageKey: "english",
     href: "/culture/english-language",
     size: "small",
-    description: "The lingua franca of commerce, science, aviation, and the internet — American English is the operating language of the modern world.",
+    description: "The lingua franca of commerce, science, aviation, and the internet, American English is the operating language of the modern world.",
   },
 ];
 
@@ -260,7 +260,7 @@ const SUBPAGES_RO: CultureSubpage[] = [
     imageKey: "film",
     href: "/culture/entertainment",
     size: "small",
-    description: "Hollywood-ul nu a captat doar atenția — a exportat sintaxa vizuală a viselor umane, modelând narațiunile și valorile internaționale.",
+    description: "Hollywood-ul nu a captat doar atenția, a exportat sintaxa vizuală a viselor umane, modelând narațiunile și valorile internaționale.",
   },
   {
     id: "sports",
@@ -293,7 +293,7 @@ const SUBPAGES_RO: CultureSubpage[] = [
     imageKey: "brands",
     href: "/culture/companies-brands",
     size: "medium",
-    description: "Levi's, Coca-Cola și Apple sunt mai mult decât mărci comerciale — ele reprezintă sisteme structurale de utilitate, confort și statut.",
+    description: "Levi's, Coca-Cola și Apple sunt mai mult decât mărci comerciale, ele reprezintă sisteme structurale de utilitate, confort și statut.",
   },
   {
     id: "food",
@@ -337,7 +337,7 @@ const SUBPAGES_RO: CultureSubpage[] = [
     imageKey: "english",
     href: "/culture/english-language",
     size: "small",
-    description: "Limba franca a comerțului, științei, aviației și internetului — engleza americană este limba de operare a lumii moderne.",
+    description: "Limba franca a comerțului, științei, aviației și internetului, engleza americană este limba de operare a lumii moderne.",
   },
 ];
 
@@ -350,15 +350,15 @@ export function getCultureSubpages(locale: Locale): CultureSubpage[] {
 const ARGUMENTS_EN: CultureArgument[] = [
   {
     title: "Private Innovation",
-    body: "No Ministry of Culture planned Hollywood. It grew from [hl]competition between private studios[/hl] fighting for audiences, talent, and distribution — each failure funding the next breakthrough.",
+    body: "No Ministry of Culture planned Hollywood. It grew from [hl]competition between private studios[/hl] fighting for audiences, talent, and distribution, each failure funding the next breakthrough.",
   },
   {
     title: "Democratic Access",
-    body: "Denim, fast food, and rock music weren't elite products. They were [hl]built for mass markets[/hl]. American culture is structurally populist — designed to scale, not to exclude.",
+    body: "Denim, fast food, and rock music weren't elite products. They were [hl]built for mass markets[/hl]. American culture is structurally populist, designed to scale, not to exclude.",
   },
   {
     title: "Market Scalability",
-    body: "The franchise model — McDonald's, Starbucks, Subway — is an American invention. [hl]Culture industrialized[/hl]. One recipe, ten thousand kitchens, every continent.",
+    body: "The franchise model, McDonald's, Starbucks, Subway, is an American invention. [hl]Culture industrialized[/hl]. One recipe, ten thousand kitchens, every continent.",
   },
   {
     title: "Network Effects",
@@ -369,15 +369,15 @@ const ARGUMENTS_EN: CultureArgument[] = [
 const ARGUMENTS_RO: CultureArgument[] = [
   {
     title: "Inovație Privată",
-    body: "Niciun Minister al Culturii nu a planificat Hollywood-ul. A crescut din [hl]competiția dintre studiouri private[/hl] care luptau pentru audiențe, talent și distribuție — fiecare eșec finanțând următoarea descoperire.",
+    body: "Niciun Minister al Culturii nu a planificat Hollywood-ul. A crescut din [hl]competiția dintre studiouri private[/hl] care luptau pentru audiențe, talent și distribuție, fiecare eșec finanțând următoarea descoperire.",
   },
   {
     title: "Acces Democratic",
-    body: "Denim-ul, fast food-ul și rock-ul nu erau produse de elită. Au fost [hl]construite pentru piețe de masă[/hl]. Cultura americană este structural populistă — proiectată să se scaleze, nu să excludă.",
+    body: "Denim-ul, fast food-ul și rock-ul nu erau produse de elită. Au fost [hl]construite pentru piețe de masă[/hl]. Cultura americană este structural populistă, proiectată să se scaleze, nu să excludă.",
   },
   {
     title: "Scalabilitate de Piață",
-    body: "Modelul de franciză — McDonald's, Starbucks, Subway — este o invenție americană. [hl]Cultura industrializată[/hl]. O rețetă, zece mii de bucătării, fiecare continent.",
+    body: "Modelul de franciză, McDonald's, Starbucks, Subway, este o invenție americană. [hl]Cultura industrializată[/hl]. O rețetă, zece mii de bucătării, fiecare continent.",
   },
   {
     title: "Efecte de Rețea",
@@ -398,12 +398,12 @@ const QUOTES_EN: CultureQuote[] = [
     role: "Democracy in America, 1835",
   },
   {
-    text: "America is not just a country. It's an idea. And that's what makes it magnetic. People don't risk their lives on boats to reach a country — they risk them to reach an idea.",
+    text: "America is not just a country. It's an idea. And that's what makes it magnetic. People don't risk their lives on boats to reach a country, they risk them to reach an idea.",
     author: "Bono",
     role: "U2 frontman, Georgetown University Address",
   },
   {
-    text: "The glory of this land has been its capacity for transcendence — the ability of this nation to rise above itself, to reach beyond its grasp.",
+    text: "The glory of this land has been its capacity for transcendence, the ability of this nation to rise above itself, to reach beyond its grasp.",
     author: "Ronald Reagan",
     role: "40th President of the United States",
   },
@@ -416,12 +416,12 @@ const QUOTES_RO: CultureQuote[] = [
     role: "Democrația în America, 1835",
   },
   {
-    text: "America nu e doar o țară. E o idee. Și asta o face magnetică. Oamenii nu-și riscă viața pe bărci ca să ajungă într-o țară — și-o riscă ca să ajungă la o idee.",
+    text: "America nu e doar o țară. E o idee. Și asta o face magnetică. Oamenii nu-și riscă viața pe bărci ca să ajungă într-o țară, și-o riscă ca să ajungă la o idee.",
     author: "Bono",
     role: "Solist U2, Discurs la Universitatea Georgetown",
   },
   {
-    text: "Gloria acestui pământ a fost capacitatea sa de transcendență — abilitatea acestei națiuni de a se ridica deasupra ei însăși, de a se întinde dincolo de posibil.",
+    text: "Gloria acestui pământ a fost capacitatea sa de transcendență, abilitatea acestei națiuni de a se ridica deasupra ei însăși, de a se întinde dincolo de posibil.",
     author: "Ronald Reagan",
     role: "Al 40-lea Președinte al Statelor Unite",
   },
@@ -470,16 +470,16 @@ const DECADES_EN: CultureDecade[] = [
   { year: "1920s", title: "Jazz Age", sentence: "African-American musicians in New Orleans invented the first truly American art form and broadcast it worldwide.", imageKey: "era1920s" },
   { year: "1950s", title: "Hollywood Golden Age", sentence: "The studio system turned Los Angeles into the dream factory for the entire planet.", imageKey: "era1950s" },
   { year: "1970s", title: "Fast Food Empire", sentence: "McDonald's proved culture could be industrialized via the franchise model, spreading globally.", imageKey: "era1970s" },
-  { year: "1990s", title: "The Internet Age", sentence: "Silicon Valley connected the world — and set English as the operating language of the digital era.", imageKey: "era1990s" },
-  { year: "2020s", title: "AI & The Next Frontier", sentence: "American labs lead the race for artificial general intelligence — the next operating system for civilization.", imageKey: "era2020s" },
+  { year: "1990s", title: "The Internet Age", sentence: "Silicon Valley connected the world, and set English as the operating language of the digital era.", imageKey: "era1990s" },
+  { year: "2020s", title: "AI & The Next Frontier", sentence: "American labs lead the race for artificial general intelligence, the next operating system for civilization.", imageKey: "era2020s" },
 ];
 
 const DECADES_RO: CultureDecade[] = [
   { year: "1920", title: "Epoca Jazz-ului", sentence: "Muzicienii afro-americani din New Orleans au inventat prima formă de artă cu adevărat americană și au difuzat-o mondial.", imageKey: "era1920s" },
   { year: "1950", title: "Epoca de Aur a Hollywood-ului", sentence: "Sistemul studiourilor a transformat Los Angeles în fabrica de vise pentru întreaga planetă.", imageKey: "era1950s" },
   { year: "1970", title: "Imperiul Fast Food", sentence: "McDonald's a demonstrat că cultura poate fi industrializată prin modelul de franciză, răspândindu-se global.", imageKey: "era1970s" },
-  { year: "1990", title: "Era Internetului", sentence: "Silicon Valley a conectat lumea — și a stabilit engleza ca limbă de operare a erei digitale.", imageKey: "era1990s" },
-  { year: "2020", title: "AI & Frontiera Următoare", sentence: "Laboratoarele americane conduc cursa pentru inteligență artificială generală — următorul sistem de operare al civilizației.", imageKey: "era2020s" },
+  { year: "1990", title: "Era Internetului", sentence: "Silicon Valley a conectat lumea, și a stabilit engleza ca limbă de operare a erei digitale.", imageKey: "era1990s" },
+  { year: "2020", title: "AI & Frontiera Următoare", sentence: "Laboratoarele americane conduc cursa pentru inteligență artificială generală, următorul sistem de operare al civilizației.", imageKey: "era2020s" },
 ];
 
 export function getCultureDecades(locale: Locale): CultureDecade[] {
@@ -823,7 +823,7 @@ const MUSIC_GENRES_EN: CultureMusicGenre[] = [
   {
     city: "Mississippi Delta",
     genre: "The Blues",
-    description: "The raw emotional bedrock of modern pop, rock, and soul — expressing sorrow, struggle, and survival through acoustic guitar and voice.",
+    description: "The raw emotional bedrock of modern pop, rock, and soul, expressing sorrow, struggle, and survival through acoustic guitar and voice.",
     imageKey: "music",
   },
   {
@@ -850,7 +850,7 @@ const MUSIC_GENRES_RO: CultureMusicGenre[] = [
   {
     city: "Delta Mississippi",
     genre: "Blues-ul",
-    description: "Fundația emoțională brută a muzicii pop, rock și soul moderne — exprimând tristețea, lupta și supraviețuirea prin chitară acustică și voce.",
+    description: "Fundația emoțională brută a muzicii pop, rock și soul moderne, exprimând tristețea, lupta și supraviețuirea prin chitară acustică și voce.",
     imageKey: "music",
   },
   {
@@ -890,7 +890,7 @@ const CULINARY_PILLARS_EN: CultureCulinaryPillar[] = [
   {
     title: "The Speakeasy Aesthetic",
     subtitle: "The Beverage Craft Export",
-    body: "From the bourbon revival and craft beer movement to the cocktail renaissance, America redefined global drinking culture. Every hip cocktail lounge in Tokyo or Paris is modeled on the dark woods, low lights, and rigorous mixology of a pre-Prohibition New York or Brooklyn speakeasy—exporting a classic, market-proven lifestyle.",
+    body: "From the bourbon revival and craft beer movement to the cocktail renaissance, America redefined global drinking culture. Every hip cocktail lounge in Tokyo or Paris is modeled on the dark woods, low lights, and rigorous mixology of a pre-Prohibition New York or Brooklyn speakeasy, exporting a classic, market-proven lifestyle.",
     imageKey: "speakeasy",
   },
   {
@@ -911,7 +911,7 @@ const CULINARY_PILLARS_RO: CultureCulinaryPillar[] = [
   {
     title: "Estetica Speakeasy",
     subtitle: "Exportul Băuturilor Artizanale",
-    body: "De la renașterea bourbonului și mișcarea berii artizanale până la revigorarea cocktailurilor clasice, America a redefinit cultura globală a băutului. Fiecare lounge modern din Tokyo sau Paris este modelat după lemnul întunecat, lumina difuză și mixologia riguroasă a speakeasy-urilor istorice din New York sau Brooklyn—exportând un stil de viață clasic.",
+    body: "De la renașterea bourbonului și mișcarea berii artizanale până la revigorarea cocktailurilor clasice, America a redefinit cultura globală a băutului. Fiecare lounge modern din Tokyo sau Paris este modelat după lemnul întunecat, lumina difuză și mixologia riguroasă a speakeasy-urilor istorice din New York sau Brooklyn, exportând un stil de viață clasic.",
     imageKey: "speakeasy",
   },
   {
@@ -1037,14 +1037,14 @@ const EDITORIAL_IMPERIALISM_EN: CultureEditorialImperialismData = {
   eyebrow: "COUNTER-PROGRAMMING · THE IMPERIALISM CRITIQUE",
   headline: "THE VOLUNTARY DEFAULT",
   statement: "Voluntary exchange is not coercion.",
-  body: "Critics frequently describe the spread of American culture as a kind of 'cultural imperialism' or 'soft conquest'—a soft-power hegemony that homogenizes the globe. But this critique makes a fundamental category error: it confuses voluntary choice with coercion. A billion people freely choose to stream American movies, buy American brands, wear blue jeans, and learn American English. When the French government bans English words from official documents with zero effect on what French teenagers actually say and listen to, it reveals the power of pure demand over political mandates. American culture remains the world's default because it is competed into existence to serve human desires, operating independently of state agendas.",
+  body: "Critics frequently describe the spread of American culture as a kind of 'cultural imperialism' or 'soft conquest', a soft-power hegemony that homogenizes the globe. But this critique makes a fundamental category error: it confuses voluntary choice with coercion. A billion people freely choose to stream American movies, buy American brands, wear blue jeans, and learn American English. When the French government bans English words from official documents with zero effect on what French teenagers actually say and listen to, it reveals the power of pure demand over political mandates. American culture remains the world's default because it is competed into existence to serve human desires, operating independently of state agendas.",
 };
 
 const EDITORIAL_IMPERIALISM_RO: CultureEditorialImperialismData = {
   eyebrow: "CONTRA-PROGRAMARE · CRITICA IMPERIALISMULUI",
   headline: "OPȚIUNEA VOLUNTARĂ IMPLICITĂ",
   statement: "Schimbul voluntar nu înseamnă constrângere.",
-  body: "Criticii descriu adesea răspândirea culturii americane ca pe un tip de 'imperialism cultural' sau 'cucerire soft'—o hegemonie care omogenizează globul. Însă această critică face o eroare fundamentală: confundă alegerea voluntară cu constrângerea. Un miliard de oameni aleg liber să vizioneze filme americane, să cumpere branduri americane, să poarte blugi și să învețe engleza americană. Când guvernul francez interzice cuvintele englezești din documentele oficiale, iar acest lucru are exact zero impact asupra limbajului pe care adolescenții francezi îl folosesc în viața de zi cu zi, se evidențiază puterea cererii libere în fața directivelor politice. Cultura americană este opțiunea voluntară implicită a lumii deoarece a fost creată prin competiție pentru a servi dorințele umane, dincolo de agendele de stat.",
+  body: "Criticii descriu adesea răspândirea culturii americane ca pe un tip de 'imperialism cultural' sau 'cucerire soft', o hegemonie care omogenizează globul. Însă această critică face o eroare fundamentală: confundă alegerea voluntară cu constrângerea. Un miliard de oameni aleg liber să vizioneze filme americane, să cumpere branduri americane, să poarte blugi și să învețe engleza americană. Când guvernul francez interzice cuvintele englezești din documentele oficiale, iar acest lucru are exact zero impact asupra limbajului pe care adolescenții francezi îl folosesc în viața de zi cu zi, se evidențiază puterea cererii libere în fața directivelor politice. Cultura americană este opțiunea voluntară implicită a lumii deoarece a fost creată prin competiție pentru a servi dorințele umane, dincolo de agendele de stat.",
 };
 
 export function getCultureEditorialImperialism(locale: Locale): CultureEditorialImperialismData {
@@ -1072,7 +1072,7 @@ const DIGITAL_PIPES_EN: CultureDigitalPipesData = {
   eyebrow: "THE 21ST CENTURY INFRASTRUCTURE · DIGITAL AMERICA",
   headline: "BUILDING THE PIPES OF GLOBAL CULTURE",
   statement: "The medium is the American message.",
-  body: "In the 20th century, American cultural power was defined by the content it exported: Hollywood films, Motown records, Levi's jeans, and Coca-Cola bottles. But in the 21st century, America did something far more profound: it built the digital pipes upon which the entire world's culture now runs. Every dominant search engine that indexes human knowledge, every major social platform where global conversations happen, every frontier AI model, the streaming paradigm, the podcast format, and the smartphone UX itself—these are not just technological feats; they are the new infrastructure of global human expression. The world doesn't just watch American movies anymore; it lives inside the American digital landscape.",
+  body: "In the 20th century, American cultural power was defined by the content it exported: Hollywood films, Motown records, Levi's jeans, and Coca-Cola bottles. But in the 21st century, America did something far more profound: it built the digital pipes upon which the entire world's culture now runs. Every dominant search engine that indexes human knowledge, every major social platform where global conversations happen, every frontier AI model, the streaming paradigm, the podcast format, and the smartphone UX itself, these are not just technological feats; they are the new infrastructure of global human expression. The world doesn't just watch American movies anymore; it lives inside the American digital landscape.",
   bridgeText: "Explore the venture capital engines and technological breakthroughs that built this digital foundation in [Economy & Growth](/economy) and [Tech & Innovation](/innovation).",
   pipes: [
     {
@@ -1112,7 +1112,7 @@ const DIGITAL_PIPES_RO: CultureDigitalPipesData = {
   eyebrow: "INFRASTRUCTURA SECOLULUI XXI · AMERICA DIGITALĂ",
   headline: "CONSTRUIREA CANALELOR CULTURII GLOBALE",
   statement: "Mediul este mesajul american.",
-  body: "În secolul XX, puterea culturală a Americii a fost definită de conținutul pe care l-a exportat: filme de la Hollywood, discuri Motown, blugi Levi's și sticle de Coca-Cola. Însă în secolul XXI, America a realizat ceva mult mai profund: a construit canalele digitale pe care rulează acum întreaga cultură a lumii. Fiecare motor de căutare dominant care indexează cunoașterea umană, fiecare platformă socială majoră unde au loc conversațiile globale, fiecare model AI de frontieră, paradigma de streaming, formatul de podcast și interfața smartphone-ului în sine—acestea nu sunt doar realizări tehnologice; ele reprezintă noua infrastructură a exprimării umane globale. Lumea nu se mai uită doar la filme americane, ci trăiește în interiorul peisajului digital american.",
+  body: "În secolul XX, puterea culturală a Americii a fost definită de conținutul pe care l-a exportat: filme de la Hollywood, discuri Motown, blugi Levi's și sticle de Coca-Cola. Însă în secolul XXI, America a realizat ceva mult mai profund: a construit canalele digitale pe care rulează acum întreaga cultură a lumii. Fiecare motor de căutare dominant care indexează cunoașterea umană, fiecare platformă socială majoră unde au loc conversațiile globale, fiecare model AI de frontieră, paradigma de streaming, formatul de podcast și interfața smartphone-ului în sine, acestea nu sunt doar realizări tehnologice; ele reprezintă noua infrastructură a exprimării umane globale. Lumea nu se mai uită doar la filme americane, ci trăiește în interiorul peisajului digital american.",
   bridgeText: "Explorați motoarele capitalului de risc și inovațiile tehnologice care au clădit această fundație digitală în [Economie și Creștere](/economy) și [Tehnologie și Inovare](/innovation).",
   pipes: [
     {
@@ -1174,7 +1174,7 @@ export interface CultureIconsSectionData {
 const CULTURE_ICONS_EN: CultureIconsSectionData = {
   eyebrow: "CULTURAL AMBASSADORS · THE FACES OF AMERICA",
   title: "THE PERSONALITY DEFAULT",
-  deck: "Unlike other nations, America has no ministry of culture. It does not export its lifestyle through state mandates. Instead, the global face of America was built by individuals—ambitious dreamers, rebels, and creators whose talent and drive were rewarded by free markets at global scale.",
+  deck: "Unlike other nations, America has no ministry of culture. It does not export its lifestyle through state mandates. Instead, the global face of America was built by individuals, ambitious dreamers, rebels, and creators whose talent and drive were rewarded by free markets at global scale.",
   icons: [
     {
       name: "Walt Disney",
@@ -1272,7 +1272,7 @@ const CULTURE_ICONS_EN: CultureIconsSectionData = {
 const CULTURE_ICONS_RO: CultureIconsSectionData = {
   eyebrow: "AMBASADORI CULTURALI · CHIPURILE AMERICII",
   title: "REPREZENTAREA PRIN PERSONALITATE",
-  deck: "Spre deosebire de alte națiuni, America nu are un minister al culturii. Nu își exportă stilul de viață prin mandate de stat. În schimb, fața globală a Americii a fost construită de indivizi—visători ambițioși, rebelii și creatori ale căror talent și determinare au fost răsplătite de piețele libere la scară globală.",
+  deck: "Spre deosebire de alte națiuni, America nu are un minister al culturii. Nu își exportă stilul de viață prin mandate de stat. În schimb, fața globală a Americii a fost construită de indivizi, visători ambițioși, rebelii și creatori ale căror talent și determinare au fost răsplătite de piețele libere la scară globală.",
   icons: [
     {
       name: "Walt Disney",
@@ -1476,7 +1476,7 @@ const ENGLISH_LANGUAGE_EN: CultureEnglishLanguageData = {
   paragraphs: [
     "America's most powerful export operates without government promotion, budget, or ministerial distribution. The English language has become the universal operating system of modern civilization, serving as the compounding, gravity-well medium for every prestigious domain of human activity simultaneously.",
     "In science, it is the currency of discovery; over 90% of peer-reviewed research papers are indexed in English, ensuring that a scientist in Munich communicates with a researcher in Mumbai through a single vocabulary. In the skies, the International Civil Aviation Organization mandates English for all air traffic control. In commerce and global finance, it is the bedrock of international contracts, transactions, and trade negotiations. It serves as the universal connector of a globalized world.",
-    "Perhaps nowhere is this more visible than in code. Every programmer in São Paulo, Seoul, or Stockholm writes in English syntax—typing `if`, `while`, `function`, and `return`. America exported both the software and the language of logic itself. This standard functions as a massive efficiency engine: a voluntary global agreement that allows human collaboration to scale infinitely."
+    "Perhaps nowhere is this more visible than in code. Every programmer in São Paulo, Seoul, or Stockholm writes in English syntax, typing `if`, `while`, `function`, and `return`. America exported both the software and the language of logic itself. This standard functions as a massive efficiency engine: a voluntary global agreement that allows human collaboration to scale infinitely."
   ],
   domains: [
     { name: "Software & Coding", percentage: 100, description: "Every major programming language uses English keywords." },
@@ -1493,7 +1493,7 @@ const ENGLISH_LANGUAGE_RO: CultureEnglishLanguageData = {
   paragraphs: [
     "Cel mai puternic export al Americii funcționează fără promovare guvernamentală, bugete sau distribuție ministerială. Limba engleză a devenit sistemul universal de operare al civilizației moderne, servind ca mediu de convergență gravitațională pentru fiecare domeniu prestigios al activității umane.",
     "În știință, engleza reprezintă moneda descoperirii; peste 90% din lucrările de cercetare evaluate de colegi sunt indexate în engleză, asigurând că un om de știință din München comunică cu un cercetător din Mumbai printr-un vocabular comun. În aer, Organizația Aviației Civile Internaționale mandatează engleza pentru controlul traficului aerian. În comerț și finanțe, constituie fundamentul contractelor internaționale, al tranzacțiilor și al negocierilor transfrontaliere.",
-    "Cel mai elocvent exemplu este codul sursă. Fiecare programator din São Paulo, Seul sau Stockholm scrie în sintaxă engleză—tastând `if`, `while`, `function` și `return`. America a exportat deopotrivă software-ul și limbajul logicii în sine. Acest standard funcționează ca un motor masiv de eficiență: un acord global voluntar care permite colaborării umane să se dezvolte la scară mondială."
+    "Cel mai elocvent exemplu este codul sursă. Fiecare programator din São Paulo, Seul sau Stockholm scrie în sintaxă engleză, tastând `if`, `while`, `function` și `return`. America a exportat deopotrivă software-ul și limbajul logicii în sine. Acest standard funcționează ca un motor masiv de eficiență: un acord global voluntar care permite colaborării umane să se dezvolte la scară mondială."
   ],
   domains: [
     { name: "Programare și Sintaxă", percentage: 100, description: "Fiecare limbaj major utilizează cuvinte-cheie în engleză." },

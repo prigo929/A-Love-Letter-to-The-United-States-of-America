@@ -107,8 +107,8 @@ const copyEn: AiCopy = {
   ],
   aiLabel: "THE DESIGN CHOKEHLD",
   aiTitle: "Semiconductor Design: The Invisible American Chokehold",
-  aiParagraph1: "The global semiconductor supply chain is often viewed through the lens of physical manufacturing in Taiwan. However, the design layer controls the ecosystem's direction and captures its economic value. Nvidia, AMD, Qualcomm, Apple Silicon, Broadcom, and Intel—the companies that draft the blueprints for the chips running every AI supercomputer, hyperscale data center, and smart device on Earth—are all headquartered in the United States.",
-  aiParagraph2: "Moreover, two American companies, Synopsys and Cadence, hold a virtual duopoly on Electronic Design Automation (EDA) software—the highly complex computer-aided tools required to layout billions of transistors on a single chip. Without this software, semiconductor design globally would halt. As a result, US firms capture approximately 50% of all global semiconductor revenue despite owning minimal physical fabrication capacity. The 2022 export restrictions demonstrated that the global compute pipeline has a physical master switch controlled entirely by American intellectual property.",
+  aiParagraph1: "The global semiconductor supply chain is often viewed through the lens of physical manufacturing in Taiwan. However, the design layer controls the ecosystem's direction and captures its economic value. Nvidia, AMD, Qualcomm, Apple Silicon, Broadcom, and Intel, the companies that draft the blueprints for the chips running every AI supercomputer, hyperscale data center, and smart device on Earth, are all headquartered in the United States.",
+  aiParagraph2: "Moreover, two American companies, Synopsys and Cadence, hold a virtual duopoly on Electronic Design Automation (EDA) software, the highly complex computer-aided tools required to layout billions of transistors on a single chip. Without this software, semiconductor design globally would halt. As a result, US firms capture approximately 50% of all global semiconductor revenue despite owning minimal physical fabrication capacity. The 2022 export restrictions demonstrated that the global compute pipeline has a physical master switch controlled entirely by American intellectual property.",
   aiSource: "Semiconductor Industry Association (SIA)",
   aiSourceUrl: "https://www.semiconductors.org/",
   oracleDescription: "Ask the AI Oracle about electronic design automation software, Nvidia H100 architecture, ARM instruction sets, or US semiconductor export controls.",
@@ -148,7 +148,7 @@ const copyEn: AiCopy = {
       founded: "2013 | Menlo Park, CA",
       models: "Llama 4 Maverick, Llama 4 Scout, Muse Spark",
       role: "Open-Weight Force Multiplier",
-      contribution: "Released Llama 4 (Maverick & Scout) — natively multimodal Mixture-of-Experts models enabling sovereign, on-premises AI deployment globally. Llama 4's open weights have been downloaded over 700 million times, anchoring the open-source AI ecosystem."
+      contribution: "Released Llama 4 (Maverick & Scout), natively multimodal Mixture-of-Experts models enabling sovereign, on-premises AI deployment globally. Llama 4's open weights have been downloaded over 700 million times, anchoring the open-source AI ecosystem."
     }
   ]
 };
@@ -197,8 +197,8 @@ const copyRo: AiCopy = {
   ],
   aiLabel: "CONTROLUL DE DESIGN",
   aiTitle: "Proiectarea Semiconductorilor: Controlul Invizibil al Americii",
-  aiParagraph1: "Lanțul global de aprovizionare cu semiconductori este adesea privit prin prisma producției fizice din Taiwan. Cu toate acestea, stratul de proiectare controlează direcția întregului ecosistem și îi captează valoarea economică. Nvidia, AMD, Qualcomm, Apple Silicon, Broadcom și Intel — companiile care creează planurile pentru cipurile ce rulează pe fiecare supercomputer AI, centru de date hyper-scale și dispozitiv inteligent — își au toate sediile în Statele Unite.",
-  aiParagraph2: "Mai mult, două companii americane, Synopsys și Cadence, dețin un cvasi-monopol pe software-ul de automatizare a proiectării electronice (EDA) — instrumentele software extrem de complexe necesare pentru a proiecta dispunerea a miliarde de tranzistori pe un singur cip. Fără acest software, proiectarea globală de semiconductori s-ar opri. Ca urmare, firmele din SUA captează aproximativ 50% din veniturile globale din semiconductori, deși dețin o capacitate de producție fizică minimă. Restricțiile de export din 2022 au demonstrat că fluxul global de compute are un comutator principal controlat de IP-ul american.",
+  aiParagraph1: "Lanțul global de aprovizionare cu semiconductori este adesea privit prin prisma producției fizice din Taiwan. Cu toate acestea, stratul de proiectare controlează direcția întregului ecosistem și îi captează valoarea economică. Nvidia, AMD, Qualcomm, Apple Silicon, Broadcom și Intel, companiile care creează planurile pentru cipurile ce rulează pe fiecare supercomputer AI, centru de date hyper-scale și dispozitiv inteligent, își au toate sediile în Statele Unite.",
+  aiParagraph2: "Mai mult, două companii americane, Synopsys și Cadence, dețin un cvasi-monopol pe software-ul de automatizare a proiectării electronice (EDA), instrumentele software extrem de complexe necesare pentru a proiecta dispunerea a miliarde de tranzistori pe un singur cip. Fără acest software, proiectarea globală de semiconductori s-ar opri. Ca urmare, firmele din SUA captează aproximativ 50% din veniturile globale din semiconductori, deși dețin o capacitate de producție fizică minimă. Restricțiile de export din 2022 au demonstrat că fluxul global de compute are un comutator principal controlat de IP-ul american.",
   aiSource: "Semiconductor Industry Association (SIA)",
   aiSourceUrl: "https://www.semiconductors.org/",
   oracleDescription: "Întreabă Oracolul AI despre programele EDA, arhitectura Nvidia H100, seturile de instrucțiuni ARM sau restricțiile de export ale SUA pe cipuri.",
@@ -238,7 +238,7 @@ const copyRo: AiCopy = {
       founded: "2013 | Menlo Park, CA",
       models: "Llama 4 Maverick, Llama 4 Scout, Muse Spark",
       role: "Multiplicator de Forță Open-Weight",
-      contribution: "A lansat Llama 4 (Maverick & Scout) — modele multimodale native cu arhitectură Mixture-of-Experts, care permit implementarea AI suverană, on-premises, la nivel global. Ponderile deschise ale Llama 4 au fost descărcate de peste 700 de milioane de ori."
+      contribution: "A lansat Llama 4 (Maverick & Scout), modele multimodale native cu arhitectură Mixture-of-Experts, care permit implementarea AI suverană, on-premises, la nivel global. Ponderile deschise ale Llama 4 au fost descărcate de peste 700 de milioane de ori."
     }
   ]
 };
@@ -487,8 +487,8 @@ export default async function AiAndTechPage() {
             </h2>
             <p className="font-macro-body text-white/70 text-lg max-w-3xl leading-relaxed">
               {isRo
-                ? "Inteligența artificială nu este doar software. Ea se bazează pe cele mai complexe lanțuri de aprovizionare și pe o infrastructură fizică masivă — de la microprocesoare specializate la centre de date gigantice care consumă gigawați de energie."
-                : "Artificial intelligence is not just software. It relies on the most complex manufacturing supply chains and massive physical infrastructure on Earth — from specialized silicon hardware to hyper-scale data centers consuming gigawatts of energy."}
+                ? "Inteligența artificială nu este doar software. Ea se bazează pe cele mai complexe lanțuri de aprovizionare și pe o infrastructură fizică masivă, de la microprocesoare specializate la centre de date gigantice care consumă gigawați de energie."
+                : "Artificial intelligence is not just software. It relies on the most complex manufacturing supply chains and massive physical infrastructure on Earth, from specialized silicon hardware to hyper-scale data centers consuming gigawatts of energy."}
             </p>
           </div>
           
@@ -506,8 +506,8 @@ export default async function AiAndTechPage() {
                 tag: isRo ? "Echipamente de Fabricație" : "Fab Equipment",
                 title: isRo ? "Echipamente Semiconductori" : "Semiconductor Tooling",
                 description: isRo
-                  ? "Companiile americane — Applied Materials, Lam Research și KLA Corporation — dețin un cvasi-monopol pe echipamentele critice de depunere, gravare chimică și metrologie utilizate în fabrici. Fără aceste mașini din SUA, nicio fabrică avansată de cipuri din lume nu poate opera."
-                  : "While ASML handles lithography, the fabrication process requires hundreds of other advanced machines. US companies — Applied Materials, Lam Research, and KLA — hold a near-monopoly on critical deposition, etching, and metrology equipment, forming a secondary hardware chokehold.",
+                  ? "Companiile americane, Applied Materials, Lam Research și KLA Corporation, dețin un cvasi-monopol pe echipamentele critice de depunere, gravare chimică și metrologie utilizate în fabrici. Fără aceste mașini din SUA, nicio fabrică avansată de cipuri din lume nu poate opera."
+                  : "While ASML handles lithography, the fabrication process requires hundreds of other advanced machines. US companies, Applied Materials, Lam Research, and KLA, hold a near-monopoly on critical deposition, etching, and metrology equipment, forming a secondary hardware chokehold.",
                 imageSrc: "/images/library/Technology/macro of a silicon wafer.jpg"
               },
               {

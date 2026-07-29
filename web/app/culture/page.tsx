@@ -1,18 +1,18 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// page.tsx — CULTURE HUB · "The American Operating System"
+// page.tsx, CULTURE HUB · "The American Operating System"
 //
 // Design language: Life Magazine × The Atlantic × Warm Editorial
 // The warmest vertical on the site. Dark-to-cream alternating rhythm.
 //
-// §1  HERO             — Filmstrip mosaic with parallax depth
-// §2  NUMBERS STRIP    — 5 stat counters in glory-gold
-// §3  THESIS BLOCK     — Magazine longread opener with pull quote
-// §4  SOFT POWER       — 8 domain scorecards
-// §5  BENTO GRID       — Magazine editorial subpage navigation
-// §6  FREE MARKET      — Cream/ivory argument strip (first light section)
-// §7  RADAR CHART      — Soft power teaser comparison
-// §8  QUOTE CAROUSEL   — 3 rotating cultural quotes
-// §9  NEWSLETTER       — Existing reusable component
+// §1  HERO            , Filmstrip mosaic with parallax depth
+// §2  NUMBERS STRIP   , 5 stat counters in glory-gold
+// §3  THESIS BLOCK    , Magazine longread opener with pull quote
+// §4  SOFT POWER      , 8 domain scorecards
+// §5  BENTO GRID      , Magazine editorial subpage navigation
+// §6  FREE MARKET     , Cream/ivory argument strip (first light section)
+// §7  RADAR CHART     , Soft power teaser comparison
+// §8  QUOTE CAROUSEL  , 3 rotating cultural quotes
+// §9  NEWSLETTER      , Existing reusable component
 // ─────────────────────────────────────────────────────────────────────────────
 
 import type { Metadata } from "next";
@@ -145,7 +145,7 @@ export default async function CulturePage() {
     <main className="min-h-screen">
       <CultureStyles />
 
-      {/* §1 — Video Culture Hero */}
+      {/* §1, Video Culture Hero */}
       <VideoCultureHero
         videoSrc="/videos/times-square-aerial.mp4"
         imageSrc={SITE_IMAGES.culture.timesSquare}
@@ -155,88 +155,88 @@ export default async function CulturePage() {
         deck={hero.deck}
       />
 
-      {/* §2 — Subpage Navigation (Magazine Table of Contents) */}
+      {/* §2, Subpage Navigation (Magazine Table of Contents) */}
       <CultureBentoGrid subpages={subpages} sectionTitle={gridTitle} />
 
-      {/* §3 — Numbers Strip */}
+      {/* §3, Numbers Strip */}
       <CultureNumbersStrip stats={stats} isRo={isRo} />
 
-      {/* §4 — Thesis Block */}
+      {/* §4, Thesis Block */}
       <CultureThesisBlock thesis={thesis} />
 
-      {/* Parallax Divider 1 — Times Square Iconic */}
+      {/* Parallax Divider 1, Times Square Iconic */}
       <CultureParallaxDivider imageSrc={SITE_IMAGES.culture.timesSquareIconic} alt="Times Square Iconic" />
 
       {/* American Brand Logos Continuous Marquee */}
       <CultureBrandLogosMarquee />
 
-      {/* §5 — Soft Power Pillars */}
+      {/* §5, Soft Power Pillars */}
       <CulturePillarsStrip pillars={pillars} />
 
-      {/* §6 — Origination Strip */}
+      {/* §6, Origination Strip */}
       <CultureOriginationStrip originations={originations} isRo={isRo} />
 
       {/* Transition: Dark to Cream */}
       <div className="h-12 w-full gradient-dark-to-cream" />
 
-      {/* §7 — Free Market Argument (Cream Section) */}
+      {/* §7, Free Market Argument (Cream Section) */}
       <CultureFreeMarketStrip arguments_={arguments_} sectionTitle={argumentTitle} />
 
-      {/* §8 — Soft Power Budget Scale Comparison (Cream Section) */}
+      {/* §8, Soft Power Budget Scale Comparison (Cream Section) */}
       <CultureSoftPowerBudget budgetLines={budget} />
 
-      {/* §9 — Culinary Pillars Section (Cream Section) */}
+      {/* §9, Culinary Pillars Section (Cream Section) */}
       <CultureCulinarySection pillars={culinaryPillars} sectionTitle={culinaryTitle} isRo={isRo} />
 
-      {/* §10 — The English Language Editorial Section (Cream Section) */}
+      {/* §10, The English Language Editorial Section (Cream Section) */}
       <CultureEnglishLanguage data={englishLanguageData} isRo={isRo} />
 
       {/* Transition: Cream to Dark */}
       <div className="h-12 w-full gradient-cream-to-dark" />
 
-      {/* §11 — Editorial Counter-Programming: Imperialism Critique */}
+      {/* §11, Editorial Counter-Programming: Imperialism Critique */}
       <CultureEditorialImperialism data={editorialImperialism} isRo={isRo} />
 
-      {/* §12 — Cultural Timeline Scroll Area */}
+      {/* §12, Cultural Timeline Scroll Area */}
       <CultureTimelineScroll decades={decades} sectionTitle={timelineTitle} />
 
-      {/* §13 — Full Viewport Quote Moment (Bono: "America is an idea...") */}
+      {/* §13, Full Viewport Quote Moment (Bono: "America is an idea...") */}
       <CultureViewportQuote quote={bonoQuote} bgImageSrc={SITE_IMAGES.culture.route66} />
 
-      {/* §14 — Digital America: Pipes of Global Culture */}
+      {/* §14, Digital America: Pipes of Global Culture */}
       <CultureDigitalPipes data={digitalPipes} isRo={isRo} />
 
-      {/* §15 — Music Origins Section */}
+      {/* §15, Music Origins Section */}
       <CultureMusicSection genres={musicGenres} sectionTitle={musicTitle} isRo={isRo} />
 
-      {/* §16 — Sports & Fashion Editorial Teasers */}
+      {/* §16, Sports & Fashion Editorial Teasers */}
       <CultureSportsFashionStrip isRo={isRo} />
 
-      {/* §17 — Cultural Icons — The Faces of America */}
+      {/* §17, Cultural Icons, The Faces of America */}
       <CultureIconsSection data={culturalIcons} isRo={isRo} />
 
-      {/* §17 — Asymmetry of Influence Matrix */}
+      {/* §17, Asymmetry of Influence Matrix */}
       <CultureAsymmetryMatrix
         data={CULTURE_RADAR_DATA}
         headline={radarHeadline}
       />
 
-      {/* §18 — Hollywood — The Dream Factory Editorial */}
+      {/* §18, Hollywood, The Dream Factory Editorial */}
       <CultureHollywoodEditorial data={hollywoodData} isRo={isRo} />
 
-      {/* Parallax Divider 2 — NFL/Cowboys Stadium */}
+      {/* Parallax Divider 2, NFL/Cowboys Stadium */}
       <CultureParallaxDivider imageSrc={SITE_IMAGES.culture.nflStadium} alt="American Football Stadium Lights" />
 
-      {/* §19 — Interactive Archive Vault Showcase */}
+      {/* §19, Interactive Archive Vault Showcase */}
       <CultureArchiveVault isRo={isRo} />
 
-      {/* §20 — Quote Carousel */}
+      {/* §20, Quote Carousel */}
       <CultureQuoteCarousel quotes={quotes} />
 
       {/* Iconic Photographs */}
       <IconicPhotographs
         section="culture"
-        intro="American sport, music, film, and celebrity — the figures and moments that shaped the nation's popular culture, captured on film."
+        intro="American sport, music, film, and celebrity, the figures and moments that shaped the nation's popular culture, captured on film."
       />
 
       {/* Deep Dive Archive */}
@@ -246,7 +246,7 @@ export default async function CulturePage() {
         theme={DEEP_DIVE_THEMES.culture}
       />
 
-      {/* §21 — Closing Manifesto exit section */}
+      {/* §21, Closing Manifesto exit section */}
       <CultureManifestoSection data={manifestoData} isRo={isRo} />
     </main>
   );

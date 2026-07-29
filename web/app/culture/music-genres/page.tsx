@@ -11,7 +11,7 @@ import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
   title: "Music Genres & Origins | The American Operating System",
-  description: "Jazz, Blues, Rock, Country, Pop, Hip-Hop — explore the regional roots and global impact of American music.",
+  description: "Jazz, Blues, Rock, Country, Pop, Hip-Hop, explore the regional roots and global impact of American music.",
 };
 
 export default async function MusicGenresPage() {
@@ -20,11 +20,11 @@ export default async function MusicGenresPage() {
 
   const content = {
     pullQuote: isRo
-      ? "Jazz, Blues, Rock, Country și Hip-Hop nu au fost impuse prin decrete — au apărut din comunități locale, compete în cluburi mici, prin libertatea expresiei brute."
-      : "Jazz, Blues, Rock, Country and Hip-Hop were not dictated by decree — they were competed into existence in local communities, driven by raw talent and the freedom of expression.",
+      ? "Jazz, Blues, Rock, Country și Hip-Hop nu au fost impuse prin decrete, au apărut din comunități locale, compete în cluburi mici, prin libertatea expresiei brute."
+      : "Jazz, Blues, Rock, Country and Hip-Hop were not dictated by decree, they were competed into existence in local communities, driven by raw talent and the freedom of expression.",
     body1: isRo
-      ? "New Orleans a dat naștere jazzului la intersecția dintre muzica africană, ritmuri caraibiene și armonii europene. Chicagoul a rafinat blues-ul electric. Memphis a inventat rock'n'roll-ul. Nashville a codificat country-ul. Bronxul a lansat hip-hop-ul. Aceste genuri sunt sisteme culturale complete — cu propriul limbaj, estetică și economie globală."
-      : "New Orleans birthed jazz at the intersection of African music, Caribbean rhythms, and European harmonics. Chicago refined electric blues. Memphis invented rock'n'roll. Nashville codified country. The Bronx launched hip-hop. These genres are complete cultural systems — each with its own language, aesthetic, and global economy.",
+      ? "New Orleans a dat naștere jazzului la intersecția dintre muzica africană, ritmuri caraibiene și armonii europene. Chicagoul a rafinat blues-ul electric. Memphis a inventat rock'n'roll-ul. Nashville a codificat country-ul. Bronxul a lansat hip-hop-ul. Aceste genuri sunt sisteme culturale complete, cu propriul limbaj, estetică și economie globală."
+      : "New Orleans birthed jazz at the intersection of African music, Caribbean rhythms, and European harmonics. Chicago refined electric blues. Memphis invented rock'n'roll. Nashville codified country. The Bronx launched hip-hop. These genres are complete cultural systems, each with its own language, aesthetic, and global economy.",
     body2: isRo
       ? "Muzica americană generează peste 26 miliarde de dolari anual și domină platformele globale de streaming, reprezentând aproximativ 30% din piața mondială. Artiștii americani ocupă în mod constant primele locuri în clasamentele globale."
       : "American music generates over $26 billion annually and dominates global streaming platforms, accounting for roughly 30% of the world market. American artists consistently dominate global charts across every genre.",
@@ -44,8 +44,8 @@ export default async function MusicGenresPage() {
       alt: "Live Jazz Band performing on stage with neon sign",
       alt2: "Louis Armstrong portrait",
       desc: isRo
-        ? "Sinteza improvizată a muzicii africane, ritmurilor caraibiene și armoniilor europene. Primul mare export cultural american — Louis Armstrong a dus jazz-ul în toată lumea."
-        : "The improvised synthesis of African music, Caribbean rhythms, and European harmonics. The first great American cultural export — Louis Armstrong carried jazz across the world.",
+        ? "Sinteza improvizată a muzicii africane, ritmurilor caraibiene și armoniilor europene. Primul mare export cultural american, Louis Armstrong a dus jazz-ul în toată lumea."
+        : "The improvised synthesis of African music, Caribbean rhythms, and European harmonics. The first great American cultural export, Louis Armstrong carried jazz across the world.",
     },
     {
       name: isRo ? "Rock & Roll" : "Rock & Roll",
@@ -55,8 +55,8 @@ export default async function MusicGenresPage() {
       alt: "Elvis Presley performing live in Miami 1956",
       alt2: "Elvis Presley with Scotty Moore and Bill Black band 1956",
       desc: isRo
-        ? "Elvis Presley, Chuck Berry și Little Richard au transformat blues-ul și gospel-ul într-un gen complet nou — muzică pentru tineri, cu energie electrică și libertate corporală pe scenă."
-        : "Elvis Presley, Chuck Berry, and Little Richard transformed blues and gospel into something entirely new — music for youth, with electric energy and physical freedom on stage.",
+        ? "Elvis Presley, Chuck Berry și Little Richard au transformat blues-ul și gospel-ul într-un gen complet nou, muzică pentru tineri, cu energie electrică și libertate corporală pe scenă."
+        : "Elvis Presley, Chuck Berry, and Little Richard transformed blues and gospel into something entirely new, music for youth, with electric energy and physical freedom on stage.",
     },
     {
       name: isRo ? "Country" : "Country",
@@ -64,8 +64,8 @@ export default async function MusicGenresPage() {
       image: SITE_IMAGES.nashville.skyline,
       alt: "Downtown Nashville Tennessee skyline",
       desc: isRo
-        ? "De la Hank Williams la Johnny Cash, Dolly Parton și Luke Combs — country-ul este vocea Americii rurale, cu poveștile sale despre iubire, muncă și credință."
-        : "From Hank Williams to Johnny Cash, Dolly Parton and Luke Combs — country is the voice of rural America, telling stories of love, labor, and faith that resonate globally.",
+        ? "De la Hank Williams la Johnny Cash, Dolly Parton și Luke Combs, country-ul este vocea Americii rurale, cu poveștile sale despre iubire, muncă și credință."
+        : "From Hank Williams to Johnny Cash, Dolly Parton and Luke Combs, country is the voice of rural America, telling stories of love, labor, and faith that resonate globally.",
     },
     {
       name: "Hip-Hop",
@@ -73,8 +73,8 @@ export default async function MusicGenresPage() {
       image: SITE_IMAGES.culture.concertCrowd,
       alt: "Silhouetted crowd with raised hands at live concert",
       desc: isRo
-        ? "DJ Kool Herc a creat primul breakbeat loop în apartamentul surorii sale din Bronx — lansând cel mai influent gen muzical al ultimilor 50 de ani, cu o piață globală de peste 10 miliarde de dolari."
-        : "DJ Kool Herc created the first breakbeat loop in his sister's South Bronx apartment — launching the most influential musical genre of the last 50 years, with a global market exceeding $10 billion.",
+        ? "DJ Kool Herc a creat primul breakbeat loop în apartamentul surorii sale din Bronx, lansând cel mai influent gen muzical al ultimilor 50 de ani, cu o piață globală de peste 10 miliarde de dolari."
+        : "DJ Kool Herc created the first breakbeat loop in his sister's South Bronx apartment, launching the most influential musical genre of the last 50 years, with a global market exceeding $10 billion.",
     },
   ];
 
@@ -98,21 +98,21 @@ export default async function MusicGenresPage() {
       era: "1969–2009",
       image: SITE_IMAGES.culture.michaelJackson1983,
       alt: "Michael Jackson press photo 1983",
-      desc: isRo ? "Regele Pop a vândut 750+ milioane de albume — Thriller rămâne cel mai bine vândut album din toate timpurile." : "The King of Pop sold 750M+ albums worldwide — Thriller remains the best-selling album of all time.",
+      desc: isRo ? "Regele Pop a vândut 750+ milioane de albume, Thriller rămâne cel mai bine vândut album din toate timpurile." : "The King of Pop sold 750M+ albums worldwide, Thriller remains the best-selling album of all time.",
     },
     {
       name: "Whitney Houston",
       era: "1985–2012",
       image: SITE_IMAGES.culture.whitneyHouston,
       alt: "Whitney Houston by Richard Avedon",
-      desc: isRo ? "Vocea care a redefinit ce înseamnă să cânți — Whitney Houston a vândut 220 de milioane de albume la nivel global." : "The voice that redefined what singing means — Whitney Houston sold 220 million albums globally.",
+      desc: isRo ? "Vocea care a redefinit ce înseamnă să cânți, Whitney Houston a vândut 220 de milioane de albume la nivel global." : "The voice that redefined what singing means, Whitney Houston sold 220 million albums globally.",
     },
     {
       name: "Beyoncé",
       era: "1997–present",
       image: SITE_IMAGES.culture.beyonce,
       alt: "Beyoncé performing GMA Run the World",
-      desc: isRo ? "Cea mai premiată artistă din istoria premiilor Grammy — Beyoncé a redefinit spectacolul muzical ca formă de artă totală." : "The most awarded artist in Grammy history — Beyoncé redefined the music show as a total art form.",
+      desc: isRo ? "Cea mai premiată artistă din istoria premiilor Grammy, Beyoncé a redefinit spectacolul muzical ca formă de artă totală." : "The most awarded artist in Grammy history, Beyoncé redefined the music show as a total art form.",
     },
     {
       name: "Mariah Carey",
@@ -133,7 +133,7 @@ export default async function MusicGenresPage() {
       era: "2006–present",
       image: SITE_IMAGES.culture.taylorSwiftSpeakNow,
       alt: "Taylor Swift Speak Now World Tour Sydney 2012",
-      desc: isRo ? "The Eras Tour a generat 2,1 miliarde de dolari — cel mai profitabil tur muzical din istoria omenirii." : "The Eras Tour generated $2.1 billion — the most profitable music tour in human history.",
+      desc: isRo ? "The Eras Tour a generat 2,1 miliarde de dolari, cel mai profitabil tur muzical din istoria omenirii." : "The Eras Tour generated $2.1 billion, the most profitable music tour in human history.",
     },
     {
       name: "Madonna",
@@ -147,7 +147,7 @@ export default async function MusicGenresPage() {
       era: "1990–present · World Tour",
       image: SITE_IMAGES.culture.mariahCarey2019,
       alt: "Mariah Carey hitting whistle note during Caution World Tour 2019",
-      desc: isRo ? "Tur mondial de forță — Mariah Carey rămâne singura artistă de pop capabilă să atingă note whistle live pe scenă la cel mai înalt nivel." : "A tour de force — Mariah Carey remains the only pop artist capable of live whistle notes at this caliber on any stage, on any night.",
+      desc: isRo ? "Tur mondial de forță, Mariah Carey rămâne singura artistă de pop capabilă să atingă note whistle live pe scenă la cel mai înalt nivel." : "A tour de force, Mariah Carey remains the only pop artist capable of live whistle notes at this caliber on any stage, on any night.",
     },
   ];
 
@@ -168,13 +168,13 @@ export default async function MusicGenresPage() {
   ];
 
   const albums = [
-    { src: SITE_IMAGES.culture.vaultMilesDavis, alt: "Miles Davis — Kind of Blue", label: "Miles Davis · Kind of Blue" },
-    { src: SITE_IMAGES.culture.vaultMichaelJackson, alt: "Michael Jackson — Thriller", label: "Michael Jackson · Thriller" },
-    { src: SITE_IMAGES.culture.vaultNirvana, alt: "Nirvana — Nevermind", label: "Nirvana · Nevermind" },
-    { src: SITE_IMAGES.culture.vaultJohnnyCash, alt: "Johnny Cash — At Folsom Prison", label: "Johnny Cash · At Folsom Prison" },
-    { src: SITE_IMAGES.culture.vaultBeachBoys, alt: "The Beach Boys — Pet Sounds", label: "The Beach Boys · Pet Sounds" },
-    { src: SITE_IMAGES.culture.vault50Cent, alt: "50 Cent — Get Rich or Die Tryin'", label: "50 Cent · Get Rich or Die Tryin'" },
-    { src: SITE_IMAGES.culture.vaultEminem, alt: "Eminem — The Marshall Mathers LP", label: "Eminem · The Marshall Mathers LP" },
+    { src: SITE_IMAGES.culture.vaultMilesDavis, alt: "Miles Davis, Kind of Blue", label: "Miles Davis · Kind of Blue" },
+    { src: SITE_IMAGES.culture.vaultMichaelJackson, alt: "Michael Jackson, Thriller", label: "Michael Jackson · Thriller" },
+    { src: SITE_IMAGES.culture.vaultNirvana, alt: "Nirvana, Nevermind", label: "Nirvana · Nevermind" },
+    { src: SITE_IMAGES.culture.vaultJohnnyCash, alt: "Johnny Cash, At Folsom Prison", label: "Johnny Cash · At Folsom Prison" },
+    { src: SITE_IMAGES.culture.vaultBeachBoys, alt: "The Beach Boys, Pet Sounds", label: "The Beach Boys · Pet Sounds" },
+    { src: SITE_IMAGES.culture.vault50Cent, alt: "50 Cent, Get Rich or Die Tryin'", label: "50 Cent · Get Rich or Die Tryin'" },
+    { src: SITE_IMAGES.culture.vaultEminem, alt: "Eminem, The Marshall Mathers LP", label: "Eminem · The Marshall Mathers LP" },
   ];
 
   return (
@@ -298,7 +298,7 @@ export default async function MusicGenresPage() {
           </div>
         </section>
 
-        {/* CREAM: More genres — Soul/R&B, Punk/Alt, Broadway */}
+        {/* CREAM: More genres, Soul/R&B, Punk/Alt, Broadway */}
         <section className="relative culture-cream-bg text-[#0C0907] pb-28 overflow-hidden border-t border-[#0C0907]/5">
           <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
           <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
@@ -326,8 +326,8 @@ export default async function MusicGenresPage() {
                   image: SITE_IMAGES.culture.vaultNirvana,
                   alt: "Nirvana Nevermind 1991 album cover",
                   desc: isRo
-                    ? "CBGB (New York, 1973), Ramones, Patti Smith — punk-ul american a fost refuzul brut al pop-ului comercial. Nevermind al Nirvana (1991) a lansat grunge în mainstream și a creat o cultură alternativă globală care durează și azi."
-                    : "CBGB (New York, 1973), the Ramones, Patti Smith — American punk was raw refusal of commercial pop. Nirvana's Nevermind (1991) launched grunge into the mainstream and created a global alternative culture that outlasted the decade.",
+                    ? "CBGB (New York, 1973), Ramones, Patti Smith, punk-ul american a fost refuzul brut al pop-ului comercial. Nevermind al Nirvana (1991) a lansat grunge în mainstream și a creat o cultură alternativă globală care durează și azi."
+                    : "CBGB (New York, 1973), the Ramones, Patti Smith, American punk was raw refusal of commercial pop. Nirvana's Nevermind (1991) launched grunge into the mainstream and created a global alternative culture that outlasted the decade.",
                 },
                 {
                   era: isRo ? "BROADWAY · NEW YORK, 1880s–PREZENT" : "BROADWAY · NEW YORK, 1880s–PRESENT",
@@ -335,8 +335,8 @@ export default async function MusicGenresPage() {
                   image: SITE_IMAGES.culture.chicagoTheatre,
                   alt: "Illuminated Chicago Theatre marquee at night",
                   desc: isRo
-                    ? "Hamilton, West Side Story, Chicago, The Lion King — un format de artă distinctiv american care fuzionează muzica, drama și spectacolul vizual. Broadway generează 1,8 miliarde de dolari anual în New York City. Nu există echivalent cultural la această scară în altă parte pe planetă."
-                    : "Hamilton, West Side Story, Chicago, The Lion King — a distinctly American art form fusing music, drama, and visual spectacle. Broadway generates $1.8 billion annually in New York City alone. There is no cultural equivalent at this scale anywhere else on Earth.",
+                    ? "Hamilton, West Side Story, Chicago, The Lion King, un format de artă distinctiv american care fuzionează muzica, drama și spectacolul vizual. Broadway generează 1,8 miliarde de dolari anual în New York City. Nu există echivalent cultural la această scară în altă parte pe planetă."
+                    : "Hamilton, West Side Story, Chicago, The Lion King, a distinctly American art form fusing music, drama, and visual spectacle. Broadway generates $1.8 billion annually in New York City alone. There is no cultural equivalent at this scale anywhere else on Earth.",
                 },
               ].map((g, i) => (
                 <div key={i} className="group bg-white/40 backdrop-blur-md rounded-2xl overflow-hidden border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.03)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.08)] hover:-translate-y-1.5 transition-all duration-500">
@@ -381,7 +381,7 @@ export default async function MusicGenresPage() {
               sizes="(max-width: 768px) 33vw, 25vw"
               photos={artistArchive.map((item) => ({
                 src: item.src,
-                alt: `${item.name} — ${item.note}`,
+                alt: `${item.name}, ${item.note}`,
                 caption: `${item.name} · ${item.note}`,
                 aspect: "4/3",
                 objectClassName: "object-top",

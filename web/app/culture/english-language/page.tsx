@@ -20,17 +20,17 @@ export default async function EnglishLanguagePage() {
 
   const content = {
     pullQuote: isRo
-      ? "Engleza nu a cucerit lumea prin decrete imperiale — a câștigat prin utilitate voluntară, devenind sistemul de operare al logicii globale."
-      : "English did not conquer the world through imperial decree — it won through voluntary utility, becoming the operating system of global logic.",
+      ? "Engleza nu a cucerit lumea prin decrete imperiale, a câștigat prin utilitate voluntară, devenind sistemul de operare al logicii globale."
+      : "English did not conquer the world through imperial decree, it won through voluntary utility, becoming the operating system of global logic.",
     body1: isRo
       ? "Fiecare linie de cod scrisă în Tokyo, Berlin sau São Paulo conține cuvinte cheie în engleză. 90% din cercetarea științifică internațională este publicată în engleză. ICAO mandatează engleza ca limbă universală a aviației. Toate tranzacțiile financiare majore, toate contractele de drept internațional, toate standardele tehnice globale sunt redactate în engleză."
       : "Every line of code compiled in Tokyo, Berlin, or São Paulo contains English keywords. 90% of international scientific research is published in English. ICAO mandates English as the universal language of aviation. All major financial transactions, international law contracts, and global technical standards are written in English.",
     body2: isRo
-      ? "Engleza americană, în special, a adăugat o nouă dimensiune limbii: vocabularul inovației tehnologice (startup, disrupt, app, streaming, cloud) și al culturii pop (blockbuster, jeans, cool, OK) — cuvinte care nu mai au echivalente funcționale în alte limbi."
-      : "American English in particular added a new dimension to the language: the vocabulary of technological innovation (startup, disrupt, app, streaming, cloud) and pop culture (blockbuster, jeans, cool, OK) — words that no longer have functional equivalents in other languages.",
+      ? "Engleza americană, în special, a adăugat o nouă dimensiune limbii: vocabularul inovației tehnologice (startup, disrupt, app, streaming, cloud) și al culturii pop (blockbuster, jeans, cool, OK), cuvinte care nu mai au echivalente funcționale în alte limbi."
+      : "American English in particular added a new dimension to the language: the vocabulary of technological innovation (startup, disrupt, app, streaming, cloud) and pop culture (blockbuster, jeans, cool, OK), words that no longer have functional equivalents in other languages.",
     bandSubtitle: isRo
-      ? "În spatele fiecărei linii de cod compilate în Tokyo, Berlin sau São Paulo stau cuvintele cheie în engleză — standardul voluntar care scalează eficiența globală."
-      : "Behind every line of code compiled in Tokyo, Berlin, or São Paulo lie English keywords — the voluntary standard scaling global efficiency.",
+      ? "În spatele fiecărei linii de cod compilate în Tokyo, Berlin sau São Paulo stau cuvintele cheie în engleză, standardul voluntar care scalează eficiența globală."
+      : "Behind every line of code compiled in Tokyo, Berlin, or São Paulo lie English keywords, the voluntary standard scaling global efficiency.",
     backLink: isRo ? "← Înapoi la Modă" : "← Back to Fashion",
     nextLink: isRo ? "Prezentare Generală →" : "Overview →",
   };
@@ -41,8 +41,8 @@ export default async function EnglishLanguagePage() {
       stat: "100%",
       statLabel: isRo ? "Limbaje de programare" : "Programming languages",
       desc: isRo
-        ? "Python, JavaScript, C++, SQL — fiecare limbaj de programare major folosește cuvinte cheie în engleză. Nu există alternativă viabilă la scară globală."
-        : "Python, JavaScript, C++, SQL — every major programming language uses English keywords. There is no viable alternative at global scale.",
+        ? "Python, JavaScript, C++, SQL, fiecare limbaj de programare major folosește cuvinte cheie în engleză. Nu există alternativă viabilă la scară globală."
+        : "Python, JavaScript, C++, SQL, every major programming language uses English keywords. There is no viable alternative at global scale.",
       icon: "{ }",
     },
     {
@@ -50,8 +50,8 @@ export default async function EnglishLanguagePage() {
       stat: "90%",
       statLabel: isRo ? "Lucrări științifice" : "Scientific papers",
       desc: isRo
-        ? "Nouăzeci de procente din publicațiile de cercetare internaționale sunt scrise în engleză — inclusiv cele din China, Germania sau Japonia."
-        : "Ninety percent of international research publications are written in English — including those from China, Germany, and Japan.",
+        ? "Nouăzeci de procente din publicațiile de cercetare internaționale sunt scrise în engleză, inclusiv cele din China, Germania sau Japonia."
+        : "Ninety percent of international research publications are written in English, including those from China, Germany, and Japan.",
       icon: "∑",
     },
     {
@@ -68,8 +68,8 @@ export default async function EnglishLanguagePage() {
       stat: "$",
       statLabel: isRo ? "Moneda tranzacțiilor" : "Currency of transactions",
       desc: isRo
-        ? "NYSE, NASDAQ, FMI, Banca Mondială — toate contractele de drept internațional și tranzacțiile financiare majore sunt redactate în engleză."
-        : "NYSE, NASDAQ, IMF, World Bank — all major international law contracts and financial transactions are drafted in English.",
+        ? "NYSE, NASDAQ, FMI, Banca Mondială, toate contractele de drept internațional și tranzacțiile financiare majore sunt redactate în engleză."
+        : "NYSE, NASDAQ, IMF, World Bank, all major international law contracts and financial transactions are drafted in English.",
       icon: "⚖",
     },
     {
@@ -77,8 +77,8 @@ export default async function EnglishLanguagePage() {
       stat: "5B+",
       statLabel: isRo ? "Utilizatori internet global" : "Global internet users",
       desc: isRo
-        ? "Tweet, Like, Share, Google, App, Streaming, Podcast, Selfie, Hashtag — vocabularul internetului este vocabularul englez american. Platformele americane definesc gramatica vieții digitale globale."
-        : "Tweet, Like, Share, Google, App, Streaming, Podcast, Selfie, Hashtag — the vocabulary of the internet is American English vocabulary. US-built platforms define the grammar of global digital life.",
+        ? "Tweet, Like, Share, Google, App, Streaming, Podcast, Selfie, Hashtag, vocabularul internetului este vocabularul englez american. Platformele americane definesc gramatica vieții digitale globale."
+        : "Tweet, Like, Share, Google, App, Streaming, Podcast, Selfie, Hashtag, the vocabulary of the internet is American English vocabulary. US-built platforms define the grammar of global digital life.",
       icon: "#",
     },
     {
@@ -86,8 +86,8 @@ export default async function EnglishLanguagePage() {
       stat: "90%+",
       statLabel: isRo ? "Cota globală box office" : "Global box office share",
       desc: isRo
-        ? "Blockbuster, sequel, franchise, cool, OK, jazz, denim — exporturile culturale americane au injectat sute de cuvinte în limbile lumii fără echivalent local. Hollywood a creat primul vocabular vizual global."
-        : "Blockbuster, sequel, franchise, cool, OK, jazz, denim — American cultural exports have injected hundreds of words into world languages with no local equivalent. Hollywood built the first global visual vocabulary.",
+        ? "Blockbuster, sequel, franchise, cool, OK, jazz, denim, exporturile culturale americane au injectat sute de cuvinte în limbile lumii fără echivalent local. Hollywood a creat primul vocabular vizual global."
+        : "Blockbuster, sequel, franchise, cool, OK, jazz, denim, American cultural exports have injected hundreds of words into world languages with no local equivalent. Hollywood built the first global visual vocabulary.",
       icon: "★",
     },
   ];
@@ -112,14 +112,14 @@ export default async function EnglishLanguagePage() {
   ];
 
   const magazineCovers = [
-    { src: SITE_IMAGES.culture.vaultNatGeo1942, alt: "National Geographic July 1942 — American Flag", label: "Nat Geo 1942" },
-    { src: SITE_IMAGES.culture.vaultNatGeo1969, alt: "National Geographic Dec 1969 — Apollo 11 Moon", label: "Nat Geo 1969" },
-    { src: SITE_IMAGES.culture.vaultNatGeo1981, alt: "National Geographic Oct 1981 — Space Shuttle", label: "Nat Geo 1981" },
-    { src: SITE_IMAGES.culture.vaultNatGeo1984, alt: "National Geographic March 1984 — The Laser", label: "Nat Geo 1984" },
-    { src: SITE_IMAGES.culture.vaultNatGeo1996, alt: "National Geographic March 1996 — Emperor Penguins", label: "Nat Geo 1996" },
-    { src: SITE_IMAGES.culture.vaultNatGeo1997, alt: "National Geographic April 1997 — Hubble Universe", label: "Nat Geo 1997" },
-    { src: SITE_IMAGES.culture.vaultTime911, alt: "TIME Magazine — 9/11 Cover", label: "TIME 9/11" },
-    { src: SITE_IMAGES.culture.vaultFortune1931, alt: "Fortune 1931 — Aviation Cover", label: "Fortune 1931" },
+    { src: SITE_IMAGES.culture.vaultNatGeo1942, alt: "National Geographic July 1942, American Flag", label: "Nat Geo 1942" },
+    { src: SITE_IMAGES.culture.vaultNatGeo1969, alt: "National Geographic Dec 1969, Apollo 11 Moon", label: "Nat Geo 1969" },
+    { src: SITE_IMAGES.culture.vaultNatGeo1981, alt: "National Geographic Oct 1981, Space Shuttle", label: "Nat Geo 1981" },
+    { src: SITE_IMAGES.culture.vaultNatGeo1984, alt: "National Geographic March 1984, The Laser", label: "Nat Geo 1984" },
+    { src: SITE_IMAGES.culture.vaultNatGeo1996, alt: "National Geographic March 1996, Emperor Penguins", label: "Nat Geo 1996" },
+    { src: SITE_IMAGES.culture.vaultNatGeo1997, alt: "National Geographic April 1997, Hubble Universe", label: "Nat Geo 1997" },
+    { src: SITE_IMAGES.culture.vaultTime911, alt: "TIME Magazine, 9/11 Cover", label: "TIME 9/11" },
+    { src: SITE_IMAGES.culture.vaultFortune1931, alt: "Fortune 1931, Aviation Cover", label: "Fortune 1931" },
   ];
 
   return (
@@ -237,8 +237,8 @@ export default async function EnglishLanguagePage() {
               <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
               <p className="font-editorial text-lg text-[#0C0907]/65 mt-8 max-w-2xl mx-auto">
                 {isRo
-                  ? "Sute de cuvinte americane nu mai au echivalente funcționale în alte limbi — ele au înlocuit termenul local original în vorbirea cotidiană pe 6 continente."
-                  : "Hundreds of American words no longer have functional equivalents in other languages — they replaced the original local term in everyday speech across 6 continents."}
+                  ? "Sute de cuvinte americane nu mai au echivalente funcționale în alte limbi, ele au înlocuit termenul local original în vorbirea cotidiană pe 6 continente."
+                  : "Hundreds of American words no longer have functional equivalents in other languages, they replaced the original local term in everyday speech across 6 continents."}
               </p>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-3">
@@ -281,8 +281,8 @@ export default async function EnglishLanguagePage() {
             </h2>
             <p className="font-editorial text-base md:text-lg text-[#F5EDD8]/75 leading-relaxed mb-6">
               {isRo
-                ? "Un pilot care aterizează la Tokyo, un cercetător care publică la Berlin și un diplomat care negociază la Geneva operează cu toții în engleză. Nu printr-un decret, ci pentru că instituțiile americane — de la FAA și NASA la universitățile Ivy League — au stabilit standardele pe care lumea le-a adoptat."
-                : "A pilot landing in Tokyo, a researcher publishing in Berlin, and a diplomat negotiating in Geneva all operate in English. Not by decree, but because American institutions — from the FAA and NASA to the Ivy League — set the standards the world adopted."}
+                ? "Un pilot care aterizează la Tokyo, un cercetător care publică la Berlin și un diplomat care negociază la Geneva operează cu toții în engleză. Nu printr-un decret, ci pentru că instituțiile americane, de la FAA și NASA la universitățile Ivy League, au stabilit standardele pe care lumea le-a adoptat."
+                : "A pilot landing in Tokyo, a researcher publishing in Berlin, and a diplomat negotiating in Geneva all operate in English. Not by decree, but because American institutions, from the FAA and NASA to the Ivy League, set the standards the world adopted."}
             </p>
             <p className="font-editorial text-base md:text-lg text-[#F5EDD8]/75 leading-relaxed">
               {isRo
