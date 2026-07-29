@@ -9,6 +9,7 @@ import { CultureStyles } from "@/components/culture/CulturePageComponents";
 import { FourFoodsExplorer } from "@/components/culture/FourFoodsExplorer";
 import { SevenDessertsExplorer } from "@/components/culture/SevenDessertsExplorer";
 import { FastFoodBigThree } from "@/components/culture/FastFoodBigThree";
+import { FoodEvolutionExplorer } from "@/components/culture/FoodEvolutionExplorer";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
 
@@ -334,6 +335,71 @@ export default async function FoodAndDrinksPage() {
               <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
             </div>
             <FastFoodBigThree />
+          </div>
+        </section>
+
+        {/* CREAM: How American food changed — the Lesser 30 (interactive) */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-24 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
+            <div className="text-center mb-14">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "EVOLUȚIE, NU REVOLUȚIE · 1993–2025" : "EVOLUTION, NOT REVOLUTION · 1993–2025"}
+              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">
+                {isRo ? "CUM S-A SCHIMBAT MÂNCAREA AMERICANĂ" : "HOW AMERICAN FOOD CHANGED"}
+              </h2>
+              <p className="mx-auto mt-6 max-w-2xl font-editorial text-lg text-[#0C0907]/60">
+                {isRo
+                  ? "Odată ce mâncarea ieftină, comodă și modernă a devenit de la sine înțeleasă, americanii au început să le pese de caracteristicile ei. Șase schimbări subtile care au redefinit felul în care mănâncă America."
+                  : "Once cheap, convenient, modern food was taken for granted, Americans started to care about its characteristics instead. Six subtle shifts that redefined the way America eats."}
+              </p>
+              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
+            </div>
+
+            {/* Two eras band */}
+            <div className="mx-auto mb-16 grid max-w-4xl gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-stretch sm:gap-0">
+              <div className="rounded-2xl border border-[#0C0907]/10 bg-white/30 p-6 sm:rounded-r-none sm:border-r-0">
+                <p className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-[#0C0907]/45">
+                  {isRo ? "GREAT 30 · 1961–1993" : "THE GREAT 30 · 1961–1993"}
+                </p>
+                <p className="mt-2 font-macro-display text-2xl font-black leading-tight text-[#0C0907]">
+                  {isRo ? "Cost. Comoditate. Modernitate." : "Cost. Convenience. Modernity."}
+                </p>
+                <p className="mt-3 font-editorial text-[15px] leading-relaxed text-[#0C0907]/60">
+                  {isRo
+                    ? "O fericită neatenție: burgeri fast-food, cine la microunde, pizza la domiciliu, SpaghettiOs și Kool-Aid."
+                    : "A happy obliviousness: fast-food burgers, microwave dinners, delivery pizza, SpaghettiOs and Kool-Aid."}
+                </p>
+              </div>
+              <div className="flex items-center justify-center px-4 py-2 sm:py-0">
+                <span className="font-macro-display text-3xl font-black text-[#E8391B]">
+                  <span className="hidden sm:inline">→</span>
+                  <span className="sm:hidden">↓</span>
+                </span>
+              </div>
+              <div className="rounded-2xl border-2 border-[#E8391B]/30 bg-[#E8391B]/[0.04] p-6 sm:rounded-l-none">
+                <p className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-[#E8391B]">
+                  {isRo ? "LESSER 30 · 1993–2025" : "THE LESSER 30 · 1993–2025"}
+                </p>
+                <p className="mt-2 font-macro-display text-2xl font-black leading-tight text-[#0C0907]">
+                  {isRo ? "Aromă. Autenticitate. Anxietate. Etică." : "Flavor. Authenticity. Anxiety. Ethics."}
+                </p>
+                <p className="mt-3 font-editorial text-[15px] leading-relaxed text-[#0C0907]/70">
+                  {isRo
+                    ? "Eticheta nutrițională a sosit în 1992 — și, de atunci, mâncarea a devenit despre ce este, nu doar despre cât costă."
+                    : "The nutrition label arrived in 1992 — and ever since, food has been about what it is, not just what it costs."}
+                </p>
+              </div>
+            </div>
+
+            <FoodEvolutionExplorer />
+
+            <p className="mx-auto mt-16 max-w-3xl border-t border-[#0C0907]/10 pt-10 text-center font-editorial text-2xl italic leading-snug text-[#0C0907]/70 md:text-[28px]">
+              {isRo
+                ? "„Ultimele trei decenii au fost un timp al evoluției, nu al revoluției — dar schimbările subtile sunt tot schimbări.”"
+                : "“The last three decades have been a time of evolution, not revolution — but subtle changes are still changes.”"}
+            </p>
           </div>
         </section>
 
