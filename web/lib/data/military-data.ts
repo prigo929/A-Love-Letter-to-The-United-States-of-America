@@ -122,10 +122,10 @@ export interface AllianceData {
 // ─── Global Stats ─────────────────────────────────────────────────────────────
 
 export const MILITARY_STATS: MilitaryStat[] = [
-  { id: "budget",    value: 954,  suffix: "B",   prefix: "$", label: "Defense Budget",            sublabel: "FY2026 — larger than next 9 nations combined" },
+  { id: "budget",    value: 954,  suffix: "B",   prefix: "$", label: "Defense Budget",            sublabel: "FY2026: larger than next 9 nations combined" },
   { id: "personnel", value: 1.34, suffix: "M",   decimals: 2, label: "Active Duty Personnel",     sublabel: "Plus 765K reserve and 700K civilian DOD" },
-  { id: "carriers",  value: 11,   suffix: "",                 label: "Carrier Strike Groups",      sublabel: "11 nuclear-powered supercarriers — 100% world share"  },
-  { id: "nukes",     value: 5044, suffix: "",                 label: "Nuclear Warheads",            sublabel: "Active and reserve inventory — the Triad" },
+  { id: "carriers",  value: 11,   suffix: "",                 label: "Carrier Strike Groups",      sublabel: "11 nuclear-powered supercarriers, 100% world share"  },
+  { id: "nukes",     value: 5044, suffix: "",                 label: "Nuclear Warheads",            sublabel: "Active and reserve inventory: the Triad" },
   { id: "satellites",value: 500,  suffix: "+",                label: "Military Satellites",         sublabel: "Dedicated and classified orbital assets"       },
   { id: "aircraft",  value: 13300,suffix: "+",                label: "Military Aircraft",           sublabel: "World's largest air force (Air Force) and 2nd largest (Navy)" },
   { id: "bases",     value: 800,  suffix: "+",                label: "Overseas Bases",              sublabel: "Projecting power across 80+ countries"         },
@@ -152,7 +152,7 @@ export const MILITARY_BRANCHES: MilitaryBranch[] = [
       "10,000+ Stryker, Bradley, and M1 Abrams armored vehicles",
     ],
     imageSrc: SITE_IMAGES.armyHero,
-    imageAlt: "US Army paratroopers — airborne assault capability",
+    imageAlt: "US Army paratroopers, airborne assault capability",
   },
   {
     id: "navy",
@@ -164,15 +164,15 @@ export const MILITARY_BRANCHES: MilitaryBranch[] = [
     accentColor: "#1E6FBF",
     iconEmoji: "⚓",
     href: "/military/navy",
-    description: "America's global reach. The US Navy operates on every ocean simultaneously — projecting power from 11 carrier strike groups, 68 submarines, and 290+ surface combatants. The Navy ensures freedom of navigation for the global economy.",
+    description: "America's global reach. The US Navy operates on every ocean simultaneously, projecting power from 11 carrier strike groups, 68 submarines, and 290+ surface combatants. The Navy ensures freedom of navigation for the global economy.",
     keyFacts: [
-      "11 nuclear-powered aircraft carriers — the rest of the world has 2 total",
+      "11 nuclear-powered aircraft carriers: the rest of the world has 2 total",
       "14 Ohio-class submarines carry 70% of America's nuclear arsenal",
       "SEALs conduct classified operations on every continent",
       "Each carrier strike group represents more air power than most nations' entire air force",
     ],
     imageSrc: SITE_IMAGES.navyHero,
-    imageAlt: "USS Gerald R. Ford CVN-78 — the world's most powerful warship",
+    imageAlt: "USS Gerald R. Ford CVN-78, the world's most powerful warship",
   },
   {
     id: "airforce",
@@ -180,19 +180,19 @@ export const MILITARY_BRANCHES: MilitaryBranch[] = [
     shortName: "Air Force",
     founded: 1947,
     personnel: "325,000 active",
-    tagline: "Aim High — Fly, Fight, Win",
+    tagline: "Aim High: Fly, Fight, Win",
     accentColor: "#4B89DC",
     iconEmoji: "✈️",
     href: "/military/air-force",
-    description: "Global air dominance. The USAF operates 5,500+ aircraft — more than any other nation's entire air force. From stealth bombers to next-generation fighters, it maintains continuous combat-ready superiority in the air.",
+    description: "Global air dominance. The USAF operates 5,500+ aircraft, more than any other nation's entire air force. From stealth bombers to next-generation fighters, it maintains continuous combat-ready superiority in the air.",
     keyFacts: [
       "F-22 Raptor: the only true 5th-generation air superiority fighter in service",
       "B-2 Spirit can reach any target on Earth within hours from CONUS",
       "USAF operates more aircraft than every other country combined",
-      "B-21 Raider entered service in 2023 — the next generation of stealth penetration",
+      "B-21 Raider entered service in 2023, representing the next generation of stealth penetration",
     ],
     imageSrc: SITE_IMAGES.airForceHero,
-    imageAlt: "B-2 Spirit stealth bomber — invisible, global, nuclear-capable",
+    imageAlt: "B-2 Spirit stealth bomber: invisible, global, nuclear-capable",
   },
   {
     id: "marines",
@@ -203,7 +203,7 @@ export const MILITARY_BRANCHES: MilitaryBranch[] = [
     tagline: "Semper Fidelis",
     accentColor: "#8B1A1A",
     iconEmoji: "🦅",
-    description: "America's rapid response force. The Marines maintain three Marine Expeditionary Forces — fully integrated air-ground combat teams capable of projecting power from amphibious vessels within hours. Always forward, always ready.",
+    description: "America's rapid response force. The Marines maintain three Marine Expeditionary Forces: fully integrated air-ground combat teams capable of projecting power from amphibious vessels within hours. Always forward, always ready.",
     keyFacts: [
       "Marines are trained to operate from sea, by air, and on land simultaneously",
       "Marine Raider Battalions conduct special operations worldwide",
@@ -211,7 +211,7 @@ export const MILITARY_BRANCHES: MilitaryBranch[] = [
       "Deployed continuously aboard amphibious ready groups globally",
     ],
     imageSrc: SITE_IMAGES.marinesAssault,
-    imageAlt: "U.S. Marines conducting an amphibious assault — projection of power from the sea",
+    imageAlt: "U.S. Marines conducting an amphibious assault, projection of power from the sea",
   },
   {
     id: "spaceforce",
@@ -219,11 +219,11 @@ export const MILITARY_BRANCHES: MilitaryBranch[] = [
     shortName: "Space Force",
     founded: 2019,
     personnel: "8,600 active",
-    tagline: "Semper Supra — Always Above",
+    tagline: "Semper Supra: Always Above",
     accentColor: "#3DDBD9",
     iconEmoji: "🛰️",
     href: "/military/space-force",
-    description: "America's newest and fastest-growing branch, guarding the orbital infrastructure on which all modern warfare depends. GPS, ISR, missile warning, satellite communications — Space Force defends the systems that make American military supremacy possible.",
+    description: "America's newest and fastest-growing branch, guarding the orbital infrastructure on which all modern warfare depends. GPS, ISR, missile warning, satellite communications: Space Force defends the systems that make American military supremacy possible.",
     keyFacts: [
       "US military satellites enable precision GPS targeting for all branches",
       "Space Force operates missile warning systems detecting launches within seconds",
@@ -231,7 +231,7 @@ export const MILITARY_BRANCHES: MilitaryBranch[] = [
       "ASAT (anti-satellite) capabilities can deny orbital access to adversaries",
     ],
     imageSrc: SITE_IMAGES.spaceForceLaunch,
-    imageAlt: "US Space Force launch — protecting the orbital domain",
+    imageAlt: "US Space Force launch: protecting the orbital domain",
   },
   {
     id: "coastguard",
@@ -239,7 +239,7 @@ export const MILITARY_BRANCHES: MilitaryBranch[] = [
     shortName: "Coast Guard",
     founded: 1790,
     personnel: "42,000 active",
-    tagline: "Semper Paratus — Always Ready",
+    tagline: "Semper Paratus: Always Ready",
     accentColor: "#FF5E13",
     iconEmoji: "🚢",
     description: "Guarding America's maritime borders. The US Coast Guard is a unique military, multi-mission, maritime service within the Department of Homeland Security, dedicated to saving lives, enforcing federal laws, protecting the environment, and securing U.S. ports and waterways.",
@@ -297,13 +297,13 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
     ceiling: "50,000 ft",
     stealth: true,
     nuclear: false,
-    tagline: "A flying supercomputer with a god-eye view.",
+    tagline: "A flying supercomputer with a comprehensive tactical view.",
     accentColor: "#F5A623",
     heroStat: "3,300 PLANNED",
-    description: "The world's most capable multirole combat aircraft. The F-35 is a flying supercomputer — its sensor fusion and electronic warfare systems see threats before adversaries know it exists. Three variants serve all three armed services.",
-    significance: "The F-35's real advantage is information, not just stealth. It aggregates sensor data from itself, other F-35s, satellites, and ground systems — giving the pilot a god-eye view of the battlefield that no adversary can match.",
+    description: "The world's most capable multirole combat aircraft. The F-35 is a flying supercomputer: its sensor fusion and electronic warfare systems see threats before adversaries know it exists. Three variants serve all three armed services.",
+    significance: "The F-35's primary advantage is information awareness alongside stealth. It aggregates sensor data from itself, other F-35s, satellites, and ground systems, giving the pilot a complete tactical overview of the battlefield.",
     imageSrc: SITE_IMAGES.f35Lightning,
-    imageAlt: "F-35A Lightning II in flight — the world's most advanced multirole fighter",
+    imageAlt: "F-35A Lightning II in flight: the world's most advanced multirole fighter",
     specs: [
       { label: "Generation", value: "5th Generation" },
       { label: "Variants", value: "A (USAF), B (USMC), C (USN)" },
@@ -325,13 +325,13 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
     ceiling: "65,000 ft",
     stealth: true,
     nuclear: false,
-    tagline: "The apex predator of the sky.",
+    tagline: "The premier air superiority fighter.",
     accentColor: "#94A3B8",
     heroStat: "MACH 2.25",
-    description: "The apex predator of the sky. The F-22 Raptor is the world's only operational supercruise-capable stealth air superiority fighter. No adversary aircraft can detect, outrun, or outmaneuver it. China and Russia have spent 20 years trying to build an equivalent.",
-    significance: "Supercruise — the ability to exceed Mach 1 without afterburner — combined with extreme stealth makes the F-22 nearly impossible to engage. By the time an adversary's radar resolves a contact, the Raptor has already fired.",
+    description: "The premier air superiority fighter. The F-22 Raptor is the world's only operational supercruise-capable stealth air superiority fighter. No adversary aircraft can detect, outrun, or outmaneuver it.",
+    significance: "Supercruise (the ability to exceed Mach 1 without afterburner) combined with extreme stealth makes the F-22 exceptionally difficult to engage. By the time an adversary's radar resolves a contact, the Raptor has already fired.",
     imageSrc: SITE_IMAGES.f22Raptor,
-    imageAlt: "F-22 Raptor — the world's most capable air superiority fighter",
+    imageAlt: "F-22 Raptor: the world's most capable air superiority fighter",
     specs: [
       { label: "Generation", value: "5th Generation" },
       { label: "Speed", value: "Mach 2.25 (Mach 1.82 supercruise)" },
@@ -352,10 +352,10 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
     tagline: "The most powerful warship ever built.",
     accentColor: "#3B82F6",
     heroStat: "100,000 TONS",
-    description: "The most powerful warship ever built. At 100,000 tons, the Ford class carriers operate 90 aircraft — more air power than most nations' entire air forces. Powered by two A1B nuclear reactors, they operate for 50 years without refueling.",
+    description: "The most powerful warship ever built. At 100,000 tons, the Ford class carriers operate 90 aircraft, representing more air power than most nations' entire air forces. Powered by two A1B nuclear reactors, they operate for 50 years without refueling.",
     significance: "A single carrier strike group commands a 500,000 sq mile maritime domain. With 11 CSGs simultaneously deployed globally, the US Navy can project decisive airpower anywhere on Earth within 72 hours.",
     imageSrc: SITE_IMAGES.geraldFordCarrier,
-    imageAlt: "USS Gerald R. Ford (CVN-78) underway — the lead ship of the world's most advanced carrier class",
+    imageAlt: "USS Gerald R. Ford (CVN-78) underway: the lead ship of the world's most advanced carrier class",
     specs: [
       { label: "Displacement", value: "100,000+ tons" },
       { label: "Aircraft", value: "90 (F-35C, F/A-18, E-2D, etc.)" },
@@ -377,10 +377,10 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
     tagline: "The invisible nuclear deterrent.",
     accentColor: "#6366F1",
     heroStat: "70% OF ARSENAL",
-    description: "The invisible nuclear deterrent. 14 Ohio-class submarines carry 70% of America's nuclear arsenal — 24 Trident II D5 missiles each, with up to 8 independently targetable warheads per missile. Each submarine alone can end civilization.",
-    significance: "SSBN survivability is the foundation of nuclear deterrence. Because they are undetectable, they guarantee America's second-strike capability — making a successful first strike on the US not just difficult, but strategically irrational.",
+    description: "The invisible nuclear deterrent. 14 Ohio-class submarines carry 70% of America's nuclear arsenal: 24 Trident II D5 missiles each, with up to 8 independently targetable warheads per missile.",
+    significance: "SSBN survivability is the foundation of nuclear deterrence. Because they are undetectable, they guarantee America's second-strike capability, making a successful first strike against the US strategically impossible.",
     imageSrc: SITE_IMAGES.ohioSubmarine,
-    imageAlt: "USS Ohio (SSGN-726) surfacing — the silent leg of the nuclear triad",
+    imageAlt: "USS Ohio (SSGN-726) surfacing: the silent leg of the nuclear triad",
     specs: [
       { label: "Missiles", value: "24 × Trident II D5 SLBM" },
       { label: "Warheads", value: "Up to 192 per submarine" },
@@ -403,10 +403,10 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
     tagline: "Any target on Earth in 30 minutes.",
     accentColor: "#F59E0B",
     heroStat: "MACH 23",
-    description: "Land-based nuclear deterrence. 400 Minuteman III ICBMs stand alert 24/7 in hardened silos across Montana, North Dakota, and Wyoming — each carrying up to 3 independently targetable warheads capable of striking any target on Earth in 30 minutes.",
-    significance: "The land-based leg of the nuclear triad is the most survivable from a launch-on-warning perspective. Adversaries must allocate multiple warheads per silo to have confidence of destruction — an exchange that is never in their favor.",
+    description: "Land-based nuclear deterrence. 400 Minuteman III ICBMs stand alert 24/7 in hardened silos across Montana, North Dakota, and Wyoming, each carrying up to 3 independently targetable warheads capable of striking any target on Earth in 30 minutes.",
+    significance: "The land-based leg of the nuclear triad is the most survivable from a launch-on-warning perspective. Adversaries must allocate multiple warheads per silo to have confidence of destruction, an exchange that is never in their favor.",
     imageSrc: SITE_IMAGES.minutemanLaunch,
-    imageAlt: "LGM-30G Minuteman III test launch — the land-based deterrent",
+    imageAlt: "LGM-30G Minuteman III test launch: the land-based deterrent",
     specs: [
       { label: "Range", value: "8,000+ miles" },
       { label: "Speed", value: "Mach 23" },
@@ -486,7 +486,7 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
     accentColor: "#F59E0B",
     heroStat: "UNMANNED",
     description: "The world's first operational carrier-based unmanned aircraft, designed to provide aerial refueling for F-35C and F/A-18 strike fighters, drastically extending their operational range and survivability.",
-    significance: "Solves the 'carrier standoff' dilemma by allowing aircraft carriers to stay outside the range of adversary land-based anti-ship missiles while still launching fighter strikes.",
+    significance: "Solves the standoff dilemma by allowing aircraft carriers to stay outside the range of adversary land-based anti-ship missiles while still launching fighter strikes.",
     imageSrc: SITE_IMAGES.autonomousDrone,
     imageAlt: "MQ-25 Stingray unmanned tanker refuels a Navy fighter",
     specs: [
@@ -500,7 +500,6 @@ export const WEAPON_SYSTEMS: WeaponSystem[] = [
   },
 ];
 
-
 // ─── DARPA Programs ───────────────────────────────────────────────────────────
 
 export const DARPA_PROGRAMS: DARPAProgram[] = [
@@ -510,8 +509,8 @@ export const DARPA_PROGRAMS: DARPAProgram[] = [
     category: "OFFENSIVE SYSTEMS",
     status: "testing",
     icon: "⚡",
-    description: "HAWC (Hypersonic Air-breathing Weapon Concept) and HACM are scramjet-powered missiles traveling Mach 5+ — too fast for any existing air defense system to intercept.",
-    significance: "Renders all current point-defense systems — Patriot, S-400, THAAD — effectively obsolete against a committed adversary.",
+    description: "HAWC (Hypersonic Air-breathing Weapon Concept) and HACM are scramjet-powered missiles traveling Mach 5+, moving rapidly to counter modern defense networks.",
+    significance: "Renders conventional point-defense systems (Patriot, S-400, THAAD) ineffective against high-velocity kinetic strike vectors.",
   },
   {
     id: "autonomous",
@@ -519,7 +518,7 @@ export const DARPA_PROGRAMS: DARPAProgram[] = [
     category: "AI / ROBOTICS",
     status: "testing",
     icon: "🤖",
-    description: "The Collaborative Combat Aircraft (CCA) program develops AI wingmen that fly alongside manned fighters, conducting electronic warfare, reconnaissance, and offensive strike — expendable and unbounded by human cognitive limits.",
+    description: "The Collaborative Combat Aircraft (CCA) program develops AI wingmen that fly alongside manned fighters, conducting electronic warfare, reconnaissance, and offensive strike: expendable and unbounded by human cognitive limits.",
     significance: "A single F-35 pilot could command 4+ autonomous wingmen, multiplying combat power by 5× without additional human risk.",
   },
   {
@@ -537,8 +536,8 @@ export const DARPA_PROGRAMS: DARPAProgram[] = [
     category: "INFORMATION WARFARE",
     status: "active",
     icon: "⚛️",
-    description: "Quantum gravimeters can detect submarine wakes from orbital altitude. Quantum computing will break current encryption standards — NIST is racing to deploy quantum-resistant algorithms before adversaries achieve quantum supremacy.",
-    significance: "Whoever achieves quantum computing superiority first can decrypt all existing encrypted communications — military, diplomatic, financial. The implications are civilizational.",
+    description: "Quantum gravimeters can detect submarine signatures from orbital altitude. Quantum computing will break current encryption standards: NIST is racing to deploy quantum-resistant algorithms.",
+    significance: "Whoever achieves quantum computing superiority first can decrypt all existing encrypted communications: military, diplomatic, financial.",
   },
   {
     id: "cyber-offensive",
@@ -546,7 +545,7 @@ export const DARPA_PROGRAMS: DARPAProgram[] = [
     category: "CYBER WARFARE",
     status: "active",
     icon: "💻",
-    description: "US Cyber Command maintains persistent presence in adversary critical infrastructure — power grids, financial systems, command-and-control networks — enabling near-instantaneous disruption at the onset of conflict.",
+    description: "US Cyber Command maintains persistent presence in adversary critical infrastructure: power grids, financial systems, command-and-control networks: enabling rapid operational response during conflict.",
     significance: "Stuxnet (2010) destroyed 20% of Iran's nuclear centrifuges without a physical attack. Current capabilities are orders of magnitude more sophisticated.",
   },
   {
@@ -555,8 +554,8 @@ export const DARPA_PROGRAMS: DARPAProgram[] = [
     category: "AI / DECISION SYSTEMS",
     status: "active",
     icon: "🧠",
-    description: "JADO (Joint All-Domain Operations) and ABMS (Advanced Battle Management System) use AI to fuse data from all sensors, platforms, and domains — presenting commanders with decision-quality information in seconds rather than hours.",
-    significance: "The goal: compress the OODA loop to milliseconds. By the time an adversary has observed and oriented, the US has already acted.",
+    description: "JADO (Joint All-Domain Operations) and ABMS (Advanced Battle Management System) use AI to fuse data from all sensors, platforms, and domains: presenting commanders with decision-quality information in seconds rather than hours.",
+    significance: "The goal: compress decision-making loops to milliseconds. By the time an adversary has observed and oriented, American forces have already acted.",
   },
 ];
 
@@ -577,7 +576,7 @@ export function getDefenseContractors(locale: Locale): DefenseContractor[] {
     ...c,
     specialty: c.name === "Lockheed Martin" ? "Avioane de vânătoare, Rachete, Spațiu"
              : c.name === "RTX (Raytheon)" ? "Rachete, Apărare aeriană, EW"
-             : c.name === "Northrop Grumman" ? "Invizibilitate, Spațiu, Electronică"
+             : c.name === "Northrop Grumman" ? "Tehnologie Stealth, Spațiu, Electronică"
              : c.name === "Boeing Defense" ? "Aeronave cu aripi rotative, Naval, Spațiu"
              : c.name === "General Dynamics" ? "Luptă la sol, Construcții navale"
              : c.name === "L3Harris" ? "ISR, Comunicații, EW"
@@ -630,21 +629,21 @@ export const MILITARY_QUOTES = [
   {
     quote: "The supreme art of war is to subdue the enemy without fighting.",
     attribution: "Sun Tzu", title: "The Art of War",
-    note: "The principle that guides American deterrence: the goal is never to fight — it is to make fighting against America so costly that adversaries never start.",
+    note: "The principle that guides American deterrence: making warfare against America so costly that adversaries refrain from aggression.",
   },
   {
     quote: "If you want peace, prepare for war.",
     attribution: "Vegetius", title: "Roman Military Theorist",
-    note: "Si vis pacem, para bellum — the logic of deterrence in four words. American military superiority has prevented more wars than it has fought.",
+    note: "Si vis pacem, para bellum: the logic of deterrence in four words. American military superiority has prevented more wars than it has fought.",
   },
   {
     quote: "Peace is not absence of conflict, it is the ability to handle conflict by peaceful means. American strength is the foundation of that peace.",
     attribution: "Ronald Reagan", title: "40th President of the United States",
   },
   {
-    quote: "No man's life, liberty, or property is safe while the legislature is in session — but no American's life, liberty, or property is safe when America's military is not supreme.",
-    attribution: "Paraphrased from military doctrine",
-    title: "Strategic Deterrence Principle",
+    quote: "No man's life, liberty, or property is safe while the legislature is in session, but no American's life, liberty, or property is safe when America's military is not supreme.",
+    attribution: "Strategic Deterrence Principle",
+    title: "Military Doctrine",
   },
 ];
 
@@ -655,13 +654,13 @@ export function getMilitaryQuotes(locale: Locale) {
       ...MILITARY_QUOTES[0],
       quote: "Arta supremă a războiului este de a învinge inamicul fără luptă.",
       title: "Arta Războiului",
-      note: "Principiul care ghidează descurajarea americană: scopul nu este niciodată să lupți — ci să faci lupta împotriva Americii atât de costisitoare încât adversarii să nu o înceapă niciodată.",
+      note: "Principiul care ghidează descurajarea americană: prevenirea conflictelor prin asigurarea unei capacități defensive de netăgăduit.",
     },
     {
       ...MILITARY_QUOTES[1],
       quote: "Dacă vrei pace, pregătește-te de război.",
       title: "Teoretician Militar Roman",
-      note: "Si vis pacem, para bellum — logica descurajării în patru cuvinte. Superioritatea militară americană a prevenit mai multe războaie decât a purtat.",
+      note: "Si vis pacem, para bellum: logica descurajării în patru cuvinte. Superioritatea militară americană a prevenit mai multe războaie decât a purtat.",
     },
     {
       ...MILITARY_QUOTES[2],
@@ -670,7 +669,7 @@ export function getMilitaryQuotes(locale: Locale) {
     },
     {
       ...MILITARY_QUOTES[3],
-      quote: "Nicio viață, libertate sau proprietate nu este în siguranță când legislativul este în sesiune — dar nicio viață, libertate sau proprietate a unui american nu este în siguranță când armata Americii nu este supremă.",
+      quote: "Nicio viață, libertate sau proprietate nu este în siguranță când legislativul este în sesiune, dar nicio viață, libertate sau proprietate a unui american nu este în siguranță când armata Americii nu este supremă.",
       title: "Principiul Descurajării Strategice",
     },
   ];
@@ -679,14 +678,14 @@ export function getMilitaryQuotes(locale: Locale) {
 // ─── Nuclear Triad ────────────────────────────────────────────────────────────
 
 export const NUCLEAR_TRIAD = {
-  description: "The nuclear triad — land-based ICBMs, sea-based SLBMs, and air-launched weapons — ensures that no first strike can simultaneously destroy all three legs. As long as one leg survives, the United States retains the ability to respond. This guaranteed second-strike capability is the foundation of strategic deterrence.",
+  description: "The nuclear triad (land-based ICBMs, sea-based SLBMs, and air-launched weapons) ensures that no first strike can simultaneously destroy all three legs. As long as one leg survives, the United States retains the ability to respond. This guaranteed second-strike capability is the foundation of strategic deterrence.",
   legs: [
     {
       name: "Land (ICBMs)",
       systems: "400 Minuteman III",
       warheads: "400+ deployed",
       alert: "24/7 continuous alert",
-      advantage: "Rapid response time — 30 minutes to any target on Earth",
+      advantage: "Rapid response time: 30 minutes to any target on Earth",
       color: "#F59E0B",
     },
     {
@@ -694,15 +693,15 @@ export const NUCLEAR_TRIAD = {
       systems: "14 Ohio-class submarines",
       warheads: "~1,000 deployed at sea",
       alert: "Continuous deterrent patrol",
-      advantage: "Most survivable leg — submarines are undetectable",
+      advantage: "Most survivable leg: submarines are undetectable",
       color: "#3B82F6",
     },
     {
       name: "Air (Bombers)",
       systems: "60 B-52H + 20 B-2 Spirit + B-21 entering service",
-      warheads: "Variable — conventional and nuclear",
+      warheads: "Variable: conventional and nuclear",
       alert: "Surge-capable (can be dispersed globally)",
-      advantage: "Recallable — the only leg that can be called back after launch",
+      advantage: "Recallable: the only leg that can be called back after launch",
       color: "#94A3B8",
     },
   ],
@@ -712,20 +711,20 @@ export const NUCLEAR_TRIAD = {
 
 export const MILITARY_FACTS_EN = [
   { id: "mil-medicine",  fact: "Combat medicine breakthroughs save 25,000+ civilian lives annually", detail: "From advanced tourniquets to freeze-dried plasma, the US military's trauma research (pioneered in Iraq/Afghanistan) has been adopted by civilian EMS globally, drastically increasing survival rates for car accidents and mass-casualty events.", source: "Journal of Trauma and Acute Care Surgery", color: "gold" as const },
-  { id: "global-logistics", fact: "American logistics can deploy a combat brigade anywhere on Earth in 18 hours", detail: "The Air Mobility Command's fleet of C-17s and C-5s, supported by a global network of 750+ bases, provides a logistical reach that is physically impossible for any other military. America doesn't just have the most power; it has the most mobile power.", source: "TRANSCOM 2024", color: "blue" as const },
+  { id: "global-logistics", fact: "American logistics can deploy a combat brigade anywhere on Earth in 18 hours", detail: "The Air Mobility Command's fleet of C-17s and C-5s, supported by a global network of 750+ bases, provides a logistical reach that is physically impossible for any other military. America possesses the most mobile combat power on Earth.", source: "TRANSCOM 2024", color: "blue" as const },
   { id: "gps-utility",   fact: "GPS is a $1 trillion global utility provided free by the US military", detail: "Operated by the Space Force, the Global Positioning System is the clock for the world's financial markets and the map for every smartphone. The US provides this critical infrastructure to the entire world at zero cost to users.", source: "NIST / Department of Commerce 2024", color: "gold" as const },
-  { id: "rd-dominance",     fact: "US defense R&D spending exceeds the total defense budgets of most nations",                               detail: "The US spends $140+ billion annually on defense R&D — more than the total military budgets of Italy, Spain, Australia, or Canada. This investment compound over 80 years is why the B-21 and F-35 have no peer.", source: "Office of the Under Secretary of Defense (Comptroller) 2024", color: "blue" as const },
-  { id: "satellite-network", fact: "The US operates more military satellites than all other nations combined", detail: "From GPS guidance to instant global communications, the US Space Force manages a constellation of 500+ dedicated military assets. This 'orbital high ground' allows American forces to see, communicate, and strike with precision that remains unmatched.", source: "UCS Satellite Database 2024", color: "gold" as const },
-  { id: "space-dependency", fact: "Modern American warfare is impossible without Space Force — every precision weapon depends on satellites", detail: "GPS guidance for bombs and missiles. ISR satellites locating targets. Satellite communications coordinating forces across continents. Space Force protects the infrastructure without which F-35s become expensive aluminum tubes.", source: "Congressional Research Service 2024", color: "blue" as const },
+  { id: "rd-dominance",     fact: "US defense R&D spending exceeds the total defense budgets of most nations",                               detail: "The US spends $140+ billion annually on defense R&D, more than the total military budgets of Italy, Spain, Australia, or Canada. This investment over decades ensures system superiority for platforms like the B-21 and F-35.", source: "Office of the Under Secretary of Defense (Comptroller) 2024", color: "blue" as const },
+  { id: "satellite-network", fact: "The US operates more military satellites than all other nations combined", detail: "From GPS guidance to instant global communications, the US Space Force manages a constellation of 500+ dedicated military assets. This orbital capability allows American forces to communicate and strike with high precision.", source: "UCS Satellite Database 2024", color: "gold" as const },
+  { id: "space-dependency", fact: "Modern military operations rely on Space Force: every precision weapon depends on satellites", detail: "GPS guidance for bombs and missiles, ISR satellites locating targets, and satellite communications coordinating forces across continents. Space Force protects the orbital infrastructure that makes modern defense systems effective.", source: "Congressional Research Service 2024", color: "blue" as const },
 ];
 
 export const MILITARY_FACTS_RO = [
   { id: "mil-medicine",  fact: "Descoperirile în medicina de luptă salvează peste 25.000 de vieți civile anual", detail: "De la garouri avansate la plasmă liofilizată, cercetările de traumă ale armatei americane au fost adoptate global de serviciile de urgență civile, crescând drastic ratele de supraviețuire în accidente rutiere.", source: "Journal of Trauma and Acute Care Surgery", color: "gold" as const },
   { id: "global-logistics", fact: "Logistica americană poate trimite o brigadă de luptă oriunde pe Pământ în 18 ore", detail: "Flota de C-17 și C-5 a Air Mobility Command, susținută de o rețea globală de peste 750 de baze, oferă o rază de acțiune logistică imposibilă pentru orice altă armată. America are cea mai mobilă putere din lume.", source: "TRANSCOM 2024", color: "blue" as const },
   { id: "gps-utility",   fact: "GPS este o utilitate globală de 1 trilion $ oferită gratuit de armata SUA", detail: "Operat de Space Force, Sistemul de Poziționare Globală este ceasul pentru piețele financiare mondiale și harta pentru fiecare smartphone. SUA oferă această infrastructură întregii lumi fără costuri.", source: "NIST / Department of Commerce 2024", color: "gold" as const },
-  { id: "rd-dominance",     fact: "Cheltuielile de C&D pentru apărare ale SUA depășesc bugetele totale de apărare ale majorității națiunilor",  detail: "SUA cheltuiesc 140+ miliarde de dolari anual pe C&D pentru apărare — mai mult decât bugetele militare totale ale Italiei, Spaniei, Australiei sau Canadei. Aceasta este investiția care a produs B-21 și F-35.", source: "Office of the Under Secretary of Defense (Comptroller) 2024", color: "blue" as const },
-  { id: "satellite-network", fact: "SUA operează mai mulți sateliți militari decât toate celelalte națiuni la un loc", detail: "De la ghidarea GPS la comunicații globale instantanee, Space Force gestionează o constelație de peste 500 de active militare dedicate. Acest avantaj orbital permite forțelor americane să lovească cu o precizie inegalabilă.", source: "UCS Satellite Database 2024", color: "gold" as const },
-  { id: "space-dependency", fact: "Războiul american modern este imposibil fără Space Force — fiecare armă de precizie depinde de sateliți",   detail: "Ghidare GPS pentru bombe și rachete. Sateliți ISR care localizează ținte. Comunicații prin satelit care coordonează forțele de pe continente. Space Force protejează infrastructura fără de care F-35-urile devin tuburi de aluminiu scump.", source: "Congressional Research Service 2024", color: "blue" as const },
+  { id: "rd-dominance",     fact: "Cheltuielile de C&D pentru apărare ale SUA depășesc bugetele totale de apărare ale majorității națiunilor",  detail: "SUA cheltuiesc 140+ miliarde de dolari anual pe C&D pentru apărare, mai mult decât bugetele militare totale ale Italiei, Spaniei, Australiei sau Canadei. Aceasta este investiția care a produs platforme precum B-21 și F-35.", source: "Office of the Under Secretary of Defense (Comptroller) 2024", color: "blue" as const },
+  { id: "satellite-network", fact: "SUA operează mai mulți sateliți militari decât toate celelalte națiuni la un loc", detail: "De la ghidarea GPS la comunicații globale instantanee, Space Force gestionează o constelație de peste 500 de active militare dedicate. Acest avantaj orbital permite forțelor americane să acționeze cu o precizie înaltă.", source: "UCS Satellite Database 2024", color: "gold" as const },
+  { id: "space-dependency", fact: "Războiul american modern depinde de Space Force: fiecare armă de precizie folosește sateliți",   detail: "Ghidare GPS pentru rachete, sateliți ISR care localizează ținte și comunicații prin satelit care coordonează forțele de pe continente. Space Force protejează infrastructura fără de care platformele moderne își pierd eficiența.", source: "Congressional Research Service 2024", color: "blue" as const },
 ];
 
 // ─── i18n helpers ─────────────────────────────────────────────────────────────
@@ -737,10 +736,10 @@ export function getMilitaryFacts(locale: Locale) {
 export function getMilitaryStats(locale: Locale): MilitaryStat[] {
   if (locale !== "ro") return MILITARY_STATS;
   return [
-    { ...MILITARY_STATS[0], label: "Buget Apărare",              sublabel: "AF2026 — mai mare decât următoarele 9 națiuni combinate" },
+    { ...MILITARY_STATS[0], label: "Buget Apărare",              sublabel: "AF2026: mai mare decât următoarele 9 națiuni combinate" },
     { ...MILITARY_STATS[1], label: "Personal Activ",             sublabel: "Plus 765K rezerviști și 700K civili DOD" },
-    { ...MILITARY_STATS[2], label: "Grupuri Atac Portavioane",   sublabel: "11 portavioane cu propulsie nucleară — 100% cotă mondială" },
-    { ...MILITARY_STATS[3], label: "Focoase Nucleare",           sublabel: "Inventar activ și în rezervă — Triada" },
+    { ...MILITARY_STATS[2], label: "Grupuri Atac Portavioane",   sublabel: "11 portavioane cu propulsie nucleară, 100% cotă mondială" },
+    { ...MILITARY_STATS[3], label: "Focoase Nucleare",           sublabel: "Inventar activ și în rezervă: Triada" },
     { ...MILITARY_STATS[4], label: "Sateliți Militari",          sublabel: "Active orbitale dedicate și clasificate" },
     { ...MILITARY_STATS[5], label: "Aeronave Militare",          sublabel: "Cea mai mare forță aeriană (Air Force) și a 2-a (Navy)" },
     { ...MILITARY_STATS[6], label: "Baze în Exterior",           sublabel: "Proiectarea puterii în peste 80 de țări" },
@@ -772,11 +771,11 @@ export function getMilitaryBranches(locale: Locale): MilitaryBranch[] {
       ...MILITARY_BRANCHES[0],
       name: "Armata Statelor Unite",
       tagline: "Aceasta Vom Apăra",
-      description: "Cea mai veche și mai mare ramură, Armata SUA formează coloana vertebrală a puterii de luptă terestră. Cu 58 de echipe de luptă de brigadă și peste 6.000 de tancuri.",
+      description: "Cea mai veche și mai mare ramură, Armata SUA formează baza puterii de luptă terestră, operând 58 de echipe de luptă de brigadă și peste 6.000 de tancuri.",
       keyFacts: [
         "Forțele Speciale (Beretele Verzi) operează în peste 100 de țări",
         "Divizia 82 Aeroportată poate fi trimisă global în 18 ore",
-        "Comandamentul Cyber al Armatei desfășoară operațiuni ofensive",
+        "Comandamentul Cyber al Armatei desfășoară operațiuni în spațiul cibernetic",
         "Peste 10.000 de vehicule blindate Stryker, Bradley și M1 Abrams",
       ],
     },
@@ -784,9 +783,9 @@ export function getMilitaryBranches(locale: Locale): MilitaryBranch[] {
       ...MILITARY_BRANCHES[1],
       name: "Marina Statelor Unite",
       tagline: "Făurită de Mare",
-      description: "Raza de acțiune globală a Americii. Marina SUA operează pe fiecare ocean simultan — proiectând puterea prin 11 grupuri de atac de portavioane și 68 de submarine.",
+      description: "Proiecția globală a Americii. Marina SUA operează pe fiecare ocean simultan, proiectând puterea prin 11 grupuri de atac de portavioane și 68 de submarine.",
       keyFacts: [
-        "11 portavioane cu propulsie nucleară — restul lumii are 2 în total",
+        "11 portavioane cu propulsie nucleară: restul lumii are 2 în total",
         "Submarinele clasa Ohio transportă 70% din arsenalul nuclear al Americii",
         "SEAL-urile desfășoară operațiuni clasificate pe fiecare continent",
         "Fiecare grup de atac reprezintă mai multă putere aeriană decât forțele aeriene ale multor națiuni",
@@ -795,13 +794,13 @@ export function getMilitaryBranches(locale: Locale): MilitaryBranch[] {
     {
       ...MILITARY_BRANCHES[2],
       name: "Forțele Aeriene ale Statelor Unite",
-      tagline: "Țintește Sus — Zboară, Luptă, Câștigă",
-      description: "Dominanță aeriană globală. USAF operează peste 5.500 de aeronave. De la bombardiere invizibile la vânătoare de ultimă generație.",
+      tagline: "Țintește Sus: Zboară, Luptă, Câștigă",
+      description: "Superioritate aeriană globală. USAF operează peste 5.500 de aeronave, de la bombardiere stealth la avioane de vânătoare de generație nouă.",
       keyFacts: [
-        "F-22 Raptor: singurul avion de vânătoare de generația a 5-a pentru superioritate aeriană",
+        "F-22 Raptor: avion de vânătoare de generația a 5-a pentru superioritate aeriană",
         "B-2 Spirit poate atinge orice țintă de pe Pământ în câteva ore",
         "USAF operează mai multe aeronave decât toate celelalte țări combinate",
-        "B-21 Raider a intrat în serviciu în 2023 — următoarea generație de invizibilitate",
+        "B-21 Raider a intrat în serviciu în 2023, reprezentând noua generație de aeronave stealth",
       ],
     },
     {
@@ -819,8 +818,8 @@ export function getMilitaryBranches(locale: Locale): MilitaryBranch[] {
     {
       ...MILITARY_BRANCHES[4],
       name: "Forța Spațială a Statelor Unite",
-      tagline: "Semper Supra — Întotdeauna Deasupra",
-      description: "Cea mai nouă ramură a Americii, păzind infrastructura orbitală de care depinde tot războiul modern. GPS, ISR, avertizare rachete.",
+      tagline: "Semper Supra: Întotdeauna Deasupra",
+      description: "Ramura dedicată protejării infrastructurii orbitale de care depinde războiul modern: GPS, ISR, avertizare timpurie și comunicații satelitare.",
       keyFacts: [
         "Sateliții militari americani permit țintirea GPS de precizie pentru toate ramurile",
         "Forța Spațială operează sisteme de avertizare a rachetelor în câteva secunde",
@@ -831,7 +830,7 @@ export function getMilitaryBranches(locale: Locale): MilitaryBranch[] {
     {
       ...MILITARY_BRANCHES[5],
       name: "Garda de Coastă a Statelor Unite",
-      tagline: "Semper Paratus — Întotdeauna Pregătiți",
+      tagline: "Semper Paratus: Întotdeauna Pregătiți",
       description: "Paza frontierelor maritime ale Americii. Garda de Coastă este un serviciu militar unic, multi-misiune, dedicat salvării de vieți, aplicării legilor federale și securizării apelor teritoriale ale SUA.",
       keyFacts: [
         "Operează o flotă de 250+ nave de patrulare maritime (cutters), 1.600+ bărci și 200+ aeronave",

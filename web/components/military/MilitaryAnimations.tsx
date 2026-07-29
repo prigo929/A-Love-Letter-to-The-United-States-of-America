@@ -1532,7 +1532,7 @@ export function AlliancesShowcase({ alliances, locale = "en" }: { alliances: All
             <p className="text-sm text-white/70 leading-relaxed mb-8">{alliance.description}</p>
 
             <div className="grid grid-cols-3 gap-3 mb-8">
-              {alliance.metrics.map((metric, idx) => (
+              {alliance.metrics.map((metric: { label: string; value: string }, idx: number) => (
                 <div key={idx} className="bg-white/3 border border-white/5 p-4 flex flex-col justify-between">
                   <span className="mil-text-metadata text-[8px] tracking-[0.2em] opacity-40 mb-1">{metric.label}</span>
                   <span className="text-xs md:text-sm font-bold tracking-tight text-white/90">{metric.value}</span>
@@ -1545,7 +1545,7 @@ export function AlliancesShowcase({ alliances, locale = "en" }: { alliances: All
                 {isRo ? "CAPABILITĂȚI INTEGRATE" : "INTEGRATED CAPABILITIES"}
               </h4>
               <div className="space-y-2">
-                {alliance.capabilities.map((cap, idx) => (
+                {alliance.capabilities.map((cap: string, idx: number) => (
                   <div key={idx} className="flex gap-3 border-l pl-4 py-1" style={{ borderColor: alliance.accentColor + "40" }}>
                     <p className="text-xs text-white/55 leading-relaxed">{cap}</p>
                   </div>

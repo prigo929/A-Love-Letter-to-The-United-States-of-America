@@ -92,7 +92,7 @@ export default async function GlobalBasesPage() {
       <BasesFullBleed
         imageSrc={SITE_IMAGES.globalBases.ramstein}
         imageAlt="Ramstein Air Base, Germany"
-        caption={isRo ? "RAMSTEIN · GERMANIA — HUB-UL EUROPEAN" : "RAMSTEIN · GERMANY — THE EUROPEAN HUB"}
+        caption={isRo ? "RAMSTEIN · GERMANIA: HUB-UL EUROPEAN" : "RAMSTEIN · GERMANY: THE EUROPEAN HUB"}
         pullQuote={isRo ? "ORIUNDE PE PĂMÂNT, ÎN 48 DE ORE." : "ANYWHERE ON EARTH. WITHIN 48 HOURS."}
       />
 

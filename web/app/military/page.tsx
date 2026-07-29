@@ -146,7 +146,7 @@ const getDominanceMetrics = (locale: Locale) => {
     },
     { 
       value: `${Math.round((stats.find(s => s.id === "aircraft")?.value || 0) / 1000)}K+`, 
-      label: isRo ? "Aeronave Militare — Cea Mai Mare Flotă" : "Military Aircraft — Largest Fleet on Earth"
+      label: isRo ? "Aeronave Militare: Cea Mai Mare Flotă" : "Military Aircraft: Largest Fleet on Earth"
     },
     { 
       value: `${stats.find(s => s.id === "ships")?.value || ''}${stats.find(s => s.id === "ships")?.suffix || ''}`,  
@@ -618,7 +618,7 @@ export default async function MilitaryPage() {
             <div className="flex items-center justify-center gap-4">
               <div className="h-px w-12" style={{ background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.2))' }} />
               <cite className="mil-text-metadata not-italic tracking-[0.4em] text-[11px] font-black uppercase text-white/70">
-                {quote.attribution} — {quote.title}
+                {quote.attribution}: {quote.title}
               </cite>
               <div className="h-px w-12" style={{ background: 'linear-gradient(to left, transparent, rgba(255,255,255,0.2))' }} />
             </div>
@@ -657,7 +657,7 @@ export default async function MilitaryPage() {
         {/* Iconic Photographs */}
         <IconicPhotographs
           section="military"
-          intro="The American armed forces across a century of conflict — from the beaches of Normandy to the skies over the modern battlespace, captured on film."
+          intro="The American armed forces across a century of conflict, from the beaches of Normandy to the skies over the modern battlespace, captured on film."
         />
 
         {/* Deep Dive Archive */}

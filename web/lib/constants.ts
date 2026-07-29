@@ -159,7 +159,7 @@ export const NAV_SECTIONS = [
       {
         label: "Intelligence",
         href: "/military/intelligence",
-        description: "CIA, NSA, DIA — unmatched reach",
+        description: "CIA, NSA, DIA: global reach",
       },
     ],
   },
@@ -792,7 +792,7 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       },
       "/military/intelligence": {
         label: "Informații",
-        description: "CIA, NSA, DIA — anvergură fără egal",
+        description: "CIA, NSA, DIA: acoperire globală",
       },
     },
   },

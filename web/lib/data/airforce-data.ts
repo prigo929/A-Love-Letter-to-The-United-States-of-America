@@ -115,7 +115,7 @@ export const AF_METRICS: AirForceMetric[] = [
 
 export const AF_CAPABILITIES: AirForceCapability[] = [
   {
-    kicker: "01 — DOMAIN",
+    kicker: "01: DOMAIN",
     title: "Air Superiority",
     description:
       "The F-22 Raptor and F-35A Lightning II establish uncontested control of the battlespace. No peer adversary has achieved air parity against USAF fighters in combat since 1953.",
@@ -123,7 +123,7 @@ export const AF_CAPABILITIES: AirForceCapability[] = [
     accent: "#7dd3fc",
   },
   {
-    kicker: "02 — STRIKE",
+    kicker: "02: STRIKE",
     title: "Global Strike",
     description:
       "B-2 Spirit and B-21 Raider stealth bombers can reach any target on Earth without detection. The Air Force is the only service that can deliver conventional or nuclear ordnance from intercontinental range.",
@@ -131,7 +131,7 @@ export const AF_CAPABILITIES: AirForceCapability[] = [
     accent: "#f5a623",
   },
   {
-    kicker: "03 — MOBILITY",
+    kicker: "03: MOBILITY",
     title: "Rapid Global Mobility",
     description:
       "C-17 Globemaster III and C-5M Super Galaxy aircraft can airlift an entire armored battalion to any theater within 48 hours. Air Mobility Command is the backbone of American power projection.",
@@ -139,7 +139,7 @@ export const AF_CAPABILITIES: AirForceCapability[] = [
     accent: "#a78bfa",
   },
   {
-    kicker: "04 — ISR",
+    kicker: "04: ISR",
     title: "Intelligence, Surveillance & Reconnaissance",
     description:
       "RQ-4 Global Hawk, MQ-9 Reaper, U-2 Dragon Lady, and RC-135 Rivet Joint operate persistent surveillance orbits across every theater, feeding real-time targeting data to joint forces.",
@@ -147,7 +147,7 @@ export const AF_CAPABILITIES: AirForceCapability[] = [
     accent: "#34d399",
   },
   {
-    kicker: "05 — DETERRENCE",
+    kicker: "05: DETERRENCE",
     title: "Nuclear Deterrence",
     description:
       "400 Minuteman III ICBMs and B-2/B-21 strategic bombers form two of the three legs of the nuclear triad. The Air Force operates the land-based and airborne components of America's ultimate deterrent.",
@@ -202,7 +202,7 @@ export const AF_PLATFORMS: AirForcePlatform[] = [
   {
     name: "F-15EX Eagle II",
     designation: "Heavyweight Tactical Fighter",
-    role: "A heavily updated, \"heavyweight missile truck\" designed to carry hypersonic weapons and massive payloads alongside the F-35.",
+    role: "A heavily updated, heavyweight missile truck designed to carry hypersonic weapons and massive payloads alongside the F-35.",
     imageSrc: SITE_IMAGES.airForce.f15ex,
     imageAlt: "F-15EX Eagle II tactical fighter",
     capability: "Heavy payload tactical strike",
@@ -405,20 +405,20 @@ export const AF_HERITAGE_TIMELINE: AirForceHeritageEvent[] = [
   {
     year: "1903",
     title: "Wright Brothers at Kitty Hawk",
-    description: "Orville and Wilbur Wright achieve the first powered, sustained flight at Kill Devil Hills, North Carolina — 12 seconds that changed warfare forever.",
+    description: "Orville and Wilbur Wright achieve the first powered, sustained flight at Kill Devil Hills, North Carolina, 12 seconds that changed warfare forever.",
     significance: "Birth of powered flight",
     imageSrc: SITE_IMAGES.airForce.wrightBrothers,
   },
   {
     year: "1947",
     title: "Air Force Established & Sound Barrier Broken",
-    description: "The National Security Act creates the United States Air Force as an independent branch. Weeks later, Chuck Yeager breaks the sound barrier in the Bell X-1 'Glamorous Glennis.'",
+    description: "The National Security Act creates the United States Air Force as an independent branch. Weeks later, Chuck Yeager breaks the sound barrier in the Bell X-1.",
     significance: "Independent service & supersonic era",
     imageSrc: SITE_IMAGES.airForce.bellX1,
   },
   {
     year: "1950",
-    title: "MiG Alley — Korea",
+    title: "MiG Alley: Korea",
     description: "F-86 Sabres engage Soviet MiG-15s over the Yalu River in the first jet-versus-jet air combat in history. USAF pilots achieve a 10:1 kill ratio, establishing American air superiority doctrine.",
     significance: "Jet age air combat",
     imageSrc: SITE_IMAGES.airForce.f86vsMig15,
@@ -432,14 +432,14 @@ export const AF_HERITAGE_TIMELINE: AirForceHeritageEvent[] = [
   },
   {
     year: "1966",
-    title: "SR-71 Blackbird — Mach 3 Invincibility",
-    description: "The Lockheed SR-71 Blackbird enters operational service, flying at Mach 3.2 and 85,000 feet — above every known surface-to-air missile and interceptor. Over 32 years of operations, no SR-71 was ever shot down.",
+    title: "SR-71 Blackbird: Mach 3 Capability",
+    description: "The Lockheed SR-71 Blackbird enters operational service, flying at Mach 3.2 and 85,000 feet, above every known surface-to-air missile and interceptor. Over 32 years of operations, no SR-71 was ever shot down.",
     significance: "Unchallengeable ISR dominance",
     imageSrc: SITE_IMAGES.airForce.sr71,
   },
   {
     year: "1991",
-    title: "Desert Storm — Stealth Revolution",
+    title: "Desert Storm: Stealth Debut",
     description: "F-117 Nighthawks strike Baghdad on opening night with zero losses. The 43-day air campaign destroys Iraq's military infrastructure and proves stealth technology has permanently changed warfare.",
     significance: "Stealth warfare validated",
     imageSrc: SITE_IMAGES.airForce.f117,
@@ -447,7 +447,7 @@ export const AF_HERITAGE_TIMELINE: AirForceHeritageEvent[] = [
   {
     year: "2005",
     title: "F-22 Raptor Achieves IOC",
-    description: "The F-22 Raptor enters operational service — the world's first fifth-generation air superiority fighter. Supercruise, stealth, and integrated avionics create an insurmountable advantage over all competitors.",
+    description: "The F-22 Raptor enters operational service, the world's first fifth-generation air superiority fighter. Supercruise, stealth, and integrated avionics create an insurmountable advantage over all competitors.",
     significance: "Fifth-generation dominance",
     imageSrc: SITE_IMAGES.airForce.f22,
   },
@@ -526,7 +526,7 @@ export const AF_FUTURE_PROGRAMS: AirForceFutureProgram[] = [
       "The Sentinel will replace the aging Minuteman III as America's ground-based nuclear deterrent. A completely redesigned missile system with modern C3 infrastructure for the nuclear triad's land leg.",
     status: "EMD phase",
     imageSrc: SITE_IMAGES.airForce.minuteman,
-    imageAlt: "Minuteman III ICBM launch — Sentinel's predecessor",
+    imageAlt: "Minuteman III ICBM launch, Sentinel's predecessor",
     capability: "Nuclear modernization",
     specs: [
       { label: "Replaces", value: "Minuteman III" },
@@ -542,7 +542,7 @@ export const AF_BASES: AirForceBase[] = [
     name: "Nellis AFB",
     location: "Nevada, USA",
     role: "Advanced Combat Training",
-    description: "Home of Red Flag, the world's most demanding combat exercise. The Nevada Test and Training Range spans 12,000+ sq mi — the largest air combat training facility on Earth.",
+    description: "Home of Red Flag, the world's most demanding combat exercise. The Nevada Test and Training Range spans 12,000+ sq mi, the largest air combat training facility on Earth.",
     accent: "#f5a623",
     stats: [
       { label: "Range", value: "12,000 sq mi" },
@@ -602,7 +602,7 @@ export const AF_BASES: AirForceBase[] = [
     name: "Langley AFB",
     location: "Virginia, USA",
     role: "ACC Headquarters / F-22 Wing",
-    description: "Home of Air Combat Command headquarters and the 1st Fighter Wing — the USAF's premier F-22 Raptor operational unit. The intellectual center of American combat airpower.",
+    description: "Home of Air Combat Command headquarters and the 1st Fighter Wing, the USAF's premier F-22 Raptor operational unit. The intellectual center of American combat airpower.",
     accent: "#7dd3fc",
     stats: [
       { label: "Command", value: "ACC HQ" },
@@ -630,35 +630,35 @@ export function getAirForceCapabilities(locale: Locale): AirForceCapability[] {
   if (locale !== "ro") return AF_CAPABILITIES;
   return [
     {
-      kicker: "01 — DOMENIU",
+      kicker: "01: DOMENIU",
       title: "Superioritate Aeriană",
-      description: "F-22 Raptor și F-35A Lightning II stabilesc control necontestat al spațiului de luptă. Niciun adversar egal nu a obținut paritate aeriană contra avioanelor USAF în luptă din 1953.",
+      description: "Stabilirea controlului total al domeniului aerian pentru ca forțele terestre și maritime să poată opera fără amenințări.",
       stat: "Flotă Gen-5",
       accent: "#7dd3fc",
     },
     {
-      kicker: "02 — LOVITURĂ",
+      kicker: "02: LOVITURĂ",
       title: "Lovitură Globală",
       description: "Bombardierele stealth B-2 Spirit și B-21 Raider pot atinge orice țintă de pe Pământ fără detectare. Forțele Aeriene sunt singura ramură care poate livra muniție de la distanță intercontinentală.",
       stat: "Intercontinental",
       accent: "#f5a623",
     },
     {
-      kicker: "03 — MOBILITATE",
+      kicker: "03: MOBILITATE",
       title: "Mobilitate Globală Rapidă",
       description: "Aeronavele C-17 Globemaster III și C-5M Super Galaxy pot transporta un batalion blindat complet în orice teatru în 48 de ore.",
       stat: "Desfășurare 48h",
       accent: "#a78bfa",
     },
     {
-      kicker: "04 — ISR",
+      kicker: "04: ISR",
       title: "Informații, Supraveghere și Recunoaștere",
       description: "RQ-4 Global Hawk, MQ-9 Reaper, U-2 Dragon Lady și RC-135 Rivet Joint operează orbite de supraveghere persistentă în fiecare teatru.",
       stat: "ISR Persistent",
       accent: "#34d399",
     },
     {
-      kicker: "05 — DESCURAJARE",
+      kicker: "05: DESCURAJARE",
       title: "Descurajare Nucleară",
       description: "400 ICBM-uri Minuteman III și bombardierele strategice B-2/B-21 formează două din cele trei picioare ale triadei nucleare.",
       stat: "2/3 din Triada Nucleară",
@@ -702,7 +702,7 @@ export function getAirForcePlatforms(locale: Locale): AirForcePlatform[] {
         ],
       },
       "F-15EX Eagle II": {
-        role: "Un avion de luptă tactic de mare tonaj, puternic modernizat și proiectat ca un 'camion greu de rachete' pentru a transporta arme hipersonice și încărcături masive alături de F-35.",
+        role: "Un avion de luptă tactic de mare tonaj, puternic modernizat și proiectat ca un camion greu de rachete pentru a transporta arme hipersonice și încărcături masive alături de F-35.",
         capability: "Lovitură tactică grea",
         specs: [
           { label: "Viteză", value: "Mach 2.5" },
@@ -861,13 +861,13 @@ export function getAirForceTheaters(locale: Locale): AirForceTheater[] {
 export function getAirForceHeritageTimeline(locale: Locale): AirForceHeritageEvent[] {
   if (locale !== "ro") return AF_HERITAGE_TIMELINE;
   return [
-    { ...AF_HERITAGE_TIMELINE[0], title: "Frații Wright la Kitty Hawk", description: "Orville și Wilbur Wright realizează primul zbor motorizat, susținut, la Kill Devil Hills, Carolina de Nord — 12 secunde care au schimbat războiul pentru totdeauna.", significance: "Nașterea zborului motorizat" },
-    { ...AF_HERITAGE_TIMELINE[1], title: "Forțele Aeriene Stabilite & Bariera Sunetului Spartă", description: "Legea Securității Naționale creează Forțele Aeriene ale Statelor Unite. La câteva săptămâni, Chuck Yeager sparge bariera sunetului în Bell X-1.", significance: "Serviciu independent & era supersonică" },
-    { ...AF_HERITAGE_TIMELINE[2], title: "MiG Alley — Coreea", description: "F-86 Sabre se angajează cu MiG-15 sovietice deasupra râului Yalu în prima luptă aeriană jet contra jet din istorie.", significance: "Luptă aeriană din era jeturilor" },
-    { ...AF_HERITAGE_TIMELINE[3], title: "Comandamentul Aerian Strategic la Apogeu", description: "SAC operează peste 2.000 de bombardiere strategice și 1.000 de ICBM-uri, menținând alertă aeriană continuă cu B-52.", significance: "Apogeul descurajării nucleare" },
-    { ...AF_HERITAGE_TIMELINE[4], title: "Furtuna Deșertului — Revoluția Stealth", description: "F-117 Nighthawk lovesc Bagdadul în noaptea de deschidere cu zero pierderi. Campania aeriană de 43 de zile dovedește tehnologia stealth.", significance: "Războiul stealth validat" },
-    { ...AF_HERITAGE_TIMELINE[5], title: "F-22 Raptor Atinge IOC", description: "F-22 Raptor intră în serviciul operațional — primul avion de superioritate aeriană de generația a cincea din lume.", significance: "Dominanța generației a cincea" },
-    { ...AF_HERITAGE_TIMELINE[6], title: "B-21 Raider — Primul Zbor", description: "B-21 Raider de la Northrop Grumman completează primul zbor. Cel mai avansat bombardier stealth din lume.", significance: "Bombardier strategic next-gen" },
+    { ...AF_HERITAGE_TIMELINE[0], title: "Frații Wright la Kitty Hawk", description: "Orville și Wilbur Wright realizează primul zbor motorizat, susținut, la Kill Devil Hills, Carolina de Nord: 12 secunde care au schimbat războiul pentru totdeauna.", significance: "Nașterea zborului motorizat" },
+    { ...AF_HERITAGE_TIMELINE[1], title: "Înființarea USAF", description: "Președintele Harry S. Truman semnează Actul de Securitate Națională din 1947, formând Forțele Aeriene ale SUA ca serviciu militar independent.", significance: "Forță aeriană independentă" },
+    { ...AF_HERITAGE_TIMELINE[2], title: "MiG Alley: Coreea", description: "F-86 Sabre se angajează cu MiG-15 sovietice deasupra râului Yalu în prima luptă aeriană jet contra jet din istorie.", significance: "Luptă aeriană din era jeturilor" },
+    { ...AF_HERITAGE_TIMELINE[3], title: "SR-71 Blackbird: Viteză Mach 3", description: "Lockheed SR-71 Blackbird intră în serviciul operațional, zburând la Mach 3,2 și 25.000 metri altitudine.", significance: "Recunoaștere de mare altitudine Mach 3" },
+    { ...AF_HERITAGE_TIMELINE[4], title: "Furtuna Deșertului: Tehnologia Stealth", description: "F-117 Nighthawk lovesc Bagdadul în noaptea de deschidere cu zero pierderi. Campania aeriană de 43 de zile dovedește tehnologia stealth.", significance: "Războiul stealth validat" },
+    { ...AF_HERITAGE_TIMELINE[5], title: "F-22 Raptor Atinge IOC", description: "F-22 Raptor intră în serviciul operațional: primul avion de vânătoare de generația a cincea din lume.", significance: "Dominanța generației a cincea" },
+    { ...AF_HERITAGE_TIMELINE[6], title: "B-21 Raider: Primul Zbor", description: "B-21 Raider de la Northrop Grumman completează primul zbor. Cel mai avansat bombardier stealth din lume.", significance: "Bombardier strategic next-gen" },
   ];
 }
 

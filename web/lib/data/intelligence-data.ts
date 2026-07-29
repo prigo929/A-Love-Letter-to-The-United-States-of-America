@@ -166,35 +166,35 @@ export const INTEL_AGENCIES: IntelligenceAgency[] = [
 
 export const INTEL_CAPABILITIES: IntelligenceCapability[] = [
   {
-    kicker: "01 — SIGINT",
+    kicker: "01: SIGINT",
     title: "Signals Intelligence",
     description: "Interception, analysis, and decryption of foreign communications, telemetry, and electronic signals. Led by the NSA at Fort Meade, utilizing global listening posts and satellites.",
     stat: "Global Intercepts",
     accent: "#38bdf8",
   },
   {
-    kicker: "02 — HUMINT",
+    kicker: "02: HUMINT",
     title: "Human Intelligence",
     description: "Clandestine espionage, covert source recruitment, and field intelligence operations conducted globally. Led by the CIA, delivering direct insight into adversary intentions.",
     stat: "Clandestine Networks",
     accent: "#f5a623",
   },
   {
-    kicker: "03 — GEOINT",
+    kicker: "03: GEOINT",
     title: "Geospatial Intelligence",
     description: "Exploitation and analysis of imagery and geospatial information to describe, assess, and visually depict physical features and geographically referenced activities.",
     stat: "Orbital Imaging",
     accent: "#10b981",
   },
   {
-    kicker: "04 — CYBER",
+    kicker: "04: CYBER",
     title: "Cyber Warfare Operations",
     description: "Offensive and defensive digital operations to disrupt adversary infrastructure, protect national command networks, and gather electronic intelligence.",
     stat: "Full-Spectrum Cyber",
     accent: "#a78bfa",
   },
   {
-    kicker: "05 — MASINT",
+    kicker: "05: MASINT",
     title: "Measurement & Signature Intelligence",
     description: "Scientific and technical intelligence information obtained by quantitative and qualitative analysis of data derived from radar, acoustic, nuclear, and seismic sensors.",
     stat: "Scientific ISR",
@@ -456,35 +456,35 @@ export function getIntelligenceCapabilities(locale: Locale): IntelligenceCapabil
   if (locale !== "ro") return INTEL_CAPABILITIES;
   return [
     {
-      kicker: "01 — SIGINT",
+      kicker: "01: SIGINT",
       title: "Informații din Semnale",
       description: "Interceptarea, analiza și decriptarea comunicațiilor străine și a semnalelor electronice. Coordonat de NSA la Fort Meade prin antene globale și sateliți.",
       stat: "Interceptări Globale",
       accent: "#38bdf8",
     },
     {
-      kicker: "02 — HUMINT",
+      kicker: "02: HUMINT",
       title: "Informații Umane",
       description: "Espionaj clandestin, recrutare de surse pe teren și operațiuni speciale executate la nivel global de către CIA pentru a înțelege intențiile inamice.",
       stat: "Rețele Clandestine",
       accent: "#f5a623",
     },
     {
-      kicker: "03 — GEOINT",
+      kicker: "03: GEOINT",
       title: "Informații Geospațiale",
       description: "Exploatarea și analiza imaginilor satelitare și a datelor geografice pentru a cartografia precis și a monitoriza infrastructurile critice globale.",
       stat: "Imagistică Orbitală",
       accent: "#10b981",
     },
     {
-      kicker: "04 — CIBERNETICĂ",
+      kicker: "04: CIBERNETICĂ",
       title: "Operațiuni Cibernetice",
       description: "Acțiuni digitale ofensive și defensive pentru a perturba rețelele inamice și a proteja sistemele de comandă naționale ale SUA.",
       stat: "Securitate Cibernetică",
       accent: "#a78bfa",
     },
     {
-      kicker: "05 — MASINT",
+      kicker: "05: MASINT",
       title: "Informații Tehnice de Semnătură",
       description: "Analiza științifică a datelor culese de senzori specifici (radar, acustic, nuclear) pentru a detecta și monitoriza teste balistice și nucleare.",
       stat: "Senzori Științifici",
