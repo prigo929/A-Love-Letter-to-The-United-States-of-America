@@ -8,6 +8,7 @@ import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
 import { CultureStyles } from "@/components/culture/CulturePageComponents";
 import { FourFoodsExplorer } from "@/components/culture/FourFoodsExplorer";
 import { SevenDessertsExplorer } from "@/components/culture/SevenDessertsExplorer";
+import { FastFoodBigThree } from "@/components/culture/FastFoodBigThree";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
 
@@ -311,6 +312,28 @@ export default async function FoodAndDrinksPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* CREAM: The big three of fast food (interactive) */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-24 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
+            <div className="text-center mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "MÂNCAREA CARE A CUCERIT LUMEA" : "THE FOOD THAT CONQUERED THE WORLD"}
+              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">
+                {isRo ? "MARELE TREI AL FAST-FOODULUI" : "THE BIG THREE OF FAST FOOD"}
+              </h2>
+              <p className="mx-auto mt-6 max-w-2xl font-editorial text-lg text-[#0C0907]/60">
+                {isRo
+                  ? "Hamburgerul, cartoful prăjit, nugget-ul de pui — trei creații americane atât de răspândite încât au devenit simboluri pentru mâncare în sine. Trei feluri diferite de poveste de origine. Apasă pe oricare."
+                  : "The burger, the fry, the chicken nugget — three American creations so widespread they became symbols for food itself. Three different kinds of origin story. Click any of them."}
+              </p>
+              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
+            </div>
+            <FastFoodBigThree />
           </div>
         </section>
 

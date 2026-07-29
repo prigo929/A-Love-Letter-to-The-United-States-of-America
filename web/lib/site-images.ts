@@ -434,6 +434,8 @@ import foodHamSandwich from "@/IMAGES/Culture/Food/Ham Sandwich.jpg";
 import foodGlassOfMilk from "@/IMAGES/Culture/Food/Glass of Milk.jpg";
 import foodJelloMold from "@/IMAGES/Culture/Food/Jello Mold.jpg";
 import foodCottonCandy from "@/IMAGES/Culture/Food/Cotton Candy.jpg";
+import foodMcdonaldsFries from "@/IMAGES/Culture/Food/McDonalds Fries.jpg";
+import foodChickenMcnuggets from "@/IMAGES/Culture/Food/Chicken McNuggets.jpg";
 
 // Sports — new action images
 import sportsAliVsFrazierJab from "@/IMAGES/Culture/Sports/Muhammad Ali Landing Powerful Left Jab On Joe Frazier During Historic Bout.webp";
@@ -900,6 +902,8 @@ export const SITE_IMAGES = {
     foodGlassOfMilk: foodGlassOfMilk.src,
     foodJelloMold: foodJelloMold.src,
     foodCottonCandy: foodCottonCandy.src,
+    foodMcdonaldsFries: foodMcdonaldsFries.src,
+    foodChickenMcnuggets: foodChickenMcnuggets.src,
 
     // Sports — action & venues
     jesseOwens: sportsJesseOwens.src,
