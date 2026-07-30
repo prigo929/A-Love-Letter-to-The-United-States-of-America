@@ -54,18 +54,18 @@ export default async function RailNetworkPage() {
         heroLead: "DOUĂ OCEANE.",
         heroAccent: "O SINGURĂ CALE FERATĂ.",
         heroBody:
-          "În 1869, două echipe care construiau una spre cealaltă s-au întâlnit într-un deșert din Utah și au bătut un cui de aur. Călătoria de la un ocean la altul s-a prăbușit de la șase luni la o săptămână — iar America a devenit, peste noapte, o singură țară.",
+          "În 1869, două echipe care construiau una spre cealaltă s-au întâlnit într-un deșert din Utah și au bătut un cui de aur. Călătoria de la un ocean la altul s-a prăbușit de la șase luni la o săptămână, iar America a devenit, peste noapte, o singură țară.",
         heroStats: [
           { value: "1,776 mi", label: "de cale ferată nouă până în 1869" },
-          { value: "10 mi", label: "așezate într-o singură zi — record" },
+          { value: "10 mi", label: "așezate într-o singură zi: record" },
           { value: "140,000", label: "mile de rețea de marfă astăzi" },
         ],
         lede: "Autostrada a făcut continentul accesibil. Calea ferată l-a făcut, mai întâi, posibil.",
         storyTitle: "Cursa către Promontory",
         storyP1:
-          "În plin Război Civil, Abraham Lincoln a semnat Pacific Railway Act din 1862 — un pariu că o națiune care se destrăma putea, în același timp, să se lege singură cu șine de oțel. Central Pacific a pornit din Sacramento spre est, prin granitul Sierrei Nevada: cincisprezece tuneluri săpate cu pulbere neagră de circa 15.000 de muncitori chinezi, ierni întregi petrecute sub zăpadă.",
+          "În plin Război Civil, Abraham Lincoln a semnat Pacific Railway Act din 1862, un pariu că o națiune care se destrăma putea, în același timp, să se lege singură cu șine de oțel. Central Pacific a pornit din Sacramento spre est, prin granitul Sierrei Nevada: cincisprezece tuneluri săpate cu pulbere neagră de circa 15.000 de muncitori chinezi, ierni întregi petrecute sub zăpadă.",
         storyP2:
-          "Union Pacific a pornit din Omaha spre vest, prin Marile Câmpii, cu veterani ai războiului și imigranți irlandezi așezând câte o milă, apoi câte două, apoi — într-o singură zi de aprilie 1869 — zece mile și 56 de picioare, un record care nu a fost egalat niciodată cu unelte de mână. Pe 10 mai 1869, la Promontory Summit, cele două linii s-au atins.",
+          "Union Pacific a pornit din Omaha spre vest, prin Marile Câmpii, cu veterani ai războiului și imigranți irlandezi așezând câte o milă, apoi câte două, apoi, într-o singură zi de aprilie 1869, zece mile și 56 de picioare, un record care nu a fost egalat niciodată cu unelte de mână. Pe 10 mai 1869, la Promontory Summit, cele două linii s-au atins.",
         doneWord: "GATA.",
         doneLabel:
           "Telegrama de un singur cuvânt transmisă întregii națiuni în clipa în care ciocanul a atins cuiul de aur, pe 10 mai 1869. Au sunat clopote din San Francisco până în New York.",
@@ -106,7 +106,7 @@ export default async function RailNetworkPage() {
           {
             fact: "Moștenirea din 1869 lucrează și azi",
             detail:
-              "Ruta Overland a Union Pacific urmează, pe sute de mile, chiar traseul trasat în anii 1860. La North Platte, Nebraska, se află Bailey Yard — cel mai mare triaj feroviar din lume, sortând 14.000 de vagoane în fiecare zi.",
+              "Ruta Overland a Union Pacific urmează, pe sute de mile, chiar traseul trasat în anii 1860. La North Platte, Nebraska, se află Bailey Yard: cel mai mare triaj feroviar din lume, sortând 14.000 de vagoane în fiecare zi.",
           },
         ],
         quote: "Văd peste propriul meu continent calea ferată a Pacificului trecând peste fiecare barieră.",
@@ -122,18 +122,18 @@ export default async function RailNetworkPage() {
         heroLead: "TWO OCEANS.",
         heroAccent: "ONE RAILROAD.",
         heroBody:
-          "In 1869, two crews building toward each other met in a Utah desert and drove a golden spike. The coast-to-coast journey collapsed from six months to a week — and America became, overnight, a single country.",
+          "In 1869, two crews building toward each other met in a Utah desert and drove a golden spike. The coast-to-coast journey collapsed from six months to a week, and America became, overnight, a single country.",
         heroStats: [
           { value: "1,776 mi", label: "of new track by 1869" },
-          { value: "10 mi", label: "laid in a single day — the record" },
+          { value: "10 mi", label: "laid in a single day: the record" },
           { value: "140,000", label: "miles of freight network today" },
         ],
         lede: "The highway made the continent reachable. The railroad first made it possible.",
         storyTitle: "The Race to Promontory",
         storyP1:
-          "In the middle of the Civil War, Abraham Lincoln signed the Pacific Railway Act of 1862 — a bet that a nation tearing itself apart could simultaneously bind itself together with steel. The Central Pacific struck east from Sacramento into Sierra Nevada granite: fifteen tunnels blasted with black powder by some 15,000 Chinese laborers, whole winters spent working beneath the snow.",
+          "In the middle of the Civil War, Abraham Lincoln signed the Pacific Railway Act of 1862, a bet that a nation tearing itself apart could simultaneously bind itself together with steel. The Central Pacific struck east from Sacramento into Sierra Nevada granite: fifteen tunnels blasted with black powder by some 15,000 Chinese laborers, whole winters spent working beneath the snow.",
         storyP2:
-          "The Union Pacific struck west from Omaha across the Plains, war veterans and Irish immigrants laying a mile a day, then two, then — on one April day in 1869 — ten miles and 56 feet, a record never equaled by hand. On May 10, 1869, at Promontory Summit, the two lines touched.",
+          "The Union Pacific struck west from Omaha across the Plains, war veterans and Irish immigrants laying a mile a day, then two, then, on one April day in 1869, ten miles and 56 feet, a record never equaled by hand. On May 10, 1869, at Promontory Summit, the two lines touched.",
         doneWord: "DONE.",
         doneLabel:
           "The one-word telegram flashed to the entire nation the instant the hammer touched the golden spike, May 10, 1869. Bells rang from San Francisco to New York.",
@@ -174,7 +174,7 @@ export default async function RailNetworkPage() {
           {
             fact: "The 1869 inheritance still works",
             detail:
-              "Union Pacific's Overland Route follows the original 1860s survey for hundreds of miles. At North Platte, Nebraska, sits Bailey Yard — the largest railroad classification yard in the world, sorting 14,000 cars every day.",
+              "Union Pacific's Overland Route follows the original 1860s survey for hundreds of miles. At North Platte, Nebraska, sits Bailey Yard: the largest railroad classification yard in the world, sorting 14,000 cars every day.",
           },
         ],
         quote: "I see over my own continent the Pacific railroad surmounting every barrier.",

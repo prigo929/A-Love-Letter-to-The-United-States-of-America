@@ -34,7 +34,7 @@ import { ART_ASSETS } from "@/lib/data/art-assets";
 export const metadata: Metadata = {
   title: "Art & Architecture | America's Visual Legacy",
   description:
-    "Explore the visual legacy of the United States — from Beaux-Arts skyscrapers and Art Deco spires to Abstract Expressionism and contemporary supertalls. 35,000+ museums, 5,800+ skyscrapers, and a living artistic tradition.",
+    "Explore the visual legacy of the United States, including Beaux-Arts skyscrapers, Art Deco spires, Abstract Expressionism, and contemporary supertalls. 35,000+ museums, 5,800+ skyscrapers, and a living artistic tradition.",
   alternates: { canonical: "/art-architecture" },
   openGraph: {
     title: "Art & Architecture — America's Visual Legacy",
@@ -91,7 +91,7 @@ const GALLERY_TILES = [
     era: "1825 – 1880",
     title: "Hudson River School",
     description:
-      "The first distinctly American art movement captured the sublime majesty of the continent's wild landscapes — a visual declaration of national identity.",
+      "The first distinctly American art movement captured the sublime majesty of the continent's wild terrains: a visual declaration of national identity.",
   },
   {
     href: "/art-architecture/american-realism",
@@ -173,7 +173,7 @@ const ART_ERAS = [
 
 const OVERVIEW_PARAGRAPHS_EN = [
   "No nation has shaped the built environment with greater ambition. America invented the skyscraper in the 1880s and never stopped building. From Louis Sullivan's first steel-frame tower in Chicago to the supertalls now rising past 1,500 feet in Manhattan, the United States has consistently pushed the limits of what steel, concrete, and glass can become.",
-  "The visual arts tell the same story of restless ambition. American painters invented entirely new movements — the Hudson River School's romantic landscapes, the Abstract Expressionists' emotional intensity, Pop Art's brilliant subversion of consumer culture — movements that New York exported to the world, displacing Paris as the center of global artistic gravity after 1945.",
+  "The visual arts tell the same story of restless ambition. American painters invented entirely new movements, including the Hudson River School's romantic canvases, the Abstract Expressionists' emotional intensity, and Pop Art's brilliant subversion of consumer culture. These movements moved the center of global artistic gravity from Paris to New York after 1945.",
   "Today, the United States is home to more than 35,000 museums. The Smithsonian alone holds 213 million artifacts across 21 institutions. The Metropolitan Museum of Art is among the most visited cultural institutions on Earth. From the National Mall in Washington to the museums lining Fifth Avenue, America has built a permanent architectural argument for the value of beauty.",
 ];
 
@@ -420,7 +420,7 @@ export default async function ArtArchitecturePage() {
         <ArtQuoteBreak
           quote={isRo
             ? "Arhitectura este despre mediul public, spațiul public, cum oamenii împart un spațiu și cum acel spațiu le poate îmbunătăți viața."
-            : "Architecture is about public space, shared space, how people experience that space and how that space can enhance their lives."
+            : "Architecture is about public space, shared space, how people experience that space and how that space can enrich their lives."
           }
           attribution="Maya Lin"
           title={isRo ? "Arhitect și artist, proiectantul Memorialului Veteranilor din Vietnam" : "Architect & artist, designer of the Vietnam Veterans Memorial"}

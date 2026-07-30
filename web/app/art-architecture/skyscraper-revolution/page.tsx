@@ -57,8 +57,8 @@ const TOWERS: Tower[] = [
   {
     key: "woolworth", name: "Woolworth Building", city: "New York", cityRo: "New York",
     year: 1913, feet: 792, meters: 241, architect: "Cass Gilbert", asset: "woolworth", wasWorldsTallest: true,
-    note: "The 'Cathedral of Commerce' — Gothic tracery running 60 storeys up a steel frame, paid for in cash by the man who sold the nation its five-and-dime goods. World's tallest for seventeen years, and proof that the skyscraper could be beautiful, not merely big.",
-    noteRo: "„Catedrala Comerțului” — dantelărie gotică urcând 60 de etaje pe un schelet de oțel, plătită cash de omul care a vândut națiunii mărfuri de bazar. Cea mai înaltă clădire din lume timp de șaptesprezece ani și dovada că zgârie-norul putea fi frumos, nu doar mare.",
+    note: "The 'Cathedral of Commerce', Gothic tracery running 60 storeys up a steel frame, paid for in cash by the man who sold the nation its five-and-dime goods. World's tallest for seventeen years, and proof that the skyscraper could be both beautiful and massive.",
+    noteRo: "„Catedrala Comerțului”, dantelărie gotică urcând 60 de etaje pe un schelet de oțel, plătită cash de omul care a vândut națiunii mărfuri de bazar. Cea mai înaltă clădire din lume timp de șaptesprezece ani și dovada că zgârie-norul putea fi deopotrivă frumos și uriaș.",
   },
   {
     key: "chrysler", name: "Chrysler Building", city: "New York", cityRo: "New York",

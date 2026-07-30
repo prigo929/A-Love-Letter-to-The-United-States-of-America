@@ -119,7 +119,7 @@ export default async function PowerGridPage() {
           { value: "14,420", label: "operating power plants, totalling 1,399 GW of capacity" },
         ],
         storyTitle: "One Machine, the Size of a Continent",
-        lede: "Electricity cannot be stored at scale. So the grid must generate, at every instant, exactly as much as a continent consumes — no more, no less.",
+        lede: "Electricity cannot be stored at scale. So the grid must generate, at every instant, exactly as much as a continent consumes: no more, no less.",
         storyP1:
           "When you switch on a light in Ohio, somewhere a turbine spins imperceptibly faster to make up for it. The entire Eastern grid, from Florida to Manitoba, turns in perfect lockstep at sixty cycles a second, a single electric organism stretched across half a continent.",
         storyP2:
@@ -160,7 +160,7 @@ export default async function PowerGridPage() {
         gaP:
           "The grid is the infrastructure we use most and think about least. It has run continuously for over a century, a web of copper and steel so reliable that the only time we notice it is the rare moment it goes dark.",
         quote:
-          "The electric grid may be the greatest engineering achievement of the twentieth century — a single machine the size of a nation, that the world keeps running.",
+          "The electric grid may be the greatest engineering achievement of the twentieth century: a single machine the size of a nation, that the world keeps running.",
         quoteAttribution: "On the American electric grid",
         quoteTitle: "The Machine That Never Sleeps",
         prevLink: "↑ Infrastructure Overview",

@@ -39,8 +39,8 @@ const THOREAU_TEXT =
 const EMERSON_NOTES: Annotation[] = [
   {
     phrase: "envy is ignorance; imitation is suicide",
-    note: "Emerson declares that copying others is a betrayal of one's unique identity. Conformity is not just a social compromise, but a spiritual self-destruction.",
-    noteRo: "Emerson declară că a-i copia pe alții este o trădare a propriei identități unice. Conformismul nu este doar un compromis social, ci o sinucidere spirituală.",
+    note: "Emerson declares that copying others is a betrayal of one's unique identity. Conformity acts as both a social compromise and a spiritual self-destruction.",
+    noteRo: "Emerson declară că a-i copia pe alții este o trădare a propriei identități unice. Conformismul reprezintă deopotrivă un compromis social și o distrugere spirituală.",
   },
   {
     phrase: "plot of ground which is given to him to till",

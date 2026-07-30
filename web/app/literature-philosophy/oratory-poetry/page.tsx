@@ -35,7 +35,7 @@ import { BookShowcase } from "@/components/literature/BookShowcase";
 export const metadata: Metadata = {
   title: "Oratory & Poetry | Literature & Philosophy",
   description:
-    "The Gettysburg Address ran 272 words and two minutes. A close reading of American oratory as a written form, from Lincoln and Douglass to Whitman.",
+    "The Gettysburg Address ran 272 words and two minutes. A close reading of American oratory as a written form, including Lincoln, Douglass, and Whitman.",
   alternates: { canonical: "/literature-philosophy/oratory-poetry" },
 };
 

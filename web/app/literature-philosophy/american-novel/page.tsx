@@ -30,7 +30,7 @@ import { BookShowcase } from "@/components/literature/BookShowcase";
 export const metadata: Metadata = {
   title: "The American Novel | Literature & Philosophy",
   description:
-    "Call me Ishmael. A century of American first sentences, from Melville to Ellison, and what each one announced about the book behind it.",
+    "Call me Ishmael. A century of American first sentences, including Melville, Mark Twain, and Ellison, and what each one announced about the book behind it.",
   alternates: { canonical: "/literature-philosophy/american-novel" },
 };
 
@@ -148,7 +148,7 @@ export default async function AmericanNovelPage() {
           "An American novel announces its intentions in its first sentence. Six openings across a century, and what each one promises about the book behind it.",
         openingTitle: "The opening as a declaration",
         openingBody:
-          "American novelists have treated the first sentence differently from their European contemporaries. Not as a ramp into the story but as a statement of method: here is the kind of English this book will use, here is who is speaking, and here is what I am not going to tell you. Melville opens on an alias. Twain opens by refusing literary grammar. Ellison opens on an impossibility. Each of these sentences is a contract.",
+          "American novelists have treated the first sentence differently from their European contemporaries. They treat it as a statement of method rather than a simple ramp into the story: here is the kind of English this book will use, here is who is speaking, and here is what I am not going to tell you. Melville opens on an alias. Twain opens by refusing literary grammar. Ellison opens on an impossibility. Each of these sentences is a contract.",
         wallTitle: "Six openings",
         wallBody:
           "Pick a title on the right. The sentence stays in English in both languages — a translated first line is a different sentence, and its rhythm is precisely what is under discussion. The commentary is translated.",

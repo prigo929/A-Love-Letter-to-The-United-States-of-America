@@ -45,7 +45,7 @@ export default async function InfrastructureHubPage() {
         heroLead: "MAȘINĂRIA",
         heroAccent: "CONTINENTALĂ",
         heroBody:
-          "Patru fusuri orare, două oceane, o singură piață. America nu este doar o țară mare — este un continent legat într-un întreg funcțional de autostrăzi, șine, piste și beton, la o scară pe care nicio altă națiune nu a egalat-o.",
+          "Patru fusuri orare, două oceane, o singură piață. America funcționează ca un continent legat într-un întreg de autostrăzi, șine, piste și beton, la o scară pe care nicio altă națiune nu a egalat-o.",
         heroStats: [
           { value: "47,856", label: "mile de autostrăzi interstatale" },
           { value: "140,000", label: "mile de rețea feroviară de marfă" },
@@ -148,13 +148,13 @@ export default async function InfrastructureHubPage() {
         networksTitle: "Sistemele care leagă continentul",
         highwayCard: {
           title: "Autostrăzi Interstatale",
-          desc: "Cel mai mare proiect de lucrări publice din istorie — 47.856 de mile de autostrăzi.",
+          desc: "Cel mai mare proiect de lucrări publice din istorie: 47.856 de mile de autostrăzi.",
           cta: "Explorează coridoarele →",
           alt: "I-70 prin Glenwood Canyon, Colorado",
         },
         railCard: {
           title: "Căi Ferate de Marfă",
-          desc: "De la cuiul de aur din 1869 la giganții feroviari moderni — legând oceanele cu linii de oțel.",
+          desc: "De la cuiul de aur din 1869 la giganții feroviari moderni, legând oceanele cu linii de oțel.",
           cta: "Explorează căile ferate →",
           alt: "Căi ferate transcontinentale",
         },
@@ -198,7 +198,7 @@ export default async function InfrastructureHubPage() {
         heroLead: "THE CONTINENTAL",
         heroAccent: "MACHINE",
         heroBody:
-          "Four time zones, two oceans, one market. America is not merely a large country — it is a continent bound into a working whole by highway, rail, runway and concrete, at a scale no other nation has matched.",
+          "Four time zones, two oceans, one market. America operates as a continent bound into a working whole by highway, rail, runway, and concrete, at a scale no other nation has matched.",
         heroStats: [
           { value: "47,856", label: "miles of Interstate highway" },
           { value: "140,000", label: "miles of freight rail network" },
@@ -227,7 +227,7 @@ export default async function InfrastructureHubPage() {
           },
           power: {
             title: "The Continental Power Grid",
-            desc: "The largest machine built by mankind — a vast network of high-voltage transmission lines powering a continent."
+            desc: "The largest machine built by mankind: a vast network of high-voltage transmission lines powering a continent."
           },
           rail: {
             title: "Freight Rail Network",
@@ -301,13 +301,13 @@ export default async function InfrastructureHubPage() {
         networksTitle: "The Systems That Bind the Continent",
         highwayCard: {
           title: "Interstate Highways",
-          desc: "The largest public works project in U.S. history — 47,856 miles of arterial freeways.",
+          desc: "The largest public works project in U.S. history: 47,856 miles of arterial freeways.",
           cta: "Explore the corridors →",
           alt: "I-70 through Glenwood Canyon, Colorado",
         },
         railCard: {
           title: "Freight Railroads",
-          desc: "From the 1869 golden spike to modern freight giants — binding two oceans with steel rails.",
+          desc: "From the 1869 golden spike to modern freight giants, binding two oceans with steel rails.",
           cta: "Explore the railroads →",
           alt: "Transcontinental railroads",
         },

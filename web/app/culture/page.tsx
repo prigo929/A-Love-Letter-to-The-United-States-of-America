@@ -20,6 +20,7 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
 import DeepDiveSection from "@/components/shared/DeepDiveSection";
+import { CultureAmericana } from "@/components/culture/CultureAmericana";
 import { IconicPhotographs } from "@/components/shared/IconicPhotographs";
 import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
 

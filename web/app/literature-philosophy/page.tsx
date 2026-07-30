@@ -16,7 +16,7 @@ import { getServerLocale } from "@/lib/i18n/server";
 export const metadata: Metadata = {
   title: "Literature & Philosophy | America: The Greatest Nation",
   description:
-    "Four centuries of American writing, from a Puritan sermon to Toni Morrison — the ideas, the voices, and the one native philosophy the country produced.",
+    "Four centuries of American writing, spanning early Puritan sermons through Toni Morrison, featuring the ideas, voices, and native philosophy of the republic.",
   alternates: { canonical: "/literature-philosophy" },
 };
 
@@ -50,7 +50,7 @@ const SUB_PAGES = [
     built: true,
     title: "Pragmatism",
     titleRo: "Pragmatism",
-    blurb: "America's one native philosophy: truth as the thing that works, from Peirce to Rorty.",
+    blurb: "America's one native philosophy: truth as practical outcome, anchored by Peirce, James, and Dewey.",
     blurbRo: "Singura filosofie autohtonă a Americii: adevărul ca lucru care funcționează, de la Peirce la Rorty.",
   },
   {
@@ -96,7 +96,7 @@ export default async function LiteraturePhilosophyHubPage() {
         titleLead: "CALL ME",
         titleAccent: "ISHMAEL",
         heroDesc:
-          "Four centuries of American writing, from a Puritan sermon to Toni Morrison — the ideas, the voices, and the one native philosophy the country produced.",
+          "Four centuries of American writing, spanning early Puritan sermons through Toni Morrison, featuring the ideas, voices, and native philosophy of the republic.",
         introTitle: "A literature that invented itself",
         introBody:
           "America began with no literature of its own. For a century and a half it borrowed England's forms and wrote sermons. Then, in a few astonishing decades in the mid-nineteenth century, it found its own voice — and it has spent the hundred and fifty years since arguing about who gets to use it. This is the story of that argument.",
