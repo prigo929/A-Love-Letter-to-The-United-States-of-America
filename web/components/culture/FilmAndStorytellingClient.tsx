@@ -804,7 +804,7 @@ export function FilmAndStorytellingClient({
         {/* Bottom Navigation — only shown when standalone */}
         {showBottomNav && (
           <div className="flex items-center justify-between border-t border-white/10 pt-12 mt-20 font-body">
-            <a href="/culture/overview" className="text-xs uppercase tracking-widest text-[#F5EDD8]/50 hover:text-white transition-colors">
+            <a href="/culture" className="text-xs uppercase tracking-widest text-[#F5EDD8]/50 hover:text-white transition-colors">
               {content.backLink}
             </a>
             <a href="/culture/sports" className="text-xs uppercase tracking-widest text-glory-gold hover:text-white transition-colors">

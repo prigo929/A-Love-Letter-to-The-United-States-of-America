@@ -82,8 +82,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/culture/music-genres",
     "/culture/fashion",
     "/culture/english-language",
-    "/culture/overview",
-    
+
     // Innovation
     "/innovation",
     "/innovation/internet-history",
