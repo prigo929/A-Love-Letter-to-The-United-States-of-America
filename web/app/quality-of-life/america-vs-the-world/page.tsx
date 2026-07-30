@@ -75,11 +75,11 @@ const copyEn: VersusCopy = {
   heroLead: "NORMAL AMERICAN",
   heroAccent: "EXCELLENCE",
   heroDescription:
-    "Not Manhattan, not Beverly Hills — a standard affluent suburb like The Woodlands north of Houston already looks like science fiction next to a major European city. This is what free markets, secure property rights, and competent institutions build in the physical world.",
+    "Not Manhattan, not Beverly Hills: a standard affluent suburb like The Woodlands north of Houston already looks like science fiction next to a major European city. Free markets, secure property rights, and competent institutions build this physical reality.",
   thesisEyebrow: "WHY THE GAP EXISTS",
   thesisTitle: "Institutions First — Not Geography, Not Luck",
   thesisP1:
-    "The difference between a North-Houston suburb and a city like Iași is not natural resources or current income alone — it is accumulated institutional capital built over generations. Secure property rights, deep capital markets, contract law that actually works, and a government that mostly facilitates rather than obstructs let private capital compound continuously. The Woodlands itself is almost a controlled experiment: a private developer planned the trails, parks, town center, and drainage with minimal state interference, and the result looks like what markets optimize for when people are free to build.",
+    "The difference between a North-Houston suburb and a city like Iași stems from accumulated institutional capital built over generations, rather than natural resources or current income alone. Secure property rights, deep capital markets, functioning contract law, and a government that mostly facilitates private capital let wealth compound continuously. The Woodlands operates as a controlled experiment: a private developer planned the trails, parks, town center, and drainage with minimal state interference, demonstrating what markets optimize for when citizens are free to build.",
   thesisP2:
     "The most underrated part is the price paradox. For tradable goods — electronics, cars, appliances, clothing — and especially fuel, American prices are frequently lower in absolute terms, even though the American worker earns several times more. The wage-adjusted gap is enormous: the same week of groceries that costs an American two hours of work costs far more labor-hours elsewhere, for an equivalent or lower-quality basket. Capital per worker, competition as a quality ratchet, and the franchise model standardizing quality across geography do the work no planning committee ever could.",
   sweepEyebrow: "CATEGORY BY CATEGORY",
@@ -111,7 +111,7 @@ const copyEn: VersusCopy = {
   chartWageTitle: "Average annual wage, PPP-adjusted (US$)",
   chartGasTitle: "Gasoline price (US$ per gallon) — lower is better",
   chartGasSubtitle: "Pump price for premium-grade fuel, recent annual average.",
-  tableTitle: "North Houston vs. Iași — the same wallet, a different life",
+  tableTitle: "North Houston vs. Iași: the same wallet, a different life",
   tableSubtitle: "Representative figures; rounded for comparison.",
   tableUs: "North Houston",
   tableThem: "Iași, Romania",
@@ -152,7 +152,7 @@ const copyEn: VersusCopy = {
   livesEyebrow: "TWO PARALLEL LIVES",
   livesTitle: "Same Ambition, Different Platform",
   livesIntro:
-    "The same intelligent, hard-working person — one in north Houston, one in Iași. Not a miracle versus poverty; a functioning platform versus constant friction.",
+    "Comparing the same intelligent, hard-working person in north Houston versus Iași highlights a functioning platform versus constant friction.",
   hereLabel: "North Houston / The Woodlands",
   thereLabel: "Iași, Romania",
   stages: [
@@ -175,7 +175,7 @@ const copyEn: VersusCopy = {
   pairsEyebrow: "TWELVE CITIES, TWO WORLDS",
   pairsTitle: "Same Ambition, City by City",
   pairsIntro:
-    "Pair each American city with its closest global counterpart — its sister in role, energy, and ambition — and the institutional gap snaps into focus. These aren't miracle-versus-poverty matchups; they're the same kind of place on two very different platforms.",
+    "Pairing each American city with its closest global counterpart reveals how identical ambition performs on two distinct platforms.",
   pairs: [
     { us: "The Woodlands / N. Houston, TX", world: "Iași, Romania", note: "The flagship comparison: master-planned suburban excellence against a post-communist university city. The most dramatic gap on the page — the emotional anchor of the whole section." },
     { us: "Frisco / Plano / Dallas, TX", world: "Warsaw, Poland", note: "Both their region's rising star, full of energy and ambition. But Warsaw's wages and institutional ceiling sit in another universe — ambition on a smaller platform." },
@@ -210,7 +210,7 @@ const copyEn: VersusCopy = {
   ],
   closingTitle: "The Takeaway",
   closingBody:
-    "What's remarkable is that the American side isn't exceptional by American standards — it's the normal affluent baseline, repeated across the entire Sun Belt. The gap is capitalism working as advertised: private capital, competitive markets, the rule of law, and a government that facilitates rather than obstructs. Its causes are replicable in principle — which is exactly why the comparison is not just attractive, but instructive.",
+    "The American baseline represents the normal affluent expectation repeated across the Sun Belt. Private capital, competitive markets, the rule of law, and supportive government institutions deliver capitalism as advertised. Its underlying causes are replicable in principle, rendering the comparison instructive for policy and individual decisions.",
   oracle:
     "Ask the AI Oracle about purchasing-power parity, the 30-year fixed mortgage, capital per worker, or why American retail prices are often lower in absolute terms.",
 };
@@ -221,11 +221,11 @@ const copyRo: VersusCopy = {
   heroLead: "EXCELENȚA AMERICANĂ",
   heroAccent: "OBIȘNUITĂ",
   heroDescription:
-    "Nu Manhattan, nu Beverly Hills — o suburbie obișnuită și prosperă precum The Woodlands, la nord de Houston, arată deja ca science-fiction față de un oraș european major. Asta construiesc în lumea reală piețele libere, drepturile de proprietate sigure și instituțiile competente.",
+    "Nu Manhattan, nu Beverly Hills: o suburbie obișnuită și prosperă precum The Woodlands, la nord de Houston, arată deja ca science-fiction față de un oraș european major. Aceasta este ceea ce construiesc în lumea reală piețele libere, drepturile de proprietate sigure și instituțiile competente.",
   thesisEyebrow: "DE CE EXISTĂ DECALAJUL",
   thesisTitle: "Mai Întâi Instituțiile — Nu Geografia, Nu Norocul",
   thesisP1:
-    "Diferența dintre o suburbie din nordul Houstonului și un oraș precum Iași nu ține doar de resurse naturale sau de venitul actual — ci de capitalul instituțional acumulat de-a lungul generațiilor. Drepturi de proprietate sigure, piețe de capital adânci, un drept contractual care chiar funcționează și un stat care în general facilitează în loc să obstrucționeze permit capitalului privat să se compună continuu. The Woodlands este aproape un experiment controlat: un dezvoltator privat a planificat traseele, parcurile, centrul și drenajul cu interferență minimă a statului.",
+    "Diferența dintre o suburbie din nordul Houstonului și un oraș precum Iași derivă din capitalul instituțional acumulat de-a lungul generațiilor, nu doar din resurse naturale sau venitul actual. Drepturi de proprietate sigure, piețe de capital adânci, un drept contractual funcțional și un stat care facilitează permit capitalului privat să se compună continuu. The Woodlands exemplifică un experiment controlat: un dezvoltator privat a planificat traseele, parcurile, centrul și drenajul cu interferență minimă a statului.",
   thesisP2:
     "Cea mai subapreciată parte este paradoxul prețurilor. Pentru bunuri tranzacționabile — electronice, mașini, electrocasnice, haine — și în special pentru combustibil, prețurile americane sunt adesea mai mici în termeni absoluți, deși muncitorul american câștigă de câteva ori mai mult. Decalajul ajustat la salariu este uriaș: aceeași săptămână de cumpărături care îl costă pe un american două ore de muncă costă mult mai multe ore de muncă în altă parte, pentru un coș echivalent sau de calitate mai slabă.",
   sweepEyebrow: "CATEGORIE CU CATEGORIE",
@@ -298,7 +298,7 @@ const copyRo: VersusCopy = {
   livesEyebrow: "DOUĂ VIEȚI PARALELE",
   livesTitle: "Aceeași Ambiție, o Altă Platformă",
   livesIntro:
-    "Aceeași persoană inteligentă și muncitoare — una în nordul Houstonului, una în Iași. Nu un miracol versus sărăcie; o platformă funcțională versus o frecare constantă.",
+    "Aceeași persoană inteligentă și muncitoare, una în nordul Houstonului și una în Iași, arată diferența dintre o platformă funcțională și o frecare constantă.",
   hereLabel: "Nordul Houstonului / The Woodlands",
   thereLabel: "Iași, România",
   stages: [
@@ -321,7 +321,7 @@ const copyRo: VersusCopy = {
   pairsEyebrow: "DOUĂSPREZECE ORAȘE, DOUĂ LUMI",
   pairsTitle: "Aceeași Ambiție, Oraș cu Oraș",
   pairsIntro:
-    "Pune fiecare oraș american alături de omologul său global cel mai apropiat — sora sa ca rol, energie și ambiție — și decalajul instituțional devine clar. Nu sunt confruntări miracol-versus-sărăcie; sunt același tip de loc pe două platforme foarte diferite.",
+    "Comparația fiecărui oraș american cu omologul său global arată modul în care ambiția performează pe două platforme distincte.",
   pairs: [
     { us: "The Woodlands / N. Houston, TX", world: "Iași, România", note: "Comparația-far: excelență suburbană planificată față de un oraș universitar post-comunist. Cel mai dramatic decalaj de pe pagină — ancora emoțională a întregii secțiuni." },
     { us: "Frisco / Plano / Dallas, TX", world: "Varșovia, Polonia", note: "Ambele, steaua în ascensiune a regiunii lor, pline de energie și ambiție. Dar salariile și plafonul instituțional al Varșoviei sunt în alt univers — ambiție pe o platformă mai mică." },
@@ -356,7 +356,7 @@ const copyRo: VersusCopy = {
   ],
   closingTitle: "Concluzia",
   closingBody:
-    "Remarcabil este că partea americană nu este excepțională după standardele americane — este nivelul de bază, prosper și normal, repetat în tot Sun Belt-ul. Decalajul este capitalismul funcționând așa cum a fost promis: capital privat, piețe competitive, statul de drept și un guvern care facilitează în loc să obstrucționeze. Cauzele lui sunt, în principiu, replicabile — exact de aceea comparația nu este doar atrăgătoare, ci instructivă.",
+    "Nivelul american de bază reprezintă o normă de prosperitate repetată în tot Sun Belt-ul. Capitalismul funcționează prin capital privat, piețe competitive, statul de drept și un guvern care sprijină dezvoltarea. Cauzele sale sunt replicabile în principiu, făcând comparația instructivă.",
   oracle:
     "Întreabă Oracolul AI despre paritatea puterii de cumpărare, ipoteca fixă pe 30 de ani, capitalul pe muncitor sau de ce prețurile din comerțul american sunt adesea mai mici în termeni absoluți.",
 };

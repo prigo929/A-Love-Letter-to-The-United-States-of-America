@@ -141,21 +141,21 @@ const copyEn: AbundanceCopy = {
       items: [
         {
           title: "The Self-Storage Civilization: 90% of Global Share",
-          body: "The US holds a 90% share of global self-storage inventory, with over 50,000 facilities — more locations than McDonald's, Starbucks, and Subway combined. Generating $40B+ in annual revenue, this industry is a physical ledger of American material abundance. Self-storage exists at scale in the United States because American households consistently accumulate more goods than their already-large homes can contain.",
+          body: "The US holds a 90% share of global self-storage inventory, with over 50,000 facilities, more locations than McDonald's, Starbucks, and Subway combined. Generating $40B+ in annual revenue, this industry is a physical ledger of American material abundance. Self-storage exists at scale in the United States because American households consistently accumulate more goods than their already-large homes can contain.",
           source: "SpareFoot Industry Statistics",
           sourceUrl:
             "https://www.sparefoot.com/self-storage/news/1432-self-storage-industry-statistics/",
         },
         {
           title: "$150 Billion Pet Economy",
-          body: "Total US pet industry sales reached $150.6 billion in 2024, representing 40% of the global market. Americans spend more on their pets annually than the entire GDP of dozens of sovereign nations. Advanced veterinary medicine — MRIs, oncologists, cardiologists for animals — represents a standard-of-living data point unique to the US, where middle-class pet owners routinely access specialist veterinary care.",
+          body: "Total US pet industry sales reached $150.6 billion in 2024, representing 40% of the global market. Americans spend more on their pets annually than the entire GDP of dozens of sovereign nations. Advanced veterinary medicine, including MRIs, oncologists, and cardiologists for animals, represents a standard-of-living data point unique to the US, where middle-class pet owners routinely access specialist veterinary care.",
           source: "American Pet Products Association (APPA)",
           sourceUrl:
             "https://globalpetindustry.com/news/the-pet-industry-in-the-united-states/",
         },
         {
           title: "24.5 Sq Ft of Retail Space Per Capita",
-          body: "The US has 24.5 sq ft of retail space per person, compared to an average of just 4.5 sq ft in Europe. This massive infrastructure of big-box stores, strip malls, and shopping centers creates permanent price competition and consumer abundance. The American consumer goods ecosystem — Walmart, Costco, Target, Home Depot, Amazon warehouses — represents a supply-chain and retail density without precedent.",
+          body: "The US has 24.5 sq ft of retail space per person, compared to an average of just 4.5 sq ft in Europe. This massive infrastructure of big-box stores, strip malls, and shopping centers creates permanent price competition and consumer abundance. The American consumer goods ecosystem, anchored by Walmart, Costco, Target, Home Depot, and Amazon warehouses, represents a supply-chain and retail density without precedent.",
           source: "Statista Retail Space Report",
           sourceUrl:
             "https://www.statista.com/statistics/1058852/retail-space-per-capita-select-countries-worldwide/",
@@ -178,7 +178,7 @@ const copyRo: AbundanceCopy = {
   thesisParagraph1:
     "Când economiștii vorbesc despre standarde de viață, apelează la PIB per capita sau date salariale. Dar acele abstracțiuni nu reușesc să surprindă cum arată cu adevărat viața de zi cu zi americană în termeni fizici. Lentila corectă este densitatea bunurilor de consum — obiectele tangibile care definesc confortul, mobilitatea și libertatea în viața de zi cu zi. Prin această măsură, Statele Unite se separă complet de orice altă societate din istoria omenirii.",
   thesisParagraph2:
-    "Piscine private. Aeronave personale. Ambarcațiuni de agrement. Mașină de spălat și uscător în apartament. Aer condiționat central în august. Frigider mare în garaj. O a doua mașină. O unitate de self-storage pentru excedent. Acestea nu sunt descrieri ale stilului de viață al unui american bogat — sunt descrieri ale gospodăriei americane mediane.",
+    "Private swimming pools. Personal aircraft. Recreational boats. In-unit washer-dryer. Central air conditioning in August. Full-size garage refrigerator. A second car. A self-storage unit for the overflow. These descriptions define the median American household, particularly across the Sun Belt and South.",
   statsTitle: "Abundența de Consum în Cifre",
   stats: [
     {
@@ -233,14 +233,14 @@ const copyRo: AbundanceCopy = {
       items: [
         {
           title: "800 de Vehicule la 1.000 de Persoane",
-          body: "Cu ~800 de vehicule la 1.000 de persoane, combustibil ieftin și sistemul de autostrăzi Interstate — 47.000 de mile de autostradă cu acces limitat — americanii se bucură de o libertate de mișcare personală fără egal.",
+          body: "With ~800 vehicles per 1,000 people, cheap fuel, and the Interstate Highway System (47,000 miles of limited-access freeway built and maintained by the federal government), Americans enjoy unmatched personal freedom of movement.",
           source: "List of countries by vehicles per capita",
           sourceUrl:
             "https://en.wikipedia.org/wiki/List_of_countries_by_vehicles_per_capita",
         },
         {
           title: "42% din Flota Globală de Aviație Generală",
-          body: "Flota aviației civile din SUA are 220.000 de aeronave înregistrate — 42% din totalul global, eclipsând China (5.366) și Canada (4.888). Avionul personal — un activ al clasei de mijloc în America rurală — este practic inexistent ca vehicul civil în orice altă țară.",
+          body: "Flota aviației civile din SUA are 220.000 de aeronave înregistrate (42% din totalul global), eclipsând China (5.366) și Canada (4.888). Avionul personal, un activ al clasei de mijloc în America rurală, este practic inexistent ca vehicul civil în orice altă țară.",
           source: "Aircraft Owners and Pilots Association (AOPA)",
           sourceUrl:
             "https://download.aopa.org/Media/General-Aviation-Explained-r5.pdf",
@@ -271,14 +271,14 @@ const copyRo: AbundanceCopy = {
       items: [
         {
           title: "Civilizația Self-Storage: 90% din Cota Globală",
-          body: "SUA dețin 90% din inventarul global de self-storage, cu peste 50.000 de facilități — mai multe locații decât McDonald's, Starbucks și Subway combinate. Generând venituri anuale de 40+ miliarde de dolari, această industrie este un registru fizic al abundenței materiale americane.",
+          body: "SUA dețin 90% din inventarul global de self-storage, cu peste 50.000 de facilități, mai multe locații decât McDonald's, Starbucks și Subway combinate. Generând venituri anuale de 40+ miliarde de dolari, această industrie este un registru fizic al abundenței materiale americane.",
           source: "SpareFoot Industry Statistics",
           sourceUrl:
             "https://www.sparefoot.com/self-storage/news/1432-self-storage-industry-statistics/",
         },
         {
           title: "Economia Animalelor de Companie de 150 Miliarde de Dolari",
-          body: "Vânzările totale din industria americană a animalelor de companie au atins 150,6 miliarde de dolari în 2024, reprezentând 40% din piața globală. Medicina veterinară avansată — RMN-uri, oncologi, cardiologi pentru animale — reprezintă un punct de date privind nivelul de trai unic în SUA.",
+          body: "Vânzările totale din industria americană a animalelor de companie au atins 150,6 miliarde de dolari în 2024, reprezentând 40% din piața globală. Medicina veterinară avansată, inclusiv RMN-uri, oncologi și cardiologi pentru animale, reprezintă un punct de date privind nivelul de trai unic în SUA.",
           source: "American Pet Products Association (APPA)",
           sourceUrl:
             "https://globalpetindustry.com/news/the-pet-industry-in-the-united-states/",
@@ -376,8 +376,8 @@ export default async function AbundancePage() {
             </h2>
             <p className="macro-body text-sm mb-10 max-w-2xl">
               {isRo
-                ? "Supermarketul american este, poate, cea mai vie expresie a abundenței de masă: raioane de produse proaspete pe tot parcursul anului, mii de SKU-uri, prețuri mici și magazine deschise non-stop — o normalitate pe care restul lumii o consideră lux."
-                : "The American supermarket may be the most vivid expression of mass abundance there is: year-round fresh produce, tens of thousands of SKUs, low prices, and stores open around the clock — a normalcy much of the world would consider luxury."}
+                ? "Supermarketul american este cea mai vie expresie a abundenței de masă: raioane de produse proaspete pe tot parcursul anului, mii de SKU-uri, prețuri mici și magazine deschise non-stop, o normalitate pe care restul lumii o consideră lux."
+                : "The American supermarket is a vivid expression of mass abundance: year-round fresh produce, tens of thousands of SKUs, low prices, and stores open around the clock, a normalcy much of the world would consider luxury."}
             </p>
             <PhotoLightboxGrid
               gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10"

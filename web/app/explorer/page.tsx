@@ -73,7 +73,7 @@ export default async function ExplorerPage() {
     ePluribusBody:
       locale === "ro"
         ? "Statele Unite ale Americii sunt o republică federală formată din 50 de state diverse, care se întind peste păduri străvechi, câmpii nesfârșite, canioane adânci și țărmuri maiestuoase. De la cele treisprezece colonii fondatoare de pe coasta Atlanticului până la piscurile vulcanice ale nord-vestului Pacificului, fiecare stat își aduce propria economie, moștenire și personalitate în țesătura comună a Uniunii."
-        : "The United States of America is a federal republic of 50 diverse states spanning ancient forests, endless plains, deep canyons, and majestic coastlines. From the founding thirteen colonies along the Atlantic coast to the towering volcanic peaks of the Pacific Northwest, each state contributes its own unique economy, heritage, and character to the shared tapestry of the Union.",
+        : "The United States of America is a federal republic of 50 diverse states spanning ancient forests, endless plains, deep canyons, and majestic coastlines. From the founding thirteen colonies along the Atlantic coast to the towering volcanic peaks of the Pacific Northwest, each state contributes its own unique economy, heritage, and character to the Union.",
     regionNames:
       locale === "ro"
         ? { Northeast: "Statele din Nord-Est", South: "Statele din Sud", Midwest: "Statele din Midwest", West: "Statele din Vest" }

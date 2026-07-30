@@ -195,10 +195,10 @@ export default async function QualityOfLifePage() {
               { src: SITE_IMAGES.culture.dinerInside, caption: isRo ? "Cultura Diner-ului" : "Diner Dining", description: isRo ? "Restaurantul informal american, un simbol al clasei de mijloc." : "The informal community hub for middle-class casual dining.", aspect: "16/9", alt: isRo ? "Cultura Diner-ului" : "Diner Dining" },
               { src: SITE_IMAGES.culture.fashionJeansSneakers, caption: isRo ? "Moda Uniformizată" : "Democratic Fashion", description: isRo ? "Blugi albaștri și pantofi sport: uniforma modernă fără clase." : "Levi's blue jeans and sneakers: the global uniform of classless comfort.", aspect: "16/9", alt: isRo ? "Moda Uniformizată" : "Democratic Fashion" },
               { src: "/images/library/Housing/USA Suburb sunset.jpg", caption: isRo ? "Suburbia la Apus" : "Suburban Sunset", description: isRo ? "Case spațioase cu curte, un standard generalizat." : "Spacious multi-bedroom homes with lawns as a baseline norm.", aspect: "16/9", alt: isRo ? "Suburbia la Apus" : "Suburban Sunset" },
-              { src: SITE_IMAGES.housing.frontPorch, caption: isRo ? "Pridvorul American" : "The American Porch", description: isRo ? "Veranda din față — un spațiu semi-public emblematic." : "The front porch: a uniquely American semi-public living space.", aspect: "16/9", alt: isRo ? "Pridvorul American" : "The American Porch" },
-              { src: SITE_IMAGES.housing.indianaAutumn, caption: isRo ? "Toamna în Suburbie" : "Suburban Autumn", description: isRo ? "Cartiere cu frunze ruginii — un tablou al normalității americane." : "Tree-lined suburban streets as a middle-class baseline.", aspect: "16/9", alt: isRo ? "Toamna în Suburbie" : "Suburban Autumn" },
-              { src: SITE_IMAGES.housing.suburbSpring, caption: isRo ? "Primăvara în Suburbie" : "Suburb in Spring", description: isRo ? "Peluze verzi și flori — peisajul standard al casei americane." : "Green lawns and blossoms: the expected standard of home ownership.", aspect: "16/9", alt: isRo ? "Primăvara în Suburbie" : "Suburb in Spring" },
-              { src: SITE_IMAGES.housing.floridaSuburb, caption: isRo ? "Suburbia Floridei" : "Florida Suburbs", description: isRo ? "Case solare, piscine și parcuri — viața în Sun Belt." : "Sun Belt living: pools, palms, and year-round outdoor life.", aspect: "16/9", alt: isRo ? "Suburbia Floridei" : "Florida Suburbs" },
+              { src: SITE_IMAGES.housing.frontPorch, caption: isRo ? "Pridvorul American" : "The American Porch", description: isRo ? "Veranda din față: un spațiu semi-public emblematic." : "The front porch: a uniquely American semi-public living space.", aspect: "16/9", alt: isRo ? "Pridvorul American" : "The American Porch" },
+              { src: SITE_IMAGES.housing.indianaAutumn, caption: isRo ? "Toamna în Suburbie" : "Suburban Autumn", description: isRo ? "Cartiere cu frunze ruginii: un tablou al normalității americane." : "Tree-lined suburban streets as a middle-class baseline.", aspect: "16/9", alt: isRo ? "Toamna în Suburbie" : "Suburban Autumn" },
+              { src: SITE_IMAGES.housing.suburbSpring, caption: isRo ? "Primăvara în Suburbie" : "Suburb in Spring", description: isRo ? "Peluze verzi și flori: peisajul standard al casei americane." : "Green lawns and blossoms: the expected standard of home ownership.", aspect: "16/9", alt: isRo ? "Primăvara în Suburbie" : "Suburb in Spring" },
+              { src: SITE_IMAGES.housing.floridaSuburb, caption: isRo ? "Suburbia Floridei" : "Florida Suburbs", description: isRo ? "Case solare, piscine și parcuri: viața în Sun Belt." : "Sun Belt living: pools, palms, and year-round outdoor life.", aspect: "16/9", alt: isRo ? "Suburbia Floridei" : "Florida Suburbs" },
             ].map((img, i) => (
               <div
                 key={i}
@@ -441,7 +441,7 @@ export default async function QualityOfLifePage() {
       {/* Deep Dive Archive */}
       <IconicPhotographs
         section="quality-of-life"
-        intro="The postwar American dream — abundance, suburbia, and the everyday life that defined mid-century prosperity, captured on film."
+        intro="The postwar American dream: abundance, suburbia, and everyday life defining mid-century prosperity, captured on film."
       />
 
       <div id="explore">

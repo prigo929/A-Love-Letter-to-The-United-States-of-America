@@ -791,6 +791,7 @@ export function getRightsAtRiskStats(isRo: boolean) {
 
 // ─── Sub-Page Navigation ──────────────────────────────────────────────────────
 
+export const CONSTITUTION_SUB_PAGES = [
   {
     href: "/constitution/bill-of-rights",
     title: "The Bill of Rights",

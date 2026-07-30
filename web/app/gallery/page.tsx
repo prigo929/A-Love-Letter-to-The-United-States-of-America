@@ -10,7 +10,7 @@ import { getServerLocale } from "@/lib/i18n/server";
 export const metadata: Metadata = {
   title: "Gallery",
   description:
-    "A cinematic visual archive of American landscapes, cities, institutions, symbols, innovation, and power.",
+    "A cinematic visual archive of American geography, cities, institutions, symbols, innovation, and power.",
 };
 
 export default async function GalleryPage() {
@@ -35,7 +35,7 @@ export default async function GalleryPage() {
           eyebrow: "America Through the Lens",
           title: "Gallery",
           description:
-            "A clean cinematic archive of American cities, landscapes, institutions, symbols, innovation, and hard power.",
+            "A clean cinematic archive of American cities, natural scenery, institutions, symbols, innovation, and hard power.",
           featured: "Themes",
           collection: "Frames",
           allLabel: "All",

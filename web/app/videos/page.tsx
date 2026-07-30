@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "America in Motion | Watch the Story",
   description:
-    "Cinematic films of the United States — 16K and 8K aerials of American cities, landscapes, and the neighborhoods of everyday life.",
+    "Cinematic films of the United States: 16K and 8K aerials of American cities, natural scenery, and the neighborhoods of everyday life.",
 };
 
 interface VideoItem {
@@ -37,22 +37,22 @@ export default async function VideosPage() {
         eyebrow: "AMERICA ÎN MIȘCARE",
         title: "Privește Povestea",
         intro:
-          "Filme cinematografice ale Statelor Unite — aeriene în 16K și 8K peste orașe, peisaje și cartierele vieții de zi cu zi.",
+          "Filme cinematografice ale Statelor Unite: aeriene în 16K și 8K peste orașe, peisaje și cartierele vieții de zi cu zi.",
         moreEyebrow: "DIN TOT SITE-UL",
         moreTitle: "Mai Multe Filme",
         moreIntro:
-          "Clipurile cinematografice folosite în paginile sitului — apărare, tehnologie, spațiu și cultură.",
+          "Clipurile cinematografice folosite în paginile sitului: apărare, tehnologie, spațiu și cultură.",
       }
     : {
         breadcrumb: "Videos",
         eyebrow: "AMERICA IN MOTION",
         title: "Watch the Story",
         intro:
-          "Cinematic films of the United States — 16K and 8K aerials over its cities, landscapes, and the neighborhoods of everyday life.",
+          "Cinematic films of the United States: 16K and 8K aerials over its cities, natural scenery, and the neighborhoods of everyday life.",
         moreEyebrow: "FROM ACROSS THE SITE",
         moreTitle: "More Films",
         moreIntro:
-          "The cinematic clips woven through the site's pages — defense, technology, space, and culture.",
+          "The cinematic clips woven through the site's pages: defense, technology, space, and culture.",
       };
 
   const videos: VideoItem[] = isRo

@@ -41,8 +41,8 @@ export default async function ImmigrationDemographicsPage() {
           </h1>
           <p className="history-serif-body mt-6 max-w-2xl text-lg">
             {isRo
-              ? "Povestea poporului american — o națiune formată din imigranți uniți sub aceleași principii de libertate și egalitate de șanse. De la primele valuri de colonizare la dinamica demografică modernă."
-              : "The story of the American people — a nation of immigrants united under the same principles of liberty and equal opportunity. From the first waves of settlement to modern demographic dynamics."}
+              ? "Povestea poporului american: o națiune formată din imigranți uniți sub aceleași principii de libertate și egalitate de șanse. De la primele valuri de colonizare la dinamica demografică modernă."
+              : "The story of the American people: a nation of immigrants united under the same principles of liberty and equal opportunity. From the first waves of settlement to modern demographic dynamics."}
           </p>
           <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-white/10 bg-white/5 sm:grid-cols-4">
             {heroStats.map((s, i) => (
