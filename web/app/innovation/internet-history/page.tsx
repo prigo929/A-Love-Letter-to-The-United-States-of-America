@@ -467,7 +467,7 @@ export default async function InternetHistoryPage() {
           <p className="macro-body mb-6">
             {isRo
               ? "America nu a inventat doar internetul, a inventat și modul de a face bani pe el. Amazon (1994) a redefinit comerțul cu amănuntul, iar AWS a devenit coloana vertebrală a jumătate din web. App Store-ul Apple (2008) și Google Play au creat o economie a aplicațiilor de peste 1 trilion de dolari, construită aproape în întregime pe două platforme americane."
-              : "America didn't just invent the internet, it invented how to make money on it. Amazon (1994) redefined retail, and AWS became the backbone of half the web. Apple's App Store (2008) and Google Play created a $1-trillion-plus app economy built almost entirely on two American platforms."}
+              : "America invented the internet and invented how to make money on it. Amazon (1994) redefined retail, and AWS became the backbone of half the web. Apple's App Store (2008) and Google Play created a $1-trillion-plus app economy built almost entirely on two American platforms."}
           </p>
           <p className="macro-body mb-8">
             {isRo

@@ -238,8 +238,8 @@ export default async function CultureSportsPage() {
                   </h3>
                   <p className="font-editorial text-lg text-[#0C0907]/70 leading-relaxed">
                     {isRo
-                      ? "Muhammad Ali vs. Joe Frazier, Fight of the Century (1971) rămâne cel mai văzut eveniment sportiv din istoria televiziunii la acea dată. Ali a redefinit ce înseamnă un campion: nu doar un atlet, ci un simbol al rezistenței sociale, curajului moral și excelenței perfecte. Tyson, Foreman, Sugar Ray Leonard, America a produs cei mai mari campioni de box din toate timpurile."
-                      : "Muhammad Ali vs. Joe Frazier, the Fight of the Century (1971) remains the most watched live TV event in history at that time. Ali redefined what a champion means: not just an athlete, but a symbol of social resistance, moral courage, and perfect excellence. Tyson, Foreman, Sugar Ray Leonard, America has produced the greatest boxing champions of all time."}
+                      ? "Muhammad Ali vs. Joe Frazier, Fight of the Century (1971) rămâne cel mai văzut eveniment sportiv din istoria televiziunii la acea dată. Ali a fost un campion care a întruchipat rezistența socială, curajul moral și perfecțiunea atletică simultan. Tyson, Foreman, Sugar Ray Leonard, America a produs cei mai mari campioni de box din toate timpurile."
+                      : "Muhammad Ali vs. Joe Frazier, the Fight of the Century (1971) remains the most watched live TV event in history at that time. Ali was a champion who stood for social resistance, moral courage, and athletic perfection simultaneously. Tyson, Foreman, Sugar Ray Leonard, America has produced the greatest boxing champions of all time."}
                   </p>
                 </div>
                 <div className="grid grid-cols-2 gap-3">

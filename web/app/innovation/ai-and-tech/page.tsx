@@ -488,7 +488,7 @@ export default async function AiAndTechPage() {
             <p className="font-macro-body text-white/70 text-lg max-w-3xl leading-relaxed">
               {isRo
                 ? "Inteligența artificială nu este doar software. Ea se bazează pe cele mai complexe lanțuri de aprovizionare și pe o infrastructură fizică masivă, de la microprocesoare specializate la centre de date gigantice care consumă gigawați de energie."
-                : "Artificial intelligence is not just software. It relies on the most complex manufacturing supply chains and massive physical infrastructure on Earth, from specialized silicon hardware to hyper-scale data centers consuming gigawatts of energy."}
+                : "Artificial intelligence runs on the most complex manufacturing supply chains and massive physical infrastructure on Earth, from specialized silicon hardware to hyper-scale data centers consuming gigawatts of energy."}
             </p>
           </div>
           

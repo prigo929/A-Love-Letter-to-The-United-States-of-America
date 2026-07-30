@@ -113,7 +113,7 @@ const copyEn: CloudCopy = {
   ],
   centersLabel: "HYPER-SCALE HEGEMONY",
   centersTitle: "The Physical Substrate: America's Data Center Dominance",
-  centersParagraph1: "Behind the ephemeral metaphor of the 'cloud' lies an immense physical landscape of concrete and power lines. The United States houses over 5,400 operational data centers, representing 43% of the global total, more than the next ten nations combined. In terms of raw electrical grid capacity, the US represents 53.7 gigawatts of installed data center capacity, eclipsing the entire European Union's 11.9 gigawatts by more than four times.",
+  centersParagraph1: "Behind the ephemeral metaphor of the 'cloud' lies an immense physical reality of concrete and power lines. The United States houses over 5,400 operational data centers, representing 43% of the global total, more than the next ten nations combined. In terms of raw electrical grid capacity, the US represents 53.7 gigawatts of installed data center capacity, eclipsing the entire European Union's 11.9 gigawatts by more than four times.",
   centersParagraph2: "This density is anchored in regional hubs like Northern Virginia (the 'Data Center Alley' of Loudoun County), which processes an estimated 70% of the world's daily internet traffic. Because global fiber optics, undersea cables, and routing protocols are physically anchored in these American corridors, the data streams of foreign governments, multinational corporations, and billions of individuals are routed through and stored on infrastructure managed under American jurisdictional and technical standards.",
   centersSource: "Visual Capitalist / Data Center Map 2024",
   centersSourceUrl: "https://www.visualcapitalist.com/data-center-capacity-around-the-world/",

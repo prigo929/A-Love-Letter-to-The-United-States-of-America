@@ -241,7 +241,7 @@ export default async function CultureFashionPage() {
                 {
                   name: "Ralph Lauren",
                   era: "Polo Ralph Lauren, 1967",
-                  desc: isRo ? "Ralph Lauren a inventat vânzarea unui vis american, nu doar haine, ci un stil de viață aspirațional. Polo, Rugby, Purple Label, un imperiu de 8 miliarde de dolari construit pe nostalgii WASP și cowboy." : "Ralph Lauren invented selling the American dream, not just clothes, but an aspirational lifestyle. Polo, Rugby, Purple Label, an $8 billion empire built on WASP nostalgia and cowboy romanticism.",
+                  desc: isRo ? "Ralph Lauren a transformat estetica Ivy League și visul american în produs de export global. Polo, Rugby, Purple Label, un imperiu de 8 miliarde de dolari construit pe nostalgii WASP și romantismul cowboy-ului." : "Ralph Lauren transformed the Ivy League aesthetic and the American dream into a global export product. Polo, Rugby, Purple Label, an $8 billion empire built on WASP nostalgia and cowboy romanticism.",
                 },
                 {
                   name: "Calvin Klein",

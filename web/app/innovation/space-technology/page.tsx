@@ -112,7 +112,7 @@ const copyEn: SpaceCopy = {
   artemisLabel: "THE DEEP SPACE CORRIDOR",
   artemisTitle: "Starship & Artemis: Re-Engineering Human Frontiers",
   artemisParagraph1: "The second space age is defined by NASA's Artemis project collaborating with private space enterprises to build a high-frequency supply line to the Moon and Mars. Unlike the expendable Saturn V of the Apollo era, the anchor of this new logistical pipeline is SpaceX's Starship. Standing 121 meters tall, Starship is the most massive launch vehicle ever assembled, built to be fully and rapidly reusable to lower launch costs by two orders of magnitude.",
-  artemisParagraph2: "By pioneering in-orbit cryogenic propellant transfer, refueling methane and oxygen in low Earth orbit, Starship bypasses the traditional constraints of gravity wells, enabling the delivery of over 100 metric tons of cargo to the lunar surface. Developed in South Texas (Starbase), Starship is not merely a rocket; it is the core transport vehicle of a logistics network designed to extend permanent human presence into deep space.",
+  artemisParagraph2: "By pioneering in-orbit cryogenic propellant transfer, refueling methane and oxygen in low Earth orbit, Starship bypasses the traditional constraints of gravity wells, enabling the delivery of over 100 metric tons of cargo to the lunar surface. Developed in South Texas (Starbase), Starship is the core transport vehicle of a logistics network designed to extend permanent human presence into deep space.",
   artemisHeight: "121m Tall Stack",
   artemisThrust: "16.7M lbs Thrust",
   artemisCapacity: "100+ Tons to Orbit",

@@ -21,16 +21,16 @@ export default async function CultureCompaniesBrandsPage() {
   const content = {
     pullQuote: isRo
       ? "Brandurile americane nu vând doar produse; ele exportă sisteme de utilitate, confort și statut social."
-      : "American brands do not just sell products; they export systems of utility, comfort, and social status.",
+      : "American brands export systems of utility, comfort, and social status, not just products.",
     body1: isRo
       ? "De la blugii Levi's purtați pe toate continentele până la sticlele conturate de Coca-Cola și designurile elegante de iPhone, companiile americane definesc interfața fizică a culturii moderne. Aceste logo-uri au depășit granițele comerciale pentru a deveni simboluri ale libertății personale și ale stilului de viață democratizat."
       : "From Levi's blue jeans worn on every continent to contoured bottles of Coca-Cola and the sleek designs of iPhones, American corporations define the physical interface of modern culture. These logos have transcended commerce to become symbols of personal freedom and democratic lifestyle.",
     body2: isRo
       ? "Șapte din primele zece cele mai valoroase branduri din lume sunt americane. Acest lucru reflectă nu doar dimensiunea pieței lor, ci și eficiența rețelelor lor de distribuție și atracția lor estetică universală."
-      : "Seven of the top ten most valuable global brands are American. This reflects not just the scale of their markets, but the efficiency of their distribution networks and their universal aesthetic appeal.",
+      : "Seven of the top ten most valuable global brands are American. Behind that number is the efficiency of their distribution networks and a universal aesthetic appeal.",
     bandSubtitle: isRo
       ? "Pe Route 66 sau în inima marilor metropole, brandurile americane au conturat peisajul libertății individuale de mișcare și exprimare."
-      : "Across Route 66 or in the heart of major metros, American brands constructed the physical landscape of individual mobility and personal expression.",
+      : "Across Route 66 or in the heart of major metros, American brands shaped the physical texture of individual mobility and personal expression.",
     backLink: isRo ? "← Înapoi la Divertisment" : "← Back to Entertainment",
     nextLink: isRo ? "Mâncare și Băuturi →" : "Food & Drinks →",
   };
@@ -79,7 +79,7 @@ export default async function CultureCompaniesBrandsPage() {
       name: "Ford",
       value: "1908",
       valueLabel: isRo ? "Modelul T · Linia de asamblare" : "Model T · Assembly Line",
-      desc: isRo ? "Ford nu a vândut doar mașini, a inventat producția de masă ca paradigmă economică. Modelul T a democratizat mobilitatea personală și a schimbat structura societății americane." : "Ford didn't just sell cars, it invented mass production as an economic paradigm. The Model T democratized personal mobility and reshaped the structure of American society.",
+      desc: isRo ? "Ford a inventat producția de masă ca paradigmă economică. Modelul T a democratizat mobilitatea personală și a schimbat structura societății americane." : "Ford invented mass production as an economic paradigm. The Model T democratized personal mobility and reshaped the structure of American society.",
     },
     {
       name: "Google",
