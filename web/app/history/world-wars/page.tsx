@@ -7,7 +7,7 @@ import { getWwiiHistoryImages } from "@/lib/data/wwii-history-images";
 
 export const metadata: Metadata = {
   title: "The World Wars | Patriotic USA",
-  description: "America and the World Wars — from the Great War and the Arsenal of Democracy to victory in World War II and the Manhattan Project.",
+  description: "America in the World Wars, covering WWI, the Arsenal of Democracy, WWII victory, and the Manhattan Project.",
 };
 
 export default async function WorldWarsHistoryPage() {
@@ -26,8 +26,8 @@ export default async function WorldWarsHistoryPage() {
   };
 
   const description = {
-    en: "America and the World Wars — from the Great War and the Arsenal of Democracy to victory in World War II and the Manhattan Project.",
-    ro: "America și Războaiele Mondiale — de la Marele Război și Arsenalul Democrației la victoria din al Doilea Război Mondial și Proiectul Manhattan.",
+    en: "America in the World Wars, covering WWI, the Arsenal of Democracy, WWII victory, and the Manhattan Project.",
+    ro: "America în Războaiele Mondiale, acoperind Marele Război, Arsenalul Democrației, victoria din al Doilea Război Mondial și Proiectul Manhattan.",
   };
 
   return (

@@ -3,9 +3,9 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { SITE } from "@/lib/constants";
 import WeMustFightClient from "@/components/history/WeMustFightClient";
 
-const PAGE_TITLE = "We Must Fight — Ronald Reagan, 1964";
+const PAGE_TITLE = "We Must Fight: Ronald Reagan, 1964";
 const PAGE_DESCRIPTION =
-  "A cinematic experience of Ronald Reagan's legendary 1964 speech 'A Time for Choosing' — outlining the moral case for freedom and peace through strength, the ideological cornerstone of the Reagan Revolution.";
+  "A cinematic experience of Ronald Reagan's legendary 1964 speech 'A Time for Choosing', outlining the moral case for freedom and peace through strength, the ideological cornerstone of the Reagan Revolution.";
 const OG_IMAGE = "/images/og-reagan-speech.jpg";
 const PAGE_URL = `${SITE.url}/history/we-must-fight`;
 

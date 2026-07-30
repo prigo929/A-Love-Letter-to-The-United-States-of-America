@@ -6,7 +6,7 @@ import ThematicSubpageClient from "@/components/history/ThematicSubpageClient";
 
 export const metadata: Metadata = {
   title: "Faith & Reform | Patriotic USA",
-  description: "The Great Awakenings, religious revival, and the moral-reform movements that shaped America — from evangelism to Prohibition.",
+  description: "The Great Awakenings, religious revival, and moral-reform movements that shaped America, including evangelism and Prohibition.",
 };
 
 export default async function FaithAndReformPage() {
@@ -21,8 +21,8 @@ export default async function FaithAndReformPage() {
   };
 
   const description = {
-    en: "The Great Awakenings, religious revival, and the moral-reform movements that shaped America — from evangelism to Prohibition.",
-    ro: "Marile Treziri religioase, revigorarea credinței și mișcările de reformă morală care au modelat America — de la evanghelism la Prohibiție.",
+    en: "The Great Awakenings, religious revival, and moral-reform movements that shaped America, including evangelism and Prohibition.",
+    ro: "Marile Treziri religioase, revigorarea credinței și mișcările de reformă morală care au modelat America, cuprinzând evanghelismul și Prohibiția.",
   };
 
   return (

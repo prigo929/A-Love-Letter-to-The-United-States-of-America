@@ -7,7 +7,7 @@ import { BookShowcase } from "@/components/literature/BookShowcase";
 
 export const metadata: Metadata = {
   title: "Founding Principles | Patriotic USA",
-  description: "The intellectual foundations of the American republic — natural rights, self-governance, and the rule of law.",
+  description: "The intellectual foundations of the American republic: natural rights, self-governance, and the rule of law.",
 };
 
 export default async function FoundingPrinciplesPage() {
@@ -22,8 +22,8 @@ export default async function FoundingPrinciplesPage() {
   };
 
   const description = {
-    en: "The intellectual foundations of the American republic — natural rights, self-governance, and the rule of law.",
-    ro: "Fundațiile intelectuale ale republicii americane — drepturile naturale, autoguvernarea și domnia legii.",
+    en: "The intellectual foundations of the American republic: natural rights, self-governance, and the rule of law.",
+    ro: "Fundațiile intelectuale ale republicii americane: drepturile naturale, autoguvernarea și domnia legii.",
   };
 
   return (

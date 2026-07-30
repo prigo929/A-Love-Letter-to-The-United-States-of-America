@@ -34,7 +34,7 @@ export const SITE = {
   name: "America: The Greatest Nation",
   tagline: "The Greatest Nation in the History of Human Civilization",
   description:
-    "A cinematic celebration of the United States of America — its history, achievements, natural wonders, and enduring promise.",
+    "A cinematic celebration of the United States of America: its history, achievements, natural wonders, and enduring promise.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://americagreatest.com",
   og: "/images/og-default.jpg",
   twitter: "@AmericaGreatest",
@@ -378,12 +378,12 @@ export const NAV_SECTIONS = [
       {
         label: "Consumer Abundance",
         href: "/quality-of-life/abundance",
-        description: "AC, cars, pools, boats — the density of American consumer goods",
+        description: "AC, cars, pools, boats: the density of American consumer goods",
       },
       {
         label: "America vs. the World",
         href: "/quality-of-life/america-vs-the-world",
-        description: "Normal American excellence vs. the developed world — Houston vs. Iași",
+        description: "Normal American excellence vs. the developed world: Houston vs. Iași",
       },
     ],
   },
@@ -645,7 +645,7 @@ export const NAV_SECTIONS = [
       {
         label: "The Hudson River Painters",
         href: "/art-architecture/hudson-river-school",
-        description: "Cinematic landscape art capturing the frontier",
+        description: "Cinematic scenery art capturing the frontier",
       },
       {
         label: "Modern & Pop Art Movements",
@@ -969,7 +969,7 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       },
       "/quality-of-life/abundance": {
         label: "Abundență de Consum",
-        description: "AC, mașini, bărci, piscine — densitatea bunurilor de consum",
+        description: "AC, mașini, bărci, piscine: densitatea bunurilor de consum",
       },
       "/quality-of-life/america-vs-the-world": {
         label: "America vs. Lumea",

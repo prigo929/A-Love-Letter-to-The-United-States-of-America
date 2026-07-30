@@ -6,7 +6,7 @@ import { Compass, Ship, Network, ShieldCheck, Sparkles, Navigation, Globe } from
 
 export const metadata: Metadata = {
   title: "Pax Americana & Global Security | Global Leadership",
-  description: "Explore the global security footprint of the United States — 750+ bases, 11 carrier strike groups, ocean shipping security, and undersea cable cyber defense.",
+  description: "Explore the global security footprint of the United States: 750+ bases, 11 carrier strike groups, ocean shipping security, and undersea cable cyber defense.",
 };
 
 interface PaxAmericanaCopy {
@@ -54,7 +54,7 @@ const copyEn: PaxAmericanaCopy = {
   washingtonQuote: "To be prepared for war is one of the most effectual means of preserving peace.",
   washingtonQuoteAuthor: "President George Washington, January 8, 1790",
   thesisTitle: "The Security Foundation of Global Commerce",
-  thesisParagraph1: "Since the end of World War II, the world has experienced the 'Long Peace' — a period devoid of direct military conflict between major nuclear powers. This stability is anchored by Pax Americana: the global security footprint of the United States. Through forward-deployed forces, naval patrols, and mutual defense alliances, America has discouraged territorial expansion and underwritten the security of the free world.",
+  thesisParagraph1: "Since the end of World War II, the world has experienced the 'Long Peace', a period devoid of direct military conflict between major nuclear powers. This stability is anchored by Pax Americana: the global security footprint of the United States. Through forward-deployed forces, naval patrols, and mutual defense alliances, America has discouraged territorial expansion and underwritten the security of the free world.",
   thesisParagraph2: "This protection extends across key geographical deterrence zones: the Indo-Pacific corridor, the Mediterranean Sea, and the Arabian Gulf. By maintaining high-readiness forces at strategic transit bottlenecks, the U.S. deters regional aggression, preventing localized disputes from escalating into catastrophic global conflicts.",
   pillarsTitle: "Pillars of Global Power Projection",
   pillars: [
@@ -86,7 +86,7 @@ const copyEn: PaxAmericanaCopy = {
   cyberParagraph1: "In the modern era, the global commons includes the deep seabed and the digital ether. Over 99% of transoceanic internet traffic, financial transfers, and state communications flow through a network of fiber-optic undersea cables. Under Pax Americana, the U.S. Navy and Cyber Command work in tandem to monitor, patrol, and defend these physical lines of communication from undersea sabotage and espionage.",
   cyberParagraph2: "This protection is matched in the electromagnetic and cyber domains, where American threat intelligence and cybersecurity infrastructure defend democratic networks from state-sponsored disruption. By keeping these physical and digital backbones secure, the United States prevents foreign coercion from severing the connectivity of the modern world.",
   reachTitle: "Deterrence and the Cost of Peace",
-  reachParagraph1: "Pax Americana is not merely about military supremacy; it is the physical infrastructure that underwrites the global economy. By securing sea lanes, air corridors, and undersea fiber-optic communication cables, the US military ensures that international trade, capital flows, and communication lines remain unmolested. This stability benefits all trading nations, keeping global commodity prices stable.",
+  reachParagraph1: "Pax Americana encompasses both military readiness and the physical infrastructure underwriting the global economy. By securing sea lanes, air corridors, and undersea fiber-optic communication cables, the US military ensures that international trade, capital flows, and communication lines remain unmolested. This stability benefits all trading nations, keeping global commodity prices stable.",
   reachParagraph2: "Maintaining this network requires significant resource allocations, financed directly by the American taxpayer. This global security subsidy has enabled allies to focus their national budgets on domestic welfare, education, and technological growth, consolidating a shared era of unprecedented prosperity.",
   oracleDescription: "Ask the AI Oracle about the location of US military bases, the role of carrier strike groups, the GPS satellite network, undersea cable security, or the concept of Pax Americana."
 };
@@ -106,7 +106,7 @@ const copyRo: PaxAmericanaCopy = {
   washingtonQuote: "Pregătirea pentru război este unul dintre cele mai eficiente mijloace de a păstra pacea.",
   washingtonQuoteAuthor: "Președintele George Washington, 8 ianuarie 1790",
   thesisTitle: "Fundația de Securitate a Comerțului Global",
-  thesisParagraph1: "De la sfârșitul celui de-al Doilea Război Mondial, omenirea a experimentat „Pacea Lungă” — o perioadă lipsită de conflicte militare directe între marile puteri nucleare. Această stabilitate este ancorată în Pax Americana: prezența de securitate globală a Statelor Unite. Prin forțe dislocate avansat și alianțe de apărare reciprocă, America a descurajat expansiunea teritorială.",
+  thesisParagraph1: "De la sfârșitul celui de-al Doilea Război Mondial, omenirea a experimentat „Pacea Lungă”, o perioadă lipsită de conflicte militare directe între marile puteri nucleare. Această stabilitate este ancorată în Pax Americana: prezența de securitate globală a Statelor Unite. Prin forțe dislocate avansat și alianțe de apărare reciprocă, America a descurajat expansiunea teritorială.",
   thesisParagraph2: "Această protecție se extinde în zone cheie de descurajare: coridorul Indo-Pacific, Marea Mediterană și Golful Arabic. Menținând forțe pregătite în puncte maritime de tranzit strategice, SUA previn escaladarea disputelor în conflicte globale.",
   pillarsTitle: "Pilonii Proiecției de Putere Globale",
   pillars: [
@@ -138,7 +138,7 @@ const copyRo: PaxAmericanaCopy = {
   cyberParagraph1: "În era modernă, spațiile comune globale includ fundul mării și eterul digital. Peste 99% din traficul transoceanic de internet, transferurile financiare și comunicațiile guvernamentale trec prin cabluri de fibră optică submarine. Marina SUA și Comandamentul Cibernetic monitorizează și apără aceste linii împotriva sabotajelor.",
   cyberParagraph2: "Această protecție este dublată în domeniul cibernetic, unde serviciile de informații ale SUA și infrastructura lor de securitate apără rețelele democratice de atacurile sponsorizate de state ostile, prevenind izolarea comunicațiilor mondiale.",
   reachTitle: "Descurajarea și Costul Păcii",
-  reachParagraph1: "Pax Americana nu înseamnă doar supremație militară; este infrastructura fizică ce susține economia globală. Asigurând rutele maritime, coridoarele aeriene și cablurile de fibră optică submarine, armata SUA garantează că fluxurile comerciale și de comunicații rămân protejate, stabilizând prețurile globale.",
+  reachParagraph1: "Pax Americana combină securitatea militară cu infrastructura fizică ce susține economia globală. Asigurând rutele maritime, coridoarele aeriene și cablurile de fibră optică submarine, armata SUA garantează că fluxurile comerciale și de comunicații rămân protejate, stabilizând prețurile globale.",
   reachParagraph2: "Menținerea acestei rețele necesită alocări substanțiale de resurse, finanțate direct de contribuabilul american. Această subvenție globală de securitate le-a permis aliaților să își concentreze resursele naționale pe programe sociale, educație și dezvoltare tehnologică.",
   oracleDescription: "Întreabă Oracolul AI despre locațiile bazelor militare americane, rolul grupurilor de portavioane, rețeaua GPS, securitatea cablurilor submarine sau conceptul Pax Americana."
 };

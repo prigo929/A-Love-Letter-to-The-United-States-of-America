@@ -87,7 +87,7 @@ const copyEn: UnCopy = {
   pepfarParagraph2: "By preventing millions of new infections—including preventing over 5.5 million babies from being born with HIV—this initiative has stabilized communities, strengthened local health systems, and averted societal collapse in critical regions. U.S. leadership in funding global health programs remains a cornerstone of humanitarian development.",
   fundingTitle: "Funding the Commons: The American Contribution",
   fundingParagraph1: "The United States is the single largest financial contributor to the United Nations system, providing 22% of the UN's core budget and over 25% of its peacekeeping budget. This funding supports essential operations from refugee protection and disaster relief to food security programs in developing nations.",
-  fundingParagraph2: "By underwriting this international architecture, the American taxpayer has sustained a stable framework for global interaction, commerce, and human rights. This investment has prevented conflicts between major nuclear powers and fostered the longest period of relative peace in modern history.",
+  fundingParagraph2: "By underwriting this international architecture, the American taxpayer has sustained a stable framework for global interaction, commerce, and human rights. This investment has prevented conflicts between major nuclear powers and built the longest period of relative peace in modern history.",
   oracleDescription: "Ask the AI Oracle about the creation of the United Nations, US contributions to the UN budget, Eleanor Roosevelt's human rights advocacy, or the PEPFAR global health program."
 };
 
