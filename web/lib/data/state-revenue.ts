@@ -10,7 +10,7 @@
 // Cross-checked against The Pew Charitable Trusts' "Where States Get Their Money,
 // FY2024": e.g. federal share, US = 34.2% (Pew 0.342), Alaska = 48.8% (Pew 0.4882).
 //
-// Generated from ASSETS/Tables — do not hand-edit.
+// Generated from ASSETS/Tables: do not hand-edit.
 
 export const REVENUE_FISCAL_YEAR = 2024;
 

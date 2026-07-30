@@ -171,7 +171,7 @@ export default function DeepDiveSection({
               {isRo ? activeTopic.title.ro : activeTopic.title.en}
             </h2>
 
-            {/* Pull quote — always visible, collapses never */}
+            {/* Pull quote: always visible, collapses never */}
             {pullQuote && (
               <blockquote
                 className="mb-10 pl-5 text-[clamp(14px,1.4vw,17px)] italic leading-relaxed max-w-[720px]"

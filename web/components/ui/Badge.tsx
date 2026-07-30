@@ -1,6 +1,6 @@
 // ─── Badge Component ─────────────────────────────────────────────────────────
 // Small labels used on cards, section headers, and stat blocks.
-// Server Component — no 'use client' needed.
+// Server Component: no 'use client' needed.
 
 import { cn } from "@/lib/utils";
 

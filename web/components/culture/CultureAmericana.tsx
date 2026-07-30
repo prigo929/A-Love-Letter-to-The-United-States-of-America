@@ -1,14 +1,14 @@
 "use client";
 
 // ─── CultureAmericana ────────────────────────────────────────────────────────
-// "What is American Culture?" — a reflective counterpoint to the page's soft-power
+// "What is American Culture?": a reflective counterpoint to the page's soft-power
 // thesis. The argument: the *most* intensely American culture is the *least*
 // exportable, and what the world consumes is a sanded-down version. An exportability
 // spectrum ranks case studies from frictionless global spectacle to untranslatable
 // deep cuts; a Simpsons feature makes the encyclopedia-of-Americana point; a closing
 // note ties it to the American habit of standardizing cultural "canons."
 //
-// Adapted from a video essay's argument (JJ, "What is American Culture?") — its
+// Adapted from a video essay's argument (JJ, "What is American Culture?"): its
 // thesis, examples and framing guided coverage; every line here is rewritten in
 // the site's own voice, not transcribed. Dark surface, to sit in the hub's
 // dark editorial rhythm.
@@ -19,7 +19,6 @@ import { useLanguage } from "@/components/providers/LanguageProvider";
 
 interface Work {
   key: string;
-  american: number; // 0 = frictionless global export, 100 = untranslatably American
   name: string;
   nameRo: string;
   kind: string;
@@ -33,7 +32,6 @@ interface Work {
 const WORKS: Work[] = [
   {
     key: "spectacle",
-    american: 12,
     name: "Action & Fantasy Spectacle",
     nameRo: "Spectacol de acțiune & fantasy",
     kind: "The frictionless export",
@@ -41,13 +39,12 @@ const WORKS: Work[] = [
     verdict: "Built to cross every border",
     verdictRo: "Făcut să treacă orice graniță",
     body:
-      "Superhero and high-fantasy franchises carry the least American cultural baggage, which is exactly why modern Hollywood leans on them — deliberately unmoored from the specifics of American life, they play in any market on Earth. As pop culture is increasingly designed with a global audience in mind, this has become the default, and a big reason recent American entertainment can feel a little culturally bland.",
+      "Superhero and high-fantasy franchises carry the least American cultural baggage, which is exactly why modern Hollywood leans on them: deliberately unmoored from the specifics of American life, they play in any market on Earth. As pop culture is increasingly designed with a global audience in mind, this has become the default, and a big reason recent American entertainment can feel a little culturally bland.",
     bodyRo:
-      "Francizele cu supereroi și fantasy poartă cel mai puțin bagaj cultural american, exact motivul pentru care Hollywood-ul modern se bazează pe ele — desprinse deliberat de specificul vieții americane, merg pe orice piață de pe Pământ. Pe măsură ce cultura pop este tot mai mult gândită pentru un public global, acesta a devenit standardul și un motiv important pentru care divertismentul american recent poate părea puțin fad cultural.",
+      "Francizele cu supereroi și fantasy poartă cel mai puțin bagaj cultural american, exact motivul pentru care Hollywood-ul modern se bazează pe ele: desprinse deliberat de specificul vieții americane, merg pe orice piață de pe Pământ. Pe măsură ce cultura pop este tot mai mult gândită pentru un public global, acesta a devenit standardul și un motiv important pentru care divertismentul american recent poate părea puțin fad cultural.",
   },
   {
     key: "ricknmorty",
-    american: 44,
     name: "Rick and Morty · Adventure Time",
     nameRo: "Rick and Morty · Adventure Time",
     kind: "The compromise",
@@ -55,13 +52,12 @@ const WORKS: Work[] = [
     verdict: "A fantasy shell, a local voice",
     verdictRo: "O carcasă fantasy, o voce locală",
     body:
-      "American animation has gravitated toward fantasy premises partly because the sci-fi framing travels even when the sensibility stays home. The interdimensional setup plays anywhere; the voice underneath remains distinctly American. It is the negotiated settlement between exportability and identity — keep the attitude, swap the setting for something that needs no cultural footnotes.",
+      "American animation has gravitated toward fantasy premises partly because the sci-fi framing travels even when the sensibility stays home. The interdimensional setup plays anywhere; the voice underneath remains distinctly American. It is the negotiated settlement between exportability and identity: keep the attitude, swap the setting for something that needs no cultural footnotes.",
     bodyRo:
-      "Animația americană a gravitat spre premise fantastice parțial pentru că rama science-fiction călătorește chiar și când sensibilitatea rămâne acasă. Montajul interdimensional merge oriunde; vocea de dedesubt rămâne distinct americană. Este înțelegerea negociată între exportabilitate și identitate — păstrezi atitudinea, schimbi cadrul cu ceva ce nu are nevoie de note de subsol culturale.",
+      "Animația americană a gravitat spre premise fantastice parțial pentru că rama science-fiction călătorește chiar și când sensibilitatea rămâne acasă. Montajul interdimensional merge oriunde; vocea de dedesubt rămâne distinct americană. Este înțelegerea negociată între exportabilitate și identitate: păstrezi atitudinea, schimbi cadrul cu ceva ce nu are nevoie de note de subsol culturale.",
   },
   {
     key: "simpsons",
-    american: 88,
     name: "The Simpsons",
     nameRo: "The Simpsons",
     kind: "The encyclopedia of Americana",
@@ -69,13 +65,12 @@ const WORKS: Work[] = [
     verdict: "Intensely, deliberately American",
     verdictRo: "Intens, deliberat american",
     body:
-      "Springfield is the most deliberately American place on television. It exists only to tell stories of American life through American characters — and across three decades it has satirized nearly every corner of the country, from company softball to tent preachers to Eastern Bloc spies. It has become, in effect, the world's encyclopedia of Americana: foreigners the planet over know some American thing only because they once saw it on The Simpsons.",
+      "Springfield is the most deliberately American place on television. It exists only to tell stories of American life through American characters: and across three decades it has satirized nearly every corner of the country, from company softball to tent preachers to Eastern Bloc spies. It has become, in effect, the world's encyclopedia of Americana: foreigners the planet over know some American thing only because they once saw it on The Simpsons.",
     bodyRo:
-      "Springfield este cel mai deliberat american loc de la televizor. Există doar pentru a spune povești despre viața americană prin personaje americane — iar de-a lungul a trei decenii a satirizat aproape fiecare colț al țării, de la softball de firmă la predicatori de cort și spioni din Blocul de Est. A devenit, de fapt, enciclopedia Americana a lumii: străini de pe tot globul știu câte un lucru american doar pentru că l-au văzut cândva în The Simpsons.",
+      "Springfield este cel mai deliberat american loc de la televizor. Există doar pentru a spune povești despre viața americană prin personaje americane: iar de-a lungul a trei decenii a satirizat aproape fiecare colț al țării, de la softball de firmă la predicatori de cort și spioni din Blocul de Est. A devenit, de fapt, enciclopedia Americana a lumii: străini de pe tot globul știu câte un lucru american doar pentru că l-au văzut cândva în The Simpsons.",
   },
   {
     key: "kingofthehill",
-    american: 96,
     name: "King of the Hill · South Park",
     nameRo: "King of the Hill · South Park",
     kind: "The untranslatable",
@@ -83,13 +78,12 @@ const WORKS: Work[] = [
     verdict: "So American the jokes resist translation",
     verdictRo: "Atât de american încât glumele rezistă traducerii",
     body:
-      "The shows The Simpsons inspired went even harder on American themes — many argue they out-satirized their parent. That density is exactly what makes them famously hard to sell abroad: you need the American cultural knowledge to get the jokes. The proof is a punchline in itself — a French dub of King of the Hill once tried to relocate the whole show to Quebec, and it went about as well as you would expect.",
+      "The shows The Simpsons inspired went even harder on American themes: many argue they out-satirized their parent. That density is exactly what makes them famously hard to sell abroad: you need the American cultural knowledge to get the jokes. The proof is a punchline in itself: a French dub of King of the Hill once tried to relocate the whole show to Quebec, and it went about as well as you would expect.",
     bodyRo:
-      "Serialele pe care The Simpsons le-a inspirat au mers și mai tare pe teme americane — mulți susțin că și-au depășit părintele în satiră. Tocmai această densitate le face notoriu de greu de vândut în străinătate: ai nevoie de cunoașterea culturii americane ca să prinzi glumele. Dovada e o poantă în sine — un dublaj francez al King of the Hill a încercat cândva să mute tot serialul în Quebec, și a mers cam cum te-ai aștepta.",
+      "Serialele pe care The Simpsons le-a inspirat au mers și mai tare pe teme americane: mulți susțin că și-au depășit părintele în satiră. Tocmai această densitate le face notoriu de greu de vândut în străinătate: ai nevoie de cunoașterea culturii americane ca să prinzi glumele. Dovada e o poantă în sine: un dublaj francez al King of the Hill a încercat cândva să mute tot serialul în Quebec, și a mers cam cum te-ai aștepta.",
   },
   {
     key: "deepcuts",
-    american: 99,
     name: "The Deep Cuts",
     nameRo: "Piesele de nișă",
     kind: "Only an American gets it",
@@ -97,9 +91,9 @@ const WORKS: Work[] = [
     verdict: "Niche by design, and proud of it",
     verdictRo: "De nișă prin design și mândru de asta",
     body:
-      "At the far end sit works that only make sense from inside the culture: a 1993 point-and-click road trip past tourist traps and identical chain restaurants; a claymation parody of the Mortal Kombat craze; a card game about secretly conquering America's subcultures. Each is a satisfying clump of American in-jokes — and they flatter a romantic idea of the country as a huge, colorful place full of eccentric, hyper-individualistic people, each chasing their own weird little dream with stubborn earnestness.",
+      "At the far end sit works that only make sense from inside the culture: a 1993 point-and-click road trip past tourist traps and identical chain restaurants; a claymation parody of the Mortal Kombat craze; a card game about secretly conquering America's subcultures. Each is a satisfying clump of American in-jokes: and they flatter a romantic idea of the country as a huge, colorful place full of eccentric, hyper-individualistic people, each chasing their own weird little dream with stubborn earnestness.",
     bodyRo:
-      "La capătul îndepărtat stau lucrări care au sens doar din interiorul culturii: un road-trip point-and-click din 1993 pe lângă capcane pentru turiști și restaurante de lanț identice; o parodie în claymation a nebuniei Mortal Kombat; un joc de cărți despre cucerirea în secret a subculturilor Americii. Fiecare este un ghemotoc satisfăcător de glume interne americane — și flatează o idee romantică despre țară ca un loc uriaș și colorat, plin de oameni excentrici, hiper-individualiști, fiecare urmărindu-și propriul vis mic și ciudat cu o seriozitate încăpățânată.",
+      "La capătul îndepărtat stau lucrări care au sens doar din interiorul culturii: un road-trip point-and-click din 1993 pe lângă capcane pentru turiști și restaurante de lanț identice; o parodie în claymation a nebuniei Mortal Kombat; un joc de cărți despre cucerirea în secret a subculturilor Americii. Fiecare este un ghemotoc satisfăcător de glume interne americane: și flatează o idee romantică despre țară ca un loc uriaș și colorat, plin de oameni excentrici, hiper-individualiști, fiecare urmărindu-și propriul vis mic și ciudat cu o seriozitate încăpățânată.",
   },
 ];
 
@@ -122,53 +116,31 @@ export function CultureAmericana({ isRo }: { isRo: boolean }) {
           </h2>
           <blockquote className="border-l-2 border-[#E8391B] pl-6 font-editorial text-2xl md:text-3xl italic leading-relaxed text-[#F5EDD8]/90">
             {ro
-              ? "Cea mai intens americană cultură este cea mai greu de exportat — iar ceea ce consumă lumea este versiunea curățată de americanism."
-              : "The most intensely American culture is the hardest to export — and what the world consumes is the version sanded of its Americanness."}
+              ? "Cea mai intens americană cultură este cea mai greu de exportat: iar ceea ce consumă lumea este versiunea curățată de americanism."
+              : "The most intensely American culture is the hardest to export: and what the world consumes is the version sanded of its Americanness."}
           </blockquote>
           <div className="mt-8 space-y-5 font-sans text-base leading-relaxed text-[#F5EDD8]/70">
             <p>
               {ro
-                ? "Trăind în interiorul unei culturi, e ușor să presupui că a oricărei alte țări e mai bogată și mai autentică decât a ta. Fă un pas înapoi, și cultura pop americană se dovedește la fel de plină de referințe și glume interne. Ceea ce primește lumea e, însă, atenuat pentru export — iar comedia, cel mai particular gen cultural, e locul unde trăiește adevărata Americana."
-                : "Living inside a culture, it's easy to assume every other country's is richer and more authentic than your own. Step back, and American pop culture is just as crammed with references and in-jokes. But what the world receives is toned down for export — and comedy, the most culturally particular genre there is, is where the real Americana lives."}
+                ? "Trăind în interiorul unei culturi, e ușor să presupui că a oricărei alte țări e mai bogată și mai autentică decât a ta. Fă un pas înapoi, și cultura pop americană se dovedește la fel de plină de referințe și glume interne. Ceea ce primește lumea e, însă, atenuat pentru export: iar comedia, cel mai particular gen cultural, e locul unde trăiește adevărata Americana."
+                : "Living inside a culture, it's easy to assume every other country's is richer and more authentic than your own. Step back, and American pop culture is just as crammed with references and in-jokes. But what the world receives is toned down for export: and comedy, the most culturally particular genre there is, is where the real Americana lives."}
             </p>
           </div>
         </div>
 
-        {/* The spectrum bar */}
-        <div className="mb-3 flex justify-between text-[10px] font-bold uppercase tracking-[0.25em]">
-          <span className="text-glory-gold">{ro ? "GLOBAL, FĂRĂ FRICȚIUNE" : "GLOBALLY FRICTIONLESS"}</span>
-          <span className="text-[#E8391B]">{ro ? "INTENS AMERICAN" : "INTENSELY AMERICAN"}</span>
-        </div>
-        <div
-          className="relative h-2.5 w-full rounded-full"
-          style={{ background: "linear-gradient(to right, #E8B923, #E8391B)" }}
-        >
-          {WORKS.map((w, i) => {
-            const on = i === sel;
-            return (
-              <button
-                key={w.key}
-                type="button"
-                onClick={() => setSel(i)}
-                aria-label={w.name}
-                aria-current={on}
-                className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#0b0a08] transition-all duration-300"
-                style={{
-                  left: `${w.american}%`,
-                  width: on ? 22 : 14,
-                  height: on ? 22 : 14,
-                  backgroundColor: "#F5EDD8",
-                  boxShadow: on ? "0 0 0 5px rgba(245,237,216,0.18)" : "none",
-                  cursor: "pointer",
-                  zIndex: on ? 2 : 1,
-                }}
-              />
-            );
-          })}
+        {/* Qualitative frame: frictionless → intensely American */}
+        <div className="mb-4 flex items-center gap-4">
+          <span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.25em] text-glory-gold">
+            {ro ? "GLOBAL, FĂRĂ FRICȚIUNE" : "GLOBALLY FRICTIONLESS"}
+          </span>
+          <span className="h-px flex-1 rounded-full" style={{ background: "linear-gradient(to right, #E8B923, #E8391B)" }} />
+          <span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.25em] text-[#E8391B]">
+            {ro ? "INTENS AMERICAN" : "INTENSELY AMERICAN"}
+          </span>
         </div>
 
-        {/* Selector row */}
-        <div className="mt-8 grid grid-cols-2 gap-2.5 sm:grid-cols-5">
+        {/* Selector row, ordered least → most American */}
+        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-5">
           {WORKS.map((w, i) => {
             const on = i === sel;
             return (
@@ -192,36 +164,14 @@ export function CultureAmericana({ isRo }: { isRo: boolean }) {
         </div>
 
         {/* Detail panel */}
-        <div key={active.key} className="culture-glass mt-8 grid gap-8 rounded-2xl border border-white/5 p-7 md:grid-cols-[1.7fr_1fr] md:gap-12 md:p-9">
-          <div>
-            <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.3em] text-[#E8391B]">
-              {ro ? active.verdictRo : active.verdict}
-            </p>
-            <h3 className="mb-5 font-editorial text-3xl font-black leading-none tracking-tight text-white md:text-4xl">
-              {ro ? active.nameRo : active.name}
-            </h3>
-            <p className="text-base leading-relaxed text-[#F5EDD8]/70">{ro ? active.bodyRo : active.body}</p>
-          </div>
-
-          <div className="flex flex-col justify-center gap-3">
-            <div className="flex items-baseline justify-between">
-              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#F5EDD8]/50">
-                {ro ? "SPECIFICITATE CULTURALĂ" : "CULTURAL SPECIFICITY"}
-              </span>
-              <span className="font-editorial text-2xl font-black text-white">{active.american}%</span>
-            </div>
-            <div className="h-2 w-full overflow-hidden rounded-full bg-white/10">
-              <div
-                className="h-full rounded-full transition-all duration-500"
-                style={{ width: `${active.american}%`, background: "linear-gradient(to right, #E8B923, #E8391B)" }}
-              />
-            </div>
-            <p className="mt-1 text-xs leading-relaxed text-[#F5EDD8]/45">
-              {ro
-                ? "Cu cât mai sus, cu atât mai greu de tradus — și cu atât mai american."
-                : "The higher the score, the harder to translate — and the more American."}
-            </p>
-          </div>
+        <div key={active.key} className="culture-glass mt-8 rounded-2xl border border-white/5 p-7 md:p-9">
+          <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.3em] text-[#E8391B]">
+            {ro ? active.verdictRo : active.verdict}
+          </p>
+          <h3 className="mb-5 font-editorial text-3xl font-black leading-none tracking-tight text-white md:text-4xl">
+            {ro ? active.nameRo : active.name}
+          </h3>
+          <p className="max-w-3xl text-base leading-relaxed text-[#F5EDD8]/70">{ro ? active.bodyRo : active.body}</p>
         </div>
 
         {/* Simpsons feature + canon closing */}
@@ -247,8 +197,8 @@ export function CultureAmericana({ isRo }: { isRo: boolean }) {
             </div>
             <p className="mt-2 text-sm leading-relaxed text-[#F5EDD8]/60">
               {ro
-                ? "America standardizează obsesiv seturi culturale — canonul monștrilor, canonul aromelor de bomboane, canonul aromelor de chips. "
-                : "America compulsively standardizes cultural sets — the monster canon, the candy-flavor canon, the chip-flavor canon. "}
+                ? "America standardizează obsesiv seturi culturale: canonul monștrilor, canonul aromelor de bomboane, canonul aromelor de chips. "
+                : "America compulsively standardizes cultural sets: the monster canon, the candy-flavor canon, the chip-flavor canon. "}
               <span className="text-glory-gold underline decoration-glory-gold/40 underline-offset-4 group-hover:decoration-glory-gold">
                 {ro ? "Vezi canonul aromelor →" : "See the flavor canon →"}
               </span>

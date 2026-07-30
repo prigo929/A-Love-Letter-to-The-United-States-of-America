@@ -411,7 +411,7 @@ export default async function FoodAndDrinksPage() {
                 <p className="mt-3 font-editorial text-[15px] leading-relaxed text-[#0C0907]/70">
                   {isRo
                     ? "Eticheta nutrițională a sosit în 1992, și, de atunci, mâncarea a devenit despre ce este, nu doar despre cât costă."
-                    : "The nutrition label arrived in 1992, and ever since, food has been about what it is, not just what it costs."}
+                    : "The nutrition label arrived in 1992, and ever since, food has been evaluated by what it contains rather than price alone."}
                 </p>
               </div>
             </div>

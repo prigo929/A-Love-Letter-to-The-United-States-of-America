@@ -7,7 +7,7 @@
 // On quoting: every line here is a single opening sentence, attributed, with
 // commentary around it. That is fair use by any reading of the four factors, and
 // it is also just how criticism works. Four of the six are outright public
-// domain — Gatsby aged in during 2021, The Sun Also Rises in 2022 — and the page
+// domain: Gatsby aged in during 2021, The Sun Also Rises in 2022: and the page
 // says which, because telling a reader they can go and read the whole book for
 // free is the most useful thing it can do.
 
@@ -43,9 +43,9 @@ const OPENINGS: Opening[] = [
     portrait: "mobyDickTitlePage",
     publicDomain: true,
     note:
-      "Three words, and two of them are doing work. Not 'my name is' but 'call me' — an alias, offered by a narrator who never quite explains himself. And Ishmael is the son cast into the wilderness in Genesis, so before the voyage begins the reader has been handed an outcast and a biblical frame. No other American novel opens with less and implies more.",
+      "Three words, and two of them are doing work. Not 'my name is' but 'call me': an alias, offered by a narrator who never quite explains himself. And Ishmael is the son cast into the wilderness in Genesis, so before the voyage begins the reader has been handed an outcast and a biblical frame. No other American novel opens with less and implies more.",
     noteRo:
-      "Trei cuvinte, dintre care două fac toată munca. Nu „mă numesc”, ci „spuneți-mi” — un alias, oferit de un narator care nu se explică niciodată pe deplin. Iar Ismael este fiul alungat în pustiu din Geneză, așa că înainte ca voiajul să înceapă cititorul a primit deja un proscris și un cadru biblic. Niciun alt roman american nu începe cu atât de puțin și nu sugerează atât de mult.",
+      "Trei cuvinte, dintre care două fac toată munca. Nu „mă numesc”, ci „spuneți-mi”: un alias, oferit de un narator care nu se explică niciodată pe deplin. Iar Ismael este fiul alungat în pustiu din Geneză, așa că înainte ca voiajul să înceapă cititorul a primit deja un proscris și un cadru biblic. Niciun alt roman american nu începe cu atât de puțin și nu sugerează atât de mult.",
   },
   {
     work: "Adventures of Huckleberry Finn",
@@ -55,9 +55,9 @@ const OPENINGS: Opening[] = [
     portrait: "twainPortrait",
     publicDomain: true,
     note:
-      "The first major American novel narrated in a boy's actual spoken grammar. 'Without you have read', 'that ain't no matter' — Twain is refusing literary English on the first line, and the whole argument of the book follows from that refusal. Hemingway claimed all modern American literature came from this one book, and he meant this sentence.",
+      "The first major American novel narrated in a boy's actual spoken grammar. 'Without you have read', 'that ain't no matter': Twain is refusing literary English on the first line, and the whole argument of the book follows from that refusal. Hemingway claimed all modern American literature came from this one book, and he meant this sentence.",
     noteRo:
-      "Primul roman american major narat în gramatica vorbită a unui băiat. „Without you have read”, „that ain't no matter” — Twain refuză engleza literară chiar din prima frază, iar întregul argument al cărții decurge din acest refuz. Hemingway susținea că toată literatura americană modernă provine din această carte, și se referea la această frază.",
+      "Primul roman american major narat în gramatica vorbită a unui băiat. „Without you have read”, „that ain't no matter”: Twain refuză engleza literară chiar din prima frază, iar întregul argument al cărții decurge din acest refuz. Hemingway susținea că toată literatura americană modernă provine din această carte, și se referea la această frază.",
   },
   {
     work: "The Great Gatsby",
@@ -67,9 +67,9 @@ const OPENINGS: Opening[] = [
     portrait: "gatsbyCover",
     publicDomain: true,
     note:
-      "A narrator establishing his own reliability before he has told you anything — which is exactly what an unreliable narrator does. Note 'ever since': Nick is speaking from after the events, already changed by them. The novel's ending is embedded in its first sentence.",
+      "A narrator establishing his own reliability before he has told you anything: which is exactly what an unreliable narrator does. Note 'ever since': Nick is speaking from after the events, already changed by them. The novel's ending is embedded in its first sentence.",
     noteRo:
-      "Un narator care își stabilește propria credibilitate înainte de a-ți fi spus ceva — exact ce face un narator nesigur. Observă „ever since”: Nick vorbește de după evenimente, deja schimbat de ele. Finalul romanului este încastrat în prima lui frază.",
+      "Un narator care își stabilește propria credibilitate înainte de a-ți fi spus ceva: exact ce face un narator nesigur. Observă „ever since”: Nick vorbește de după evenimente, deja schimbat de ele. Finalul romanului este încastrat în prima lui frază.",
   },
   {
     work: "The Sun Also Rises",
@@ -79,9 +79,9 @@ const OPENINGS: Opening[] = [
     portrait: "hemingwayPortrait",
     publicDomain: true,
     note:
-      "Flat, declarative, and about somebody who is not the narrator. Hemingway opens by withholding: no weather, no scene, no feeling, just a fact about a secondary character. The famous iceberg method is already running — everything that matters is under the line.",
+      "Flat, declarative, and about somebody who is not the narrator. Hemingway opens by withholding: no weather, no scene, no feeling, just a fact about a secondary character. The famous iceberg method is already running: everything that matters is under the line.",
     noteRo:
-      "Plată, declarativă și despre altcineva decât naratorul. Hemingway începe prin a refuza: fără vreme, fără decor, fără emoție, doar un fapt despre un personaj secundar. Faimoasa metodă a aisbergului funcționează deja — tot ce contează stă sub linie.",
+      "Plată, declarativă și despre altcineva decât naratorul. Hemingway începe prin a refuza: fără vreme, fără decor, fără emoție, doar un fapt despre un personaj secundar. Faimoasa metodă a aisbergului funcționează deja: tot ce contează stă sub linie.",
   },
   {
     work: "Their Eyes Were Watching God",
@@ -91,9 +91,9 @@ const OPENINGS: Opening[] = [
     portrait: "hurstonPortrait",
     publicDomain: false,
     note:
-      "A proverb, not a plot. Hurston opens in the register of spoken folk wisdom rather than literary narration, and the next paragraph immediately splits that wish by gender — what men do with hope, and what women do. The book's subject is announced before a character appears.",
+      "A proverb, not a plot. Hurston opens in the register of spoken folk wisdom rather than literary narration, and the next paragraph immediately splits that wish by gender: what men do with hope, and what women do. The book's subject is announced before a character appears.",
     noteRo:
-      "Un proverb, nu o intrigă. Hurston începe în registrul înțelepciunii populare vorbite, nu al narațiunii literare, iar paragraful următor desparte imediat această dorință pe genuri — ce fac bărbații cu speranța și ce fac femeile. Subiectul cărții este anunțat înainte să apară vreun personaj.",
+      "Un proverb, nu o intrigă. Hurston începe în registrul înțelepciunii populare vorbite, nu al narațiunii literare, iar paragraful următor desparte imediat această dorință pe genuri: ce fac bărbații cu speranța și ce fac femeile. Subiectul cărții este anunțat înainte să apară vreun personaj.",
   },
   {
     work: "Invisible Man",
@@ -102,9 +102,9 @@ const OPENINGS: Opening[] = [
     line: "I am an invisible man.",
     publicDomain: false,
     note:
-      "Melville's opening, a century on and inverted. Ishmael asks to be named; Ellison's narrator announces he cannot be seen at all. Four words, present tense, no metaphor signalled — the next paragraph has to explain that he means it socially rather than literally, and that delay is the effect.",
+      "Melville's opening, a century on and inverted. Ishmael asks to be named; Ellison's narrator announces he cannot be seen at all. Four words, present tense, no metaphor signalled: the next paragraph has to explain that he means it socially rather than literally, and that delay is the effect.",
     noteRo:
-      "Începutul lui Melville, un secol mai târziu și inversat. Ismael cere să fie numit; naratorul lui Ellison anunță că nu poate fi văzut deloc. Patru cuvinte, timp prezent, nicio metaforă semnalată — paragraful următor trebuie să explice că se referă social, nu literal, iar această întârziere este chiar efectul.",
+      "Începutul lui Melville, un secol mai târziu și inversat. Ismael cere să fie numit; naratorul lui Ellison anunță că nu poate fi văzut deloc. Patru cuvinte, timp prezent, nicio metaforă semnalată: paragraful următor trebuie să explice că se referă social, nu literal, iar această întârziere este chiar efectul.",
   },
 ];
 
@@ -127,8 +127,8 @@ export default async function AmericanNovelPage() {
           "Romancierii americani au tratat prima frază altfel decât contemporanii lor europeni. Nu ca o rampă către poveste, ci ca o declarație de metodă: iată ce fel de engleză va folosi această carte, iată cine vorbește și iată ce nu vă voi spune. Melville deschide cu un alias. Twain deschide refuzând gramatica literară. Ellison deschide cu o imposibilitate. Fiecare dintre aceste fraze este un contract.",
         wallTitle: "Șase deschideri",
         wallBody:
-          "Alege un titlu din dreapta. Fraza rămâne în engleză în ambele limbi — o primă frază tradusă este o altă frază, iar ritmul ei este exact subiectul discuției. Comentariul este tradus.",
-        pdLabel: "Domeniu public — poți citi cartea integral",
+          "Alege un titlu din dreapta. Fraza rămâne în engleză în ambele limbi: o primă frază tradusă este o altă frază, iar ritmul ei este exact subiectul discuției. Comentariul este tradus.",
+        pdLabel: "Domeniu public: poți citi cartea integral",
         copyrightLabel: "Încă sub drept de autor",
         driftTitle: "Ce s-a schimbat într-un secol",
         driftBody:
@@ -151,8 +151,8 @@ export default async function AmericanNovelPage() {
           "American novelists have treated the first sentence differently from their European contemporaries. They treat it as a statement of method rather than a simple ramp into the story: here is the kind of English this book will use, here is who is speaking, and here is what I am not going to tell you. Melville opens on an alias. Twain opens by refusing literary grammar. Ellison opens on an impossibility. Each of these sentences is a contract.",
         wallTitle: "Six openings",
         wallBody:
-          "Pick a title on the right. The sentence stays in English in both languages — a translated first line is a different sentence, and its rhythm is precisely what is under discussion. The commentary is translated.",
-        pdLabel: "Public domain — you can read the whole book",
+          "Pick a title on the right. The sentence stays in English in both languages: a translated first line is a different sentence, and its rhythm is precisely what is under discussion. The commentary is translated.",
+        pdLabel: "Public domain: you can read the whole book",
         copyrightLabel: "Still in copyright",
         driftTitle: "What changed in a century",
         driftBody:

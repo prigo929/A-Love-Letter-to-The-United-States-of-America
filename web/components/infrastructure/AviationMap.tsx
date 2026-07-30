@@ -1,8 +1,8 @@
 "use client";
 
 // ─── AviationMap ──────────────────────────────────────────────────────────────
-// Interactive node map of America's global aviation hubs. Two data layers —
-// passengers and cargo — with proportional circles, a pulsing selection ring,
+// Interactive node map of America's global aviation hubs. Two data layers: 
+// passengers and cargo: with proportional circles, a pulsing selection ring,
 // and (in cargo mode) animated overnight-sortie arcs radiating from the FedEx
 // SuperHub at Memphis. geoAlbersUsa keeps Anchorage visible in the Alaska inset.
 
@@ -79,7 +79,7 @@ function HubsLayer({
 
   return (
     <g>
-      {/* Overnight sortie arcs (cargo mode) — marching-dash flow animation */}
+      {/* Overnight sortie arcs (cargo mode): marching-dash flow animation */}
       {sorties.map((d, i) => (
         <g key={i} className="motion-reduce:hidden">
           <path
@@ -222,7 +222,7 @@ export function AviationMap({ locale, labels }: AviationMapProps) {
         </ComposableMap>
       </div>
 
-      {/* Hub detail — keyed remount instead of exit-gated AnimatePresence */}
+      {/* Hub detail: keyed remount instead of exit-gated AnimatePresence */}
       <div className="mt-2 min-h-[130px] border-t border-white/[0.07] pt-6">
         {hub && (
           <motion.div

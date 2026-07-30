@@ -75,7 +75,7 @@ export default async function AirForcePage() {
       <MilStyles />
       <AirForceStyles />
 
-      {/* 1. VIDEO HERO — B-2 Spirit cinematic flyover */}
+      {/* 1. VIDEO HERO: B-2 Spirit cinematic flyover */}
       <VideoMilitaryHero
         videoSrc="/videos/military/b2-spirit-hero.mp4"
         posterSrc={SITE_IMAGES.airForce.b2}
@@ -91,7 +91,7 @@ export default async function AirForcePage() {
 
       <AirForceFleetComparisonSection data={fleetComparison} locale={locale} />
 
-      {/* PULL-QUOTE #1 — Air Superiority */}
+      {/* PULL-QUOTE #1: Air Superiority */}
       <AirForceFullBleed
         imageSrc={SITE_IMAGES.airForce.f22Formation}
         imageAlt="F-22 Raptors in formation flight"
@@ -105,7 +105,7 @@ export default async function AirForcePage() {
 
       <AirForceOperationalConsole theaters={theaters} locale={locale} />
 
-      {/* PULL-QUOTE #2 — Global Strike */}
+      {/* PULL-QUOTE #2: Global Strike */}
       <AirForceFullBleed
         imageSrc={SITE_IMAGES.airForce.b21}
         imageAlt="B-21 Raider stealth bomber"
@@ -119,7 +119,7 @@ export default async function AirForcePage() {
 
       <AirForceHeritageTimeline events={heritageTimeline} locale={locale} />
 
-      {/* PULL-QUOTE #3 — Rapid Mobility */}
+      {/* PULL-QUOTE #3: Rapid Mobility */}
       <AirForceFullBleed
         imageSrc={SITE_IMAGES.airForce.c130}
         imageAlt="C-130 Hercules dirt takeoff"

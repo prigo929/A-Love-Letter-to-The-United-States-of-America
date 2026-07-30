@@ -106,7 +106,7 @@ export const CONSTITUTION_METRICS: ConstitutionMetric[] = [
   { id: "words",      value: 4543, label: "Words That Govern a $31 Trillion Economy",       sublabel: "Shortest major national constitution" },
 ];
 
-// ─── Founding Fathers — Public-Domain Oil Paintings from Wikimedia Commons ───
+// ─── Founding Fathers: Public-Domain Oil Paintings from Wikimedia Commons ───
 // The individuals who designed the system.
 // We include their "connections" to build the interactive constellation map.
 export const FOUNDING_FATHERS: FoundingFather[] = [
@@ -457,7 +457,7 @@ export const CONSTITUTION_CLAUSES: ConstitutionClause[] = [
   }
 ];
 
-// ─── Bill of Rights — clean Amendment objects ────────────────────────────────
+// ─── Bill of Rights: clean Amendment objects ────────────────────────────────
 // The first 10 amendments that protect individual liberties.
 // We bridge history and modern life by explaining "What It Means Today".
 export const BILL_OF_RIGHTS: Amendment[] = [

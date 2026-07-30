@@ -75,10 +75,10 @@ export default async function LiteraturePhilosophyHubPage() {
         titleLead: "SPUNEȚI-MI",
         titleAccent: "ISMAEL",
         heroDesc:
-          "Patru secole de scriitură americană, de la o predică puritană la Toni Morrison — ideile, vocile și singura filosofie autohtonă pe care a produs-o țara.",
+          "Patru secole de scriitură americană, de la o predică puritană la Toni Morrison: ideile, vocile și singura filosofie autohtonă pe care a produs-o țara.",
         introTitle: "O literatură care s-a inventat pe sine",
         introBody:
-          "America a început fără o literatură a sa. Timp de un secol și jumătate a împrumutat formele Angliei și a scris predici. Apoi, în câteva decenii uluitoare de la mijlocul secolului XIX, și-a găsit propria voce — și a petrecut cei o sută cincizeci de ani de atunci certându-se despre cine are dreptul s-o folosească. Aceasta este povestea acelei certuri.",
+          "America a început fără o literatură a sa. Timp de un secol și jumătate a împrumutat formele Angliei și a scris predici. Apoi, în câteva decenii uluitoare de la mijlocul secolului XIX, și-a găsit propria voce: și a petrecut cei o sută cincizeci de ani de atunci certându-se despre cine are dreptul s-o folosească. Aceasta este povestea acelei certuri.",
         timelineTitle: "Patru secole, opt argumente",
         timelineBody:
           "Fiecare epocă a scriiturii americane s-a certat despre altceva. Apasă pe o bandă pentru a vedea despre ce.",
@@ -99,7 +99,7 @@ export default async function LiteraturePhilosophyHubPage() {
           "Four centuries of American writing, spanning early Puritan sermons through Toni Morrison, featuring the ideas, voices, and native philosophy of the republic.",
         introTitle: "A literature that invented itself",
         introBody:
-          "America began with no literature of its own. For a century and a half it borrowed England's forms and wrote sermons. Then, in a few astonishing decades in the mid-nineteenth century, it found its own voice — and it has spent the hundred and fifty years since arguing about who gets to use it. This is the story of that argument.",
+          "America began with no literature of its own. For a century and a half it borrowed England's forms and wrote sermons. Then, in a few astonishing decades in the mid-nineteenth century, it found its own voice: and it has spent the hundred and fifty years since arguing about who gets to use it. This is the story of that argument.",
         timelineTitle: "Four centuries, eight arguments",
         timelineBody:
           "Every era of American writing was arguing about something different. Click a band to see what.",

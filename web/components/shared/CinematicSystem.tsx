@@ -3,7 +3,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // CINEMATIC DESIGN SYSTEM (site-wide)
 // ─────────────────────────────────────────────────────────────────────────────
-// Formerly components/economy/EconomyAnimations.tsx — promoted to shared/ since
+// Formerly components/economy/EconomyAnimations.tsx: promoted to shared/ since
 // it now powers 30+ pages across Economy, Innovation, Universities, Science,
 // Quality of Life and Culture. The old path re-exports from here.
 //
@@ -19,7 +19,7 @@ import Image from "next/image";
 import { cn, BLUR_PLACEHOLDER } from "@/lib/utils";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 1. MacroStyles — Core CSS Injection
+// 1. MacroStyles: Core CSS Injection
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function MacroStyles() {
@@ -102,7 +102,7 @@ export function MacroStyles() {
         color: var(--macro-accent);
       }
 
-      /* Blur Masks — kept light: a 24px backdrop blur under scroll parallax is a
+      /* Blur Masks: kept light: a 24px backdrop blur under scroll parallax is a
          Safari repaint killer, so we use 12px and drop the saturate pass. */
       .macro-blur-mask {
         backdrop-filter: blur(12px);
@@ -124,7 +124,7 @@ export function MacroStyles() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2. DecodeText — terminal-style scramble that settles into the real string
+// 2. DecodeText: terminal-style scramble that settles into the real string
 // ─────────────────────────────────────────────────────────────────────────────
 
 const DECODE_GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&";
@@ -183,7 +183,7 @@ export function DecodeText({ text, delay = 0, className }: { text: string; delay
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 3. HeroStatValue — parses "2,301" / "#2" / "~90%" / "$48B" / "350k+" and
+// 3. HeroStatValue: parses "2,301" / "#2" / "~90%" / "$48B" / "350k+" and
 //    counts the numeric core up when it enters view. Falls back to static text.
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -231,7 +231,7 @@ function HeroStatValue({ value }: { value: string | number }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 4. MacroHero — Frictionless Cinematic Entrance
+// 4. MacroHero: Frictionless Cinematic Entrance
 //    Word-staggered title reveal, decoding eyebrow, count-up stats.
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -466,7 +466,7 @@ export function MacroHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, ti
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// CountUp — Scroll-triggered numeric count-up animation
+// CountUp: Scroll-triggered numeric count-up animation
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function CountUp({ value, prefix = "", suffix = "", decimals = 0, color = "#E8B923" }: {
@@ -490,7 +490,7 @@ export function CountUp({ value, prefix = "", suffix = "", decimals = 0, color =
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. MacroStat — Borderless Extreme Scale Data
+// 5. MacroStat: Borderless Extreme Scale Data
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function MacroStat({ value, label, source, color = "#E8B923" }: { value: React.ReactNode, label: string, source?: string, color?: string }) {
@@ -513,7 +513,7 @@ export function MacroStat({ value, label, source, color = "#E8B923" }: { value: 
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 6. MacroFact — Borderless Editorial Insight (gold rule draws in on view)
+// 6. MacroFact: Borderless Editorial Insight (gold rule draws in on view)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function MacroFact({ fact, detail, index }: { fact: string, detail?: string, index?: number }) {
@@ -551,11 +551,11 @@ export function MacroFact({ fact, detail, index }: { fact: string, detail?: stri
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 7. InfrastructureBand — Cinematic backdrop with blur mask
+// 7. InfrastructureBand: Cinematic backdrop with blur mask
 // ─────────────────────────────────────────────────────────────────────────────
 
 // ─────────────────────────────────────────────────────────────────────────────
-// FullBleed — breaks a child out of the centred max-w content column so it spans
+// FullBleed: breaks a child out of the centred max-w content column so it spans
 // the whole viewport. Used to give the interactive maps the full screen width.
 // Keeps a small gutter so controls and legends don't touch the screen edges.
 export function FullBleed({ children, className = "", noPadding = false }: { children: React.ReactNode; className?: string; noPadding?: boolean }) {

@@ -1,6 +1,6 @@
 "use client";
 
-// ─── BusinessFormationChart — the startup engine underneath venture capital ──
+// ─── BusinessFormationChart: the startup engine underneath venture capital ──
 // Monthly business applications filed with the IRS (Census Business Formation
 // Statistics, 2004→today). Venture capital funds a few thousand companies a year;
 // this is the other several million. The pandemic set off the largest surge on
@@ -8,7 +8,7 @@
 //
 // Two series, because the headline number flatters itself. `apps` is every
 // application; `hp` is the "high-propensity" subset the Census judges likely to
-// actually employ someone. The gap between the bands is the point — only about a
+// actually employ someone. The gap between the bands is the point: only about a
 // third of the surge is firms that will ever hire.
 
 import {
@@ -46,7 +46,7 @@ export function BusinessFormationChart({ data, title, subtitle, source }: Busine
         covid: "Valul COVID",
         appsLabel: "Cereri de înființare, pe lună",
         hpLabel: "Dintre care probabil vor angaja",
-        peakLabel: "Vârf lunar record — iulie 2020",
+        peakLabel: "Vârf lunar record: iulie 2020",
         latestLabel: "Cea mai recentă lună",
         hpShareLabel: "Din cererile din 2024, cele care probabil vor angaja",
         source: "Sursă:",
@@ -56,7 +56,7 @@ export function BusinessFormationChart({ data, title, subtitle, source }: Busine
         covid: "COVID surge",
         appsLabel: "Business applications, per month",
         hpLabel: "Of which likely to hire",
-        peakLabel: "Record month — July 2020",
+        peakLabel: "Record month: July 2020",
         latestLabel: "Most recent month",
         hpShareLabel: "Of 2024 applications, likely to ever employ someone",
         source: "Source:",

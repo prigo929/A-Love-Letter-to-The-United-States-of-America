@@ -53,7 +53,7 @@ const copyEn: IvyCopy = {
   heroTitle: "Old Money, New Power",
   heroSubtitle: "Eight elite institutions representing the historical foundation of American intellectual leadership, academic rigor, and unmatched financial endowments.",
   thesisTitle: "The Foundations of Prestige",
-  thesisParagraph1: "The Ivy League is not just a sports conference; it is a global brand synonymous with academic supremacy, selective admissions, and ruling-class networking. Founded primarily during the colonial era (with Cornell as the sole post-Revolution addition), these eight institutions have spent centuries compounding academic prestige, research outputs, and alumni networks that dictate global affairs.",
+  thesisParagraph1: "The Ivy League operates as a global brand synonymous with academic prestige, moving far beyond its origins as an athletic conference. Its eight member institutions, Harvard, Yale, Princeton, Columbia, Penn, Brown, Dartmouth, and Cornell, hold over $190 billion in combined endowment assets, enabling them to offer full-need financial aid and attract the world's most talented students regardless of socioeconomic background.",
   thesisParagraph2: "At the core of their dominance is capital. With combined endowments exceeding $150 billion, they operate as major financial trusts that happen to run elite research institutions. This enables them to fund massive laboratories, attract world-class faculty, and offer generous financial aid that secures the world's most talented youth regardless of economic status.",
   endowmentTitle: "Capital Endowment Scale",
   endowmentSubtitle: "The financial engines that allow American private universities to out-invest and out-research global public models.",

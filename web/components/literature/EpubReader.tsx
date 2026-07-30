@@ -22,7 +22,7 @@ interface EpubReaderProps {
   onClose: () => void;
 }
 
-// epub.js is injected as a plain UMD script — not bundled — so TypeScript
+// epub.js is injected as a plain UMD script: not bundled: so TypeScript
 // doesn't know about it. Access it through this typed shim.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getEpub = (): ((url: string, opts?: Record<string, unknown>) => any) | undefined =>
@@ -31,7 +31,7 @@ const getEpub = (): ((url: string, opts?: Record<string, unknown>) => any) | und
 
 type Theme = "dark" | "sepia" | "light";
 
-// Dark is pure OLED black (#000000) — the reading area, both bars, and the epub
+// Dark is pure OLED black (#000000): the reading area, both bars, and the epub
 // page background all sit at true black so the page is one seamless black field.
 const THEMES: Record<Theme, { bg: string; fg: string; label: string; barBg: string }> = {
   dark:  { bg: "#000000", fg: "#e8e0d0", label: "Dark",  barBg: "#000000" },
@@ -114,7 +114,7 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
         // epub.js renders each page into a sandboxed iframe. By default
         // (allowScriptedContent: false) the sandbox is just "allow-same-origin",
         // and modern WebKit then blocks epub.js from reaching into the frame to
-        // paginate and theme it — surfacing as `SecurityError: … lacks the
+        // paginate and theme it: surfacing as `SecurityError: … lacks the
         // allow-same-origin flag` and `null is not an object (this.document.body)`,
         // with a blank reading pane and dead chapter links. Enabling scripted
         // content adds "allow-scripts" so the frame is fully same-origin
@@ -133,7 +133,7 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
         // Without this, epub.js reports percentage 0 for a whole spine item and
         // the bar barely moves. generate() is async and can take a moment on a
         // long book; the `relocated` handler picks up accurate percentages once
-        // it resolves. Guard everything — a destroyed book must not throw here.
+        // it resolves. Guard everything: a destroyed book must not throw here.
         try {
           epubBook.locations?.generate?.(1600).then(() => {
             try {
@@ -207,7 +207,7 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
       if (!renditionRef.current || !viewer) return;
       const rect = viewer.getBoundingClientRect();
       try { renditionRef.current.resize(Math.floor(rect.width), Math.floor(rect.height)); }
-      catch { /* rendition not ready yet — ignore */ }
+      catch { /* rendition not ready yet: ignore */ }
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
@@ -215,7 +215,7 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
 
   // ── Load JSZip, THEN epub.js, then init the reader ─────────────────────────
   // Order is load-bearing. epub.js unzips the .epub with JSZip and binds to
-  // `window.JSZip` at its own module-init time — so if JSZip is not already
+  // `window.JSZip` at its own module-init time: so if JSZip is not already
   // present when epubjs.min.js runs, `book.ready` never resolves and the reader
   // spins forever with no error. That was the bug: the engine loaded and the
   // book fetched (HTTP 200), but the archive could never be opened. Verified by
@@ -279,7 +279,7 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
     // Guard: don't navigate while book is still loading or manager isn't ready
     if (!renditionRef.current || atEnd || isLoadingRef.current) return;
     try { renditionRef.current.next().catch(() => setCanNext(false)); }
-    catch { /* epub.js internal state not ready yet — ignore */ }
+    catch { /* epub.js internal state not ready yet: ignore */ }
   }, [atEnd]);
 
   const goPrev = useCallback(() => {
@@ -299,7 +299,7 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
   // Keep the top-bar title on the current chapter as the reader relocates.
   useEffect(() => {
     if (!currentHref || toc.length === 0) return;
-    // Match on the path before any #fragment — TOC hrefs and location hrefs
+    // Match on the path before any #fragment: TOC hrefs and location hrefs
     // often differ only by the anchor.
     const base = (h: string) => h.split("#")[0];
     const hit = toc.find((t) => base(t.href) === base(currentHref))
@@ -398,7 +398,7 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
             </p>
           </div>
 
-          {/* Theme switcher — desktop */}
+          {/* Theme switcher: desktop */}
           <div
             className="hidden md:flex items-center gap-0.5 rounded-full border p-0.5"
             style={{ borderColor: theme === "dark" ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.12)" }}
@@ -533,7 +533,7 @@ export function EpubReader({ book, onClose }: EpubReaderProps) {
             <span className="text-4xl font-thin leading-none">‹</span>
           </button>
 
-          {/* epub.js mount target — needs explicit pixel height for paginator */}
+          {/* epub.js mount target: needs explicit pixel height for paginator */}
           <div
             ref={viewerRef}
             className="flex-1 overflow-hidden"

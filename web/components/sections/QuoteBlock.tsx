@@ -104,7 +104,7 @@ export function QuoteBlock({
               isDark ? "text-white" : "text-navy-dark",
             )}
           >
-            — {attribution}
+           : {attribution}
             {year && (
               <span className="font-normal opacity-60 ml-1">({year})</span>
             )}

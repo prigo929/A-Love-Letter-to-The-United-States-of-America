@@ -1,8 +1,8 @@
 "use client";
 
-// ─── FedFundsChart — the price of money ──────────────────────────────────────
-// The Fed's policy rate, monthly since 1954. Every other price in this section —
-// bonds, equities, venture rounds — is quoted against this one, which is why it
+// ─── FedFundsChart: the price of money ──────────────────────────────────────
+// The Fed's policy rate, monthly since 1954. Every other price in this section: 
+// bonds, equities, venture rounds: is quoted against this one, which is why it
 // belongs on the capital-markets page rather than a rates footnote.
 //
 // The chart is really two anchors and the distance between them: Volcker's
@@ -42,8 +42,8 @@ export function FedFundsChart({ data, title, subtitle, source }: FedFundsChartPr
         rateLabel: "Rata fondurilor federale",
         volcker: "Șocul Volcker",
         zirp: "Rate aproape zero",
-        peakLabel: "Maxim istoric — iunie 1981",
-        lowLabel: "Minim istoric — aprilie 2020",
+        peakLabel: "Maxim istoric: iunie 1981",
+        lowLabel: "Minim istoric: aprilie 2020",
         latestLabel: "Astăzi",
         source: "Sursă:",
       }
@@ -51,8 +51,8 @@ export function FedFundsChart({ data, title, subtitle, source }: FedFundsChartPr
         rateLabel: "Federal funds rate",
         volcker: "Volcker shock",
         zirp: "Near-zero rates",
-        peakLabel: "All-time high — June 1981",
-        lowLabel: "All-time low — April 2020",
+        peakLabel: "All-time high: June 1981",
+        lowLabel: "All-time low: April 2020",
         latestLabel: "Today",
         source: "Source:",
       };

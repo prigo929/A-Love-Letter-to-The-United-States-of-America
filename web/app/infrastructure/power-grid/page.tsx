@@ -53,12 +53,12 @@ export default async function PowerGridPage() {
         heroBody:
           "Privită de sus, America noaptea este o hartă a propriei sale rețele electrice. Fiecare punct de lumină este alimentat de aceeași mașină interconectată: cea mai mare și mai complexă structură construită vreodată de om.",
         heroStats: [
-          { value: "3", label: "interconexiuni uriașe — Est, Vest și Texas" },
+          { value: "3", label: "interconexiuni uriașe: Est, Vest și Texas" },
           { value: "60 Hz", label: "frecvența pe care întreaga rețea o menține, în fiecare secundă" },
           { value: "14,420", label: "centrale electrice în funcțiune, însumând 1.399 GW instalați" },
         ],
         storyTitle: "O singură mașină, de mărimea unui continent",
-        lede: "Electricitatea nu poate fi depozitată la scară. Deci rețeaua trebuie să producă, în fiecare clipă, exact cât consumă un continent — nici mai mult, nici mai puțin.",
+        lede: "Electricitatea nu poate fi depozitată la scară. Deci rețeaua trebuie să producă, în fiecare clipă, exact cât consumă un continent: nici mai mult, nici mai puțin.",
         storyP1:
           "Când aprinzi o lumină în Ohio, undeva o turbină se învârte imperceptibil mai repede ca să compenseze. Întreaga rețea de est, din Florida până în Manitoba, se rotește în perfectă sincronie la 60 de cicluri pe secundă, un singur organism electric întins peste jumătate de continent.",
         storyP2:
@@ -99,7 +99,7 @@ export default async function PowerGridPage() {
         gaP:
           "Rețeaua este infrastructura pe care o folosim cel mai mult și la care ne gândim cel mai puțin. Rulează neîntrerupt de peste un secol, o pânză de cupru și oțel atât de fiabilă încât singurele dăți când o observăm sunt rarele momente în care se stinge.",
         quote:
-          "Rețeaua electrică este poate cea mai mare realizare de inginerie a secolului XX — o singură mașină de mărimea unei națiuni, pe care lumea o ține pornită.",
+          "Rețeaua electrică este poate cea mai mare realizare de inginerie a secolului XX: o singură mașină de mărimea unei națiuni, pe care lumea o ține pornită.",
         quoteAttribution: "Despre rețeaua electrică americană",
         quoteTitle: "Mașina care nu doarme niciodată",
         prevLink: "↑ Prezentare Infrastructură",
@@ -114,7 +114,7 @@ export default async function PowerGridPage() {
         heroBody:
           "Seen from above, America at night is a map of its own power grid. Every point of light is fed by the same interconnected machine: the largest and most complex structure ever built by human hands.",
         heroStats: [
-          { value: "3", label: "vast interconnections — East, West, and Texas" },
+          { value: "3", label: "vast interconnections: East, West, and Texas" },
           { value: "60 Hz", label: "the frequency the entire grid holds, every second" },
           { value: "14,420", label: "operating power plants, totalling 1,399 GW of capacity" },
         ],

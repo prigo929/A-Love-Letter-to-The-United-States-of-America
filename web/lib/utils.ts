@@ -94,7 +94,7 @@ export const BLUR_PLACEHOLDER =
 
 // ─── Date Utilities ───────────────────────────────────────────────────────────
 
-/** How many years since 1776 — used in "Est. 1776" badges */
+/** How many years since 1776: used in "Est. 1776" badges */
 export function yearsSince1776(): number {
   return new Date().getFullYear() - 1776;
 }
@@ -106,7 +106,7 @@ export function formatYear(year?: number): string {
 
 // ─── Validation ───────────────────────────────────────────────────────────────
 
-/** Simple email check — Zod handles the real validation */
+/** Simple email check: Zod handles the real validation */
 export function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }

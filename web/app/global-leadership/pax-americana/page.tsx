@@ -80,7 +80,7 @@ const copyEn: PaxAmericanaCopy = {
     }
   ],
   gpsTitle: "The GPS Network: A Free Global Subsidy",
-  gpsParagraph1: "Beyond physical presence, Pax Americana underwrites the digital infrastructure of modern logistics. The Global Positioning System (GPS)—a constellation of over 30 satellites launched, maintained, and operated by the United States Space Force—is provided entirely free of charge to the entire world. It handles the navigation data for every commercial aircraft, container vessel, and smartphone application on Earth.",
+  gpsParagraph1: "Beyond physical presence, Pax Americana underwrites the digital infrastructure of modern logistics. The Global Positioning System (GPS), a constellation of over 30 satellites launched, maintained, and operated by the United States Space Force, is provided entirely free of charge to the entire world. It handles the navigation data for every commercial aircraft, container vessel, and smartphone application on Earth.",
   gpsParagraph2: "By operating this space-based utility without licensing fees or blockades, the United States provides a continuous global subsidy that drives trillions of dollars in economic efficiency, safety, and technological innovation across all industries.",
   cyberTitle: "Securing the Deep: Undersea Cables & Cyber Defense",
   cyberParagraph1: "In the modern era, the global commons includes the deep seabed and the digital ether. Over 99% of transoceanic internet traffic, financial transfers, and state communications flow through a network of fiber-optic undersea cables. Under Pax Americana, the U.S. Navy and Cyber Command work in tandem to monitor, patrol, and defend these physical lines of communication from undersea sabotage and espionage.",
@@ -132,7 +132,7 @@ const copyRo: PaxAmericanaCopy = {
     }
   ],
   gpsTitle: "Rețeaua GPS: O Subvenție Globală Gratuită",
-  gpsParagraph1: "Dincolo de prezența fizică, Pax Americana susține infrastructura digitală a logisticii moderne. Sistemul de Poziționare Globală (GPS)—o constelație de peste 30 de sateliți lansați, întreținuți și operați de Forța Spațială a Statelor Unite—este pus la dispoziție în mod gratuit pentru întreaga lume.",
+  gpsParagraph1: "Dincolo de prezența fizică, Pax Americana susține infrastructura digitală a logisticii moderne. Sistemul de Poziționare Globală (GPS), o constelație de peste 30 de sateliți lansați, întreținuți și operați de Forța Spațială a Statelor Unite, este pus la dispoziție în mod gratuit pentru întreaga lume.",
   gpsParagraph2: "Prin operarea acestui serviciu satelitar fără taxe de licențiere, Statele Unite oferă o subvenție globală continuă care stimulează eficiența economică, siguranța și inovația tehnologică în toate industriile lumii.",
   cyberTitle: "Securizarea Adâncurilor: Cablurile Submarine și Apărarea Cibernetică",
   cyberParagraph1: "În era modernă, spațiile comune globale includ fundul mării și eterul digital. Peste 99% din traficul transoceanic de internet, transferurile financiare și comunicațiile guvernamentale trec prin cabluri de fibră optică submarine. Marina SUA și Comandamentul Cibernetic monitorizează și apără aceste linii împotriva sabotajelor.",

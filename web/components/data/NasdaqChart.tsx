@@ -1,6 +1,6 @@
 "use client";
 
-// ─── NasdaqChart — the price of American technology ──────────────────────────
+// ─── NasdaqChart: the price of American technology ──────────────────────────
 // The Nasdaq Composite, monthly since the index opened at 100 in 1971. This is
 // the exchange where Apple, Microsoft, NVIDIA, Alphabet, Amazon and Meta list,
 // so the line is about as close as a single series gets to "what is American
@@ -8,7 +8,7 @@
 //
 // The axis is LOGARITHMIC and the toggle makes that a choice the reader can see.
 // On a linear axis the first thirty years of the index are a flat line on the
-// floor — 1971 to 2000 is invisible next to 26,000 — which would hide the two
+// floor: 1971 to 2000 is invisible next to 26,000: which would hide the two
 // things actually worth seeing: the 1974 trough at 58.6, and the dot-com crash,
 // where the index lost roughly three-quarters of its value and took fifteen years
 // to recover. A log axis shows equal percentage moves as equal distances, which

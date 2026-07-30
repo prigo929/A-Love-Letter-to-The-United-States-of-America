@@ -4,7 +4,7 @@
 // anchors, breathing sections, and neoclassical entablature section breaks.
 //
 // These components translate the physical gravitas of a museum exhibit
-// into digital form — every detail is intentional.
+// into digital form: every detail is intentional.
 
 import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence, useInView, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
@@ -13,7 +13,7 @@ import { WeThePeopleSignature } from "./WeThePeopleSignature";
 
 // ── ExhibitCase ───────────────────────────────────────────────────────────────
 // Wraps content in a museum-vitrine container with recessed glass illusion.
-// Sharp corners (not rounded) — vitrines are glass boxes.
+// Sharp corners (not rounded): vitrines are glass boxes.
 export function ExhibitCase({
   children,
   className = "",
@@ -160,7 +160,7 @@ export function NutGraf({
 }
 
 // ── Entablature ──────────────────────────────────────────────────────────────
-// Neoclassical section break — replaces CinematicSectionBreak.
+// Neoclassical section break: replaces CinematicSectionBreak.
 // Multi-layered horizontal rules with inscribed chapter numeral and title.
 // Evokes the frieze above the columns of the Lincoln Memorial.
 export function Entablature({
@@ -192,7 +192,7 @@ export function Entablature({
       />
 
       <div className="mx-auto max-w-screen-lg px-4">
-        {/* Top cornice — thin gold */}
+        {/* Top cornice: thin gold */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={inView ? { scaleX: 1 } : {}}
@@ -204,7 +204,7 @@ export function Entablature({
           }}
         />
 
-        {/* Top cornice — thicker, darker */}
+        {/* Top cornice: thicker, darker */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={inView ? { scaleX: 1 } : {}}
@@ -218,7 +218,7 @@ export function Entablature({
 
         {/* Inscribed content */}
         <div className="py-8 text-center">
-          {/* Chapter numeral — massive background */}
+          {/* Chapter numeral: massive background */}
           <motion.p
             initial={{ opacity: 0, scale: 0.8 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
@@ -237,7 +237,7 @@ export function Entablature({
             {chapter}
           </motion.p>
 
-          {/* Title — inscription style */}
+          {/* Title: inscription style */}
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -255,7 +255,7 @@ export function Entablature({
           </motion.p>
         </div>
 
-        {/* Bottom cornice — thicker */}
+        {/* Bottom cornice: thicker */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={inView ? { scaleX: 1 } : {}}
@@ -267,7 +267,7 @@ export function Entablature({
           }}
         />
 
-        {/* Bottom cornice — thin gold */}
+        {/* Bottom cornice: thin gold */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={inView ? { scaleX: 1 } : {}}
@@ -343,7 +343,7 @@ export function BreathingSection({
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* Single word — inscription style */}
+        {/* Single word: inscription style */}
         <p
           className="select-none font-hero uppercase"
           style={{
@@ -365,7 +365,7 @@ export function BreathingSection({
 }
 
 // ── InscriptionText ──────────────────────────────────────────────────────────
-// For the most important statements — carved-in-stone typography.
+// For the most important statements: carved-in-stone typography.
 export function InscriptionText({
   children,
   className = "",
@@ -398,7 +398,7 @@ export function InscriptionText({
 
 // ── ScrollToDissolveEntrance ──────────────────────────────────────────────────
 // The "curtain rises" moment. A fixed overlay title card that dissolves as
-// the user scrolls DOWN. Fully reversible — scrolling back up restores it.
+// the user scrolls DOWN. Fully reversible: scrolling back up restores it.
 // Only responds to positive scroll (overscroll / bounce up won't trigger it).
 export function ScrollToDissolveEntrance({
   isRo,
@@ -449,7 +449,7 @@ export function ScrollToDissolveEntrance({
         className="relative z-10 text-center px-6"
         style={{ scale: titleScale, y: titleY }}
       >
-        {/* Stars row — top */}
+        {/* Stars row: top */}
         <p
           className="mb-6 select-none text-[#C9A84C]"
           style={{
@@ -505,7 +505,7 @@ export function ScrollToDissolveEntrance({
           {isRo ? "Un Exhibit Interactiv" : "An Interactive Exhibit"}
         </p>
 
-        {/* Stars row — bottom */}
+        {/* Stars row: bottom */}
         <p
           className="mt-6 select-none text-[#C9A84C]"
           style={{

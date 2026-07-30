@@ -1,6 +1,6 @@
 "use client";
 
-// ─── UnemploymentChart — who is left out of the GDP number ───────────────────
+// ─── UnemploymentChart: who is left out of the GDP number ───────────────────
 // The civilian unemployment rate, monthly since 1948, with NBER recessions
 // shaded behind it. Every other chart on this page measures what America makes;
 // this one measures the people not making it, which is the honest companion to a
@@ -48,8 +48,8 @@ export function UnemploymentChart({ data, recessions, title, subtitle, source }:
         covid: "COVID",
         volckerRecession: "Recesiunea 1982",
         fullEmployment: "Ocupare deplină (~4%)",
-        peakLabel: "Maxim record — aprilie 2020",
-        lowLabel: "Minim record — mai 1953",
+        peakLabel: "Maxim record: aprilie 2020",
+        lowLabel: "Minim record: mai 1953",
         latestLabel: "Astăzi",
         source: "Sursă:",
       }
@@ -58,8 +58,8 @@ export function UnemploymentChart({ data, recessions, title, subtitle, source }:
         covid: "COVID",
         volckerRecession: "1982 recession",
         fullEmployment: "Full employment (~4%)",
-        peakLabel: "Record high — April 2020",
-        lowLabel: "Record low — May 1953",
+        peakLabel: "Record high: April 2020",
+        lowLabel: "Record low: May 1953",
         latestLabel: "Today",
         source: "Source:",
       };

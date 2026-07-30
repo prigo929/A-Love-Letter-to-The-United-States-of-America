@@ -1,5 +1,5 @@
 // ─── Great Lakes Sub-Page ─────────────────────────────────────────────────────
-// No local Great Lakes image — uses high-quality Unsplash aerial of Lake Superior.
+// No local Great Lakes image: uses high-quality Unsplash aerial of Lake Superior.
 //
 // Beginner guide:
 // - Shared Great Lakes facts and chart data come from lib/data/nature-data.ts
@@ -264,7 +264,7 @@ export default async function GreatLakesPage() {
     <>
       <NatStyles />
 
-      {/* ── HERO — single image cinematic entrance ───────────────────────── */}
+      {/* ── HERO: single image cinematic entrance ───────────────────────── */}
       <NatureSubPageHero
         imageSrc={GREAT_LAKES_HERO}
         imageAlt={isRo ? "Marile Lacuri cu Chicago" : "The Great Lakes with Chicago"}

@@ -3,7 +3,7 @@
 // ─── FooterSignature ──────────────────────────────────────────────────────────
 // The closing shot: a viewport-wide hollow-outline "AMERICA" whose gold fill
 // sweeps in left-to-right as the footer scrolls into view. Two stacked copies
-// of the same text — an outlined base and a filled overlay whose clip-path is
+// of the same text: an outlined base and a filled overlay whose clip-path is
 // driven by scroll progress.
 
 import { useRef } from "react";

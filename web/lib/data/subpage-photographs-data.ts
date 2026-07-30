@@ -37,7 +37,7 @@ const TECH_COMMERCE: SubpagePhoto[] = [
     section: "economy",
     subpage: "",
     rights: "needs-license",
-    source: "Smithsonian / press archives — request or substitute.",
+    source: "Smithsonian / press archives: request or substitute.",
   },
   {
     id: "martin-cooper-first-cell-phone-call",
@@ -48,7 +48,7 @@ const TECH_COMMERCE: SubpagePhoto[] = [
     section: "innovation",
     subpage: "smartphones",
     rights: "needs-license",
-    source: "Motorola / press archives — request permission.",
+    source: "Motorola / press archives: request permission.",
   },
   {
     id: "1950s-tupperware-party",
@@ -70,7 +70,7 @@ const TECH_COMMERCE: SubpagePhoto[] = [
     section: "economy",
     subpage: "",
     rights: "needs-license",
-    source: "Ford archives — request permission.",
+    source: "Ford archives: request permission.",
   },
   {
     id: "mass-production-of-penicillin",
@@ -92,11 +92,11 @@ const TECH_COMMERCE: SubpagePhoto[] = [
     section: "economy",
     subpage: "",
     rights: "needs-license",
-    source: "Press archives — request or substitute.",
+    source: "Press archives: request or substitute.",
   },
   {
     id: "air-conditioned-movie-marquee",
-    title: "A 1930s Movie Theater Marquee — “Scientifically Air Conditioned”",
+    title: "A 1930s Movie Theater Marquee: “Scientifically Air Conditioned”",
     year: "1930s",
     blurb: "Movie palaces advertised air conditioning as the main attraction, seeding the climate-controlled comfort that reshaped American life and the Sun Belt.",
     category: "American Life",
@@ -114,7 +114,7 @@ const TECH_COMMERCE: SubpagePhoto[] = [
     section: "economy",
     subpage: "",
     rights: "needs-license",
-    source: "FedEx archives — request permission.",
+    source: "FedEx archives: request permission.",
   },
   {
     id: "amana-radarange-home-kitchen",
@@ -125,7 +125,7 @@ const TECH_COMMERCE: SubpagePhoto[] = [
     section: "quality-of-life",
     subpage: "",
     rights: "needs-license",
-    source: "Amana / press archives — request permission.",
+    source: "Amana / press archives: request permission.",
   },
   {
     id: "first-diners-club-card",
@@ -136,7 +136,7 @@ const TECH_COMMERCE: SubpagePhoto[] = [
     section: "economy",
     subpage: "",
     rights: "needs-license",
-    source: "Press archives — request or substitute.",
+    source: "Press archives: request or substitute.",
   },
   {
     id: "southwest-texas-triangle-flights",
@@ -147,7 +147,7 @@ const TECH_COMMERCE: SubpagePhoto[] = [
     section: "economy",
     subpage: "",
     rights: "needs-license",
-    source: "Southwest / press archives — request permission.",
+    source: "Southwest / press archives: request permission.",
   },
   {
     id: "sears-motor-buggy-launch",
@@ -228,7 +228,7 @@ const UNIV_IVY: SubpagePhoto[] = [
     section: "universities",
     subpage: "ivy-league",
     rights: "needs-license",
-    source: "IAS archives — request permission.",
+    source: "IAS archives: request permission.",
   },
   {
     id: "columbia-low-library-steps",
@@ -250,7 +250,7 @@ const UNIV_IVY: SubpagePhoto[] = [
     section: "universities",
     subpage: "ivy-league",
     rights: "needs-license",
-    source: "Press archives — request permission.",
+    source: "Press archives: request permission.",
   },
   {
     id: "dartmouth-summer-research-project",
@@ -261,7 +261,7 @@ const UNIV_IVY: SubpagePhoto[] = [
     section: "universities",
     subpage: "ivy-league",
     rights: "needs-license",
-    source: "Dartmouth archives — request permission.",
+    source: "Dartmouth archives: request permission.",
   },
   {
     id: "theodore-roosevelt-harvard-undergrad",
@@ -293,7 +293,7 @@ const UNIV_STEM: SubpagePhoto[] = [
     id: "mit-rad-lab-wwii",
     title: "The MIT “Rad Lab” (Radiation Laboratory) During WWII",
     year: "c. 1943",
-    blurb: "MIT's Radiation Laboratory developed wartime radar — second only to the Manhattan Project in scientific impact on the war.",
+    blurb: "MIT's Radiation Laboratory developed wartime radar: second only to the Manhattan Project in scientific impact on the war.",
     category: "Education",
     section: "universities",
     subpage: "stem-powerhouses",
@@ -309,7 +309,7 @@ const UNIV_STEM: SubpagePhoto[] = [
     section: "universities",
     subpage: "stem-powerhouses",
     rights: "needs-license",
-    source: "HP archives — request permission.",
+    source: "HP archives: request permission.",
   },
   {
     id: "caltech-suicide-squad-arroyo-seco",
@@ -331,13 +331,13 @@ const UNIV_STEM: SubpagePhoto[] = [
     section: "universities",
     subpage: "stem-powerhouses",
     rights: "needs-license",
-    source: "Carnegie Mellon archives — request permission.",
+    source: "Carnegie Mellon archives: request permission.",
   },
   {
     id: "margaret-hamilton-apollo-code",
     title: "Margaret Hamilton Standing Next to the Apollo Guidance Code at MIT",
     year: "1969",
-    blurb: "MIT's Margaret Hamilton beside the printed Apollo flight software she led — a foundational moment for software engineering.",
+    blurb: "MIT's Margaret Hamilton beside the printed Apollo flight software she led: a foundational moment for software engineering.",
     category: "Education",
     section: "universities",
     subpage: "stem-powerhouses",
@@ -390,7 +390,7 @@ const UNIV_BUSINESS: SubpagePhoto[] = [
     section: "universities",
     subpage: "business-schools",
     rights: "needs-license",
-    source: "University of Chicago archives — request permission.",
+    source: "University of Chicago archives: request permission.",
   },
   {
     id: "first-mba-class-harvard",
@@ -423,7 +423,7 @@ const UNIV_BUSINESS: SubpagePhoto[] = [
     section: "universities",
     subpage: "business-schools",
     rights: "needs-license",
-    source: "Nike / Stanford archives — request permission.",
+    source: "Nike / Stanford archives: request permission.",
   },
   {
     id: "thomas-sowell-hoover-institution",
@@ -434,7 +434,7 @@ const UNIV_BUSINESS: SubpagePhoto[] = [
     section: "universities",
     subpage: "business-schools",
     rights: "needs-license",
-    source: "Hoover Institution — request permission.",
+    source: "Hoover Institution: request permission.",
   },
   {
     id: "benjamin-graham-columbia",
@@ -445,7 +445,7 @@ const UNIV_BUSINESS: SubpagePhoto[] = [
     section: "universities",
     subpage: "business-schools",
     rights: "needs-license",
-    source: "Columbia archives — request permission.",
+    source: "Columbia archives: request permission.",
   },
   {
     id: "stanford-industrial-park",
@@ -456,7 +456,7 @@ const UNIV_BUSINESS: SubpagePhoto[] = [
     section: "universities",
     subpage: "business-schools",
     rights: "needs-license",
-    source: "Stanford archives — request permission.",
+    source: "Stanford archives: request permission.",
   },
   {
     id: "wharton-students-1980s",
@@ -467,7 +467,7 @@ const UNIV_BUSINESS: SubpagePhoto[] = [
     section: "universities",
     subpage: "business-schools",
     rights: "needs-license",
-    source: "Penn / press archives — request permission.",
+    source: "Penn / press archives: request permission.",
   },
 ];
 
@@ -477,12 +477,12 @@ const UNIV_PUBLIC: SubpagePhoto[] = [
     id: "kleinrock-first-imp-ucla",
     title: "Leonard Kleinrock with the First IMP at UCLA",
     year: "1969",
-    blurb: "UCLA's Interface Message Processor sent the first ARPANET message in 1969 — the first node of the internet.",
+    blurb: "UCLA's Interface Message Processor sent the first ARPANET message in 1969: the first node of the internet.",
     category: "Technology",
     section: "universities",
     subpage: "public-research-universities",
     rights: "needs-license",
-    source: "UCLA archives — request permission.",
+    source: "UCLA archives: request permission.",
   },
   {
     id: "texas-am-cadets-drill-field",
@@ -526,7 +526,7 @@ const UNIV_PUBLIC: SubpagePhoto[] = [
     section: "universities",
     subpage: "public-research-universities",
     rights: "needs-license",
-    source: "University of Florida / press — request permission.",
+    source: "University of Florida / press: request permission.",
   },
   {
     id: "neil-armstrong-purdue-student",
@@ -537,7 +537,7 @@ const UNIV_PUBLIC: SubpagePhoto[] = [
     section: "universities",
     subpage: "public-research-universities",
     rights: "needs-license",
-    source: "Purdue archives — request permission.",
+    source: "Purdue archives: request permission.",
   },
   {
     id: "artificial-heart-team-utah",
@@ -548,7 +548,7 @@ const UNIV_PUBLIC: SubpagePhoto[] = [
     section: "universities",
     subpage: "public-research-universities",
     rights: "needs-license",
-    source: "University of Utah archives — request permission.",
+    source: "University of Utah archives: request permission.",
   },
   {
     id: "jefferson-rotunda-uva",
@@ -602,7 +602,7 @@ const GL_NATO: SubpagePhoto[] = [
     id: "nato-awacs-american-skies",
     title: "NATO AWACS Patrolling American Skies",
     year: "2001",
-    blurb: "After 9/11, NATO invoked Article 5 for the first time and flew AWACS over US cities — the alliance defending America.",
+    blurb: "After 9/11, NATO invoked Article 5 for the first time and flew AWACS over US cities: the alliance defending America.",
     category: "Military",
     section: "global-leadership",
     subpage: "nato-alliance",
@@ -661,7 +661,7 @@ const GL_UN: SubpagePhoto[] = [
     id: "bretton-woods-conference",
     title: "The Bretton Woods Conference",
     year: "1944",
-    blurb: "American-led negotiations built the postwar financial order — the IMF, World Bank, and dollar-anchored system.",
+    blurb: "American-led negotiations built the postwar financial order: the IMF, World Bank, and dollar-anchored system.",
     category: "History",
     section: "global-leadership",
     subpage: "un-world-order",
@@ -764,7 +764,7 @@ const GL_PAX: SubpagePhoto[] = [
     id: "carrier-strike-group-patrol",
     title: "A U.S. Navy Carrier Strike Group on Patrol",
     year: "Contemporary",
-    blurb: "Eleven carrier strike groups give the United States the ability to project decisive power to any ocean — the spine of Pax Americana.",
+    blurb: "Eleven carrier strike groups give the United States the ability to project decisive power to any ocean: the spine of Pax Americana.",
     category: "Military",
     section: "global-leadership",
     subpage: "pax-americana",
@@ -926,12 +926,12 @@ const INNO_INTERNET: SubpagePhoto[] = [
     id: "vint-cerf-bob-kahn",
     title: "Vint Cerf and Bob Kahn",
     year: "1970s",
-    blurb: "Cerf and Kahn designed TCP/IP, the protocol suite that lets independent networks interconnect — the technical foundation of the internet.",
+    blurb: "Cerf and Kahn designed TCP/IP, the protocol suite that lets independent networks interconnect: the technical foundation of the internet.",
     category: "Technology",
     section: "innovation",
     subpage: "internet-history",
     rights: "needs-license",
-    source: "press / ACM archives — request permission.",
+    source: "press / ACM archives: request permission.",
   },
   {
     id: "arpanet-logical-map-1969",
@@ -953,7 +953,7 @@ const INNO_INTERNET: SubpagePhoto[] = [
     section: "innovation",
     subpage: "internet-history",
     rights: "needs-license",
-    source: "press archives — request permission.",
+    source: "press archives: request permission.",
   },
   {
     id: "page-brin-first-google-server",
@@ -964,7 +964,7 @@ const INNO_INTERNET: SubpagePhoto[] = [
     section: "innovation",
     subpage: "internet-history",
     rights: "needs-license",
-    source: "Google / Computer History Museum — request permission.",
+    source: "Google / Computer History Museum: request permission.",
   },
   {
     id: "laying-fiber-optic-telecom-boom",
@@ -986,7 +986,7 @@ const INNO_INTERNET: SubpagePhoto[] = [
     section: "innovation",
     subpage: "internet-history",
     rights: "needs-license",
-    source: "Cisco / Computer History Museum — request permission.",
+    source: "Cisco / Computer History Museum: request permission.",
   },
   {
     id: "aol-cdroms-flooding-market",
@@ -997,7 +997,7 @@ const INNO_INTERNET: SubpagePhoto[] = [
     section: "innovation",
     subpage: "internet-history",
     rights: "needs-license",
-    source: "press archives — request or substitute.",
+    source: "press archives: request or substitute.",
   },
 ];
 
@@ -1012,7 +1012,7 @@ const INNO_AI: SubpagePhoto[] = [
     section: "innovation",
     subpage: "ai-and-tech",
     rights: "needs-license",
-    source: "IBM / press archives — request permission.",
+    source: "IBM / press archives: request permission.",
   },
   {
     id: "jensen-huang-first-gpu",
@@ -1023,7 +1023,7 @@ const INNO_AI: SubpagePhoto[] = [
     section: "innovation",
     subpage: "ai-and-tech",
     rights: "needs-license",
-    source: "NVIDIA — request permission.",
+    source: "NVIDIA: request permission.",
   },
   {
     id: "dartmouth-ai-plaque",
@@ -1034,7 +1034,7 @@ const INNO_AI: SubpagePhoto[] = [
     section: "innovation",
     subpage: "ai-and-tech",
     rights: "needs-license",
-    source: "Dartmouth — request permission.",
+    source: "Dartmouth: request permission.",
   },
   {
     id: "ibm-watson-jeopardy",
@@ -1045,7 +1045,7 @@ const INNO_AI: SubpagePhoto[] = [
     section: "innovation",
     subpage: "ai-and-tech",
     rights: "needs-license",
-    source: "IBM / press — request permission.",
+    source: "IBM / press: request permission.",
   },
   {
     id: "arthur-samuel-ibm-701-checkers",
@@ -1056,7 +1056,7 @@ const INNO_AI: SubpagePhoto[] = [
     section: "innovation",
     subpage: "ai-and-tech",
     rights: "needs-license",
-    source: "IBM archives — request permission.",
+    source: "IBM archives: request permission.",
   },
   {
     id: "google-tpu-unveiling",
@@ -1067,7 +1067,7 @@ const INNO_AI: SubpagePhoto[] = [
     section: "innovation",
     subpage: "ai-and-tech",
     rights: "needs-license",
-    source: "Google — request permission.",
+    source: "Google: request permission.",
   },
   {
     id: "chatgpt-launch-openai",
@@ -1078,7 +1078,7 @@ const INNO_AI: SubpagePhoto[] = [
     section: "innovation",
     subpage: "ai-and-tech",
     rights: "needs-license",
-    source: "OpenAI — request permission.",
+    source: "OpenAI: request permission.",
   },
 ];
 
@@ -1093,7 +1093,7 @@ const INNO_PHONES: SubpagePhoto[] = [
     section: "innovation",
     subpage: "smartphones",
     rights: "needs-license",
-    source: "press / Apple — license or supply. (User-supplied version in iconic-photographs.)",
+    source: "press / Apple: license or supply. (User-supplied version in iconic-photographs.)",
   },
   {
     id: "cooper-motorola-dynatac",
@@ -1104,7 +1104,7 @@ const INNO_PHONES: SubpagePhoto[] = [
     section: "innovation",
     subpage: "smartphones",
     rights: "needs-license",
-    source: "Motorola archives — request permission.",
+    source: "Motorola archives: request permission.",
   },
   {
     id: "t-mobile-g1-unveiling",
@@ -1115,18 +1115,18 @@ const INNO_PHONES: SubpagePhoto[] = [
     section: "innovation",
     subpage: "smartphones",
     rights: "needs-license",
-    source: "press archives — request permission.",
+    source: "press archives: request permission.",
   },
   {
     id: "ibm-simon-personal-communicator",
     title: "IBM Simon Personal Communicator",
     year: "1992",
-    blurb: "The IBM Simon, with its touchscreen and apps, is often called the first smartphone — a decade ahead of its time.",
+    blurb: "The IBM Simon, with its touchscreen and apps, is often called the first smartphone: a decade ahead of its time.",
     category: "Technology",
     section: "innovation",
     subpage: "smartphones",
     rights: "needs-license",
-    source: "IBM / press archives — request permission.",
+    source: "IBM / press archives: request permission.",
   },
   {
     id: "motorola-startac",
@@ -1137,7 +1137,7 @@ const INNO_PHONES: SubpagePhoto[] = [
     section: "innovation",
     subpage: "smartphones",
     rights: "needs-license",
-    source: "Motorola archives — request permission.",
+    source: "Motorola archives: request permission.",
   },
   {
     id: "jobs-introducing-app-store",
@@ -1148,7 +1148,7 @@ const INNO_PHONES: SubpagePhoto[] = [
     section: "innovation",
     subpage: "smartphones",
     rights: "needs-license",
-    source: "press / Apple — license or supply.",
+    source: "press / Apple: license or supply.",
   },
   {
     id: "corning-gorilla-glass-workers",
@@ -1159,7 +1159,7 @@ const INNO_PHONES: SubpagePhoto[] = [
     section: "innovation",
     subpage: "smartphones",
     rights: "needs-license",
-    source: "Corning — request permission.",
+    source: "Corning: request permission.",
   },
 ];
 
@@ -1174,7 +1174,7 @@ const INNO_CLOUD: SubpagePhoto[] = [
     section: "innovation",
     subpage: "cloud-computing",
     rights: "needs-license",
-    source: "Amazon / press — request permission.",
+    source: "Amazon / press: request permission.",
   },
   {
     id: "benioff-no-software-protest",
@@ -1185,7 +1185,7 @@ const INNO_CLOUD: SubpagePhoto[] = [
     section: "innovation",
     subpage: "cloud-computing",
     rights: "needs-license",
-    source: "Salesforce / press — request permission.",
+    source: "Salesforce / press: request permission.",
   },
   {
     id: "aws-data-center-virginia",
@@ -1196,7 +1196,7 @@ const INNO_CLOUD: SubpagePhoto[] = [
     section: "innovation",
     subpage: "cloud-computing",
     rights: "needs-license",
-    source: "Amazon — request permission.",
+    source: "Amazon: request permission.",
   },
   {
     id: "diane-greene-vmware-founders",
@@ -1207,7 +1207,7 @@ const INNO_CLOUD: SubpagePhoto[] = [
     section: "innovation",
     subpage: "cloud-computing",
     rights: "needs-license",
-    source: "VMware / press — request permission.",
+    source: "VMware / press: request permission.",
   },
   {
     id: "nadella-azure-expansion",
@@ -1218,7 +1218,7 @@ const INNO_CLOUD: SubpagePhoto[] = [
     section: "innovation",
     subpage: "cloud-computing",
     rights: "needs-license",
-    source: "Microsoft — request permission.",
+    source: "Microsoft: request permission.",
   },
   {
     id: "laying-transatlantic-data-cables",
@@ -1240,7 +1240,7 @@ const INNO_CLOUD: SubpagePhoto[] = [
     section: "innovation",
     subpage: "cloud-computing",
     rights: "needs-license",
-    source: "Google — request permission.",
+    source: "Google: request permission.",
   },
 ];
 
@@ -1299,7 +1299,7 @@ const INNO_SPACE: SubpagePhoto[] = [
     section: "innovation",
     subpage: "space-technology",
     rights: "needs-license",
-    source: "Blue Origin — request permission.",
+    source: "Blue Origin: request permission.",
   },
   {
     id: "starlink-constellation-deployment",
@@ -1336,7 +1336,7 @@ const INNO_GAMING: SubpagePhoto[] = [
     section: "innovation",
     subpage: "gaming",
     rights: "needs-license",
-    source: "Atari / press — request permission.",
+    source: "Atari / press: request permission.",
   },
   {
     id: "carmack-romero-id-software",
@@ -1347,7 +1347,7 @@ const INNO_GAMING: SubpagePhoto[] = [
     section: "innovation",
     subpage: "gaming",
     rights: "needs-license",
-    source: "id / press — request permission.",
+    source: "id / press: request permission.",
   },
   {
     id: "gates-rock-unveiling-xbox",
@@ -1358,7 +1358,7 @@ const INNO_GAMING: SubpagePhoto[] = [
     section: "innovation",
     subpage: "gaming",
     rights: "needs-license",
-    source: "Microsoft / press — request permission.",
+    source: "Microsoft / press: request permission.",
   },
   {
     id: "gabe-newell-launching-steam",
@@ -1369,7 +1369,7 @@ const INNO_GAMING: SubpagePhoto[] = [
     section: "innovation",
     subpage: "gaming",
     rights: "needs-license",
-    source: "Valve / press — request permission.",
+    source: "Valve / press: request permission.",
   },
   {
     id: "magnavox-odyssey",
@@ -1380,7 +1380,7 @@ const INNO_GAMING: SubpagePhoto[] = [
     section: "innovation",
     subpage: "gaming",
     rights: "needs-license",
-    source: "Smithsonian / press — request or substitute.",
+    source: "Smithsonian / press: request or substitute.",
   },
   {
     id: "american-esports-arena",
@@ -1391,7 +1391,7 @@ const INNO_GAMING: SubpagePhoto[] = [
     section: "innovation",
     subpage: "gaming",
     rights: "needs-license",
-    source: "press — request or substitute.",
+    source: "press: request or substitute.",
   },
   {
     id: "wow-midnight-launch",
@@ -1402,7 +1402,7 @@ const INNO_GAMING: SubpagePhoto[] = [
     section: "innovation",
     subpage: "gaming",
     rights: "needs-license",
-    source: "Blizzard / press — request permission.",
+    source: "Blizzard / press: request permission.",
   },
 ];
 
@@ -1449,7 +1449,7 @@ const CULT_BRANDS: SubpagePhoto[] = [
   { id: "miners-wearing-levis", title: "Miners Wearing Levi's Jeans", year: "c. 1880s", blurb: "Levi Strauss's riveted denim outfitted Gold Rush miners and became America's universal garment.", category: "Cultural Icons", section: "culture", subpage: "companies-brands", rights: "public-domain", source: "Wikipedia / Commons (PD)." },
   { id: "apple-1984-super-bowl-commercial", title: "The Apple “1984” Super Bowl Commercial", year: "1984", blurb: "Ridley Scott's 'rebel' ad launched the Macintosh and rewrote the rules of brand advertising.", category: "Cultural Icons", section: "culture", subpage: "companies-brands", rights: "needs-license", source: "Apple / press archives." },
   { id: "sam-walton-first-walmart", title: "Sam Walton in Front of the First Walmart", year: "1962", blurb: "Walton's rural discount store grew into the world's largest retailer and a logistics revolution.", category: "Cultural Icons", section: "culture", subpage: "companies-brands", rights: "needs-license", source: "Walmart / press archives." },
-  { id: "marlboro-man-billboard-times-square", title: "The “Marlboro Man” Billboard over Times Square", year: "c. 1970s", blurb: "The rugged Marlboro cowboy became one of advertising's most powerful — and controversial — icons.", category: "Cultural Icons", section: "culture", subpage: "companies-brands", rights: "needs-license", source: "press archives." },
+  { id: "marlboro-man-billboard-times-square", title: "The “Marlboro Man” Billboard over Times Square", year: "c. 1970s", blurb: "The rugged Marlboro cowboy became one of advertising's most powerful: and controversial: icons.", category: "Cultural Icons", section: "culture", subpage: "companies-brands", rights: "needs-license", source: "press archives." },
   { id: "original-kelloggs-factory-battle-creek", title: "The Original Kellogg's Factory in Battle Creek", year: "c. 1910s", blurb: "Battle Creek's cereal boom invented the American breakfast and the packaged-food industry.", category: "Cultural Icons", section: "culture", subpage: "companies-brands", rights: "public-domain", source: "Wikipedia / Commons (PD, pre-1929)." },
   { id: "first-starbucks-pike-place", title: "The First Starbucks in Pike Place Market", year: "1971", blurb: "The original Pike Place store grew into a global chain that remade American coffee culture.", category: "Cultural Icons", section: "culture", subpage: "companies-brands", rights: "needs-license", source: "Commons / press." },
 ];
@@ -1474,7 +1474,7 @@ const CULT_MUSIC: SubpagePhoto[] = [
   { id: "grand-ole-opry-ryman", title: "The Grand Ole Opry at the Ryman Auditorium", year: "c. 1950s", blurb: "The Ryman's Grand Ole Opry made Nashville the home of country music.", category: "Music", section: "culture", subpage: "music-genres", rights: "loc", source: "Commons / archives." },
   { id: "berry-gordy-hitsville-usa", title: "Berry Gordy Outside “Hitsville U.S.A.”", year: "c. 1960s", blurb: "Gordy's Motown turned a Detroit house into a hit factory and a crossover cultural force.", category: "Music", section: "culture", subpage: "music-genres", rights: "needs-license", source: "press archives." },
   { id: "the-crowd-at-woodstock", title: "The Crowd at Woodstock", year: "1969", blurb: "Half a million gathered at Woodstock, the defining festival of the 1960s counterculture.", category: "Music", section: "culture", subpage: "music-genres", rights: "needs-license", source: "press / Commons." },
-  { id: "cbgb-awning-bowery", title: "The CBGB Awning in the Bowery, New York", year: "c. 1970s", blurb: "CBGB's grimy stage birthed American punk and new wave — the Ramones, Blondie, Talking Heads.", category: "Music", section: "culture", subpage: "music-genres", rights: "needs-license", source: "Commons / press." },
+  { id: "cbgb-awning-bowery", title: "The CBGB Awning in the Bowery, New York", year: "c. 1970s", blurb: "CBGB's grimy stage birthed American punk and new wave: the Ramones, Blondie, Talking Heads.", category: "Music", section: "culture", subpage: "music-genres", rights: "needs-license", source: "Commons / press." },
   { id: "nwa-defying-police-bans", title: "N.W.A. Defying Police Bans to Perform", year: "1989", blurb: "N.W.A.'s confrontational rap made hip-hop a vehicle for protest and free-speech battles.", category: "Music", section: "culture", subpage: "music-genres", rights: "needs-license", source: "press archives." },
 ];
 
@@ -1495,7 +1495,7 @@ const CULT_ENGLISH: SubpagePhoto[] = [
   { id: "voice-of-america-broadcast-desk", title: "The Voice of America Broadcast Desk During the Cold War", year: "Cold War Era", blurb: "VOA beamed American English and news behind the Iron Curtain, spreading the language worldwide.", category: "History", section: "culture", subpage: "english-language", rights: "public-domain", source: "VOA / US government (PD)." },
   { id: "noah-webster-american-dictionary", title: "Noah Webster's American Dictionary of the English Language", year: "1828", blurb: "Webster's 1828 dictionary codified a distinctly American English, standardizing spelling and usage.", category: "History", section: "culture", subpage: "english-language", rights: "public-domain", source: "Wikipedia / Commons (PD, 1828)." },
   { id: "foreign-cinema-marquee-hollywood-film", title: "A Foreign Cinema Marquee Showing a Hollywood Film", year: "c. 1990s", blurb: "Hollywood's global reach made American English the default language of world entertainment.", category: "History", section: "culture", subpage: "english-language", rights: "loc", source: "Commons / archives." },
-  { id: "apollo-11-plaque-on-the-moon", title: "The Apollo 11 Plaque Left on the Moon", year: "1969", blurb: "The plaque left on the Moon — in English — declared humanity's first steps 'for all mankind.'", category: "History", section: "culture", subpage: "english-language", rights: "public-domain", source: "NASA (PD)." },
+  { id: "apollo-11-plaque-on-the-moon", title: "The Apollo 11 Plaque Left on the Moon", year: "1969", blurb: "The plaque left on the Moon: in English: declared humanity's first steps 'for all mankind.'", category: "History", section: "culture", subpage: "english-language", rights: "public-domain", source: "NASA (PD)." },
   { id: "air-traffic-controllers-towers", title: "International Air Traffic Controllers Working the Towers", year: "Modern Era", blurb: "Aviation English is the mandatory global language of the skies, an American and Allied legacy.", category: "History", section: "culture", subpage: "english-language", rights: "loc", source: "Commons / FAA." },
   { id: "sesame-street-global-broadcast", title: "The Broadcast of Sesame Street into Global Markets", year: "c. 1970s", blurb: "Sesame Street taught English and literacy to children across dozens of countries.", category: "History", section: "culture", subpage: "english-language", rights: "needs-license", source: "press archives." },
   { id: "early-coders-cpp-html", title: "Early Coders Typing in C++ or HTML", year: "Late 20th Century", blurb: "The world's programming languages are written in English keywords, a quiet form of linguistic dominance.", category: "History", section: "culture", subpage: "english-language", rights: "loc", source: "Commons / archives." },
@@ -1567,7 +1567,7 @@ const CON_BILL: SubpagePhoto[] = [
   { id: "original-bill-of-rights-national-archives", imagePath: "Constitution/Subpage/bill-of-rights-document.jpg", title: "The Original Bill of Rights at the National Archives", year: "1791", blurb: "The handwritten first ten amendments, ratified in 1791, enshrined the liberties at the core of the American experiment.", category: "Constitution", section: "constitution", subpage: "bill-of-rights", rights: "public-domain", source: "National Archives (PD)." },
   { id: "portrait-of-george-mason", imagePath: "Constitution/Subpage/george-mason-portrait.jpg", title: "Portrait of George Mason", year: "c. 1780s", blurb: "Mason's Virginia Declaration of Rights was the model for the federal Bill of Rights.", category: "Constitution", section: "constitution", subpage: "bill-of-rights", rights: "public-domain", source: "Wikipedia / Commons (PD)." },
   { id: "magna-carta-runnymede-memorial", imagePath: "Constitution/Subpage/magna-carta.jpg", title: "The Magna Carta / Runnymede Memorial", year: "1215", blurb: "Magna Carta's limits on royal power are an ancestor of the American constitutional tradition.", category: "Constitution", section: "constitution", subpage: "bill-of-rights", rights: "public-domain", source: "Wikipedia / Commons (PD)." },
-  { id: "rockwell-four-freedoms", title: "Norman Rockwell's Four Freedoms", year: "1943", blurb: "Rockwell's wartime paintings made FDR's Four Freedoms vivid and personal for millions of Americans.", category: "History", section: "constitution", subpage: "bill-of-rights", rights: "needs-license", source: "Rockwell estate / press — license or supply." },
+  { id: "rockwell-four-freedoms", title: "Norman Rockwell's Four Freedoms", year: "1943", blurb: "Rockwell's wartime paintings made FDR's Four Freedoms vivid and personal for millions of Americans.", category: "History", section: "constitution", subpage: "bill-of-rights", rights: "needs-license", source: "Rockwell estate / press: license or supply." },
   { id: "federalist-papers-title-page", imagePath: "Constitution/Subpage/federalist-papers-title.jpg", title: "The Title Page of The Federalist Papers", year: "1788", blurb: "Hamilton, Madison, and Jay's essays argued for the Constitution and remain its definitive exposition.", category: "Constitution", section: "constitution", subpage: "bill-of-rights", rights: "public-domain", source: "Library of Congress (PD, 1788)." },
   { id: "clarence-thomas-holding-constitution", imagePath: "Constitution/Subpage/clarence-thomas.jpg", title: "Justice Clarence Thomas Holding the Constitution", year: "Contemporary", blurb: "Thomas, a leading originalist, often carries a pocket Constitution as a touchstone for his jurisprudence.", category: "History", section: "constitution", subpage: "bill-of-rights", rights: "public-domain", source: "Supreme Court / federal (PD)." },
   { id: "virginia-declaration-of-rights", title: "The Virginia Declaration of Rights", year: "1776", blurb: "George Mason's 1776 declaration proclaimed inherent rights and influenced both the Declaration and Bill of Rights.", category: "Constitution", section: "constitution", subpage: "bill-of-rights", rights: "public-domain", source: "Library of Congress (PD, 1776)." },
@@ -1576,7 +1576,7 @@ const CON_BILL: SubpagePhoto[] = [
 
 // ── Constitution · First Amendment ───────────────────────────────────────────
 const CON_FIRST: SubpagePhoto[] = [
-  { id: "rockwell-freedom-of-speech", title: "Norman Rockwell's Freedom of Speech", year: "1943", blurb: "Rockwell's image of a working man speaking at a town meeting is an enduring portrait of free expression.", category: "History", section: "constitution", subpage: "first-amendment", rights: "needs-license", source: "Rockwell estate / press — license or supply." },
+  { id: "rockwell-freedom-of-speech", title: "Norman Rockwell's Freedom of Speech", year: "1943", blurb: "Rockwell's image of a working man speaking at a town meeting is an enduring portrait of free expression.", category: "History", section: "constitution", subpage: "first-amendment", rights: "needs-license", source: "Rockwell estate / press: license or supply." },
   { id: "mlk-i-have-a-dream-first-amendment", imagePath: "Constitution/Subpage/fa-mlk-dream.jpg", title: "Martin Luther King Jr. Delivering the “I Have a Dream” Speech", year: "1963", blurb: "King's march and speech show the First Amendment's freedoms of speech and assembly at their most powerful.", category: "History", section: "constitution", subpage: "first-amendment", rights: "public-domain", source: "National Archives (federal work, PD)." },
   { id: "colonial-printing-press", imagePath: "Constitution/Subpage/fa-printing-press.jpg", title: "A Colonial Printing Press", year: "c. 1770s", blurb: "The colonial press spread revolutionary ideas and made freedom of the press a founding American value.", category: "History", section: "constitution", subpage: "first-amendment", rights: "public-domain", source: "Wikipedia / Commons (PD)." },
   { id: "march-for-life-washington", imagePath: "Constitution/Subpage/fa-march-for-life.jpg", title: "The March for Life in Washington, D.C.", year: "1974–Present", blurb: "The annual March for Life shows the First Amendment rights of assembly and petition in sustained action.", category: "History", section: "constitution", subpage: "first-amendment", rights: "needs-license", source: "press / Commons." },
@@ -1600,7 +1600,7 @@ const CON_SECOND: SubpagePhoto[] = [
 
 // ── Constitution · Federalism ────────────────────────────────────────────────
 const CON_FEDERALISM: SubpagePhoto[] = [
-  { id: "2016-electoral-college-map", title: "The 2016 Electoral College Map", year: "2016", blurb: "The state-by-state electoral map embodies federalism — the states, not a national popular vote, elect the president.", category: "History", section: "constitution", subpage: "federalism", rights: "public-domain", source: "public data / Commons (PD)." },
+  { id: "2016-electoral-college-map", title: "The 2016 Electoral College Map", year: "2016", blurb: "The state-by-state electoral map embodies federalism: the states, not a national popular vote, elect the president.", category: "History", section: "constitution", subpage: "federalism", rights: "public-domain", source: "public data / Commons (PD)." },
   { id: "texas-national-guard-operation-lone-star", imagePath: "Constitution/Subpage/fed-texas-guard-border.jpg", title: "Texas National Guard Securing the Southern Border (Operation Lone Star)", year: "2021–Present", blurb: "Texas's state-directed border deployment dramatized clashes between state and federal authority.", category: "History", section: "constitution", subpage: "federalism", rights: "public-domain", source: "Texas Military Dept / Commons (verify)." },
   { id: "texas-state-capitol-austin", imagePath: "Constitution/Subpage/fed-texas-capitol.jpg", title: "The Texas State Capitol Building in Austin", year: "1888", blurb: "The grand Texas Capitol, taller than the U.S. Capitol, symbolizes the power reserved to the states.", category: "US Buildings", section: "constitution", subpage: "federalism", rights: "public-domain", source: "Wikipedia / Commons (PD)." },
   { id: "governors-signing-welfare-reform", title: "Governors Signing Welfare Reform / Tax Cuts", year: "1990s–Present", blurb: "State 'laboratories of democracy' pioneered welfare reform and tax policy later adopted nationally.", category: "History", section: "constitution", subpage: "federalism", rights: "loc", source: "press / Commons." },
@@ -1619,7 +1619,7 @@ const CON_SEPARATION: SubpagePhoto[] = [
   { id: "steel-seizure-case-1952", title: "The Supreme Court Ruling on the Steel Seizure Case", year: "1952", blurb: "Youngstown Sheet & Tube v. Sawyer limited presidential power, a cornerstone separation-of-powers ruling.", category: "History", section: "constitution", subpage: "separation-of-powers", rights: "public-domain", source: "Library of Congress / Commons (PD)." },
   { id: "lodge-defeat-league-of-nations", imagePath: "Constitution/Subpage/sep-lodge-league.jpg", title: "Henry Cabot Lodge and the Defeat of the League of Nations", year: "1919", blurb: "The Senate's rejection of the Treaty of Versailles showed its co-equal power over foreign policy.", category: "History", section: "constitution", subpage: "separation-of-powers", rights: "public-domain", source: "Library of Congress (PD)." },
   { id: "chevron-overturned-loper-bright", imagePath: "Constitution/Subpage/sep-supreme-court.jpg", title: "The Overturning of Chevron Deference (Loper Bright Enterprises v. Raimondo)", year: "2024", blurb: "The 2024 ruling curbed agency power and shifted interpretive authority back to the courts.", category: "History", section: "constitution", subpage: "separation-of-powers", rights: "public-domain", source: "Supreme Court / federal (PD)." },
-  { id: "resignation-of-richard-nixon", imagePath: "Constitution/Subpage/sep-nixon-resignation.jpg", title: "The Resignation of Richard Nixon", year: "1974", blurb: "Facing impeachment, Nixon resigned — the ultimate demonstration of constitutional checks on the presidency.", category: "History", section: "constitution", subpage: "separation-of-powers", rights: "public-domain", source: "National Archives (PD)." },
+  { id: "resignation-of-richard-nixon", imagePath: "Constitution/Subpage/sep-nixon-resignation.jpg", title: "The Resignation of Richard Nixon", year: "1974", blurb: "Facing impeachment, Nixon resigned: the ultimate demonstration of constitutional checks on the presidency.", category: "History", section: "constitution", subpage: "separation-of-powers", rights: "public-domain", source: "National Archives (PD)." },
 ];
 
 export const SUBPAGE_PHOTOGRAPHS: SubpagePhoto[] = [

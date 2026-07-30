@@ -42,7 +42,7 @@ interface GdpBarChartProps {
   /** Axis label, already localised by the caller. REQUIRED on purpose: this used
    *  to default to "GDP (2024, USD Trillions)", which silently mislabelled five
    *  charts (including SIPRI defence spending in USD billions). A default that
-   *  asserts a year and a metric can always go stale — so the caller must say. */
+   *  asserts a year and a metric can always go stale: so the caller must say. */
   valueLabel: string;
   valuePrefix?: string;
   valueDecimals?: number;

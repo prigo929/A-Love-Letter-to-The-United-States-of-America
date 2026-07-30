@@ -34,7 +34,7 @@ const LANDMARK_CASES_EN = [
     year: 2008,
     name: "District of Columbia v. Heller",
     ruling: "The 2nd Amendment protects an individual right to possess firearms in the home for self-defense",
-    detail: "5-4 decision written by Scalia. Struck down DC's handgun ban. Established for the first time that the 2nd Amendment protects individual gun ownership, not just collective militia service. Also said some regulations (felon prohibitions, sensitive places) are presumptively lawful.",
+    detail: "5-4 decision written by Scalia. Struck down DC's handgun ban. Established for the first time that the 2nd Amendment protects individual gun ownership beyond collective militia service. Also said some regulations (felon prohibitions, sensitive places) are presumptively lawful.",
     pro: true,
   },
   {
@@ -54,7 +54,7 @@ const LANDMARK_CASES_EN = [
   {
     year: 2022,
     name: "New York State Rifle & Pistol Assoc. v. Bruen",
-    ruling: "Gun regulations must be consistent with historical tradition, not just reasonably related to a legitimate government interest",
+    ruling: "Gun regulations must be consistent with historical tradition rather than simple rational basis review",
     detail: "6-3 written by Thomas. Replaced the two-step 'means-end scrutiny' test used by lower courts with a purely historical test: does the regulation have a historical analogue? Overturned New York's 'proper cause' requirement for concealed carry permits. Has been used to challenge bump stock bans, domestic violence restrictions, marijuana user prohibitions, and dozens of other laws.",
     pro: true,
   },

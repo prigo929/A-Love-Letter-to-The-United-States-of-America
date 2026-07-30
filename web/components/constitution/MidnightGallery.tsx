@@ -182,7 +182,7 @@ function DossierPanel({
         exit={{ y: 40, scale: 0.97 }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       >
-        {/* Close button — gear-tooth style */}
+        {/* Close button: gear-tooth style */}
         <button
           onClick={onClose}
           className="absolute right-4 top-4 z-20 flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:bg-[rgba(201,168,76,0.1)]"
@@ -325,7 +325,7 @@ export function MidnightGallery({
         }}
       />
 
-      {/* Portrait grid — flex with justify-center so last row is centered */}
+      {/* Portrait grid: flex with justify-center so last row is centered */}
       <div className="flex flex-wrap justify-center gap-6 md:gap-8">
         {founders.map((f) => (
           <div key={f.id} className="w-[calc(50%-12px)] sm:w-[calc(33.333%-16px)] lg:w-[calc(25%-24px)] xl:w-[calc(20%-26px)]">

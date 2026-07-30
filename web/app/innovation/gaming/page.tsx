@@ -58,7 +58,7 @@ const copyEn: GamingCopy = {
   thesisParagraph1:
     "In 1972, Nolan Bushnell and Ted Dabney founded Atari in Sunnyvale, California, and released Pong, the world's first commercially successful video game. What began as a single coin-operated cabinet in a Silicon Valley bar became the foundation of the most profitable entertainment medium in human history. The global video game industry now generates more annual revenue than Hollywood film and the global music industry combined.",
   thesisParagraph2:
-    "Today, the most critical platforms, engines, and intellectual properties in gaming are American-built. Microsoft's Xbox and Activision Blizzard control the largest gaming portfolio on Earth. Epic Games' Unreal Engine powers over 50% of all AAA titles shipped globally, collecting royalties from studios on every continent. Valve's Steam marketplace controls 90% of digital PC game sales. Riot Games' League of Legends remains the most-played PC game on Earth. America did not merely invent video games, it owns the infrastructure on which all of them run.",
+    "Today, the most critical platforms, engines, and intellectual properties in gaming are American-built. Microsoft, Epic Games, Unity, and Valve underwrite the software foundations of global interactive entertainment. Unreal Engine powers over 50% of all AAA titles shipped globally, collecting royalties from studios on every continent. Valve's Steam marketplace controls 90% of digital PC game sales. Riot Games' League of Legends remains the most-played PC game on Earth. America invented video games and owns the global infrastructure on which they run.",
   milestonesTitle: "The American Arcade",
   milestones: [
     {

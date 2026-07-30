@@ -13,7 +13,7 @@
 //  2. TRANSLATION. Quoted text stays in English in both locales. A Romanian
 //     "Four score and seven years ago" is a different sentence with a different
 //     cadence, and the cadence is the whole subject. Romanian readers get the
-//     analysis translated and the primary text intact — which is also how a
+//     analysis translated and the primary text intact: which is also how a
 //     serious bilingual anthology handles it.
 
 import type { Metadata } from "next";
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 // The Bliss copy text, which is the version carved at the Lincoln Memorial and
 // the only one Lincoln signed. Public domain.
 const GETTYSBURG =
-  "Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal. Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this. But, in a larger sense, we can not dedicate — we can not consecrate — we can not hallow — this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is rather for us to be here dedicated to the great task remaining before us — that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion — that we here highly resolve that these dead shall not have died in vain — that this nation, under God, shall have a new birth of freedom — and that government of the people, by the people, for the people, shall not perish from the earth.";
+  "Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal. Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this. But, in a larger sense, we can not dedicate: we can not consecrate: we can not hallow: this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is rather for us to be here dedicated to the great task remaining before us: that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion: that we here highly resolve that these dead shall not have died in vain: that this nation, under God, shall have a new birth of freedom: and that government of the people, by the people, for the people, shall not perish from the earth.";
 
 const GETTYSBURG_NOTES: Annotation[] = [
   {
@@ -103,13 +103,13 @@ export default async function OratoryPoetryPage() {
         douglassBody:
           "Cu unsprezece ani înaintea Gettysburgului, Frederick Douglass a fost invitat să vorbească de Patru Iulie și a întrebat auditoriul de ce l-au chemat. Discursul este cel mai bun exemplu american de laudă transformată în acuzație: petrece o treime din durata lui elogiind Părinții Fondatori, pentru ca apoi să întoarcă tot acel respect împotriva ascultătorilor săi.",
         douglassQuoteGloss:
-          "„Ce înseamnă pentru sclav Patru Iulie?” — Douglass, Rochester, New York, 5 iulie 1852.",
+          "„Ce înseamnă pentru sclav Patru Iulie?”: Douglass, Rochester, New York, 5 iulie 1852.",
         whitmanTitle: "Și apoi versul se rupe",
         whitmanBody:
           "În 1855, Walt Whitman a publicat pe cheltuiala lui o carte fără numele autorului pe copertă, scrisă în versuri care nu rimau și nu respectau nicio metrică engleză. Poezia americană nu s-a mai întors niciodată. Ceea ce Lincoln a făcut cu cadența unei propoziții, Whitman a făcut cu forma unui poem: a rupt-o de tiparul britanic și a construit ceva care sună ca vorbirea.",
         kingTitle: "Moștenirea, și de ce se oprește aici",
         kingBody:
-          "Linia merge mai departe: Lincoln la Gettysburg, Douglass la Rochester, și apoi Martin Luther King Jr. pe treptele Lincoln Memorial în 1963 — stând, deliberat, sub cuvintele lui Lincoln și deschizând cu „Five score years ago”, ecoul direct al aritmeticii biblice a lui Lincoln. Nu putem cita aici discursul lui King pe larg: „I Have a Dream” a fost rostit în 1963 și rămâne sub drept de autor, iar moștenirea King îl protejează activ. Textele lui Lincoln, Douglass și Whitman de pe această pagină sunt în domeniul public, motiv pentru care le puteți citi integral.",
+          "Linia merge mai departe: Lincoln la Gettysburg, Douglass la Rochester, și apoi Martin Luther King Jr. pe treptele Lincoln Memorial în 1963: stând, deliberat, sub cuvintele lui Lincoln și deschizând cu „Five score years ago”, ecoul direct al aritmeticii biblice a lui Lincoln. Nu putem cita aici discursul lui King pe larg: „I Have a Dream” a fost rostit în 1963 și rămâne sub drept de autor, iar moștenirea King îl protejează activ. Textele lui Lincoln, Douglass și Whitman de pe această pagină sunt în domeniul public, motiv pentru care le puteți citi integral.",
         sourceNote: "Imagini: domeniu public, via Wikimedia Commons.",
         backLink: "Toate temele de literatură și filosofie",
       }
@@ -134,13 +134,13 @@ export default async function OratoryPoetryPage() {
         douglassBody:
           "Eleven years before Gettysburg, Frederick Douglass was invited to speak on the Fourth of July and asked his audience why they had invited him. The speech is the finest American example of praise turned into indictment: it spends its first third genuinely honouring the Founders, then turns every bit of that respect against the people listening.",
         douglassQuoteGloss:
-          "\"What to the Slave is the Fourth of July?\" — Douglass, Rochester, New York, 5 July 1852.",
+          "\"What to the Slave is the Fourth of July?\": Douglass, Rochester, New York, 5 July 1852.",
         whitmanTitle: "And then the line breaks",
         whitmanBody:
           "In 1855 Walt Whitman self-published a book with no author name on the cover, written in lines that did not rhyme and obeyed no English meter. American poetry never went back. What Lincoln did to the cadence of a sentence, Whitman did to the shape of a poem: broke it off the British template and built something that sounds like speech.",
         kingTitle: "The inheritance, and why it stops here",
         kingBody:
-          "The line runs forward: Lincoln at Gettysburg, Douglass at Rochester, and then Martin Luther King Jr. on the steps of the Lincoln Memorial in 1963 — standing deliberately beneath Lincoln's words and opening with \"Five score years ago\", a direct echo of Lincoln's biblical arithmetic. We cannot quote King at length here. \"I Have a Dream\" was delivered in 1963, remains under copyright, and the King estate actively enforces it. The Lincoln, Douglass and Whitman texts on this page are public domain, which is exactly why you can read them in full.",
+          "The line runs forward: Lincoln at Gettysburg, Douglass at Rochester, and then Martin Luther King Jr. on the steps of the Lincoln Memorial in 1963: standing deliberately beneath Lincoln's words and opening with \"Five score years ago\", a direct echo of Lincoln's biblical arithmetic. We cannot quote King at length here. \"I Have a Dream\" was delivered in 1963, remains under copyright, and the King estate actively enforces it. The Lincoln, Douglass and Whitman texts on this page are public domain, which is exactly why you can read them in full.",
         sourceNote: "Imagery: public domain, via Wikimedia Commons.",
         backLink: "All literature and philosophy topics",
       };

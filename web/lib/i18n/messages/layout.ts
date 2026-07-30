@@ -46,7 +46,7 @@ export function getFooterCopy(locale: Locale) {
   if (locale === "ro") {
     return {
       logoTagline: "Cea Mai Mare Națiune",
-      description: `O celebrare cinematografică a Statelor Unite ale Americii — ${yearsOld} ani de libertate, inovație și realizări fără egal.`,
+      description: `O celebrare cinematografică a Statelor Unite ale Americii: ${yearsOld} ani de libertate, inovație și realizări fără egal.`,
       est: "Fondată în 1776",
       sections: [
         {
@@ -90,7 +90,7 @@ export function getFooterCopy(locale: Locale) {
   }
   return {
     logoTagline: "The Greatest Nation",
-    description: `A cinematic celebration of the United States of America — ${yearsOld} years of freedom, innovation, and unrivaled achievement.`,
+    description: `A cinematic celebration of the United States of America: ${yearsOld} years of freedom, innovation, and unrivaled achievement.`,
     est: "Est. 1776",
     sections: [
       {

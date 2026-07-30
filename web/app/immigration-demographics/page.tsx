@@ -30,7 +30,7 @@ export default async function ImmigrationDemographicsPage() {
         <Breadcrumb items={[{ label: breadcrumb }]} className="mb-8" />
       </div>
 
-      {/* Hero — editorial */}
+      {/* Hero: editorial */}
       <section className="border-b border-white/10 px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <span className="history-bureaucratic block mb-5">

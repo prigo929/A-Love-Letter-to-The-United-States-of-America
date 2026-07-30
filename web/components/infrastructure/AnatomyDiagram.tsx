@@ -223,7 +223,7 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
           <rect x={12} y={68} width={28} height={177} fill="#111" stroke={activeId === "clearance" ? "#E8B923" : "#222"} strokeWidth={1} style={{ transition: "stroke 0.3s ease" }} />
           <rect x={600} y={68} width={28} height={177} fill="#111" stroke={activeId === "clearance" ? "#E8B923" : "#222"} strokeWidth={1} style={{ transition: "stroke 0.3s ease" }} />
 
-          {/* ── Sub-base Strata Layers (Ground) — earth plane drawn above ── */}
+          {/* ── Sub-base Strata Layers (Ground): earth plane drawn above ── */}
 
           {/* Stabilized Granular Sub-base Strata */}
           <rect 

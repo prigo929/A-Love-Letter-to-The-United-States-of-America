@@ -61,8 +61,8 @@ const SOURCES: SourceDef[] = [
     label: { en: "Fees & charges", ro: "Taxe și tarife" },
     value: (r) => r.charges,
     note: {
-      en: "University tuition, public hospital charges, tolls and park fees — money the state earns by selling a service.",
-      ro: "Taxe universitare, spitale publice, taxe de drum și de parcuri — bani câștigați prin vânzarea unui serviciu.",
+      en: "University tuition, public hospital charges, tolls and park fees: money the state earns by selling a service.",
+      ro: "Taxe universitare, spitale publice, taxe de drum și de parcuri: bani câștigați prin vânzarea unui serviciu.",
     },
   },
   {
@@ -95,8 +95,8 @@ const SOURCES: SourceDef[] = [
     label: { en: "Lottery", ro: "Loterie" },
     value: (r) => r.lottery,
     note: {
-      en: "Net lottery revenue — ticket sales minus prizes paid and administration.",
-      ro: "Venit net din loterie — vânzări de bilete minus premii și administrare.",
+      en: "Net lottery revenue: ticket sales minus prizes paid and administration.",
+      ro: "Venit net din loterie: vânzări de bilete minus premii și administrare.",
     },
   },
   {
@@ -211,7 +211,7 @@ export function StateRevenueBudget({ locale, abbrev, stateName, population, tran
       )}
 
       {/* Stacked 100% bar.
-          Widths are plain percentages with a CSS transition — framer-motion cannot
+          Widths are plain percentages with a CSS transition: framer-motion cannot
           interpolate from `0px` to a percentage and silently leaves the bar at zero. */}
       <div className="mb-2 flex h-9 w-full overflow-hidden rounded-lg">
         {rows
@@ -224,7 +224,7 @@ export function StateRevenueBudget({ locale, abbrev, stateName, population, tran
                 onClick={() => setSelected(selected === r.def.id ? null : r.def.id)}
                 className="group relative h-full shrink-0 transition-[width,opacity] duration-500 ease-out"
                 style={{ width: `${r.share}%`, background: r.def.color, opacity: dim ? 0.28 : 1 }}
-                title={`${r.def.label[locale]} — ${r.share.toFixed(1)}%`}
+                title={`${r.def.label[locale]}: ${r.share.toFixed(1)}%`}
                 aria-label={`${r.def.label[locale]}: ${r.share.toFixed(1)}%`}
               />
             );

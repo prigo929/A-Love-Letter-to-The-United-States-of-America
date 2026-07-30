@@ -120,7 +120,7 @@ export function AirForcePageProgress() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// AFSectionDivider — animated horizontal rule (Enhancement 7)
+// AFSectionDivider: animated horizontal rule (Enhancement 7)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function AFSectionDivider() {
@@ -309,7 +309,7 @@ export function AirForceMetricStrip({ metrics, locale = "en" }: { metrics: AirFo
                 transition={{ duration: 1.2, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
                 className="flex flex-col px-8 py-12"
               >
-                {/* Label — top */}
+                {/* Label: top */}
                 <div className="mil-text-metadata mb-6 tracking-[0.3em] font-black text-white">
                   {m.label}
                 </div>
@@ -368,8 +368,8 @@ export function AirForceFleetComparisonSection({ data, locale = "en" }: { data: 
           title={isRo ? "Putere aeriană" : "Fleet strength"}
           subtitle={isRo ? "fără precedent" : "unmatched"}
           body={isRo
-            ? "Forțele Aeriene ale SUA operează cea mai mare și avansată flotă aeriană militară din lume — mai mare decât următoarele cinci forțe aeriene combinate."
-            : "The United States Air Force operates the largest and most advanced military air fleet in the world — larger than the next five air forces combined."}
+            ? "Forțele Aeriene ale SUA operează cea mai mare și avansată flotă aeriană militară din lume: mai mare decât următoarele cinci forțe aeriene combinate."
+            : "The United States Air Force operates the largest and most advanced military air fleet in the world: larger than the next five air forces combined."}
         />
 
         {/* Tabs */}
@@ -570,8 +570,8 @@ export function AirForceCapabilityGrid({ capabilities, locale = "en" }: { capabi
           title={isRo ? "Domeniile" : "Domains"}
           subtitle={isRo ? "supremației" : "of supremacy"}
           body={isRo
-            ? "Cinci funcții de misiune distincte care definesc supremația aeriană a Americii — fiecare un pilon al descurajării și proiectării de forță."
-            : "Five distinct mission functions that define American air supremacy — each a pillar of deterrence and force projection."}
+            ? "Cinci funcții de misiune distincte care definesc supremația aeriană a Americii: fiecare un pilon al descurajării și proiectării de forță."
+            : "Five distinct mission functions that define American air supremacy: each a pillar of deterrence and force projection."}
         />
 
         <div className="flex flex-col lg:flex-row gap-3 mt-16 lg:h-[480px]">
@@ -701,7 +701,7 @@ export function AirForceOperationalConsole({ theaters, locale = "en" }: { theate
         />
 
         <div className="grid overflow-hidden border border-white/[0.04] bg-[#050608] lg:grid-cols-[320px_1fr_380px] min-h-[680px]">
-          {/* Left — theater list */}
+          {/* Left: theater list */}
           <div className="flex flex-col border-b lg:border-b-0 lg:border-r border-white/[0.04] bg-black/30">
             {theaters.map((theater, index) => {
               const selected = activeIndex === index;
@@ -734,7 +734,7 @@ export function AirForceOperationalConsole({ theaters, locale = "en" }: { theate
             })}
           </div>
 
-          {/* Center — image */}
+          {/* Center: image */}
           <div className="relative min-h-[400px] overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
@@ -776,7 +776,7 @@ export function AirForceOperationalConsole({ theaters, locale = "en" }: { theate
             </div>
           </div>
 
-          {/* Right — details + Enhancement 6: pulsing signal indicator */}
+          {/* Right: details + Enhancement 6: pulsing signal indicator */}
           <div className="flex flex-col border-t lg:border-t-0 lg:border-l border-white/[0.04] bg-[#050608] p-8">
             <AnimatePresence mode="wait">
               <motion.div
@@ -850,8 +850,8 @@ export function AirForcePlatformShowcase({ platforms, locale = "en" }: { platfor
           title={isRo ? "Arsenal" : "Weapons"}
           subtitle={isRo ? "aerian" : "platforms"}
           body={isRo
-            ? "De la superioritate aeriană la lovitură globală, mobilitate rapidă și război autonom — fiecare platformă reprezintă un pilon al puterii aeriene americane."
-            : "From air superiority to global strike, rapid mobility, and autonomous warfare — each platform represents a pillar of American airpower."}
+            ? "De la superioritate aeriană la lovitură globală, mobilitate rapidă și război autonom: fiecare platformă reprezintă un pilon al puterii aeriene americane."
+            : "From air superiority to global strike, rapid mobility, and autonomous warfare: each platform represents a pillar of American airpower."}
         />
 
         {/* Platform tabs */}
@@ -952,8 +952,8 @@ export function AirForceHeritageTimeline({ events, locale = "en" }: { events: Ai
           title={isRo ? "Istoria" : "History"}
           subtitle={isRo ? "zborului" : "of flight"}
           body={isRo
-            ? "De la Kitty Hawk la bombardierul stealth B-21 Raider — un secol de dominanță aeriană americană neîntreruptă."
-            : "From Kitty Hawk to the B-21 Raider stealth bomber — a century of unbroken American air dominance."}
+            ? "De la Kitty Hawk la bombardierul stealth B-21 Raider: un secol de dominanță aeriană americană neîntreruptă."
+            : "From Kitty Hawk to the B-21 Raider stealth bomber: a century of unbroken American air dominance."}
         />
 
         <div className="relative">
@@ -985,7 +985,7 @@ export function AirForceHeritageTimeline({ events, locale = "en" }: { events: Ai
                   )} />
                 </div>
 
-                {/* Card — placed on correct side */}
+                {/* Card: placed on correct side */}
                 <div className={cn(
                   "md:col-span-1",
                   isLeft ? "md:col-start-1 md:pr-8" : "md:col-start-2 md:pl-8"
@@ -1054,8 +1054,8 @@ export function AirForceBasesSection({ bases, locale = "en" }: { bases: AirForce
           title={isRo ? "Infrastructură" : "Global"}
           subtitle={isRo ? "globală" : "footprint"}
           body={isRo
-            ? "De la deșertul Nevada la Europa de Vest și Pacificul de Vest — bazele aeriene americane formează o rețea globală de putere aeriană permanentă."
-            : "From the Nevada desert to Western Europe and the Western Pacific — American air bases form a permanent global airpower network."}
+            ? "De la deșertul Nevada la Europa de Vest și Pacificul de Vest: bazele aeriene americane formează o rețea globală de putere aeriană permanentă."
+            : "From the Nevada desert to Western Europe and the Western Pacific: American air bases form a permanent global airpower network."}
         />
 
         <div className="grid gap-4 lg:grid-cols-[1fr_460px]">
@@ -1096,7 +1096,7 @@ export function AirForceBasesSection({ bases, locale = "en" }: { bases: AirForce
             ))}
           </div>
 
-          {/* Detail panel — Enhancement 9: accent-tinted border */}
+          {/* Detail panel: Enhancement 9: accent-tinted border */}
           <AnimatePresence mode="wait">
             <motion.div
               key={active.name}
@@ -1147,8 +1147,8 @@ export function AirForceFutureStack({ programs, locale = "en" }: { programs: Air
           title={isRo ? "Generația" : "Next"}
           subtitle={isRo ? "următoare" : "generation"}
           body={isRo
-            ? "De la NGAD și CCA la arme hipersonice și modernizarea nucleară — programele care vor defini puterea aeriană americană în deceniile următoare."
-            : "From NGAD and CCA to hypersonic weapons and nuclear modernization — the programs defining American airpower for decades to come."}
+            ? "De la NGAD și CCA la arme hipersonice și modernizarea nucleară: programele care vor defini puterea aeriană americană în deceniile următoare."
+            : "From NGAD and CCA to hypersonic weapons and nuclear modernization: the programs defining American airpower for decades to come."}
         />
 
         <div className="grid border border-white/[0.04] bg-[#050608] lg:grid-cols-[1fr_420px]">

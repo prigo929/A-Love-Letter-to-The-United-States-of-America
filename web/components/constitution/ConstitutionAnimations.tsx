@@ -782,7 +782,7 @@ export function RightsCounter({ stats }: { stats: {value:number;label:string;col
           <motion.div key={i} initial={{opacity:0,x:-20}} whileInView={{opacity:1,x:0}} viewport={{once:true,margin:"-40px"}} transition={{duration:.5,delay:i*.1,ease:[0.16,1,0.3,1]}}
             className="flex items-center gap-4 px-5 py-4"
           >
-            {/* Status indicator — wax-seal style */}
+            {/* Status indicator: wax-seal style */}
             <div
               className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
               style={{

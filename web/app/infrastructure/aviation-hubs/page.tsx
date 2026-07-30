@@ -100,7 +100,7 @@ export default async function AviationHubsPage() {
         hubsFacts: [
           { fact: "Atlanta este cel mai aglomerat aeroport de pe Pământ, aproape în fiecare an din 1998.", detail: "Hartsfield–Jackson gestionează peste 44 de milioane de îmbarcări pe an. Este la mai puțin de două ore de zbor de 80% din populația SUA, ceea ce îl face hubul perfect." },
           { fact: "Memphis devine, în fiecare noapte, cel mai aglomerat aeroport din lume.", detail: "SuperHub-ul FedEx sortează milioane de colete între miezul nopții și zori. Măsurat după tonajul de marfă, niciun aeroport de pasageri nu se apropie." },
-          { fact: "Denver ocupă cea mai mare suprafață aeroportuară din emisfera vestică.", detail: "137 de kilometri pătrați de câmpie înaltă — mai mare decât insula Manhattan, cu spațiu de extindere pentru un secol." },
+          { fact: "Denver ocupă cea mai mare suprafață aeroportuară din emisfera vestică.", detail: "137 de kilometri pătrați de câmpie înaltă: mai mare decât insula Manhattan, cu spațiu de extindere pentru un secol." },
           { fact: "O'Hare a fost cândva cel mai aglomerat aeroport din lume timp de decenii.", detail: "Codul său, ORD, vine de la Orchard Field, livada pe care a fost construit. De aceea eticheta de bagaj spune și azi ORD." },
         ],
         gaTitle: "Cerul de dedesubt",
@@ -128,7 +128,7 @@ export default async function AviationHubsPage() {
         storyTitle: "A Nation Built to Fly",
         lede: "When the Wright brothers lifted off a North Carolina dune in 1903, they flew 120 feet. A century later, their heirs move a continent through the air every day.",
         storyP1:
-          "The American air system is not a chain of airports but a network. The great hubs — Atlanta, Chicago, Dallas, Denver — gather flights from hundreds of smaller cities and redistribute them, so that almost any point in the country is at most two stops from any other.",
+          "The American air system is not a chain of airports but a network. The great hubs: Atlanta, Chicago, Dallas, Denver: gather flights from hundreds of smaller cities and redistribute them, so that almost any point in the country is at most two stops from any other.",
         storyP2:
           "Beneath that commercial web lies a larger one: thousands of small airfields, heliports, and grass strips that keep general aviation aloft. Together they form the densest aviation system a single country has ever known.",
         numbersTitle: "The Anatomy of the System",
@@ -169,14 +169,14 @@ export default async function AviationHubsPage() {
         hubsFacts: [
           { fact: "Atlanta is the busiest airport on Earth, almost every year since 1998.", detail: "Hartsfield–Jackson handles more than 44 million enplanements a year. It sits within a two-hour flight of 80% of the U.S. population, which makes it the perfect hub." },
           { fact: "Memphis becomes the busiest airport in the world every night.", detail: "The FedEx SuperHub sorts millions of packages between midnight and dawn. Measured by cargo tonnage, no passenger airport comes close." },
-          { fact: "Denver covers the largest airport site in the Western Hemisphere.", detail: "53 square miles of high plains — larger than the island of Manhattan, with room to grow for a century." },
+          { fact: "Denver covers the largest airport site in the Western Hemisphere.", detail: "53 square miles of high plains: larger than the island of Manhattan, with room to grow for a century." },
           { fact: "O'Hare was once the world's busiest airport for decades.", detail: "Its code, ORD, comes from Orchard Field, the orchard it was built on. That is why your bag tag still reads ORD." },
         ],
         gaTitle: "The Sky Below",
         gaP:
           "Beyond the airlines is a second aerial America: more than 200,000 general-aviation aircraft, from single-engine planes to business jets, using thousands of small airports most people never see. It is the freedom to fly, written in asphalt and grass in every county of the country.",
         quote:
-          "Aviation was never content with the sky. It wanted the whole continent a day away from anywhere — and it got it.",
+          "Aviation was never content with the sky. It wanted the whole continent a day away from anywhere: and it got it.",
         quoteAttribution: "On the age of American aviation",
         quoteTitle: "A Continent a Day Away",
         prevLink: "↑ Infrastructure Overview",

@@ -156,7 +156,7 @@ export function Header() {
                 setActiveMenu(null);
               }}
               className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold rounded-lg"
-              aria-label="America: The Greatest Nation — Home"
+              aria-label="America: The Greatest Nation: Home"
             >
               {/* Stars icon */}
               <div className="flex gap-0.5 items-center">
@@ -195,7 +195,7 @@ export function Header() {
                   // height via the nav's items-stretch) keeps the hover/click
                   // box tight to the visible button. The dropdown is still a DOM
                   // child of this element, so the menu stays open when the cursor
-                  // moves into it — mouseleave doesn't fire when moving to a
+                  // moves into it: mouseleave doesn't fire when moving to a
                   // descendant, even one positioned outside this box.
                   className="relative flex items-center self-center"
                   onMouseEnter={() => handleMenuEnter(section.title)}
@@ -237,7 +237,7 @@ export function Header() {
                         // `top-full` anchors the menu just below the button (the
                         // trigger box is now button-height), and `pt-2` is a small
                         // transparent bridge across the gap. Hit area stays tight
-                        // to the visible card — no extra width or overlap.
+                        // to the visible card: no extra width or overlap.
                         //
                         // No hover handlers here on purpose: this wrapper is a DOM
                         // child of the trigger container, so the container's
@@ -247,7 +247,7 @@ export function Header() {
                         // flicker: the entrance `y` animation sweeps the bridge
                         // over the cursor and back, and the wrapper's own
                         // mouseleave would then schedule a close that nothing
-                        // cancelled — closing the menu mid-hover.
+                        // cancelled: closing the menu mid-hover.
                         className="absolute top-full left-1/2 w-72 xl:w-80 -translate-x-1/2 pt-2"
                         role="menu"
                       >

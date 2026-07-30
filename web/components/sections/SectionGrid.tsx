@@ -1,7 +1,7 @@
 "use client";
 
 // ─── Section Navigation Grid ──────────────────────────────────────────────────
-// 3×4 grid of NavigationCards — one per major section.
+// 3×4 grid of NavigationCards: one per major section.
 
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/animations";

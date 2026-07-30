@@ -1,7 +1,7 @@
 // ─── Eight eras of American writing ──────────────────────────────────────────
 // The spine of the literature hub. Each era carries the one question its writers
 // were actually arguing about, because a list of names and dates teaches nobody
-// anything — the useful thing is what changed and why.
+// anything: the useful thing is what changed and why.
 //
 // Structured from the standard periodisation and cross-checked against the
 // "Story of American Literature" transcript in ASSETS/Literature. That transcript

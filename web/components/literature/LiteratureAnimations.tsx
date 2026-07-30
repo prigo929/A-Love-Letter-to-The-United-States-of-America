@@ -10,7 +10,7 @@
 // fall out of that and out of the performance work on the economy pages:
 //
 //  1. Animate opacity and transform only. No animated filter, no box-shadow.
-//  2. Never put viewport-triggered animation on SVG children — it silently fails
+//  2. Never put viewport-triggered animation on SVG children: it silently fails
 //     in Safari and leaves elements stuck invisible. Plain DOM only in here.
 //  3. Prefer ONE scroll-linked value over many. See ScrollIlluminatedText.
 
@@ -80,7 +80,7 @@ interface ScrollIlluminatedTextProps {
  * The obvious implementation is one motion value per word, mapping scroll
  * progress to each word's opacity. That works and it is what most sites do, but
  * a 90-word passage then drives 90 animated values and 90 style writes per
- * frame — on a page with several of these, that is exactly the frame budget we
+ * frame: on a page with several of these, that is exactly the frame budget we
  * spent the economy session clawing back.
  *
  * So instead: one gradient, one animated value. The text is painted with a
@@ -198,7 +198,7 @@ interface AnnotatedPassageProps {
  * sentence never leaves view.
  *
  * On narrow screens there is no margin to put it in, so it falls back to an
- * inline note directly beneath the passage — still close, still in view.
+ * inline note directly beneath the passage: still close, still in view.
  */
 export function AnnotatedPassage({
   text,
@@ -301,7 +301,7 @@ export function AnnotatedPassage({
                 style={{
                   opacity: active === null || active === p.idx ? 1 : 0.35,
                   color: active === p.idx ? "#E8B923" : "inherit",
-                  // Inherited and beats `color` in WebKit — must be set explicitly.
+                  // Inherited and beats `color` in WebKit: must be set explicitly.
                   WebkitTextFillColor: active === p.idx ? "#E8B923" : "currentColor",
                   borderBottom: active === p.idx ? "none" : "1.5px solid rgba(232,185,35,0.4)",
                 }}
@@ -407,7 +407,7 @@ export function ManuscriptParallax({
           fill
           sizes="100vw"
           className="object-cover opacity-[0.13] grayscale"
-          // The scan is texture, not content — it must never be the LCP element
+          // The scan is texture, not content: it must never be the LCP element
           // and must never block the words on top of it.
           loading="lazy"
         />
@@ -431,7 +431,7 @@ interface PullQuoteProps {
 
 /**
  * A full-bleed typographic break. Deliberately not translated: see the note in
- * the literature pages — a Romanian "Call me Ishmael" is a different sentence.
+ * the literature pages: a Romanian "Call me Ishmael" is a different sentence.
  * The gloss belongs under it as commentary, which the caller supplies.
  */
 export function PullQuote({ quote, attribution, meta }: PullQuoteProps) {
@@ -465,7 +465,7 @@ export interface Opening {
   note: string;
   noteRo: string;
   /** Omit when no correctly-licensed likeness exists. A typographic panel is
-   *  rendered instead — better an honest blank than a confidently wrong face. */
+   *  rendered instead: better an honest blank than a confidently wrong face. */
   portrait?: LiteratureAssetKey;
   /** True when the whole book is free to read, which is worth telling a reader. */
   publicDomain: boolean;
@@ -624,7 +624,7 @@ interface EraTimelineProps {
  * real duration, so the reader sees at a glance that the Puritan stretch is long
  * and thin while modernism is a dense thirty-year burst.
  *
- * Selection is click-driven state, not scroll-driven — the one interaction on
+ * Selection is click-driven state, not scroll-driven: the one interaction on
  * these pages that must keep working even in a browser that reports scroll badly,
  * because it is how you navigate the whole section.
  */
@@ -727,7 +727,7 @@ interface WordRevealProps {
 /**
  * A short passage that assembles one word at a time as it crosses the viewport,
  * each word rising and sharpening into place. Reserved for a single famous
- * sentence per page — it is a spotlight, and a page full of spotlights is just a
+ * sentence per page: it is a spotlight, and a page full of spotlights is just a
  * page with the lights left on.
  *
  * The cost warning from ScrollIlluminatedText applies and is handled differently
@@ -736,7 +736,7 @@ interface WordRevealProps {
  *  1. It is only ever pointed at short text (a sentence, not a paragraph), so the
  *     word count is small by construction.
  *  2. Each word is a spring driven off ONE shared scroll progress value via a
- *     per-word useTransform, animating only opacity and transform — both
+ *     per-word useTransform, animating only opacity and transform: both
  *     compositor properties, so the main thread stays out of it.
  *
  * And the same progressive-enhancement contract: if the scroll value never fires

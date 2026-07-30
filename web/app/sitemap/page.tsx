@@ -8,7 +8,7 @@ import { getServerLocale } from "@/lib/i18n/server";
 export const metadata: Metadata = {
   title: "All Sections",
   description:
-    "Complete sitemap — explore every section celebrating American greatness.",
+    "Complete sitemap: explore every section celebrating American greatness.",
 };
 
 export default async function SitemapPage() {

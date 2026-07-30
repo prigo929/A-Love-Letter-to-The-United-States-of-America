@@ -384,7 +384,7 @@ import iconMichaelJordan from "@/IMAGES/Culture/Famous People/08_michael_jordan.
 import iconMartinLutherKing from "@/IMAGES/Culture/Famous People/09_martin_luther_king_jr.jpg";
 import iconArnoldSchwarzenegger from "@/IMAGES/Culture/Famous People/10_arnold_schwarzenegger.jpg";
 
-// Music — new artist photos
+// Music: new artist photos
 import musicTaylorSwiftEras from "@/IMAGES/Culture/Music/Taylor Swift Eras concert.jpg";
 import musicTaylorSwiftSpeakNow from "@/IMAGES/Culture/Music/Taylor_Swift_-_Speak_Now_World_Tour_Sydney_2012.jpg";
 import musicElvisPerforming1956 from "@/IMAGES/Culture/Music/Presley performing live at the Olympia Theater in Miami, August 3, 1956.jpg";
@@ -408,7 +408,7 @@ import musicMaroon52020 from "@/IMAGES/Culture/Music/Lineup of Maroon 5 since 20
 import musicMadonna1987 from "@/IMAGES/Culture/Music/Madonna performing during the 1987 Whos That Girl World Tour.jpg";
 import musicPitbull2011 from "@/IMAGES/Culture/Music/Pitbull performing in 2011.jpg";
 
-// Food — new images
+// Food: new images
 import foodBlt from "@/IMAGES/Culture/Food/BLT Sandwich.jpg";
 import foodBuffaloWings from "@/IMAGES/Culture/Food/Boneless-Buffalo-Wings.jpg";
 import foodBrownies from "@/IMAGES/Culture/Food/Brownies.jpg";
@@ -437,7 +437,7 @@ import foodCottonCandy from "@/IMAGES/Culture/Food/Cotton Candy.jpg";
 import foodMcdonaldsFries from "@/IMAGES/Culture/Food/McDonalds Fries.jpg";
 import foodChickenMcnuggets from "@/IMAGES/Culture/Food/Chicken McNuggets.jpg";
 
-// Sports — new action images
+// Sports: new action images
 import sportsAliVsFrazierJab from "@/IMAGES/Culture/Sports/Muhammad Ali Landing Powerful Left Jab On Joe Frazier During Historic Bout.webp";
 import sportsAliVsFrazier1971 from "@/IMAGES/Culture/Sports/Muhammad Ali Leaning Back From Joe Frazier Left Hook Fight Of The Century 1971.jpg";
 import sportsMarchMadness from "@/IMAGES/Culture/Sports/NCAA March Madness Tournament Basketball Court MSG.jpg";
@@ -491,10 +491,10 @@ import stadiumTexasSpeedway from "@/IMAGES/Culture/Sports/Stadiums/Texas-Motor-S
 import stadiumPnc from "@/IMAGES/Culture/Sports/Stadiums/Scenic-Daytime-View-Of-PNC-Park-Baseball-Stadium-And-Pittsburgh-Skyline.jpg";
 
 
-// Food — pepperoni pizza
+// Food: pepperoni pizza
 import foodPepperoniPizza from "@/IMAGES/Culture/Food/Pepperoni pizza american.jpg";
 
-// Fashion — new images
+// Fashion: new images
 import fashionCowboyBoots from "@/IMAGES/Culture/Fashion/Cowboy boots girl sitting on fence on ranch with blue jeans and black t shirt.jpg";
 import fashionLittleCowboy from "@/IMAGES/Culture/Fashion/Little cowboy wearing wranglers watching a horse.jpg";
 import fashionRalphLaurenStore from "@/IMAGES/Culture/Fashion/Ralph Lauren Retail Store Interior Featuring Preppy Nautical Apparel On Mannequins And Racks.jpg";
@@ -502,7 +502,7 @@ import fashionCowboyBootsLasso from "@/IMAGES/Culture/Fashion/Worn Square Toe Le
 import fashionSneakerNike from "@/IMAGES/Culture/Fashion/Black Sneakers Nike Air Force 1 Low with US Flag under them.jpg";
 import fashionSupremeGirl from "@/IMAGES/Culture/Fashion/Girl wearing Supreme clothing streetwear.jpg";
 
-// Landscapes — Nashville
+// Landscapes: Nashville
 import nashvilleSkyline from "@/IMAGES/Landscapes/Downtown Nashville Tennesse.jpg";
 import nashvilleSkyline2 from "@/IMAGES/Landscapes/Downtown Nashville Tennesse 2.jpg";
 
@@ -851,7 +851,7 @@ export const SITE_IMAGES = {
     vaultLemonGoLightly: vaultLemonGoLightly.src,
     vaultMagicChef1950: vaultMagicChef1950.src,
 
-    // Music — artist portraits & performances
+    // Music: artist portraits & performances
     taylorSwiftEras: musicTaylorSwiftEras.src,
     taylorSwiftSpeakNow: musicTaylorSwiftSpeakNow.src,
     elvisPerforming1956: musicElvisPerforming1956.src,
@@ -875,7 +875,7 @@ export const SITE_IMAGES = {
     madonna1987: musicMadonna1987.src,
     pitbull2011: musicPitbull2011.src,
 
-    // Food — catalogue
+    // Food: catalogue
     foodBlt: foodBlt.src,
     foodBuffaloWings: foodBuffaloWings.src,
     foodBrownies: foodBrownies.src,
@@ -905,7 +905,7 @@ export const SITE_IMAGES = {
     foodMcdonaldsFries: foodMcdonaldsFries.src,
     foodChickenMcnuggets: foodChickenMcnuggets.src,
 
-    // Sports — action & venues
+    // Sports: action & venues
     jesseOwens: sportsJesseOwens.src,
     dreamTeam1992: sportsDreamTeam.src,
     aliVsFrazierJab: sportsAliVsFrazierJab.src,
@@ -959,7 +959,7 @@ export const SITE_IMAGES = {
     stadiumPnc: stadiumPnc.src,
 
 
-    // Fashion — western & preppy
+    // Fashion: western & preppy
     fashionCowboyBoots: fashionCowboyBoots.src,
     fashionLittleCowboy: fashionLittleCowboy.src,
     fashionRalphLaurenStore: fashionRalphLaurenStore.src,

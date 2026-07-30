@@ -76,11 +76,11 @@ export const metadata: Metadata = {
 // Dollar values are DERIVED from STATE_GDP (BEA via FRED) rather than restated
 // here, because restating them is how they rotted: Florida was carried at $1.6T
 // against an actual $1.83T, Illinois at $1.1T against $1.20T, Pennsylvania at
-// $0.9T against $1.06T — and the map in this same section would have contradicted
+// $0.9T against $1.06T: and the map in this same section would have contradicted
 // all three on screen.
 //
 // Ranks and comparisons are checked against IMF nominal GDP for 2026 (October 2025
-// WEO — the same vintage as GDP_COMPARISON). Five of the six original claims here
+// WEO: the same vintage as GDP_COMPARISON). Five of the six original claims here
 // were false: California was said to be larger than Japan ($4.25T vs $4.38T), New
 // York larger than Canada ($2.47T vs $2.51T), Florida larger than Mexico ($1.83T vs
 // $2.12T), Illinois larger than Saudi Arabia ($1.20T vs $1.39T), Pennsylvania larger
@@ -105,7 +105,7 @@ export default async function GdpGrowthPage() {
   const pageLabel = locale === "ro" ? "PIB și Dimensiune" : "GDP & Scale";
   // Terminal "by the numbers" section: three headline stats plus two editorial
   // insights, replacing the old wall of seven identical fact cards. The Texas
-  // fact was dropped — the state-vs-nation table above already makes that point.
+  // fact was dropped: the state-vs-nation table above already makes that point.
   const gdpStatTrio =
     locale === "ro"
       ? [
@@ -148,7 +148,7 @@ export default async function GdpGrowthPage() {
   // editing the shared source data used elsewhere in the economy section.
   const stateRankings =
     // Both locales resolve from the same verified table. They used to disagree
-    // with each other on the facts — the Romanian list claimed California was
+    // with each other on the facts: the Romanian list claimed California was
     // larger than the United Kingdom while the English one claimed Japan, and
     // neither was true.
     STATE_VS_NATION.map((entry) => {
@@ -425,7 +425,7 @@ export default async function GdpGrowthPage() {
         </div>
 
         <div className="mx-auto max-w-[1600px] px-6 md:px-12 space-y-48">
-          {/* The long run — the growth this page is named for */}
+          {/* The long run: the growth this page is named for */}
           <section>
             <h2 className="macro-section-title mb-12">
               {copy.growthTitle}
@@ -782,7 +782,7 @@ export default async function GdpGrowthPage() {
             </p>
           </section>
 
-          {/* Featured pull-stat — one cinematic number instead of a card wall */}
+          {/* Featured pull-stat: one cinematic number instead of a card wall */}
           <section className="border-t border-white/5 pt-32">
             <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
               <p className="font-macro-display font-black leading-none tracking-tighter text-[clamp(72px,15vw,200px)]">
@@ -792,7 +792,7 @@ export default async function GdpGrowthPage() {
             </div>
           </section>
 
-          {/* By the numbers — headline stat trio */}
+          {/* By the numbers: headline stat trio */}
           <section className="border-t border-white/5 pt-32">
             <span className="macro-eyebrow">{copy.byNumbersEyebrow}</span>
             <h2 className="macro-section-title mt-6 mb-16">{copy.byNumbersTitle}</h2>

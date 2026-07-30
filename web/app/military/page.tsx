@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// page.tsx — MILITARY POWER · CINEMATIC OVERHAUL v3
+// page.tsx: MILITARY POWER · CINEMATIC OVERHAUL v3
 // "The United States as a planetary command-and-control system."
 //
 // Design language ─────────────────────────────────────────────────────────────
@@ -10,18 +10,18 @@
 //   Layers per panel: bg-image → vignette → grid → scan → grain → HUD → text
 //
 // Sections ────────────────────────────────────────────────────────────────────
-//   §0  HERO          — B-2 emerging from darkness, parallax, particle canvas
-//   §1  STAT WALL     — HUD counters across the full viewport
-//   §2  DOMINANCE     — global overview + budget comparison bars
-//   §3  BRANCHES      — cinematic branch selector
-//   §4  CARRIER MAP   — world map with real-time carrier positions + satellite
-//   §5  WEAPONS       — classified dossier cards
-//   §6  NUCLEAR TRIAD — interactive SVG triangle
-//   §7  DARPA         — future systems grid
-//   §8  INDUSTRY      — defense contractor grid
-//   §9  FACTS         — rolling ticker + fact cards
-//   §10 QUOTE         — full-bleed cinematic quote
-//   §11 SUB-PAGE NAV  — chapter navigation
+//   §0  HERO         : B-2 emerging from darkness, parallax, particle canvas
+//   §1  STAT WALL    : HUD counters across the full viewport
+//   §2  DOMINANCE    : global overview + budget comparison bars
+//   §3  BRANCHES     : cinematic branch selector
+//   §4  CARRIER MAP  : world map with real-time carrier positions + satellite
+//   §5  WEAPONS      : classified dossier cards
+//   §6  NUCLEAR TRIAD: interactive SVG triangle
+//   §7  DARPA        : future systems grid
+//   §8  INDUSTRY     : defense contractor grid
+//   §9  FACTS        : rolling ticker + fact cards
+//   §10 QUOTE        : full-bleed cinematic quote
+//   §11 SUB-PAGE NAV : chapter navigation
 // ─────────────────────────────────────────────────────────────────────────────
 
 import type { Metadata } from "next";
@@ -269,7 +269,7 @@ export default async function MilitaryPage() {
       <MilStyles />
 
 
-      {/* ─── §1  HERO — looping video showcase ─────────────────────────── */}
+      {/* ─── §1  HERO: looping video showcase ─────────────────────────── */}
       <VideoMilitaryHero
         videoSrc="/videos/military/supremacy-wave.mp4"
         posterSrc={SITE_IMAGES.military.hero}
@@ -580,7 +580,7 @@ export default async function MilitaryPage() {
         </div>
       </Section>
 
-      {/* ─── §3.2  GLOBAL ALLIANCES — NATO & AUKUS ─────────────────────────── */}
+      {/* ─── §3.2  GLOBAL ALLIANCES: NATO & AUKUS ─────────────────────────── */}
       <Section
         id="alliances"
         label={copy.alliancesLabel}
@@ -605,8 +605,8 @@ export default async function MilitaryPage() {
         </div>
       </Section>
 
-      {/* ─── §14  QUOTE — full-bleed cinematic ──────────────────────────────── */}
-      {/* ─── §14  QUOTE — full-viewport cinematic ──────────────────────────── */}
+      {/* ─── §14  QUOTE: full-bleed cinematic ──────────────────────────────── */}
+      {/* ─── §14  QUOTE: full-viewport cinematic ──────────────────────────── */}
       <div className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
         <div className="absolute inset-0 mil-dot-canvas opacity-30" />
         

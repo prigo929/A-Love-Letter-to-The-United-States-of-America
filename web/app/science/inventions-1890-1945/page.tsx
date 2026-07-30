@@ -42,7 +42,7 @@ const copyEn: Inventions1890To1945Copy = {
   thesisTitle: "Mass Production and the Crucible of Global War",
   thesisParagraph1: "Between 1890 and 1945, the United States transitioned from an emerging industrial player to the industrial and scientific workshop of the world. The era was defined by scaling: the invention of the assembly line transformed luxury items into accessible consumer goods, and electrical networks expanded across the country. American ingenuity shifted from solitary inventors to structured research labs, like those of General Electric, DuPont, and Bell Labs.",
   thesisParagraph2: "This era of scaling reached its absolute peak under the extreme crucible of World War II. Facing existential global threats, the U.S. government coordinated with private corporations and elite universities under the Office of Scientific Research and Development. This mobilization produced radar, mass-produced penicillin, synthetic rubber, and ultimately the atomic bomb, establishing a federally-funded scientific infrastructure that continues to define global technology.",
-  featuredTitle: "Pivotal 1890-1945 Inventions",
+  featuredTitle: "Defining 1890-1945 Inventions",
   archiveTitle: "The Machine Age archives",
   archiveSubtitle: "Explore the full, detailed history of 234 American inventions from the Progressive Era, the Roaring Twenties, and World War II.",
   oracleDescription: "Ask the AI Oracle about the Wright brothers' airplane, Henry Ford's assembly line, Robert Goddard's rockets, or the Manhattan Project."
@@ -98,7 +98,7 @@ const featuredInventions = [
     titleRo: "Bomba Atomică (Proiectul Manhattan)",
     inventor: "J. Robert Oppenheimer & Team",
     icon: Shield,
-    descEn: "Under the extreme urgency of WWII, the US government mobilized the Manhattan Project—the largest scientific collaboration in history. Culminating in the Trinity test in July 1945, this breakthrough harnessed controlled nuclear fission, bringing a rapid end to WWII and thrusting humanity into the nuclear age.",
+    descEn: "Under the extreme urgency of WWII, the US government mobilized the Manhattan Project, the largest scientific collaboration in history. Culminating in the Trinity test in July 1945, this breakthrough harnessed controlled nuclear fission, bringing a rapid end to WWII and thrusting humanity into the nuclear age.",
     descRo: "Sub urgența extremă a celui de-al Doilea Război Mondial, guvernul SUA a organizat Proiectul Manhattan - cea mai mare colaborare științifică din istorie. Culminând cu testul Trinity în iulie 1945, această descoperire a stăpânit fisiunea nucleară controlată, punând capăt războiului."
   }
 ];

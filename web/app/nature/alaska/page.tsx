@@ -82,7 +82,7 @@ export default async function AlaskaPage() {
     <>
       <NatStyles />
 
-      {/* ── HERO — single image cinematic entrance ───────────────────────── */}
+      {/* ── HERO: single image cinematic entrance ───────────────────────── */}
       <NatureSubPageHero
         imageSrc={SITE_IMAGES.denaliNationalPark}
         imageAlt={isRo ? "Muntele Denali" : "Mount Denali"}

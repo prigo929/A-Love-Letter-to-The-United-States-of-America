@@ -22,7 +22,7 @@ const US_CENTER: [number, number] = [-96, 38];
 const MAX_ZOOM = 12;
 
 // Every non-commercial airfield, drawn as a faint density layer (one SVG path per
-// category via round-capped dot segments — one DOM node for thousands of points).
+// category via round-capped dot segments: one DOM node for thousands of points).
 const GA_LAYERS = airportsAll as unknown as Record<string, [number, number][]>;
 const GA_COLOR: Record<string, string> = {
   ga: "rgba(255,255,255,0.30)",
@@ -61,10 +61,10 @@ const AIRPORTS = (airportsData as { airports: Omit<Airport, "cargo">[] }).airpor
 });
 
 const TIER_COLOR: Record<Tier | "cargo", string> = {
-  L: "#E8B923", // large hub — gold
-  M: "#60a5fa", // medium hub — blue
-  S: "#7c8896", // small hub — steel
-  cargo: "#fb923c", // cargo hub — orange
+  L: "#E8B923", // large hub: gold
+  M: "#60a5fa", // medium hub: blue
+  S: "#7c8896", // small hub: steel
+  cargo: "#fb923c", // cargo hub: orange
 };
 
 /** Quadratic arc between two projected points, bowed perpendicular to the chord. */
@@ -455,7 +455,7 @@ export function AirportMap({ locale, labels }: { locale: "en" | "ro"; labels: Ai
         </ComposableMap>
       </div>
 
-      {/* Detail panel — keyed remount */}
+      {/* Detail panel: keyed remount */}
       <div className="mt-2 min-h-[130px] border-t border-white/[0.07] pt-6">
         {airport && (
           <motion.div key={airport.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} className="grid gap-6 md:grid-cols-12">

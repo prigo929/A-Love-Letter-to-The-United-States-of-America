@@ -103,14 +103,14 @@ const copyEn: AbundanceCopy = {
       items: [
         {
           title: "800 Vehicles per 1,000 People",
-          body: "With ~800 vehicles per 1,000 people, cheap fuel, and the Interstate Highway System — 47,000 miles of limited-access freeway built and maintained by the federal government — Americans enjoy unmatched personal freedom of movement. This enables suburban living at low cost, makes labor highly mobile across the continent, and is the backbone of the American retail and logistics economy.",
+          body: "With ~800 vehicles per 1,000 people, cheap fuel, and the Interstate Highway System: 47,000 miles of limited-access freeway built and maintained by the federal government: Americans enjoy unmatched personal freedom of movement. This enables suburban living at low cost, makes labor highly mobile across the continent, and is the backbone of the American retail and logistics economy.",
           source: "List of countries by vehicles per capita",
           sourceUrl:
             "https://en.wikipedia.org/wiki/List_of_countries_by_vehicles_per_capita",
         },
         {
           title: "42% of the Global General Aviation Fleet",
-          body: "The US civil aviation fleet has 220,000 registered aircraft — 42% of the global total, dwarfing China (5,366) and Canada (4,888). Over 90% are general aviation (private/business), and over 80% of the 609,000 certified pilots fly GA, landing at over 5,000 public-use airports. The personal airplane — a middle-class asset in rural America — is effectively nonexistent as a civilian vehicle in any other country.",
+          body: "The US civil aviation fleet has 220,000 registered aircraft: 42% of the global total, dwarfing China (5,366) and Canada (4,888). Over 90% are general aviation (private/business), and over 80% of the 609,000 certified pilots fly GA, landing at over 5,000 public-use airports. The personal airplane: a middle-class asset in rural America: is effectively nonexistent as a civilian vehicle in any other country.",
           source: "Aircraft Owners and Pilots Association (AOPA)",
           sourceUrl:
             "https://download.aopa.org/Media/General-Aviation-Explained-r5.pdf",
@@ -129,7 +129,7 @@ const copyEn: AbundanceCopy = {
         },
         {
           title: "10.7 Million Swimming Pools",
-          body: "There are approximately 10.7 million swimming pools in the United States (10.4M residential, 309k public). In Florida: 1 pool per 14 residents. Arizona: 1 per 13 residents. Germany has only 1.5 million pools; France 3.2 million — both with much lower population-adjusted rates. A private in-ground pool is a middle-class feature in the American Sunbelt and a near-unattainable luxury item almost everywhere else.",
+          body: "There are approximately 10.7 million swimming pools in the United States (10.4M residential, 309k public). In Florida: 1 pool per 14 residents. Arizona: 1 per 13 residents. Germany has only 1.5 million pools; France 3.2 million: both with much lower population-adjusted rates. A private in-ground pool is a middle-class feature in the American Sunbelt and a near-unattainable luxury item almost everywhere else.",
           source: "Pool Research 2024",
           sourceUrl: "https://poolresearch.com/statistics/",
         },
@@ -176,7 +176,7 @@ const copyRo: AbundanceCopy = {
     "Aer condiționat în peste 90% din locuințe. 800 de mașini la 1.000 de persoane. 17 milioane de ambarcațiuni de agrement. 10,7 milioane de piscine. Economia de consum americană produce un nivel de trai fără egal.",
   thesisTitle: "Lux Democratizat la Scară",
   thesisParagraph1:
-    "Când economiștii vorbesc despre standarde de viață, apelează la PIB per capita sau date salariale. Dar acele abstracțiuni nu reușesc să surprindă cum arată cu adevărat viața de zi cu zi americană în termeni fizici. Lentila corectă este densitatea bunurilor de consum — obiectele tangibile care definesc confortul, mobilitatea și libertatea în viața de zi cu zi. Prin această măsură, Statele Unite se separă complet de orice altă societate din istoria omenirii.",
+    "Când economiștii vorbesc despre standarde de viață, apelează la PIB per capita sau date salariale. Dar acele abstracțiuni nu reușesc să surprindă cum arată cu adevărat viața de zi cu zi americană în termeni fizici. Lentila corectă este densitatea bunurilor de consum: obiectele tangibile care definesc confortul, mobilitatea și libertatea în viața de zi cu zi. Prin această măsură, Statele Unite se separă complet de orice altă societate din istoria omenirii.",
   thesisParagraph2:
     "Private swimming pools. Personal aircraft. Recreational boats. In-unit washer-dryer. Central air conditioning in August. Full-size garage refrigerator. A second car. A self-storage unit for the overflow. These descriptions define the median American household, particularly across the Sun Belt and South.",
   statsTitle: "Abundența de Consum în Cifre",
@@ -191,7 +191,7 @@ const copyRo: AbundanceCopy = {
       value: "800",
       label: "Vehicule la 1.000 Persoane",
       description:
-        "SUA au ~800 de vehicule la 1.000 de persoane — una dintre cele mai mari densități din lume.",
+        "SUA au ~800 de vehicule la 1.000 de persoane: una dintre cele mai mari densități din lume.",
     },
     {
       value: "17M",
@@ -259,7 +259,7 @@ const copyRo: AbundanceCopy = {
         },
         {
           title: "10,7 Milioane de Piscine",
-          body: "Există aproximativ 10,7 milioane de piscine în Statele Unite (10,4M rezidențiale, 309k publice). În Florida: 1 piscină la 14 locuitori. Arizona: 1 la 13 locuitori. Germania are doar 1,5 milioane de piscine; Franța 3,2 milioane — ambele cu rate mult mai mici ajustate la populație.",
+          body: "Există aproximativ 10,7 milioane de piscine în Statele Unite (10,4M rezidențiale, 309k publice). În Florida: 1 piscină la 14 locuitori. Arizona: 1 la 13 locuitori. Germania are doar 1,5 milioane de piscine; Franța 3,2 milioane: ambele cu rate mult mai mici ajustate la populație.",
           source: "Pool Research 2024",
           sourceUrl: "https://poolresearch.com/statistics/",
         },
@@ -384,12 +384,12 @@ export default async function AbundancePage() {
               withCaptions
               sizes="(max-width: 768px) 100vw, 33vw"
               photos={[
-                { src: SITE_IMAGES.grocery.safewayProduce, alt: "Produce department at a Safeway store in Foster City, California", caption: "Safeway · Foster City, CA", description: isRo ? "Un raion de legume și fructe proaspete, aprovizionat tot anul — standardul oricărui supermarket american." : "A produce department stocked with fresh fruit and vegetables year-round — the baseline of any American supermarket.", aspect: "4/3" },
+                { src: SITE_IMAGES.grocery.safewayProduce, alt: "Produce department at a Safeway store in Foster City, California", caption: "Safeway · Foster City, CA", description: isRo ? "Un raion de legume și fructe proaspete, aprovizionat tot anul: standardul oricărui supermarket american." : "A produce department stocked with fresh fruit and vegetables year-round: the baseline of any American supermarket.", aspect: "4/3" },
                 { src: SITE_IMAGES.grocery.krogerProduce, alt: "Produce section of a Kroger Marketplace store in Athens, Georgia", caption: "Kroger Marketplace · Athens, GA", description: isRo ? "Kroger operează aproape 2.800 de magazine; secțiunea de produse proaspete este o vitrină a abundenței agricole americane." : "Kroger runs nearly 2,800 stores; its produce section is a showcase of American agricultural abundance.", aspect: "4/3" },
                 { src: SITE_IMAGES.grocery.costco, alt: "Interior of a Costco warehouse in Ocean Township, New Jersey", caption: "Costco · Ocean Township, NJ", description: isRo ? "Modelul american de depozit en-gros: cantități uriașe la prețuri mici, copiat astăzi în întreaga lume." : "The American warehouse-club model: bulk quantities at rock-bottom prices, now copied worldwide.", aspect: "4/3" },
                 { src: SITE_IMAGES.grocery.walmartInterior, alt: "Inside a Walmart Supercenter in Bloomsburg, Pennsylvania", caption: "Walmart Supercenter · Bloomsburg, PA", description: isRo ? "Walmart este cel mai mare retailer din lume; un Supercenter tipic oferă peste 100.000 de produse sub un singur acoperiș." : "Walmart is the world's largest retailer; a typical Supercenter carries 100,000+ items under one roof.", aspect: "4/3" },
-                { src: SITE_IMAGES.grocery.walmartFlag, alt: "Walmart Supercenter action alley with rollback signs and a hanging American flag", caption: "Walmart · Action Alley", description: isRo ? "Etalaje „rollback”, palet după palet — promisiunea prețurilor mici de zi cu zi, sub drapelul american." : "Rollback displays pallet after pallet — the everyday-low-price promise, under the American flag.", aspect: "4/3" },
-                { src: SITE_IMAGES.grocery.walmartThanksgiving, alt: "Crowded Walmart store during Thanksgiving shopping", caption: isRo ? "Cumpărături de Thanksgiving" : "Thanksgiving Shopping", description: isRo ? "Cărucioare pline înainte de sărbători — un ritual al abundenței accesibile clasei de mijloc." : "Carts piled high before the holidays — a ritual of abundance accessible to the middle class.", aspect: "4/3" },
+                { src: SITE_IMAGES.grocery.walmartFlag, alt: "Walmart Supercenter action alley with rollback signs and a hanging American flag", caption: "Walmart · Action Alley", description: isRo ? "Etalaje „rollback”, palet după palet: promisiunea prețurilor mici de zi cu zi, sub drapelul american." : "Rollback displays pallet after pallet: the everyday-low-price promise, under the American flag.", aspect: "4/3" },
+                { src: SITE_IMAGES.grocery.walmartThanksgiving, alt: "Crowded Walmart store during Thanksgiving shopping", caption: isRo ? "Cumpărături de Thanksgiving" : "Thanksgiving Shopping", description: isRo ? "Cărucioare pline înainte de sărbători: un ritual al abundenței accesibile clasei de mijloc." : "Carts piled high before the holidays: a ritual of abundance accessible to the middle class.", aspect: "4/3" },
               ]}
             />
           </div>

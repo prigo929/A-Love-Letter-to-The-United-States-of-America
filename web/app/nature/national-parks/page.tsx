@@ -105,7 +105,7 @@ export default async function NationalParksPage() {
     <>
       <NatStyles />
 
-      {/* ── HERO — single image cinematic entrance ───────────────────────── */}
+      {/* ── HERO: single image cinematic entrance ───────────────────────── */}
       <NatureSubPageHero
         imageSrc={SITE_IMAGES.yosemiteNationalPark}
         imageAlt={isRo ? "Parcul Național Yosemite" : "Yosemite National Park"}

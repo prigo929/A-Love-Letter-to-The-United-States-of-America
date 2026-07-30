@@ -153,7 +153,7 @@ export default async function EconomyPage() {
         stats={copy.heroStats}
       />
 
-      {/* ── Main Content — Full-width Macro-Editorial Flow ─────────────── */}
+      {/* ── Main Content: Full-width Macro-Editorial Flow ─────────────── */}
       <main className="relative bg-[#000000] pb-32">
         {/* Breadcrumb */}
         <div className="mx-auto max-w-[1600px] px-6 md:px-12 py-12">

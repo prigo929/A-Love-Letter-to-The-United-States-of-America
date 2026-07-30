@@ -14,7 +14,7 @@
 //   • the structural "Weaknesses of the Articles of Confederation" (which makes
 //     the pro-Constitution case)
 //
-// Matching is EXACT (case-insensitive, trimmed) on the English heading — so it
+// Matching is EXACT (case-insensitive, trimmed) on the English heading: so it
 // can never collide on substrings the way the previous keyword scan did
 // (e.g. "strain" ⊂ "Constraints", "loss" ⊂ "Losses", "critic" ⊂ "Critical").
 
@@ -140,7 +140,7 @@ export function filterThematicTopics(topics: ThematicTopic[]): ThematicTopic[] {
     }));
 }
 
-/** Applies the content policy across every vertical. Pure — input untouched. */
+/** Applies the content policy across every vertical. Pure: input untouched. */
 export function filterThematicData(
   data: Record<string, ThematicTopic[]>,
 ): Record<string, ThematicTopic[]> {

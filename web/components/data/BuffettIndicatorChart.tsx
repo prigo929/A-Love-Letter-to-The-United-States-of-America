@@ -1,6 +1,6 @@
 "use client";
 
-// ─── BuffettIndicatorChart — the market measured against the economy ─────────
+// ─── BuffettIndicatorChart: the market measured against the economy ─────────
 // Total U.S. corporate equity value as a percent of GDP, quarterly since 1947.
 // The 100% line is the reference the ratio is usually read against: for most of
 // the 20th century the market was worth less than the country's annual output.

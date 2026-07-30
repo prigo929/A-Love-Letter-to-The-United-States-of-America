@@ -115,7 +115,7 @@ function QuoteContent({
             ))}
           </div>
           <cite className="not-italic font-body font-semibold text-white text-lg">
-            — {quote.attribution}
+           : {quote.attribution}
             {quote.year && (
               <span className="text-white/50 font-normal text-base ml-2">
                 ({quote.year})

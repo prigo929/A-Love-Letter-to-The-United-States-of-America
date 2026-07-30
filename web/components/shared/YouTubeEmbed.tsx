@@ -2,7 +2,7 @@
 
 // ─── YouTubeEmbed ─────────────────────────────────────────────────────────────
 // Shows a thumbnail facade; clicking it loads the real YouTube player with full
-// native chrome — play/pause, the settings gear (quality/captions/speed), and
+// native chrome: play/pause, the settings gear (quality/captions/speed), and
 // the fullscreen button. Double-clicking the video toggles fullscreen (native
 // YouTube behavior). YouTube auto-selects resolution up to 4K/HDR by player size
 // and bandwidth.

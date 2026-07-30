@@ -5,7 +5,7 @@
 //
 // These were not guessed. Each URL came back from the Commons API with its
 // licence string, and each was then fetched to confirm it returns HTTP 200 at
-// full size — four hand-constructed thumbnail URLs 404'd on the first attempt,
+// full size: four hand-constructed thumbnail URLs 404'd on the first attempt,
 // which is why the exact API-provided URL is stored verbatim rather than rebuilt
 // from a file name. If you add an entry, verify it the same way.
 //
@@ -23,7 +23,7 @@
 
 //
 // VERIFY THE FILENAME, NOT JUST THE LICENCE. Four of the first nineteen entries
-// pointed at completely unrelated images that nonetheless passed every check —
+// pointed at completely unrelated images that nonetheless passed every check: 
 // hemingwayPortrait was an Auckland Museum annual report, mobyDickTitlePage and
 // ellisonPortrait were page-1 renders of unrelated PDFs. They were correctly
 // licensed and returned HTTP 200, they were just the wrong picture. Commons
@@ -31,7 +31,7 @@
 // acceptance test is now: licence is usable AND the file returns 200 AND the
 // filename contains the subject's name.
 //
-// Ralph Ellison has no freely licensed image on Commons — he died in 1994, so
+// Ralph Ellison has no freely licensed image on Commons: he died in 1994, so
 // that is expected rather than a search failure. OpeningLinesWall renders a
 // typographic panel when `portrait` is omitted rather than showing a wrong face.
 

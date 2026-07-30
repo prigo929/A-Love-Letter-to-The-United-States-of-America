@@ -30,7 +30,7 @@ export async function subscribeToNewsletter(
       });
 
     if (error) {
-      // Duplicate email — Supabase unique constraint
+      // Duplicate email: Supabase unique constraint
       if (error.code === "23505") {
         return { success: true, message: "You are already subscribed!" };
       }

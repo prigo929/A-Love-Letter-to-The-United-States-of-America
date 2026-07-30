@@ -117,7 +117,7 @@ export const metadata: Metadata = {
         url: `${SITE.url}/images/og-default.jpg`,
         width: 1200,
         height: 630,
-        alt: "The United States of America — The Greatest Nation",
+        alt: "The United States of America: The Greatest Nation",
       },
     ],
   },
@@ -219,7 +219,7 @@ export default async function RootLayout({
         <LanguageProvider>
           <ReadingProgressBar />
 
-          {/* Skip to content link — accessibility */}
+          {/* Skip to content link: accessibility */}
           <a href="#main-content" className="skip-to-content">
             Skip to main content
           </a>
@@ -237,7 +237,7 @@ export default async function RootLayout({
           <BackToTop />
           {/* Pause off-screen background videos so Safari can release decoders */}
           <VideoAutoPause />
-          {/* Vercel telemetry only in production — its dev injection attempts
+          {/* Vercel telemetry only in production: its dev injection attempts
               browser storage that throws "No available storage method found"
               in some local browsers, and it serves no purpose during dev. */}
           {process.env.NODE_ENV === "production" && (

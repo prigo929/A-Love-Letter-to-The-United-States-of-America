@@ -3,7 +3,7 @@
 // gold rule that draws in, and a source line. Wrap any chart in this on the
 // cinematic pages so data reads like a terminal display, not a floating SVG.
 //
-// Server-safe — the only client piece is the GoldRule animation.
+// Server-safe: the only client piece is the GoldRule animation.
 
 import { GoldRule } from "@/components/shared/Reveal";
 

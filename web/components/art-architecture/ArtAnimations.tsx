@@ -7,7 +7,7 @@
 // - Hard borders, severe typography, stark B&W photography that bleeds into color
 // - Inspired by: Artforum magazine, MoMA digital properties, architectural journals
 // - Palette: Near-black void + Copper Gold + Crimson + Ivory
-// - Motion: Precise, purposeful — no gimmick micro-animations
+// - Motion: Precise, purposeful: no gimmick micro-animations
 //
 // Security:
 // - No innerHTML/outerHTML usage
@@ -22,27 +22,27 @@ import Link from "next/link";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 0. ArtStyles — High-Contrast Editorial Design System
+// 0. ArtStyles: High-Contrast Editorial Design System
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function ArtStyles() {
   return (
     <style jsx global>{`
       :root {
-        /* ── Surface hierarchy — near-black, not pure black ── */
+        /* ── Surface hierarchy: near-black, not pure black ── */
         --art-void:     #080609;
         --art-surface:  #0e0b10;
         --art-elevated: #16121a;
         --art-border:   rgba(255,255,255,0.06);
 
-        /* ── Accent system — editorial, not vibrant ── */
+        /* ── Accent system: editorial, not vibrant ── */
         --art-accent-copper:  #C4956A;
         --art-accent-crimson: #B22234;
         --art-accent-ivory:   #F0EBE1;
         --art-accent-slate:   #8A8490;
       }
 
-      /* ── Typography — Spatial Editorial grade ── */
+      /* ── Typography: Spatial Editorial grade ── */
 
       .art-text-display {
         font-family: var(--font-archivo);
@@ -180,7 +180,7 @@ export function ArtStyles() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 1. ArtHeroCrossfade — 5-slide crossfade with Ken-Burns zoom
+// 1. ArtHeroCrossfade: 5-slide crossfade with Ken-Burns zoom
 // ─────────────────────────────────────────────────────────────────────────────
 
 import empireStateRockefeller from "@/IMAGES/Architecture/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City.jpg";
@@ -204,37 +204,37 @@ const ART_HERO_SLIDES: HeroSlide[] = [
     src: bierstadtSierra.src,
     alt: "Among the Sierra Nevada Mountains, Albert Bierstadt, 1868",
     label: "BIERSTADT · SIERRA NEVADA",
-    badge: "1868 — HUDSON RIVER SCHOOL",
+    badge: "1868: HUDSON RIVER SCHOOL",
   },
   {
     src: empireStateRockefeller.src,
     alt: "View of Empire State Building from Rockefeller Center, New York City",
     label: "EMPIRE STATE · NEW YORK CITY",
-    badge: "1931 — ART DECO",
+    badge: "1931: ART DECO",
   },
   {
     src: pollockConvergence.src,
     alt: "Convergence, Jackson Pollock, 1952",
     label: "POLLOCK · CONVERGENCE",
-    badge: "1952 — ABSTRACT EXPRESSIONISM",
+    badge: "1952: ABSTRACT EXPRESSIONISM",
   },
   {
     src: chryslerLocal.src,
     alt: "Chrysler Building Art Deco Crown, New York City",
     label: "CHRYSLER BUILDING · NEW YORK",
-    badge: "1930 — ART DECO",
+    badge: "1930: ART DECO",
   },
   {
     src: lichtensteinWhaam.src,
     alt: "Whaam!, Roy Lichtenstein, 1963",
     label: "LICHTENSTEIN · WHAAM!",
-    badge: "1963 — AMERICAN POP ART",
+    badge: "1963: AMERICAN POP ART",
   },
   {
     src: oneVanderbilt.src,
     alt: "One Vanderbilt, Midtown Manhattan, 2021",
     label: "ONE VANDERBILT · NEW YORK",
-    badge: "2021 — CONTEMPORARY SUPERTALL",
+    badge: "2021: CONTEMPORARY SUPERTALL",
   },
 ];
 
@@ -295,7 +295,7 @@ export function ArtHeroCrossfade({
       }} />
       <div className="absolute inset-0 z-10 art-noise pointer-events-none" />
 
-      {/* Slide badge — top right, positioned below top main menu header */}
+      {/* Slide badge: top right, positioned below top main menu header */}
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
@@ -340,7 +340,7 @@ export function ArtHeroCrossfade({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 1b. ArtSingleHero — Single static hero image with no zoom / crossfade
+// 1b. ArtSingleHero: Single static hero image with no zoom / crossfade
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function ArtSingleHero({
@@ -358,7 +358,7 @@ export function ArtSingleHero({
 }) {
   return (
     <section className="relative h-screen overflow-hidden" style={{ background: 'var(--art-void)' }}>
-      {/* Static background image — NO zoom */}
+      {/* Static background image: NO zoom */}
       <div className="absolute inset-0">
         <Image
           src={imageSrc}
@@ -379,7 +379,7 @@ export function ArtSingleHero({
       }} />
       <div className="absolute inset-0 z-10 art-noise pointer-events-none" />
 
-      {/* Badge / label — top right, positioned below top main menu header */}
+      {/* Badge / label: top right, positioned below top main menu header */}
       {(badge || label) && (
         <div className="absolute top-24 md:top-28 right-6 md:right-12 z-20 flex flex-col items-end gap-1 text-right pointer-events-none">
           {badge && (
@@ -400,7 +400,7 @@ export function ArtSingleHero({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2. ArtHeroTitle — Animated hero title reveal
+// 2. ArtHeroTitle: Animated hero title reveal
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function ArtHeroTitle({
@@ -455,7 +455,7 @@ export function ArtHeroTitle({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 3. ArtParallaxBand — scroll-linked full-width cinematic divider
+// 3. ArtParallaxBand: scroll-linked full-width cinematic divider
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface ArtParallaxBandProps {
@@ -474,7 +474,7 @@ export function ArtParallaxBand({
   const { scrollYProgress } = useScroll({ target: outerRef, offset: ["start end", "end start"] });
 
   // Use useMotionValueEvent → direct DOM ref update to avoid WAAPI entirely.
-  // No motion.div with MotionValue style props — that triggers startWaapiAnimation.
+  // No motion.div with MotionValue style props: that triggers startWaapiAnimation.
   const yOffset = height * 0.14;
   useMotionValueEvent(scrollYProgress, "change", (v) => {
     if (innerRef.current) {
@@ -512,7 +512,7 @@ export function ArtParallaxBand({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 4. ArtCountUp — animated count-up number
+// 4. ArtCountUp: animated count-up number
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function ArtCountUp({
@@ -547,7 +547,7 @@ export function ArtCountUp({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. ArtStatWall — horizontal editorial stat strip
+// 5. ArtStatWall: horizontal editorial stat strip
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface ArtStatItem {
@@ -599,7 +599,7 @@ export function ArtStatWall({ stats }: { stats: ArtStatItem[] }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 6. ArtGalleryGrid — B&W → Color curated gallery tiles
+// 6. ArtGalleryGrid: B&W → Color curated gallery tiles
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface GalleryTileData {
@@ -649,7 +649,7 @@ export function ArtGalleryGrid({ tiles }: { tiles: GalleryTileData[] }) {
               style={{ height: '100%', minHeight: '240px' }}
               id={`art-gallery-${tile.href.replace(/\//g, '-').slice(1)}`}
             >
-              {/* Image — B&W by default via CSS class, color on hover */}
+              {/* Image: B&W by default via CSS class, color on hover */}
               <div className="absolute inset-0">
                 <Image
                   src={tile.imageSrc}
@@ -670,7 +670,7 @@ export function ArtGalleryGrid({ tiles }: { tiles: GalleryTileData[] }) {
                 {tile.era}
               </span>
 
-              {/* Content — bottom */}
+              {/* Content: bottom */}
               <div className="absolute bottom-0 left-0 right-0 z-10 p-6">
                 {/* Thin copper rule */}
                 <div
@@ -702,7 +702,7 @@ export function ArtGalleryGrid({ tiles }: { tiles: GalleryTileData[] }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 7. ArtEraTimeline — Horizontal pinned-scroll era timeline
+// 7. ArtEraTimeline: Horizontal pinned-scroll era timeline
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface EraData {
@@ -723,7 +723,7 @@ export function ArtEraTimeline({ eras }: { eras: EraData[] }) {
   // translated the cards sideways as you scrolled DOWN. That did two bad things:
   // it froze entirely on wide monitors (the track fit the viewport, so there was
   // nothing to translate), and it left a screen-height gap of empty void between
-  // the cards and the next section. It also confused the gesture — you scrolled
+  // the cards and the next section. It also confused the gesture: you scrolled
   // up/down to move side to side.
   //
   // Now it is what it looks like: a normal-height band you scroll horizontally,
@@ -766,7 +766,7 @@ export function ArtEraTimeline({ eras }: { eras: EraData[] }) {
         </div>
       </div>
 
-      {/* The scroller — full-bleed, with edge insets so cards don't jam the rim */}
+      {/* The scroller: full-bleed, with edge insets so cards don't jam the rim */}
       <div
         ref={scrollerRef}
         className="art-era-scroller flex overflow-x-auto overflow-y-hidden"
@@ -840,7 +840,7 @@ function EraCard({ era, index }: { era: EraData; index: number }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 8. ArtQuoteBreak — full-width editorial quote
+// 8. ArtQuoteBreak: full-width editorial quote
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function ArtQuoteBreak({
@@ -870,7 +870,7 @@ export function ArtQuoteBreak({
         >
           &ldquo;{quote}&rdquo;
         </p>
-        <p className="art-text-label" style={{ color: 'var(--art-accent-copper)' }}>— {attribution}</p>
+        <p className="art-text-label" style={{ color: 'var(--art-accent-copper)' }}>: {attribution}</p>
         {title && <p className="art-text-metadata mt-2">{title}</p>}
         <div className="h-px w-12 mx-auto mt-12" style={{ background: 'rgba(196,149,106,0.35)' }} />
       </div>
@@ -879,7 +879,7 @@ export function ArtQuoteBreak({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 9. ArtFactModule — borderless editorial fact row
+// 9. ArtFactModule: borderless editorial fact row
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function ArtFactModule({
@@ -918,7 +918,7 @@ export function ArtFactModule({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 10. ArtSubPageCards — era sub-page navigation cards
+// 10. ArtSubPageCards: era sub-page navigation cards
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface SubPageCard {

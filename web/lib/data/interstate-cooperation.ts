@@ -4,7 +4,7 @@
 //
 // `hub` is the body's real administrative seat (a headquarters city, or the place
 // the compact was signed). Earlier versions of this file used a member state as a
-// visual "anchor", which wrongly implied that state was central to the agreement —
+// visual "anchor", which wrongly implied that state was central to the agreement: 
 // Kentucky is not the centre of EMAC; it is simply where the secretariat sits.
 //
 // `network: false` marks agreements where nearly every state is a member. Drawing
@@ -30,7 +30,7 @@ export interface CooperationAgreement {
   year: number;
   /** Two-letter state abbreviations. DC and territories are deliberately excluded. */
   members: string[];
-  /** The body's real seat — headquarters city, or where the compact was signed. */
+  /** The body's real seat: headquarters city, or where the compact was signed. */
   hub: {
     label: { en: string; ro: string };
     /** [longitude, latitude] */
@@ -84,8 +84,8 @@ export const COOPERATION_AGREEMENTS: CooperationAgreement[] = [
       coordinates: LEXINGTON_KY,
     },
     blurb: {
-      en: "Governs the transfer of probation and parole supervision across state lines. Ratified by all 50 states — one of the few compacts with truly universal membership.",
-      ro: "Reglementează transferul supravegherii condiționate peste granițele statelor. Ratificat de toate cele 50 de state — unul dintre puținele pacte cu aderare universală.",
+      en: "Governs the transfer of probation and parole supervision across state lines. Ratified by all 50 states: one of the few compacts with truly universal membership.",
+      ro: "Reglementează transferul supravegherii condiționate peste granițele statelor. Ratificat de toate cele 50 de state: unul dintre puținele pacte cu aderare universală.",
     },
     history: {
       en: "Its 1937 predecessor was a single page and had no enforcement mechanism, so states simply ignored transfer requests they disliked. After six decades of drift the states rewrote it from scratch, creating an interstate commission with rulemaking power. It is a rare case of the states building their own regulator rather than waiting for Congress.",
@@ -99,14 +99,14 @@ export const COOPERATION_AGREEMENTS: CooperationAgreement[] = [
     year: 1967,
     members: ["AL", "AK", "AR", "CO", "HI", "ID", "KS", "MO", "MT", "NM", "ND", "OR", "TX", "UT", "WA"],
     network: true,
-    hub: { label: { en: "Headquarters — Washington, D.C.", ro: "Sediu — Washington, D.C." }, coordinates: WASHINGTON_DC },
+    hub: { label: { en: "Headquarters: Washington, D.C.", ro: "Sediu: Washington, D.C." }, coordinates: WASHINGTON_DC },
     blurb: {
       en: "Created by the Multistate Tax Compact so states could coordinate how multi-state businesses are taxed, without waiting for Congress to act.",
       ro: "Creată prin Pactul fiscal multistatal, pentru ca statele să coordoneze impozitarea companiilor care operează în mai multe state.",
     },
     history: {
-      en: "Congress spent the early 1960s threatening to federalise state business taxation after a Supreme Court ruling exposed how inconsistent it had become. The states pre-empted that by writing their own uniform apportionment rules — a defensive compact designed specifically to keep Washington out.",
-      ro: "La începutul anilor 1960, Congresul amenința să federalizeze impozitarea afacerilor. Statele au anticipat, scriindu-și propriile reguli uniforme — un pact defensiv creat tocmai pentru a ține Washingtonul deoparte.",
+      en: "Congress spent the early 1960s threatening to federalise state business taxation after a Supreme Court ruling exposed how inconsistent it had become. The states pre-empted that by writing their own uniform apportionment rules: a defensive compact designed specifically to keep Washington out.",
+      ro: "La începutul anilor 1960, Congresul amenința să federalizeze impozitarea afacerilor. Statele au anticipat, scriindu-și propriile reguli uniforme: un pact defensiv creat tocmai pentru a ține Washingtonul deoparte.",
     },
     caveat: {
       en: "Membership tiers vary: states participate as full compact members, sovereignty members, or associate members. Full members are shown.",
@@ -123,12 +123,12 @@ export const COOPERATION_AGREEMENTS: CooperationAgreement[] = [
     members: ["CO", "WY", "UT", "NM", "AZ", "NV", "CA"],
     network: true,
     hub: {
-      label: { en: "Signed at Bishop's Lodge — Santa Fe, New Mexico", ro: "Semnat la Bishop's Lodge — Santa Fe, New Mexico" },
+      label: { en: "Signed at Bishop's Lodge: Santa Fe, New Mexico", ro: "Semnat la Bishop's Lodge: Santa Fe, New Mexico" },
       coordinates: [-105.9378, 35.687],
     },
     blurb: {
-      en: "Divides the Colorado River between an Upper Basin (CO, WY, UT, NM) and a Lower Basin (AZ, NV, CA). It allocated more water than the river reliably carries — the root of today's shortage negotiations.",
-      ro: "Împarte râul Colorado între Bazinul Superior (CO, WY, UT, NM) și cel Inferior (AZ, NV, CA). A alocat mai multă apă decât transportă râul — cauza negocierilor actuale privind seceta.",
+      en: "Divides the Colorado River between an Upper Basin (CO, WY, UT, NM) and a Lower Basin (AZ, NV, CA). It allocated more water than the river reliably carries: the root of today's shortage negotiations.",
+      ro: "Împarte râul Colorado între Bazinul Superior (CO, WY, UT, NM) și cel Inferior (AZ, NV, CA). A alocat mai multă apă decât transportă râul: cauza negocierilor actuale privind seceta.",
     },
     history: {
       en: "The negotiators, chaired by Commerce Secretary Herbert Hoover, used streamflow records from an unusually wet stretch of years and concluded the river carried about 16.4 million acre-feet annually. The long-run average is closer to 13 million. Every drought crisis since has been an argument with the arithmetic of 1922.",
@@ -146,15 +146,15 @@ export const COOPERATION_AGREEMENTS: CooperationAgreement[] = [
     members: ["IL", "IN", "MI", "MN", "NY", "OH", "PA", "WI"],
     network: true,
     hub: {
-      label: { en: "Great Lakes Commission — Ann Arbor, Michigan", ro: "Comisia Marilor Lacuri — Ann Arbor, Michigan" },
+      label: { en: "Great Lakes Commission: Ann Arbor, Michigan", ro: "Comisia Marilor Lacuri: Ann Arbor, Michigan" },
       coordinates: [-83.743, 42.2808],
     },
     blurb: {
-      en: "Bans most diversions of water out of the Great Lakes basin. Eight states — holding roughly a fifth of the world's surface fresh water — agreed to govern it jointly.",
-      ro: "Interzice majoritatea devierilor de apă din bazinul Marilor Lacuri. Opt state — care dețin aproximativ o cincime din apa dulce de suprafață a lumii — o administrează împreună.",
+      en: "Bans most diversions of water out of the Great Lakes basin. Eight states: holding roughly a fifth of the world's surface fresh water: agreed to govern it jointly.",
+      ro: "Interzice majoritatea devierilor de apă din bazinul Marilor Lacuri. Opt state: care dețin aproximativ o cincime din apa dulce de suprafață a lumii: o administrează împreună.",
     },
     history: {
-      en: "The trigger was a 1998 Ontario permit allowing a company to ship Lake Superior water to Asia by tanker. The outcry produced a decade of negotiation and, in 2008, a compact ratified by eight legislatures and consented to by Congress — with Ontario and Quebec joining through a parallel agreement.",
+      en: "The trigger was a 1998 Ontario permit allowing a company to ship Lake Superior water to Asia by tanker. The outcry produced a decade of negotiation and, in 2008, a compact ratified by eight legislatures and consented to by Congress: with Ontario and Quebec joining through a parallel agreement.",
       ro: "Declanșatorul a fost un permis din 1998 din Ontario care permitea transportul apei din Lacul Superior în Asia cu petroliere. Indignarea a produs un deceniu de negocieri și, în 2008, un pact ratificat de opt legislaturi și aprobat de Congres.",
     },
   },
@@ -165,14 +165,14 @@ export const COOPERATION_AGREEMENTS: CooperationAgreement[] = [
     year: 1961,
     members: ["DE", "NJ", "NY", "PA"],
     network: true,
-    hub: { label: { en: "Headquarters — West Trenton, New Jersey", ro: "Sediu — West Trenton, New Jersey" }, coordinates: [-74.8135, 40.2601] },
+    hub: { label: { en: "Headquarters: West Trenton, New Jersey", ro: "Sediu: West Trenton, New Jersey" }, coordinates: [-74.8135, 40.2601] },
     blurb: {
       en: "The first time the federal government and a group of states joined as equal partners in a single regulatory agency, managing one river basin across four states.",
       ro: "Prima dată când guvernul federal și un grup de state s-au alăturat ca parteneri egali într-o singură agenție de reglementare a unui bazin hidrografic.",
     },
     history: {
-      en: "Four states spent decades suing each other over Delaware water, twice reaching the Supreme Court. Rather than litigate a third time they wrote a compact in which the federal government holds one vote alongside four governors — an arrangement that still has no real parallel.",
-      ro: "Patru state s-au judecat decenii pentru apa Delaware, ajungând de două ori la Curtea Supremă. În loc de un al treilea proces, au scris un pact în care guvernul federal are un vot alături de patru guvernatori — un aranjament fără paralelă reală.",
+      en: "Four states spent decades suing each other over Delaware water, twice reaching the Supreme Court. Rather than litigate a third time they wrote a compact in which the federal government holds one vote alongside four governors: an arrangement that still has no real parallel.",
+      ro: "Patru state s-au judecat decenii pentru apa Delaware, ajungând de două ori la Curtea Supremă. În loc de un al treilea proces, au scris un pact în care guvernul federal are un vot alături de patru guvernatori: un aranjament fără paralelă reală.",
     },
   },
 
@@ -184,7 +184,7 @@ export const COOPERATION_AGREEMENTS: CooperationAgreement[] = [
     year: 1921,
     members: ["NY", "NJ"],
     network: true,
-    hub: { label: { en: "Headquarters — New York, New York", ro: "Sediu — New York, New York" }, coordinates: NEW_YORK_NY },
+    hub: { label: { en: "Headquarters: New York, New York", ro: "Sediu: New York, New York" }, coordinates: NEW_YORK_NY },
     blurb: {
       en: "The first interstate agency created under the Constitution's Compact Clause. It runs JFK, LaGuardia, Newark, the George Washington Bridge, the PATH trains and the port itself.",
       ro: "Prima agenție interstatală creată în baza Clauzei Pactelor din Constituție. Administrează JFK, LaGuardia, Newark, podul George Washington și portul.",
@@ -201,10 +201,10 @@ export const COOPERATION_AGREEMENTS: CooperationAgreement[] = [
     year: 1967,
     members: ["MD", "VA"],
     network: true,
-    hub: { label: { en: "Headquarters — Washington, D.C.", ro: "Sediu — Washington, D.C." }, coordinates: WASHINGTON_DC },
+    hub: { label: { en: "Headquarters: Washington, D.C.", ro: "Sediu: Washington, D.C." }, coordinates: WASHINGTON_DC },
     blurb: {
-      en: "Runs the Washington Metro across two states and the District of Columbia — a transit system created by compact because no single jurisdiction could build it.",
-      ro: "Operează metroul din Washington în două state și în Districtul Columbia — un sistem creat prin pact, pentru că nicio jurisdicție nu îl putea construi singură.",
+      en: "Runs the Washington Metro across two states and the District of Columbia: a transit system created by compact because no single jurisdiction could build it.",
+      ro: "Operează metroul din Washington în două state și în Districtul Columbia: un sistem creat prin pact, pentru că nicio jurisdicție nu îl putea construi singură.",
     },
     history: {
       en: "The capital region's commuters live in Maryland and Virginia but work in a federal district with no state of its own, so no ordinary government could tax or build across the whole system. Congress consented to a three-way compact in 1966; the first trains ran in 1976.",
@@ -220,13 +220,13 @@ export const COOPERATION_AGREEMENTS: CooperationAgreement[] = [
     year: 1927,
     members: ["DE", "IL", "IN", "KY", "MD", "MI", "NJ", "NC", "OH", "PA", "TN", "VA", "WV"],
     network: true,
-    hub: { label: { en: "Control centre — Audubon, Pennsylvania", ro: "Centru de comandă — Audubon, Pennsylvania" }, coordinates: [-75.4302, 40.1112] },
+    hub: { label: { en: "Control centre: Audubon, Pennsylvania", ro: "Centru de comandă: Audubon, Pennsylvania" }, coordinates: [-75.4302, 40.1112] },
     blurb: {
       en: "The largest wholesale electricity market on Earth, dispatching power for roughly 65 million people. It began in 1927 as three utilities agreeing to share generation.",
       ro: "Cea mai mare piață angro de electricitate din lume, alimentând circa 65 de milioane de oameni. A început în 1927, cu trei companii care și-au împărțit producția.",
     },
     history: {
-      en: "Its name is a fossil: Pennsylvania–New Jersey–Maryland, the three states of the original 1927 pool. Utilities discovered that sharing generating capacity was cheaper than each building its own reserve margin. That insight — pooling reserves across borders — is the reason the modern grid exists.",
+      en: "Its name is a fossil: Pennsylvania–New Jersey–Maryland, the three states of the original 1927 pool. Utilities discovered that sharing generating capacity was cheaper than each building its own reserve margin. That insight: pooling reserves across borders: is the reason the modern grid exists.",
       ro: "Numele e o fosilă: Pennsylvania–New Jersey–Maryland, cele trei state ale grupului original din 1927. Companiile au descoperit că partajarea capacității de producție e mai ieftină decât rezervele individuale.",
     },
     caveat: {
@@ -241,24 +241,24 @@ export const COOPERATION_AGREEMENTS: CooperationAgreement[] = [
     year: 1997,
     members: ["CT", "ME", "MA", "NH", "RI", "VT"],
     network: true,
-    hub: { label: { en: "Control centre — Holyoke, Massachusetts", ro: "Centru de comandă — Holyoke, Massachusetts" }, coordinates: [-72.6412, 42.2043] },
+    hub: { label: { en: "Control centre: Holyoke, Massachusetts", ro: "Centru de comandă: Holyoke, Massachusetts" }, coordinates: [-72.6412, 42.2043] },
     blurb: {
-      en: "Six states operate as a single electricity market and control area — the whole of New England dispatched from one control room.",
-      ro: "Șase state operează ca o singură piață de electricitate — întreaga Noua Anglie, coordonată dintr-o singură cameră de comandă.",
+      en: "Six states operate as a single electricity market and control area: the whole of New England dispatched from one control room.",
+      ro: "Șase state operează ca o singură piață de electricitate: întreaga Noua Anglie, coordonată dintr-o singură cameră de comandă.",
     },
     history: {
-      en: "New England has almost no fossil fuel of its own, so its six states have always imported power. When the region deregulated in the 1990s they chose a single independent operator rather than six competing ones — which is why a cold snap in Maine changes the price of electricity in Connecticut.",
-      ro: "Noua Anglie nu are practic combustibili fosili proprii. Când regiunea s-a dereglementat în anii 1990, cele șase state au ales un singur operator independent — de aceea un val de frig în Maine schimbă prețul curentului în Connecticut.",
+      en: "New England has almost no fossil fuel of its own, so its six states have always imported power. When the region deregulated in the 1990s they chose a single independent operator rather than six competing ones: which is why a cold snap in Maine changes the price of electricity in Connecticut.",
+      ro: "Noua Anglie nu are practic combustibili fosili proprii. Când regiunea s-a dereglementat în anii 1990, cele șase state au ales un singur operator independent: de aceea un val de frig în Maine schimbă prețul curentului în Connecticut.",
     },
   },
   {
     id: "ercot",
     category: "power",
-    name: { en: "ERCOT — The Texas Interconnection", ro: "ERCOT — Interconexiunea Texas" },
+    name: { en: "ERCOT: The Texas Interconnection", ro: "ERCOT: Interconexiunea Texas" },
     year: 1970,
     members: ["TX"],
     network: false,
-    hub: { label: { en: "Control centre — Taylor, Texas", ro: "Centru de comandă — Taylor, Texas" }, coordinates: [-97.4092, 30.571] },
+    hub: { label: { en: "Control centre: Taylor, Texas", ro: "Centru de comandă: Taylor, Texas" }, coordinates: [-97.4092, 30.571] },
     blurb: {
       en: "The exception that proves the rule: Texas runs its own grid, deliberately isolated from its neighbours to stay outside federal interstate regulation.",
       ro: "Excepția care confirmă regula: Texas își operează propria rețea, izolată intenționat de vecini pentru a rămâne în afara reglementării federale interstatale.",
@@ -278,7 +278,7 @@ export const COOPERATION_AGREEMENTS: CooperationAgreement[] = [
     members: ALL_50,
     network: false,
     hub: {
-      label: { en: "Administered by NEMA — Lexington, Kentucky", ro: "Administrat de NEMA — Lexington, Kentucky" },
+      label: { en: "Administered by NEMA: Lexington, Kentucky", ro: "Administrat de NEMA: Lexington, Kentucky" },
       coordinates: LEXINGTON_KY,
     },
     blurb: {
@@ -299,13 +299,13 @@ export const COOPERATION_AGREEMENTS: CooperationAgreement[] = [
     year: 2009,
     members: ["CT", "DE", "ME", "MD", "MA", "NH", "NJ", "NY", "RI", "VT"],
     network: true,
-    hub: { label: { en: "RGGI, Inc. — New York, New York", ro: "RGGI, Inc. — New York, New York" }, coordinates: NEW_YORK_NY },
+    hub: { label: { en: "RGGI, Inc.: New York, New York", ro: "RGGI, Inc.: New York, New York" }, coordinates: NEW_YORK_NY },
     blurb: {
       en: "The first mandatory cap-and-trade programme for power-plant carbon in the United States, run cooperatively by the participating states rather than by Washington.",
       ro: "Primul program obligatoriu de plafonare și tranzacționare a emisiilor centralelor electrice din SUA, administrat de statele participante, nu de Washington.",
     },
     history: {
-      en: "After Congress declined to price carbon, ten northeastern governors did it themselves, auctioning emission allowances from 2009. Participation has proved reversible: New Jersey left in 2011 and rejoined in 2020, and Virginia withdrew at the end of 2023 — a reminder that a compact is only as durable as the next election.",
+      en: "After Congress declined to price carbon, ten northeastern governors did it themselves, auctioning emission allowances from 2009. Participation has proved reversible: New Jersey left in 2011 and rejoined in 2020, and Virginia withdrew at the end of 2023: a reminder that a compact is only as durable as the next election.",
       ro: "După ce Congresul a refuzat să taxeze carbonul, zece guvernatori din nord-est au făcut-o singuri, licitând permise din 2009. Participarea s-a dovedit reversibilă: New Jersey a plecat în 2011 și a revenit în 2020, iar Virginia s-a retras la finalul lui 2023.",
     },
     caveat: {
@@ -320,7 +320,7 @@ export const COOPERATION_AGREEMENTS: CooperationAgreement[] = [
     year: 1990,
     members: ["CT", "DE", "ME", "MD", "MA", "NH", "NJ", "NY", "PA", "RI", "VT", "VA"],
     network: true,
-    hub: { label: { en: "Headquarters — Washington, D.C.", ro: "Sediu — Washington, D.C." }, coordinates: WASHINGTON_DC },
+    hub: { label: { en: "Headquarters: Washington, D.C.", ro: "Sediu: Washington, D.C." }, coordinates: WASHINGTON_DC },
     blurb: {
       en: "Created by the Clean Air Act because smog does not stop at state lines: upwind states and downwind states are forced to plan air quality together.",
       ro: "Creată prin Clean Air Act, pentru că smogul nu se oprește la granițele statelor: statele din amonte și din aval planifică împreună calitatea aerului.",

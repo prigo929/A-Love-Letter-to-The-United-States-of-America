@@ -66,7 +66,7 @@ export default async function IntelligencePage() {
       <MilStyles />
       <IntelClassifiedStyles />
 
-      {/* Hero Section — retains the CIA video */}
+      {/* Hero Section: retains the CIA video */}
       <ParallaxMilitaryHero
         imageSrc={SITE_IMAGES.cyberOps}
         imageAlt="U.S. Cyber Command operations room"
@@ -87,25 +87,25 @@ export default async function IntelligencePage() {
       {/* Agency dossier chapters */}
       <AgencyDossier agencies={agencies} locale={locale} />
 
-      {/* Intelligence disciplines — clean layout with redaction bars */}
+      {/* Intelligence disciplines: clean layout with redaction bars */}
       <IntelligenceDisciplines capabilities={capabilities} locale={locale} />
 
-      {/* The Vault — CIA Reading Room */}
+      {/* The Vault: CIA Reading Room */}
       <TheVault locale={locale} />
 
-      {/* Installation list — quiet vertical stack */}
+      {/* Installation list: quiet vertical stack */}
       <InstallationsList nodes={nodes} locale={locale} />
 
-      {/* Five Eyes geometry — SVG pentagon */}
+      {/* Five Eyes geometry: SVG pentagon */}
       <FiveEyesGeometry locale={locale} />
 
-      {/* Heritage — minimal date list */}
+      {/* Heritage: minimal date list */}
       <HeritageList events={heritage} locale={locale} />
 
-      {/* Intelligence failures — gravitas section */}
+      {/* Intelligence failures: gravitas section */}
       <IntelligenceFailures locale={locale} />
 
-      {/* Future programs — clean layout */}
+      {/* Future programs: clean layout */}
       <FuturePrograms programs={futurePrograms} locale={locale} />
 
       {/* Closing quote and navigation */}

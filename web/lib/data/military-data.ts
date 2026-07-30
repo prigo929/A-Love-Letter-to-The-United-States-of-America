@@ -254,7 +254,7 @@ export const MILITARY_BRANCHES: MilitaryBranch[] = [
   },
 ];
 
-// ─── Weapon Systems — Crown Jewels ────────────────────────────────────────────
+// ─── Weapon Systems: Crown Jewels ────────────────────────────────────────────
 
 export const WEAPON_SYSTEMS: WeaponSystem[] = [
   {
@@ -871,7 +871,7 @@ export function getWeaponSystems(locale: Locale): WeaponSystem[] {
         quantity: "900+ livrate (3.300 planificate)",
         speed: "Mach 1,6",
         range: "2.220 km (rază de luptă)",
-        description: "Cea mai capabilă aeronavă de luptă multirol din lume. F-35 este un supercomputer zburător — fuziunea senzorilor săi vede amenințările înainte ca adversarii să știe că există.",
+        description: "Cea mai capabilă aeronavă de luptă multirol din lume. F-35 este un supercomputer zburător: fuziunea senzorilor săi vede amenințările înainte ca adversarii să știe că există.",
         significance: "Avantajul real al F-35 este informația, nu doar invizibilitatea. Acesta agregă date de la senzori proprii, alte F-35, sateliți și sisteme terestre.",
         specs: [
           { label: "Generație", value: "Generația a 5-a" },
@@ -1047,7 +1047,7 @@ export function getDARPAPrograms(locale: Locale): DARPAProgram[] {
       case "cyber-offensive": return {
         ...p,
         category: "RĂZBOI CIBERNETIC",
-        description: "US Cyber Command menține o prezență persistentă în infrastructura critică a adversarului — rețele electrice, sisteme financiare.",
+        description: "US Cyber Command menține o prezență persistentă în infrastructura critică a adversarului: rețele electrice, sisteme financiare.",
         significance: "Capabilitățile actuale sunt cu ordine de mărime mai sofisticate decât Stuxnet (2010)."
       };
       case "ai-c2": return {
@@ -1064,25 +1064,25 @@ export function getDARPAPrograms(locale: Locale): DARPAProgram[] {
 export function getNuclearTriad(locale: Locale) {
   if (locale !== "ro") return NUCLEAR_TRIAD;
   return {
-    description: "Triada nucleară — ICBM-uri terestre, SLBM-uri marine și arme lansate din aer — garantează că niciun prim atac nu poate distruge simultan toate cele trei componente. Atâta timp cât o componentă supraviețuiește, Statele Unite își păstrează capacitatea de răspuns.",
+    description: "Triada nucleară: ICBM-uri terestre, SLBM-uri marine și arme lansate din aer: garantează că niciun prim atac nu poate distruge simultan toate cele trei componente. Atâta timp cât o componentă supraviețuiește, Statele Unite își păstrează capacitatea de răspuns.",
     legs: [
       {
         ...NUCLEAR_TRIAD.legs[0],
         name: "Terestru (ICBM)",
         systems: "400 Minuteman III",
-        advantage: "Timp de răspuns rapid — 30 de minute către orice țintă de pe Pământ",
+        advantage: "Timp de răspuns rapid: 30 de minute către orice țintă de pe Pământ",
       },
       {
         ...NUCLEAR_TRIAD.legs[1],
         name: "Maritim (SSBN)",
         systems: "14 submarine clasa Ohio",
-        advantage: "Cea mai supraviețuitoare componentă — submarinele sunt nedetectabile",
+        advantage: "Cea mai supraviețuitoare componentă: submarinele sunt nedetectabile",
       },
       {
         ...NUCLEAR_TRIAD.legs[2],
         name: "Aerian (Bombardiere)",
         systems: "60 B-52H + 20 B-2 Spirit + B-21 intrând în serviciu",
-        advantage: "Rechemabile — singura componentă care poate fi întoarsă după lansare",
+        advantage: "Rechemabile: singura componentă care poate fi întoarsă după lansare",
       },
     ],
   };
@@ -1096,7 +1096,7 @@ export const SOCOM_UNITS: SOCOMUnit[] = [
     name: "Special Forces (Green Berets)",
     shortName: "Army SF",
     role: "Unconventional Warfare",
-    tagline: "De Oppresso Liber — To Free the Oppressed",
+    tagline: "De Oppresso Liber: To Free the Oppressed",
     accentColor: "#10B981",
     description: "Highly specialized army teams trained for guerrilla warfare, foreign internal defense, and counter-insurgency. They typically operate in small, 12-man teams (ODAs) to train and fight alongside allied local forces.",
     keyFacts: [
@@ -1124,7 +1124,7 @@ export const SOCOM_UNITS: SOCOMUnit[] = [
     name: "1st SFOD-D (Delta Force)",
     shortName: "Delta Force",
     role: "Hostage Rescue & Counter-Terrorism",
-    tagline: "Sine Pari — Without Equal",
+    tagline: "Sine Pari: Without Equal",
     accentColor: "#EF4444",
     description: "The Army's premier Tier 1 special missions unit. Delta Force operates in absolute secrecy, executing national-security level counter-terrorism, high-value target capture, and hostage rescue operations.",
     keyFacts: [
@@ -1138,7 +1138,7 @@ export const SOCOM_UNITS: SOCOMUnit[] = [
     name: "Marine Raiders",
     shortName: "MARSOC",
     role: "Special Reconnaissance",
-    tagline: "Spiritus Invictus — Unconquerable Spirit",
+    tagline: "Spiritus Invictus: Unconquerable Spirit",
     accentColor: "#B91C1C",
     description: "Marine Corps Forces Special Operations Command. Specialized in amphibious special reconnaissance, direct action, and training foreign military partners in contested littoral zones.",
     keyFacts: [
@@ -1158,7 +1158,7 @@ export function getSOCOMUnits(locale: Locale): SOCOMUnit[] {
           ...u,
           name: "Forțele Speciale (Beretele Verzi)",
           role: "Război Neconvențional",
-          tagline: "De Oppresso Liber — Pentru eliberarea celor oprimați",
+          tagline: "De Oppresso Liber: Pentru eliberarea celor oprimați",
           description: "Echipe ale armatei extrem de specializate, antrenate pentru război de gherilă, apărare internă străină și contrainsurgență. Operează de obicei în echipe mici de 12 oameni (ODA) pentru a antrena și lupta alături de forțele locale aliate.",
           keyFacts: [
             "Specializate în imersiune lingvistică și culturală",
@@ -1184,7 +1184,7 @@ export function getSOCOMUnits(locale: Locale): SOCOMUnit[] {
           ...u,
           name: "Forța Delta (Delta Force)",
           role: "Salvare de Ostatici și Contra-Terorism",
-          tagline: "Sine Pari — Fără Egal",
+          tagline: "Sine Pari: Fără Egal",
           description: "Principala unitate de misiuni speciale de Nivel 1 (Tier 1) a Armatei. Delta Force operează în secret absolut, executând contra-terorism la nivel de securitate națională, capturarea de ținte de mare valoare și operațiuni de salvare a ostaticilor.",
           keyFacts: [
             "Răspunde direct în fața Comandamentului Comun pentru Operațiuni Speciale (JSOC)",
@@ -1197,7 +1197,7 @@ export function getSOCOMUnits(locale: Locale): SOCOMUnit[] {
           ...u,
           name: "Pușcașii Marini Raiders",
           role: "Recunoaștere Specială",
-          tagline: "Spiritus Invictus — Spirit de Neînvins",
+          tagline: "Spiritus Invictus: Spirit de Neînvins",
           description: "Comandamentul de Operațiuni Speciale al Corpului de Pușcași Marini. Specializat în recunoaștere specială amfibie, acțiuni directe și instruirea partenerilor militari străini în zone litorale contestate.",
           keyFacts: [
             "Descendenți direcți ai legendarilor Marine Raiders din al Doilea Război Mondial",

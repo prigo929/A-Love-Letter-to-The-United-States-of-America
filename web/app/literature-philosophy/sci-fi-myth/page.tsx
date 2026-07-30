@@ -35,8 +35,8 @@ const BURROUGHS_TEXT =
 const BURROUGHS_NOTES: Annotation[] = [
   {
     phrase: "captain in the Confederate cavalry",
-    note: "Burroughs anchors John Carter in the aftermath of the American Civil War. The displacement of veteran soldiers to the West—and in this case, to Mars—is the literal mechanism of the frontier myth.",
-    noteRo: "Burroughs îl ancorează pe John Carter în perioada de după Războiul Civil American. Strămutarea soldaților veterani în Vest — și, în acest caz, pe Marte — este mecanismul literal al mitului frontierei.",
+    note: "Burroughs anchors John Carter in the aftermath of the American Civil War. The displacement of veteran soldiers to the West, and in this case, to Mars, is the literal mechanism of the frontier myth.",
+    noteRo: "Burroughs îl ancorează pe John Carter în perioada de după Războiul Civil American. Strămutarea soldaților veterani în Vest: și, în acest caz, pe Marte: este mecanismul literal al mitului frontierei.",
   },
   {
     phrase: "never aged as other men",
@@ -66,7 +66,7 @@ export default async function SciFiMythPage() {
           "Cum povestea frontierei americane a părăsit Vestul și a plecat în spațiu. O analiză a modului în care cucerirea spațială a devenit noul mit al Manifest Destiny.",
         openingTitle: "Spațiul ca frontiera finală",
         openingBody:
-          "Când istoricul Frederick Jackson Turner a declarat în 1890 că frontiera americană s-a închis, imaginația națională nu s-a oprit. În loc de asta, a căutat o nouă frontieră în stele. Science-fiction-ul american a preluat structurile mitice ale Westernului — pionierul singuratic, pământul gol de cucerit, lupta brută pentru supraviețuire și lipsa legilor — și le-a mutat în spațiul cosmic. De la călătoriile marțiene ale lui John Carter la nava Enterprise, cucerirea spațiului a rămas un mit profund american despre explorare și renaștere personală.",
+          "Când istoricul Frederick Jackson Turner a declarat în 1890 că frontiera americană s-a închis, imaginația națională nu s-a oprit. În loc de asta, a căutat o nouă frontieră în stele. Science-fiction-ul american a preluat structurile mitice ale Westernului: pionierul singuratic, pământul gol de cucerit, lupta brută pentru supraviețuire și lipsa legilor: și le-a mutat în spațiul cosmic. De la călătoriile marțiene ale lui John Carter la nava Enterprise, cucerirea spațiului a rămas un mit profund american despre explorare și renaștere personală.",
         burroughsTitle: "Edgar Rice Burroughs și Westernul Marțian",
         burroughsBody:
           "În romanul său din 1912, „A Princess of Mars”, Edgar Rice Burroughs a creat arhetipul aventurii planetare. Protagonistul John Carter, un veteran al Războiului Civil American, se trezește pe o planetă Marte sălbatică și tribală. Apasă pe frazele subliniate pentru a-i explora textul.",
@@ -93,7 +93,7 @@ export default async function SciFiMythPage() {
           "How the story of the American frontier left the West and went to space. An analysis of how space exploration became the new myth of Manifest Destiny.",
         openingTitle: "Space as the final frontier",
         openingBody:
-          "When historian Frederick Jackson Turner declared in 1890 that the American frontier was closed, the national imagination did not stop. Instead, it sought a new frontier in the stars. American science fiction took the mythic structures of the Western — the solitary pioneer, the empty land to conquer, the raw struggle for survival, and the lawless wild — and moved them to outer space. From John Carter's Martian travels to the starship Enterprise, space exploration remained a deeply American myth of exploration and personal rebirth.",
+          "When historian Frederick Jackson Turner declared in 1890 that the American frontier was closed, the national imagination did not stop. Instead, it sought a new frontier in the stars. American science fiction took the mythic structures of the Western: the solitary pioneer, the empty land to conquer, the raw struggle for survival, and the lawless wild: and moved them to outer space. From John Carter's Martian travels to the starship Enterprise, space exploration remained a deeply American myth of exploration and personal rebirth.",
         burroughsTitle: "Edgar Rice Burroughs and the Martian Western",
         burroughsBody:
           "In his 1912 novel 'A Princess of Mars,' Edgar Rice Burroughs created the planet-adventure archetype. John Carter, an American Civil War veteran, wakes up on a wild, tribal Mars. Click the underlined phrases to analyze the text.",

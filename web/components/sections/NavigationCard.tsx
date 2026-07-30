@@ -73,7 +73,7 @@ export function NavigationCard({
             </div>
           )}
 
-          {/* Arrow icon — appears on hover */}
+          {/* Arrow icon: appears on hover */}
           <div className="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-glory-gold flex items-center justify-center opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
             <ArrowRight className="w-4 h-4 text-navy-dark" aria-hidden="true" />
           </div>
@@ -81,7 +81,7 @@ export function NavigationCard({
 
         {/* Content */}
         <div className="p-5">
-          {/* Gold accent line — grows on hover */}
+          {/* Gold accent line: grows on hover */}
           <div className="w-8 h-0.5 bg-glory-gold mb-3 transition-all duration-300 group-hover:w-16" />
 
           <h3 className="font-display text-xl font-semibold text-white mb-1.5 group-hover:text-glory-gold transition-colors duration-200">

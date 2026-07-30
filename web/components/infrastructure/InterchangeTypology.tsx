@@ -232,12 +232,12 @@ const KINDS: Kind[] = [
     name: { en: "Cloverleaf", ro: "Treflă" },
     tag: { en: "The Pioneer of Free-Flow", ro: "Pionierul fluxului continuu" },
     desc: {
-      en: "Invented to eliminate stoplights entirely by using looping ramps for left turns. While groundbreaking in the 1930s, it created a dangerous traffic pattern known as 'weaving'—where cars accelerating to enter the highway must cross paths with cars decelerating to exit on the exact same lane.",
-      ro: "Inventat pentru a elimina complet semafoarele, folosind bucle la dreapta pentru virajele la stânga. Revoluționar în anii 1930, a creat un model de trafic periculos numit „întrețesere” — unde mașinile care accelerează pentru a intra se încrucișează cu cele care încetinesc pentru a ieși.",
+      en: "Invented to eliminate stoplights entirely by using looping ramps for left turns. While groundbreaking in the 1930s, it created a dangerous traffic pattern known as 'weaving', where cars accelerating to enter the highway must cross paths with cars decelerating to exit on the exact same lane.",
+      ro: "Inventat pentru a elimina complet semafoarele, folosind bucle la dreapta pentru virajele la stânga. Revoluționar în anii 1930, a creat un model de trafic periculos numit „întrețesere”: unde mașinile care accelerează pentru a intra se încrucișează cu cele care încetinesc pentru a ieși.",
     },
     example: {
-      en: "Woodbridge Interchange, NJ (1928) — America's first cloverleaf. Now largely phased out on high-volume routes.",
-      ro: "Nodul Woodbridge, NJ (1928) — prima treflă din America. Acum este eliminată treptat pe rutele cu trafic intens.",
+      en: "Woodbridge Interchange, NJ (1928): America's first cloverleaf. Now largely phased out on high-volume routes.",
+      ro: "Nodul Woodbridge, NJ (1928): prima treflă din America. Acum este eliminată treptat pe rutele cu trafic intens.",
     },
     footprint: 3.4,
     spec: {
@@ -354,8 +354,8 @@ const KINDS: Kind[] = [
       ro: "O capodoperă masivă pe mai multe niveluri, proiectată pentru joncțiunea de mare viteză a două autostrăzi majore. Prin separarea fiecărei mișcări pe propria rampă suspendată dedicată, elimină complet întrețeserea, permițând un flux continuu la viteze de autostradă.",
     },
     example: {
-      en: "Judge Harry Pregerson Interchange, LA (1993) — A towering 5-level stack handling 350,000 vehicles daily.",
-      ro: "Nodul Judge Harry Pregerson, LA (1993) — o structură impunătoare pe 5 niveluri ce gestionează 350.000 de vehicule zilnic.",
+      en: "Judge Harry Pregerson Interchange, LA (1993): A towering 5-level stack handling 350,000 vehicles daily.",
+      ro: "Nodul Judge Harry Pregerson, LA (1993): o structură impunătoare pe 5 niveluri ce gestionează 350.000 de vehicule zilnic.",
     },
     footprint: 4,
     spec: {

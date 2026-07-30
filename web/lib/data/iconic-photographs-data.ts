@@ -9,9 +9,9 @@
 // `imagePath` here, then wired into the gallery and the relevant section page.
 //
 // `rights` records the practical sourcing status:
-//   "public-domain" — US gov / NASA / pre-1929 / federal work; free to use.
-//   "loc"           — available via Library of Congress (verify PD per item).
-//   "needs-license" — copyrighted press/film/sports/product image; user supplies.
+//   "public-domain": US gov / NASA / pre-1929 / federal work; free to use.
+//   "loc"          : available via Library of Congress (verify PD per item).
+//   "needs-license": copyrighted press/film/sports/product image; user supplies.
 
 export type PhotoRights = "public-domain" | "loc" | "needs-license";
 
@@ -83,7 +83,7 @@ const FOUNDATIONAL: IconicPhoto[] = [
     year: "1969",
     caption: "Aldrin stands on the Sea of Tranquility, Armstrong mirrored in his visor.",
     description:
-      "Neil Armstrong photographed Buzz Aldrin during Apollo 11, July 20, 1969 — the first crewed Moon landing and one of the defining images of the 20th century.",
+      "Neil Armstrong photographed Buzz Aldrin during Apollo 11, July 20, 1969: the first crewed Moon landing and one of the defining images of the 20th century.",
     category: "USA from Space",
     section: "innovation",
     location: "Sea of Tranquility, the Moon",
@@ -97,7 +97,7 @@ const FOUNDATIONAL: IconicPhoto[] = [
     year: "1903",
     caption: "Orville flies as Wilbur runs alongside, December 17, 1903.",
     description:
-      "John T. Daniels' photograph records the first sustained, controlled, powered flight of a heavier-than-air craft — the birth of the aviation age on a North Carolina dune.",
+      "John T. Daniels' photograph records the first sustained, controlled, powered flight of a heavier-than-air craft: the birth of the aviation age on a North Carolina dune.",
     category: "History",
     section: "innovation",
     location: "Kill Devil Hills, Kitty Hawk, North Carolina",
@@ -111,7 +111,7 @@ const FOUNDATIONAL: IconicPhoto[] = [
     year: "1869",
     caption: "East meets West as the transcontinental railroad is completed.",
     description:
-      "Andrew J. Russell's 'East and West Shaking Hands' at Promontory Summit, May 10, 1869, marked the joining of the Central Pacific and Union Pacific — knitting the continent together by rail.",
+      "Andrew J. Russell's 'East and West Shaking Hands' at Promontory Summit, May 10, 1869, marked the joining of the Central Pacific and Union Pacific: knitting the continent together by rail.",
     category: "History",
     section: "economy",
     location: "Promontory Summit, Utah",
@@ -125,7 +125,7 @@ const FOUNDATIONAL: IconicPhoto[] = [
     year: "1968",
     caption: "Earth rises over the lunar horizon, seen from Apollo 8.",
     description:
-      "William Anders photographed the Earth rising beyond the Moon on December 24, 1968 — an image widely credited with galvanizing the modern environmental movement.",
+      "William Anders photographed the Earth rising beyond the Moon on December 24, 1968: an image widely credited with galvanizing the modern environmental movement.",
     category: "USA from Space",
     section: "innovation",
     location: "Lunar orbit",
@@ -144,7 +144,7 @@ const FOUNDATIONAL: IconicPhoto[] = [
     section: "culture",
     location: "Times Square, New York City",
     rights: "needs-license",
-    source: "Eisenstaedt/LIFE (Getty) — licensed. A PD Navy frame by Victor Jorgensen exists (National Archives).",
+    source: "Eisenstaedt/LIFE (Getty): licensed. A PD Navy frame by Victor Jorgensen exists (National Archives).",
   },
   {
     id: "reagan-brandenburg-gate",
@@ -337,7 +337,7 @@ const INDUSTRY_ENGINEERING: IconicPhoto[] = [
     year: "1947",
     caption: "The rocket plane that first broke the sound barrier.",
     description:
-      "Chuck Yeager flew the bright-orange Bell X-1 'Glamorous Glennis' past Mach 1 on October 14, 1947, over the Mojave — the dawn of supersonic flight.",
+      "Chuck Yeager flew the bright-orange Bell X-1 'Glamorous Glennis' past Mach 1 on October 14, 1947, over the Mojave: the dawn of supersonic flight.",
     category: "Military",
     section: "innovation",
     location: "Muroc Army Air Field, California",
@@ -363,7 +363,7 @@ const INDUSTRY_ENGINEERING: IconicPhoto[] = [
     id: "bush-ground-zero-bullhorn",
     title: "President George W. Bush at Ground Zero with the Bullhorn",
     year: "2001",
-    caption: "“I can hear you — and the people who knocked these buildings down will hear all of us soon.”",
+    caption: "“I can hear you: and the people who knocked these buildings down will hear all of us soon.”",
     description:
       "Standing on the rubble of the World Trade Center on September 14, 2001, Bush rallied rescue workers and a grieving nation three days after the attacks.",
     category: "History",
@@ -384,7 +384,7 @@ const INDUSTRY_ENGINEERING: IconicPhoto[] = [
     section: "innovation",
     location: "Dallas, Texas",
     rights: "needs-license",
-    source: "Texas Instruments archives — request/permission; some replicas are freely licensed.",
+    source: "Texas Instruments archives: request/permission; some replicas are freely licensed.",
   },
   {
     id: "completion-of-the-panama-canal",
@@ -415,7 +415,7 @@ const BUSINESS_POLITICS: IconicPhoto[] = [
     section: "economy",
     location: "United States (PBS)",
     rights: "needs-license",
-    source: "Free to Choose Network / PBS — request permission.",
+    source: "Free to Choose Network / PBS: request permission.",
   },
   {
     id: "trump-inauguration-2017",
@@ -437,7 +437,7 @@ const BUSINESS_POLITICS: IconicPhoto[] = [
     year: "1921",
     caption: "Edison, Ford, Firestone, and Burroughs camp together.",
     description:
-      "The self-styled 'Vagabonds' — Thomas Edison, Henry Ford, Harvey Firestone, and naturalist John Burroughs — took widely publicized motor-camping trips that celebrated American ingenuity and the open road.",
+      "The self-styled 'Vagabonds': Thomas Edison, Henry Ford, Harvey Firestone, and naturalist John Burroughs: took widely publicized motor-camping trips that celebrated American ingenuity and the open road.",
     category: "American Life",
     section: "economy",
     location: "Eastern United States",
@@ -470,7 +470,7 @@ const BUSINESS_POLITICS: IconicPhoto[] = [
     section: "innovation",
     location: "Moscone Center, San Francisco",
     rights: "needs-license",
-    source: "Press/Getty imagery — user must license or supply.",
+    source: "Press/Getty imagery: user must license or supply.",
     imagePath: "Technology/Iconic/Steve Jobs Introducing the iPhone.jpg",
   },
   {
@@ -484,7 +484,7 @@ const BUSINESS_POLITICS: IconicPhoto[] = [
     section: "economy",
     location: "Port Newark, New Jersey",
     rights: "needs-license",
-    source: "Maersk/McLean archives — request; check Maritime Administration for PD frames.",
+    source: "Maersk/McLean archives: request; check Maritime Administration for PD frames.",
   },
   {
     id: "reagan-thatcher-camp-david",
@@ -525,7 +525,7 @@ const BUSINESS_POLITICS: IconicPhoto[] = [
     section: "innovation",
     location: "Los Altos, California",
     rights: "needs-license",
-    source: "Apple/press archives — user supplies; some Apple I unit photos are CC-licensed.",
+    source: "Apple/press archives: user supplies; some Apple I unit photos are CC-licensed.",
     imagePath: "Technology/Iconic/Jobs and Wozniak with the Apple I.jpg",
   },
   {
@@ -553,7 +553,7 @@ const BUSINESS_POLITICS: IconicPhoto[] = [
     section: "economy",
     location: "Everett, Washington",
     rights: "needs-license",
-    source: "Boeing archives — request; some Smithsonian images are freely licensed.",
+    source: "Boeing archives: request; some Smithsonian images are freely licensed.",
   },
   {
     id: "great-white-fleet-departing",
@@ -580,7 +580,7 @@ const BUSINESS_POLITICS: IconicPhoto[] = [
     section: "economy",
     location: "Chicago, Illinois",
     rights: "needs-license",
-    source: "Press/Getty — license or substitute a PD/CC pit image.",
+    source: "Press/Getty: license or substitute a PD/CC pit image.",
   },
   {
     id: "b-2-spirit-unveiling",
@@ -634,7 +634,7 @@ const MILITARY: IconicPhoto[] = [
     year: "1944",
     caption: "Ike with the 101st Airborne on the eve of D-Day.",
     description:
-      "Eisenhower visited the 502nd Parachute Infantry Regiment on June 5, 1944, hours before the Normandy drop — a portrait of command and resolve.",
+      "Eisenhower visited the 502nd Parachute Infantry Regiment on June 5, 1944, hours before the Normandy drop: a portrait of command and resolve.",
     category: "Military",
     section: "military",
     location: "Greenham Common, England",
@@ -667,7 +667,7 @@ const MILITARY: IconicPhoto[] = [
     section: "military",
     location: "World Trade Center site, New York City",
     rights: "needs-license",
-    source: "Thomas E. Franklin / The Record (Getty) — license or supply.",
+    source: "Thomas E. Franklin / The Record (Getty): license or supply.",
   },
   {
     id: "surrender-of-japan-uss-missouri",
@@ -675,7 +675,7 @@ const MILITARY: IconicPhoto[] = [
     year: "1945",
     caption: "Japan signs the instrument of surrender, ending WWII.",
     description:
-      "On September 2, 1945, Japanese officials signed the formal surrender aboard the USS Missouri in Tokyo Bay, with MacArthur presiding — the end of the Second World War.",
+      "On September 2, 1945, Japanese officials signed the formal surrender aboard the USS Missouri in Tokyo Bay, with MacArthur presiding: the end of the Second World War.",
     category: "Military",
     section: "military",
     location: "Tokyo Bay, Japan",
@@ -694,7 +694,7 @@ const MILITARY: IconicPhoto[] = [
     section: "military",
     location: "Travis Air Force Base, California",
     rights: "needs-license",
-    source: "Slava Veder / AP — license or supply.",
+    source: "Slava Veder / AP: license or supply.",
   },
   {
     id: "chosin-reservoir-breakout",
@@ -702,7 +702,7 @@ const MILITARY: IconicPhoto[] = [
     year: "1950",
     caption: "Marines fight out of encirclement in brutal cold.",
     description:
-      "Surrounded by Chinese forces in sub-zero conditions, the 1st Marine Division fought its way out of the Chosin Reservoir in late 1950 — an epic of the Korean War.",
+      "Surrounded by Chinese forces in sub-zero conditions, the 1st Marine Division fought its way out of the Chosin Reservoir in late 1950: an epic of the Korean War.",
     category: "Military",
     section: "military",
     location: "Chosin Reservoir, North Korea",
@@ -800,7 +800,7 @@ const MILITARY: IconicPhoto[] = [
     year: "1997",
     caption: "The flight demonstration squadron over 'Old Ironsides'.",
     description:
-      "The Blue Angels roaring over the USS Constitution joined two enduring symbols of the U.S. Navy — its oldest commissioned warship and its precision flyers.",
+      "The Blue Angels roaring over the USS Constitution joined two enduring symbols of the U.S. Navy: its oldest commissioned warship and its precision flyers.",
     category: "Military",
     section: "military",
     location: "Boston Harbor, Massachusetts",
@@ -842,7 +842,7 @@ const MILITARY: IconicPhoto[] = [
     year: "1942",
     caption: "B-25 bombers crowd a carrier deck before the raid on Japan.",
     description:
-      "In April 1942, Jimmy Doolittle led B-25s launched from the USS Hornet to strike Tokyo — a daring morale-lifting blow months after Pearl Harbor.",
+      "In April 1942, Jimmy Doolittle led B-25s launched from the USS Hornet to strike Tokyo: a daring morale-lifting blow months after Pearl Harbor.",
     category: "Military",
     section: "military",
     location: "Pacific Ocean",
@@ -856,7 +856,7 @@ const MILITARY: IconicPhoto[] = [
     year: "1916",
     caption: "U.S. forces pursue Pancho Villa into Mexico.",
     description:
-      "John J. Pershing led the 1916 expedition into Mexico after Pancho Villa's raid on Columbus, New Mexico — a prelude to his WWI command.",
+      "John J. Pershing led the 1916 expedition into Mexico after Pancho Villa's raid on Columbus, New Mexico: a prelude to his WWI command.",
     category: "Military",
     section: "military",
     location: "Northern Mexico",
@@ -936,7 +936,7 @@ const MILITARY: IconicPhoto[] = [
   {
     id: "a-10-thunderbolt-in-flight",
     title: "An A-10 Thunderbolt II (“Warthog”) in Flight",
-    year: "—",
+    year: ", ",
     caption: "The close-air-support jet built around its cannon.",
     description:
       "The rugged A-10, designed around a 30mm Gatling gun, is the U.S. Air Force's premier close-air-support aircraft, beloved by ground troops.",
@@ -950,7 +950,7 @@ const MILITARY: IconicPhoto[] = [
   {
     id: "uss-nimitz-flight-operations",
     title: "The USS Nimitz Supercarrier Conducting Flight Operations",
-    year: "—",
+    year: ", ",
     caption: "A nuclear-powered carrier launches and recovers aircraft.",
     description:
       "The USS Nimitz, lead ship of its class of nuclear supercarriers, projects American airpower across the globe from a floating airfield.",
@@ -978,7 +978,7 @@ const MILITARY: IconicPhoto[] = [
   {
     id: "minuteman-iii-test-launch",
     title: "Minuteman III ICBM Test Launch at Vandenberg",
-    year: "—",
+    year: ", ",
     caption: "An intercontinental ballistic missile lifts off on a test.",
     description:
       "Test launches of the Minuteman III from Vandenberg demonstrate the land-based leg of the U.S. nuclear deterrent triad.",
@@ -1144,7 +1144,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "Lewiston, Maine",
     rights: "needs-license",
-    source: "Neil Leifer / Sports Illustrated (Getty) — license or supply.",
+    source: "Neil Leifer / Sports Illustrated (Getty): license or supply.",
   },
   {
     id: "elvis-meeting-nixon",
@@ -1171,7 +1171,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "Lexington Avenue, New York City",
     rights: "needs-license",
-    source: "Press/film archives (Getty/Corbis) — license or supply.",
+    source: "Press/film archives (Getty/Corbis): license or supply.",
   },
   {
     id: "miracle-on-ice-celebration",
@@ -1184,7 +1184,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "Lake Placid, New York",
     rights: "needs-license",
-    source: "AP/Sports Illustrated — license or supply (a SI cover is already in IMAGES).",
+    source: "AP/Sports Illustrated: license or supply (a SI cover is already in IMAGES).",
   },
   {
     id: "mlk-lincoln-memorial",
@@ -1211,7 +1211,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "Yankee Stadium, New York City",
     rights: "needs-license",
-    source: "Nat Fein Estate / NY Herald Tribune — license or supply.",
+    source: "Nat Fein Estate / NY Herald Tribune: license or supply.",
   },
   {
     id: "james-dean-times-square",
@@ -1224,7 +1224,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "Times Square, New York City",
     rights: "needs-license",
-    source: "Dennis Stock / Magnum — license or supply.",
+    source: "Dennis Stock / Magnum: license or supply.",
   },
   {
     id: "rat-pack-sands-hotel",
@@ -1237,7 +1237,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "Las Vegas, Nevada",
     rights: "needs-license",
-    source: "Press/Getty — license or supply.",
+    source: "Press/Getty: license or supply.",
   },
   {
     id: "migrant-mother",
@@ -1264,7 +1264,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "Chicago Stadium, Chicago, Illinois",
     rights: "needs-license",
-    source: "NBAE/Getty — license or supply.",
+    source: "NBAE/Getty: license or supply.",
   },
   {
     id: "johnny-cash-folsom-prison",
@@ -1277,7 +1277,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "Folsom State Prison, California",
     rights: "needs-license",
-    source: "Columbia Records / Getty — license or supply.",
+    source: "Columbia Records / Getty: license or supply.",
   },
   {
     id: "wilt-chamberlain-100",
@@ -1285,12 +1285,12 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     year: "1962",
     caption: "Chamberlain after scoring 100 points in a single game.",
     description:
-      "Wilt Chamberlain holds a hand-lettered '100' sign after his record 100-point game on March 2, 1962 — a mark never matched.",
+      "Wilt Chamberlain holds a hand-lettered '100' sign after his record 100-point game on March 2, 1962: a mark never matched.",
     category: "Sports",
     section: "culture",
     location: "Hershey, Pennsylvania",
     rights: "needs-license",
-    source: "AP/NBAE — license or supply.",
+    source: "AP/NBAE: license or supply.",
   },
   {
     id: "travolta-saturday-night-fever",
@@ -1303,7 +1303,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "Brooklyn, New York City",
     rights: "needs-license",
-    source: "Paramount Pictures — license or supply.",
+    source: "Paramount Pictures: license or supply.",
     imagePath: "Culture/Cinema/John Travolta in Saturday Night Fever.jpg",
   },
   {
@@ -1317,7 +1317,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "Los Angeles, California",
     rights: "needs-license",
-    source: "Soul Train / Getty — license or supply.",
+    source: "Soul Train / Getty: license or supply.",
   },
   {
     id: "evel-knievel-caesars-palace",
@@ -1330,7 +1330,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "Las Vegas, Nevada",
     rights: "needs-license",
-    source: "Press/Getty — license or supply.",
+    source: "Press/Getty: license or supply.",
   },
   {
     id: "walt-disney-disneyland-opening",
@@ -1343,7 +1343,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "Anaheim, California",
     rights: "needs-license",
-    source: "Disney archives / Getty — license or supply.",
+    source: "Disney archives / Getty: license or supply.",
   },
   {
     id: "jesse-owens-berlin-olympics",
@@ -1365,12 +1365,12 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     year: "1992",
     caption: "The greatest team ever assembled, Barcelona 1992.",
     description:
-      "The first U.S. Olympic basketball team of NBA stars — Jordan, Magic, Bird and more — dominated the 1992 Barcelona Games and globalized the sport.",
+      "The first U.S. Olympic basketball team of NBA stars: Jordan, Magic, Bird and more: dominated the 1992 Barcelona Games and globalized the sport.",
     category: "Sports",
     section: "culture",
     location: "Barcelona, Spain",
     rights: "needs-license",
-    source: "NBAE/Getty — license or supply.",
+    source: "NBAE/Getty: license or supply.",
     imagePath: "Culture/Sports/The 1992 USA Basketball Dream Team.jpg",
   },
   {
@@ -1384,7 +1384,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "Green Bay, Wisconsin / Miami, Florida",
     rights: "needs-license",
-    source: "AP/Getty — license or supply.",
+    source: "AP/Getty: license or supply.",
   },
   {
     id: "schwarzenegger-muscle-beach",
@@ -1397,7 +1397,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "Venice Beach, California",
     rights: "needs-license",
-    source: "Press/Getty — license or supply.",
+    source: "Press/Getty: license or supply.",
     imagePath: "Culture/Famous People/Schwarzenegger at Muscle Beach.jpeg",
   },
   {
@@ -1411,7 +1411,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "United States",
     rights: "needs-license",
-    source: "Paramount Pictures — license or supply.",
+    source: "Paramount Pictures: license or supply.",
   },
   {
     id: "jackie-robinson-stealing-home",
@@ -1424,7 +1424,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "Yankee Stadium, New York City",
     rights: "needs-license",
-    source: "AP/Getty — license or supply.",
+    source: "AP/Getty: license or supply.",
   },
   {
     id: "michael-jackson-moonwalk-motown-25",
@@ -1437,7 +1437,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "Pasadena, California",
     rights: "needs-license",
-    source: "Motown / Getty — license or supply.",
+    source: "Motown / Getty: license or supply.",
   },
   {
     id: "clint-eastwood-dirty-harry",
@@ -1450,7 +1450,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "San Francisco, California",
     rights: "needs-license",
-    source: "Warner Bros. — license or supply.",
+    source: "Warner Bros.: license or supply.",
   },
   {
     id: "first-franchised-mcdonalds-des-plaines",
@@ -1463,7 +1463,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "economy",
     location: "Des Plaines, Illinois",
     rights: "needs-license",
-    source: "McDonald's archives / Getty — license or supply.",
+    source: "McDonald's archives / Getty: license or supply.",
   },
   {
     id: "warhol-campbells-soup-cans",
@@ -1476,7 +1476,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "New York City",
     rights: "needs-license",
-    source: "Press/Getty (and Warhol estate for the artwork) — license or supply.",
+    source: "Press/Getty (and Warhol estate for the artwork): license or supply.",
     imagePath: "Culture/Famous People/Andy Warhol with Campbells Soup Cans.webp",
   },
   {
@@ -1490,7 +1490,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "JFK Airport, New York City",
     rights: "needs-license",
-    source: "AP/Getty — license or supply.",
+    source: "AP/Getty: license or supply.",
   },
   {
     id: "john-wayne-the-searchers",
@@ -1503,7 +1503,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "Monument Valley, Utah/Arizona",
     rights: "needs-license",
-    source: "Warner Bros. — license or supply.",
+    source: "Warner Bros.: license or supply.",
   },
   {
     id: "dylan-going-electric-newport",
@@ -1516,7 +1516,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     section: "culture",
     location: "Newport, Rhode Island",
     rights: "needs-license",
-    source: "Press/Getty — license or supply.",
+    source: "Press/Getty: license or supply.",
   },
   {
     id: "route-66-diner-at-night",
@@ -1560,7 +1560,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     section: "innovation",
     location: "Murray Hill, New Jersey",
     rights: "needs-license",
-    source: "Nokia Bell Labs archives — request; some replicas freely licensed.",
+    source: "Nokia Bell Labs archives: request; some replicas freely licensed.",
   },
   {
     id: "von-braun-saturn-v-f1-engines",
@@ -1615,7 +1615,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     section: "innovation",
     location: "Albuquerque, New Mexico",
     rights: "needs-license",
-    source: "Microsoft archives — request permission.",
+    source: "Microsoft archives: request permission.",
   },
   {
     id: "ibm-305-ramac-airlift",
@@ -1628,7 +1628,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     section: "innovation",
     location: "San Jose, California",
     rights: "needs-license",
-    source: "IBM archives — request permission.",
+    source: "IBM archives: request permission.",
   },
   {
     id: "spacex-falcon-9-dual-landing",
@@ -1655,7 +1655,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     section: "innovation",
     location: "Pittsburgh, Pennsylvania",
     rights: "needs-license",
-    source: "March of Dimes / press archives — request or substitute PD frame.",
+    source: "March of Dimes / press archives: request or substitute PD frame.",
   },
   {
     id: "intel-founders-noyce-moore-grove",
@@ -1668,12 +1668,12 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     section: "innovation",
     location: "Santa Clara, California",
     rights: "needs-license",
-    source: "Intel archives — request permission.",
+    source: "Intel archives: request permission.",
   },
   {
     id: "grace-hopper-harvard-mark-i",
     title: "Dr. Grace Hopper",
-    year: "—",
+    year: ", ",
     caption: "The computing pioneer and U.S. Navy officer.",
     description:
       "Grace Hopper programmed the Harvard Mark I in the 1940s and went on to pioneer compilers and the COBOL language during a long Navy career.",
@@ -1723,7 +1723,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     section: "innovation",
     location: "San Francisco, California",
     rights: "needs-license",
-    source: "NVIDIA / OpenAI — request permission.",
+    source: "NVIDIA / OpenAI: request permission.",
   },
   {
     id: "hubble-space-telescope-repair",
@@ -1778,7 +1778,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     section: "innovation",
     location: "Mexico",
     rights: "needs-license",
-    source: "CIMMYT / Nobel archives — request; some CC images available.",
+    source: "CIMMYT / Nobel archives: request; some CC images available.",
   },
   {
     id: "edwin-hubble-hooker-telescope",
@@ -1791,7 +1791,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     section: "innovation",
     location: "Mount Wilson Observatory, California",
     rights: "needs-license",
-    source: "Carnegie / Mount Wilson archives — request; some PD frames exist.",
+    source: "Carnegie / Mount Wilson archives: request; some PD frames exist.",
   },
   {
     id: "oppenheimer-groves-trinity-site",
@@ -1832,7 +1832,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     section: "innovation",
     location: "United States",
     rights: "needs-license",
-    source: "LLNL / press archives — request; some DOE frames PD.",
+    source: "LLNL / press archives: request; some DOE frames PD.",
   },
   {
     id: "einstein-hubble-mount-wilson",
@@ -1845,7 +1845,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     section: "innovation",
     location: "Mount Wilson Observatory, California",
     rights: "needs-license",
-    source: "Carnegie Observatories archives — request; some PD frames exist.",
+    source: "Carnegie Observatories archives: request; some PD frames exist.",
     imagePath: "Science/Iconic/Einstein and Hubble at Mount Wilson.webp",
   },
   {
@@ -1859,7 +1859,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     section: "innovation",
     location: "Caltech, Pasadena, California",
     rights: "needs-license",
-    source: "Caltech archives / press — request permission.",
+    source: "Caltech archives / press: request permission.",
   },
   {
     id: "marie-tharp-mapping-ocean-floor",
@@ -1872,7 +1872,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     section: "innovation",
     location: "Lamont, Columbia University, New York",
     rights: "needs-license",
-    source: "Lamont-Doherty / LOC — request; some LOC items available.",
+    source: "Lamont-Doherty / LOC: request; some LOC items available.",
   },
   {
     id: "watson-dna-double-helix-model",
@@ -1885,7 +1885,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     section: "innovation",
     location: "Cambridge, England",
     rights: "needs-license",
-    source: "CSHL / press archives — request permission.",
+    source: "CSHL / press archives: request permission.",
   },
   {
     id: "claude-shannon-theseus-mouse",
@@ -1898,7 +1898,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     section: "innovation",
     location: "Bell Labs, New Jersey",
     rights: "needs-license",
-    source: "Nokia Bell Labs / MIT archives — request permission.",
+    source: "Nokia Bell Labs / MIT archives: request permission.",
   },
   {
     id: "carl-sagan-viking-mars-lander",
@@ -1911,7 +1911,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     section: "innovation",
     location: "Jet Propulsion Laboratory, California",
     rights: "needs-license",
-    source: "NASA frames PD; Sagan portraits via Cornell/press — verify.",
+    source: "NASA frames PD; Sagan portraits via Cornell/press: verify.",
     imagePath: "USA from Space/Carl Sagan and the Viking Mars Lander.jpg",
   },
   {
@@ -1925,7 +1925,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     section: "innovation",
     location: "Gubbio, Italy / Berkeley, California",
     rights: "needs-license",
-    source: "LBNL / UC Berkeley archives — request permission.",
+    source: "LBNL / UC Berkeley archives: request permission.",
   },
   {
     id: "first-image-of-a-black-hole",
@@ -1956,7 +1956,7 @@ const SCIENCE_PIONEERS: IconicPhoto[] = [
     section: "innovation",
     location: "Holmdel, New Jersey",
     rights: "needs-license",
-    source: "Nokia Bell Labs archives — request; some PD/CC frames exist.",
+    source: "Nokia Bell Labs archives: request; some PD/CC frames exist.",
     imagePath: "Science/Iconic/Penzias and Wilson at the Holmdel Horn Antenna.jpg",
   },
   {
@@ -1970,7 +1970,7 @@ const SCIENCE_PIONEERS: IconicPhoto[] = [
     section: "innovation",
     location: "Institute for Advanced Study, Princeton, New Jersey",
     rights: "needs-license",
-    source: "IAS archives — request permission.",
+    source: "IAS archives: request permission.",
   },
   {
     id: "lawrence-cyclotron",
@@ -1997,7 +1997,7 @@ const SCIENCE_PIONEERS: IconicPhoto[] = [
     section: "innovation",
     location: "Washington, D.C.",
     rights: "needs-license",
-    source: "Press/Getty; White House frames PD — verify per image.",
+    source: "Press/Getty; White House frames PD: verify per image.",
   },
   {
     id: "clyde-tombaugh-blink-comparator",
@@ -2010,7 +2010,7 @@ const SCIENCE_PIONEERS: IconicPhoto[] = [
     section: "innovation",
     location: "Lowell Observatory, Flagstaff, Arizona",
     rights: "needs-license",
-    source: "Lowell Observatory archives — request permission.",
+    source: "Lowell Observatory archives: request permission.",
   },
   {
     id: "glenn-seaborg-periodic-table",
@@ -2037,7 +2037,7 @@ const SCIENCE_PIONEERS: IconicPhoto[] = [
     section: "innovation",
     location: "California",
     rights: "needs-license",
-    source: "Press/Nobel archives — request permission.",
+    source: "Press/Nobel archives: request permission.",
   },
   {
     id: "willis-carrier-first-centrifugal-chiller",
@@ -2050,7 +2050,7 @@ const SCIENCE_PIONEERS: IconicPhoto[] = [
     section: "innovation",
     location: "Syracuse, New York",
     rights: "needs-license",
-    source: "Carrier Corp. archives — request permission.",
+    source: "Carrier Corp. archives: request permission.",
   },
   {
     id: "linus-pauling-molecular-models",
@@ -2063,7 +2063,7 @@ const SCIENCE_PIONEERS: IconicPhoto[] = [
     section: "innovation",
     location: "Caltech, Pasadena, California",
     rights: "needs-license",
-    source: "Caltech / OSU archives — request; some CC images exist.",
+    source: "Caltech / OSU archives: request; some CC images exist.",
   },
   {
     id: "hollerith-census-machine",
@@ -2090,7 +2090,7 @@ const SCIENCE_PIONEERS: IconicPhoto[] = [
     section: "innovation",
     location: "Columbia University, New York",
     rights: "needs-license",
-    source: "Columbia archives — request permission.",
+    source: "Columbia archives: request permission.",
   },
   {
     id: "jwst-first-deep-field",
@@ -2117,7 +2117,7 @@ const SCIENCE_PIONEERS: IconicPhoto[] = [
     section: "innovation",
     location: "Brooklyn, New York",
     rights: "needs-license",
-    source: "FONAR / Smithsonian — request permission.",
+    source: "FONAR / Smithsonian: request permission.",
     imagePath: "Science/Iconic/Damadian and the First MRI Scanner.webp",
   },
   {
@@ -2232,7 +2232,7 @@ const QUALITY_OF_LIFE: IconicPhoto[] = [
     section: "quality-of-life",
     location: "Edina, Minnesota",
     rights: "needs-license",
-    source: "Press/archives — request or substitute PD frame.",
+    source: "Press/archives: request or substitute PD frame.",
   },
   {
     id: "loading-station-wagon-road-trip",
@@ -2259,7 +2259,7 @@ const QUALITY_OF_LIFE: IconicPhoto[] = [
     section: "quality-of-life",
     location: "Memphis, Tennessee",
     rights: "needs-license",
-    source: "Holiday Inn / press archives — request permission.",
+    source: "Holiday Inn / press archives: request permission.",
   },
   {
     id: "1950s-drive-in-movie-theater",
@@ -2267,7 +2267,7 @@ const QUALITY_OF_LIFE: IconicPhoto[] = [
     year: "1950s",
     caption: "Cars lined up beneath the big outdoor screen.",
     description:
-      "The drive-in theater married two American loves — cars and movies — into a defining leisure pastime of the 1950s.",
+      "The drive-in theater married two American loves: cars and movies: into a defining leisure pastime of the 1950s.",
     category: "American Life",
     section: "quality-of-life",
     location: "United States",
@@ -2314,7 +2314,7 @@ const QUALITY_OF_LIFE: IconicPhoto[] = [
     section: "quality-of-life",
     location: "United States",
     rights: "needs-license",
-    source: "Pan Am / press archives — request permission.",
+    source: "Pan Am / press archives: request permission.",
   },
   {
     id: "first-postwar-sears-roebuck-catalog",
@@ -2341,7 +2341,7 @@ const QUALITY_OF_LIFE: IconicPhoto[] = [
     section: "quality-of-life",
     location: "United States",
     rights: "needs-license",
-    source: "Press/archives — request or substitute CC frame.",
+    source: "Press/archives: request or substitute CC frame.",
     imagePath: "Technology/Iconic/1980s Family with their First Home Computer.webp",
   },
   {
@@ -2355,7 +2355,7 @@ const QUALITY_OF_LIFE: IconicPhoto[] = [
     section: "quality-of-life",
     location: "Dallas, Texas",
     rights: "needs-license",
-    source: "Press/archives — request permission.",
+    source: "Press/archives: request permission.",
   },
 ];
 

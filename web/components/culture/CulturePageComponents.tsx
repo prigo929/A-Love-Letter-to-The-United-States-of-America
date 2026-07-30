@@ -1,7 +1,7 @@
 "use client";
 // ─────────────────────────────────────────────────────────────────────────────
-// CulturePageComponents.tsx — Client components for /culture landing page
-// "Life Magazine meets The Atlantic" — the warmest vertical on the site.
+// CulturePageComponents.tsx: Client components for /culture landing page
+// "Life Magazine meets The Atlantic": the warmest vertical on the site.
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { motion, useScroll, useTransform, AnimatePresence, useInView, useMotionValue, animate } from "framer-motion";
@@ -146,7 +146,7 @@ export function CultureStyles() {
 
       /* ── Logo Marquee Hover System ──────────────────────────────── */
 
-      /* All SVGs on dark bg — grayscale first, then invert to white */
+      /* All SVGs on dark bg: grayscale first, then invert to white */
       .logo-img-dark {
         filter: grayscale(1) invert(1) brightness(0.55);
         opacity: 0.6;
@@ -160,7 +160,7 @@ export function CultureStyles() {
         opacity: 1;
       }
 
-      /* Colored SVGs with transparent bg on dark — show grey, reveal color on hover */
+      /* Colored SVGs with transparent bg on dark: show grey, reveal color on hover */
       .logo-img-color {
         filter: grayscale(1) brightness(1.1);
         opacity: 0.65;
@@ -341,7 +341,7 @@ export function parseTextWithHighlights(text: string) {
 }
 
 
-// ─── §1 — Filmstrip Mosaic Hero ──────────────────────────────────────────────
+// ─── §1: Filmstrip Mosaic Hero ──────────────────────────────────────────────
 
 const FILMSTRIP_IMAGES = [
   { src: SITE_IMAGES.culture.jazzClub, alt: "Live jazz club performance" },
@@ -390,7 +390,7 @@ export function CultureFilmstripHero({
       id="culture-hero"
       className="relative min-h-[100dvh] w-full overflow-hidden culture-bg"
     >
-      {/* Filmstrip mosaic grid — staggered entrance */}
+      {/* Filmstrip mosaic grid: staggered entrance */}
       <div className="absolute inset-0 grid grid-cols-4 grid-rows-2 gap-0">
         {FILMSTRIP_IMAGES.map((img, i) => (
           <motion.div
@@ -455,7 +455,7 @@ export function CultureFilmstripHero({
           {eyebrow}
         </motion.p>
 
-        {/* Main Title — monumental */}
+        {/* Main Title: monumental */}
         <motion.h1
           className="culture-text-hero text-white mb-8"
           initial={{ opacity: 0, y: 50 }}
@@ -490,7 +490,7 @@ export function CultureFilmstripHero({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 1.2 VideoCultureHero — cinematic looping video hero (Times Square)
+// 1.2 VideoCultureHero: cinematic looping video hero (Times Square)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export interface VideoCultureHeroProps {
@@ -570,7 +570,7 @@ export function VideoCultureHero({
           )}
         </motion.div>
 
-        {/* Dark gradient overlay — bottom 60% and top vignette */}
+        {/* Dark gradient overlay: bottom 60% and top vignette */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -625,7 +625,7 @@ export function VideoCultureHero({
   );
 }
 
-// ─── §2 — Numbers Strip ──────────────────────────────────────────────────────
+// ─── §2: Numbers Strip ──────────────────────────────────────────────────────
 
 interface CultureNumbersStripProps {
   stats: CultureStat[];
@@ -707,7 +707,7 @@ export function CultureNumbersStrip({ stats, isRo = false }: CultureNumbersStrip
   );
 }
 
-// ─── §3 — Thesis Block ───────────────────────────────────────────────────────
+// ─── §3: Thesis Block ───────────────────────────────────────────────────────
 
 interface CultureThesisBlockProps {
   thesis: CultureThesis;
@@ -747,7 +747,7 @@ export function CultureThesisBlock({ thesis }: CultureThesisBlockProps) {
           <div className="w-12 h-px bg-glory-gold/40 mx-auto mb-6" />
 
           <cite className="not-italic culture-text-metadata text-glory-gold/80 tracking-[0.25em] text-[11px]">
-            — {thesis.attribution}
+           : {thesis.attribution}
           </cite>
         </motion.blockquote>
 
@@ -785,7 +785,7 @@ export function CultureThesisBlock({ thesis }: CultureThesisBlockProps) {
   );
 }
 
-// ─── §4 — Soft Power Pillars ─────────────────────────────────────────────────
+// ─── §4: Soft Power Pillars ─────────────────────────────────────────────────
 
 const PILLAR_GLOW_SCHEMES = [
   { // Film & TV
@@ -841,7 +841,7 @@ export function CulturePillarsStrip({ pillars }: CulturePillarsStripProps) {
       <div className="absolute inset-0 culture-dot-canvas opacity-20 pointer-events-none" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
-        {/* Section header — monumental typography */}
+        {/* Section header: monumental typography */}
         <div className="mb-24 text-center">
           <span className="culture-text-label text-glory-gold/70 block mb-6" style={{ letterSpacing: "0.5em" }}>
             THE SOFT POWER ARSENAL
@@ -906,7 +906,7 @@ export function CulturePillarsStrip({ pillars }: CulturePillarsStripProps) {
   );
 }
 
-// ─── §5 — Magazine Table of Contents (Option A: Hero + Grid) ─────────────────
+// ─── §5: Magazine Table of Contents (Option A: Hero + Grid) ─────────────────
 
 /** Map subpage IDs to actual images */
 const TOC_IMAGES: Record<string, string> = {
@@ -933,7 +933,7 @@ export function CultureBentoGrid({ subpages, sectionTitle }: CultureBentoGridPro
   return (
     <section id="culture-grid" className="culture-bg pt-20 md:pt-32 pb-12 md:pb-20">
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
-        {/* Section Header — Magazine editorial */}
+        {/* Section Header: Magazine editorial */}
         <motion.div
           className="mb-14 md:mb-20 text-center flex flex-col items-center"
           initial={{ opacity: 0, y: 20 }}
@@ -951,7 +951,7 @@ export function CultureBentoGrid({ subpages, sectionTitle }: CultureBentoGridPro
           <div className="w-20 h-px bg-gradient-to-r from-transparent via-glory-gold/40 to-transparent mt-8" />
         </motion.div>
 
-        {/* Hero Card — Full-width Overview */}
+        {/* Hero Card: Full-width Overview */}
         {overview && (
           <motion.div
             className="mb-4"
@@ -964,7 +964,7 @@ export function CultureBentoGrid({ subpages, sectionTitle }: CultureBentoGridPro
           </motion.div>
         )}
 
-        {/* 2×4 Grid — remaining 8 verticals */}
+        {/* 2×4 Grid: remaining 8 verticals */}
         <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-4">
           {rest.map((card, i) => (
             <motion.div
@@ -983,7 +983,7 @@ export function CultureBentoGrid({ subpages, sectionTitle }: CultureBentoGridPro
           ))}
         </div>
 
-        {/* Mobile — horizontal snap scroll */}
+        {/* Mobile: horizontal snap scroll */}
         <div className="md:hidden overflow-x-auto no-scrollbar -mx-6 px-6 snap-x snap-mandatory">
           <div className="flex gap-4" style={{ width: "max-content" }}>
             {rest.map((card, i) => (
@@ -1006,7 +1006,7 @@ function TOCHeroCard({ card, index }: { card: CultureSubpage; index: number }) {
   return (
     <Link href={card.href} className="block w-full">
       <div className="group relative w-full h-[380px] sm:h-[460px] md:h-[520px] overflow-hidden rounded-2xl cursor-pointer">
-        {/* Background image — full color */}
+        {/* Background image: full color */}
         <Image
           src={imgSrc}
           alt={card.title}
@@ -1040,7 +1040,7 @@ function TOCHeroCard({ card, index }: { card: CultureSubpage; index: number }) {
         {/* Hover border */}
         <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-glory-gold/30 transition-colors duration-500 pointer-events-none" />
 
-        {/* Content — left-aligned editorial */}
+        {/* Content: left-aligned editorial */}
         <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-10 md:p-14 z-10">
           {/* Large serif issue number */}
           <span className="font-editorial italic text-glory-gold/30 text-[120px] sm:text-[160px] md:text-[200px] leading-none absolute top-4 left-8 sm:left-10 md:left-14 select-none pointer-events-none">
@@ -1089,7 +1089,7 @@ function TOCGridCard({ card, index }: { card: CultureSubpage; index: number }) {
   return (
     <Link href={card.href} className="block w-full h-full">
       <div className="group relative w-full h-[340px] sm:h-[380px] overflow-hidden rounded-xl cursor-pointer">
-        {/* Background image — full color, no greyscale */}
+        {/* Background image: full color, no greyscale */}
         <Image
           src={imgSrc}
           alt={card.title}
@@ -1125,7 +1125,7 @@ function TOCGridCard({ card, index }: { card: CultureSubpage; index: number }) {
 
         {/* Content */}
         <div className="absolute inset-0 flex flex-col justify-between p-5 sm:p-6 z-10">
-          {/* Top — number + category */}
+          {/* Top: number + category */}
           <div className="flex items-start justify-between">
             <span className="font-editorial italic text-glory-gold/25 text-5xl sm:text-6xl leading-none select-none">
               {num}
@@ -1135,7 +1135,7 @@ function TOCGridCard({ card, index }: { card: CultureSubpage; index: number }) {
             </span>
           </div>
 
-          {/* Bottom — title + stat + arrow */}
+          {/* Bottom: title + stat + arrow */}
           <div className="flex flex-col">
             <h3 className="font-hero text-white text-xl sm:text-2xl leading-tight tracking-wide uppercase mb-2">
               {card.title}
@@ -1161,7 +1161,7 @@ function TOCGridCard({ card, index }: { card: CultureSubpage; index: number }) {
   );
 }
 
-// ─── §6 — Free Market Argument Strip (Cream Section) ─────────────────────────
+// ─── §6: Free Market Argument Strip (Cream Section) ─────────────────────────
 
 interface CultureFreeMarketStripProps {
   arguments_: CultureArgument[];
@@ -1214,7 +1214,7 @@ export function CultureFreeMarketStrip({ arguments_, sectionTitle }: CultureFree
   );
 }
 
-// ─── §7 — Asymmetry of Influence Matrix (Horizontal Bar Small Multiples) ────
+// ─── §7: Asymmetry of Influence Matrix (Horizontal Bar Small Multiples) ────
 
 const COUNTRY_COLORS: Record<string, { bar: string; label: string }> = {
   USA: { bar: "#D4AF37", label: "text-glory-gold" },
@@ -1350,7 +1350,7 @@ export function CultureRadarTeaser({ data, headline }: { data: CultureRadarPoint
   return <CultureAsymmetryMatrix data={data} headline={headline} />;
 }
 
-// ─── §8 — Quote Carousel ────────────────────────────────────────────────────
+// ─── §8: Quote Carousel ────────────────────────────────────────────────────
 
 interface CultureQuoteCarouselProps {
   quotes: CultureQuote[];
@@ -1401,7 +1401,7 @@ export function CultureQuoteCarousel({ quotes }: CultureQuoteCarouselProps) {
 
               <footer>
                 <cite className="not-italic culture-text-metadata text-glory-gold/80 tracking-[0.2em] text-[11px] block mb-1">
-                  — {quotes[active].author}
+                 : {quotes[active].author}
                 </cite>
                 <span className="culture-text-label text-[10px] text-[#F5EDD8]/35">
                   {quotes[active].role}
@@ -1432,7 +1432,7 @@ export function CultureQuoteCarousel({ quotes }: CultureQuoteCarouselProps) {
   );
 }
 
-// ─── §10 — Parallax Divider Band ─────────────────────────────────────────────
+// ─── §10: Parallax Divider Band ─────────────────────────────────────────────
 
 interface CultureParallaxDividerProps {
   imageSrc: string;
@@ -1473,7 +1473,7 @@ export function CultureParallaxDivider({
 }
 
 
-// ─── §12 — Brand Logos Marquee ───────────────────────────────────────────────
+// ─── §12: Brand Logos Marquee ───────────────────────────────────────────────
 
 export function CultureBrandLogosMarquee({ bgVariant = "dark" }: { bgVariant?: "dark" | "cream" }) {
   return (
@@ -1584,7 +1584,7 @@ export function CultureBrandLogosMarquee({ bgVariant = "dark" }: { bgVariant?: "
   );
 }
 
-// ─── §13 — Viewport Quote Moment ─────────────────────────────────────────────
+// ─── §13: Viewport Quote Moment ─────────────────────────────────────────────
 
 interface CultureViewportQuoteProps {
   quote: CultureQuote;
@@ -1648,7 +1648,7 @@ export function CultureViewportQuote({ quote, bgImageSrc }: CultureViewportQuote
 
         <footer>
           <cite className="not-italic culture-text-metadata text-glory-gold/90 tracking-[0.2em] text-[11px] block mb-2">
-            — {quote.author}
+           : {quote.author}
           </cite>
           <span className="culture-text-label text-[10px] text-[#F5EDD8]/40">
             {quote.role}
@@ -1659,7 +1659,7 @@ export function CultureViewportQuote({ quote, bgImageSrc }: CultureViewportQuote
   );
 }
 
-// ─── §14 — Timeline Horizontal Scroll ────────────────────────────────────────
+// ─── §14: Timeline Horizontal Scroll ────────────────────────────────────────
 
 interface CultureTimelineScrollProps {
   decades: CultureDecade[];
@@ -1731,7 +1731,7 @@ export function CultureTimelineScroll({ decades, sectionTitle }: CultureTimeline
               key={dec.year}
               onClick={() => {
                 setSelectedImage(imageSrc);
-                setSelectedTitle(`${dec.year} — ${dec.title}`);
+                setSelectedTitle(`${dec.year}: ${dec.title}`);
                 setSelectedSubtitle(dec.sentence);
               }}
               className="flex-shrink-0 w-[80vw] sm:w-[50vw] md:w-[40vw] lg:w-[30vw] snap-start bg-white/[0.02] border border-white/[0.06] rounded-xl overflow-hidden group hover:border-glory-gold/30 transition-colors duration-500 flex flex-col justify-between culture-gradient-border cursor-pointer"
@@ -1782,7 +1782,7 @@ export function CultureTimelineScroll({ decades, sectionTitle }: CultureTimeline
   );
 }
 
-// ─── §15 — Soft Power Budget ────────────────────────────────────────────────
+// ─── §15: Soft Power Budget ────────────────────────────────────────────────
 
 interface CultureSoftPowerBudgetProps {
   budgetLines: SoftPowerBudgetLine[];
@@ -1904,7 +1904,7 @@ export function CultureSoftPowerBudget({ budgetLines }: CultureSoftPowerBudgetPr
   );
 }
 
-// ─── §16 — Culture Archive Vault ─────────────────────────────────────────────
+// ─── §16: Culture Archive Vault ─────────────────────────────────────────────
 
 interface ArchiveItem {
   title: string;
@@ -2281,7 +2281,7 @@ export function CultureArchiveVault({ isRo }: CultureArchiveVaultProps) {
   );
 }
 
-// ─── §17 — Living Media Wall ─────────────────────────────────────────────────
+// ─── §17: Living Media Wall ─────────────────────────────────────────────────
 
 interface ShiftingGridCellProps {
   src: string;
@@ -2472,7 +2472,7 @@ export function CultureLivingMediaWall({ isRo = false }: CultureLivingMediaWallP
   );
 }
 
-// ─── §17 — Music Origins Section ─────────────────────────────────────────────
+// ─── §17: Music Origins Section ─────────────────────────────────────────────
 
 interface CultureMusicSectionProps {
   genres: CultureMusicGenre[];
@@ -2530,7 +2530,7 @@ export function CultureMusicSection({ genres, sectionTitle, isRo }: CultureMusic
                 onClick={() => {
                   setSelectedImage(imgSrc);
                   setSelectedTitle(g.genre);
-                  setSelectedSubtitle(`${g.city} — ${g.description}`);
+                  setSelectedSubtitle(`${g.city}: ${g.description}`);
                 }}
                 className="group relative h-[420px] rounded-xl overflow-hidden culture-gradient-border border border-white/5 flex flex-col justify-end p-6 cursor-pointer"
                 initial={{ opacity: 0, y: 40 }}
@@ -2605,7 +2605,7 @@ export function CultureMusicSection({ genres, sectionTitle, isRo }: CultureMusic
   );
 }
 
-// ─── §18 — Culinary Pillars Section ──────────────────────────────────────────
+// ─── §18: Culinary Pillars Section ──────────────────────────────────────────
 
 interface CultureCulinarySectionProps {
   pillars: CultureCulinaryPillar[];
@@ -2724,7 +2724,7 @@ export function CultureCulinarySection({ pillars, sectionTitle, isRo }: CultureC
   );
 }
 
-// ─── §2.5 — Culture Origination Strip ────────────────────────────────────────
+// ─── §2.5: Culture Origination Strip ────────────────────────────────────────
 
 interface CultureOriginationStripProps {
   originations: CultureOriginationItem[];
@@ -2776,7 +2776,7 @@ export function CultureOriginationStrip({ originations, isRo }: CultureOriginati
           >
             {isRo 
               ? "Spre deosebire de alte culturi care doar replică formate existente, America a servit ca motorul principal de creație al civilizației moderne, inventând tiparele de bază pe care rulează divertismentul, comerțul și tehnologia mondială."
-              : "Beyond distributing or commercializing culture, the United States acted as the foundational laboratory of modern civilization—creating the very formats, genres, and systems that set the global template."}
+              : "Beyond distributing or commercializing culture, the United States acted as the foundational laboratory of modern civilization, creating the very formats, genres, and systems that set the global template."}
           </motion.p>
           <div className="w-24 h-px bg-gradient-to-r from-transparent via-glory-gold to-transparent mt-8" />
         </div>
@@ -2836,7 +2836,7 @@ export function CultureOriginationStrip({ originations, isRo }: CultureOriginati
   );
 }
 
-// ─── §3.5 — Editorial Imperialism (Counter-Programming) ─────────────────────
+// ─── §3.5: Editorial Imperialism (Counter-Programming) ─────────────────────
 
 interface CultureEditorialImperialismProps {
   data: CultureEditorialImperialismData;
@@ -2942,7 +2942,7 @@ export function CultureEditorialImperialism({ data, isRo = false }: CultureEdito
   );
 }
 
-// ─── §3.8 — Digital America: Pipes of Global Culture ─────────────────────────
+// ─── §3.8: Digital America: Pipes of Global Culture ─────────────────────────
 
 function PipeIcon({ iconKey }: { iconKey: string }) {
   switch (iconKey) {
@@ -3163,7 +3163,7 @@ export function CultureDigitalPipes({ data, isRo = false }: { data: CultureDigit
   );
 }
 
-// ─── §3.9 — Cultural Icons: The Faces of America ───────────────────────────
+// ─── §3.9: Cultural Icons: The Faces of America ───────────────────────────
 
 interface CultureIconsSectionProps {
   data: CultureIconsSectionData;
@@ -3237,7 +3237,7 @@ export function CultureIconsSection({ data, isRo = false }: CultureIconsSectionP
                 onClick={() => {
                   setSelectedImage(imageSrc);
                   setSelectedTitle(icon.name);
-                  setSelectedSubtitle(`${icon.years} — ${icon.description}`);
+                  setSelectedSubtitle(`${icon.years}: ${icon.description}`);
                   setSelectedContribution(icon.contribution);
                   setSelectedAchievement(icon.achievement);
                   setSelectedQuote(icon.quote);
@@ -3312,7 +3312,7 @@ export function CultureIconsSection({ data, isRo = false }: CultureIconsSectionP
   );
 }
 
-// ─── §3.10 — Hollywood: The Dream Factory ───────────────────────────────────
+// ─── §3.10: Hollywood: The Dream Factory ───────────────────────────────────
 
 interface CultureHollywoodEditorialProps {
   data: CultureHollywoodData;
@@ -3704,8 +3704,8 @@ export function CultureSportsFashionStrip({ isRo = false }: { isRo?: boolean }) 
       stat: "$83B",
       statLabel: isRo ? "Industria sportivă americană" : "U.S. sports industry",
       body: isRo
-        ? "NFL, NBA, MLB — cele mai mari patru ligi profesioniste din lume după venituri. Super Bowl reunește 100M+ telespectatori. NBA transmite în 215 țări. Sportul american este soft power la cea mai înaltă frecvență."
-        : "NFL, NBA, MLB — the four largest professional sports leagues on Earth by revenue. The Super Bowl draws 100M+ viewers. The NBA broadcasts to 215 countries. American sports is soft power at peak frequency.",
+        ? "NFL, NBA, MLB: cele mai mari patru ligi profesioniste din lume după venituri. Super Bowl reunește 100M+ telespectatori. NBA transmite în 215 țări. Sportul american este soft power la cea mai înaltă frecvență."
+        : "NFL, NBA, MLB: the four largest professional sports leagues on Earth by revenue. The Super Bowl draws 100M+ viewers. The NBA broadcasts to 215 countries. American sports is soft power at peak frequency.",
       image: SITE_IMAGES.culture.metLifeFlag,
       href: "/culture/sports",
       cta: isRo ? "Explorează Sportul →" : "Explore Sports →",
@@ -3717,8 +3717,8 @@ export function CultureSportsFashionStrip({ isRo = false }: { isRo?: boolean }) 
       stat: "4B+",
       statLabel: isRo ? "Oameni care poartă blugi zilnic" : "People wearing jeans daily",
       body: isRo
-        ? "Blugii albaștri, pantofii sport și streetwear-ul nu au venit din saloanele haute-couture — au pornit de la mineri, terenuri de sport și cartiere. Democratizarea stilului este o invenție americană."
-        : "Blue jeans, athletic sneakers, and streetwear didn't come from haute-couture salons — they came from miners, courts, and neighborhoods. The democratization of style is an American invention.",
+        ? "Blugii albaștri, pantofii sport și streetwear-ul nu au venit din saloanele haute-couture: au pornit de la mineri, terenuri de sport și cartiere. Democratizarea stilului este o invenție americană."
+        : "Blue jeans, athletic sneakers, and streetwear didn't come from haute-couture salons: they came from miners, courts, and neighborhoods. The democratization of style is an American invention.",
       image: SITE_IMAGES.culture.fashionJeansSneakers,
       href: "/culture/fashion",
       cta: isRo ? "Explorează Moda →" : "Explore Fashion →",

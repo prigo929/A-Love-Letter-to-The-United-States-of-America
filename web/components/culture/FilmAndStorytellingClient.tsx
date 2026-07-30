@@ -123,8 +123,8 @@ export function FilmAndStorytellingClient({
         ? "Odată cu prăbușirea vechiului cod de cenzură, o nouă generație de regizori instruiți în școli de film a preluat frâiele. Influențați de modernismul european, au deconstruit genurile clasice și au înlocuit eroii ideali cu anti-eroi complecși pe fundalul realității urbane."
         : "With the collapse of the old censorship code, a new wave of film-school educated directors took creative control. Inspired by European modernism, they deconstructed classic genres, replacing idealized heroes with complex, morally gray anti-heroes set in gritty realism.",
       keyTech: isRo
-        ? ["Auterismul — controlul creativ deplin al regizorului", "Filmări pe străzi reale în loc de decoruri de studio", "Ambiguitate morală și finaluri deschise", "Montaj experimental (jump cuts, montaj sonor)"]
-        : ["Auteur Theory — absolute creative dominance of the director", "Location shooting on real streets instead of studio backlots", "Moral ambiguity and open-ended narrative resolutions", "Experimental editing (jump cuts, overlapping soundscapes)"],
+        ? ["Auterismul: controlul creativ deplin al regizorului", "Filmări pe străzi reale în loc de decoruri de studio", "Ambiguitate morală și finaluri deschise", "Montaj experimental (jump cuts, montaj sonor)"]
+        : ["Auteur Theory: absolute creative dominance of the director", "Location shooting on real streets instead of studio backlots", "Moral ambiguity and open-ended narrative resolutions", "Experimental editing (jump cuts, overlapping soundscapes)"],
       quote: isRo ? "Cel mai practic lucru pe care îl poți face în artă este să îți urmezi intuiția." : "The most businesslike thing you can do in art is to follow your own intuition.",
       quoteAuthor: "Francis Ford Coppola",
     },
@@ -411,7 +411,7 @@ export function FilmAndStorytellingClient({
       {showHero && <CultureStyles />}
       {showHero && <MacroStyles />}
 
-      {/* ── Cinematic Hero (dark) — only shown when standalone ────────── */}
+      {/* ── Cinematic Hero (dark): only shown when standalone ────────── */}
       {showHero && (
         <MacroHero
           eyebrow={hollywoodData.eyebrow}
@@ -426,7 +426,7 @@ export function FilmAndStorytellingClient({
         />
       )}
 
-      {/* ── Editorial Thesis + gradient — only when standalone ──────────── */}
+      {/* ── Editorial Thesis + gradient: only when standalone ──────────── */}
       {showHero && (
         <>
           <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-20 pb-24">
@@ -801,7 +801,7 @@ export function FilmAndStorytellingClient({
           </div>
         </section>
 
-        {/* Bottom Navigation — only shown when standalone */}
+        {/* Bottom Navigation: only shown when standalone */}
         {showBottomNav && (
           <div className="flex items-center justify-between border-t border-white/10 pt-12 mt-20 font-body">
             <a href="/culture" className="text-xs uppercase tracking-widest text-[#F5EDD8]/50 hover:text-white transition-colors">

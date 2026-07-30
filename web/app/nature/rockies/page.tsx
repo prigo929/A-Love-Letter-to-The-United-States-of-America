@@ -79,7 +79,7 @@ export default async function RockiesPage() {
     <>
       <NatStyles />
 
-      {/* ── HERO — single image cinematic entrance ───────────────────────── */}
+      {/* ── HERO: single image cinematic entrance ───────────────────────── */}
       <NatureSubPageHero
         imageSrc={SITE_IMAGES.glacierNationalPark}
         imageAlt={isRo ? "Munții Stâncoși" : "Rocky Mountains"}

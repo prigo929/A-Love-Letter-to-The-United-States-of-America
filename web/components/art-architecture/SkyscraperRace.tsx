@@ -1,6 +1,6 @@
 "use client";
 
-// ─── SkyscraperRace — the height race, drawn to scale ────────────────────────
+// ─── SkyscraperRace: the height race, drawn to scale ────────────────────────
 // The signature interaction of the Skyscraper Revolution page. Nine buildings
 // that each, in their moment, redefined how tall an American building could be,
 // rendered as a single skyline where every silhouette's height is PROPORTIONAL
@@ -112,7 +112,7 @@ export function SkyscraperRace({ towers, hint, hintRo, tallestLabel, tallestLabe
             fill
             sizes="(min-width: 1024px) 22rem, 90vw"
             className="object-cover"
-            // Already a right-sized Commons thumbnail — skip Next's re-optimisation,
+            // Already a right-sized Commons thumbnail: skip Next's re-optimisation,
             // which in dev re-fetches the remote image on every switch and stalls.
             unoptimized
           />

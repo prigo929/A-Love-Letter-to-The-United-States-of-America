@@ -1,6 +1,6 @@
 // ─── Infrastructure Hub Page ──────────────────────────────────────────────────
 // The section landing page: continental integration as a thesis, the global
-// aviation hub map, and the megaproject chronology — with cinematic routes into
+// aviation hub map, and the megaproject chronology: with cinematic routes into
 // the Interstate Highway and Continental Rail subpages.
 
 import Image from "next/image";
@@ -54,7 +54,7 @@ export default async function InfrastructureHubPage() {
         thesisTitle: "Un continent, cablat",
         lede: "Geografia a oferit materia primă. Ingineria a transformat-o într-o singură economie.",
         thesisP1:
-          "Distanța a fost întotdeauna problema fundamentală a Americii. New York și San Francisco sunt mai departe unul de altul decât Lisabona de Moscova. Nicio piață unică nu poate exista la asemenea scară fără o infrastructură care să anuleze distanța — iar America a construit-o, strat peste strat: mai întâi canale, apoi șine, apoi beton, apoi piste.",
+          "Distanța a fost întotdeauna problema fundamentală a Americii. New York și San Francisco sunt mai departe unul de altul decât Lisabona de Moscova. Nicio piață unică nu poate exista la asemenea scară fără o infrastructură care să anuleze distanța: iar America a construit-o, strat peste strat: mai întâi canale, apoi șine, apoi beton, apoi piste.",
         thesisP2:
           "Rezultatul este singura economie continentală cu adevărat integrată de pe Pământ. Un container descărcat în Los Angeles ajunge la Chicago în mai puțin de 60 de ore pe calea ferată. Un camion poate traversa continentul fără să întâlnească un singur semafor. Iar aproape orice punct din țară se află la o zi de zbor de oricare altul.",
         atlasTitle: "Atlasul Infrastructurii Naționale",
@@ -74,7 +74,7 @@ export default async function InfrastructureHubPage() {
           },
           power: {
             title: "Rețeaua Electrică Continentală",
-            desc: "Cea mai mare mașină de pe Pământ — o rețea uriașă de linii de înaltă tensiune care alimentează un continent."
+            desc: "Cea mai mare mașină de pe Pământ: o rețea uriașă de linii de înaltă tensiune care alimentează un continent."
           },
           rail: {
             title: "Rețeaua Feroviară de Marfă",
@@ -190,7 +190,7 @@ export default async function InfrastructureHubPage() {
         },
         quote:
           "Nu face planuri mici; ele nu au puterea magică de a stârni sângele oamenilor... Fă planuri mari; țintește sus în speranță și în muncă.",
-        quoteTitle: "Arhitect — Planul orașului Chicago, 1909",
+        quoteTitle: "Arhitect: Planul orașului Chicago, 1909",
         breadcrumb: "Infrastructură",
       }
     : {
@@ -207,7 +207,7 @@ export default async function InfrastructureHubPage() {
         thesisTitle: "A Continent, Wired",
         lede: "Geography supplied the raw material. Engineering turned it into a single economy.",
         thesisP1:
-          "Distance has always been America's founding problem. New York and San Francisco lie farther apart than Lisbon and Moscow. No single market can exist at that scale without infrastructure that cancels distance — and America built it, layer upon layer: first canals, then rails, then concrete, then runways.",
+          "Distance has always been America's founding problem. New York and San Francisco lie farther apart than Lisbon and Moscow. No single market can exist at that scale without infrastructure that cancels distance: and America built it, layer upon layer: first canals, then rails, then concrete, then runways.",
         thesisP2:
           "The result is the only truly integrated continental economy on Earth. A container unloaded in Los Angeles reaches Chicago by rail in under 60 hours. A truck can cross the continent without meeting a single traffic light. And nearly every point in the country lies within a day's flight of every other.",
         atlasTitle: "National Infrastructure Atlas",
@@ -343,7 +343,7 @@ export default async function InfrastructureHubPage() {
         },
         quote:
           "Make no little plans; they have no magic to stir men's blood... Make big plans; aim high in hope and work.",
-        quoteTitle: "Architect — The 1909 Plan of Chicago",
+        quoteTitle: "Architect: The 1909 Plan of Chicago",
         breadcrumb: "Infrastructure",
       };
 

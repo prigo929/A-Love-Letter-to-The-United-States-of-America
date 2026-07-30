@@ -82,7 +82,7 @@ const CARDS: MisconceptionCard[] = [
     icon: ShieldAlert,
     myth: { en: "America is uniquely deadly for new mothers.", ro: "America este excepțional de periculoasă pentru mame." },
     reality: {
-      en: "The US maternal mortality rate is often compared apples-to-oranges. The US counts all pregnancy-associated deaths up to a full year post-birth — including accidental, mental-health, and unrelated causes — which many European registries simply omit.",
+      en: "The US maternal mortality rate is often compared apples-to-oranges. The US counts all pregnancy-associated deaths up to a full year post-birth: including accidental, mental-health, and unrelated causes: which many European registries simply omit.",
       ro: "Rata mortalității materne din SUA este adesea comparată deformat. SUA raportează toate decesele asociate sarcinii până la un an după naștere (inclusiv cauze accidentale, de sănătate mintală sau colaterale), pe care multe registre europene le omit.",
     },
     stat: { value: "12 mo", label: { en: "post-birth window the US counts vs. ~6 weeks elsewhere", ro: "fereastra post-naștere numărată de SUA vs. ~6 săptămâni în alte părți" } },
@@ -137,8 +137,8 @@ const CARDS: MisconceptionCard[] = [
     icon: Landmark,
     myth: { en: "The credit score is a predatory debt trap.", ro: "Scorul de credit este o capcană a datoriilor." },
     reality: {
-      en: "A credit score is a portable financial reputation that democratizes lending. You can build an excellent score with a card paid in full every month — never paying a cent of interest — letting a 25-year-old with no family wealth secure a mortgage on the strength of their own record.",
-      ro: "Scorul de credit este o reputație financiară portabilă care democratizează creditarea. Poți construi un scor excelent cu un card plătit integral lunar — fără nicio dobândă — permițând unui tânăr fără avere de familie să obțină un credit ipotecar pe baza propriului istoric.",
+      en: "A credit score is a portable financial reputation that democratizes lending. You can build an excellent score with a card paid in full every month: never paying a cent of interest: letting a 25-year-old with no family wealth secure a mortgage on the strength of their own record.",
+      ro: "Scorul de credit este o reputație financiară portabilă care democratizează creditarea. Poți construi un scor excelent cu un card plătit integral lunar: fără nicio dobândă: permițând unui tânăr fără avere de familie să obțină un credit ipotecar pe baza propriului istoric.",
     },
   },
   {
@@ -146,8 +146,8 @@ const CARDS: MisconceptionCard[] = [
     icon: Layers,
     myth: { en: "Stores hide a sneaky tax they spring on you at the register.", ro: "Magazinele ascund o taxă pe care ți-o aplică la casă." },
     reality: {
-      en: "Prices look pre-tax because the US has no national VAT and over 11,000 local tax jurisdictions — state, county, and city rates stack differently block to block. Federalism pushes consumption-tax decisions down to the local level instead of burying one national rate in the sticker price.",
-      ro: "Prețurile par fără taxe pentru că SUA nu are TVA național, ci peste 11.000 de jurisdicții fiscale locale — cote de stat, county și oraș care se cumulează diferit. Federalismul coboară deciziile fiscale la nivel local în loc să ascundă o cotă națională în preț.",
+      en: "Prices look pre-tax because the US has no national VAT and over 11,000 local tax jurisdictions: state, county, and city rates stack differently block to block. Federalism pushes consumption-tax decisions down to the local level instead of burying one national rate in the sticker price.",
+      ro: "Prețurile par fără taxe pentru că SUA nu are TVA național, ci peste 11.000 de jurisdicții fiscale locale: cote de stat, county și oraș care se cumulează diferit. Federalismul coboară deciziile fiscale la nivel local în loc să ascundă o cotă națională în preț.",
     },
     stat: { value: "11,000+", label: { en: "local sales-tax jurisdictions, none of them national", ro: "jurisdicții locale de taxe, niciuna națională" } },
   },
@@ -156,7 +156,7 @@ const CARDS: MisconceptionCard[] = [
     icon: TrendingUp,
     myth: { en: "Americans are overworked serfs with no vacation.", ro: "Americanii sunt iobagi suprasolicitați, fără concediu." },
     reality: {
-      en: "There is no federal vacation mandate, but competitive employers offer generous PTO, and 'at-will' employment cuts both ways — it underpins the labor-market fluidity that keeps US unemployment low and wages high. Total compensation (salary + benefits + equity) for skilled workers routinely exceeds European equivalents.",
+      en: "There is no federal vacation mandate, but competitive employers offer generous PTO, and 'at-will' employment cuts both ways: it underpins the labor-market fluidity that keeps US unemployment low and wages high. Total compensation (salary + benefits + equity) for skilled workers routinely exceeds European equivalents.",
       ro: "Nu există un concediu federal obligatoriu, dar angajatorii competitivi oferă PTO generos, iar contractele 'at-will' susțin flexibilitatea pieței muncii care menține șomajul scăzut și salariile ridicate. Compensația totală (salariu + beneficii + acțiuni) depășește adesea echivalentele europene.",
     },
   },
@@ -165,8 +165,8 @@ const CARDS: MisconceptionCard[] = [
     icon: TrendingUp,
     myth: { en: "The American middle class is poorer than Europe's.", ro: "Clasa de mijloc americană e mai săracă decât cea europeană." },
     reality: {
-      en: "On the measures that track lived experience — median disposable income, purchasing-power-adjusted consumption, home and appliance size, car ownership — the American middle class is among the richest populations in history, outpacing nearly every European peer once taxes and cost of living are accounted for.",
-      ro: "La indicatorii care reflectă viața reală — venit median disponibil, consum ajustat la puterea de cumpărare, dimensiunea locuințelor și electrocasnicelor, deținerea de mașini — clasa de mijloc americană e printre cele mai bogate din istorie, depășind aproape orice omolog european după taxe și costul vieții.",
+      en: "On the measures that track lived experience: median disposable income, purchasing-power-adjusted consumption, home and appliance size, car ownership: the American middle class is among the richest populations in history, outpacing nearly every European peer once taxes and cost of living are accounted for.",
+      ro: "La indicatorii care reflectă viața reală: venit median disponibil, consum ajustat la puterea de cumpărare, dimensiunea locuințelor și electrocasnicelor, deținerea de mașini: clasa de mijloc americană e printre cele mai bogate din istorie, depășind aproape orice omolog european după taxe și costul vieții.",
     },
   },
   {
@@ -174,8 +174,8 @@ const CARDS: MisconceptionCard[] = [
     icon: TrendingUp,
     myth: { en: "The United States is in irreversible decline.", ro: "Statele Unite sunt într-un declin ireversibil." },
     reality: {
-      en: "Declinism doesn't survive the data: the US share of global GDP has held near 25% for decades, output per worker leads the G7, and manufacturing production sits near record highs. It is manufacturing employment — not output — that fell, as automation raised productivity per worker.",
-      ro: "Teza declinului nu rezistă datelor: ponderea SUA în PIB-ul global se menține în jur de 25% de decenii, producția pe lucrător conduce în G7, iar producția industrială e aproape de maxime istorice. A scăzut ocuparea în industrie, nu producția — pe fondul automatizării.",
+      en: "Declinism doesn't survive the data: the US share of global GDP has held near 25% for decades, output per worker leads the G7, and manufacturing production sits near record highs. It is manufacturing employment: not output: that fell, as automation raised productivity per worker.",
+      ro: "Teza declinului nu rezistă datelor: ponderea SUA în PIB-ul global se menține în jur de 25% de decenii, producția pe lucrător conduce în G7, iar producția industrială e aproape de maxime istorice. A scăzut ocuparea în industrie, nu producția: pe fondul automatizării.",
     },
     stat: { value: "~25%", label: { en: "of global GDP, a share held steady for decades", ro: "din PIB-ul global, o pondere stabilă de decenii" } },
   },
@@ -195,10 +195,10 @@ const CARDS: MisconceptionCard[] = [
   {
     category: "infrastructure",
     icon: TrendingUp,
-    myth: { en: "Americans are insular — most don't even own a passport.", ro: "Americanii sunt insulari — majoritatea nici nu au pașaport." },
+    myth: { en: "Americans are insular: most don't even own a passport.", ro: "Americanii sunt insulari: majoritatea nici nu au pașaport." },
     reality: {
-      en: "The trope is dated: roughly half of US citizens now hold a passport, up from about 15% in 1990. It also ignores scale — domestic travel spans Arctic tundra, desert, rainforest, and tropical beaches across a continent the size of Europe, most of it requiring no passport at all.",
-      ro: "Cliseul e depășit: aproximativ jumătate dintre cetățeni dețin un pașaport acum, față de ~15% în 1990. Ignoră și scara — turismul intern acoperă tundră arctică, deșert, pădure tropicală și plaje, pe un continent cât Europa, în mare parte fără pașaport.",
+      en: "The trope is dated: roughly half of US citizens now hold a passport, up from about 15% in 1990. It also ignores scale: domestic travel spans Arctic tundra, desert, rainforest, and tropical beaches across a continent the size of Europe, most of it requiring no passport at all.",
+      ro: "Cliseul e depășit: aproximativ jumătate dintre cetățeni dețin un pașaport acum, față de ~15% în 1990. Ignoră și scara: turismul intern acoperă tundră arctică, deșert, pădure tropicală și plaje, pe un continent cât Europa, în mare parte fără pașaport.",
     },
     stat: { value: "~50%", label: { en: "of Americans now hold a passport, up from 15% in 1990", ro: "dintre americani au pașaport acum, față de 15% în 1990" } },
   },
@@ -219,7 +219,7 @@ const CARDS: MisconceptionCard[] = [
     icon: HelpCircle,
     myth: { en: "The Constitution was an accident and America was isolationist.", ro: "Constituția a fost un accident, iar America izolaționistă." },
     reality: {
-      en: "Popular tropes flatten a complex record: the Constitution was a deliberate, fiercely debated compromise; 'isolationist' America still shaped 20th-century trade and security; and the post-1945 rules-based order — for all its flaws — delivered the longest stretch of great-power peace and prosperity in modern history.",
+      en: "Popular tropes flatten a complex record: the Constitution was a deliberate, fiercely debated compromise; 'isolationist' America still shaped 20th-century trade and security; and the post-1945 rules-based order: for all its flaws: delivered the longest stretch of great-power peace and prosperity in modern history.",
       ro: "Cliseele simplifică o realitate complexă: Constituția a fost un compromis dezbătut deliberat; America 'izolaționistă' a modelat totuși comerțul și securitatea secolului XX; iar ordinea bazată pe reguli de după 1945 a adus cea mai lungă perioadă de pace și prosperitate între marile puteri din istoria modernă.",
     },
   },
@@ -288,8 +288,8 @@ export default async function MisconceptionsPage() {
             </h2>
             <p className="max-w-3xl font-body text-sm leading-relaxed text-white/60">
               {isRo
-                ? "Fiecare card pune afirmația virală („Mitul”) lângă ceea ce arată datele auditate („Realitatea”) — folosind seturi de date internaționale de la OCDE, Banca Mondială și registre publice. Scopul nu este aroganța, ci acuratețea."
-                : "Each card sets the viral claim (“The Myth”) beside what the audited data shows (“The Reality”), drawing on international datasets from the OECD, World Bank, and public records. The goal isn't triumphalism — it's accuracy."}
+                ? "Fiecare card pune afirmația virală („Mitul”) lângă ceea ce arată datele auditate („Realitatea”): folosind seturi de date internaționale de la OCDE, Banca Mondială și registre publice. Scopul nu este aroganța, ci acuratețea."
+                : "Each card sets the viral claim (“The Myth”) beside what the audited data shows (“The Reality”), drawing on international datasets from the OECD, World Bank, and public records. The goal isn't triumphalism: it's accuracy."}
             </p>
           </div>
         </div>

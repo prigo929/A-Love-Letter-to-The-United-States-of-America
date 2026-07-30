@@ -363,7 +363,7 @@ export default async function UniversitiesPage() {
             gridClassName="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"
             photos={campusPhotos.map((photo) => ({
               src: SITE_IMAGES.university[photo.key],
-              alt: `${photo.label} — ${photo.sub}`,
+              alt: `${photo.label}: ${photo.sub}`,
               caption: photo.label,
               aspect: "4/3",
             }))}

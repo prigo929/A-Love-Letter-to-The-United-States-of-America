@@ -84,7 +84,7 @@ const copyEn: WagesCopy = {
     {
       icon: DollarSign,
       title: "PPP-Adjusted OECD Wage Leadership",
-      body: "The OECD measures average annual wages adjusted for purchasing power parity to allow genuine cross-country comparison. The US consistently ranks #2 behind Switzerland. American workers earn roughly $77,000 per year in PPP-adjusted terms — compared to ~$53,000 in Germany, ~$47,000 in France, and ~$48,000 in the UK. This is the wage a worker can actually spend on goods and services at local prices, and it is not close. The American middle class has more money available for discretionary spending, savings, and investment than any European peer.",
+      body: "The OECD measures average annual wages adjusted for purchasing power parity to allow genuine cross-country comparison. The US consistently ranks #2 behind Switzerland. American workers earn roughly $77,000 per year in PPP-adjusted terms: compared to ~$53,000 in Germany, ~$47,000 in France, and ~$48,000 in the UK. This is the wage a worker can actually spend on goods and services at local prices, and it is not close. The American middle class has more money available for discretionary spending, savings, and investment than any European peer.",
       source: "OECD Average Wages Database",
       sourceUrl: "https://data.oecd.org/earnwage/average-wages.htm",
     },
@@ -99,7 +99,7 @@ const copyEn: WagesCopy = {
     {
       icon: Scale,
       title: "The World's Most Progressive Tax System",
-      body: "The United States has the most progressive income tax distribution in the developed world. The top 1% of earners pay ~40% of all federal income taxes; the top 10% pay ~70%; the bottom 50% pay just 3%. Crucially, there is no Value Added Tax (VAT) in the US — in Europe, a 20% VAT is levied on virtually every consumer purchase, functioning as a flat tax that hits lower-income households hardest. The absence of a VAT is a structural advantage for the American working and middle class that is almost never accounted for in tax burden comparisons.",
+      body: "The United States has the most progressive income tax distribution in the developed world. The top 1% of earners pay ~40% of all federal income taxes; the top 10% pay ~70%; the bottom 50% pay just 3%. Crucially, there is no Value Added Tax (VAT) in the US: in Europe, a 20% VAT is levied on virtually every consumer purchase, functioning as a flat tax that hits lower-income households hardest. The absence of a VAT is a structural advantage for the American working and middle class that is almost never accounted for in tax burden comparisons.",
       source: "Cato Institute / Tax Foundation 2025",
       sourceUrl:
         "https://www.cato.org/blog/united-states-has-most-progressive-tax-system-developed-world",
@@ -107,7 +107,7 @@ const copyEn: WagesCopy = {
     {
       icon: Heart,
       title: "Charitable Giving: Private Wealth in the Community",
-      body: "Americans are the most privately charitable people on Earth. The US ranks at or near the top of the World Giving Index every year — Americans donate a larger share of their income to charities and community organizations than any other developed nation. This private charitable ecosystem — which funds hospitals, food banks, universities, disaster relief, and international aid — is an expression of both cultural values and the disposable income surplus that makes voluntary giving feasible at scale.",
+      body: "Americans are the most privately charitable people on Earth. The US ranks at or near the top of the World Giving Index every year: Americans donate a larger share of their income to charities and community organizations than any other developed nation. This private charitable ecosystem: which funds hospitals, food banks, universities, disaster relief, and international aid: is an expression of both cultural values and the disposable income surplus that makes voluntary giving feasible at scale.",
       source: "Charities Aid Foundation (CAF) World Giving Index",
       sourceUrl:
         "https://www.cafonline.org/about-us/research/caf-world-giving-index",
@@ -155,9 +155,9 @@ const copyRo: WagesCopy = {
     "Ajustat la paritatea puterii de cumpărare, muncitorul american câștigă mai mult, cheltuiește mai puțin pe esențiale și păstrează mai mult după impozitare decât muncitorii din practic orice altă națiune dezvoltată.",
   thesisTitle: "PPP: Singura Comparație Corectă",
   thesisParagraph1:
-    "Comparațiile nominale ale salariilor între țări sunt în mare parte fără sens. Ceea ce contează este paritatea puterii de cumpărare (PPP) — cât cumpără cu adevărat salariul tău în țara ta de origine. Ajustat la PPP, salariile din SUA se clasează pe locul 2 în întregul OCDE, depășite doar de Elveția. Mai important, avantajul american se compune atunci când luați în calcul ce trebuie să acopere acele salarii: costurile alimentelor, energiei și locuințelor ca pondere din venit sunt dramatic mai mici în SUA față de națiunile pereche.",
+    "Comparațiile nominale ale salariilor între țări sunt în mare parte fără sens. Ceea ce contează este paritatea puterii de cumpărare (PPP): cât cumpără cu adevărat salariul tău în țara ta de origine. Ajustat la PPP, salariile din SUA se clasează pe locul 2 în întregul OCDE, depășite doar de Elveția. Mai important, avantajul american se compune atunci când luați în calcul ce trebuie să acopere acele salarii: costurile alimentelor, energiei și locuințelor ca pondere din venit sunt dramatic mai mici în SUA față de națiunile pereche.",
   thesisParagraph2:
-    "Clasa de mijloc americană beneficiază și de un cod fiscal extrem de progresiv care concentrează sarcina impozitului pe venit asupra bogaților. Primii 1% plătesc aproximativ 40% din totalul impozitelor federale pe venit; cei de jos 50% plătesc doar 3%. Nu există TVA național — un impozit regresiv pe care lucrătorii europeni îl plătesc la aproape fiecare achiziție.",
+    "Clasa de mijloc americană beneficiază și de un cod fiscal extrem de progresiv care concentrează sarcina impozitului pe venit asupra bogaților. Primii 1% plătesc aproximativ 40% din totalul impozitelor federale pe venit; cei de jos 50% plătesc doar 3%. Nu există TVA național: un impozit regresiv pe care lucrătorii europeni îl plătesc la aproape fiecare achiziție.",
   statsTitle: "Salarii și Venituri în Cifre",
   stats: [
     {
@@ -170,13 +170,13 @@ const copyRo: WagesCopy = {
       value: "~6%",
       label: "Venit pe Hrană",
       description:
-        "Americanii cheltuiesc cea mai mică parte din venit pe hrană dintre toate națiunile — aproximativ 6%, față de 10–15% în Europa.",
+        "Americanii cheltuiesc cea mai mică parte din venit pe hrană dintre toate națiunile: aproximativ 6%, față de 10–15% în Europa.",
     },
     {
       value: "40%",
       label: "Cotă Impozit Top 1%",
       description:
-        "Primii 1% dintre câștigători plătesc aproximativ 40% din totalul impozitelor federale pe venit — cea mai progresivă distribuție a impozitului pe venit din lumea dezvoltată.",
+        "Primii 1% dintre câștigători plătesc aproximativ 40% din totalul impozitelor federale pe venit: cea mai progresivă distribuție a impozitului pe venit din lumea dezvoltată.",
     },
     {
       value: "#1",
@@ -190,14 +190,14 @@ const copyRo: WagesCopy = {
     {
       icon: DollarSign,
       title: "Leadership în Salarii OCDE Ajustate PPP",
-      body: "OCDE măsoară salariile medii anuale ajustate la paritatea puterii de cumpărare. SUA se clasează constant pe locul 2 după Elveția. Muncitorii americani câștigă aproximativ 77.000 USD pe an în termeni ajustați PPP — față de ~53.000 USD în Germania, ~47.000 USD în Franța. Acesta este salariul pe care un muncitor îl poate cheltui efectiv pe bunuri și servicii la prețuri locale.",
+      body: "OCDE măsoară salariile medii anuale ajustate la paritatea puterii de cumpărare. SUA se clasează constant pe locul 2 după Elveția. Muncitorii americani câștigă aproximativ 77.000 USD pe an în termeni ajustați PPP: față de ~53.000 USD în Germania, ~47.000 USD în Franța. Acesta este salariul pe care un muncitor îl poate cheltui efectiv pe bunuri și servicii la prețuri locale.",
       source: "OECD Average Wages Database",
       sourceUrl: "https://data.oecd.org/earnwage/average-wages.htm",
     },
     {
       icon: BarChart3,
       title: "Avantajul Costurilor la Alimente, Energie și Locuință",
-      body: "Americanii cheltuiesc aproximativ 6% din veniturile lor pe hrană — cea mai mică pondere din orice națiune — față de 10–15% în Europa de Vest. Prețurile energiei electrice din SUA se numără printre cele mai mici din lumea dezvoltată datorită gazului natural abundent din revoluția șisturilor. Benzina este dramatic mai ieftină decât în Europa (adesea mai puțin de jumătate din prețul pe litru față de Germania sau Franța).",
+      body: "Americanii cheltuiesc aproximativ 6% din veniturile lor pe hrană: cea mai mică pondere din orice națiune: față de 10–15% în Europa de Vest. Prețurile energiei electrice din SUA se numără printre cele mai mici din lumea dezvoltată datorită gazului natural abundent din revoluția șisturilor. Benzina este dramatic mai ieftină decât în Europa (adesea mai puțin de jumătate din prețul pe litru față de Germania sau Franța).",
       source: "USDA ERS / Our World in Data / EIA",
       sourceUrl:
         "https://ourworldindata.org/grapher/food-expenditure-share-gdp?country=~USA",
@@ -205,7 +205,7 @@ const copyRo: WagesCopy = {
     {
       icon: Scale,
       title: "Cel Mai Progresiv Sistem Fiscal din Lume",
-      body: "Statele Unite au cea mai progresivă distribuție a impozitului pe venit din lumea dezvoltată. Primii 1% din câștigători plătesc ~40% din totalul impozitelor federale; cei de jos 50% plătesc doar 3%. Crucial, nu există TVA în SUA — în Europa, un TVA de 20% este perceput la aproape fiecare achiziție de consum, funcționând ca un impozit regresiv care lovește cel mai puternic gospodăriile cu venituri mai mici.",
+      body: "Statele Unite au cea mai progresivă distribuție a impozitului pe venit din lumea dezvoltată. Primii 1% din câștigători plătesc ~40% din totalul impozitelor federale; cei de jos 50% plătesc doar 3%. Crucial, nu există TVA în SUA: în Europa, un TVA de 20% este perceput la aproape fiecare achiziție de consum, funcționând ca un impozit regresiv care lovește cel mai puternic gospodăriile cu venituri mai mici.",
       source: "Cato Institute / Tax Foundation 2025",
       sourceUrl:
         "https://www.cato.org/blog/united-states-has-most-progressive-tax-system-developed-world",
@@ -213,7 +213,7 @@ const copyRo: WagesCopy = {
     {
       icon: Heart,
       title: "Donații Caritabile: Bogăție Privată în Comunitate",
-      body: "Americanii sunt cei mai caritabili oameni din punct de vedere privat de pe Pământ. SUA se clasează în fruntea World Giving Index în fiecare an. Acest ecosistem caritabil privat — care finanțează spitale, bănci alimentare, universități, ajutor în caz de dezastre și ajutor internațional — este o expresie atât a valorilor culturale, cât și a surplusului de venit disponibil.",
+      body: "Americanii sunt cei mai caritabili oameni din punct de vedere privat de pe Pământ. SUA se clasează în fruntea World Giving Index în fiecare an. Acest ecosistem caritabil privat: care finanțează spitale, bănci alimentare, universități, ajutor în caz de dezastre și ajutor internațional: este o expresie atât a valorilor culturale, cât și a surplusului de venit disponibil.",
       source: "Charities Aid Foundation (CAF) World Giving Index",
       sourceUrl:
         "https://www.cafonline.org/about-us/research/caf-world-giving-index",
@@ -372,7 +372,7 @@ export default async function WagesPage() {
           </div>
         </RevealSection>
 
-        {/* Global Comparison — bar charts */}
+        {/* Global Comparison: bar charts */}
         <RevealSection className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <h2 className="macro-section-title text-white text-3xl mb-3">
@@ -380,8 +380,8 @@ export default async function WagesPage() {
             </h2>
             <p className="macro-body text-sm mb-12 max-w-2xl">
               {isRo
-                ? "Ajustat pentru puterea de cumpărare, gospodăriile americane dispun de cel mai mare venit și consumă cel mai mult din lume — cu un avans substanțial față de orice altă națiune dezvoltată."
-                : "Adjusted for purchasing power, American households have the highest disposable income and consume more than anyone on Earth — by a wide margin over every other developed nation."}
+                ? "Ajustat pentru puterea de cumpărare, gospodăriile americane dispun de cel mai mare venit și consumă cel mai mult din lume: cu un avans substanțial față de orice altă națiune dezvoltată."
+                : "Adjusted for purchasing power, American households have the highest disposable income and consume more than anyone on Earth: by a wide margin over every other developed nation."}
             </p>
             <div className="grid gap-12 lg:grid-cols-2">
               <CountryBarChart

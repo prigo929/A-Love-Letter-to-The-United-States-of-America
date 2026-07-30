@@ -1,6 +1,6 @@
 // ─── The Interstate Highway Network ───────────────────────────────────────────
 // A deep-dive subpage: the 1919 convoy, the 1956 Act, and an interactive map of
-// the corridors — from the named trails of 1913 to the finished System.
+// the corridors: from the named trails of 1913 to the finished System.
 
 import Link from "next/link";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
@@ -72,19 +72,19 @@ export default async function HighwaySystemPage() {
         bandAlt: "Construcția autostrăzilor interstatale, anii 1950",
         bandTitle: "90% federal, 100% continental",
         bandP1:
-          "Formula din 1956 a fost geniul politic al Sistemului: niciun stat nu-și permitea să refuze nouă dolari federali pentru fiecare dolar propriu. Banii veneau din taxa pe combustibil — șoferii au plătit drumurile pe care le foloseau, milă cu milă.",
+          "Formula din 1956 a fost geniul politic al Sistemului: niciun stat nu-și permitea să refuze nouă dolari federali pentru fiecare dolar propriu. Banii veneau din taxa pe combustibil: șoferii au plătit drumurile pe care le foloseau, milă cu milă.",
         bandP2:
           "Standardele erau nenegociabile: benzi de 3,65 metri, curbe proiectate pentru viteză susținută, acces doar prin bretele. De la Miami la Seattle, aceeași geometrie.",
         mapEyebrow: "Harta interactivă",
         mapTitle: "Coridoarele continentului",
         mapBody:
-          "Comută între drumurile cu nume de dinainte de 1926 și Sistemul Interstatal care le-a înlocuit. Întreaga rețea primară este desenată din geometria oficială FHWA — atinge orice linie, nu doar coridoarele evidențiate, pentru lungimea și traficul ei real.",
+          "Comută între drumurile cu nume de dinainte de 1926 și Sistemul Interstatal care le-a înlocuit. Întreaga rețea primară este desenată din geometria oficială FHWA: atinge orice linie, nu doar coridoarele evidențiate, pentru lungimea și traficul ei real.",
         trafficSource:
-          "Sursă trafic: FHWA Highway Statistics 2024, Table VM-1. Interstatalele au transportat 854,4 miliarde mile-vehicul în 2024 — 271,8 miliarde rural + 582,6 miliarde urban — adică 25,9% din totalul SUA. Harta de căldură folosește media zilnică anuală a traficului (AADT) pe segmente din datele FHWA National Highway System.",
+          "Sursă trafic: FHWA Highway Statistics 2024, Table VM-1. Interstatalele au transportat 854,4 miliarde mile-vehicul în 2024: 271,8 miliarde rural + 582,6 miliarde urban: adică 25,9% din totalul SUA. Harta de căldură folosește media zilnică anuală a traficului (AADT) pe segmente din datele FHWA National Highway System.",
         trafficSourceHref: "https://www.fhwa.dot.gov/policyinformation/statistics/2024/vm1.cfm",
         mapLabels: {
           eraLabel: "Alege epoca",
-          corridorsLabel: "Treci peste un coridor pentru detalii — orice linie de pe hartă e interactivă",
+          corridorsLabel: "Treci peste un coridor pentru detalii: orice linie de pe hartă e interactivă",
           lengthLabel: "Lungime",
           openedLabel: "Perioadă",
           hint: "Traseele urmează geometria oficială FHWA. Apropie harta pentru detalii.",
@@ -98,12 +98,12 @@ export default async function HighwaySystemPage() {
         },
         pullStat: "1.16%",
         pullLabel:
-          "din lungimea drumurilor publice ale Americii este autostradă interstatală — dar duce 25,9% din toate milele parcurse de vehicule, conform FHWA 2024.",
+          "din lungimea drumurilor publice ale Americii este autostradă interstatală: dar duce 25,9% din toate milele parcurse de vehicule, conform FHWA 2024.",
         engineeringEyebrow: "Regulile jocului",
         engineeringTitle: "Ingineria din spatele libertății",
         stats: [
           { value: "12 ft", label: "lățimea standard a fiecărei benzi" },
-          { value: "11,158 ft", label: "punctul maxim — Tunelul Eisenhower, I-70" },
+          { value: "11,158 ft", label: "punctul maxim: Tunelul Eisenhower, I-70" },
           { value: "0", label: "semafoare pe întregul sistem" },
         ],
         facts: [
@@ -115,7 +115,7 @@ export default async function HighwaySystemPage() {
           {
             fact: "Ultima milă a fost cea mai grea",
             detail:
-              "Glenwood Canyon, Colorado: 12 mile de viaducte suspendate deasupra râului Colorado, terminate abia în 1992 — porțiunea finală a Sistemului și, probabil, cea mai frumoasă autostradă din lume.",
+              "Glenwood Canyon, Colorado: 12 mile de viaducte suspendate deasupra râului Colorado, terminate abia în 1992: porțiunea finală a Sistemului și, probabil, cea mai frumoasă autostradă din lume.",
           },
         ],
         numbersEyebrow: "Amploarea, în cifre",
@@ -134,7 +134,7 @@ export default async function HighwaySystemPage() {
         ],
         mythLabel: "MIT",
         mythText:
-          "„Una din cinci mile trebuie să fie dreaptă, ca pistă de aterizare de urgență.” Fals — este o legendă urbană. Niciun standard federal nu a cerut vreodată acest lucru.",
+          "„Una din cinci mile trebuie să fie dreaptă, ca pistă de aterizare de urgență.” Fals: este o legendă urbană. Niciun standard federal nu a cerut vreodată acest lucru.",
         quirksTitle: "Ciudățeniile numerotării",
         quirksItems: [
           {
@@ -143,7 +143,7 @@ export default async function HighwaySystemPage() {
           },
           {
             k: "Ruta care se desparte: I-35E și I-35V",
-            v: "I-35 este singura rută primară care se bifurcă în două, și nu o dată, ci de două ori — în jurul aglomerării Dallas–Fort Worth și al orașelor gemene Minneapolis–Saint Paul — ca niciunul dintre orașe să nu-l revendice pe celălalt. Apoi se reunește.",
+            v: "I-35 este singura rută primară care se bifurcă în două, și nu o dată, ci de două ori: în jurul aglomerării Dallas–Fort Worth și al orașelor gemene Minneapolis–Saint Paul: ca niciunul dintre orașe să nu-l revendice pe celălalt. Apoi se reunește.",
           },
           {
             k: "Numerele din trei cifre se repetă",
@@ -153,11 +153,11 @@ export default async function HighwaySystemPage() {
         econEyebrow: "Copiii autostrăzii",
         econTitle: "Drumul care a construit o economie",
         econIntro:
-          "Autostrada nu a mutat doar mașini — a dat naștere unor industrii întregi, apărute chiar la capătul rampei de ieșire.",
+          "Autostrada nu a mutat doar mașini: a dat naștere unor industrii întregi, apărute chiar la capătul rampei de ieșire.",
         econItems: [
           { year: "1952", name: "Holiday Inn", text: "Primul lanț hotelier standardizat s-a născut din frustrarea unei singure călătorii de familie. Camere identice, previzibile, la fiecare ieșire de autostradă." },
-          { year: "1975", name: "Drive-thru-ul McDonald's", text: "Prima fereastră drive-thru a apărut lângă o bază militară din Arizona — apoi a colonizat fiecare ieșire de autostradă din America." },
-          { year: "—", name: "Popasul rutier", text: "Pilot Flying J, Love's și TA au construit orașe-oază pentru cei 3,5 milioane de camionagii — combustibil, mâncare și dușuri, non-stop." },
+          { year: "1975", name: "Drive-thru-ul McDonald's", text: "Prima fereastră drive-thru a apărut lângă o bază militară din Arizona: apoi a colonizat fiecare ieșire de autostradă din America." },
+          { year: ", ", name: "Popasul rutier", text: "Pilot Flying J, Love's și TA au construit orașe-oază pentru cei 3,5 milioane de camionagii: combustibil, mâncare și dușuri, non-stop." },
           { year: "1971", name: "FedEx & UPS", text: "Livrarea peste noapte a devenit posibilă doar pentru că un camion putea traversa un stat întreg fără să oprească la un semafor." },
         ],
         unfinishedEyebrow: "Drumurile care nu au fost",
@@ -166,7 +166,7 @@ export default async function HighwaySystemPage() {
           "Nu toate liniile de pe hărțile din anii 1950 au fost construite. Revoltele orașelor și geografia au lăsat fantome pe hartă.",
         unfinishedItems: [
           { name: "Westway (I-478), New York", text: "O autostradă îngropată de-a lungul râului Hudson, anulată în 1985 după un deceniu de procese. Banii au fost redirecționați către metroul din New York." },
-          { name: "Embarcadero Freeway, San Francisco", text: "O autostradă suspendată pe malul golfului, atât de nedorită încât orașul a demolat-o după cutremurul din 1989 — și nu a reconstruit-o niciodată." },
+          { name: "Embarcadero Freeway, San Francisco", text: "O autostradă suspendată pe malul golfului, atât de nedorită încât orașul a demolat-o după cutremurul din 1989: și nu a reconstruit-o niciodată." },
           { name: "Breșa I-95 din New Jersey", text: "Somerset Freeway a fost anulată, lăsând I-95 fără o verigă timp de decenii. Legătura finală s-a deschis abia în 2018." },
         ],
         defenseTitle: "Securitatea Națională și Mitul Pistelor de Aterizare",
@@ -174,7 +174,7 @@ export default async function HighwaySystemPage() {
         quote:
           "Mai mult decât orice altă acțiune a guvernului de la sfârșitul războiului încoace, aceasta avea să schimbe fața Americii.",
         quoteAttribution: "Dwight D. Eisenhower",
-        quoteTitle: "Al 34-lea Președinte — despre Sistemul Interstatal",
+        quoteTitle: "Al 34-lea Președinte: despre Sistemul Interstatal",
         prevLink: "↑ Prezentare Infrastructură",
         nextLink: "Rețeaua Feroviară Continentală →",
       }
@@ -188,7 +188,7 @@ export default async function HighwaySystemPage() {
           "The largest public works project in human history: a controlled-access freeway network that crosses every state, crests the Rockies at 11,158 feet, and never once stops for an intersection.",
         heroStats: [
           { value: "1956", label: "the Act signed by Eisenhower" },
-          { value: "3,020 mi", label: "the longest route — I-90" },
+          { value: "3,020 mi", label: "the longest route: I-90" },
           { value: "25.9%", label: "of U.S. vehicle-miles, 2024" },
         ],
         lede: "Before the System, crossing America by car was an expedition. After it, crossing America became a birthright.",
@@ -196,23 +196,23 @@ export default async function HighwaySystemPage() {
         storyP1:
           "In the summer of 1919, the U.S. Army sent a motor convoy from Washington to San Francisco to find out how long it took to cross its own country. The answer: 62 days. Trucks sank to their axles in mud, broke through timber bridges, and averaged roughly walking pace. Among the convoy's officers was a young lieutenant colonel named Dwight D. Eisenhower.",
         storyP2:
-          "A quarter-century later the same man saw Germany's autobahns — and as President signed the Federal-Aid Highway Act of 1956: Washington would pay 90 cents of every construction dollar out of a trust fund fed by the gas tax, and the states would build. Forty years later, the map of America had been redrawn.",
+          "A quarter-century later the same man saw Germany's autobahns: and as President signed the Federal-Aid Highway Act of 1956: Washington would pay 90 cents of every construction dollar out of a trust fund fed by the gas tax, and the states would build. Forty years later, the map of America had been redrawn.",
         bandAlt: "Interstate highway construction, 1950s",
         bandTitle: "90% Federal, 100% Continental",
         bandP1:
-          "The 1956 formula was the System's political genius: no state could afford to refuse nine federal dollars for every one of its own. The money came from the fuel tax — drivers paid for the roads as they drove them, mile by mile.",
+          "The 1956 formula was the System's political genius: no state could afford to refuse nine federal dollars for every one of its own. The money came from the fuel tax: drivers paid for the roads as they drove them, mile by mile.",
         bandP2:
           "The standards were non-negotiable: twelve-foot lanes, curves engineered for sustained speed, entry only by ramp. From Miami to Seattle, the same geometry.",
         mapEyebrow: "The Interactive Map",
         mapTitle: "Corridors of the Continent",
         mapBody:
-          "Toggle between the named trails that preceded 1926 and the Interstate System that replaced them. The entire primary grid is drawn from official FHWA geometry — touch any line, not just the featured corridors, for its real length and traffic.",
+          "Toggle between the named trails that preceded 1926 and the Interstate System that replaced them. The entire primary grid is drawn from official FHWA geometry: touch any line across the featured corridors for its real length and traffic.",
         trafficSource:
-          "Traffic source: FHWA Highway Statistics 2024, Table VM-1. Interstates carried 854.4 billion vehicle-miles in 2024 — 271.8B rural + 582.6B urban — equal to 25.9% of all U.S. vehicle-miles. The heat map uses FHWA National Highway System segment AADT data.",
+          "Traffic source: FHWA Highway Statistics 2024, Table VM-1. Interstates carried 854.4 billion vehicle-miles in 2024: 271.8B rural + 582.6B urban: equal to 25.9% of all U.S. vehicle-miles. The heat map uses FHWA National Highway System segment AADT data.",
         trafficSourceHref: "https://www.fhwa.dot.gov/policyinformation/statistics/2024/vm1.cfm",
         mapLabels: {
           eraLabel: "Choose the era",
-          corridorsLabel: "Hover a corridor for its story — every line on the map is interactive",
+          corridorsLabel: "Hover a corridor for its story: every line on the map is interactive",
           lengthLabel: "Length",
           openedLabel: "Built",
           hint: "Routes follow official FHWA geometry. Zoom in for detail.",
@@ -226,12 +226,12 @@ export default async function HighwaySystemPage() {
         },
         pullStat: "1.16%",
         pullLabel:
-          "of America's public road mileage is Interstate highway — yet it carries 25.9% of all U.S. vehicle-miles, according to FHWA 2024 data.",
+          "of America's public road mileage is Interstate highway: yet it carries 25.9% of all U.S. vehicle-miles, according to FHWA 2024 data.",
         engineeringEyebrow: "The Rules of the Road",
         engineeringTitle: "The Engineering Behind the Freedom",
         stats: [
           { value: "12 ft", label: "standard width of every lane" },
-          { value: "11,158 ft", label: "the high point — Eisenhower Tunnel, I-70" },
+          { value: "11,158 ft", label: "the high point: Eisenhower Tunnel, I-70" },
           { value: "0", label: "traffic lights on the entire system" },
         ],
         facts: [
@@ -243,7 +243,7 @@ export default async function HighwaySystemPage() {
           {
             fact: "The last mile was the hardest",
             detail:
-              "Glenwood Canyon, Colorado: twelve miles of viaducts hung above the Colorado River, not finished until 1992 — the System's final link, and arguably the most beautiful stretch of freeway on Earth.",
+              "Glenwood Canyon, Colorado: twelve miles of viaducts hung above the Colorado River, not finished until 1992: the System's final link, and arguably the most beautiful stretch of freeway on Earth.",
           },
         ],
         numbersEyebrow: "The Scale, in Numbers",
@@ -262,7 +262,7 @@ export default async function HighwaySystemPage() {
         ],
         mythLabel: "MYTH",
         mythText:
-          "“One in every five miles must be straight, to serve as an emergency airstrip.” False — it's an urban legend. No federal standard ever required it.",
+          "“One in every five miles must be straight, to serve as an emergency airstrip.” False: it's an urban legend. No federal standard ever required it.",
         quirksTitle: "Quirks of the Numbering",
         quirksItems: [
           {
@@ -271,7 +271,7 @@ export default async function HighwaySystemPage() {
           },
           {
             k: "The route that splits: I-35E and I-35W",
-            v: "I-35 is the one primary route that forks in two, and not once but twice — around Dallas–Fort Worth and around Minneapolis–Saint Paul — so neither city could claim the other's traffic. Then it rejoins.",
+            v: "I-35 is the one primary route that forks in two, and not once but twice: around Dallas–Fort Worth and around Minneapolis–Saint Paul: so neither city could claim the other's traffic. Then it rejoins.",
           },
           {
             k: "Three-digit numbers repeat",
@@ -281,11 +281,11 @@ export default async function HighwaySystemPage() {
         econEyebrow: "The Highway's Children",
         econTitle: "The Road That Built an Economy",
         econIntro:
-          "The Interstate didn't just move cars — it spawned whole industries, born at the bottom of the off-ramp.",
+          "The Interstate moved cars and spawned whole industries at the bottom of the off-ramp.",
         econItems: [
           { year: "1952", name: "Holiday Inn", text: "The first standardized hotel chain grew out of one bad family road trip. Identical, predictable rooms at every interchange." },
-          { year: "1975", name: "The McDonald's drive-thru", text: "The first drive-thru window opened next to an Arizona military base — then colonized every highway exit in America." },
-          { year: "—", name: "The truck stop", text: "Pilot Flying J, Love's and TA built oasis-towns for 3.5 million truckers — fuel, food and showers, around the clock." },
+          { year: "1975", name: "The McDonald's drive-thru", text: "The first drive-thru window opened next to an Arizona military base: then colonized every highway exit in America." },
+          { year: ", ", name: "The truck stop", text: "Pilot Flying J, Love's and TA built oasis-towns for 3.5 million truckers: fuel, food and showers, around the clock." },
           { year: "1971", name: "FedEx & UPS", text: "Overnight delivery only became possible because a truck could cross an entire state without stopping at a single light." },
         ],
         unfinishedEyebrow: "Roads Not Taken",
@@ -294,7 +294,7 @@ export default async function HighwaySystemPage() {
           "Not every line on the 1950s maps got built. City revolts and geography left ghosts on the map.",
         unfinishedItems: [
           { name: "Westway (I-478), New York", text: "A highway buried along the Hudson, killed in 1985 after a decade of lawsuits. The money went to the New York subway instead." },
-          { name: "The Embarcadero Freeway, San Francisco", text: "A double-decker along the bayfront so unloved the city tore it down after the 1989 earthquake — and never rebuilt it." },
+          { name: "The Embarcadero Freeway, San Francisco", text: "A double-decker along the bayfront so unloved the city tore it down after the 1989 earthquake: and never rebuilt it." },
           { name: "The I-95 gap, New Jersey", text: "The Somerset Freeway was canceled, leaving I-95 without a link for decades. The final connection opened only in 2018." },
         ],
         defenseTitle: "National Security & The Airfield Myth",
@@ -302,7 +302,7 @@ export default async function HighwaySystemPage() {
         quote:
           "More than any single action by the government since the end of the war, this one would change the face of America.",
         quoteAttribution: "Dwight D. Eisenhower",
-        quoteTitle: "34th President — on the Interstate System",
+        quoteTitle: "34th President: on the Interstate System",
         prevLink: "↑ Infrastructure Overview",
         nextLink: "The Continental Rail Network →",
       };
@@ -413,7 +413,7 @@ export default async function HighwaySystemPage() {
                 <p className="macro-body !text-lg leading-relaxed text-white/80">{copy.mythText}</p>
               </div>
             </div>
-            {/* Number quirks — extends the shield decoder */}
+            {/* Number quirks: extends the shield decoder */}
             <div className="mt-20">
               <h3 className="mb-8 font-macro-display text-2xl font-bold text-white">{copy.quirksTitle}</h3>
               <div className="grid gap-x-12 gap-y-8 md:grid-cols-3">

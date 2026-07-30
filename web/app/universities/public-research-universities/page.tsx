@@ -13,7 +13,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Public Research Universities | Higher Education Scale",
-  description: "Explore the massive public university systems of America—like UC Berkeley, Michigan, UT Austin, and UCLA—that democratize research excellence at scale.",
+  description: "Explore the massive public university systems of America, like UC Berkeley, Michigan, UT Austin, and UCLA, that democratize research excellence at scale.",
 };
 
 interface PublicCopy {
@@ -44,7 +44,7 @@ const copyEn: PublicCopy = {
   breadcrumbPage: "Public Research",
   heroTagline: "DEMOCRATIZE RESEARCH",
   heroTitle: "Engines of Discovery",
-  heroSubtitle: "UC Berkeley, Michigan, UT Austin, and UCLA — the state-funded giants that combine massive scale with research outputs that rival the private Ivy League.",
+  heroSubtitle: "UC Berkeley, Michigan, UT Austin, and UCLA: the state-funded giants that combine massive scale with research outputs that rival the private Ivy League.",
   thesisTitle: "Elite Education at Scale",
   thesisParagraph1: "While private universities dominate Ivy League prestige, America's state-funded public research systems are the unsung champions of democratic access and regional economic development. Systems like the University of California, the University of Michigan, and the University of Texas operate at a scale that dwarfs private elites, enrolling hundreds of thousands of students while maintaining world-class laboratories.",
   thesisParagraph2: "These public institutions receive federal grants, state appropriations, and tuition to fund Nobel Prize-winning science. In areas like biotechnology, microprocessors, and materials science, their research departments act as core anchors for regional technology clusters, generating thousands of local patents and high-wage jobs.",
@@ -60,7 +60,7 @@ const copyEn: PublicCopy = {
     {
       title: "University of Michigan (Ann Arbor)",
       description: "Founded 1817 · Ann Arbor, MI",
-      details: "A public research titan that regularly spends over $1.8 billion annually on research and development—the largest research budget of any public US university. U-Mich is renowned for its medical complex, social science databases, and athletic heritage.",
+      details: "A public research titan that regularly spends over $1.8 billion annually on research and development, the largest research budget of any public US university. U-Mich is renowned for its medical complex, social science databases, and athletic heritage.",
       imageSrc: "/images/library/University/central-campus-aerial-sunset_paul-coco.jpg",
     },
     {
@@ -87,7 +87,7 @@ const copyRo: PublicCopy = {
   breadcrumbPage: "Cercetare Publică",
   heroTagline: "CERCETARE DEMOCRATIZATĂ",
   heroTitle: "Motoarele Descoperirii",
-  heroSubtitle: "UC Berkeley, Michigan, UT Austin și UCLA — giganții finanțați de stat care oferă educație la scară largă și cercetare de nivel Ivy League.",
+  heroSubtitle: "UC Berkeley, Michigan, UT Austin și UCLA: giganții finanțați de stat care oferă educație la scară largă și cercetare de nivel Ivy League.",
   thesisTitle: "Educație de Elită la Scară Largă",
   thesisParagraph1: "În timp ce universitățile private domină prestigiul Ivy League, sistemele publice de cercetare finanțate de statele americane sunt campionii accesului democratic și ai dezvoltării economice regionale. Sisteme precum University of California sau University of Texas înscriu sute de mii de studenți în timp ce mențin laboratoare de vârf.",
   thesisParagraph2: "Aceste instituții publice folosesc granturile federale și fondurile de stat pentru a finanța descoperiri științifice laureate cu Nobel. În biotehnologie, microprocesoare și știința materialelor, departamentele lor acționează ca ancore pentru clusterele tehnologice regionale.",
@@ -103,7 +103,7 @@ const copyRo: PublicCopy = {
     {
       title: "University of Michigan (Ann Arbor)",
       description: "Fondată în 1817 · Ann Arbor, MI",
-      details: "Un gigant al cercetării publice care cheltuiește anual peste 1,8 miliarde de dolari pe R&D — cel mai mare buget de cercetare al unei universități publice din SUA, renumită pentru complexul medical de top.",
+      details: "Un gigant al cercetării publice care cheltuiește anual peste 1,8 miliarde de dolari pe R&D: cel mai mare buget de cercetare al unei universități publice din SUA, renumită pentru complexul medical de top.",
       imageSrc: "/images/library/University/central-campus-aerial-sunset_paul-coco.jpg",
     },
     {

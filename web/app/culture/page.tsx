@@ -165,7 +165,7 @@ export default async function CulturePage() {
       {/* §4, Thesis Block */}
       <CultureThesisBlock thesis={thesis} />
 
-      {/* §4b, What Is American Culture — the export paradox */}
+      {/* §4b, What Is American Culture: the export paradox */}
       <CultureAmericana isRo={isRo} />
 
       {/* Parallax Divider 1, Times Square Iconic */}

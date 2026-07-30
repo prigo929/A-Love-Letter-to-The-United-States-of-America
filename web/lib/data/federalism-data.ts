@@ -22,7 +22,7 @@ export interface StatePolicyExtended {
   unemploymentRate: number;
 }
 
-// All 50 states + DC — sourced from Tax Foundation, BLS, Census Bureau, Giffords, NORML
+// All 50 states + DC: sourced from Tax Foundation, BLS, Census Bureau, Giffords, NORML
 export const STATES_50: StatePolicyExtended[] = [
   // State, Abbr, IncomeTax, CorpTax, Gun(1-10), Cannabis(1-10), RegIdx, GDP5yr, NetMig(k), MedInc, Unemp
   { id:"AL", name:"Alabama",        abbr:"AL", incomeTax:5.0,  corporateTax:6.5,  gunRights:9, cannabisLegal:3, regulatoryIndex:3.0, gdpGrowth5yr:2.1, netMigration:25,   medianIncome:56956, unemploymentRate:2.8 },

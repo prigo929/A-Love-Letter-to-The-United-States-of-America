@@ -46,7 +46,7 @@ const fadeUp = {
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 1. NavyStyles — Dark Sonar & Black-Ops Styling Architecture
+// 1. NavyStyles: Dark Sonar & Black-Ops Styling Architecture
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyStyles() {
@@ -158,7 +158,7 @@ export function NavySectionDivider() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 1.5 NavyCountUp — High-Performance Numerical Counter
+// 1.5 NavyCountUp: High-Performance Numerical Counter
 // ─────────────────────────────────────────────────────────────────────────────
 
 function NavyCountUp({ value, color = "white", locale = "en" }: { value: string; color?: string; locale?: Locale }) {
@@ -194,7 +194,7 @@ function NavyCountUp({ value, color = "white", locale = "en" }: { value: string;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2. NavyHero — Full-Viewport Parallax Header
+// 2. NavyHero: Full-Viewport Parallax Header
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyHero({
@@ -319,7 +319,7 @@ export function NavyHero({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 3. NavyMetricStrip — Tactical Stats Strip with Count-Ups
+// 3. NavyMetricStrip: Tactical Stats Strip with Count-Ups
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyMetricStrip({ metrics, locale = "en" }: { metrics: NavyMetric[]; locale?: Locale }) {
@@ -336,7 +336,7 @@ export function NavyMetricStrip({ metrics, locale = "en" }: { metrics: NavyMetri
                 transition={{ duration: 1.2, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
                 className="flex flex-col px-8 py-12"
               >
-                {/* Label — top */}
+                {/* Label: top */}
                 <div className="mil-text-metadata mb-6 tracking-[0.3em] font-black text-white">
                   {metric.label}
                 </div>
@@ -367,7 +367,7 @@ export function NavyMetricStrip({ metrics, locale = "en" }: { metrics: NavyMetri
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 4. NavyCapabilityGrid — Bento Grid Systems
+// 4. NavyCapabilityGrid: Bento Grid Systems
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyCapabilityGrid({ capabilities, locale = "en" }: { capabilities: NavyCapability[]; locale?: Locale }) {
@@ -482,7 +482,7 @@ export function NavyCapabilityGrid({ capabilities, locale = "en" }: { capabiliti
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. NavyOperationalConsole — Strategic Map Theater
+// 5. NavyOperationalConsole: Strategic Map Theater
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: NavyTheater[]; locale?: Locale }) {
@@ -641,7 +641,7 @@ export function NavyOperationalConsole({ theaters, locale = "en" }: { theaters: 
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 6. NavyPlatformShowcase — Dossiers & Capitals Systems (Maverick grade)
+// 6. NavyPlatformShowcase: Dossiers & Capitals Systems (Maverick grade)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: NavyPlatform[]; locale?: Locale }) {
@@ -921,7 +921,7 @@ export function NavyPlatformShowcase({ platforms, locale = "en" }: { platforms: 
 
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 8. NavyFullscreenPanel — Parallax Image Blocks
+// 8. NavyFullscreenPanel: Parallax Image Blocks
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyFullscreenPanel({ panel, reverse = false, locale = "en" }: { panel: NavyVisualPanel; reverse?: boolean; locale?: Locale }) {
@@ -984,7 +984,7 @@ export function NavyFullscreenPanel({ panel, reverse = false, locale = "en" }: {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 9. NavyFutureStack — Bento Programs Grid
+// 9. NavyFutureStack: Bento Programs Grid
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFutureProgram[]; locale?: Locale }) {
@@ -1157,7 +1157,7 @@ export function NavyFutureStack({ programs, locale = "en" }: { programs: NavyFut
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 10. NavyClosing — Page Closing Call-to-Action
+// 10. NavyClosing: Page Closing Call-to-Action
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyClosing({ locale = "en" }: { locale?: Locale }) {
@@ -1483,7 +1483,7 @@ function SectionTitle({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 12. NavyFlyNavyVideo — Full-Bleed Naval Aviation Video Segment
+// 12. NavyFlyNavyVideo: Full-Bleed Naval Aviation Video Segment
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyFlyNavyVideo({ locale = "en" }: { locale?: Locale }) {
@@ -1558,7 +1558,7 @@ export function NavyFlyNavyVideo({ locale = "en" }: { locale?: Locale }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 13. NavyFleetComparisonSection — Fleet Size Dashboard
+// 13. NavyFleetComparisonSection: Fleet Size Dashboard
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyFleetComparisonSection({
@@ -1613,8 +1613,8 @@ export function NavyFleetComparisonSection({
           titlePart1={isRo ? "DOMINAȚIE" : "MARITIME"}
           titlePart2={isRo ? "MARITIMĂ" : "DOMINANCE"}
           body={isRo
-            ? "Marina SUA nu este doar cea mai mare din lume — este mai mare decât următoarele treisprezece marine combinate ca tonaj total. Nicio altă națiune nu operează mai mult de trei portavioane."
-            : "The U.S. Navy isn't just the world's largest — it displaces more tonnage than the next thirteen navies combined. No other nation operates more than three aircraft carriers."}
+            ? "Marina SUA nu este doar cea mai mare din lume: este mai mare decât următoarele treisprezece marine combinate ca tonaj total. Nicio altă națiune nu operează mai mult de trei portavioane."
+            : "The U.S. Navy isn't just the world's largest: it displaces more tonnage than the next thirteen navies combined. No other nation operates more than three aircraft carriers."}
         />
 
         {/* Metric selector tabs */}
@@ -1706,7 +1706,7 @@ export function NavyFleetComparisonSection({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 14. NavyHeritageTimeline — Vertical History Timeline
+// 14. NavyHeritageTimeline: Vertical History Timeline
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyHeritageTimeline({
@@ -1844,7 +1844,7 @@ export function NavyHeritageTimeline({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 15. NavySpecWarSection — Navy SEALs & SWCC Dossier
+// 15. NavySpecWarSection: Navy SEALs & SWCC Dossier
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavySpecWarSection({
@@ -1995,7 +1995,7 @@ export function NavySpecWarSection({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 16. NavyAirWingComposition — Carrier Air Wing Squadron Roster
+// 16. NavyAirWingComposition: Carrier Air Wing Squadron Roster
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyAirWingComposition({
@@ -2085,7 +2085,7 @@ export function NavyAirWingComposition({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 17. NavyBasesSection — Forward Deployed Naval Installations
+// 17. NavyBasesSection: Forward Deployed Naval Installations
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyBasesSection({
@@ -2209,7 +2209,7 @@ export function NavyBasesSection({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 18. NavyHumanitarianSection — Disaster Relief & Soft Power
+// 18. NavyHumanitarianSection: Disaster Relief & Soft Power
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NavyHumanitarianSection({

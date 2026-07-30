@@ -111,7 +111,7 @@ const CATEGORY_DEFAULTS: Record<
   },
   "History": {
     location: "United States",
-    theme: "Pivotal Moments in American History",
+    theme: "Historic Moments in American History",
   },
   "Housing": {
     location: "United States",
@@ -249,7 +249,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     theme: "National park road",
   },
 
-  // ── Iconic American photographs — batch 1 (Military & Space, public domain) ──
+  // ── Iconic American photographs: batch 1 (Military & Space, public domain) ──
   "Military/Iconic/Into the Jaws of Death.jpg": {
     alt: "U.S. soldiers wading ashore from a landing craft toward Omaha Beach on D-Day",
     caption: "Into the Jaws of Death (1944)",
@@ -262,7 +262,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     alt: "General Eisenhower speaking with paratroopers of the 101st Airborne on the eve of D-Day",
     caption: "Eisenhower and the 101st Airborne (1944)",
     description:
-      "General Dwight D. Eisenhower visits paratroopers of the 101st Airborne Division on June 5, 1944, hours before the Normandy drop — a portrait of command and resolve.",
+      "General Dwight D. Eisenhower visits paratroopers of the 101st Airborne Division on June 5, 1944, hours before the Normandy drop: a portrait of command and resolve.",
     location: "Greenham Common, England",
     theme: "Eve of D-Day",
   },
@@ -270,7 +270,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     alt: "Japanese delegation aboard the USS Missouri for the formal surrender ending World War II",
     caption: "Surrender of Japan on the USS Missouri (1945)",
     description:
-      "On September 2, 1945, Japanese officials signed the instrument of surrender aboard the USS Missouri in Tokyo Bay, with General MacArthur presiding — the end of the Second World War.",
+      "On September 2, 1945, Japanese officials signed the instrument of surrender aboard the USS Missouri in Tokyo Bay, with General MacArthur presiding: the end of the Second World War.",
     location: "Tokyo Bay, Japan",
     theme: "End of WWII",
   },
@@ -302,7 +302,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     alt: "An F-22 Raptor stealth fighter banking against a blue sky",
     caption: "F-22 Raptor in Flight",
     description:
-      "The F-22 Raptor combines stealth, supercruise, and thrust-vectoring agility — the U.S. Air Force's premier fifth-generation air-superiority fighter.",
+      "The F-22 Raptor combines stealth, supercruise, and thrust-vectoring agility: the U.S. Air Force's premier fifth-generation air-superiority fighter.",
     location: "United States Air Force",
     theme: "Air superiority",
   },
@@ -319,7 +319,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     alt: "The Earth rising over the lunar horizon, photographed from Apollo 8",
     caption: "Earthrise (1968)",
     description:
-      "William Anders photographed the Earth rising beyond the Moon on December 24, 1968 — an image widely credited with galvanizing the modern environmental movement.",
+      "William Anders photographed the Earth rising beyond the Moon on December 24, 1968: an image widely credited with galvanizing the modern environmental movement.",
     location: "Lunar orbit",
     theme: "A fragile blue world",
     featured: true,
@@ -349,7 +349,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     theme: "Dawn of the atomic age",
   },
 
-  // ── Iconic American photographs — batch 2 (Military, public domain) ──
+  // ── Iconic American photographs: batch 2 (Military, public domain) ──
   "Military/Iconic/The USS Shaw Exploding at Pearl Harbor.jpg": {
     alt: "The destroyer USS Shaw's forward magazine erupting during the attack on Pearl Harbor",
     caption: "The USS Shaw Exploding at Pearl Harbor (1941)",
@@ -363,7 +363,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     alt: "A B-25 bomber lifting off from the deck of the USS Hornet during the Doolittle Raid",
     caption: "The Doolittle Raid (1942)",
     description:
-      "In April 1942, Jimmy Doolittle led B-25s launched from the USS Hornet to strike Tokyo — a daring, morale-lifting blow months after Pearl Harbor.",
+      "In April 1942, Jimmy Doolittle led B-25s launched from the USS Hornet to strike Tokyo: a daring, morale-lifting blow months after Pearl Harbor.",
     location: "Pacific Ocean",
     theme: "Carrier-launched daring",
   },
@@ -449,7 +449,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     theme: "Power at sea",
   },
 
-  // ── Iconic American photographs — batch 3 (Science & Space, public domain) ──
+  // ── Iconic American photographs: batch 3 (Science & Space, public domain) ──
   "Science/Iconic/Thomas Edison and the Light Bulb.jpg": {
     alt: "Portrait of a young Thomas Edison seated beside an early phonograph",
     caption: "Thomas Edison (1878)",
@@ -495,7 +495,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     alt: "Wernher von Braun standing beside the five enormous F-1 engines of the Saturn V first stage",
     caption: "Von Braun and the Saturn V F-1 Engines (1969)",
     description:
-      "Wernher von Braun stands beside the five F-1 engines of the Saturn V's first stage — the propulsion that sent Apollo to the Moon.",
+      "Wernher von Braun stands beside the five F-1 engines of the Saturn V's first stage: the propulsion that sent Apollo to the Moon.",
     location: "Marshall Space Flight Center, Alabama",
     theme: "Power to reach the Moon",
   },
@@ -536,7 +536,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     alt: "Oppenheimer and General Groves inspecting the twisted remains of the Trinity test tower",
     caption: "Oppenheimer and Groves at the Trinity Site (1945)",
     description:
-      "Oppenheimer and General Leslie Groves examine the remains of the Trinity test tower — the scientific and military faces of the Manhattan Project.",
+      "Oppenheimer and General Leslie Groves examine the remains of the Trinity test tower: the scientific and military faces of the Manhattan Project.",
     location: "Trinity Site, New Mexico",
     theme: "The atomic age",
   },
@@ -550,12 +550,12 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     featured: true,
   },
 
-  // ── Iconic American photographs — batch 4 (more Military, public domain) ──
+  // ── Iconic American photographs: batch 4 (more Military, public domain) ──
   "Military/Iconic/The Chosin Reservoir Breakout.jpg": {
     alt: "U.S. Marines on a frozen ridge fighting out of encirclement at the Chosin Reservoir",
     caption: "The Chosin Reservoir Breakout (1950)",
     description:
-      "Surrounded by Chinese forces in sub-zero conditions, the 1st Marine Division fought its way out of the Chosin Reservoir in late 1950 — an epic of the Korean War.",
+      "Surrounded by Chinese forces in sub-zero conditions, the 1st Marine Division fought its way out of the Chosin Reservoir in late 1950: an epic of the Korean War.",
     location: "Chosin Reservoir, North Korea",
     theme: "Frozen Chosin",
   },
@@ -563,7 +563,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     alt: "A statue of Saddam Hussein being pulled down in Firdos Square, Baghdad",
     caption: "Toppling the Statue of Saddam Hussein (2003)",
     description:
-      "On April 9, 2003, U.S. Marines and Iraqis pulled down a large statue of Saddam Hussein in Firdos Square — a symbol of the regime's fall.",
+      "On April 9, 2003, U.S. Marines and Iraqis pulled down a large statue of Saddam Hussein in Firdos Square: a symbol of the regime's fall.",
     location: "Firdos Square, Baghdad, Iraq",
     theme: "A regime falls",
     featured: true,
@@ -625,12 +625,12 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     theme: "The last foothold",
   },
 
-  // ── Iconic American photographs — batch 5 (Science & Technology, public domain) ──
+  // ── Iconic American photographs: batch 5 (Science & Technology, public domain) ──
   "Military/Iconic/Bell X-1 in Flight.jpg": {
     alt: "The Bell X-1 rocket plane in flight over mountains",
     caption: "Bell X-1 in Flight (1947)",
     description:
-      "Chuck Yeager flew the bright-orange Bell X-1 past Mach 1 on October 14, 1947 over the Mojave — the dawn of supersonic flight.",
+      "Chuck Yeager flew the bright-orange Bell X-1 past Mach 1 on October 14, 1947 over the Mojave: the dawn of supersonic flight.",
     location: "Muroc Army Air Field, California",
     theme: "Breaking the sound barrier",
   },
@@ -683,12 +683,12 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     theme: "Long-distance telephony",
   },
 
-  // ── Iconic American photographs — batch 6 (Economy & general Americana, public domain) ──
+  // ── Iconic American photographs: batch 6 (Economy & general Americana, public domain) ──
   "History/The Driving of the Golden Spike.jpg": {
     alt: "Railroad workers and locomotives meeting at Promontory Summit for the golden spike ceremony",
     caption: "The Driving of the Golden Spike (1869)",
     description:
-      "Andrew Russell's 'East and West Shaking Hands' at Promontory Summit, May 10, 1869, marked completion of the transcontinental railroad — knitting the continent together by rail.",
+      "Andrew Russell's 'East and West Shaking Hands' at Promontory Summit, May 10, 1869, marked completion of the transcontinental railroad: knitting the continent together by rail.",
     location: "Promontory Summit, Utah",
     theme: "A continent joined",
     featured: true,
@@ -714,7 +714,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     alt: "President Reagan giving his Berlin Wall speech at the Brandenburg Gate",
     caption: "Reagan at the Brandenburg Gate (1987)",
     description:
-      "Ronald Reagan's June 12, 1987 challenge — 'Mr. Gorbachev, tear down this wall!' — framed the closing argument of the Cold War; the Wall fell two years later.",
+      "Ronald Reagan's June 12, 1987 challenge: 'Mr. Gorbachev, tear down this wall!': framed the closing argument of the Cold War; the Wall fell two years later.",
     location: "Brandenburg Gate, West Berlin",
     theme: "Tear down this wall",
   },
@@ -752,12 +752,12 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     theme: "The special relationship",
   },
 
-  // ── Iconic American photographs — batch 7 (Culture, Quality of Life & Constitution, public domain) ──
+  // ── Iconic American photographs: batch 7 (Culture, Quality of Life & Constitution, public domain) ──
   "History/MLK at the Lincoln Memorial.jpg": {
     alt: "Martin Luther King Jr. delivering the I Have a Dream speech at a bank of microphones",
     caption: "Martin Luther King Jr. at the Lincoln Memorial (1963)",
     description:
-      "Martin Luther King Jr. delivered his 'I Have a Dream' speech at the March on Washington on August 28, 1963 — a turning point of the civil-rights movement.",
+      "Martin Luther King Jr. delivered his 'I Have a Dream' speech at the March on Washington on August 28, 1963: a turning point of the civil-rights movement.",
     location: "Lincoln Memorial, Washington, D.C.",
     theme: "I have a dream",
     featured: true,
@@ -812,7 +812,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     theme: "Originalism",
   },
 
-  // ── Iconic American photographs — batch 8 (user-supplied) ──
+  // ── Iconic American photographs: batch 8 (user-supplied) ──
   "Technology/Iconic/1980s Family with their First Home Computer.webp": {
     alt: "The personal computer enters the home.",
     caption: "A 1980s Family with their First Apple II or IBM PC (1980s)",
@@ -922,7 +922,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     alt: "Cars lined up beneath the big outdoor screen.",
     caption: "A 1950s Drive-In Movie Theater (1950s)",
     description:
-      "The drive-in theater married two American loves — cars and movies — into a defining leisure pastime of the 1950s.",
+      "The drive-in theater married two American loves: cars and movies: into a defining leisure pastime of the 1950s.",
     location: "United States",
   },
   "Science/Iconic/Einstein and Hubble at Mount Wilson.webp": {
@@ -961,7 +961,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     location: "Khe Sanh, South Vietnam",
   },
   "History/Bush at Ground Zero with the Bullhorn.webp": {
-    alt: "“I can hear you — and the people who knocked these buildings down will hear all of us soon.”",
+    alt: "“I can hear you: and the people who knocked these buildings down will hear all of us soon.”",
     caption: "President George W. Bush at Ground Zero with the Bullhorn (2001)",
     description:
       "Standing on the rubble of the World Trade Center on September 14, 2001, Bush rallied rescue workers and a grieving nation three days after the attacks.",
@@ -999,7 +999,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     alt: "The greatest team ever assembled, Barcelona 1992.",
     caption: "The 1992 USA Basketball Dream Team (1992)",
     description:
-      "The first U.S. Olympic basketball team of NBA stars — Jordan, Magic, Bird and more — dominated the 1992 Barcelona Games and globalized the sport.",
+      "The first U.S. Olympic basketball team of NBA stars: Jordan, Magic, Bird and more: dominated the 1992 Barcelona Games and globalized the sport.",
     location: "Barcelona, Spain",
   },
   "Economy/The Sears Roebuck Catalog.jpeg": {
@@ -1020,7 +1020,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     alt: "Edison, Ford, Firestone, and Burroughs camp together.",
     caption: "The Vagabonds Camping Trip (1921)",
     description:
-      "The self-styled 'Vagabonds' — Thomas Edison, Henry Ford, Harvey Firestone, and naturalist John Burroughs — took widely publicized motor-camping trips that celebrated American ingenuity and the open road.",
+      "The self-styled 'Vagabonds': Thomas Edison, Henry Ford, Harvey Firestone, and naturalist John Burroughs: took widely publicized motor-camping trips that celebrated American ingenuity and the open road.",
     location: "Eastern United States",
   },
   "Science/Iconic/Thomas Hunt Morgan in the Fly Room.jpeg": {
@@ -1034,7 +1034,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
     alt: "The flight demonstration squadron over 'Old Ironsides'.",
     caption: "U.S. Navy Blue Angels Flying over the USS Constitution (1997)",
     description:
-      "The Blue Angels roaring over the USS Constitution joined two enduring symbols of the U.S. Navy — its oldest commissioned warship and its precision flyers.",
+      "The Blue Angels roaring over the USS Constitution joined two enduring symbols of the U.S. Navy: its oldest commissioned warship and its precision flyers.",
     location: "Boston Harbor, Massachusetts",
   },
 

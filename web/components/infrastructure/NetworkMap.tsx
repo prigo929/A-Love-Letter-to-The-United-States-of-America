@@ -12,9 +12,9 @@
 //    page keeps scrolling normally). Strokes stay screen-constant via
 //    vector-effect; nodes and labels counter-scale.
 //  · Hovering a corridor illuminates it and dims the rest; the detail panel
-//    narrates it — length, era, and real average daily traffic (AADT).
+//    narrates it: length, era, and real average daily traffic (AADT).
 //  · Decorative layers are pointer-transparent; only fat hit-paths interact.
-//  · Controls and panel live in normal flow — nothing overlays the map.
+//  · Controls and panel live in normal flow: nothing overlays the map.
 
 import { useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
@@ -380,7 +380,7 @@ function buildPath(
   return d;
 }
 
-/** Straight projected polyline (used for dense NTAD geometry — already smooth). */
+/** Straight projected polyline (used for dense NTAD geometry: already smooth). */
 function buildPolyline(
   coords: LngLat[],
   projection: (c: LngLat) => [number, number] | null,
@@ -641,7 +641,7 @@ function RoutesLayer({
               onSelect(route.id);
             }}
           >
-            {/* Soft glow underlay — selected always; featured only outside heat mode */}
+            {/* Soft glow underlay: selected always; featured only outside heat mode */}
             {(isSelected || (!heat && isFeatured)) && (
               <motion.path
                 d={d}
@@ -678,7 +678,7 @@ function RoutesLayer({
                 transition={{ duration: 1.1, delay: isFeatured ? i * 0.08 : 0.2 }}
               />
             ) : isFeatured ? (
-              // Full-length opacity fade only — a pathLength draw-in could be
+              // Full-length opacity fade only: a pathLength draw-in could be
               // interrupted by re-projection (zoom/pan) and leave the corridor
               // half-drawn, so featured routes always render their entire length.
               <motion.path
@@ -707,7 +707,7 @@ function RoutesLayer({
                 style={{ pointerEvents: "none" }}
               />
             )}
-            {/* Moving vehicle dot — featured routes, main alignment only */}
+            {/* Moving vehicle dot: featured routes, main alignment only */}
             {!reducedMotion && isFeatured && dotD && (
               <motion.circle
                 r={2.3 * k}
@@ -735,7 +735,7 @@ function RoutesLayer({
         );
       })}
 
-      {/* Junction nodes — counter-scaled so they stay readable under zoom */}
+      {/* Junction nodes: counter-scaled so they stay readable under zoom */}
       {projectedNodes.map(({ node, p }) => (
         <g key={node.id} style={{ pointerEvents: "none" }}>
           <circle
@@ -765,7 +765,7 @@ function RoutesLayer({
         </g>
       ))}
 
-      {/* Interstate shield badges. Every numbered route carries one — featured
+      {/* Interstate shield badges. Every numbered route carries one: featured
           corridors and the selected route always; the rest of the primary grid
           and the 3-digit rings/spurs (I-610, I-495 …) reveal as you zoom in, so
           the national overview stays legible instead of a wall of shields.
@@ -799,7 +799,7 @@ function RoutesLayer({
 
 
 
-      {/* Power plant layer — the real operating fleet, sized by nameplate MW.
+      {/* Power plant layer: the real operating fleet, sized by nameplate MW.
           Biggest drawn first so the small plants stay clickable on top. */}
       {variant === "power" && powerFilter === "plants" && fleetDrawn
         .filter(({ plant, p }) => plant.mw >= plantMinMw && inView(p))
@@ -928,8 +928,8 @@ export function NetworkMap({
 
   const featuredIds = useMemo(() => new Set(routes.map((r) => r.id)), [routes]);
 
-  /** Featured corridors + (optionally) every other Interstate — primaries, the
-   *  3-digit rings/spurs, and the Alaska/Hawaii systems — as discoverable
+  /** Featured corridors + (optionally) every other Interstate: primaries, the
+   *  3-digit rings/spurs, and the Alaska/Hawaii systems: as discoverable
    *  background routes, each with real NTAD mileage and traffic. */
   const combinedRoutes = useMemo(() => {
     if (!backgroundNetwork) return routes;
@@ -940,7 +940,7 @@ export function NetworkMap({
       if (list.some((r) => r.id === id)) continue;
       const geom = GEOMS[key];
       // Datasets can carry non-route entries alongside the geometry (the power
-      // grid ships a substation point list) — only routes have segments.
+      // grid ships a substation point list): only routes have segments.
       if (!geom || !Array.isArray(geom.segments)) continue;
       const en = describe(key, "en");
       const ro = describe(key, "ro");
@@ -1357,7 +1357,7 @@ export function NetworkMap({
         </p>
       )}
 
-      {/* Detail panel — narrates the hovered/selected corridor.
+      {/* Detail panel: narrates the hovered/selected corridor.
           Keyed remount (no AnimatePresence): exit-gated swaps deadlock under
           React 19 when the outgoing child never finishes its exit animation. */}
       <div className="mt-2 min-h-[150px] border-t border-white/[0.07] pt-6">

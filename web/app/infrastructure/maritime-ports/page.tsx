@@ -60,7 +60,7 @@ export default async function PortsPage() {
         storyP1:
           "În Statele Unite, comerțul maritim este vital. Zona Golfului Mexic funcționează ca plămânul energetic și agricol al țării, exportând petrol, produse petrochimice și cereale din inima continentului. Porturi precum Houston, South Louisiana și Corpus Christi procesează volume uriașe de tonaj brut brut, propulsând America în fruntea exporturilor globale de energie.",
         storyP2:
-          "Pe Coasta de Vest, dinamica se schimbă către bunuri de larg consum cu valoare adăugată mare. Complexul portuar format din Los Angeles și Long Beach — poarta transpacifică a Americii — procesează peste o treime din toate importurile containerizate din SUA, alimentând depozitele, magazinele și fabricile din întreaga națiune.",
+          "Pe Coasta de Vest, dinamica se schimbă către bunuri de larg consum cu valoare adăugată mare. Complexul portuar format din Los Angeles și Long Beach: poarta transpacifică a Americii: procesează peste o treime din toate importurile containerizate din SUA, alimentând depozitele, magazinele și fabricile din întreaga națiune.",
         numbersTitle: "Giganții în cifre",
         numbersStats: [
           { value: "293 mil. t", label: "tonaj anual procesat în Houston, pe primul loc în SUA" },
@@ -113,11 +113,11 @@ export default async function PortsPage() {
           { value: "30%+", label: "of container imports go through San Pedro Bay" },
         ],
         storyTitle: "Gateways of Global Trade",
-        lede: "A commercial port is not just a place where ships dock; it is a massive funnel where highways, railroads, and ocean lanes converge.",
+        lede: "A commercial port functions as a massive funnel where highways, railroads, and sea lanes converge.",
         storyP1:
           "Maritime commerce is the lifeblood of the American economy. The Gulf Coast serves as the country's energy and agricultural lung, exporting petroleum, petrochemicals, and grains from the fertile heartland. Ports like Houston, South Louisiana, and Corpus Christi process massive bulks of raw tonnage, placing America at the forefront of global energy markets.",
         storyP2:
-          "On the West Coast, the dynamic shifts to high-value consumer goods. The twin ports of Los Angeles and Long Beach — America's transpacific gateway — process over a third of all containerized imports entering the country, feeding warehouses, stores, and manufacturing assembly lines nationwide.",
+          "On the West Coast, the dynamic shifts to high-value consumer goods. The twin ports of Los Angeles and Long Beach: America's transpacific gateway: process over a third of all containerized imports entering the country, feeding warehouses, stores, and manufacturing assembly lines nationwide.",
         numbersTitle: "The Giants in Numbers",
         numbersStats: [
           { value: "293M tons", label: "of annual cargo processed in Houston, ranking 1st in the U.S." },

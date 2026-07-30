@@ -507,7 +507,7 @@ export function HeroSection() {
   const textY = useTransform(scrollY, [0, 600], [0, -120]);
   const bgY = useTransform(scrollY, [0, 600], [0, 160]);
 
-  // Image carousel — cycle every 6 seconds
+  // Image carousel: cycle every 6 seconds
   useEffect(() => {
     // setInterval runs in the browser and advances the slideshow repeatedly.
     const id = setInterval(() => {
@@ -606,7 +606,7 @@ export function HeroSection() {
           animate="visible"
           className="flex flex-col items-center gap-6 md:gap-8"
         >
-          {/* Eyebrow — Est. 1776 */}
+          {/* Eyebrow: Est. 1776 */}
           <motion.div
             variants={heroSubtitle}
             className="flex items-center gap-3"

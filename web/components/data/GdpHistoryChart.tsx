@@ -8,7 +8,7 @@
 // Real vs nominal matters here and the toggle is the point: nominal growth is
 // mostly inflation, so `real` (chained 2017 dollars) is the honest measure of
 // how much more the country actually makes. Reference lines anchor the shape to
-// the history a reader already knows — the Depression trough, the war, 2008, COVID.
+// the history a reader already knows: the Depression trough, the war, 2008, COVID.
 
 import {
   AreaChart,
@@ -47,8 +47,8 @@ export function GdpHistoryChart({ data, title, subtitle, source, realBase = 2017
     ? {
         real: "Real",
         nominal: "Nominal",
-        realNote: `dolari constanți ${realBase} — inflația eliminată`,
-        nominalNote: "dolari curenți — include inflația",
+        realNote: `dolari constanți ${realBase}: inflația eliminată`,
+        nominalNote: "dolari curenți: include inflația",
         axis: "Trilioane USD",
         yearPrefix: "Anul",
         depression: "Marea Criză",
@@ -62,8 +62,8 @@ export function GdpHistoryChart({ data, title, subtitle, source, realBase = 2017
     : {
         real: "Real",
         nominal: "Nominal",
-        realNote: `chained ${realBase} dollars — inflation removed`,
-        nominalNote: "current dollars — includes inflation",
+        realNote: `chained ${realBase} dollars: inflation removed`,
+        nominalNote: "current dollars: includes inflation",
         axis: "USD Trillions",
         yearPrefix: "Year",
         depression: "Depression",

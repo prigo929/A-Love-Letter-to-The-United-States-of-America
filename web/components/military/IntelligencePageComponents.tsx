@@ -21,7 +21,7 @@ import type {
 } from "@/lib/data/intelligence-data";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// DESIGN TOKENS — The classified archive palette
+// DESIGN TOKENS: The classified archive palette
 // ─────────────────────────────────────────────────────────────────────────────
 
 const INTEL = {
@@ -38,7 +38,7 @@ const INTEL = {
 } as const;
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 1. IntelClassifiedStyles — Global CSS injection
+// 1. IntelClassifiedStyles: Global CSS injection
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function IntelClassifiedStyles() {
@@ -59,7 +59,7 @@ export function IntelClassifiedStyles() {
         color: var(--intel-paper);
       }
 
-      /* Bureaucratic voice — monospace, all-caps, wide tracking */
+      /* Bureaucratic voice: monospace, all-caps, wide tracking */
       .intel-bureaucratic {
         font-family: var(--font-mono), "SFMono-Regular", Consolas, monospace;
         letter-spacing: 0.15em;
@@ -69,7 +69,7 @@ export function IntelClassifiedStyles() {
         color: var(--intel-green-text);
       }
 
-      /* Editorial voice — Playfair Display italic, for human weight */
+      /* Editorial voice: Playfair Display italic, for human weight */
       .intel-editorial {
         font-family: var(--font-display), "Playfair Display", Georgia, serif;
         font-style: italic;
@@ -78,7 +78,7 @@ export function IntelClassifiedStyles() {
         color: var(--intel-paper);
       }
 
-      /* Document body text — scaled up to match military pages */
+      /* Document body text: scaled up to match military pages */
       .intel-body {
         font-family: var(--font-body, 'Inter', system-ui, sans-serif);
         font-size: clamp(14px, 1.2vw, 17px);
@@ -115,7 +115,7 @@ export function IntelClassifiedStyles() {
 
 // ─────────────────────────────────────────────────────────────────────────────
 
-// 3. SingleStatistic — One massive number
+// 3. SingleStatistic: One massive number
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function SingleStatistic({ locale = "en" }: { locale?: Locale }) {
@@ -170,7 +170,7 @@ export function SingleStatistic({ locale = "en" }: { locale?: Locale }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 4. AgencyDossier — Vertical scrolling chapters
+// 4. AgencyDossier: Vertical scrolling chapters
 // ─────────────────────────────────────────────────────────────────────────────
 
 function AgencyChapter({ agency, isLast }: { agency: IntelligenceAgency; isLast: boolean }) {
@@ -185,7 +185,7 @@ function AgencyChapter({ agency, isLast }: { agency: IntelligenceAgency; isLast:
       transition={{ duration: 1.5, ease: "easeOut" }}
     >
       <div className="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-8 lg:gap-16 items-start">
-        {/* Seal — desaturated */}
+        {/* Seal: desaturated */}
         <div className="flex justify-center lg:justify-start pt-2">
           <div className="relative w-36 h-36 lg:w-44 lg:h-44">
             <Image
@@ -292,7 +292,7 @@ export function AgencyDossier({ agencies, locale = "en" }: { agencies: Intellige
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. IntelligenceDisciplines — Clean section (no fake document wrapper)
+// 5. IntelligenceDisciplines: Clean section (no fake document wrapper)
 // ─────────────────────────────────────────────────────────────────────────────
 
 function RedactedText({ children }: { children: React.ReactNode }) {
@@ -334,7 +334,7 @@ export function IntelligenceDisciplines({ capabilities, locale = "en" }: { capab
           </div>
         </div>
 
-        {/* Disciplines — clean alternating layout */}
+        {/* Disciplines: clean alternating layout */}
         <div className="space-y-0">
           {capabilities.map((cap, i) => (
             <motion.div
@@ -410,7 +410,7 @@ export function IntelligenceDisciplines({ capabilities, locale = "en" }: { capab
   );
 }
 
-// 7. InstallationsList — Quiet vertical list
+// 7. InstallationsList: Quiet vertical list
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function InstallationsList({ nodes, locale = "en" }: { nodes: IntelligenceNode[]; locale?: Locale }) {
@@ -500,7 +500,7 @@ export function InstallationsList({ nodes, locale = "en" }: { nodes: Intelligenc
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 8. FiveEyesGeometry — Symmetrical network map representation (no pentagram)
+// 8. FiveEyesGeometry: Symmetrical network map representation (no pentagram)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
@@ -561,7 +561,7 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
         {/* SVG Diagram */}
         <div className="flex justify-center">
           <svg viewBox="0 0 500 440" className="w-full max-w-[540px] h-auto">
-            {/* Connecting lines — animated stroke-dashoffset */}
+            {/* Connecting lines: animated stroke-dashoffset */}
             {lines.map(([a, b], i) => {
               const p1 = points[a];
               const p2 = points[b];
@@ -644,8 +644,8 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
         <div className="mt-16 text-center max-w-3xl mx-auto">
           <p className="intel-body" style={{ lineHeight: 2 }}>
             {isRo
-              ? "Alianța Five Eyes — compusă din Statele Unite, Regatul Unit, Australia, Canada și Noua Zeelandă — constituie cel mai extins și profund parteneriat de schimb de informații din istorie. Originile sale datează din Al Doilea Război Mondial, iar structura sa actuală rămâne în mare parte clasificată."
-              : "The Five Eyes alliance — comprising the United States, United Kingdom, Australia, Canada, and New Zealand — constitutes the most extensive and deeply integrated intelligence-sharing partnership in history. Its origins trace to World War II, and its current operational structure remains largely classified."}
+              ? "Alianța Five Eyes: compusă din Statele Unite, Regatul Unit, Australia, Canada și Noua Zeelandă: constituie cel mai extins și profund parteneriat de schimb de informații din istorie. Originile sale datează din Al Doilea Război Mondial, iar structura sa actuală rămâne în mare parte clasificată."
+              : "The Five Eyes alliance: comprising the United States, United Kingdom, Australia, Canada, and New Zealand: constitutes the most extensive and deeply integrated intelligence-sharing partnership in history. Its origins trace to World War II, and its current operational structure remains largely classified."}
           </p>
         </div>
       </div>
@@ -654,7 +654,7 @@ export function FiveEyesGeometry({ locale = "en" }: { locale?: Locale }) {
 }
 
 
-// 9. HeritageList — Minimal vertical date list
+// 9. HeritageList: Minimal vertical date list
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function HeritageList({ events, locale = "en" }: { events: IntelligenceHeritageEvent[]; locale?: Locale }) {
@@ -743,7 +743,7 @@ export function HeritageList({ events, locale = "en" }: { events: IntelligenceHe
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 10. IntelligenceFailures — Gravitas section
+// 10. IntelligenceFailures: Gravitas section
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface IntelFailure {
@@ -813,7 +813,7 @@ export function IntelligenceFailures({ locale = "en" }: { locale?: Locale }) {
         transition={{ duration: 1.5, ease: "easeOut" }}
         className="mx-auto max-w-[1200px]"
       >
-        {/* Editorial intro — the rare Playfair moment */}
+        {/* Editorial intro: the rare Playfair moment */}
         <div className="mb-24 lg:mb-32">
           <div
             className="intel-editorial"
@@ -889,7 +889,7 @@ export function IntelligenceFailures({ locale = "en" }: { locale?: Locale }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 11. FuturePrograms — Clean layout (no fake classified markers)
+// 11. FuturePrograms: Clean layout (no fake classified markers)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function FuturePrograms({ programs, locale = "en" }: { programs: IntelligenceFutureProgram[]; locale?: Locale }) {
@@ -990,7 +990,7 @@ export function FuturePrograms({ programs, locale = "en" }: { programs: Intellig
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 12. TheVault — CIA Reading Room Interactive Explorer
+// 12. TheVault: CIA Reading Room Interactive Explorer
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface VaultDoc {
@@ -1497,7 +1497,7 @@ export function TheVault({ locale = "en" }: { locale?: Locale }) {
 }
 
 
-// 13. ClosingQuote — Playfair italic, centered
+// 13. ClosingQuote: Playfair italic, centered
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function ClosingQuote({ locale = "en" }: { locale?: Locale }) {

@@ -4,7 +4,7 @@
 // Horizontal bar chart: GERD as % of GDP for top innovation economies.
 // Source: NSF/NCSES, OECD MSTI 2024-2025.
 //
-// The US at 3.50% ranks 3rd globally — ahead of every EU peer and China.
+// The US at 3.50% ranks 3rd globally: ahead of every EU peer and China.
 // US R&D absolute dollar spend ($900B+) is by far #1 globally.
 
 import {
@@ -54,7 +54,7 @@ function RdTooltip({
       </p>
       {item.highlight && (
         <p className="font-macro-body text-xs text-[#E8B923] mt-1">
-          {locale === "ro" ? "#3 global — ~$900Mld cheltuiți în cercetare" : "#3 globally — ~$900B invested in R&D"}
+          {locale === "ro" ? "#3 global: ~$900Mld cheltuiți în cercetare" : "#3 globally: ~$900B invested in R&D"}
         </p>
       )}
     </div>

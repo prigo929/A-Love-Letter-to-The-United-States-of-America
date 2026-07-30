@@ -1,6 +1,6 @@
 "use client";
 
-// ─── QuarterlySeriesChart — one quarterly dollar series, plotted ─────────────
+// ─── QuarterlySeriesChart: one quarterly dollar series, plotted ─────────────
 // R&D investment and corporate profits are the same shape of thing: a single
 // current-dollar figure per quarter since 1947, whose story is the growth. Rather
 // than two near-identical chart files, callers normalise to {q, v} and pass their

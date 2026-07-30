@@ -7,7 +7,7 @@
 // - Technical Data: Balances "beauty shots" with hard data (visitor counts,
 //   biodiversity species) to drive the "America is Unique" narrative.
 //
-// Server Component — all interactive parts imported as client leaves.
+// Server Component: all interactive parts imported as client leaves.
 //
 // Beginner guide:
 // - To change the stats or text, edit lib/data/nature-data.ts
@@ -115,7 +115,7 @@ export default async function NaturePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* ── HERO — crossfading 5 landscapes ──────────────────────────────── */}
+      {/* ── HERO: crossfading 5 landscapes ──────────────────────────────── */}
       <NatureHeroCrossfade>
         <HeroTextReveal
           eyebrow={isRo ? "Natură și Geografie" : "Nature & Geography"}
@@ -151,7 +151,7 @@ export default async function NaturePage() {
         </div>
       </section>
 
-      {/* ── PARALLAX QUOTE BAND 1 — Roosevelt ────────────────────────────── */}
+      {/* ── PARALLAX QUOTE BAND 1: Roosevelt ────────────────────────────── */}
       <ParallaxImageBand
         imageSrc={SITE_IMAGES.yosemiteNationalPark}
         imageAlt="Yosemite Valley with Half Dome at sunrise"
@@ -196,7 +196,7 @@ export default async function NaturePage() {
         </div>
       </section>
 
-      {/* ── NATIONAL PARKS — chart ───────────────────────────────────────── */}
+      {/* ── NATIONAL PARKS: chart ───────────────────────────────────────── */}
       <section className="bg-(--nat-void,#030504) py-24 md:py-32">
         <div className="mx-auto max-w-[1200px] px-6 md:px-12">
           <p className="nat-text-label mb-6" style={{ color: 'var(--nat-accent-forest)' }}>
@@ -230,7 +230,7 @@ export default async function NaturePage() {
         />
       </div>
 
-      {/* ── CROWN JEWELS — cinematic grid ─────────────────────────────────── */}
+      {/* ── CROWN JEWELS: cinematic grid ─────────────────────────────────── */}
       <section className="bg-(--nat-void,#030504) py-24 md:py-32">
         <div className="mx-auto max-w-[1440px] px-6 md:px-12">
           <p className="nat-text-label mb-6" style={{ color: 'var(--nat-accent-earth)' }}>
@@ -257,7 +257,7 @@ export default async function NaturePage() {
         </div>
       </section>
 
-      {/* ── PARALLAX QUOTE BAND 2 — Muir ─────────────────────────────────── */}
+      {/* ── PARALLAX QUOTE BAND 2: Muir ─────────────────────────────────── */}
       <ParallaxImageBand
         imageSrc={SITE_IMAGES.glacierNationalPark}
         imageAlt="Glacier National Park alpine wilderness"
@@ -326,7 +326,7 @@ export default async function NaturePage() {
           <p className="nat-text-body mb-12 max-w-[700px]">
             {isRo
               ? "Cele cincizeci de state cuprind nu doar o națiune, ci o întreagă lume de peisaje."
-              : "The fifty states encompass not just a nation, but an entire world of landscapes."}
+              : "The fifty states encompass an entire continent of diverse landscapes."}
           </p>
           <RegionCardsGrid regions={regions} />
         </div>
@@ -365,7 +365,7 @@ export default async function NaturePage() {
         </div>
       </section>
 
-      {/* ── PARALLAX BAND 3 — Burns ──────────────────────────────────────── */}
+      {/* ── PARALLAX BAND 3: Burns ──────────────────────────────────────── */}
       <ParallaxImageBand
         imageSrc={SITE_IMAGES.denaliNationalPark}
         imageAlt="Denali peak in Alaska wilderness"
@@ -379,7 +379,7 @@ export default async function NaturePage() {
         </div>
       </ParallaxImageBand>
 
-      {/* ── DEEP DIVES — sub-page navigation ─────────────────────────────── */}
+      {/* ── DEEP DIVES: sub-page navigation ─────────────────────────────── */}
       <section className="bg-(--nat-void,#030504) py-24 md:py-32">
         <div className="mx-auto max-w-[1440px] px-6 md:px-12">
           <p className="nat-text-label mb-6" style={{ color: 'var(--nat-accent-earth)' }}>

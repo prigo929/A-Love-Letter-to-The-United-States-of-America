@@ -454,7 +454,7 @@ export default async function CapitalMarketsPage() {
             </div>
           </section>
 
-          {/* Volatility — the fear index */}
+          {/* Volatility: the fear index */}
           <section>
             <h2 className="macro-section-title mb-12">
               {copy.vixTitle}
@@ -565,7 +565,7 @@ export default async function CapitalMarketsPage() {
               <BondMarketChart
                 data={BOND_MARKET_COMPOSITION}
                 title={copy.bondChartTitle}
-                source="SIFMA Research Quarterly — Fixed Income Outstanding 1Q 2026"
+                source="SIFMA Research Quarterly: Fixed Income Outstanding 1Q 2026"
               />
             </div>
           </section>
@@ -631,7 +631,7 @@ export default async function CapitalMarketsPage() {
               <TreasuryYieldChart
                 data={US_TREASURY_10Y_HISTORY}
                 title={copy.treasuryChartTitle}
-                source="Federal Reserve FRED — DGS10 (10-Year Treasury Constant Maturity)"
+                source="Federal Reserve FRED: DGS10 (10-Year Treasury Constant Maturity)"
               />
             </div>
           </section>
@@ -660,7 +660,7 @@ export default async function CapitalMarketsPage() {
                     style={{ color: firm.highlight ? "#E8B923" : "rgba(255,255,255,0.7)" }}
                   >
                     {/* aum is USD billions. Only convert when we actually print
-                        trillions — dividing sub-$1T firms by 1000 and rounding to
+                        trillions: dividing sub-$1T firms by 1000 and rounding to
                         0dp turned $744B into "$1B" and $425B into "$0B". */}
                     {firm.aum >= 1000
                       ? `$${(firm.aum / 1000).toFixed(1)}T`
@@ -831,7 +831,7 @@ export default async function CapitalMarketsPage() {
             </div>
           </section>
 
-          {/* Featured pull-stat — one cinematic number instead of a card wall */}
+          {/* Featured pull-stat: one cinematic number instead of a card wall */}
           <section className="border-t border-white/5 pt-32">
             <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
               <p className="font-macro-display font-black leading-none tracking-tighter text-[clamp(72px,15vw,200px)]">
@@ -841,7 +841,7 @@ export default async function CapitalMarketsPage() {
             </div>
           </section>
 
-          {/* The advantage, in numbers — headline stat trio */}
+          {/* The advantage, in numbers: headline stat trio */}
           <section className="border-t border-white/5 pt-32">
             <span className="macro-eyebrow">{copy.advantageEyebrow}</span>
             <h2 className="macro-section-title mt-6 mb-16">{copy.advantageTitle}</h2>

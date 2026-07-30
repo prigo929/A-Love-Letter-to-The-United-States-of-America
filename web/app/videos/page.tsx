@@ -57,14 +57,14 @@ export default async function VideosPage() {
 
   const videos: VideoItem[] = isRo
     ? [
-        { id: "jPBfZrgvpSo", title: "America în 16K", tag: "Națiunea", description: "Statele Unite în 16K ultra-HD — cea mai mare economie din lume, de la un ocean la altul." },
+        { id: "jPBfZrgvpSo", title: "America în 16K", tag: "Națiunea", description: "Statele Unite în 16K ultra-HD: cea mai mare economie din lume, de la un ocean la altul." },
         { id: "vE3BAgh_VAQ", title: "Zbor Peste Orașele Americane", tag: "Orașe", description: "O călătorie aeriană în 8K peste skyline-urile și suburbiile marilor orașe americane." },
         { id: "rVrhikMug3A", title: "Cartiere Americane · Furtună", tag: "Cotidian", description: "O plimbare pe străzile mărginite de copaci, cu nori de furtună la orizont." },
         { id: "44x97vx6jjs", title: "Plimbare de Iarnă", tag: "Cotidian", description: "O seară liniștită de iarnă prin cartierele americane." },
         { id: "zMGvONrrEVI", title: "Suburbiile Carolinei de Nord", tag: "Cotidian", description: "O plimbare prin cartierele și suburbiile din Carolina de Nord." },
       ]
     : [
-        { id: "jPBfZrgvpSo", title: "America in 16K", tag: "The Nation", description: "The United States in stunning 16K ultra-HD — the world's largest economy, from coast to shining coast." },
+        { id: "jPBfZrgvpSo", title: "America in 16K", tag: "The Nation", description: "The United States in stunning 16K ultra-HD: the world's largest economy, from coast to shining coast." },
         { id: "vE3BAgh_VAQ", title: "Flying Over American Cities", tag: "Cities", description: "An 8K aerial journey over the skylines, grids, and endless suburbs of America's great cities." },
         { id: "rVrhikMug3A", title: "American Neighborhoods · Storm Clouds", tag: "Everyday", description: "A quiet walk through tree-lined streets as storm clouds gather on the horizon." },
         { id: "44x97vx6jjs", title: "A Winter Evening Walk", tag: "Everyday", description: "A quiet winter evening stroll through the neighborhoods of small-town America." },
@@ -77,11 +77,11 @@ export default async function VideosPage() {
     { src: "/videos/library/Infrastructure/atlanta-skyline-highways.mp4", poster: "/video-posters/atlanta-skyline-highways.jpg", title: isRo ? "Skyline și Autostrăzi în Atlanta" : "Atlanta Skyline & Highways", tag: isRo ? "Orașe" : "Cities" },
     { src: "/videos/we-must-fight.mp4", poster: "/video-posters/we-must-fight.jpg", title: isRo ? "Trebuie Să Luptăm (Ronald Reagan)" : "We Must Fight (Ronald Reagan)", tag: isRo ? "Istorie" : "History" },
     { src: "/videos/earth-pixels-from-space.mp4", poster: "/video-posters/earth-from-space.jpg", title: isRo ? "Pământul din Spațiu" : "Earth from Space", tag: isRo ? "Spațiu" : "Space" },
-    { src: "/videos/library/Technology/Falcon 9 Launch and Landing cinematic.mp4", poster: "/video-posters/falcon9.jpg", title: isRo ? "Falcon 9 — Lansare și Aterizare" : "Falcon 9 — Launch & Landing", tag: "SpaceX" },
-    { src: "/videos/library/Technology/Starship's Tenth Flight Test launch and landing cinematic.mp4", poster: "/video-posters/starship-flight10.jpg", title: isRo ? "Starship — Zborul 10" : "Starship — Flight 10", tag: "SpaceX" },
+    { src: "/videos/library/Technology/Falcon 9 Launch and Landing cinematic.mp4", poster: "/video-posters/falcon9.jpg", title: isRo ? "Falcon 9: Lansare și Aterizare" : "Falcon 9: Launch & Landing", tag: "SpaceX" },
+    { src: "/videos/library/Technology/Starship's Tenth Flight Test launch and landing cinematic.mp4", poster: "/video-posters/starship-flight10.jpg", title: isRo ? "Starship: Zborul 10" : "Starship: Flight 10", tag: "SpaceX" },
     { src: "/videos/library/Technology/The Extravehicular Activity (EVA) Suit SpaceX ShowCase 4K Cinematic.mp4", poster: "/video-posters/spacex-eva-suit.jpg", title: isRo ? "Costumul EVA SpaceX" : "SpaceX EVA Suit", tag: "SpaceX" },
-    { src: "/videos/library/Technology/TERAFAB cinematic - with Tesla and SpaceX.mp4", poster: "/video-posters/terafab.jpg", title: isRo ? "TERAFAB — Tesla și SpaceX" : "TERAFAB — Tesla & SpaceX", tag: isRo ? "Industrie" : "Industry" },
-    { src: "/videos/library/Technology/Nvidia AI cinematic.mp4", poster: "/video-posters/nvidia-ai.jpg", title: isRo ? "NVIDIA — Era AI" : "NVIDIA — The AI Era", tag: "AI" },
+    { src: "/videos/library/Technology/TERAFAB cinematic - with Tesla and SpaceX.mp4", poster: "/video-posters/terafab.jpg", title: isRo ? "TERAFAB: Tesla și SpaceX" : "TERAFAB: Tesla & SpaceX", tag: isRo ? "Industrie" : "Industry" },
+    { src: "/videos/library/Technology/Nvidia AI cinematic.mp4", poster: "/video-posters/nvidia-ai.jpg", title: isRo ? "NVIDIA: Era AI" : "NVIDIA: The AI Era", tag: "AI" },
     { src: "/videos/library/Technology/Introducing iPhone 17 Pro - Apple.mp4", poster: "/video-posters/iphone17pro.jpg", title: "iPhone 17 Pro", tag: "Apple" },
     { src: "/videos/library/Technology/Introducing iPhone Air - Apple.mp4", poster: "/video-posters/iphone-air.jpg", title: isRo ? "Prezentarea iPhone Air" : "Introducing iPhone Air", tag: "Apple" },
     { src: "/videos/library/Technology/Design is how it works - Apple.mp4", poster: "/video-posters/design-how-it-works.jpg", muted: false, title: isRo ? "Designul Este Cum Funcționează" : "Design Is How It Works", tag: "Apple" },
@@ -113,7 +113,7 @@ export default async function VideosPage() {
         </div>
       </section>
 
-      {/* Films — 1 per row */}
+      {/* Films: 1 per row */}
       <section className="px-4 py-14 pb-16 sm:px-6 lg:px-8">
         <div className="mx-auto flex max-w-5xl flex-col gap-y-16">
           {videos.map((v) => {

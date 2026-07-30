@@ -240,7 +240,7 @@ export const VC_BY_COUNTRY: VCDataPoint[] = [
 //
 // The US figure was previously 1,172 at a 65% share. That was wrong, and this
 // file disproved it on its own: China at 168 unicorns and 13% implies a global
-// total near 1,290, which puts the US near 650 — not 1,172. Every non-US count
+// total near 1,290, which puts the US near 650: not 1,172. Every non-US count
 // here was already right; only the American one was inflated.
 //
 // No tracker agrees exactly, because "unicorn" is a methodology rather than a
@@ -248,7 +248,7 @@ export const VC_BY_COUNTRY: VCDataPoint[] = [
 // (53.6%), Hurun 806 of 1,603 (50.3%). All three land near half. We follow CB
 // Insights and say so, rather than picking the most flattering number.
 //
-// Note this is a STOCK and the 65% VC share is a FLOW — America takes about
+// Note this is a STOCK and the 65% VC share is a FLOW: America takes about
 // two-thirds of the money invested each year while holding about half the
 // accumulated unicorns. Both are true; they measure different things.
 export const UNICORNS_BY_COUNTRY: UnicornDataPoint[] = [
@@ -273,11 +273,11 @@ export const UNICORNS_META = {
 
 // Currency composition of allocated official FX reserves, IMF COFER, Q4 2025.
 // The page previously carried an undated snapshot (USD 57.4%) with no source,
-// roughly a year stale. "Other" is the residual so the shares sum to 100 —
+// roughly a year stale. "Other" is the residual so the shares sum to 100: 
 // it holds the Canadian and Australian dollars and the Swiss franc.
 //
 // The dollar's share is in a real long-run decline: about 71% in 2000, 64.7% in
-// early 2017, 56.8% now. Read the quarter-to-quarter moves with care though —
+// early 2017, 56.8% now. Read the quarter-to-quarter moves with care though: 
 // the IMF found that exchange-rate movements, not central banks actually selling
 // dollars, explained 92% of the drop in Q2 2025. The trend is genuine; most of
 // any single quarter's wobble is the dollar's own price.
@@ -342,7 +342,7 @@ export const ECONOMY_HERO_STATS: EconomyStat[] = [
   },
   {
     id: "reserves",
-    // IMF COFER, Q4 2025 — the latest published quarter. There is no 2026 COFER
+    // IMF COFER, Q4 2025: the latest published quarter. There is no 2026 COFER
     // yet, though this was previously sourced to one.
     value: 56.8,
     suffix: "%",
@@ -1261,10 +1261,10 @@ export function getVcExtendedFacts(locale: Locale) {
 
 // ─── U.S. GDP, the long run ───────────────────────────────────────────────────
 // The growth story the GDP page was missing: every year since the BEA series
-// begins in 1929. `real` is chained 2017 dollars (inflation removed — the honest
+// begins in 1929. `real` is chained 2017 dollars (inflation removed: the honest
 // measure of growth); `nominal` is current dollars (comparable to the country
 // bars elsewhere on the page). Both in trillions USD.
-// Source: U.S. Bureau of Economic Analysis via FRED — GDPCA (real), GDPA (nominal).
+// Source: U.S. Bureau of Economic Analysis via FRED: GDPCA (real), GDPA (nominal).
 export interface GdpHistoryPoint {
   year: number;
   real: number;
@@ -1810,7 +1810,7 @@ export const US_TREASURY_10Y_HISTORY: TreasuryYieldPoint[] = [
 // ─── Private Markets AUM by Firm ─────────────────────────────────────────────
 // Source: Company filings, Preqin, Bloomberg 2025
 // Top US alternative asset managers by AUM (USD billions).
-// US firms dominate global alternatives — 8 of the top 10 are American.
+// US firms dominate global alternatives: 8 of the top 10 are American.
 
 export interface PrivateMarketsFirmPoint {
   firm: string;
@@ -1822,7 +1822,7 @@ export interface PrivateMarketsFirmPoint {
 }
 
 // AUM as of 31 March 2026 (Q1 2026 reporting), ordered largest first.
-// Verified against each firm's own Q1 2026 disclosure — four of these were badly
+// Verified against each firm's own Q1 2026 disclosure: four of these were badly
 // stale before: Apollo had been carried at $650B while it actually crossed $1T,
 // Ares at $464B against a reported $644B, Carlyle at $425B against $475B, and
 // Warburg Pincus at $83B against the $105B+ it states publicly.
@@ -1836,7 +1836,7 @@ export const PRIVATE_MARKETS_TOP_FIRMS: PrivateMarketsFirmPoint[] = [
     highlight: true,
   },
   {
-    // Crossed $1T in Q1 2026 ($1.03T, up from $938B at year-end 2025) — the
+    // Crossed $1T in Q1 2026 ($1.03T, up from $938B at year-end 2025): the
     // second firm ever to do it, on record $115B of quarterly inflows.
     firm: "Apollo Global",
     firmRo: "Apollo Global",
@@ -1927,7 +1927,7 @@ export const VC_DEAL_STAGE_BREAKDOWN: VCDealStagePoint[] = [
 // ─── Market volatility: the CBOE VIX ─────────────────────────────────────────
 // Daily VIX averaged by month (1990→today). The "fear index": it sits in the
 // teens in calm markets and spikes when the floor drops out. Record daily highs
-// are 82.69 (16 Mar 2020, COVID) and 80.86 (20 Nov 2008, the financial crisis) —
+// are 82.69 (16 Mar 2020, COVID) and 80.86 (20 Nov 2008, the financial crisis): 
 // `high` keeps the monthly peak so those spikes stay visible under the average.
 // Source: CBOE via FRED (VIXCLS).
 export interface VixPoint { month: string; avg: number; high: number; }
@@ -2702,7 +2702,7 @@ export const BUFFETT_META = {
 // ─── The startup engine: new business applications ───────────────────────────
 // Monthly business applications filed with the IRS, from the Census Bureau's
 // Business Formation Statistics. Americans filed 5.25 million applications in
-// 2024, more than double the 2.50 million of 2005 — and the pandemic set off the
+// 2024, more than double the 2.50 million of 2005: and the pandemic set off the
 // largest surge on record (546,719 in July 2020 alone).
 // Source: U.S. Census Bureau, Business Formation Statistics, via FRED.
 export interface BusinessFormationPoint { month: string; apps: number; hp: number; }
@@ -2994,7 +2994,7 @@ export const BUSINESS_FORMATION_META = {
 // ─── The yield curve: the market's own recession alarm ───────────────────────
 // The 10-year Treasury yield minus the 2-year, monthly since 1976. Normally
 // long money costs more than short money and the spread is positive. When it
-// goes negative — "inverted" — the market is betting rates must fall, which
+// goes negative: "inverted": the market is betting rates must fall, which
 // usually means it expects a downturn.
 //
 // Every recession since 1976 was preceded by an inversion. The reverse is NOT
@@ -3634,7 +3634,7 @@ export const YIELD_CURVE_META = {
 // ─── The federal funds rate: the price of money ──────────────────────────────
 // The Fed's policy rate, monthly since 1954. The spike is Volcker: 19.10% in
 // June 1981, the rate that broke the back of 1970s inflation and caused a
-// recession on purpose. The floor is the opposite extreme — 0.05% in April
+// recession on purpose. The floor is the opposite extreme: 0.05% in April
 // 2020, money as close to free as it has ever been.
 // Source: Board of Governors of the Federal Reserve System (FEDFUNDS), via FRED.
 export interface FedFundsPoint { month: string; rate: number; }
@@ -4520,7 +4520,7 @@ export const FED_FUNDS_META = {
 // Nominal GDP by state, 2025, in USD billions. The point of mapping this rather
 // than listing it is concentration: California alone ($4.25T) is worth about as
 // much as Japan, and the five largest states together are $12.7T of the
-// $30.6T total — roughly 41% of the American economy in five places.
+// $30.6T total: roughly 41% of the American economy in five places.
 //
 // `peer` names a country of genuinely comparable size. It is deliberately sparse:
 // only California earns one (96.6% of Japan's $4.4T, close enough to say "about
@@ -4603,7 +4603,7 @@ export const STATE_GDP_META = {
 
 // ─── R&D investment: what the country spends on finding out ──────────────────
 // Private and public research and development investment, quarterly since 1947,
-// in current-dollar billions. It crossed $1.15 trillion a year in 2026 — about
+// in current-dollar billions. It crossed $1.15 trillion a year in 2026: about
 // 487x the 1947 level in nominal terms. Venture capital is the visible tip of
 // this; the spending underneath it is an order of magnitude larger.
 // Source: U.S. Bureau of Economic Analysis, via FRED (Y694RC1Q027SBEA).
@@ -4942,7 +4942,7 @@ export const RD_META = {
 // This is the number underneath every equity valuation on the capital-markets
 // page: $22B in 1947 against $3.95T today.
 // NOTE: current dollars, so a large part of this rise is inflation rather than
-// real earning power — the chart says so rather than implying 180x of real growth.
+// real earning power: the chart says so rather than implying 180x of real growth.
 // Source: U.S. Bureau of Economic Analysis, via FRED (CP).
 export interface CorporateProfitsPoint { q: string; profits: number; }
 export const CORPORATE_PROFITS: CorporateProfitsPoint[] = [
@@ -8822,7 +8822,7 @@ export const VC_EXITS: VcExitPoint[] = [
 // it belongs next to the GDP curve rather than buried on a labour page.
 //
 // The COVID spike is the real shape of the series: 14.8% in 2020-04, the highest
-// on record and a near-vertical move — and then a recovery far faster than any
+// on record and a near-vertical move: and then a recovery far faster than any
 // previous one. The 1982 peak took years to unwind; this took months.
 // Source: U.S. Bureau of Labor Statistics (UNRATE), via FRED.
 export interface UnemploymentPoint { month: string; rate: number; }
@@ -9786,7 +9786,7 @@ export const US_UNEMPLOYMENT_META = {
 // thing to a price for American technology: the exchange where Apple, Microsoft,
 // NVIDIA, Alphabet, Amazon and Meta all list.
 //
-// The index started at 100. It is now about 26,075 — roughly 261x — but the
+// The index started at 100. It is now about 26,075: roughly 261x: but the
 // line is not a smooth ascent, and that is the point: it fell to 58.6 in the
 // 1974 bear market, then lost roughly three-quarters of its value after the
 // dot-com peak in March 2000 and did not regain that level until 2015.
@@ -10477,7 +10477,7 @@ export const NASDAQ_META = {
 //
 // This is the useful counterweight to the reserve-share story. The dollar's slice
 // of global reserves has been shrinking for twenty years, which is often read as
-// decline — but its exchange value is near the top of its range: 128.8 in 2025-01,
+// decline: but its exchange value is near the top of its range: 128.8 in 2025-01,
 // against a low of 86.3 in 2011-07 when the financial crisis was still unwinding.
 // Fewer central banks hold dollars as a share of their reserves; the dollar is not
 // worth less for it.

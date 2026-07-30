@@ -280,7 +280,7 @@ const MAP: Record<string, Entry[]> = {
   ],
 };
 
-// Maps, charts, and additional photos — merged onto MAP (appended where a section
+// Maps, charts, and additional photos: merged onto MAP (appended where a section
 // already has figures, added fresh otherwise) so the whole archive is shown.
 const EXTRA: Record<string, Entry[]> = {
   "World_War_II_Overview::Prelude to Involvement": [

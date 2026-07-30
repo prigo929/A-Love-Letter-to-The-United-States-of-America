@@ -110,8 +110,8 @@ const copyEn: ScienceCopy = {
   ],
   shaleLabel: "THE PRIVATE-SECTOR REVOLUTION",
   shaleTitle: "Energy Dominance: The Shale Revolution",
-  shaleParagraph1: "In 2008, the United States was a net importer of oil and gas, geopolitically constrained by OPEC pricing. By the mid-2010s, it had become the world's single largest producer of both oil and natural gas simultaneously — surpassing Saudi Arabia and Russia — driven entirely by private entrepreneurs, risk capital, and a property rights system that let landowners profit from what lay beneath their own soil.",
-  shaleParagraph2: "No government planned this; it was market-driven ingenuity. Powering this is the Pipeline Nation: the US operates the world's largest energy pipeline network with over 2.8 million miles of pipe — a 65% global share (vs Russia 8%, Canada 3%). This underground web delivers cheap natural gas and crude invisibly and continuously, creating a domestic commodity market structurally insulated from the foreign import vulnerabilities that haunt Europe.",
+  shaleParagraph1: "In 2008, the United States was a net importer of oil and gas, geopolitically constrained by OPEC pricing. By the mid-2010s, it had become the world's single largest producer of both oil and natural gas simultaneously: surpassing Saudi Arabia and Russia: driven entirely by private entrepreneurs, risk capital, and a property rights system that let landowners profit from what lay beneath their own soil.",
+  shaleParagraph2: "No government planned this; it was market-driven ingenuity. Powering this is the Pipeline Nation: the US operates the world's largest energy pipeline network with over 2.8 million miles of pipe: a 65% global share (vs Russia 8%, Canada 3%). This underground web delivers cheap natural gas and crude invisibly and continuously, creating a domestic commodity market structurally insulated from the foreign import vulnerabilities that haunt Europe.",
   shaleSource: "US Energy Information Administration (EIA) / Pipeline 101",
   shaleSourceUrl: "https://pipeline101.org/location/",
   labsLabel: "NATIONAL SCIENTIFIC CONCENTRATION",
@@ -178,8 +178,8 @@ const copyRo: ScienceCopy = {
   ],
   shaleLabel: "REVOLUȚIA SECTORULUI PRIVAT",
   shaleTitle: "Dominanța Energetică: Revoluția Șisturilor",
-  shaleParagraph1: "În 2008, Statele Unite erau un importator net de petrol și gaze, limitate geopolitic de prețurile OPEC. Până la jumătatea anilor 2010, deveniseră cel mai mare producător mondial atât de petrol, cât și de gaze naturale simultan — depășind Arabia Saudită și Rusia — un impuls generat în întregime de antreprenori privați, capital de risc și un sistem de drepturi de proprietate care permite proprietarilor de terenuri să profite de resursele din subsol.",
-  shaleParagraph2: "Niciun minister nu a planificat asta; a fost ingeniozitate privată. Motorul acestei abundențe este rețeaua națională de conducte: SUA au cea mai mare rețea de conducte energetice din lume, cu peste 4,5 milioane de kilometri (2,8 milioane mile) — o cotă globală de 65% (față de Rusia 8%, Canada 3%). Această rețea subterană transportă gaze și petrol continuu și ieftin, oferind o imunitate structurală în fața vulnerabilităților de import care afectează Europa.",
+  shaleParagraph1: "În 2008, Statele Unite erau un importator net de petrol și gaze, limitate geopolitic de prețurile OPEC. Până la jumătatea anilor 2010, deveniseră cel mai mare producător mondial atât de petrol, cât și de gaze naturale simultan: depășind Arabia Saudită și Rusia: un impuls generat în întregime de antreprenori privați, capital de risc și un sistem de drepturi de proprietate care permite proprietarilor de terenuri să profite de resursele din subsol.",
+  shaleParagraph2: "Niciun minister nu a planificat asta; a fost ingeniozitate privată. Motorul acestei abundențe este rețeaua națională de conducte: SUA au cea mai mare rețea de conducte energetice din lume, cu peste 4,5 milioane de kilometri (2,8 milioane mile): o cotă globală de 65% (față de Rusia 8%, Canada 3%). Această rețea subterană transportă gaze și petrol continuu și ieftin, oferind o imunitate structurală în fața vulnerabilităților de import care afectează Europa.",
   shaleSource: "Administrația Americană pentru Informații în Domeniul Energiei (EIA) / Pipeline 101",
   shaleSourceUrl: "https://pipeline101.org/location/",
   labsLabel: "CONCENTRARE ȘTIINȚIFICĂ NAȚIONALĂ",
@@ -253,7 +253,7 @@ export default async function SciencePage() {
           </div>
         </RevealSection>
 
-        {/* Chronology — era cards */}
+        {/* Chronology: era cards */}
         <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <h2 className="macro-section-title text-white text-center text-3xl mb-12">{copy.gridTitle}</h2>
@@ -307,7 +307,7 @@ export default async function SciencePage() {
           </div>
         </RevealSection>
 
-        {/* DOE National Labs — pinned scrollytelling */}
+        {/* DOE National Labs: pinned scrollytelling */}
         <section className="border-b border-white/5 px-4 py-20 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <ScrollytellPin

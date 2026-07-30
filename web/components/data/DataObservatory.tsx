@@ -1,7 +1,7 @@
 "use client";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// DataObservatory.tsx — the "America by the Numbers" data hub (/data)
+// DataObservatory.tsx: the "America by the Numbers" data hub (/data)
 //
 // A dark, dashboard-grade landing page that gathers the empirical record across
 // EVERY vertical: headline indicators, domain stat bands (economy, capital,
@@ -387,12 +387,12 @@ export function DataObservatory({ isRo }: { isRo: boolean }) {
       </DomainBlock>
 
       {/* §08 Quality of life & leadership */}
-      <DomainBlock shaded index="08" eyebrow={L("Quality of Life & Leadership", "Calitatea Vieții și Leadership")} title={L("The Highest Standard of Living", "Cel Mai Înalt Nivel de Trai")} blurb={L("The most prosperity for the most people — and the security guarantor of the free world.", "Cea mai mare prosperitate pentru cei mai mulți oameni — și garantul securității lumii libere.")}>
+      <DomainBlock shaded index="08" eyebrow={L("Quality of Life & Leadership", "Calitatea Vieții și Leadership")} title={L("The Highest Standard of Living", "Cel Mai Înalt Nivel de Trai")} blurb={L("The most prosperity for the most people: and the security guarantor of the free world.", "Cea mai mare prosperitate pentru cei mai mulți oameni: și garantul securității lumii libere.")}>
         <StatBand stats={lifeStats} />
       </DomainBlock>
 
       {/* §09 World-share scorecard */}
-      <DomainBlock index="09" eyebrow={L("Dominance Scorecard", "Scorul Dominanței")} title={L("#1 in the World", "Locul #1 în Lume")} blurb={L("Each bar shows the U.S. share of the entire global total — not a head-to-head with one rival.", "Fiecare bară arată cota SUA din întregul total global — nu o comparație cu un singur rival.")}>
+      <DomainBlock index="09" eyebrow={L("Dominance Scorecard", "Scorul Dominanței")} title={L("#1 in the World", "Locul #1 în Lume")} blurb={L("Each bar shows the U.S. share of the entire global total: not a head-to-head with one rival.", "Fiecare bară arată cota SUA din întregul total global: nu o comparație cu un singur rival.")}>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {scorecard.map((row, i) => (
             <motion.div

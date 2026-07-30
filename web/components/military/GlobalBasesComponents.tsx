@@ -354,8 +354,8 @@ export function StrategicThesis({ locale = "en" }: { locale?: Locale }) {
         <SectionKicker>{isRo ? "TEZA STRATEGICĂ" : "STRATEGIC THESIS"}</SectionKicker>
         <p className="max-w-5xl text-[clamp(30px,5vw,68px)] font-black uppercase leading-[0.98] tracking-tight text-white">
           {isRo
-            ? "Bazele nu sunt doar locații. Sunt timp cumpărat în avans: combustibil, porturi, piste, comunicații, spitale și aliați deja integrați înainte de prima zi a crizei."
-            : "Bases are not just locations. They are time purchased in advance: fuel, ports, runways, communications, hospitals, and allies already integrated before the first day of a crisis."}
+            ? "Bazele sunt timp cumpărat în avans: combustibil, porturi, piste, comunicații, spitale și aliați deja integrați înainte de prima zi a crizei."
+            : "Bases provide pre-positioned time: fuel, ports, runways, communications, hospitals, and repair bays already at the potential point of conflict."}
         </p>
       </div>
     </section>
@@ -1069,7 +1069,7 @@ export function AllianceArchitectureSection({
       <div className="mx-auto max-w-[1200px]">
         <SectionTitle
           label={isRo ? "ARHITECTURĂ DE ALIANȚĂ" : "ALLIANCE ARCHITECTURE"}
-          title={isRo ? "Infrastructură politică, nu doar beton." : "Political infrastructure, not just concrete."}
+          title={isRo ? "Infrastructură politică și beton fizic." : "Political infrastructure alongside physical concrete."}
         />
 
         <div className="space-y-0 border-y border-zinc-900">

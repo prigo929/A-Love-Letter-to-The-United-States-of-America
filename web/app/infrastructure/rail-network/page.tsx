@@ -1,5 +1,5 @@
 // ─── The Continental Rail Network ─────────────────────────────────────────────
-// From the golden spike at Promontory to the busiest freight arteries on Earth —
+// From the golden spike at Promontory to the busiest freight arteries on Earth: 
 // with an interactive era map (1869 race · the great expansion · modern Class I).
 
 import Link from "next/link";
@@ -78,7 +78,7 @@ export default async function RailNetworkPage() {
           corridorsLabel: "Treci peste un coridor pentru detalii",
           lengthLabel: "Lungime",
           openedLabel: "Finalizată",
-          hint: "În epoca 1869, cele două trasee se desenează unul către celălalt — exact cum s-au construit.",
+          hint: "În epoca 1869, cele două trasee se desenează unul către celălalt: exact cum s-au construit.",
           viewCorridors: "Rețele",
           viewTraffic: "Densitate",
           heatLow: "Linie simplă",
@@ -88,7 +88,7 @@ export default async function RailNetworkPage() {
         chicagoEyebrow: "Nodul continentului",
         chicagoTitle: "Chicago: locul unde se întâlnesc toate șinele",
         chicagoBody:
-          "Un sfert din traficul feroviar de marfă al Americii trece prin Chicago — aproximativ 500 de trenuri de marfă pe zi, punctul de schimb între rețelele estice și cele vestice încă din anii 1850. Niciun alt nod logistic de pe Pământ nu-i seamănă.",
+          "Un sfert din traficul feroviar de marfă al Americii trece prin Chicago: aproximativ 500 de trenuri de marfă pe zi, punctul de schimb între rețelele estice și cele vestice încă din anii 1850. Niciun alt nod logistic de pe Pământ nu-i seamănă.",
         chicagoAlt: "Centrul orașului Chicago",
         freightEyebrow: "Titanii de marfă",
         freightTitle: "Cea mai eficientă rețea de marfă din lume",
@@ -146,7 +146,7 @@ export default async function RailNetworkPage() {
           corridorsLabel: "Hover a corridor for its story",
           lengthLabel: "Length",
           openedLabel: "Completed",
-          hint: "In the 1869 era the two routes draw toward each other — exactly as they were built.",
+          hint: "In the 1869 era the two routes draw toward each other: exactly as they were built.",
           viewCorridors: "Networks",
           viewTraffic: "Density",
           heatLow: "Single track",
@@ -156,7 +156,7 @@ export default async function RailNetworkPage() {
         chicagoEyebrow: "The Continental Junction",
         chicagoTitle: "Chicago: Where All the Rails Meet",
         chicagoBody:
-          "A quarter of America's rail freight passes through Chicago — roughly 500 freight trains a day, the interchange between the eastern and western networks since the 1850s. No other logistics junction on Earth resembles it.",
+          "A quarter of America's rail freight passes through Chicago: roughly 500 freight trains a day, the interchange between the eastern and western networks since the 1850s. No other logistics junction on Earth resembles it.",
         chicagoAlt: "Downtown Chicago",
         freightEyebrow: "The Freight Titans",
         freightTitle: "The World's Most Efficient Freight Network",

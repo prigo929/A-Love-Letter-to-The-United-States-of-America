@@ -371,8 +371,8 @@ export function SpaceLogisticsCalculator({ locale }: SpaceLogisticsCalculatorPro
                 </p>
                 <p className="text-sm text-white/70 leading-relaxed font-body">
                   {isRo
-                    ? `La o sarcină de ${payloadTons}t pe suprafața Lunii, Saturn V ar necesita ${Math.ceil(payloadTons / 43)} zboruri la un cost total estimat de ${formatCostM(Math.ceil(payloadTons / 43) * 1200)} — comparativ cu ${formatCostM(metrics.totalCostM)} pentru Starship. Aceasta reprezintă o reducere de cost de aproximativ ${Math.round((1 - metrics.totalCostM / (Math.ceil(payloadTons / 43) * 1200)) * 100)}% față de era Apollo.`
-                    : `For ${payloadTons}t to the lunar surface, Saturn V would require ${Math.ceil(payloadTons / 43)} launches at an estimated ${formatCostM(Math.ceil(payloadTons / 43) * 1200)} — versus ${formatCostM(metrics.totalCostM)} for Starship. That is approximately ${Math.round((1 - metrics.totalCostM / (Math.ceil(payloadTons / 43) * 1200)) * 100)}% cheaper than the Apollo-era architecture.`}
+                    ? `La o sarcină de ${payloadTons}t pe suprafața Lunii, Saturn V ar necesita ${Math.ceil(payloadTons / 43)} zboruri la un cost total estimat de ${formatCostM(Math.ceil(payloadTons / 43) * 1200)}: comparativ cu ${formatCostM(metrics.totalCostM)} pentru Starship. Aceasta reprezintă o reducere de cost de aproximativ ${Math.round((1 - metrics.totalCostM / (Math.ceil(payloadTons / 43) * 1200)) * 100)}% față de era Apollo.`
+                    : `For ${payloadTons}t to the lunar surface, Saturn V would require ${Math.ceil(payloadTons / 43)} launches at an estimated ${formatCostM(Math.ceil(payloadTons / 43) * 1200)}: versus ${formatCostM(metrics.totalCostM)} for Starship. That is approximately ${Math.round((1 - metrics.totalCostM / (Math.ceil(payloadTons / 43) * 1200)) * 100)}% cheaper than the Apollo-era architecture.`}
                 </p>
               </div>
             )}
@@ -383,8 +383,8 @@ export function SpaceLogisticsCalculator({ locale }: SpaceLogisticsCalculatorPro
                 </p>
                 <p className="text-sm text-white/70 leading-relaxed font-body">
                   {isRo
-                    ? `La eficiența de $${Math.round(metrics.costPerKg).toLocaleString()}/kg, Saturn V era extrem de scump pentru misiunile de aprovizionare LEO. Falcon Heavy reduce acest cost cu ~${Math.round((1 - (97 * 1e6) / (64 * 1000) / metrics.costPerKg) * 100)}%, în timp ce Starship vizează mai puțin de $100/kg — o transformare de câteva ordine de mărime.`
-                    : `At $${Math.round(metrics.costPerKg).toLocaleString()}/kg, Saturn V was prohibitively expensive for routine LEO missions. Falcon Heavy reduces this cost dramatically, while Starship targets under $100/kg — a transformation of several orders of magnitude.`}
+                    ? `La eficiența de $${Math.round(metrics.costPerKg).toLocaleString()}/kg, Saturn V era extrem de scump pentru misiunile de aprovizionare LEO. Falcon Heavy reduce acest cost cu ~${Math.round((1 - (97 * 1e6) / (64 * 1000) / metrics.costPerKg) * 100)}%, în timp ce Starship vizează mai puțin de $100/kg: o transformare de câteva ordine de mărime.`
+                    : `At $${Math.round(metrics.costPerKg).toLocaleString()}/kg, Saturn V was prohibitively expensive for routine LEO missions. Falcon Heavy reduces this cost dramatically, while Starship targets under $100/kg: a transformation of several orders of magnitude.`}
                 </p>
               </div>
             )}

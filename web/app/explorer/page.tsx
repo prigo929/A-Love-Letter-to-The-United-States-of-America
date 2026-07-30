@@ -68,8 +68,8 @@ export default async function ExplorerPage() {
     americanLegacy: locale === "ro" ? "Moștenirea americană" : "American Legacy",
     ePluribusTitle:
       locale === "ro"
-        ? "E Pluribus Unum — Din mai mulți, unul"
-        : "E Pluribus Unum — Out of Many, One",
+        ? "E Pluribus Unum: Din mai mulți, unul"
+        : "E Pluribus Unum: Out of Many, One",
     ePluribusBody:
       locale === "ro"
         ? "Statele Unite ale Americii sunt o republică federală formată din 50 de state diverse, care se întind peste păduri străvechi, câmpii nesfârșite, canioane adânci și țărmuri maiestuoase. De la cele treisprezece colonii fondatoare de pe coasta Atlanticului până la piscurile vulcanice ale nord-vestului Pacificului, fiecare stat își aduce propria economie, moștenire și personalitate în țesătura comună a Uniunii."
@@ -97,8 +97,8 @@ export default async function ExplorerPage() {
     senatorsLabel: locale === "ro" ? "Senatori" : "Senators",
     electoralShareNote:
       locale === "ro"
-        ? "{ev} din cele 538 de voturi electorale — {pct}% din Colegiul Electoral."
-        : "{ev} of 538 electoral votes — {pct}% of the Electoral College.",
+        ? "{ev} din cele 538 de voturi electorale: {pct}% din Colegiul Electoral."
+        : "{ev} of 538 electoral votes: {pct}% of the Electoral College.",
     constitutionGlanceTitle: locale === "ro" ? "Constituția pe scurt" : "Constitution at a Glance",
     compactsTitle: locale === "ro" ? "Pacte interstatale" : "Interstate Compacts",
     compactsNone: locale === "ro" ? "Niciun acord înregistrat." : "No agreements on record.",
@@ -132,8 +132,8 @@ export default async function ExplorerPage() {
     provisionsLabel: locale === "ro" ? "Prevederi interesante" : "Interesting Provisions",
     avgLengthNote:
       locale === "ro"
-        ? "Constituția medie a unui stat american are aproximativ {avg} de cuvinte — de peste patru ori mai lungă decât Constituția federală (circa 7.600 de cuvinte)."
-        : "The average US state constitution runs about {avg} words — more than four times the length of the federal Constitution (roughly 7,600 words).",
+        ? "Constituția medie a unui stat american are aproximativ {avg} de cuvinte: de peste patru ori mai lungă decât Constituția federală (circa 7.600 de cuvinte)."
+        : "The average US state constitution runs about {avg} words: more than four times the length of the federal Constitution (roughly 7,600 words).",
 
     // ── Interstate cooperation ──
     cooperation: {

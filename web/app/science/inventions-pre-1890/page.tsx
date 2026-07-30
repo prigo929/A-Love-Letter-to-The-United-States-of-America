@@ -41,8 +41,8 @@ const copyEn: Pre1890Copy = {
   heroSubtitle: "How a young nation, protected by constitutional patent rights and fueled by frontier resourcefulness, laid the industrial groundwork for the modern age.",
   thesisTitle: "The Constitutional Spark and Frontier Resourcefulness",
   thesisParagraph1: "Before the United States became a global superpower, it was a frontier society that faced severe labor shortages and vast distances. To survive and thrive, Americans had to innovate. This drive was formalized in Article I, Section 8, Clause 8 of the U.S. Constitution, which empowered Congress to promote the progress of science and useful arts by securing exclusive patent rights for inventors.",
-  thesisParagraph2: "This legal framework catalyzed an industrial explosion. From Benjamin Franklin's early electrical experiments to the steam engines, cotton gins, and telegraph lines that stitched the continent together, early American inventions were fundamentally pragmatic. They solved immediate physical challenges — bridging distances, multiplying human labor, and illuminating the dark.",
-  featuredTitle: "Pivotal Pre-1890 Inventions",
+  thesisParagraph2: "This legal framework catalyzed an industrial explosion. From Benjamin Franklin's early electrical experiments to the steam engines, cotton gins, and telegraph lines that stitched the continent together, early American inventions were fundamentally pragmatic. They solved immediate physical challenges: bridging distances, multiplying human labor, and illuminating the dark.",
+  featuredTitle: "Defining Pre-1890 Inventions",
   archiveTitle: "The Comprehensive Patent Archives",
   archiveSubtitle: "Explore the full, detailed history of 187 pre-1890 American inventions compiled directly from historical patent logs.",
   oracleDescription: "Ask the AI Oracle about early American inventors like Benjamin Franklin, Eli Whitney, Samuel Morse, Alexander Graham Bell, or Thomas Edison."

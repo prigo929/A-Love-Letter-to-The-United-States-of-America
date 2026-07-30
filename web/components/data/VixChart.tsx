@@ -1,6 +1,6 @@
 "use client";
 
-// ─── VixChart — the CBOE fear index ──────────────────────────────────────────
+// ─── VixChart: the CBOE fear index ──────────────────────────────────────────
 // Monthly VIX since 1990. The point of this chart is the spikes: the index sits
 // in the teens for years and then detonates when the floor drops out. We plot the
 // monthly average as the body and the monthly high as a faint ghost above it, so
@@ -46,7 +46,7 @@ export function VixChart({ data, title, subtitle, source }: VixChartProps) {
         panic: "Panică (40)",
         gfc: "Criza 2008",
         covid: "COVID",
-        recordLabel: "Recordul absolut — 16 martie 2020",
+        recordLabel: "Recordul absolut: 16 martie 2020",
         calmLabel: "Sub 20 înseamnă piețe liniștite",
         source: "Sursă:",
       }
@@ -57,7 +57,7 @@ export function VixChart({ data, title, subtitle, source }: VixChartProps) {
         panic: "Panic (40)",
         gfc: "2008 crisis",
         covid: "COVID",
-        recordLabel: "All-time record — 16 March 2020",
+        recordLabel: "All-time record: 16 March 2020",
         calmLabel: "Below 20 means quiet markets",
         source: "Source:",
       };

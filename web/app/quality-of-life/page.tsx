@@ -39,7 +39,7 @@ export default async function QualityOfLifePage() {
       <FloatingTOC items={tocItems} />
       <MacroStyles />
 
-      {/* Cinematic Hero — American Suburbs */}
+      {/* Cinematic Hero: American Suburbs */}
       <MacroHero
         imageSrc="/images/library/Housing/Modern suburban house with garden and American flag, showcasing beautiful architecture in Eagle Mountain, UT.jpg"
         imageAlt="Modern American Suburban Home with American Flag"
@@ -187,7 +187,7 @@ export default async function QualityOfLifePage() {
         {/* Infrastructure Band (Aviation, Storage, Boats, Libraries) */}
         <InfrastructureBand
           imageSrc={SITE_IMAGES.outdoors.torchLake}
-          imageAlt="Torch Lake Michigan — boats on the sandbar"
+          imageAlt="Torch Lake Michigan: boats on the sandbar"
         >
           <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-none snap-x snap-mandatory">
             {[
@@ -360,8 +360,8 @@ export default async function QualityOfLifePage() {
               { src: SITE_IMAGES.cities.nashville, label: "Nashville, TN" },
               { src: SITE_IMAGES.cities.savannah, label: "Savannah, GA" },
               { src: SITE_IMAGES.cities.seattleSpring, label: "Seattle in Spring" },
-              { src: SITE_IMAGES.cities.aerialDallas, label: "Dallas — Aerial" },
-              { src: SITE_IMAGES.cities.aerialChicago, label: "Chicago — Aerial" },
+              { src: SITE_IMAGES.cities.aerialDallas, label: "Dallas: Aerial" },
+              { src: SITE_IMAGES.cities.aerialChicago, label: "Chicago: Aerial" },
               { src: SITE_IMAGES.cities.aerialSantaMonica, label: "Santa Monica, CA" },
               { src: SITE_IMAGES.cities.atlanta, label: "Atlanta, GA" },
             ].map((item, i) => (
@@ -388,7 +388,7 @@ export default async function QualityOfLifePage() {
           </div>
         </section>
 
-        {/* America from Above — featured aerial section */}
+        {/* America from Above: featured aerial section */}
         <section className="mb-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-10">
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#E8B923] text-center font-semibold mb-2">

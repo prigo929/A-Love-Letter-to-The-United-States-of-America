@@ -8,7 +8,7 @@ import { useState, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { StatePolicyExtended } from "@/lib/data/federalism-data";
 
-// ── Tile-grid cartogram — manually positioned ──────────────────────────────
+// ── Tile-grid cartogram: manually positioned ──────────────────────────────
 const TILE_SIZE = 48;
 const GAP = 3;
 const COLS = 12;

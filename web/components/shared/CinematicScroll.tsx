@@ -3,12 +3,12 @@
 // ─── CinematicScroll ──────────────────────────────────────────────────────────
 // Structural showpieces for the cinematic pages:
 //
-// HorizontalScrollBand — a pinned section where vertical scroll drives a
+// HorizontalScrollBand: a pinned section where vertical scroll drives a
 //   horizontal pan across full-height panels (documentary timeline feel).
 //   Desktop-only by design; pair it with a stacked fallback behind a
 //   `hidden lg:block` / `lg:hidden` split at the call site.
 //
-// ScrollytellPin — media column pins to the viewport while narrative text
+// ScrollytellPin: media column pins to the viewport while narrative text
 //   scrolls past it. Pure CSS sticky, so it degrades gracefully everywhere.
 
 import { useRef } from "react";

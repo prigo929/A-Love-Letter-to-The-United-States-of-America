@@ -57,7 +57,7 @@ const STATE_TRIVIA: Record<string, StateTrivia> = {
   AZ: { landmark: { en: "The Grand Canyon", ro: "Marele Canion" }, fact: { en: "Home to the Sonoran Desert, the only place where Saguaro cacti grow wild.", ro: "Găzduiește Deșertul Sonora, singurul loc unde cactușii Saguaro cresc în sălbăticie." }, motto: { en: "God enriches", ro: "Dumnezeu îmbogățește" }, brand: "Freeport-McMoRan" },
   AR: { landmark: { en: "Hot Springs National Park", ro: "Parcul Național Hot Springs" }, fact: { en: "Only state with an active diamond mine open to the public.", ro: "Singurul stat cu o mină de diamante activă, deschisă publicului." }, motto: { en: "The People Rule", ro: "Poporul conduce" }, brand: "Walmart" },
   CA: { landmark: { en: "Silicon Valley & Golden Gate Bridge", ro: "Silicon Valley și Podul Golden Gate" }, fact: { en: "If California were a nation, its economy would rank 5th in the world.", ro: "Dacă California ar fi o țară, economia sa ar fi a 5-a din lume." }, motto: { en: "Eureka (I have found it)", ro: "Evrika (Am găsit)" }, brand: "Apple / Google / Nvidia / Chevron" },
-  CO: { landmark: { en: "Rocky Mountains", ro: "Munții Stâncoși" }, fact: { en: "Has the highest average elevation of any U.S. state at 6,800 feet.", ro: "Are cea mai mare altitudine medie dintre toate statele SUA — circa 2.070 de metri." }, motto: { en: "Nothing without providence", ro: "Nimic fără providență" }, brand: "Coors Brewing / Arrow Electronics" },
+  CO: { landmark: { en: "Rocky Mountains", ro: "Munții Stâncoși" }, fact: { en: "Has the highest average elevation of any U.S. state at 6,800 feet.", ro: "Are cea mai mare altitudine medie dintre toate statele SUA: circa 2.070 de metri." }, motto: { en: "Nothing without providence", ro: "Nimic fără providență" }, brand: "Coors Brewing / Arrow Electronics" },
   CT: { landmark: { en: "Yale University", ro: "Universitatea Yale" }, fact: { en: "Home of the first hamburger, Polaroid camera, and nuclear submarine.", ro: "Locul primului hamburger, al aparatului Polaroid și al primului submarin nuclear." }, motto: { en: "He who transplanted sustains", ro: "Cel care a răsădit susține" }, brand: "General Electric / Otis Elevator" },
   DE: { landmark: { en: "Historic New Castle", ro: "Orașul istoric New Castle" }, fact: { en: "The very first state to ratify the U.S. Constitution (December 7, 1787).", ro: "Primul stat care a ratificat Constituția SUA (7 decembrie 1787)." }, motto: { en: "Liberty and Independence", ro: "Libertate și independență" }, brand: "DuPont" },
   DC: { landmark: { en: "The White House & Capitol", ro: "Casa Albă și Capitoliul" }, fact: { en: "Designed by French engineer Pierre L'Enfant and holds 172 foreign embassies.", ro: "Proiectat de inginerul francez Pierre L'Enfant, găzduiește 172 de ambasade străine." }, motto: { en: "Justice for All", ro: "Dreptate pentru toți" }, brand: "Danaher / Marriott International" },
@@ -98,7 +98,7 @@ const STATE_TRIVIA: Record<string, StateTrivia> = {
   TX: { landmark: { en: "The Alamo & NASA Space Center", ro: "Alamo și Centrul Spațial NASA" }, fact: { en: "Only state to enter by treaty, and was its own independent republic for 9 years.", ro: "Singurul stat intrat în Uniune prin tratat; a fost republică independentă timp de 9 ani." }, motto: { en: "Friendship", ro: "Prietenie" }, brand: "ExxonMobil / AT&T / Tesla / Texas Instruments" },
   UT: { landmark: { en: "Zion National Park & Arches", ro: "Parcurile Naționale Zion și Arches" }, fact: { en: "Has the youngest average population age in the United States.", ro: "Are cea mai tânără vârstă medie a populației din Statele Unite." }, motto: { en: "Industry", ro: "Hărnicie" }, brand: "Huntsman / Overstock" },
   VT: { landmark: { en: "Green Mountain Forest", ro: "Pădurea Green Mountain" }, fact: { en: "The largest producer of maple syrup in the United States.", ro: "Cel mai mare producător de sirop de arțar din Statele Unite." }, motto: { en: "Freedom and Unity", ro: "Libertate și unitate" }, brand: "Ben & Jerry's / Keurig Dr Pepper" },
-  VA: { landmark: { en: "Monticello & Jamestown", ro: "Monticello și Jamestown" }, fact: { en: "Known as the 'Birthplace of a Nation'—four of the first five U.S. presidents were Virginian.", ro: "Cunoscut drept „Locul de naștere al unei națiuni” — patru dintre primii cinci președinți americani au fost din Virginia." }, motto: { en: "Thus always to tyrants", ro: "Astfel, întotdeauna, tiranilor" }, brand: "General Dynamics / Northrop Grumman" },
+  VA: { landmark: { en: "Monticello & Jamestown", ro: "Monticello și Jamestown" }, fact: { en: "Known as the 'Birthplace of a Nation', four of the first five U.S. presidents were Virginian.", ro: "Cunoscut drept „Locul de naștere al unei națiuni”: patru dintre primii cinci președinți americani au fost din Virginia." }, motto: { en: "Thus always to tyrants", ro: "Astfel, întotdeauna, tiranilor" }, brand: "General Dynamics / Northrop Grumman" },
   WA: { landmark: { en: "Space Needle & Mount Rainier", ro: "Space Needle și Muntele Rainier" }, fact: { en: "Home of aerospace and tech giants Boeing, Microsoft, Amazon, and Starbucks.", ro: "Casa giganților Boeing, Microsoft, Amazon și Starbucks." }, motto: { en: "By and by", ro: "Cu timpul" }, brand: "Microsoft / Amazon / Costco / Starbucks" },
   WV: { landmark: { en: "New River Gorge Bridge", ro: "Podul New River Gorge" }, fact: { en: "The first state to introduce a sales tax (in 1921).", ro: "Primul stat care a introdus o taxă pe vânzări (în 1921)." }, motto: { en: "Mountaineers are always free", ro: "Muntenii sunt mereu liberi" }, brand: "Wheeling-Pittsburgh Steel" },
   WI: { landmark: { en: "Wisconsin Dells & Lambeau Field", ro: "Wisconsin Dells și Lambeau Field" }, fact: { en: "Produces over 2 billion pounds of cheese annually, leading the nation.", ro: "Produce anual peste 900 de milioane de kilograme de brânză, cel mai mult din țară." }, motto: { en: "Forward", ro: "Înainte" }, brand: "Harley-Davidson / Northwestern Mutual" },
@@ -106,7 +106,7 @@ const STATE_TRIVIA: Record<string, StateTrivia> = {
 };
 
 // ─── Region Palette ───────────────────────────────────────────────────────────
-// Semi-transparent, softer colors — vivid enough to distinguish on black, but
+// Semi-transparent, softer colors: vivid enough to distinguish on black, but
 // not so opaque they look like solid painted states.
 const REGION_COLORS: Record<string, { base: string; hover: string; border: string; label: string; stroke: string }> = {
   Northeast: {
@@ -779,7 +779,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
               `sm` and up: a positioning context for the floating overlays. */}
           <div className="relative flex flex-col overflow-hidden rounded-3xl border border-white/[0.05] bg-black shadow-2xl sm:block">
 
-            {/* Heatmap overlay selector — stacked above the map on mobile so it
+            {/* Heatmap overlay selector: stacked above the map on mobile so it
                 never covers the geography; floats over the map from `sm` up. */}
             <div className="relative z-20 m-3 flex flex-col gap-2 rounded-2xl border border-white/[0.08] bg-black/80 p-3 backdrop-blur-md max-w-none sm:absolute sm:top-4 sm:left-4 sm:m-0 sm:max-w-[280px]">
               <span className="font-body text-[10px] tracking-[0.18em] text-white/35 uppercase flex items-center gap-1.5 font-bold">
@@ -956,7 +956,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
               )}
             </div>
 
-            {/* Region color legend — sits under the map on mobile, overlays it from `sm` up */}
+            {/* Region color legend: sits under the map on mobile, overlays it from `sm` up */}
             <div className="relative z-20 order-last flex flex-wrap items-center justify-center gap-x-5 gap-y-2 border-t border-white/[0.06] px-4 py-3 bg-black/60 backdrop-blur-sm sm:absolute sm:bottom-0 sm:left-0 sm:right-0 sm:flex-nowrap sm:px-6">
               {heatmapMode === "none" ? (
                 Object.entries(REGION_COLORS).map(([region, rc]) => (
@@ -1388,7 +1388,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           onClick={() =>
                             setSymbol({
                               src: `/state-capitols/${selectedState.abbrev}.jpg`,
-                              label: `${selectedState.name[locale]} — ${translations.capitolLabel}`,
+                              label: `${selectedState.name[locale]}: ${translations.capitolLabel}`,
                             })
                           }
                           className="group relative mb-3 block w-full cursor-zoom-in overflow-hidden rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fbbf24]/60"
@@ -1397,7 +1397,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           <img
                             key={`capitol-${selectedState.abbrev}`}
                             src={`/state-capitols/${selectedState.abbrev}.jpg`}
-                            alt={`${selectedState.name[locale]} — ${translations.capitolLabel}`}
+                            alt={`${selectedState.name[locale]}: ${translations.capitolLabel}`}
                             loading="lazy"
                             className="aspect-[3/2] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                           />
@@ -1421,7 +1421,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           onClick={() =>
                             setSymbol({
                               src: `/state-symbols/flags/${selectedState.abbrev}.svg`,
-                              label: `${selectedState.name[locale]} — ${translations.flagLabel}`,
+                              label: `${selectedState.name[locale]}: ${translations.flagLabel}`,
                             })
                           }
                           className="group relative mb-3 block w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fbbf24]/60"
@@ -1430,7 +1430,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           <img
                             key={`flag-${selectedState.abbrev}`}
                             src={`/state-symbols/flags/${selectedState.abbrev}.svg`}
-                            alt={`${selectedState.name[locale]} — ${translations.flagLabel}`}
+                            alt={`${selectedState.name[locale]}: ${translations.flagLabel}`}
                             loading="lazy"
                             className="aspect-[3/2] w-full object-contain"
                           />
@@ -1449,7 +1449,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           onClick={() =>
                             setSymbol({
                               src: `/state-symbols/seals/${selectedState.abbrev}.svg`,
-                              label: `${selectedState.name[locale]} — ${translations.sealLabel}`,
+                              label: `${selectedState.name[locale]}: ${translations.sealLabel}`,
                             })
                           }
                           className="group relative mx-auto mb-3 block w-full max-w-[260px] cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-[#fbbf24]/60"
@@ -1458,7 +1458,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           <img
                             key={`seal-${selectedState.abbrev}`}
                             src={`/state-symbols/seals/${selectedState.abbrev}.svg`}
-                            alt={`${selectedState.name[locale]} — ${translations.sealLabel}`}
+                            alt={`${selectedState.name[locale]}: ${translations.sealLabel}`}
                             loading="lazy"
                             className="aspect-square w-full object-contain"
                           />
@@ -1573,7 +1573,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       </ul>
                     </div>
 
-                    {/* Constitution at a glance — pulled from the same data as the
+                    {/* Constitution at a glance: pulled from the same data as the
                         State Constitutions section further down the page. */}
                     <div className="bg-[#0c0c0c] border border-white/[0.05] rounded-2xl p-5 hover:border-white/[0.08] transition-all shadow-sm">
                       <div className="flex items-center gap-2 mb-3">

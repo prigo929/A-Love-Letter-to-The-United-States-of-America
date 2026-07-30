@@ -5,7 +5,7 @@
 // to-scale interactive skyline (SkyscraperRace), plus a gallery of 21st-century
 // supertalls, interactive engineering data visualizer, and the physics of high-rises.
 //
-// All imagery is stored locally in /IMAGES/Architecture — see lib/data/art-assets.ts
+// All imagery is stored locally in /IMAGES/Architecture: see lib/data/art-assets.ts
 
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -45,8 +45,8 @@ const TOWERS: Tower[] = [
   {
     key: "wainwright", name: "Wainwright Building", city: "St. Louis", cityRo: "St. Louis",
     year: 1891, feet: 135, meters: 41, architect: "Louis Sullivan", asset: "sullivanWainwright",
-    note: "Sullivan asked what a tall building should look like now that it no longer had to look like a stack of stone, and answered by making the verticality the whole point — unbroken piers driving the eye upward. 'Form follows function' is his line, and this is where it was argued in brick.",
-    noteRo: "Sullivan a întrebat cum ar trebui să arate o clădire înaltă acum că nu mai trebuia să arate ca o stivă de piatră și a răspuns făcând din verticalitate esența — pilaștri neîntrerupți care conduc privirea în sus. „Forma urmează funcția” este replica lui, iar aici a fost argumentată în cărămidă.",
+    note: "Sullivan asked what a tall building should look like now that it no longer had to look like a stack of stone, and answered by making the verticality the whole point: unbroken piers driving the eye upward. 'Form follows function' is his line, and this is where it was argued in brick.",
+    noteRo: "Sullivan a întrebat cum ar trebui să arate o clădire înaltă acum că nu mai trebuia să arate ca o stivă de piatră și a răspuns făcând din verticalitate esența: pilaștri neîntrerupți care conduc privirea în sus. „Forma urmează funcția” este replica lui, iar aici a fost argumentată în cărămidă.",
   },
   {
     key: "flatiron", name: "Flatiron Building", city: "New York", cityRo: "New York",
@@ -69,8 +69,8 @@ const TOWERS: Tower[] = [
   {
     key: "empire-state", name: "Empire State Building", city: "New York", cityRo: "New York",
     year: 1931, feet: 1250, meters: 381, architect: "Shreve, Lamb & Harmon", asset: "empireState", wasWorldsTallest: true,
-    note: "Built in 410 days during the depths of the Depression, a storey a day at the peak. It held the world's-tallest title for forty years — longer than any building before or since — and became the shape the word 'skyscraper' draws in your head.",
-    noteRo: "Construită în 410 zile în adâncul Marii Crize, un etaj pe zi la vârf. A deținut titlul de cea mai înaltă clădire timp de patruzeci de ani — mai mult decât orice clădire înainte sau după — și a devenit forma pe care cuvântul „zgârie-nori” o desenează în minte.",
+    note: "Built in 410 days during the depths of the Depression, a storey a day at the peak. It held the world's-tallest title for forty years: longer than any building before or since: and became the shape the word 'skyscraper' draws in your head.",
+    noteRo: "Construită în 410 zile în adâncul Marii Crize, un etaj pe zi la vârf. A deținut titlul de cea mai înaltă clădire timp de patruzeci de ani: mai mult decât orice clădire înainte sau după: și a devenit forma pe care cuvântul „zgârie-nori” o desenează în minte.",
   },
   {
     key: "seagram", name: "Seagram Building", city: "New York", cityRo: "New York",
@@ -81,14 +81,14 @@ const TOWERS: Tower[] = [
   {
     key: "willis", name: "Willis (Sears) Tower", city: "Chicago", cityRo: "Chicago",
     year: 1973, feet: 1450, meters: 442, architect: "Fazlur Rahman Khan / SOM", asset: "willisTower", wasWorldsTallest: true,
-    note: "Khan's 'bundled tube' — nine square tubes rising as a cluster, some stopping short of the top — let a building go higher on less steel than anyone thought possible. It brought the world's-tallest title back to the city that started it all, ninety years after the Home Insurance Building.",
-    noteRo: "„Tubul mănunchi” al lui Khan — nouă tuburi pătrate ridicându-se în grup, unele oprindu-se sub vârf — a permis unei clădiri să urce mai sus cu mai puțin oțel decât credea oricine posibil. A readus titlul de cea mai înaltă clădire în orașul care a început totul, la nouăzeci de ani după Home Insurance Building.",
+    note: "Khan's 'bundled tube': nine square tubes rising as a cluster, some stopping short of the top: let a building go higher on less steel than anyone thought possible. It brought the world's-tallest title back to the city that started it all, ninety years after the Home Insurance Building.",
+    noteRo: "„Tubul mănunchi” al lui Khan: nouă tuburi pătrate ridicându-se în grup, unele oprindu-se sub vârf: a permis unei clădiri să urce mai sus cu mai puțin oțel decât credea oricine posibil. A readus titlul de cea mai înaltă clădire în orașul care a început totul, la nouăzeci de ani după Home Insurance Building.",
   },
   {
     key: "one-wtc", name: "One World Trade Center", city: "New York", cityRo: "New York",
     year: 2013, feet: 1776, meters: 541, architect: "David Childs / SOM", asset: "oneWTC",
-    note: "1,776 feet, chosen for the year, not the structure — a building whose height is an argument. It rose on the site of the towers destroyed in 2001 and is the tallest building in the Western Hemisphere. The height race that began in Chicago in 1885 ends, for now, on a number that means something.",
-    noteRo: "1.776 de picioare, alese pentru an, nu pentru structură — o clădire a cărei înălțime este un argument. S-a ridicat pe locul turnurilor distruse în 2001 și este cea mai înaltă clădire din emisfera vestică. Cursa înălțimii care a început la Chicago în 1885 se încheie, deocamdată, pe un număr care înseamnă ceva.",
+    note: "1,776 feet, chosen for the year, not the structure: a building whose height is an argument. It rose on the site of the towers destroyed in 2001 and is the tallest building in the Western Hemisphere. The height race that began in Chicago in 1885 ends, for now, on a number that means something.",
+    noteRo: "1.776 de picioare, alese pentru an, nu pentru structură: o clădire a cărei înălțime este un argument. S-a ridicat pe locul turnurilor distruse în 2001 și este cea mai înaltă clădire din emisfera vestică. Cursa înălțimii care a început la Chicago în 1885 se încheie, deocamdată, pe un număr care înseamnă ceva.",
   },
 ];
 
@@ -108,7 +108,7 @@ const MODERN_SUPERTALLS = [
     feet: "1,428 FT",
     city: "New York City",
     year: "2021",
-    note: "Steinway Tower — the world's most slender skyscraper with a 1:24 ratio.",
+    note: "Steinway Tower: the world's most slender skyscraper with a 1:24 ratio.",
     imageSrc: ART_ASSETS.st57West.src,
     imageAlt: "111 West 57th Street, New York",
   },
@@ -126,7 +126,7 @@ const MODERN_SUPERTALLS = [
     feet: "1,388 FT",
     city: "New York City",
     year: "2025",
-    note: "JPMorgan Chase headquarters — an all-electric supertall designed by Foster + Partners.",
+    note: "JPMorgan Chase headquarters: an all-electric supertall designed by Foster + Partners.",
     imageSrc: ART_ASSETS.park270.src,
     imageAlt: "270 Park Avenue, New York",
   },
@@ -153,7 +153,7 @@ const MODERN_SUPERTALLS = [
     feet: "1,200 FT",
     city: "New York City",
     year: "2009",
-    note: "One Bryant Park — a model of sustainable high-performance architecture.",
+    note: "One Bryant Park: a model of sustainable high-performance architecture.",
     imageSrc: ART_ASSETS.boaTower.src,
     imageAlt: "Bank of America Tower, New York",
   },
@@ -188,13 +188,13 @@ export default async function SkyscraperRevolutionPage() {
         howTitle: "Trei invenții, o clădire",
         howBody: "Zgârie-norul nu a fost o singură idee, ci trei care au sosit împreună. Fără oricare dintre ele, clădirea înaltă rămâne imposibilă.",
         f1: "Scheletul de oțel",
-        f1d: "Înainte de 1885, o clădire își purta propria greutate prin pereți din ce în ce mai groși — la zece etaje, parterul ar fi fost aproape numai piatră. Scheletul de oțel a mutat greutatea pe un cadru interior, iar pereții au devenit doar o piele. Înălțimea a încetat să mai fie o problemă de masă.",
+        f1d: "Înainte de 1885, o clădire își purta propria greutate prin pereți din ce în ce mai groși: la zece etaje, parterul ar fi fost aproape numai piatră. Scheletul de oțel a mutat greutatea pe un cadru interior, iar pereții au devenit doar o piele. Înălțimea a încetat să mai fie o problemă de masă.",
         f1s: "Home Insurance Building, Chicago, 1885",
         f2: "Ascensorul de siguranță",
         f2d: "Elisha Otis a rezolvat nu ascensorul, ci frica de el: un mecanism care blochează cabina dacă se rupe cablul. Fără el, nimeni nu ar fi urcat de bunăvoie la etajul patruzeci. Zgârie-norul este la fel de mult invenția lui Otis ca a oricărui arhitect.",
         f2s: "Otis, demonstrația frânei de siguranță, 1854",
         f3: "Peretele cortină",
-        f3d: "Odată ce scheletul purta greutatea, peretele exterior putea fi orice — inclusiv sticlă din podea în tavan atârnată ca o perdea pe fața clădirii. Seagram Building a făcut din asta un stil, iar turnul corporativ de sticlă a devenit imaginea implicită a puterii americane.",
+        f3d: "Odată ce scheletul purta greutatea, peretele exterior putea fi orice: inclusiv sticlă din podea în tavan atârnată ca o perdea pe fața clădirii. Seagram Building a făcut din asta un stil, iar turnul corporativ de sticlă a devenit imaginea implicită a puterii americane.",
         f3s: "Seagram Building, New York, 1958",
         quote: "Un zgârie-nori trebuie să fie fiecare centimetru mândru și înălțător, o unitate lipsită de o singură linie disidentă.",
         quoteBy: "Louis Sullivan, 1896",
@@ -216,13 +216,13 @@ export default async function SkyscraperRevolutionPage() {
         howTitle: "Three inventions, one building",
         howBody: "The skyscraper was not one idea but three that arrived together. Take any one away and the tall building is impossible again.",
         f1: "The steel frame",
-        f1d: "Before 1885 a building carried its own weight through ever-thicker walls — at ten storeys the ground floor would have been almost solid stone. The steel frame moved the load onto an internal skeleton and turned the walls into a mere skin. Height stopped being a question of mass.",
+        f1d: "Before 1885 a building carried its own weight through ever-thicker walls: at ten storeys the ground floor would have been almost solid stone. The steel frame moved the load onto an internal skeleton and turned the walls into a mere skin. Height stopped being a question of mass.",
         f1s: "Home Insurance Building, Chicago, 1885",
         f2: "The safety elevator",
         f2d: "Elisha Otis solved not the elevator but the fear of it: a mechanism that locks the car in place if the cable snaps. Without it nobody would willingly ride to the fortieth floor. The skyscraper is as much Otis's invention as any architect's.",
         f2s: "Otis safety-brake demonstration, 1854",
         f3: "The curtain wall",
-        f3d: "Once the frame carried the weight, the outer wall could be anything — including floor-to-ceiling glass hung like a curtain across the building's face. The Seagram Building made that a style, and the glass corporate tower became the default image of American power.",
+        f3d: "Once the frame carried the weight, the outer wall could be anything: including floor-to-ceiling glass hung like a curtain across the building's face. The Seagram Building made that a style, and the glass corporate tower became the default image of American power.",
         f3s: "Seagram Building, New York, 1958",
         quote: "A tall building must be every inch a proud and soaring thing, rising in sheer exultation from bottom to top without a single dissenting line.",
         quoteBy: "Louis Sullivan, 1896",
@@ -238,7 +238,7 @@ export default async function SkyscraperRevolutionPage() {
         <ArtSingleHero
           imageSrc={ART_ASSETS.empireStateRockefeller.src}
           imageAlt={isRo ? ART_ASSETS.empireStateRockefeller.altRo : ART_ASSETS.empireStateRockefeller.alt}
-          badge="1931 — ART DECO"
+          badge="1931: ART DECO"
           label="EMPIRE STATE BUILDING · NEW YORK CITY"
         >
           <ArtHeroTitle
@@ -353,7 +353,7 @@ export default async function SkyscraperRevolutionPage() {
         <ArtParallaxBand imageSrc={ART_ASSETS.chicagoLoop.src} imageAlt={isRo ? ART_ASSETS.chicagoLoop.altRo : ART_ASSETS.chicagoLoop.alt} height={480}>
           <div className="mx-auto max-w-3xl px-6 text-center">
             <p className="art-text-label" style={{ color: "var(--art-accent-copper)" }}>
-              {isRo ? "Chicago — unde a început totul, 1885" : "Chicago — where it began, 1885"}
+              {isRo ? "Chicago: unde a început totul, 1885" : "Chicago: where it began, 1885"}
             </p>
           </div>
         </ArtParallaxBand>

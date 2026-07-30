@@ -6,7 +6,7 @@
 //
 // Why: Safari's "Graphics and Media" (GPU/media) process keeps a hardware
 // decoder + looping frame buffers resident in RAM for EVERY playing <video> on
-// the page — even ones far below the fold. A page with several ambient hero /
+// the page: even ones far below the fold. A page with several ambient hero /
 // section backdrops therefore pins multiple decoders at once, which is the main
 // driver of the high RAM/CPU the user observed. Pausing off-screen videos lets
 // Safari release those decoders; nothing is unloaded, so scrolling back is

@@ -1,5 +1,5 @@
 // ─── Art & Architecture Hub Page ─────────────────────────────────────────────
-// America's Visual Legacy — the editorial hub for art, architecture & design.
+// America's Visual Legacy: the editorial hub for art, architecture & design.
 //
 // Design Language: "High-Contrast Editorial"
 // Inspired by Artforum, MoMA, and architectural review journals.
@@ -8,7 +8,7 @@
 // - Horizontal pinned-scroll era timeline
 // - Animated stat wall, parallax quote bands
 //
-// Server Component — all interactive parts imported as client leaves.
+// Server Component: all interactive parts imported as client leaves.
 
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     "Explore the visual legacy of the United States, including Beaux-Arts skyscrapers, Art Deco spires, Abstract Expressionism, and contemporary supertalls. 35,000+ museums, 5,800+ skyscrapers, and a living artistic tradition.",
   alternates: { canonical: "/art-architecture" },
   openGraph: {
-    title: "Art & Architecture — America's Visual Legacy",
+    title: "Art & Architecture: America's Visual Legacy",
     description:
       "The United States built more skyscrapers than any nation on Earth and houses more museums per capita than any country in Europe. Explore the visual culture that defines America.",
     url: "/art-architecture",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Art & Architecture — America's Visual Legacy",
+  headline: "Art & Architecture: America's Visual Legacy",
   description:
     "A deep dive into the visual and structural achievements of the United States.",
   url: "https://americagreatest.com/art-architecture",
@@ -73,16 +73,16 @@ const GALLERY_TILES = [
     era: "1880 – PRESENT",
     title: "The Skyscraper Revolution",
     description:
-      "America invented the skyscraper — and then perfected it. From Louis Sullivan's first steel-frame tower in Chicago to today's supertalls piercing 1,500 feet.",
+      "America invented the skyscraper: and then perfected it. From Louis Sullivan's first steel-frame tower in Chicago to today's supertalls piercing 1,500 feet.",
   },
   {
     href: "/art-architecture/modern-pop-art",
     imageSrc: ART_ASSETS.lichtensteinWhaam.src,
-    imageAlt: "Whaam! by Roy Lichtenstein, 1963 — Pop Art",
+    imageAlt: "Whaam! by Roy Lichtenstein, 1963: Pop Art",
     era: "1950 – 1980",
     title: "Modern & Pop Art",
     description:
-      "Pollock's drip paintings, Warhol's screen-prints, Lichtenstein's pop icons, Basquiat's raw energy — American artists remade the global art world.",
+      "Pollock's drip paintings, Warhol's screen-prints, Lichtenstein's pop icons, Basquiat's raw energy: American artists remade the global art world.",
   },
   {
     href: "/art-architecture/hudson-river-school",
@@ -109,14 +109,14 @@ const GALLERY_TILES = [
     era: "1846 – PRESENT",
     title: "Smithsonian Museums",
     description:
-      "The world's largest museum complex — 21 museums, 21 libraries, 9 research centers, and 213 million artifacts held in public trust for all Americans.",
+      "The world's largest museum complex: 21 museums, 21 libraries, 9 research centers, and 213 million artifacts held in public trust for all Americans.",
   },
 ];
 
 const ART_ERAS = [
   {
     era: "BEAUX-ARTS",
-    years: "1880 — 1920",
+    years: "1880: 1920",
     movement: "Beaux-Arts\nClassicism",
     keywork: "Grand Central Terminal",
     architect: "Warren & Wetmore, 1913",
@@ -127,7 +127,7 @@ const ART_ERAS = [
   },
   {
     era: "ART DECO",
-    years: "1920 — 1940",
+    years: "1920: 1940",
     movement: "Art Deco\nSkyscrapers",
     keywork: "Chrysler Building",
     architect: "William Van Alen, 1930",
@@ -138,7 +138,7 @@ const ART_ERAS = [
   },
   {
     era: "MID-CENTURY",
-    years: "1945 — 1970",
+    years: "1945: 1970",
     movement: "International\nModernism",
     keywork: "Seagram Building",
     architect: "Mies van der Rohe, 1958",
@@ -149,7 +149,7 @@ const ART_ERAS = [
   },
   {
     era: "POSTMODERN",
-    years: "1970 — 1995",
+    years: "1970: 1995",
     movement: "Postmodern\nEclecticism",
     keywork: "AT&T Building",
     architect: "Philip Johnson, 1984",
@@ -160,12 +160,12 @@ const ART_ERAS = [
   },
   {
     era: "CONTEMPORARY",
-    years: "1995 — PRESENT",
+    years: "1995: PRESENT",
     movement: "Supertall\nEra",
     keywork: "One World Trade Center",
     architect: "Skidmore, Owings & Merrill, 2014",
     description:
-      "A new generation of supertalls—One Vanderbilt, Central Park Tower, 111 West 57th—pushed the sky ever higher. Computational design and structural engineering fused into architecture as spectacle.",
+      "A new generation of supertalls, One Vanderbilt, Central Park Tower, 111 West 57th, pushed the sky ever higher. Computational design and structural engineering fused into architecture as spectacle.",
     color: "var(--art-accent-crimson)",
     icon: "⬡",
   },
@@ -181,22 +181,22 @@ const FACT_MODULES = [
   {
     fact: "America built the world's first skyscrapers",
     detail:
-      "The Home Insurance Building in Chicago (1885) is widely considered the world's first true skyscraper — a 10-story structure with an iron and steel load-bearing skeleton rather than thick masonry walls. This Chicago invention launched the global high-rise era.",
-    source: "CTBUH — Council on Tall Buildings and Urban Habitat, 2024",
+      "The Home Insurance Building in Chicago (1885) is widely considered the world's first true skyscraper: a 10-story structure with an iron and steel load-bearing skeleton rather than thick masonry walls. This Chicago invention launched the global high-rise era.",
+    source: "CTBUH: Council on Tall Buildings and Urban Habitat, 2024",
     color: "copper" as const,
   },
   {
     fact: "The Metropolitan Museum of Art holds 1.5 million objects",
     detail:
-      "Founded in 1870, the Met's collection spans 5,000 years of human civilization across all cultures. It receives approximately 5 million visitors per year, making it one of the most visited art museums in the world — larger in collection than the Louvre.",
+      "Founded in 1870, the Met's collection spans 5,000 years of human civilization across all cultures. It receives approximately 5 million visitors per year, making it one of the most visited art museums in the world: larger in collection than the Louvre.",
     source: "Metropolitan Museum of Art Annual Report, 2023",
     color: "crimson" as const,
   },
   {
     fact: "Abstract Expressionism moved the global art center from Paris to New York",
     detail:
-      "After World War II, artists like Jackson Pollock, Mark Rothko, and Willem de Kooning created a distinctly American visual language — gestural, emotional, and monumental in scale — that established New York as the new capital of contemporary art by the early 1950s.",
-    source: "MoMA — Museum of Modern Art Archives",
+      "After World War II, artists like Jackson Pollock, Mark Rothko, and Willem de Kooning created a distinctly American visual language: gestural, emotional, and monumental in scale: that established New York as the new capital of contemporary art by the early 1950s.",
+    source: "MoMA: Museum of Modern Art Archives",
     color: "slate" as const,
   },
 ];
@@ -213,7 +213,7 @@ const SUB_PAGE_CARDS = [
   {
     href: "/art-architecture/hudson-river-school",
     title: "Hudson River School",
-    description: "America's first great art movement — painters who saw the continent as Eden.",
+    description: "America's first great art movement: painters who saw the continent as Eden.",
     badge: "FINE ART",
     imageSrc: ART_ASSETS.bierstadtYosemite.src,
     imageAlt: "Valley of the Yosemite by Albert Bierstadt, 1864",
@@ -221,7 +221,7 @@ const SUB_PAGE_CARDS = [
   {
     href: "/art-architecture/american-realism",
     title: "American Realism",
-    description: "Hopper, Homer, Eakins — an unflinching visual account of American life.",
+    description: "Hopper, Homer, Eakins: an unflinching visual account of American life.",
     badge: "FINE ART",
     imageSrc: ART_ASSETS.leutzeWashington.src,
     imageAlt: "Washington Crossing the Delaware by Emanuel Leutze",
@@ -229,7 +229,7 @@ const SUB_PAGE_CARDS = [
   {
     href: "/art-architecture/modern-pop-art",
     title: "Modern & Pop Art",
-    description: "Warhol's prints, Pollock's drips, Lichtenstein's pop icons — the American avant-garde.",
+    description: "Warhol's prints, Pollock's drips, Lichtenstein's pop icons: the American avant-garde.",
     badge: "CONTEMPORARY",
     imageSrc: ART_ASSETS.pollockConvergence.src,
     imageAlt: "Convergence by Jackson Pollock, 1952",
@@ -253,7 +253,7 @@ export default async function ArtArchitecturePage() {
   return (
     <>
       <ArtStyles />
-      {/* JSON-LD — secure: uses JSON.stringify on a hardcoded object, no user input */}
+      {/* JSON-LD: secure: uses JSON.stringify on a hardcoded object, no user input */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -299,7 +299,7 @@ export default async function ArtArchitecturePage() {
         </div>
       </section>
 
-      {/* ── PARALLAX QUOTE 1 — Frank Lloyd Wright ────────────────────────── */}
+      {/* ── PARALLAX QUOTE 1: Frank Lloyd Wright ────────────────────────── */}
       <ArtParallaxBand
         imageSrc={ART_ASSETS.chrysler.src}
         imageAlt="The Chrysler Building Art Deco Crown"
@@ -317,12 +317,12 @@ export default async function ArtArchitecturePage() {
             }}
           >
             &ldquo;{isRo
-              ? "Arhitectura este arta vie a oamenilor noștri — cultura noastră în piatră și oțel."
-              : "Architecture is the art of our life of our people — our culture in stone and steel."
+              ? "Arhitectura este arta vie a oamenilor noștri: cultura noastră în piatră și oțel."
+              : "Architecture is the art of our life of our people: our culture in stone and steel."
             }&rdquo;
           </p>
           <p className="art-text-label" style={{ color: 'var(--art-accent-copper)' }}>
-            — Frank Lloyd Wright
+           : Frank Lloyd Wright
           </p>
         </div>
       </ArtParallaxBand>
@@ -339,7 +339,7 @@ export default async function ArtArchitecturePage() {
           {(isRo
             ? [
                 "Nicio altă națiune nu a modelat mediul construit cu o ambiție mai mare. America a inventat zgârie-norii în anii 1880 și nu a încetat să construiască. De la primul turn cu cadru de oțel al lui Louis Sullivan din Chicago până la supertallurile care se înalță astăzi la peste 450 de metri în Manhattan, Statele Unite au depășit în mod constant limitele a ceea ce oțelul, betonul și sticla pot deveni.",
-                "Artele vizuale spun aceeași poveste de ambiție neobosită. Pictorii americani au inventat mișcări complet noi — peisajele romantice ale Școlii Râului Hudson, intensitatea emoțională a Expresioniștilor Abstracti, subversiunea strălucitoare a Pop Art față de cultura de consum.",
+                "Artele vizuale spun aceeași poveste de ambiție neobosită. Pictorii americani au inventat mișcări complet noi: peisajele romantice ale Școlii Râului Hudson, intensitatea emoțională a Expresioniștilor Abstracti, subversiunea strălucitoare a Pop Art față de cultura de consum.",
                 "Astăzi, Statele Unite găzduiesc mai mult de 35.000 de muzee. Smithsonian deține singur 213 milioane de artefacte în 21 de instituții. America a construit un argument arhitectural permanent pentru valoarea frumuseții.",
               ]
             : OVERVIEW_PARAGRAPHS_EN
@@ -375,14 +375,14 @@ export default async function ArtArchitecturePage() {
           </h2>
           <p className="art-text-body mb-12 max-w-xl">
             {isRo
-              ? "Treceți cu mouse-ul peste fiecare portal — fotografia trece de la alb-negru la culoare deplină pe măsură ce descoperiți fiecare epocă."
-              : "Hover each portal — the photography transitions from black-and-white to full color as you discover each era."}
+              ? "Treceți cu mouse-ul peste fiecare portal: fotografia trece de la alb-negru la culoare deplină pe măsură ce descoperiți fiecare epocă."
+              : "Hover each portal: the photography transitions from black-and-white to full color as you discover each era."}
           </p>
         </div>
         <ArtGalleryGrid tiles={GALLERY_TILES} />
       </section>
 
-      {/* ── PARALLAX QUOTE 2 — Thomas Jefferson ─────────────────────────── */}
+      {/* ── PARALLAX QUOTE 2: Thomas Jefferson ─────────────────────────── */}
       <ArtParallaxBand
         imageSrc={ART_ASSETS.bierstadtYosemite.src}
         imageAlt="Valley of the Yosemite by Albert Bierstadt, 1864"
@@ -405,17 +405,17 @@ export default async function ArtArchitecturePage() {
             }&rdquo;
           </p>
           <p className="art-text-label" style={{ color: 'var(--art-accent-copper)' }}>
-            — Thomas Jefferson
+           : Thomas Jefferson
           </p>
         </div>
       </ArtParallaxBand>
 
-      {/* ── ERA TIMELINE — horizontal pinned scroll ────────────────────── */}
+      {/* ── ERA TIMELINE: horizontal pinned scroll ────────────────────── */}
       <section style={{ background: 'var(--art-void)' }}>
         <ArtEraTimeline eras={ART_ERAS} />
       </section>
 
-      {/* ── QUOTE BREAK — Maya Lin ───────────────────────────────────────── */}
+      {/* ── QUOTE BREAK: Maya Lin ───────────────────────────────────────── */}
       <section style={{ background: 'var(--art-void)' }}>
         <ArtQuoteBreak
           quote={isRo
@@ -450,7 +450,7 @@ export default async function ArtArchitecturePage() {
             }&rdquo;
           </p>
           <p className="art-text-label" style={{ color: 'var(--art-accent-copper)' }}>
-            — Andy Warhol
+           : Andy Warhol
           </p>
           <p className="art-text-metadata mt-2">Pop Artist, Pittsburgh, 1928–1987</p>
         </div>

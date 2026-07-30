@@ -16,7 +16,7 @@ export interface BookItem {
   author: string;
   year: string;
   fileName: string;
-  // A book can appear on multiple pages — list all relevant categories.
+  // A book can appear on multiple pages: list all relevant categories.
   categories: Array<
     | "oratory-poetry"
     | "american-novel"
@@ -452,7 +452,7 @@ export const BOOK_DATABASE: BookItem[] = [
     coverBg: "linear-gradient(135deg, #1e1b4b 0%, #03001e 100%)",
     textColor: "#d8b4fe",
   },
-  // ── Previously missing — added to ensure every file in /public/assets/books is represented ──
+  // ── Previously missing: added to ensure every file in /public/assets/books is represented ──
   {
     title: "The Gettysburg Address",
     author: "Abraham Lincoln",
@@ -580,7 +580,7 @@ export function BookShowcase({
                 </div>
 
                 <div className="mt-6 flex gap-2">
-                  {/* Read in browser — opens full-screen overlay modal */}
+                  {/* Read in browser: opens full-screen overlay modal */}
                   <button
                     id={`read-book-${book.title.replace(/\s+/g, "-").toLowerCase()}`}
                     onClick={() => setReaderBook(book)}

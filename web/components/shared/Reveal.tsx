@@ -4,9 +4,9 @@
 // Scroll-triggered entrance wrapper for the cinematic pages. Server components
 // wrap any section content in <Reveal> and it animates in when scrolled into
 // view. Variants:
-//   "fade-up" (default) — opacity + 32px rise
-//   "fade"              — opacity only (safe around sticky descendants)
-//   "wipe"              — clip-path unveil from the bottom, for images/cards
+//   "fade-up" (default): opacity + 32px rise
+//   "fade"             : opacity only (safe around sticky descendants)
+//   "wipe"             : clip-path unveil from the bottom, for images/cards
 // GoldRule is the matching hairline that draws itself in like a pen stroke.
 
 import { useRef } from "react";
@@ -72,7 +72,7 @@ export function Reveal({
 // Drop-in replacement for a page-level <section> that fades up on entering
 // view. Server pages swap `<section className=...>` for `<RevealSection
 // className=...>` and the whole block animates in. Do NOT use around sticky
-// descendants (scrollytelling/pinned bands) — use a plain <section> there.
+// descendants (scrollytelling/pinned bands): use a plain <section> there.
 
 export function RevealSection({
   children,

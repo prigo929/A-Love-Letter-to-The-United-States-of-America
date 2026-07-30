@@ -1,6 +1,6 @@
 "use client";
 
-// ─── StateGdpMap — where the $30.6T actually is ──────────────────────────────
+// ─── StateGdpMap: where the $30.6T actually is ──────────────────────────────
 // A choropleth of nominal GDP by state. The reason to map this instead of listing
 // it is concentration: five states are about 41% of the national economy, and the
 // map makes that visible instantly in a way a table of 51 rows never does.

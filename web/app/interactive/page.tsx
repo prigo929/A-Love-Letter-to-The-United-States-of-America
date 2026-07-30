@@ -4,7 +4,7 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmerica } from "@/components/interactive/AskAmerica";
 
 export const metadata: Metadata = {
-  title: "Ask America — Interactive AI Oracle",
+  title: "Ask America: Interactive AI Oracle",
   description: "An interactive, pre-loaded AI Chatbot oracle powered by arguments from all 12 verticals of the American project.",
 };
 

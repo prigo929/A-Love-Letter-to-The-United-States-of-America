@@ -1,6 +1,6 @@
 // ─── Framer Motion Animation Variants ────────────────────────────────────────
 // All shared animation configs live here.
-// Import into any component — never define inline unless truly one-off.
+// Import into any component: never define inline unless truly one-off.
 //
 // Performance note: Always use viewport={{ once: true, margin: "-100px" }}
 // on motion.div to prevent re-triggering on scroll up.
@@ -11,7 +11,7 @@ import type { Variants, Transition } from "framer-motion";
 
 export const easeOutCubic: Transition = {
   duration: 0.8,
-  ease: [0.16, 1, 0.3, 1], // Custom cubic-bezier — fast then soft landing
+  ease: [0.16, 1, 0.3, 1], // Custom cubic-bezier: fast then soft landing
 };
 
 export const easeOutExpo: Transition = {
@@ -34,7 +34,7 @@ export const springBouncy: Transition = {
 
 // ─── Reveal Animations ───────────────────────────────────────────────────────
 
-/** Standard section reveal — fades up from below */
+/** Standard section reveal: fades up from below */
 export const fadeUp: Variants = {
   hidden: { opacity: 0, y: 60 },
   visible: {
@@ -73,7 +73,7 @@ export const slideInRight: Variants = {
   },
 };
 
-/** Scale up with fade — for cards and images */
+/** Scale up with fade: for cards and images */
 export const scaleUp: Variants = {
   hidden: { opacity: 0, scale: 0.92 },
   visible: {
@@ -99,7 +99,7 @@ export const heroWord: Variants = {
 
 // ─── Container / Stagger ─────────────────────────────────────────────────────
 
-/** Container that staggers children — use on grids, lists */
+/** Container that staggers children: use on grids, lists */
 export const staggerContainer: Variants = {
   hidden: {},
   visible: {
@@ -110,7 +110,7 @@ export const staggerContainer: Variants = {
   },
 };
 
-/** Slower stagger — for featured sections */
+/** Slower stagger: for featured sections */
 export const staggerSlow: Variants = {
   hidden: {},
   visible: {
@@ -121,7 +121,7 @@ export const staggerSlow: Variants = {
   },
 };
 
-/** Fast stagger — for stat bars, small items */
+/** Fast stagger: for stat bars, small items */
 export const staggerFast: Variants = {
   hidden: {},
   visible: {
@@ -134,7 +134,7 @@ export const staggerFast: Variants = {
 
 // ─── Hero Specific ────────────────────────────────────────────────────────────
 
-/** Hero container — orchestrates all hero children */
+/** Hero container: orchestrates all hero children */
 export const heroContainer: Variants = {
   hidden: {},
   visible: {
@@ -210,7 +210,7 @@ export const pageTransition: Variants = {
 
 // ─── Interactive Elements ─────────────────────────────────────────────────────
 
-/** Card hover — slight lift + scale */
+/** Card hover: slight lift + scale */
 export const cardHover = {
   rest: {
     scale: 1,

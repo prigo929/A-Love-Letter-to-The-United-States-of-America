@@ -119,7 +119,7 @@ export function SpaceForcePageProgress() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  SFSectionDivider — animated horizontal rule (Enhancement 7)
+//  SFSectionDivider: animated horizontal rule (Enhancement 7)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function SFSectionDivider() {
@@ -309,7 +309,7 @@ export function SpaceForceMetricStrip({ metrics, locale = "en" }: { metrics: Spa
                 transition={{ duration: 1.2, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
                 className="flex flex-col px-8 py-12"
               >
-                {/* Label — top */}
+                {/* Label: top */}
                 <div className="mil-text-metadata mb-6 tracking-[0.3em] font-black text-white">
                   {m.label}
                 </div>
@@ -524,7 +524,7 @@ export function SpaceForceFleetComparisonSection({ data, locale = "en" }: { data
               <p className="text-[11px] leading-[1.8] text-zinc-400 max-w-3xl">
                 {isRo
                   ? "GPS nu este doar o aplicație de hartă. Este ceasul de precizie pentru arme, rețele electrice, piețe financiare, logistică și comunicații. Space Force apără semnalul care face posibilă coordonarea modernă."
-                  : "GPS is not just a map app. It is the precision clock for weapons, power grids, financial markets, logistics, and communications. Space Force protects the signal that makes modern coordination possible."}
+                  : "GPS operates as the precision clock for weapons, power grids, financial markets, logistics, and cellular towers worldwide. Space Force protects the signal that makes modern coordination possible."}
               </p>
             </motion.div>
           )}
@@ -687,7 +687,7 @@ export function SpaceForceOperationalConsole({ theaters, locale = "en" }: { thea
         />
 
         <div className="grid overflow-hidden border border-white/[0.04] bg-[#050608] lg:grid-cols-[320px_1fr_380px] min-h-[680px]">
-          {/* Left — theater list */}
+          {/* Left: theater list */}
           <div className="flex flex-col border-b lg:border-b-0 lg:border-r border-white/[0.04] bg-black/30">
             {theaters.map((theater, index) => {
               const selected = activeIndex === index;
@@ -720,7 +720,7 @@ export function SpaceForceOperationalConsole({ theaters, locale = "en" }: { thea
             })}
           </div>
 
-          {/* Center — image */}
+          {/* Center: image */}
           <div className="relative min-h-[400px] overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
@@ -762,7 +762,7 @@ export function SpaceForceOperationalConsole({ theaters, locale = "en" }: { thea
             </div>
           </div>
 
-          {/* Right — details + Enhancement 6: pulsing signal indicator */}
+          {/* Right: details + Enhancement 6: pulsing signal indicator */}
           <div className="flex flex-col border-t lg:border-t-0 lg:border-l border-white/[0.04] bg-[#050608] p-8">
             <AnimatePresence mode="wait">
               <motion.div
@@ -836,7 +836,7 @@ export function SpaceForcePlatformShowcase({ platforms, locale = "en" }: { platf
           title={isRo ? "Arhitectura" : "Mission"}
           subtitle={isRo ? "misiunii" : "systems"}
           body={isRo
-            ? "De la GPS la avertizare rachete, comunicații protejate și acces la orbită — fiecare sistem susține modul modern de luptă american."
+            ? "De la GPS la avertizare rachete, comunicații protejate și acces la orbită: fiecare sistem susține modul modern de luptă american."
             : "From GPS to missile warning, protected communications, and access to orbit, each system underwrites modern American warfare."}
         />
 
@@ -938,7 +938,7 @@ export function SpaceForceHeritageTimeline({ events, locale = "en" }: { events: 
           title={isRo ? "Istoria" : "History"}
           subtitle={isRo ? "orbitei" : "of orbit"}
           body={isRo
-            ? "De la începutul erei spațiale la înființarea Space Force — o linie de comandă construită pentru domeniul orbital."
+            ? "De la începutul erei spațiale la înființarea Space Force: o linie de comandă construită pentru domeniul orbital."
             : "From the start of the space age to the creation of Space Force, a command lineage built for the orbital domain."}
         />
 
@@ -971,7 +971,7 @@ export function SpaceForceHeritageTimeline({ events, locale = "en" }: { events: 
                   )} />
                 </div>
 
-                {/* Card — placed on correct side */}
+                {/* Card: placed on correct side */}
                 <div className={cn(
                   "md:col-span-1",
                   isLeft ? "md:col-start-1 md:pr-8" : "md:col-start-2 md:pl-8"
@@ -1043,7 +1043,7 @@ export function SpaceForceBasesSection({ bases, locale = "en" }: { bases: SpaceF
           title={isRo ? "Infrastructură" : "Space"}
           subtitle={isRo ? "spațială" : "footprint"}
           body={isRo
-            ? "De la Colorado Springs la Vandenberg, Patrick și Los Angeles — instalațiile Space Force conectează operațiuni, lansare, avertizare și achiziție."
+            ? "De la Colorado Springs la Vandenberg, Patrick și Los Angeles: instalațiile Space Force conectează operațiuni, lansare, avertizare și achiziție."
             : "From Colorado Springs to Vandenberg, Patrick, and Los Angeles, Space Force installations connect operations, launch, warning, and acquisition."}
         />
 
@@ -1085,7 +1085,7 @@ export function SpaceForceBasesSection({ bases, locale = "en" }: { bases: SpaceF
             ))}
           </div>
 
-          {/* Detail panel — Enhancement 9: accent-tinted border */}
+          {/* Detail panel: Enhancement 9: accent-tinted border */}
           <AnimatePresence mode="wait">
             <motion.div
               key={active.name}
@@ -1136,7 +1136,7 @@ export function SpaceForceFutureStack({ programs, locale = "en" }: { programs: S
           title={isRo ? "Orbita" : "Resilient"}
           subtitle={isRo ? "rezilientă" : "orbit"}
           body={isRo
-            ? "De la GPS modernizat la OPIR next-gen, comunicații protejate și constelații proliferate — viitorul este distribuit, rezilient și rapid de reîmprospătat."
+            ? "De la GPS modernizat la OPIR next-gen, comunicații protejate și constelații proliferate: viitorul este distribuit, rezilient și rapid de reîmprospătat."
             : "From modernized GPS to next-gen OPIR, protected communications, and proliferated constellations, the future is distributed, resilient, and rapidly refreshed."}
         />
 

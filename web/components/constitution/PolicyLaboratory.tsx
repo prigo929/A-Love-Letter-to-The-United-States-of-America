@@ -1,5 +1,5 @@
 "use client";
-// ─── Policy Laboratory — "The Bloomberg Terminal" ────────────────────────────
+// ─── Policy Laboratory: "The Bloomberg Terminal" ────────────────────────────
 // Deep-dive interactive federalism simulator with 11 granular levers
 // organized into 3 ledger categories (Fiscal, Social, Regulatory).
 // Shows Top 3 + Bottom 3 matches, the US map, and outcome data.

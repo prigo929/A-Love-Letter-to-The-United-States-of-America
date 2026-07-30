@@ -89,7 +89,7 @@ export default async function GrandCanyonPage() {
     <>
       <NatStyles />
       
-      {/* ── HERO — single image cinematic entrance ───────────────────────── */}
+      {/* ── HERO: single image cinematic entrance ───────────────────────── */}
       <NatureSubPageHero
         imageSrc={SITE_IMAGES.homeGrandCanyon}
         imageAlt={isRo ? "Marele Canion la răsărit de soare" : "Grand Canyon at sunrise"}

@@ -56,7 +56,7 @@ const copyEn: BiotechCopy = {
   heroTitle: "Conquering Diseases, Mapping the Code of Life",
   heroSubtitle: "How the NIH, venture capital, and academic research labs created the modern biotechnology industry.",
   thesisTitle: "The Life Science Revolution",
-  thesisParagraph: "The United States is the undisputed global hub for biological innovation. Supported by the National Institutes of Health (NIH)—the largest public funder of biomedical research in the world—and a deep ecosystem of private capital, American scientists have mapped the human genome, pioneered gene therapies, and developed the vaccines that protect global health.",
+  thesisParagraph: "The United States is the undisputed global hub for biological innovation. Supported by the National Institutes of Health (NIH), the largest public funder of biomedical research in the world, and a deep ecosystem of private capital, American scientists have mapped the human genome, pioneered gene therapies, and developed the vaccines that protect global health.",
   milestonesTitle: "Biotech Milestones",
   milestones: [
     {
@@ -92,7 +92,7 @@ const copyEn: BiotechCopy = {
   ],
   nihLabel: "THE BIOMEDICAL RESEARCH ENGINE",
   nihTitle: "The National Institutes of Health (NIH)",
-  nihParagraph1: "The annual budget of the National Institutes of Health — the biggest funder of biomedical research in the world — is approximately $48 billion. To put this in perspective: the entire research budget of the UK Medical Research Council runs to roughly £1 billion. Germany's DFG, the main public research funder, operates at a similar scale. The NIH budget is not double or triple these figures — it is an order of magnitude larger than any comparable institution in the world.",
+  nihParagraph1: "The annual budget of the National Institutes of Health: the biggest funder of biomedical research in the world: is approximately $48 billion. To put this in perspective: the entire research budget of the UK Medical Research Council runs to roughly £1 billion. Germany's DFG, the main public research funder, operates at a similar scale. The NIH budget is not double or triple these figures: it is an order of magnitude larger than any comparable institution in the world.",
   nihParagraph2: "NIH funding has played a significant role in the dramatic increase in US life expectancy from 47.3 years in 1900 to 78.4 years today. Every dollar of NIH funding delivers $2.56 in economic activity, and in fiscal year 2024 alone the agency awarded over $36.9 billion to researchers, supporting more than 400,000 jobs and generating over $94 billion in new economic activity nationwide. The global pharmaceutical and biotechnology industries are built on discoveries seeded by NIH grants to academic researchers, frequently decades before commercial applications emerge. The NIH is, in effect, a publicly funded basic research subsidy to the entire global health industry.",
   nihSource: "National Institutes of Health (NIH)",
   nihSourceUrl: "https://www.nih.gov/about-nih/organization/budget",
@@ -118,7 +118,7 @@ const copyRo: BiotechCopy = {
   heroTitle: "Cucerirea Bolilor, Secvențierea Codului Vieții",
   heroSubtitle: "Cum au creat NIH, capitalul de risc și laboratoarele academice industria biotehnologică modernă.",
   thesisTitle: "Revoluția Științelor Vieții",
-  thesisParagraph: "Statele Unite sunt hub-ul global incontestabil pentru inovația biologică. Sprijiniți de National Institutes of Health (NIH) — cel mai mare finanțator public de cercetare biomedicală din lume — și de un ecosistem profund de capital privat, oamenii de știință americani au mapat genomul uman, au fost pionieri în terapiile genice și au dezvoltat vaccinurile care protejează sănătatea globală.",
+  thesisParagraph: "Statele Unite sunt hub-ul global incontestabil pentru inovația biologică. Sprijiniți de National Institutes of Health (NIH): cel mai mare finanțator public de cercetare biomedicală din lume: și de un ecosistem profund de capital privat, oamenii de știință americani au mapat genomul uman, au fost pionieri în terapiile genice și au dezvoltat vaccinurile care protejează sănătatea globală.",
   milestonesTitle: "Repere în Biotehnologie",
   milestones: [
     {
@@ -154,7 +154,7 @@ const copyRo: BiotechCopy = {
   ],
   nihLabel: "MOTORUL BIOMEDICAL MONDIAL",
   nihTitle: "National Institutes of Health (NIH)",
-  nihParagraph1: "Bugetul anual al National Institutes of Health (NIH) — cel mai mare finanțator de cercetare biomedicală din lume — este de aproximativ 48 de miliarde de dolari. Pentru a pune acest lucru în perspectivă: întregul buget de cercetare al Medical Research Council din Marea Britanie se ridică la aproximativ 1 miliard de lire sterline. Bugetul NIH nu este dublu sau triplu, ci cu un ordin de mărime mai mare decât al oricărei instituții de profil din lume.",
+  nihParagraph1: "Bugetul anual al National Institutes of Health (NIH): cel mai mare finanțator de cercetare biomedicală din lume: este de aproximativ 48 de miliarde de dolari. Pentru a pune acest lucru în perspectivă: întregul buget de cercetare al Medical Research Council din Marea Britanie se ridică la aproximativ 1 miliard de lire sterline. Bugetul NIH nu este dublu sau triplu, ci cu un ordin de mărime mai mare decât al oricărei instituții de profil din lume.",
   nihParagraph2: "Finanțarea NIH a avut un rol major în creșterea speranței de viață în SUA de la 47,3 ani în 1900 la 78,4 ani astăzi. Fiecare dolar investit de NIH generează 2,56 dolari în activitate economică directă. În anul fiscal 2024, agenția a acordat peste 36,9 miliarde de dolari sub formă de granturi cercetătorilor din universități, susținând peste 400.000 de locuri de muncă. Decoperirile de bază finanțate de NIH subvenționează, în esență, întreaga industrie globală de farmaceutice și biotehnologie.",
   nihSource: "National Institutes of Health (NIH)",
   nihSourceUrl: "https://www.nih.gov/about-nih/organization/budget",

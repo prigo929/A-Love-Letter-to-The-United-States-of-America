@@ -95,7 +95,7 @@ export const ART_ASSETS = {
   },
   homeInsurance: {
     src: homeInsurance.src,
-    alt: "The Home Insurance Building, Chicago, 1885 — the first skyscraper",
+    alt: "The Home Insurance Building, Chicago, 1885: the first skyscraper",
     altRo: "Home Insurance Building, Chicago, 1885",
     credit: "Home_Insurance_Building.jpg · Local Asset",
     license: "Public domain",
@@ -123,7 +123,7 @@ export const ART_ASSETS = {
   },
   coleOxbow: {
     src: coleOxbow.src,
-    alt: "The Oxbow, Thomas Cole, 1836 — Hudson River School",
+    alt: "The Oxbow, Thomas Cole, 1836: Hudson River School",
     altRo: "The Oxbow, Thomas Cole, 1836",
     credit: "Cole_The_Oxbow.jpg · Local Asset",
     license: "Public domain",
@@ -214,15 +214,15 @@ export const ART_ASSETS = {
   },
   pollockConvergence: {
     src: pollockConvergence.src,
-    alt: "Convergence, Jackson Pollock, 1952 — Abstract Expressionism",
-    altRo: "Convergence, Jackson Pollock, 1952 — Expresionism Abstract",
+    alt: "Convergence, Jackson Pollock, 1952: Abstract Expressionism",
+    altRo: "Convergence, Jackson Pollock, 1952: Expresionism Abstract",
     credit: "Convergence by Jackson Pollock 1952.jpeg · Local Asset",
     license: "Fair use / Fine art archive",
   },
   lichtensteinWhaam: {
     src: lichtensteinWhaam.src,
-    alt: "Whaam!, Roy Lichtenstein, 1963 — American Pop Art",
-    altRo: "Whaam!, Roy Lichtenstein, 1963 — Pop Art American",
+    alt: "Whaam!, Roy Lichtenstein, 1963: American Pop Art",
+    altRo: "Whaam!, Roy Lichtenstein, 1963: Pop Art American",
     credit: "Whaam! by Roy Lichtenstein.png · Local Asset",
     license: "Fair use / Fine art archive",
   },

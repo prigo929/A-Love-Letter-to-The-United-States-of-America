@@ -192,7 +192,7 @@ export function FilmHero({ imageSrc, imageAlt, videoSrc, eyebrow, titleLead, tit
         )}
       </motion.div>
 
-      {/* Black fade from top — reduced intensity */}
+      {/* Black fade from top: reduced intensity */}
       <div 
         className="absolute inset-0 pointer-events-none z-[1]" 
         style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 18%, transparent 50%)' }} 

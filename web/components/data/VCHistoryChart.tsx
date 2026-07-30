@@ -118,7 +118,7 @@ export function VCHistoryChart({ data, title, source }: VCHistoryChartProps) {
                 tickFormatter={(v) => `$${v}B`}
                 width={55}
               />
-              {/* Mark 2020 — the AI investment inflection */}
+              {/* Mark 2020: the AI investment inflection */}
               <ReferenceLine
                 x={2020}
                 stroke="rgba(232,185,35,0.25)"

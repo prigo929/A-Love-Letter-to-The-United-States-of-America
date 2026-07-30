@@ -153,7 +153,7 @@ export const GREAT_LAKES_DATA: GreatLakeData[] = [
   { lake: "Ontario",   volume: 393,  area: 7340,  maxDepth: 802,  color: "#CC9900" },
 ];
 
-// ─── Featured Parks — uses local SITE_IMAGES ──────────────────────────────────
+// ─── Featured Parks: uses local SITE_IMAGES ──────────────────────────────────
 
 export const FEATURED_PARKS_EN: NationalPark[] = [
   {
@@ -263,7 +263,7 @@ export const NATURE_HERO_STATS: NatureStat[] = [
   { id: "visitors", value: 325, suffix: "M+", label: "Annual Visits",   description: "More than the US population, every year", source: "NPS 2023", color: "white" },
 ];
 
-// ─── Sub-Page Nav Cards — uses local SITE_IMAGES where available ──────────────
+// ─── Sub-Page Nav Cards: uses local SITE_IMAGES where available ──────────────
 
 export const NATURE_SUB_PAGES: NatureSubPage[] = [
   {
@@ -590,7 +590,7 @@ export function getNatureQuotes(locale: Locale): NatureQuote[] {
     return [
       { ...NATURE_QUOTES[0], quote: "Parcurile naționale sunt cea mai bună idee pe care America a avut-o vreodată. Democratice, fără clase și gratuite. Ele ne reflectă la cel mai bun al nostru, nu la cel mai rău." },
       { ...NATURE_QUOTES[1], quote: "În fiecare plimbare cu Natura, primim mult mai mult decât căutăm. Munții cheamă și trebuie să merg." },
-      { ...NATURE_QUOTES[2], quote: "Nu poate exista nimic în lume mai frumos decât Yosemite, pădurile de sequoia și redwood, Canioanele Colorado — poporul nostru ar trebui să se asigure că sunt păstrate pentru copiii lor și copiii copiilor lor, pentru totdeauna." },
+      { ...NATURE_QUOTES[2], quote: "Nu poate exista nimic în lume mai frumos decât Yosemite, pădurile de sequoia și redwood, Canioanele Colorado: poporul nostru ar trebui să se asigure că sunt păstrate pentru copiii lor și copiii copiilor lor, pentru totdeauna." },
     ];
   }
   return NATURE_QUOTES;

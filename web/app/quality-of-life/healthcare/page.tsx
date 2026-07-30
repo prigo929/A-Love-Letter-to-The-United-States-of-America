@@ -134,9 +134,9 @@ const copyRo: HealthcareCopy = {
     "Schimbați perspectiva de la cheltuielile medicale la rezultatele tratamentelor, și sistemul de sănătate american apare ca cel mai eficient din lume pentru bolile care ucid cu adevărat.",
   thesisTitle: "Argumentul Rezultatelor",
   thesisParagraph1:
-    "Critica standard — «America cheltuiește mai mult per capita decât orice altă țară și obține rezultate mai proaste» — se prăbușește imediat când treceți de la metrici de intrare (cheltuieli) la metrici de ieșire (supraviețuire). Pentru bolile care conduc cea mai mare parte din decesele la nivel global — cancere, boli de inimă — pacienții americani supraviețuiesc în rate mai mari decât omologii lor din orice sistem european cu plată unică.",
+    "Critica standard: «America cheltuiește mai mult per capita decât orice altă țară și obține rezultate mai proaste»: se prăbușește imediat când treceți de la metrici de intrare (cheltuieli) la metrici de ieșire (supraviețuire). Pentru bolile care conduc cea mai mare parte din decesele la nivel global: cancere, boli de inimă: pacienții americani supraviețuiesc în rate mai mari decât omologii lor din orice sistem european cu plată unică.",
   thesisParagraph2:
-    "Discrepanța frecvent citată a speranței de viață este aproape în întregime explicată de factori comportamentali și structurali care nu au legătură cu calitatea îngrijirii medicale: ratele obezității, rata deceselor în accidente rutiere și violența. Când controlați acești factori — sau comparați ratele de supraviețuire pentru condiții diagnosticate — Statele Unite conduc lumea dezvoltată.",
+    "Discrepanța frecvent citată a speranței de viață este aproape în întregime explicată de factori comportamentali și structurali care nu au legătură cu calitatea îngrijirii medicale: ratele obezității, rata deceselor în accidente rutiere și violența. Când controlați acești factori: sau comparați ratele de supraviețuire pentru condiții diagnosticate: Statele Unite conduc lumea dezvoltată.",
   statsTitle: "Liderership în Sănătate în Cifre",
   stats: [
     {
@@ -149,7 +149,7 @@ const copyRo: HealthcareCopy = {
       value: "40,2",
       label: "RMN per Milion Locuitori",
       description:
-        "SUA au 40,2 unități RMN per milion de locuitori — una dintre cele mai mari densități din OCDE, permițând diagnosticare mai rapidă.",
+        "SUA au 40,2 unități RMN per milion de locuitori: una dintre cele mai mari densități din OCDE, permițând diagnosticare mai rapidă.",
     },
     {
       value: "~50%",
@@ -185,7 +185,7 @@ const copyRo: HealthcareCopy = {
     {
       icon: Pill,
       title: "Liderership în Inovație Farmaceutică",
-      body: "Marea majoritate a medicamentelor și terapiilor revoluționare provin din Statele Unite. Prețul ridicat al produselor farmaceutice din SUA subvenționează încrucișat dezvoltarea globală de medicamente — inclusiv medicamentele utilizate în sistemele europene cu plată unică la prețuri artificial scăzute. Fără profiturile farmaceutice americane, pipeline-ul de cercetare care a produs vaccinuri mRNA nu ar exista.",
+      body: "Marea majoritate a medicamentelor și terapiilor revoluționare provin din Statele Unite. Prețul ridicat al produselor farmaceutice din SUA subvenționează încrucișat dezvoltarea globală de medicamente: inclusiv medicamentele utilizate în sistemele europene cu plată unică la prețuri artificial scăzute. Fără profiturile farmaceutice americane, pipeline-ul de cercetare care a produs vaccinuri mRNA nu ar exista.",
       source: "PhRMA / FDA Annual Reports",
       sourceUrl:
         "https://www.fda.gov/patients/drug-development-process/step-4-fda-drug-review",

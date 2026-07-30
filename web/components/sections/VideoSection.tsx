@@ -49,9 +49,9 @@ export function VideoSection() {
           description:
             "Documentare cinematografice care celebrează peisajele, inovațiile și apărătorii Americii.",
           phaseNotice:
-            "★ Seria completă de documentare vine în Faza 16 — Galeria Media ★",
+            "★ Seria completă de documentare vine în Faza 16: Galeria Media ★",
           closeLabel: "Închide video-ul",
-          modalNotice: "🎬 Video-ul complet va fi disponibil în Faza 16 — Galeria Media",
+          modalNotice: "🎬 Video-ul complet va fi disponibil în Faza 16: Galeria Media",
           playPrefix: "Redă:",
         }
       : {
@@ -60,9 +60,9 @@ export function VideoSection() {
           description:
             "Cinematic documentaries celebrating America's landscapes, innovations, and defenders.",
           phaseNotice:
-            "★ Full documentary series coming in Phase 16 — Media Gallery ★",
+            "★ Full documentary series coming in Phase 16: Media Gallery ★",
           closeLabel: "Close video",
-          modalNotice: "🎬 Full video available in Phase 16 — Media Gallery",
+          modalNotice: "🎬 Full video available in Phase 16: Media Gallery",
           playPrefix: "Play:",
         };
 

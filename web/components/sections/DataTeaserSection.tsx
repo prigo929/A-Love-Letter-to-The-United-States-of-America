@@ -243,8 +243,8 @@ export function DataTeaserSection() {
       unit: "",
       source:
         locale === "ro"
-          ? "Fundația Nobel — Total istoric"
-          : "Nobel Foundation — All time",
+          ? "Fundația Nobel: Total istoric"
+          : "Nobel Foundation: All time",
       highlight:
         locale === "ro"
           ? "America a câștigat de 3 ori mai multe Nobel decât Regatul Unit, țara aflată pe locul 2"

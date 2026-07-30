@@ -1,7 +1,7 @@
 // ─── Natural Resources Page ───────────────────────────────────────────────────
 // The "macro-editorial" hub for American natural wealth, told across six pillars:
 // Energy, Renewables & Nuclear, Agriculture, Minerals, Water, and Forests & Public
-// Lands — plus a milestones timeline. Mirrors the cinematic pattern of
+// Lands: plus a milestones timeline. Mirrors the cinematic pattern of
 // app/economy/page.tsx, with an emerald accent (the site's `nature` identity).
 //
 // Beginner guide:
@@ -71,7 +71,7 @@ import {
 } from "@/lib/data/natural-resources-data";
 
 // ─── Theme ────────────────────────────────────────────────────────────────────
-const ACCENT = "#4ade80"; // emerald — the site's `nature` identity
+const ACCENT = "#4ade80"; // emerald: the site's `nature` identity
 
 const STAT_COLOR: Record<NonNullable<ResourceStat["color"]>, string> = {
   emerald: ACCENT,
@@ -767,7 +767,7 @@ export default async function NaturalResourcesPage() {
           />
         </div>
 
-        {/* The Visual Record — grouped photo gallery */}
+        {/* The Visual Record: grouped photo gallery */}
         <ResourceGallery
           categories={galleryCategories}
           eyebrow={copy.galleryEyebrow}

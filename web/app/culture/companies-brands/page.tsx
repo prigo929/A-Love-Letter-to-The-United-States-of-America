@@ -21,7 +21,7 @@ export default async function CultureCompaniesBrandsPage() {
   const content = {
     pullQuote: isRo
       ? "Brandurile americane nu vând doar produse; ele exportă sisteme de utilitate, confort și statut social."
-      : "American brands export systems of utility, comfort, and social status, not just products.",
+      : "American brands export complete systems of utility, comfort, and social status alongside their physical products.",
     body1: isRo
       ? "De la blugii Levi's purtați pe toate continentele până la sticlele conturate de Coca-Cola și designurile elegante de iPhone, companiile americane definesc interfața fizică a culturii moderne. Aceste logo-uri au depășit granițele comerciale pentru a deveni simboluri ale libertății personale și ale stilului de viață democratizat."
       : "From Levi's blue jeans worn on every continent to contoured bottles of Coca-Cola and the sleek designs of iPhones, American corporations define the physical interface of modern culture. These logos have transcended commerce to become symbols of personal freedom and democratic lifestyle.",

@@ -55,7 +55,7 @@ const copyEn: ForeignPolicyCopy = {
   washingtonQuoteAuthor: "President George Washington, Farewell Address, 1796",
   thesisTitle: "The Evolution of Global Engagement",
   thesisParagraph1: "American foreign policy has evolved from George Washington's advice of avoiding 'entangling alliances' to a posture of active, global leadership. During the twentieth century, faced with the threats of totalitarianism, the United States developed key doctrines and diplomatic frameworks (like the Marshall Plan and containment) to support sovereign democratic nations and maintain international law.",
-  thesisParagraph2: "This posture balances realism—protecting strategic trade corridors and resource flows—with idealism, which advocates for human rights, self-determination, and democratic governance worldwide. Today, U.S. diplomats operate a massive network of embassies to manage conflicts, negotiate trade agreements, and coordinate humanitarian response.",
+  thesisParagraph2: "This posture balances realism, protecting strategic trade corridors and resource flows, with idealism, which advocates for human rights, self-determination, and democratic governance worldwide. Today, U.S. diplomats operate a massive network of embassies to manage conflicts, negotiate trade agreements, and coordinate humanitarian response.",
   pillarsTitle: "Core Foundations of US Foreign Policy",
   pillars: [
     {

@@ -52,7 +52,7 @@ export default async function DamsBridgesPage() {
         heroBody:
           "Când America a vrut să crească, a turnat betonul în canioanele Vestului și a întins oțelul peste golfurile ei. Rezultatul: structuri atât de mari încât au reașezat râuri, au aprins orașe și au redefinit ce poate construi o națiune.",
         heroStats: [
-          { value: "726 ft", label: "Barajul Hoover — cel mai înalt de pe Pământ în 1936" },
+          { value: "726 ft", label: "Barajul Hoover: cel mai înalt de pe Pământ în 1936" },
           { value: "4.200 ft", label: "deschiderea principală Golden Gate" },
           { value: "6,6 mil. t", label: "beton în Barajul Hoover" },
         ],
@@ -65,8 +65,8 @@ export default async function DamsBridgesPage() {
         numbersTitle: "Măsura ambiției",
         numbersStats: [
           { value: "Lacul Mead", label: "cel mai mare rezervor din SUA ca volum, creat de Barajul Hoover" },
-          { value: "~6.809 MW", label: "Grand Coulee — cea mai mare centrală electrică din SUA" },
-          { value: "1883", label: "Podul Brooklyn — primul pod suspendat pe cabluri de oțel" },
+          { value: "~6.809 MW", label: "Grand Coulee: cea mai mare centrală electrică din SUA" },
+          { value: "1883", label: "Podul Brooklyn: primul pod suspendat pe cabluri de oțel" },
         ],
         mapTitle: "Harta Monumentelor Inginerești",
         mapIntro: "Descoperă unde se află cele mai faimoase baraje și poduri din Statele Unite. Treci peste sau atinge un punct pe hartă ca să afli detalii tehnice și istoria lui.",
@@ -140,8 +140,8 @@ export default async function DamsBridgesPage() {
         numbersTitle: "The Measure of the Ambition",
         numbersStats: [
           { value: "Lake Mead", label: "largest U.S. reservoir by volume, created by Hoover Dam" },
-          { value: "~6.809 MW", label: "Grand Coulee — the largest power station in the U.S." },
-          { value: "1883", label: "Brooklyn Bridge — the first steel-wire suspension bridge" },
+          { value: "~6.809 MW", label: "Grand Coulee: the largest power station in the U.S." },
+          { value: "1883", label: "Brooklyn Bridge: the first steel-wire suspension bridge" },
         ],
         mapTitle: "Map of Engineering Landmarks",
         mapIntro: "Locate the most famous dams and bridges across the United States. Hover or tap any marker on the map to reveal engineering facts and structural details.",

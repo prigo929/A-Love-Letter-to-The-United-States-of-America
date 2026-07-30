@@ -1,5 +1,5 @@
 "use client";
-// ─── Federalism Hook — "The Executive Dashboard" ─────────────────────────────
+// ─── Federalism Hook: "The Executive Dashboard" ─────────────────────────────
 // The main-page teaser for the Federalism deep dive.
 // 4 high-impact sliders + interactive US map + closest match summary + CTA.
 

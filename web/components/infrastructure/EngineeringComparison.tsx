@@ -4,7 +4,7 @@
 // A two-mode ranked bar chart for the Monumental Dams & Bridges page: the longest
 // suspension spans and the tallest dams in the United States. Bars grow from zero
 // via a CSS width transition on mount (not framer-motion 0→% and not whileInView,
-// both of which misbehave in Safari — see project-svg-safari-gotchas).
+// both of which misbehave in Safari: see project-svg-safari-gotchas).
 
 import { useEffect, useState } from "react";
 

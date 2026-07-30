@@ -100,7 +100,7 @@ export default async function YellowstonePage() {
     <>
       <NatStyles />
 
-      {/* ── HERO — single image cinematic entrance ───────────────────────── */}
+      {/* ── HERO: single image cinematic entrance ───────────────────────── */}
       <NatureSubPageHero
         imageSrc={SITE_IMAGES.yellowstoneNationalPark}
         imageAlt={isRo ? "Parcul Național Yellowstone" : "Yellowstone National Park"}

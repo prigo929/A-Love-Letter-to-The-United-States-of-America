@@ -494,8 +494,8 @@ export const EXPLORER_STATES: Record<string, StateData> = {
     nickname: { en: "Show Me State", ro: "Statul Arată-mi" },
     industry: { en: "Aerospace, Agriculture, Advanced Logistics", ro: "Aerospațial, Agricultură, Logistică Avansată" },
     story: {
-      en: "St. Louis is home to the Gateway Arch—standing 630 feet high as the world's tallest monument representing westward expansion.",
-      ro: "St. Louis găzduiește Arcul Gateway—un monument înalt de 192 de metri, cel mai înalt monument din lume simbolizând expansiunea spre vest."
+      en: "St. Louis is home to the Gateway Arch, standing 630 feet high as the world's tallest monument representing westward expansion.",
+      ro: "St. Louis găzduiește Arcul Gateway, un monument înalt de 192 de metri, cel mai înalt monument din lume simbolizând expansiunea spre vest."
     }
   },
   MT: {

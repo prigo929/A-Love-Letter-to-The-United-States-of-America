@@ -2,9 +2,9 @@
 
 // ─── InterstateShield ─────────────────────────────────────────────────────────
 // Renders the real AASHTO Interstate shield SVGs. Two entry points:
-//   · InterstateShield — an <img> of the static file, for HTML contexts
+//   · InterstateShield: an <img> of the static file, for HTML contexts
 //                        (legend chips, detail panel)
-//   · MapShield        — the shield drawn as NATIVE SVG paths, for the zoomable
+//   · MapShield       : the shield drawn as NATIVE SVG paths, for the zoomable
 //                        map (see below)
 //
 // The map badge is drawn from shared vector geometry rather than an <img> in a

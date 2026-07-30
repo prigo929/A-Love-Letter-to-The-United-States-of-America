@@ -154,7 +154,7 @@ export default async function TradeAndExportsPage() {
   const pageLabel = locale === "ro" ? "Comerț și Exporturi" : "Trade & Exports";
   const overviewParagraphs = getTradeOverviewParagraphs(locale);
   // Export categories come from US_EXPORTS_BY_CATEGORY, which carries its own
-  // Romanian labels — no translation map needed here.
+  // Romanian labels: no translation map needed here.
   //
   // This page used to render a second, contradictory dataset (US_EXPORT_CATEGORIES)
   // as static cards: it put pharmaceuticals at $63B and aircraft at $132B, against
@@ -329,7 +329,7 @@ export default async function TradeAndExportsPage() {
 
   // Used to scale each export bar relative to the biggest category.
 
-  // The two headline export streams — rendered as big borderless stats rather
+  // The two headline export streams: rendered as big borderless stats rather
   // than another wall of paragraphs.
   const engines = [
     { value: "$2T+", label: copy.engineGoodsLabel },
@@ -443,7 +443,7 @@ export default async function TradeAndExportsPage() {
             </div>
           </section>
 
-          {/* The balance itself — the number this page's argument has to survive */}
+          {/* The balance itself: the number this page's argument has to survive */}
           <section>
             <h2 className="macro-section-title mb-12">
               {copy.balanceTitle}
@@ -570,7 +570,7 @@ export default async function TradeAndExportsPage() {
             </div>
           </section>
 
-          {/* America vs. the world — the structural, un-copyable advantages */}
+          {/* America vs. the world: the structural, un-copyable advantages */}
           <section className="border-t border-white/5 pt-32">
             <span className="macro-eyebrow">{copy.vsEyebrow}</span>
             <h2 className="macro-section-title mt-6 mb-12">{copy.vsTitle}</h2>
@@ -605,7 +605,7 @@ export default async function TradeAndExportsPage() {
             ))}
           </section>
 
-          {/* Logistics pull-stat — one cinematic number instead of a card */}
+          {/* Logistics pull-stat: one cinematic number instead of a card */}
           <section className="border-t border-white/5 pt-32">
             <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
               <p className="font-macro-display font-black leading-none tracking-tighter text-[clamp(80px,16vw,220px)]">
@@ -615,7 +615,7 @@ export default async function TradeAndExportsPage() {
             </div>
           </section>
 
-          {/* The two engines — headline export stats, not paragraphs */}
+          {/* The two engines: headline export stats, not paragraphs */}
           <section className="border-t border-white/5 pt-32">
             <span className="macro-eyebrow">{copy.enginesEyebrow}</span>
             <h2 className="macro-section-title mt-6 mb-12">{copy.enginesTitle}</h2>

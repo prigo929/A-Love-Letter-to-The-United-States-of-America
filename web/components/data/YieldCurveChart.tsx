@@ -1,8 +1,8 @@
 "use client";
 
-// ─── YieldCurveChart — the market's own recession alarm ──────────────────────
+// ─── YieldCurveChart: the market's own recession alarm ──────────────────────
 // The 10-year Treasury yield minus the 2-year, monthly since 1976. Above zero is
-// normal: long money costs more than short money. Below zero is "inverted" — the
+// normal: long money costs more than short money. Below zero is "inverted": the
 // market betting rates must come down, which usually means it expects trouble.
 //
 // The zero line is the whole chart, so it is drawn as the axis of the story: the
@@ -51,10 +51,10 @@ export function YieldCurveChart({ data, recessions, title, subtitle, source }: Y
         spreadLabel: "10 ani minus 2 ani, puncte procentuale",
         normal: "Normal",
         inverted: "Inversat",
-        zero: "Zero — curba se aplatizează",
+        zero: "Zero: curba se aplatizează",
         volcker: "Volcker",
         recession: "Recesiune",
-        deepestLabel: "Cea mai adâncă inversiune — martie 1980",
+        deepestLabel: "Cea mai adâncă inversiune: martie 1980",
         monthsLabel: "Luni inversate din 1976",
         latestLabel: "Astăzi",
         source: "Sursă:",
@@ -63,10 +63,10 @@ export function YieldCurveChart({ data, recessions, title, subtitle, source }: Y
         spreadLabel: "10-year minus 2-year, percentage points",
         normal: "Normal",
         inverted: "Inverted",
-        zero: "Zero — the curve flattens",
+        zero: "Zero: the curve flattens",
         volcker: "Volcker",
         recession: "Recession",
-        deepestLabel: "Deepest inversion — March 1980",
+        deepestLabel: "Deepest inversion: March 1980",
         monthsLabel: "Months inverted since 1976",
         latestLabel: "Today",
         source: "Source:",

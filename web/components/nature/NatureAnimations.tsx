@@ -7,9 +7,9 @@
 // - Vast negative space, borderless design, environmental integration
 // - Inspired by: Apple environmental showcases, Rivian digital showrooms,
 //   Aman Resorts, high-end interactive spatial documentaries
-// - Typography: extreme scale contrast — massive cinematic headers paired
+// - Typography: extreme scale contrast: massive cinematic headers paired
 //   with tightly tracked minimalist metadata
-// - Motion: natural, physical gravity — fade, blur, scale via useScroll
+// - Motion: natural, physical gravity: fade, blur, scale via useScroll
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from "framer-motion";
@@ -19,7 +19,7 @@ import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import { SITE_IMAGES } from "@/lib/site-images";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 0. NatStyles — Spatial Editorial Design System
+// 0. NatStyles: Spatial Editorial Design System
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NatStyles() {
@@ -32,14 +32,14 @@ export function NatStyles() {
         --nat-elevated: #121412;
         --nat-border:   rgba(255,255,255,0.04);
 
-        /* ── Accent system — organic, never synthetic ── */
+        /* ── Accent system: organic, never synthetic ── */
         --nat-accent-earth:   #C4956A;
         --nat-accent-forest:  #4ade80;
         --nat-accent-glacier: #7DD3FC;
         --nat-accent-stone:   #8B8680;
       }
 
-      /* ── Typography — Spatial Editorial grade ── */
+      /* ── Typography: Spatial Editorial grade ── */
 
       .nat-text-display {
         font-family: var(--font-archivo);
@@ -137,7 +137,7 @@ export function NatStyles() {
 
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 1. NatureHeroCrossfade — 5-slide crossfade with Ken-Burns zoom + dots
+// 1. NatureHeroCrossfade: 5-slide crossfade with Ken-Burns zoom + dots
 // ─────────────────────────────────────────────────────────────────────────────
 
 // Uses local SITE_IMAGES for the best quality. Falls back to Unsplash only for
@@ -227,7 +227,7 @@ export function NatureHeroCrossfade({ children }: { children: React.ReactNode })
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2. ParallaxImageBand — scroll-linked full-width cinematic divider
+// 2. ParallaxImageBand: scroll-linked full-width cinematic divider
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface ParallaxImageBandProps {
@@ -260,7 +260,7 @@ export function ParallaxImageBand({ imageSrc, imageAlt, children, height = 600, 
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 3. AnimatedStatWall — borderless horizontal stat strip
+// 3. AnimatedStatWall: borderless horizontal stat strip
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface StatWallItem {
@@ -321,7 +321,7 @@ export function AnimatedStatWall({ stats }: { stats: StatWallItem[] }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 4. ParkCinematicGrid — borderless editorial park showcase
+// 4. ParkCinematicGrid: borderless editorial park showcase
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface ParkData {
@@ -368,7 +368,7 @@ export function ParkCinematicGrid({ parks, visitLabel = "Visits/yr", acresLabel 
   );
 }
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. CanyonStrataReveal — borderless geological timeline
+// 5. CanyonStrataReveal: borderless geological timeline
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function CanyonStrataReveal({ layers }: { layers: { layer: string; age: string; depth: string; color: string }[] }) {
@@ -403,7 +403,7 @@ export function CanyonStrataReveal({ layers }: { layers: { layer: string; age: s
 
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 10. HeroTextReveal — Spatial Editorial hero title
+// 10. HeroTextReveal: Spatial Editorial hero title
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function HeroTextReveal({ line1, line2, line2Color = "#4ade80", eyebrow, body, children }: {
@@ -440,7 +440,7 @@ export function HeroTextReveal({ line1, line2, line2Color = "#4ade80", eyebrow, 
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 11. RegionCardsGrid — borderless editorial region modules
+// 11. RegionCardsGrid: borderless editorial region modules
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface RegionCardData { region: string; icon: string; headline: string; stat: string; statLabel: string; description: string; }
@@ -470,7 +470,7 @@ export function RegionCardsGrid({ regions }: { regions: RegionCardData[] }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 12. NatureQuoteBreak — borderless full-width editorial quote
+// 12. NatureQuoteBreak: borderless full-width editorial quote
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NatureQuoteBreak({ quote, attribution, title }: {
@@ -489,7 +489,7 @@ export function NatureQuoteBreak({ quote, attribution, title }: {
         <p className="nat-text-section italic leading-[1.8] mb-20" style={{ fontSize: 'clamp(24px, 4vw, 48px)', fontWeight: 400, letterSpacing: '0.04em', wordSpacing: '0.1em' }}>
           &ldquo;{quote}&rdquo;
         </p>
-        <p className="nat-text-label" style={{ color: 'var(--nat-accent-earth)' }}>— {attribution}</p>
+        <p className="nat-text-label" style={{ color: 'var(--nat-accent-earth)' }}>: {attribution}</p>
         {title && <p className="nat-text-metadata mt-2">{title}</p>}
         <div className="h-px w-16 bg-white/10 mx-auto mt-12" />
       </div>
@@ -498,7 +498,7 @@ export function NatureQuoteBreak({ quote, attribution, title }: {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 13. NatureFactModule — borderless fact presentation
+// 13. NatureFactModule: borderless fact presentation
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NatureFactModule({ fact, detail, source, color = 'earth' }: {
@@ -530,7 +530,7 @@ export function NatureFactModule({ fact, detail, source, color = 'earth' }: {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 14. NatureSubPageHero — single-image cinematic hero for sub-pages
+// 14. NatureSubPageHero: single-image cinematic hero for sub-pages
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function NatureSubPageHero({ imageSrc, imageAlt, label, children }: {

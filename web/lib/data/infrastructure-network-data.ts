@@ -3,7 +3,7 @@
 // (Interstate Highways, Continental Rail, Aviation Hubs).
 //
 // Waypoints are real [longitude, latitude] pairs for the cities each corridor
-// actually passes through — routes are drawn as simplified polylines through
+// actually passes through: routes are drawn as simplified polylines through
 // them on a geoAlbersUsa projection, not surveyed alignments.
 //
 // Every statistic here is a well-documented published figure (FHWA, AAR, ACI
@@ -118,7 +118,7 @@ export const HIGHWAY_ROUTES: NetworkRoute[] = [
   {
     id: "route66",
     era: "trails",
-    name: { en: "U.S. Route 66 — The Mother Road", ro: "U.S. Route 66 — Drumul-Mamă" },
+    name: { en: "U.S. Route 66: The Mother Road", ro: "U.S. Route 66: Drumul-Mamă" },
     color: "#f87171",
     dashed: true,
     waypoints: [C.chicago, C.stLouis, C.springfieldMO, C.tulsa, C.oklahomaCity, C.amarillo, C.albuquerque, C.flagstaff, C.kingman, C.barstow, C.santaMonica],
@@ -126,8 +126,8 @@ export const HIGHWAY_ROUTES: NetworkRoute[] = [
     lengthLabel: "2,448 mi",
     year: "1926",
     description: {
-      en: "The road of the Dust Bowl migration and the great postwar vacation — Steinbeck named it the Mother Road. Bypassed mile by mile by the Interstates, it was formally decommissioned in 1985 and promptly became immortal.",
-      ro: "Drumul migrației din Dust Bowl și al marilor vacanțe postbelice — Steinbeck l-a numit Drumul-Mamă. Ocolit milă cu milă de autostrăzile interstatale, a fost desființat oficial în 1985 și a devenit imediat nemuritor.",
+      en: "The road of the Dust Bowl migration and the great postwar vacation: Steinbeck named it the Mother Road. Bypassed mile by mile by the Interstates, it was formally decommissioned in 1985 and promptly became immortal.",
+      ro: "Drumul migrației din Dust Bowl și al marilor vacanțe postbelice: Steinbeck l-a numit Drumul-Mamă. Ocolit milă cu milă de autostrăzile interstatale, a fost desființat oficial în 1985 și a devenit imediat nemuritor.",
     },
   },
   {
@@ -140,8 +140,8 @@ export const HIGHWAY_ROUTES: NetworkRoute[] = [
     lengthLabel: "3,020 mi",
     year: "1956–1992",
     description: {
-      en: "The longest Interstate — an unbroken freeway from the Atlantic to Puget Sound. Its final gap, floating bridges across Lake Washington and a tunnel under Mount Baker Ridge, closed only in the 1990s.",
-      ro: "Cea mai lungă interstatală — o autostradă neîntreruptă de la Atlantic până la Puget Sound. Ultima sa breșă, podurile plutitoare peste lacul Washington și un tunel pe sub Mount Baker Ridge, s-a închis abia în anii 1990.",
+      en: "The longest Interstate: an unbroken freeway from the Atlantic to Puget Sound. Its final gap, floating bridges across Lake Washington and a tunnel under Mount Baker Ridge, closed only in the 1990s.",
+      ro: "Cea mai lungă interstatală: o autostradă neîntreruptă de la Atlantic până la Puget Sound. Ultima sa breșă, podurile plutitoare peste lacul Washington și un tunel pe sub Mount Baker Ridge, s-a închis abia în anii 1990.",
     },
   },
   {
@@ -154,8 +154,8 @@ export const HIGHWAY_ROUTES: NetworkRoute[] = [
     lengthLabel: "2,899 mi",
     year: "1956–1986",
     description: {
-      en: "The heir of the Lincoln Highway and the Overland Trail — the central artery of the continent. Across Wyoming and Nevada it runs beside the original transcontinental railroad grade of 1869.",
-      ro: "Moștenitoarea Autostrăzii Lincoln și a traseului Overland — artera centrală a continentului. Prin Wyoming și Nevada merge chiar pe lângă terasamentul primei căi ferate transcontinentale din 1869.",
+      en: "The heir of the Lincoln Highway and the Overland Trail: the central artery of the continent. Across Wyoming and Nevada it runs beside the original transcontinental railroad grade of 1869.",
+      ro: "Moștenitoarea Autostrăzii Lincoln și a traseului Overland: artera centrală a continentului. Prin Wyoming și Nevada merge chiar pe lângă terasamentul primei căi ferate transcontinentale din 1869.",
     },
   },
   {
@@ -182,8 +182,8 @@ export const HIGHWAY_ROUTES: NetworkRoute[] = [
     lengthLabel: "2,460 mi",
     year: "1957–1990",
     description: {
-      en: "The southern transcontinental — desert, border country, oil coast and Gulf swamps in one continuous ribbon. In Houston it widens to twenty-six lanes, among the widest freeways on Earth.",
-      ro: "Transcontinentala sudică — deșert, ținut de frontieră, coasta petrolului și mlaștinile Golfului într-o singură panglică. La Houston se lărgește la douăzeci și șase de benzi, printre cele mai late autostrăzi de pe Pământ.",
+      en: "The southern transcontinental: desert, border country, oil coast and Gulf swamps in one continuous ribbon. In Houston it widens to twenty-six lanes, among the widest freeways on Earth.",
+      ro: "Transcontinentala sudică: deșert, ținut de frontieră, coasta petrolului și mlaștinile Golfului într-o singură panglică. La Houston se lărgește la douăzeci și șase de benzi, printre cele mai late autostrăzi de pe Pământ.",
     },
   },
   {
@@ -196,8 +196,8 @@ export const HIGHWAY_ROUTES: NetworkRoute[] = [
     lengthLabel: "1,908 mi",
     year: "1957–2018",
     description: {
-      en: "The spine of the Eastern Seaboard, threading fifteen states and the capital — the busiest, most economically loaded corridor in the Western Hemisphere. Its last missing link, in Pennsylvania, opened only in 2018.",
-      ro: "Coloana vertebrală a coastei de est, traversând cincisprezece state și capitala — cel mai aglomerat și mai încărcat economic coridor din emisfera vestică. Ultima sa verigă lipsă, în Pennsylvania, s-a deschis abia în 2018.",
+      en: "The spine of the Eastern Seaboard, threading fifteen states and the capital: the busiest, most economically loaded corridor in the Western Hemisphere. Its last missing link, in Pennsylvania, opened only in 2018.",
+      ro: "Coloana vertebrală a coastei de est, traversând cincisprezece state și capitala: cel mai aglomerat și mai încărcat economic coridor din emisfera vestică. Ultima sa verigă lipsă, în Pennsylvania, s-a deschis abia în 2018.",
     },
   },
   {
@@ -210,8 +210,8 @@ export const HIGHWAY_ROUTES: NetworkRoute[] = [
     lengthLabel: "2,153 mi",
     year: "1956–1992",
     description: {
-      en: "Where the System began — the first contracts of 1956 were let on I-70 in Missouri and Kansas. It crests the Rockies at 11,158 feet in the Eisenhower Tunnel and ends through Glenwood Canyon, the System's final and most beautiful mile.",
-      ro: "Aici a început Sistemul — primele contracte din 1956 s-au semnat pe I-70, în Missouri și Kansas. Trece Munții Stâncoși la 3.401 metri prin Tunelul Eisenhower și se încheie prin Glenwood Canyon, ultima și cea mai frumoasă porțiune a Sistemului.",
+      en: "Where the System began: the first contracts of 1956 were let on I-70 in Missouri and Kansas. It crests the Rockies at 11,158 feet in the Eisenhower Tunnel and ends through Glenwood Canyon, the System's final and most beautiful mile.",
+      ro: "Aici a început Sistemul: primele contracte din 1956 s-au semnat pe I-70, în Missouri și Kansas. Trece Munții Stâncoși la 3.401 metri prin Tunelul Eisenhower și se încheie prin Glenwood Canyon, ultima și cea mai frumoasă porțiune a Sistemului.",
     },
   },
   {
@@ -224,8 +224,8 @@ export const HIGHWAY_ROUTES: NetworkRoute[] = [
     lengthLabel: "1,381 mi",
     year: "1957–1979",
     description: {
-      en: "The West Coast spine, from the Mexican border to the Canadian one — the only Interstate to touch both. Everything the Pacific states grow, build and ship moves along it.",
-      ro: "Coloana vertebrală a Coastei de Vest, de la granița mexicană la cea canadiană — singura interstatală care le atinge pe amândouă. Tot ce cultivă, construiesc și expediază statele Pacificului circulă pe ea.",
+      en: "The West Coast spine, from the Mexican border to the Canadian one: the only Interstate to touch both. Everything the Pacific states grow, build and ship moves along it.",
+      ro: "Coloana vertebrală a Coastei de Vest, de la granița mexicană la cea canadiană: singura interstatală care le atinge pe amândouă. Tot ce cultivă, construiesc și expediază statele Pacificului circulă pe ea.",
     },
   },
   {
@@ -238,8 +238,8 @@ export const HIGHWAY_ROUTES: NetworkRoute[] = [
     lengthLabel: "1,433 mi",
     year: "1957–1990",
     description: {
-      en: "The desert spine of the Mountain West — San Diego to Las Vegas to Salt Lake City and on to the Montana border. On Friday evenings its Mojave stretch becomes one of the heaviest weekend corridors in the country.",
-      ro: "Coloana deșertică a Vestului Muntos — San Diego, Las Vegas, Salt Lake City și mai departe, până la granița cu Canada. Vineri seara, porțiunea sa din Mojave devine unul dintre cele mai aglomerate coridoare de weekend din țară.",
+      en: "The desert spine of the Mountain West: San Diego to Las Vegas to Salt Lake City and on to the Montana border. On Friday evenings its Mojave stretch becomes one of the heaviest weekend corridors in the country.",
+      ro: "Coloana deșertică a Vestului Muntos: San Diego, Las Vegas, Salt Lake City și mai departe, până la granița cu Canada. Vineri seara, porțiunea sa din Mojave devine unul dintre cele mai aglomerate coridoare de weekend din țară.",
     },
   },
   {
@@ -266,8 +266,8 @@ export const HIGHWAY_ROUTES: NetworkRoute[] = [
     lengthLabel: "1,062 mi",
     year: "1957–1980s",
     description: {
-      en: "The Front Range highway, running the eastern foot of the Rockies from New Mexico to Wyoming — over ground first worn in by the Santa Fe Trail and the great cattle drives.",
-      ro: "Autostrada Front Range, de-a lungul poalelor estice ale Stâncoșilor, din New Mexico până în Wyoming — pe un traseu bătătorit întâi de Drumul Santa Fe și de marile transhumanțe de vite.",
+      en: "The Front Range highway, running the eastern foot of the Rockies from New Mexico to Wyoming: over ground first worn in by the Santa Fe Trail and the great cattle drives.",
+      ro: "Autostrada Front Range, de-a lungul poalelor estice ale Stâncoșilor, din New Mexico până în Wyoming: pe un traseu bătătorit întâi de Drumul Santa Fe și de marile transhumanțe de vite.",
     },
   },
   {
@@ -280,8 +280,8 @@ export const HIGHWAY_ROUTES: NetworkRoute[] = [
     lengthLabel: "1,568 mi",
     year: "1959–1992",
     description: {
-      en: "The USMCA corridor — from Laredo, America's busiest inland port on the Mexican border, straight up the middle of the country to the Great Lakes. It famously splits into twin 35E/35W branches at both Dallas–Fort Worth and the Twin Cities.",
-      ro: "Coridorul USMCA — de la Laredo, cel mai aglomerat port interior al Americii, aflat la granița mexicană, drept prin mijlocul țării până la Marile Lacuri. Se desparte celebru în ramurile gemene 35E/35V atât la Dallas–Fort Worth, cât și la Twin Cities.",
+      en: "The USMCA corridor: from Laredo, America's busiest inland port on the Mexican border, straight up the middle of the country to the Great Lakes. It famously splits into twin 35E/35W branches at both Dallas–Fort Worth and the Twin Cities.",
+      ro: "Coridorul USMCA: de la Laredo, cel mai aglomerat port interior al Americii, aflat la granița mexicană, drept prin mijlocul țării până la Marile Lacuri. Se desparte celebru în ramurile gemene 35E/35V atât la Dallas–Fort Worth, cât și la Twin Cities.",
     },
   },
   {
@@ -294,8 +294,8 @@ export const HIGHWAY_ROUTES: NetworkRoute[] = [
     lengthLabel: "964 mi",
     year: "1958–1970s",
     description: {
-      en: "The freeway that shadows the Mississippi — and the Great Migration. It follows the path millions took from the Delta to Chicago, past Memphis and the birthplace of the blues.",
-      ro: "Autostrada care urmează fluviul Mississippi — și Marea Migrație. Merge pe drumul pe care milioane de oameni l-au străbătut din Deltă spre Chicago, pe lângă Memphis și leagănul bluesului.",
+      en: "The freeway that shadows the Mississippi: and the Great Migration. It follows the path millions took from the Delta to Chicago, past Memphis and the birthplace of the blues.",
+      ro: "Autostrada care urmează fluviul Mississippi: și Marea Migrație. Merge pe drumul pe care milioane de oameni l-au străbătut din Deltă spre Chicago, pe lângă Memphis și leagănul bluesului.",
     },
   },
   {
@@ -308,8 +308,8 @@ export const HIGHWAY_ROUTES: NetworkRoute[] = [
     lengthLabel: "887 mi",
     year: "1958–1970s",
     description: {
-      en: "Gulf to Great Lakes through Nashville, Louisville and Indianapolis — the spine of the South's auto-manufacturing alley, lined with assembly plants from Alabama to Indiana.",
-      ro: "Din Golf până la Marile Lacuri, prin Nashville, Louisville și Indianapolis — coloana vertebrală a aleii auto a Sudului, mărginită de uzine de asamblare din Alabama până în Indiana.",
+      en: "Gulf to Great Lakes through Nashville, Louisville and Indianapolis: the spine of the South's auto-manufacturing alley, lined with assembly plants from Alabama to Indiana.",
+      ro: "Din Golf până la Marile Lacuri, prin Nashville, Louisville și Indianapolis: coloana vertebrală a aleii auto a Sudului, mărginită de uzine de asamblare din Alabama până în Indiana.",
     },
   },
   {
@@ -322,8 +322,8 @@ export const HIGHWAY_ROUTES: NetworkRoute[] = [
     lengthLabel: "1,786 mi",
     year: "1957–1986",
     description: {
-      en: "From the tropics to the Canadian border at Lake Superior — the snowbird migration route, and the artery that ties Detroit's auto industry to its southern supply chain.",
-      ro: "De la tropice până la granița canadiană de la Lacul Superior — ruta migrației «snowbird» și artera care leagă industria auto din Detroit de lanțul său de aprovizionare sudic.",
+      en: "From the tropics to the Canadian border at Lake Superior: the snowbird migration route, and the artery that ties Detroit's auto industry to its southern supply chain.",
+      ro: "De la tropice până la granița canadiană de la Lacul Superior: ruta migrației «snowbird» și artera care leagă industria auto din Detroit de lanțul său de aprovizionare sudic.",
     },
   },
   {
@@ -336,8 +336,8 @@ export const HIGHWAY_ROUTES: NetworkRoute[] = [
     lengthLabel: "666 mi",
     year: "1958–1980s",
     description: {
-      en: "The boom axis of the New South — the Piedmont crescent from Atlanta through Greenville to Charlotte, where textile towns became banking and manufacturing capitals.",
-      ro: "Axa boomului Noului Sud — semiluna Piedmont de la Atlanta, prin Greenville, până la Charlotte, unde orașele textile au devenit capitale bancare și industriale.",
+      en: "The boom axis of the New South: the Piedmont crescent from Atlanta through Greenville to Charlotte, where textile towns became banking and manufacturing capitals.",
+      ro: "Axa boomului Noului Sud: semiluna Piedmont de la Atlanta, prin Greenville, până la Charlotte, unde orașele textile au devenit capitale bancare și industriale.",
     },
   },
   {
@@ -394,21 +394,21 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "up-1869",
     era: "golden",
-    name: { en: "Union Pacific — building west", ro: "Union Pacific — construind spre vest" },
+    name: { en: "Union Pacific: building west", ro: "Union Pacific: construind spre vest" },
     color: "#fbbf24",
     waypoints: [C.omaha, C.northPlatte, C.cheyenne, C.laramie, C.ogden, C.promontory],
     endpoints: { en: "Omaha → Promontory Summit", ro: "Omaha → Promontory Summit" },
     lengthLabel: "1,086 mi",
     year: "1865–1869",
     description: {
-      en: "Irish immigrants and Civil War veterans laid rail across the Plains at a running pace — through Cheyenne winters, Sioux territory and the Wyoming high desert — 1,086 miles from the Missouri River to the meeting point.",
-      ro: "Imigranți irlandezi și veterani ai Războiului Civil au așezat șine peste Marile Câmpii în pas alergător — prin iernile din Cheyenne, teritoriul Sioux și deșertul înalt din Wyoming — 1.086 de mile de la râul Missouri până la punctul de întâlnire.",
+      en: "Irish immigrants and Civil War veterans laid rail across the Plains at a running pace: through Cheyenne winters, Sioux territory and the Wyoming high desert: 1,086 miles from the Missouri River to the meeting point.",
+      ro: "Imigranți irlandezi și veterani ai Războiului Civil au așezat șine peste Marile Câmpii în pas alergător: prin iernile din Cheyenne, teritoriul Sioux și deșertul înalt din Wyoming: 1.086 de mile de la râul Missouri până la punctul de întâlnire.",
     },
   },
   {
     id: "cp-1869",
     era: "golden",
-    name: { en: "Central Pacific — building east", ro: "Central Pacific — construind spre est" },
+    name: { en: "Central Pacific: building east", ro: "Central Pacific: construind spre est" },
     color: "#f87171",
     waypoints: [C.sacramento, C.reno, C.elko, C.promontory],
     endpoints: { en: "Sacramento → Promontory Summit", ro: "Sacramento → Promontory Summit" },
@@ -457,22 +457,22 @@ export const RAIL_ROUTES: NetworkRoute[] = [
     lengthLabel: "≈1,700 mi",
     year: "1893",
     description: {
-      en: "James J. Hill's northern transcontinental — the only one built without federal land grants, and the only one that never went bankrupt. It found Marias Pass, the lowest crossing of the northern Rockies, and made Seattle a world port.",
-      ro: "Transcontinentala nordică a lui James J. Hill — singura construită fără concesiuni federale de teren și singura care n-a dat niciodată faliment. A găsit pasul Marias, cea mai joasă trecere a Stâncoșilor nordici, și a făcut din Seattle un port mondial.",
+      en: "James J. Hill's northern transcontinental: the only one built without federal land grants, and the only one that never went bankrupt. It found Marias Pass, the lowest crossing of the northern Rockies, and made Seattle a world port.",
+      ro: "Transcontinentala nordică a lui James J. Hill: singura construită fără concesiuni federale de teren și singura care n-a dat niciodată faliment. A găsit pasul Marias, cea mai joasă trecere a Stâncoșilor nordici, și a făcut din Seattle un port mondial.",
     },
   },
   {
     id: "sp-sunset",
     era: "expansion",
-    name: { en: "Southern Pacific — Sunset Route", ro: "Southern Pacific — Ruta Sunset" },
+    name: { en: "Southern Pacific: Sunset Route", ro: "Southern Pacific: Ruta Sunset" },
     color: "#34d399",
     waypoints: [C.newOrleans, C.houston, C.sanAntonio, C.elPaso, C.tucson, C.losAngeles],
     endpoints: { en: "New Orleans → Los Angeles", ro: "New Orleans → Los Angeles" },
     lengthLabel: "≈2,000 mi",
     year: "1883",
     description: {
-      en: "The all-weather southern crossing, snow-free the year round — completed when crews met at the Pecos River in 1883. It bound the Gulf ports to California two decades before the automobile existed.",
-      ro: "Traversarea sudică practicabilă tot anul, fără zăpadă — finalizată când echipele s-au întâlnit la râul Pecos, în 1883. A legat porturile Golfului de California cu două decenii înainte să existe automobilul.",
+      en: "The all-weather southern crossing, snow-free the year round: completed when crews met at the Pecos River in 1883. It bound the Gulf ports to California two decades before the automobile existed.",
+      ro: "Traversarea sudică practicabilă tot anul, fără zăpadă: finalizată când echipele s-au întâlnit la râul Pecos, în 1883. A legat porturile Golfului de California cu două decenii înainte să existe automobilul.",
     },
   },
   {
@@ -485,22 +485,22 @@ export const RAIL_ROUTES: NetworkRoute[] = [
     lengthLabel: "2,200 mi",
     year: "today",
     description: {
-      en: "The old Santa Fe main line, now the busiest freight artery on the planet — some 100+ trains a day, mostly double-stacked containers running between the San Pedro Bay ports and Chicago in under 60 hours.",
-      ro: "Vechea linie principală Santa Fe, astăzi cea mai aglomerată arteră de marfă de pe planetă — peste 100 de trenuri pe zi, majoritatea containere suprapuse, circulând între porturile San Pedro Bay și Chicago în mai puțin de 60 de ore.",
+      en: "The old Santa Fe main line, now the busiest freight artery on the planet: some 100+ trains a day, mostly double-stacked containers running between the San Pedro Bay ports and Chicago in under 60 hours.",
+      ro: "Vechea linie principală Santa Fe, astăzi cea mai aglomerată arteră de marfă de pe planetă: peste 100 de trenuri pe zi, majoritatea containere suprapuse, circulând între porturile San Pedro Bay și Chicago în mai puțin de 60 de ore.",
     },
   },
   {
     id: "up-overland",
     era: "modern",
-    name: { en: "Union Pacific — Overland Route", ro: "Union Pacific — Ruta Overland" },
+    name: { en: "Union Pacific: Overland Route", ro: "Union Pacific: Ruta Overland" },
     color: "#fbbf24",
     waypoints: [C.chicago, C.desMoines, C.omaha, C.northPlatte, C.cheyenne, C.ogden, C.elko, C.reno, C.sacramento, C.oakland],
     endpoints: { en: "Chicago ⇄ Oakland", ro: "Chicago ⇄ Oakland" },
     lengthLabel: "≈1,800 mi",
     year: "today",
     description: {
-      en: "The direct descendant of 1869, still following the original survey for hundreds of miles. At North Platte it passes through Bailey Yard — the largest railroad classification yard in the world, sorting 14,000 cars a day.",
-      ro: "Descendenta directă a liniei din 1869, urmând încă traseul original pe sute de mile. La North Platte trece prin Bailey Yard — cel mai mare triaj feroviar din lume, care sortează 14.000 de vagoane pe zi.",
+      en: "The direct descendant of 1869, still following the original survey for hundreds of miles. At North Platte it passes through Bailey Yard: the largest railroad classification yard in the world, sorting 14,000 cars a day.",
+      ro: "Descendenta directă a liniei din 1869, urmând încă traseul original pe sute de mile. La North Platte trece prin Bailey Yard: cel mai mare triaj feroviar din lume, care sortează 14.000 de vagoane pe zi.",
     },
   },
   {
@@ -513,28 +513,28 @@ export const RAIL_ROUTES: NetworkRoute[] = [
     lengthLabel: "≈2,200 mi",
     year: "today",
     description: {
-      en: "Hill's Great Northern grade at work in the container age — grain from the Dakotas and Montana moving west to Pacific export terminals, Asian imports moving east over Marias Pass.",
-      ro: "Traseul Great Northern al lui Hill, la lucru în era containerelor — cereale din Dakota și Montana spre terminalele de export ale Pacificului, importuri asiatice spre est peste pasul Marias.",
+      en: "Hill's Great Northern grade at work in the container age: grain from the Dakotas and Montana moving west to Pacific export terminals, Asian imports moving east over Marias Pass.",
+      ro: "Traseul Great Northern al lui Hill, la lucru în era containerelor: cereale din Dakota și Montana spre terminalele de export ale Pacificului, importuri asiatice spre est peste pasul Marias.",
     },
   },
   {
     id: "up-sunset",
     era: "modern",
-    name: { en: "Union Pacific — Sunset Route", ro: "Union Pacific — Ruta Sunset" },
+    name: { en: "Union Pacific: Sunset Route", ro: "Union Pacific: Ruta Sunset" },
     color: "#34d399",
     waypoints: [C.losAngeles, C.tucson, C.elPaso, C.sanAntonio, C.houston, C.newOrleans],
     endpoints: { en: "Los Angeles ⇄ New Orleans", ro: "Los Angeles ⇄ New Orleans" },
     lengthLabel: "≈2,000 mi",
     year: "today",
     description: {
-      en: "The 1883 Southern Pacific crossing, now double-tracked for the intermodal age — the freight bridge between Pacific trade and the Gulf's petrochemical coast.",
-      ro: "Traversarea Southern Pacific din 1883, acum dublată pentru era intermodală — puntea de marfă între comerțul Pacificului și coasta petrochimică a Golfului.",
+      en: "The 1883 Southern Pacific crossing, now double-tracked for the intermodal age: the freight bridge between Pacific trade and the Gulf's petrochemical coast.",
+      ro: "Traversarea Southern Pacific din 1883, acum dublată pentru era intermodală: puntea de marfă între comerțul Pacificului și coasta petrochimică a Golfului.",
     },
   },
   {
     id: "coast-starlight",
     era: "modern",
-    name: { en: "Amtrak — Coast Starlight", ro: "Amtrak — Coast Starlight" },
+    name: { en: "Amtrak: Coast Starlight", ro: "Amtrak: Coast Starlight" },
     color: "#22d3ee",
     waypoints: [C.seattle, C.portlandOR, C.sacramento, C.oakland, C.losAngeles],
     endpoints: { en: "Seattle ⇄ Los Angeles", ro: "Seattle ⇄ Los Angeles" },
@@ -548,7 +548,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "california-zephyr",
     era: "modern",
-    name: { en: "Amtrak — California Zephyr", ro: "Amtrak — California Zephyr" },
+    name: { en: "Amtrak: California Zephyr", ro: "Amtrak: California Zephyr" },
     color: "#22d3ee",
     waypoints: [C.oakland, C.sacramento, C.reno, C.elko, C.saltLake, C.denver, C.omaha, C.chicago],
     endpoints: { en: "Chicago ⇄ Emeryville (Oakland)", ro: "Chicago ⇄ Emeryville (Oakland)" },
@@ -562,7 +562,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "empire-builder",
     era: "modern",
-    name: { en: "Amtrak — Empire Builder", ro: "Amtrak — Empire Builder" },
+    name: { en: "Amtrak: Empire Builder", ro: "Amtrak: Empire Builder" },
     color: "#22d3ee",
     waypoints: [C.seattle, C.spokane, C.havre, C.minot, C.fargo, C.stPaul, C.milwaukee, C.chicago],
     endpoints: { en: "Chicago ⇄ Seattle / Portland", ro: "Chicago ⇄ Seattle / Portland" },
@@ -576,7 +576,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "southwest-chief",
     era: "modern",
-    name: { en: "Amtrak — Southwest Chief", ro: "Amtrak — Southwest Chief" },
+    name: { en: "Amtrak: Southwest Chief", ro: "Amtrak: Southwest Chief" },
     color: "#22d3ee",
     waypoints: [C.chicago, C.kansasCity, C.topeka, C.laJunta, C.albuquerque, C.flagstaff, C.needles, C.barstow, C.losAngeles],
     endpoints: { en: "Chicago ⇄ Los Angeles", ro: "Chicago ⇄ Los Angeles" },
@@ -590,7 +590,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "sunset-limited",
     era: "modern",
-    name: { en: "Amtrak — Sunset Limited", ro: "Amtrak — Sunset Limited" },
+    name: { en: "Amtrak: Sunset Limited", ro: "Amtrak: Sunset Limited" },
     color: "#22d3ee",
     waypoints: [C.newOrleans, C.houston, C.sanAntonio, C.elPaso, C.tucson, C.losAngeles],
     endpoints: { en: "New Orleans ⇄ Los Angeles", ro: "New Orleans ⇄ Los Angeles" },
@@ -604,7 +604,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "texas-eagle",
     era: "modern",
-    name: { en: "Amtrak — Texas Eagle", ro: "Amtrak — Texas Eagle" },
+    name: { en: "Amtrak: Texas Eagle", ro: "Amtrak: Texas Eagle" },
     color: "#22d3ee",
     waypoints: [C.chicago, C.stLouis, C.littleRock, C.fortWorth, C.austin, C.sanAntonio],
     endpoints: { en: "Chicago ⇄ San Antonio (Los Angeles)", ro: "Chicago ⇄ San Antonio (Los Angeles)" },
@@ -618,7 +618,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "crescent",
     era: "modern",
-    name: { en: "Amtrak — Crescent", ro: "Amtrak — Crescent" },
+    name: { en: "Amtrak: Crescent", ro: "Amtrak: Crescent" },
     color: "#22d3ee",
     waypoints: [C.nyc, C.philadelphia, C.baltimore, C.washington, C.charlotte, C.atlanta, C.birmingham, C.newOrleans],
     endpoints: { en: "New York ⇄ New Orleans", ro: "New York ⇄ New Orleans" },
@@ -632,7 +632,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "northeast-corridor",
     era: "modern",
-    name: { en: "Amtrak — Northeast Corridor", ro: "Amtrak — Northeast Corridor" },
+    name: { en: "Amtrak: Northeast Corridor", ro: "Amtrak: Northeast Corridor" },
     color: "#22d3ee",
     waypoints: [C.boston, C.nyc, C.philadelphia, C.baltimore, C.washington],
     endpoints: { en: "Boston ⇄ New York ⇄ Washington DC", ro: "Boston ⇄ New York ⇄ Washington DC" },
@@ -646,7 +646,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "cardinal",
     era: "modern",
-    name: { en: "Amtrak — Cardinal", ro: "Amtrak — Cardinal" },
+    name: { en: "Amtrak: Cardinal", ro: "Amtrak: Cardinal" },
     color: "#22d3ee",
     waypoints: [C.chicago, C.indianapolis, C.cincinnati, C.charlottesville, C.washington, C.philadelphia, C.nyc],
     endpoints: { en: "Chicago ⇄ New York", ro: "Chicago ⇄ New York" },
@@ -660,7 +660,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "city-of-new-orleans",
     era: "modern",
-    name: { en: "Amtrak — City of New Orleans", ro: "Amtrak — City of New Orleans" },
+    name: { en: "Amtrak: City of New Orleans", ro: "Amtrak: City of New Orleans" },
     color: "#22d3ee",
     waypoints: [C.chicago, C.memphis, C.jackson, C.newOrleans],
     endpoints: { en: "Chicago ⇄ Memphis ⇄ New Orleans", ro: "Chicago ⇄ Memphis ⇄ New Orleans" },
@@ -674,7 +674,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "silver-meteor",
     era: "modern",
-    name: { en: "Amtrak — Silver Meteor", ro: "Amtrak — Silver Meteor" },
+    name: { en: "Amtrak: Silver Meteor", ro: "Amtrak: Silver Meteor" },
     color: "#22d3ee",
     waypoints: [C.nyc, C.philadelphia, C.baltimore, C.washington, C.savannah, C.jacksonville, C.miami],
     endpoints: { en: "New York ⇄ Miami", ro: "New York ⇄ Miami" },
@@ -688,7 +688,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "silver-star",
     era: "modern",
-    name: { en: "Amtrak — Silver Star", ro: "Amtrak — Silver Star" },
+    name: { en: "Amtrak: Silver Star", ro: "Amtrak: Silver Star" },
     color: "#22d3ee",
     waypoints: [C.nyc, C.philadelphia, C.baltimore, C.washington, C.savannah, C.jacksonville, C.miami],
     endpoints: { en: "New York ⇄ Miami", ro: "New York ⇄ Miami" },
@@ -702,7 +702,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "auto-train",
     era: "modern",
-    name: { en: "Amtrak — Auto Train", ro: "Amtrak — Auto Train" },
+    name: { en: "Amtrak: Auto Train", ro: "Amtrak: Auto Train" },
     color: "#22d3ee",
     waypoints: [[-77.24, 38.72], [-81.28, 28.79]],
     endpoints: { en: "Lorton, VA ⇄ Sanford, FL", ro: "Lorton, VA ⇄ Sanford, FL" },
@@ -716,7 +716,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "palmetto",
     era: "modern",
-    name: { en: "Amtrak — Palmetto", ro: "Amtrak — Palmetto" },
+    name: { en: "Amtrak: Palmetto", ro: "Amtrak: Palmetto" },
     color: "#22d3ee",
     waypoints: [C.nyc, C.philadelphia, C.baltimore, C.washington, C.savannah],
     endpoints: { en: "New York ⇄ Savannah", ro: "New York ⇄ Savannah" },
@@ -730,7 +730,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "carolinian",
     era: "modern",
-    name: { en: "Amtrak — Carolinian", ro: "Amtrak — Carolinian" },
+    name: { en: "Amtrak: Carolinian", ro: "Amtrak: Carolinian" },
     color: "#22d3ee",
     waypoints: [C.nyc, C.philadelphia, C.baltimore, C.washington, C.charlotte],
     endpoints: { en: "New York ⇄ Charlotte", ro: "New York ⇄ Charlotte" },
@@ -744,7 +744,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "adirondack",
     era: "modern",
-    name: { en: "Amtrak — Adirondack", ro: "Amtrak — Adirondack" },
+    name: { en: "Amtrak: Adirondack", ro: "Amtrak: Adirondack" },
     color: "#22d3ee",
     waypoints: [C.nyc, C.albany, [-73.56, 45.50]],
     endpoints: { en: "New York ⇄ Montreal", ro: "New York ⇄ Montreal" },
@@ -758,7 +758,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "maple-leaf",
     era: "modern",
-    name: { en: "Amtrak — Maple Leaf", ro: "Amtrak — Maple Leaf" },
+    name: { en: "Amtrak: Maple Leaf", ro: "Amtrak: Maple Leaf" },
     color: "#22d3ee",
     waypoints: [C.nyc, C.albany, C.buffalo, [-79.38, 43.65]],
     endpoints: { en: "New York ⇄ Toronto", ro: "New York ⇄ Toronto" },
@@ -772,7 +772,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "pacific-surfliner",
     era: "modern",
-    name: { en: "Amtrak — Pacific Surfliner", ro: "Amtrak — Pacific Surfliner" },
+    name: { en: "Amtrak: Pacific Surfliner", ro: "Amtrak: Pacific Surfliner" },
     color: "#22d3ee",
     waypoints: [C.sanDiego, C.losAngeles, [-119.83, 34.42], [-120.62, 35.28]],
     endpoints: { en: "San Diego ⇄ San Luis Obispo", ro: "San Diego ⇄ San Luis Obispo" },
@@ -786,7 +786,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "san-joaquins",
     era: "modern",
-    name: { en: "Amtrak — San Joaquins", ro: "Amtrak — San Joaquins" },
+    name: { en: "Amtrak: San Joaquins", ro: "Amtrak: San Joaquins" },
     color: "#22d3ee",
     waypoints: [C.oakland, C.sacramento, C.stockton, [-119.78, 36.74], [-119.01, 35.37]],
     endpoints: { en: "Oakland / Sacramento ⇄ Bakersfield", ro: "Oakland / Sacramento ⇄ Bakersfield" },
@@ -800,7 +800,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "amtrak-cascades",
     era: "modern",
-    name: { en: "Amtrak — Cascades", ro: "Amtrak — Cascades" },
+    name: { en: "Amtrak: Cascades", ro: "Amtrak: Cascades" },
     color: "#22d3ee",
     waypoints: [[-122.3, 49.2], C.seattle, C.portlandOR, [-123.08, 44.05]],
     endpoints: { en: "Vancouver, BC ⇄ Seattle ⇄ Eugene", ro: "Vancouver, BC ⇄ Seattle ⇄ Eugene" },
@@ -814,7 +814,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "capitol-corridor",
     era: "modern",
-    name: { en: "Amtrak — Capitol Corridor", ro: "Amtrak — Capitol Corridor" },
+    name: { en: "Amtrak: Capitol Corridor", ro: "Amtrak: Capitol Corridor" },
     color: "#22d3ee",
     waypoints: [[-121.89, 37.33], C.oakland, C.sacramento],
     endpoints: { en: "San Jose ⇄ Oakland ⇄ Sacramento", ro: "San Jose ⇄ Oakland ⇄ Sacramento" },
@@ -828,7 +828,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "downeaster",
     era: "modern",
-    name: { en: "Amtrak — Downeaster", ro: "Amtrak — Downeaster" },
+    name: { en: "Amtrak: Downeaster", ro: "Amtrak: Downeaster" },
     color: "#22d3ee",
     waypoints: [C.boston, C.portlandME, [-69.8, 43.9]],
     endpoints: { en: "Boston ⇄ Portland ⇄ Brunswick, ME", ro: "Boston ⇄ Portland ⇄ Brunswick, ME" },
@@ -842,7 +842,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "hiawatha-service",
     era: "modern",
-    name: { en: "Amtrak — Hiawatha", ro: "Amtrak — Hiawatha" },
+    name: { en: "Amtrak: Hiawatha", ro: "Amtrak: Hiawatha" },
     color: "#22d3ee",
     waypoints: [C.chicago, C.milwaukee],
     endpoints: { en: "Chicago ⇄ Milwaukee", ro: "Chicago ⇄ Milwaukee" },
@@ -856,7 +856,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "keystone-service",
     era: "modern",
-    name: { en: "Amtrak — Keystone Service", ro: "Amtrak — Keystone Service" },
+    name: { en: "Amtrak: Keystone Service", ro: "Amtrak: Keystone Service" },
     color: "#22d3ee",
     waypoints: [[-76.88, 40.26], C.philadelphia, C.nyc],
     endpoints: { en: "Harrisburg ⇄ Philadelphia ⇄ New York", ro: "Harrisburg ⇄ Philadelphia ⇄ New York" },
@@ -870,7 +870,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "wolverine",
     era: "modern",
-    name: { en: "Amtrak — Wolverine", ro: "Amtrak — Wolverine" },
+    name: { en: "Amtrak: Wolverine", ro: "Amtrak: Wolverine" },
     color: "#22d3ee",
     waypoints: [C.chicago, C.southBend, C.toledo, [-83.05, 42.33]],
     endpoints: { en: "Chicago ⇄ Detroit ⇄ Pontiac, MI", ro: "Chicago ⇄ Detroit ⇄ Pontiac, MI" },
@@ -884,7 +884,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "piedmont",
     era: "modern",
-    name: { en: "Amtrak — Piedmont", ro: "Amtrak — Piedmont" },
+    name: { en: "Amtrak: Piedmont", ro: "Amtrak: Piedmont" },
     color: "#22d3ee",
     waypoints: [[-78.64, 35.78], C.charlotte],
     endpoints: { en: "Raleigh ⇄ Charlotte", ro: "Raleigh ⇄ Charlotte" },
@@ -898,7 +898,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "lincoln-service",
     era: "modern",
-    name: { en: "Amtrak — Lincoln Service", ro: "Amtrak — Lincoln Service" },
+    name: { en: "Amtrak: Lincoln Service", ro: "Amtrak: Lincoln Service" },
     color: "#22d3ee",
     waypoints: [C.chicago, C.stLouis],
     endpoints: { en: "Chicago ⇄ St. Louis", ro: "Chicago ⇄ St. Louis" },
@@ -912,7 +912,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "missouri-river-runner",
     era: "modern",
-    name: { en: "Amtrak — Missouri River Runner", ro: "Amtrak — Missouri River Runner" },
+    name: { en: "Amtrak: Missouri River Runner", ro: "Amtrak: Missouri River Runner" },
     color: "#22d3ee",
     waypoints: [C.stLouis, C.kansasCity],
     endpoints: { en: "St. Louis ⇄ Kansas City", ro: "St. Louis ⇄ Kansas City" },
@@ -926,7 +926,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "borealis",
     era: "modern",
-    name: { en: "Amtrak — Borealis", ro: "Amtrak — Borealis" },
+    name: { en: "Amtrak: Borealis", ro: "Amtrak: Borealis" },
     color: "#22d3ee",
     waypoints: [C.chicago, C.stPaul],
     endpoints: { en: "Chicago ⇄ St. Paul", ro: "Chicago ⇄ St. Paul" },
@@ -940,7 +940,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "hartford-line",
     era: "modern",
-    name: { en: "Amtrak — Hartford Line", ro: "Amtrak — Hartford Line" },
+    name: { en: "Amtrak: Hartford Line", ro: "Amtrak: Hartford Line" },
     color: "#22d3ee",
     waypoints: [[-72.93, 41.30], [-72.67, 41.76], [-71.06, 42.36]],
     endpoints: { en: "New Haven ⇄ Springfield", ro: "New Haven ⇄ Springfield" },
@@ -954,7 +954,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "ethan-allen-express",
     era: "modern",
-    name: { en: "Amtrak — Ethan Allen Express", ro: "Amtrak — Ethan Allen Express" },
+    name: { en: "Amtrak: Ethan Allen Express", ro: "Amtrak: Ethan Allen Express" },
     color: "#22d3ee",
     waypoints: [C.nyc, C.albany, [-73.18, 44.48]],
     endpoints: { en: "New York ⇄ Burlington, VT", ro: "New York ⇄ Burlington, VT" },
@@ -968,7 +968,7 @@ export const RAIL_ROUTES: NetworkRoute[] = [
   {
     id: "vermonter",
     era: "modern",
-    name: { en: "Amtrak — Vermonter", ro: "Amtrak — Vermonter" },
+    name: { en: "Amtrak: Vermonter", ro: "Amtrak: Vermonter" },
     color: "#22d3ee",
     waypoints: [C.washington, C.nyc, [-72.23, 44.93]],
     endpoints: { en: "Washington ⇄ St. Albans, VT", ro: "Washington ⇄ St. Albans, VT" },
@@ -1068,21 +1068,21 @@ export interface AviationHub {
 
 export const AVIATION_HUBS: AviationHub[] = [
   { code: "ATL", name: { en: "Hartsfield–Jackson Atlanta", ro: "Hartsfield–Jackson Atlanta" }, city: "Atlanta", coordinates: [-84.428, 33.641], passengers: 108.1, cargo: 0.7, note: { en: "The busiest airport on Earth almost every year since 1998. Within a two-hour flight of 80% of the U.S. population.", ro: "Cel mai aglomerat aeroport de pe Pământ aproape în fiecare an din 1998. La două ore de zbor de 80% din populația SUA." } },
-  { code: "DFW", name: { en: "Dallas/Fort Worth International", ro: "Dallas/Fort Worth International" }, city: "Dallas", coordinates: [-97.038, 32.897], passengers: 87.8, cargo: 1.0, note: { en: "Larger in land area than Manhattan — a city-state of runways with its own ZIP code.", ro: "Mai întins decât Manhattan — un oraș-stat de piste, cu propriul cod poștal." } },
-  { code: "DEN", name: { en: "Denver International", ro: "Denver International" }, city: "Denver", coordinates: [-104.673, 39.862], passengers: 82.4, cargo: 0.3, note: { en: "The largest airport site in the Western Hemisphere — 53 square miles of high plains.", ro: "Cel mai mare amplasament aeroportuar din emisfera vestică — 137 km² de câmpie înaltă." } },
-  { code: "ORD", name: { en: "Chicago O'Hare", ro: "Chicago O'Hare" }, city: "Chicago", coordinates: [-87.905, 41.979], passengers: 80.0, cargo: 1.9, note: { en: "America's great connecting machine — more scheduled destinations than any other U.S. airport.", ro: "Marea mașină de conexiuni a Americii — mai multe destinații programate decât orice alt aeroport din SUA." } },
-  { code: "LAX", name: { en: "Los Angeles International", ro: "Los Angeles International" }, city: "Los Angeles", coordinates: [-118.408, 33.942], passengers: 76.6, cargo: 2.1, note: { en: "The Pacific gateway — the transpacific passenger and cargo anchor of the Americas.", ro: "Poarta Pacificului — ancora transpacifică de pasageri și marfă a Americilor." } },
+  { code: "DFW", name: { en: "Dallas/Fort Worth International", ro: "Dallas/Fort Worth International" }, city: "Dallas", coordinates: [-97.038, 32.897], passengers: 87.8, cargo: 1.0, note: { en: "Larger in land area than Manhattan: a city-state of runways with its own ZIP code.", ro: "Mai întins decât Manhattan: un oraș-stat de piste, cu propriul cod poștal." } },
+  { code: "DEN", name: { en: "Denver International", ro: "Denver International" }, city: "Denver", coordinates: [-104.673, 39.862], passengers: 82.4, cargo: 0.3, note: { en: "The largest airport site in the Western Hemisphere: 53 square miles of high plains.", ro: "Cel mai mare amplasament aeroportuar din emisfera vestică: 137 km² de câmpie înaltă." } },
+  { code: "ORD", name: { en: "Chicago O'Hare", ro: "Chicago O'Hare" }, city: "Chicago", coordinates: [-87.905, 41.979], passengers: 80.0, cargo: 1.9, note: { en: "America's great connecting machine: more scheduled destinations than any other U.S. airport.", ro: "Marea mașină de conexiuni a Americii: mai multe destinații programate decât orice alt aeroport din SUA." } },
+  { code: "LAX", name: { en: "Los Angeles International", ro: "Los Angeles International" }, city: "Los Angeles", coordinates: [-118.408, 33.942], passengers: 76.6, cargo: 2.1, note: { en: "The Pacific gateway: the transpacific passenger and cargo anchor of the Americas.", ro: "Poarta Pacificului: ancora transpacifică de pasageri și marfă a Americilor." } },
   { code: "JFK", name: { en: "New York JFK", ro: "New York JFK" }, city: "New York", coordinates: [-73.779, 40.64], passengers: 63.2, cargo: 1.4, note: { en: "The nation's front door: more international passengers than any other U.S. airport.", ro: "Ușa din față a națiunii: mai mulți pasageri internaționali decât orice alt aeroport american." } },
-  { code: "CLT", name: { en: "Charlotte Douglas", ro: "Charlotte Douglas" }, city: "Charlotte", coordinates: [-80.949, 35.214], passengers: 58.8, cargo: 0.2, note: { en: "A banking city turned fortress hub — one airline, six runways' worth of ambition.", ro: "Un oraș bancar devenit hub-fortăreață." } },
+  { code: "CLT", name: { en: "Charlotte Douglas", ro: "Charlotte Douglas" }, city: "Charlotte", coordinates: [-80.949, 35.214], passengers: 58.8, cargo: 0.2, note: { en: "A banking city turned fortress hub: one airline, six runways' worth of ambition.", ro: "Un oraș bancar devenit hub-fortăreață." } },
   { code: "LAS", name: { en: "Las Vegas Harry Reid", ro: "Las Vegas Harry Reid" }, city: "Las Vegas", coordinates: [-115.153, 36.083], passengers: 58.5, cargo: 0.1, note: { en: "Pure origin-and-destination demand: a city in the desert reachable essentially only by air and one highway.", ro: "Cerere pură de destinație: un oraș în deșert, accesibil practic doar pe calea aerului și pe o singură autostradă." } },
   { code: "MCO", name: { en: "Orlando International", ro: "Orlando International" }, city: "Orlando", coordinates: [-81.309, 28.431], passengers: 57.2, cargo: 0.2, note: { en: "The vacation gateway of the Americas.", ro: "Poarta vacanțelor din cele două Americi." } },
-  { code: "MIA", name: { en: "Miami International", ro: "Miami International" }, city: "Miami", coordinates: [-80.291, 25.795], passengers: 56.3, cargo: 2.4, note: { en: "The hinge between the U.S. and Latin America — #1 in the nation for international freight.", ro: "Balamaua dintre SUA și America Latină — nr. 1 național la marfă internațională." } },
+  { code: "MIA", name: { en: "Miami International", ro: "Miami International" }, city: "Miami", coordinates: [-80.291, 25.795], passengers: 56.3, cargo: 2.4, note: { en: "The hinge between the U.S. and Latin America: #1 in the nation for international freight.", ro: "Balamaua dintre SUA și America Latină: nr. 1 național la marfă internațională." } },
   { code: "SEA", name: { en: "Seattle–Tacoma", ro: "Seattle–Tacoma" }, city: "Seattle", coordinates: [-122.309, 47.449], passengers: 52.6, cargo: 0.5, note: { en: "The shortest great-circle hop from the Lower 48 to Asia.", ro: "Cel mai scurt arc de cerc mare din SUA continentală către Asia." } },
   { code: "SFO", name: { en: "San Francisco International", ro: "San Francisco International" }, city: "San Francisco", coordinates: [-122.379, 37.622], passengers: 51.3, cargo: 0.5, note: { en: "Silicon Valley's runway to the world.", ro: "Pista Silicon Valley către lume." } },
   { code: "MEM", name: { en: "Memphis International", ro: "Memphis International" }, city: "Memphis", coordinates: [-89.977, 35.042], passengers: 0, cargo: 3.9, note: { en: "The FedEx SuperHub. Every night after midnight it briefly becomes the busiest airport on Earth, sorting millions of packages before dawn.", ro: "SuperHub-ul FedEx. În fiecare noapte, după miezul nopții, devine pentru scurt timp cel mai aglomerat aeroport de pe Pământ, sortând milioane de colete până în zori." } },
-  { code: "ANC", name: { en: "Anchorage Ted Stevens", ro: "Anchorage Ted Stevens" }, city: "Anchorage", coordinates: [-149.996, 61.174], passengers: 0, cargo: 3.4, note: { en: "Within 9.5 hours' flight of 90% of the industrialized world — the refueling crossroads of transpacific freight.", ro: "La 9,5 ore de zbor de 90% din lumea industrializată — răscrucea de realimentare a mărfii transpacifice." } },
-  { code: "SDF", name: { en: "Louisville Muhammad Ali", ro: "Louisville Muhammad Ali" }, city: "Louisville", coordinates: [-85.736, 38.174], passengers: 0, cargo: 3.0, note: { en: "UPS Worldport — a 5.2-million-square-foot sorting machine that handles some 400,000 packages an hour.", ro: "UPS Worldport — o mașinărie de sortare de 480.000 m² care procesează circa 400.000 de colete pe oră." } },
-  { code: "CVG", name: { en: "Cincinnati/Northern Kentucky", ro: "Cincinnati/Northern Kentucky" }, city: "Cincinnati", coordinates: [-84.668, 39.049], passengers: 0, cargo: 1.9, note: { en: "Amazon Air's primary hub and DHL's Americas gateway — the fastest-growing cargo airport in the nation.", ro: "Hub-ul principal Amazon Air și poarta DHL pentru Americi — aeroportul de marfă cu cea mai rapidă creștere din țară." } },
+  { code: "ANC", name: { en: "Anchorage Ted Stevens", ro: "Anchorage Ted Stevens" }, city: "Anchorage", coordinates: [-149.996, 61.174], passengers: 0, cargo: 3.4, note: { en: "Within 9.5 hours' flight of 90% of the industrialized world: the refueling crossroads of transpacific freight.", ro: "La 9,5 ore de zbor de 90% din lumea industrializată: răscrucea de realimentare a mărfii transpacifice." } },
+  { code: "SDF", name: { en: "Louisville Muhammad Ali", ro: "Louisville Muhammad Ali" }, city: "Louisville", coordinates: [-85.736, 38.174], passengers: 0, cargo: 3.0, note: { en: "UPS Worldport: a 5.2-million-square-foot sorting machine that handles some 400,000 packages an hour.", ro: "UPS Worldport: o mașinărie de sortare de 480.000 m² care procesează circa 400.000 de colete pe oră." } },
+  { code: "CVG", name: { en: "Cincinnati/Northern Kentucky", ro: "Cincinnati/Northern Kentucky" }, city: "Cincinnati", coordinates: [-84.668, 39.049], passengers: 0, cargo: 1.9, note: { en: "Amazon Air's primary hub and DHL's Americas gateway: the fastest-growing cargo airport in the nation.", ro: "Hub-ul principal Amazon Air și poarta DHL pentru Americi: aeroportul de marfă cu cea mai rapidă creștere din țară." } },
 ];
 
 /** Decorative overnight-sortie arcs shown in cargo mode, radiating from Memphis. */
@@ -1114,8 +1114,8 @@ export const MEGAPROJECTS: Megaproject[] = [
     stat: "363 mi",
     statLabel: { en: "dug largely by hand", ro: "săpate în mare parte manual" },
     description: {
-      en: "A ditch through the wilderness that cut freight costs between the Atlantic and the Great Lakes by more than 90% — and made New York the Empire State.",
-      ro: "Un șanț prin sălbăticie care a redus costurile de transport între Atlantic și Marile Lacuri cu peste 90% — și a făcut din New York „Statul Imperiu”.",
+      en: "A ditch through the wilderness that cut freight costs between the Atlantic and the Great Lakes by more than 90%: and made New York the Empire State.",
+      ro: "Un șanț prin sălbăticie care a redus costurile de transport între Atlantic și Marile Lacuri cu peste 90%: și a făcut din New York „Statul Imperiu”.",
     },
   },
   {
@@ -1124,15 +1124,15 @@ export const MEGAPROJECTS: Megaproject[] = [
     stat: "1,776 mi",
     statLabel: { en: "of new track, coast to interior", ro: "de cale ferată nouă" },
     description: {
-      en: "A cross-country journey of months collapsed to about a week. The two crews together laid 1,776 miles of track — a number no one planned and everyone noticed.",
-      ro: "O călătorie de luni de zile, comprimată la circa o săptămână. Cele două echipe au așezat împreună 1.776 de mile de cale ferată — un număr pe care nimeni nu l-a plănuit și toată lumea l-a remarcat.",
+      en: "A cross-country journey of months collapsed to about a week. The two crews together laid 1,776 miles of track: a number no one planned and everyone noticed.",
+      ro: "O călătorie de luni de zile, comprimată la circa o săptămână. Cele două echipe au așezat împreună 1.776 de mile de cale ferată: un număr pe care nimeni nu l-a plănuit și toată lumea l-a remarcat.",
     },
   },
   {
     year: "1883",
     name: { en: "The Brooklyn Bridge", ro: "Podul Brooklyn" },
     stat: "1,595 ft",
-    statLabel: { en: "main span — a world record", ro: "deschidere principală — record mondial" },
+    statLabel: { en: "main span: a world record", ro: "deschidere principală: record mondial" },
     description: {
       en: "The first steel-wire suspension bridge, half again longer than anything built before it. Its towers were the tallest structures in North America.",
       ro: "Primul pod suspendat pe cabluri de oțel, cu o deschidere cu jumătate mai lungă decât orice se construise înainte. Turnurile sale erau cele mai înalte structuri din America de Nord.",
@@ -1144,8 +1144,8 @@ export const MEGAPROJECTS: Megaproject[] = [
     stat: "−7,800 mi",
     statLabel: { en: "off the New York–San Francisco sea route", ro: "din ruta maritimă New York–San Francisco" },
     description: {
-      en: "Built by the U.S. Army Corps of Engineers after the French attempt collapsed — the ocean shortcut that reorganized the world's shipping lanes around American engineering.",
-      ro: "Construit de Corpul de Ingineri al Armatei SUA după eșecul tentativei franceze — scurtătura oceanică ce a reorganizat rutele maritime ale lumii în jurul ingineriei americane.",
+      en: "Built by the U.S. Army Corps of Engineers after the French attempt collapsed: the ocean shortcut that reorganized the world's shipping lanes around American engineering.",
+      ro: "Construit de Corpul de Ingineri al Armatei SUA după eșecul tentativei franceze: scurtătura oceanică ce a reorganizat rutele maritime ale lumii în jurul ingineriei americane.",
     },
   },
   {
@@ -1154,18 +1154,18 @@ export const MEGAPROJECTS: Megaproject[] = [
     stat: "3.25M yd³",
     statLabel: { en: "of concrete, two years ahead of schedule", ro: "de beton, cu doi ani înainte de termen" },
     description: {
-      en: "Enough concrete to pave a road across the continent, poured in a Depression-era canyon at 120°F — creating Lake Mead and electrifying the Southwest.",
-      ro: "Suficient beton pentru a pava un drum peste continent, turnat într-un canion în plină Mare Criză, la 49°C — creând lacul Mead și electrificând sud-vestul.",
+      en: "Enough concrete to pave a road across the continent, poured in a Depression-era canyon at 120°F: creating Lake Mead and electrifying the Southwest.",
+      ro: "Suficient beton pentru a pava un drum peste continent, turnat într-un canion în plină Mare Criză, la 49°C: creând lacul Mead și electrificând sud-vestul.",
     },
   },
   {
     year: "1937",
     name: { en: "The Golden Gate Bridge", ro: "Podul Golden Gate" },
     stat: "4,200 ft",
-    statLabel: { en: "main span — unmatched for 27 years", ro: "deschidere principală — neegalată 27 de ani" },
+    statLabel: { en: "main span: unmatched for 27 years", ro: "deschidere principală: neegalată 27 de ani" },
     description: {
-      en: "Thrown across a strait of fog, tide and open ocean that experts called unbridgeable — finished ahead of schedule and under budget, in the depths of the Depression.",
-      ro: "Aruncat peste o strâmtoare de ceață, maree și ocean deschis pe care experții o numeau imposibil de traversat — terminat înainte de termen și sub buget, în plină Mare Criză.",
+      en: "Thrown across a strait of fog, tide and open ocean that experts called unbridgeable: finished ahead of schedule and under budget, in the depths of the Depression.",
+      ro: "Aruncat peste o strâmtoare de ceață, maree și ocean deschis pe care experții o numeau imposibil de traversat: terminat înainte de termen și sub buget, în plină Mare Criză.",
     },
   },
   {
@@ -1174,8 +1174,8 @@ export const MEGAPROJECTS: Megaproject[] = [
     stat: "47,856 mi",
     statLabel: { en: "the largest public works project in history", ro: "cel mai mare proiect de lucrări publice din istorie" },
     description: {
-      en: "Forty years of construction, every state in the Union, and a continent rewired around the automobile — commerce, suburbs, logistics and all.",
-      ro: "Patruzeci de ani de construcție, fiecare stat al Uniunii și un continent recablat în jurul automobilului — comerț, suburbii și logistică deopotrivă.",
+      en: "Forty years of construction, every state in the Union, and a continent rewired around the automobile: commerce, suburbs, logistics and all.",
+      ro: "Patruzeci de ani de construcție, fiecare stat al Uniunii și un continent recablat în jurul automobilului: comerț, suburbii și logistică deopotrivă.",
     },
   },
   {
@@ -1184,8 +1184,8 @@ export const MEGAPROJECTS: Megaproject[] = [
     stat: "≈$15B",
     statLabel: { en: "the most complex urban highway ever built", ro: "cea mai complexă autostradă urbană construită vreodată" },
     description: {
-      en: "An elevated expressway buried beneath a living downtown without ever closing it — tunneling under rail lines, harbor and skyscraper foundations.",
-      ro: "O autostradă suspendată îngropată sub un centru urban viu, fără a-l închide vreodată — tuneluri pe sub linii ferate, port și fundații de zgârie-nori.",
+      en: "An elevated expressway buried beneath a living downtown without ever closing it: tunneling under rail lines, harbor and skyscraper foundations.",
+      ro: "O autostradă suspendată îngropată sub un centru urban viu, fără a-l închide vreodată: tuneluri pe sub linii ferate, port și fundații de zgârie-nori.",
     },
   },
 ];

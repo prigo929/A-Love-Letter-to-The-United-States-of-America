@@ -54,7 +54,7 @@ const copyEn: InventionsCopy = {
   heroSubtitle: "How the synergy of government research, academic freedom, and venture capital created the core technologies of the modern era.",
   thesisTitle: "The Birth of Computing and Global Systems",
   thesisParagraph1: "The second half of the 20th century saw the United States construct the fundamental building blocks of modern technological civilization. From the invention of the transistor at Bell Labs to the packet-switching networks of ARPANET and the microprocessors of Silicon Valley, American labs laid the groundwork for computing, global networks, and space-based utility systems.",
-  thesisParagraph2: "Quietly powering this digital revolution is the DARPA model: a defense agency operating with a $4 billion budget, no permanent research staff, and autonomous, short-term program managers. Born in response to Sputnik, DARPA funded ARPANET, GPS, stealth aircraft, autonomous vehicles, and mRNA vaccine platforms — yielding trillions of dollars of global economic value from a budget smaller than many mid-sized nations spend on military research.",
+  thesisParagraph2: "Quietly powering this digital revolution is the DARPA model: a defense agency operating with a $4 billion budget, no permanent research staff, and autonomous, short-term program managers. Born in response to Sputnik, DARPA funded ARPANET, GPS, stealth aircraft, autonomous vehicles, and mRNA vaccine platforms: yielding trillions of dollars of global economic value from a budget smaller than many mid-sized nations spend on military research.",
   milestonesTitle: "Foundational Digital Inventions",
   milestones: [
     {
@@ -80,7 +80,7 @@ const copyEn: InventionsCopy = {
   ],
   gpsLabel: "FREE GLOBAL UTILITY",
   gpsTitle: "GPS: America's Taxpayer-Funded Gift to Humanity",
-  gpsParagraph1: "The Global Positioning System (GPS) — the satellite constellation that every smartphone, aircraft, ocean vessel, and precision farm machine on Earth uses for navigation — was built, launched, and continues to be operated by the United States Department of Defense at American taxpayer expense.",
+  gpsParagraph1: "The Global Positioning System (GPS): the satellite constellation that every smartphone, aircraft, ocean vessel, and precision farm machine on Earth uses for navigation: was built, launched, and continues to be operated by the United States Department of Defense at American taxpayer expense.",
   gpsParagraph2: "Made completely free for worldwide civilian use by Ronald Reagan in 1983, the US maintains 31 operational satellites and continuously funds its modernization. Every taxi ride in Rome, cargo vessel in the Pacific, and delivery truck in Tokyo runs on American strategic infrastructure, generating trillions of dollars of global economic value annually without charging international users a single cent.",
   gpsSource: "Official GPS.gov / US Department of Defense",
   gpsSourceUrl: "https://www.gps.gov/systems/gps/",
@@ -101,7 +101,7 @@ const copyRo: InventionsCopy = {
   heroSubtitle: "Cum sinergia dintre cercetarea guvernamentală, libertatea academică și capitalul de risc a creat tehnologiile erei moderne.",
   thesisTitle: "Nașterea Informaticii și a Sistemelor Globale",
   thesisParagraph1: "A doua jumătate a secolului XX a văzut Statele Unite construind blocurile fundamentale ale civilizației tehnologice moderne. De la inventarea tranzistorului la Bell Labs, până la rețelele ARPANET și microprocesoarele din Silicon Valley, laboratoarele americane au pus bazele informaticii, rețelelor globale și utilităților spațiale.",
-  thesisParagraph2: "Motorul acestei revoluții este modelul DARPA: o agenție de apărare cu un buget de 4 miliarde de dolari, fără personal de cercetare permanent, care folosește manageri de program autonomi. Creată ca răspuns la Sputnik, DARPA a finanțat ARPANET, GPS, tehnologia stealth, vehiculele autonome și platformele mRNA — generând trilioane de dolari în valoare economică globală dintr-un buget redus.",
+  thesisParagraph2: "Motorul acestei revoluții este modelul DARPA: o agenție de apărare cu un buget de 4 miliarde de dolari, fără personal de cercetare permanent, care folosește manageri de program autonomi. Creată ca răspuns la Sputnik, DARPA a finanțat ARPANET, GPS, tehnologia stealth, vehiculele autonome și platformele mRNA: generând trilioane de dolari în valoare economică globală dintr-un buget redus.",
   milestonesTitle: "Invenții Digitale Fundamentale",
   milestones: [
     {
@@ -127,7 +127,7 @@ const copyRo: InventionsCopy = {
   ],
   gpsLabel: "UTILITATE GLOBALĂ GRATUITĂ",
   gpsTitle: "GPS: Cadoul Americii Oferit Gratuit Umanității",
-  gpsParagraph1: "Global Positioning System (GPS) — constelația de sateliți pe care orice smartphone, avion, navă și mașină agricolă de precizie de pe Pământ o folosește pentru navigare — a fost construită, lansată și este operată de Departamentul de Apărare al SUA pe cheltuiala contribuabililor americani.",
+  gpsParagraph1: "Global Positioning System (GPS): constelația de sateliți pe care orice smartphone, avion, navă și mașină agricolă de precizie de pe Pământ o folosește pentru navigare: a fost construită, lansată și este operată de Departamentul de Apărare al SUA pe cheltuiala contribuabililor americani.",
   gpsParagraph2: "Deschis complet gratuit pentru utilizarea civilă globală de Ronald Reagan în 1983, sistemul este menținut prin 31 de sateliți GPS activi. Fiecare cursă de Uber în Paris, navă cargo în Marea Chinei de Sud și camion de livrare în Tokyo rulează pe infrastructură americană, generând trilioane de dolari anual fără a taxa utilizatorii cu un singur cent.",
   gpsSource: "Official GPS.gov / US Department of Defense",
   gpsSourceUrl: "https://www.gps.gov/systems/gps/",

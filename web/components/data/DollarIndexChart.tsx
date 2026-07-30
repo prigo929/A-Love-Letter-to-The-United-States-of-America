@@ -1,6 +1,6 @@
 "use client";
 
-// ─── DollarIndexChart — what the dollar is actually worth ────────────────────
+// ─── DollarIndexChart: what the dollar is actually worth ────────────────────
 // The Fed's nominal broad dollar index: the dollar against a trade-weighted
 // basket of the currencies America actually trades with, monthly since the index
 // was set to 100 in January 2006.
@@ -8,7 +8,7 @@
 // This chart exists to keep the page honest. The section above it shows the
 // dollar's share of global reserves falling from ~71% to ~57%, which reads like
 // decline. This one shows the other half: the dollar's exchange value is near the
-// top of its twenty-year range. Both are true, and they are not in tension — a
+// top of its twenty-year range. Both are true, and they are not in tension: a
 // smaller share of a much larger pool of reserves, at a higher price.
 //
 // The 100 line is drawn because it is the index's own definition, not a judgement:
@@ -45,21 +45,21 @@ export function DollarIndexChart({ data, title, subtitle, source }: DollarIndexC
   const copy = ro
     ? {
         indexLabel: "Indicele dolarului (ian. 2006 = 100)",
-        baseline: "100 — nivelul din 2006",
+        baseline: "100: nivelul din 2006",
         gfc: "Criza 2008",
         covid: "COVID",
-        peakLabel: "Maximul intervalului — ianuarie 2025",
-        lowLabel: "Minimul intervalului — iulie 2011",
+        peakLabel: "Maximul intervalului: ianuarie 2025",
+        lowLabel: "Minimul intervalului: iulie 2011",
         latestLabel: "Astăzi",
         source: "Sursă:",
       }
     : {
         indexLabel: "Dollar index (Jan 2006 = 100)",
-        baseline: "100 — the 2006 level",
+        baseline: "100: the 2006 level",
         gfc: "2008 crisis",
         covid: "COVID",
-        peakLabel: "Range high — January 2025",
-        lowLabel: "Range low — July 2011",
+        peakLabel: "Range high: January 2025",
+        lowLabel: "Range low: July 2011",
         latestLabel: "Today",
         source: "Source:",
       };

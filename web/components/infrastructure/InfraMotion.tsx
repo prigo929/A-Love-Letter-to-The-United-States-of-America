@@ -2,9 +2,9 @@
 
 // ─── Infrastructure motion primitives ─────────────────────────────────────────
 // Small client-side pieces so the pages themselves can stay server components:
-//  · Reveal      — scroll-triggered fade/rise for any block
-//  · SerifLede   — large editorial-serif lede (Playfair) with a slow reveal
-//  · MegaTimeline — the megaprojects chronology with growing rules and
+//  · Reveal     : scroll-triggered fade/rise for any block
+//  · SerifLede  : large editorial-serif lede (Playfair) with a slow reveal
+//  · MegaTimeline: the megaprojects chronology with growing rules and
 //                   staggered typography reveals
 
 import { motion } from "framer-motion";
@@ -32,7 +32,7 @@ export function Reveal({
   );
 }
 
-/** Large editorial serif lede — the counterpoint to the brutalist sans. */
+/** Large editorial serif lede: the counterpoint to the brutalist sans. */
 export function SerifLede({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
     <motion.p

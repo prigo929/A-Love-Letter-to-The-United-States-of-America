@@ -22,7 +22,7 @@ import type { Locale } from "@/lib/i18n/config";
 
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 1.5 MilCountUp — High-performance numerical animator
+// 1.5 MilCountUp: High-performance numerical animator
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface MilCountUpProps {
@@ -64,7 +64,7 @@ export function MilCountUp({ to, duration = 2, prefix = "", suffix = "", decimal
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2. MilStyles — Minimalist Black-Ops Design System
+// 2. MilStyles: Minimalist Black-Ops Design System
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function MilStyles() {
@@ -78,7 +78,7 @@ export function MilStyles() {
         --mil-elevated: #111111;
         --mil-border: rgba(255,255,255,0.06);
 
-        /* ── Accent system — surgical, never decorative ── */
+        /* ── Accent system: surgical, never decorative ── */
         --mil-accent: #E8E8E8;
         --mil-accent-warm: #F5A623;
         --mil-accent-cold: #7DD3FC;
@@ -98,7 +98,7 @@ export function MilStyles() {
         -moz-osx-font-smoothing: grayscale;
       }
 
-      /* ── Typography — Apple Keynote grade ── */
+      /* ── Typography: Apple Keynote grade ── */
 
       .mil-text-display {
         font-family: var(--font-archivo);
@@ -254,7 +254,7 @@ export function GrainOverlay() { return null; }
 export function ScanLine() { return null; }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 3. MinimalistStat — ultra-thin numerical display (Tesla spec-page inspired)
+// 3. MinimalistStat: ultra-thin numerical display (Tesla spec-page inspired)
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface MinimalistStatProps {
@@ -298,7 +298,7 @@ export function MinimalistStat({ stat, index = 0, locale = "en" }: MinimalistSta
 export { MinimalistStat as HUDCounter };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 4. WeaponSystemCard — compact grid card with fullscreen dossier overlay
+// 4. WeaponSystemCard: compact grid card with fullscreen dossier overlay
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system: WeaponSystem; index?: number; locale?: Locale }) {
@@ -444,7 +444,7 @@ export function WeaponSystemCard({ system, index = 0, locale = 'en' }: { system:
   );
 }
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. BranchSelector — vertical sidebar + fullscreen image (Linear-inspired)
+// 5. BranchSelector: vertical sidebar + fullscreen image (Linear-inspired)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function BranchSelector({ branches, locale = 'en' }: { branches: MilitaryBranch[]; locale?: Locale }) {
@@ -560,7 +560,7 @@ export function BranchSelector({ branches, locale = 'en' }: { branches: Military
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 6. DARPAProgramGrid — DARPA future systems bento grid (Vercel-inspired)
+// 6. DARPAProgramGrid: DARPA future systems bento grid (Vercel-inspired)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function DARPAProgramGrid({ programs, locale = 'en' }: { programs: DARPAProgram[]; locale?: Locale }) {
@@ -698,7 +698,7 @@ export function DARPAProgramGrid({ programs, locale = 'en' }: { programs: DARPAP
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 7. NuclearTriadDiagram — interactive triad visualization
+// 7. NuclearTriadDiagram: interactive triad visualization
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface TriadLeg {
@@ -775,7 +775,7 @@ export function NuclearTriadDiagram({ triad, locale = 'en' }: { triad: { legs: T
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 8. GlobalCarrierMap — simplified carrier positions visualization
+// 8. GlobalCarrierMap: simplified carrier positions visualization
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface CarrierPos {
@@ -834,7 +834,7 @@ export function GlobalCarrierMap({ positions, locale = 'en' }: { positions: Carr
 
   return (
     <div className="relative overflow-hidden rounded-2xl border border-white/8 bg-[#04080F]">
-      {/* Map background — high-fidelity tactical SVG */}
+      {/* Map background: high-fidelity tactical SVG */}
       <div className="relative" style={{ paddingBottom: "48.25%" }}>
         <div className="absolute inset-0">
           <Image
@@ -956,7 +956,7 @@ export function GlobalCarrierMap({ positions, locale = 'en' }: { positions: Carr
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 9. ParallaxMilitaryHero — 3-stage cinematic reveal (Apple Keynote-grade)
+// 9. ParallaxMilitaryHero: 3-stage cinematic reveal (Apple Keynote-grade)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function ParallaxMilitaryHero({
@@ -1125,7 +1125,7 @@ export function ParallaxMilitaryHero({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// VideoMilitaryHero — cinematic looping video hero (B-2 Spirit / Air Force)
+// VideoMilitaryHero: cinematic looping video hero (B-2 Spirit / Air Force)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function VideoMilitaryHero({
@@ -1261,7 +1261,7 @@ export function VideoMilitaryHero({
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 10. BudgetComparisonBar — animated defense budget comparison
+// 10. BudgetComparisonBar: animated defense budget comparison
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function BudgetComparisonBar({ 
@@ -1463,7 +1463,7 @@ export function BudgetComparisonBar({
 
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 15. ParticleCanvas — cinematic background particles
+// 15. ParticleCanvas: cinematic background particles
 // ─────────────────────────────────────────────────────────────────────────────
 
 export function ParticleCanvas() {
@@ -1632,7 +1632,7 @@ export function IntelligenceNetworkMap({ agencies, locale = "en" }: { agencies: 
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8 w-full items-start">
-      {/* Clean Grid of Agency Cards — fixed min-height so grid never reflows */}
+      {/* Clean Grid of Agency Cards: fixed min-height so grid never reflows */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {agencies.map((agency) => {
           const activeNode = active === agency.id;
@@ -1672,7 +1672,7 @@ export function IntelligenceNetworkMap({ agencies, locale = "en" }: { agencies: 
         })}
       </div>
 
-      {/* Details Panel — fixed height so it never shifts when switching agencies */}
+      {/* Details Panel: fixed height so it never shifts when switching agencies */}
       <div className="mil-glass p-8 md:p-10 relative overflow-hidden rounded-3xl min-h-[540px] flex flex-col">
         <AnimatePresence mode="wait">
           <motion.div

@@ -356,7 +356,7 @@ export default async function DollarDominancePage() {
             </div>
           </section>
 
-          {/* Featured pull-stat — one cinematic number instead of a card wall */}
+          {/* Featured pull-stat: one cinematic number instead of a card wall */}
           <section className="border-t border-white/5 pt-32">
             <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
               <p className="font-macro-display font-black leading-none tracking-tighter text-[clamp(72px,15vw,200px)]">
@@ -366,7 +366,7 @@ export default async function DollarDominancePage() {
             </div>
           </section>
 
-          {/* Dominance, in numbers — headline stat trio */}
+          {/* Dominance, in numbers: headline stat trio */}
           <section className="border-t border-white/5 pt-32">
             <span className="macro-eyebrow">{copy.detailEyebrow}</span>
             <h2 className="macro-section-title mt-6 mb-16">{copy.detailTitle}</h2>

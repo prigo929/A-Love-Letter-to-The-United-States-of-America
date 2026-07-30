@@ -7,7 +7,7 @@
 // - If you want to change the text/images inside a section, edit that section's
 //   data file or component instead of this file.
 //
-// Server Component — all client components imported as leaves.
+// Server Component: all client components imported as leaves.
 
 import type { Metadata } from "next";
 import { HeroSection } from "@/components/sections/HeroSection";
@@ -81,16 +81,16 @@ export default function HomePage() {
       {/* Section 1: Cinematic hero */}
       <HeroSection />
 
-      {/* Section 2: Opening statement — parchment background, editorial quote */}
+      {/* Section 2: Opening statement: parchment background, editorial quote */}
       <OpeningStatement />
 
-      {/* Section 3: Key stats bar — 6 animated counters */}
+      {/* Section 3: Key stats bar: 6 animated counters */}
       <StatBar />
 
-      {/* Section 4: Section navigation cards — 10 major sections */}
+      {/* Section 4: Section navigation cards: 10 major sections */}
       <SectionGrid />
 
-      {/* Section 5: Why America — four editorial feature blocks */}
+      {/* Section 5: Why America: four editorial feature blocks */}
       <WhyAmericaSection />
 
       {/* Section 6: Interactive map preview */}
@@ -102,13 +102,13 @@ export default function HomePage() {
       {/* Section 8: Data teaser charts */}
       <DataTeaserSection />
 
-      {/* Section 9: Quote carousel — Lincoln, Reagan, Einstein, JFK */}
+      {/* Section 9: Quote carousel: Lincoln, Reagan, Einstein, JFK */}
       <QuoteCarousel />
 
       {/* Section 10: Gallery preview */}
       <GalleryPreviewSection />
 
-      {/* Section 11: Newsletter signup — Supabase connected */}
+      {/* Section 11: Newsletter signup: Supabase connected */}
       <NewsletterSection />
     </div>
   );
