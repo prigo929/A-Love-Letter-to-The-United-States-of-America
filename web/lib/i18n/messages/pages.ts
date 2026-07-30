@@ -730,7 +730,7 @@ const qolCopyEn: QualityOfLifeCopy = {
     {
       title: "General Aviation & Private Skies",
       description:
-        "The US general aviation fleet has over 220,000 active aircraft — representing 42% of the global fleet, dwarfing other major nations.",
+        "The US general aviation fleet has over 220,000 active aircraft, representing 42% of the global fleet and dwarfing every other nation.",
       source: "Aircraft Owners and Pilots Association (AOPA)",
       sourceUrl: "https://download.aopa.org/Media/General-Aviation-Explained-r5.pdf",
     },
@@ -744,7 +744,7 @@ const qolCopyEn: QualityOfLifeCopy = {
     {
       title: "Self-Storage Facility Density",
       description:
-        "The US holds 90% of the world's self-storage inventory, with over 50,000 facilities — more than McDonald's, Starbucks, and Subway combined.",
+        "The US holds 90% of the world's self-storage inventory, with over 50,000 facilities, more locations than McDonald's, Starbucks, and Subway combined.",
       source: "SpareFoot Industry Statistics",
       sourceUrl: "https://www.sparefoot.com/self-storage/news/1432-self-storage-industry-statistics/",
     },
@@ -758,13 +758,13 @@ const qolCopyEn: QualityOfLifeCopy = {
     {
       title: "The Public Library System",
       description:
-        "The US operates over 17,000 public library outlets — more than the number of McDonald's locations globally. Free to any resident with a library card, these institutions lend over 1.3 billion items annually.",
+        "The US operates over 17,000 public library outlets, surpassing the total number of McDonald's locations worldwide. Free to any resident with a library card, they lend over 1.3 billion items annually.",
       source: "American Library Association (ALA)",
       sourceUrl: "https://www.ala.org/tools/libfactsheets/olfacts01",
     },
     {
       title: "10.7 Million Swimming Pools: Democratized Luxury",
-      description: "There are approximately 10.7 million swimming pools in the United States (10.4M residential, 309k public). A private in-ground pool — a luxury item in any other country — is a standard middle-class feature across the Sunbelt. Florida has 1.59 million residential pools (1 for every 14 residents) and Arizona has 1 for every 13 residents, dwarfing Germany (1.5M) and France (3.2M) relative to their populations.",
+      description: "There are approximately 10.7 million swimming pools in the United States (10.4M residential, 309k public). A private in-ground pool, treated as luxury anywhere else, is a standard middle-class feature across the Sunbelt. Florida has 1.59 million residential pools (1 for every 14 residents) and Arizona has 1 for every 13, dwarfing Germany (1.5M) and France (3.2M) relative to their populations.",
       source: "Pool Research 2024",
       sourceUrl: "https://poolresearch.com/statistics/",
     },
@@ -791,7 +791,7 @@ const qolCopyEn: QualityOfLifeCopy = {
   incomeSubtitle:
     "How the American middle class compounds wealth and voluntarily supports communities.",
   incomeParagraph1:
-    "The United States consistently has the highest Household Net Adjusted Disposable Income in the OECD. More importantly, when measuring Actual Individual Consumption (AIC) — which details all goods and services actually consumed by households, including those funded by the state — the US stands alone.",
+    "The United States consistently ranks first in Household Net Adjusted Disposable Income in the OECD. When measuring Actual Individual Consumption (AIC), counting all goods and services actually consumed by households including those funded by the state, the US stands alone.",
   incomeParagraph2:
     "Even the poorest US states have higher real consumption levels than major Western European countries like the UK, France, or Germany. This consumer power is matched by a culture of private charity: Americans voluntarily donate a massive percentage of their income to local causes and international aid, consistently ranking at the absolute top of the World Giving Index.",
   incomeItems: [
@@ -814,7 +814,7 @@ const qolCopyEn: QualityOfLifeCopy = {
   healthcareTitle: "Healthcare Quality: Focus on Outcomes",
   healthcareSubtitle: "Catching conditions earlier and leading in survival rates.",
   healthcareParagraph:
-    "The reflexive critique is that America 'spends more and gets less' — but this collapses when shifting from input spending metrics to actual treatment outcomes. For the diseases that claim lives in large numbers, the United States leads the developed world in 5-year survival rates.",
+    "The reflexive critique is that America 'spends more and gets less.' This collapses when you shift from input spending metrics to actual treatment outcomes. For the diseases that claim lives in large numbers, the United States leads the developed world in 5-year survival rates.",
   healthcareItems: [
     {
       title: "Leading Cancer Survival Rates",
@@ -835,7 +835,7 @@ const qolCopyEn: QualityOfLifeCopy = {
     {
       title: "Contextualizing Life Expectancy Stats",
       description:
-        "The oft-cited life expectancy gap is almost entirely explained by lifestyle factors — obesity, vehicular accidents, and violent crime — rather than the quality of medical delivery itself. When it comes to treatment, the quality of care remains unmatched.",
+        "The oft-cited life expectancy gap is almost entirely explained by lifestyle factors: obesity, vehicular accidents, and violent crime, rather than the quality of medical delivery. On treatment outcomes specifically, American care consistently leads.",
       source: "COSM Study / AEI Research",
       sourceUrl:
         "https://cosm.aei.org/is-the-us-really-an-outlier-on-pregnancy-deaths-and-have-such-deaths-spiked/",
@@ -864,12 +864,12 @@ const qolCopyEn: QualityOfLifeCopy = {
   luxuryLabel: "DEMOCRATIZED LUXURY",
   outdoorLabel: "OUTDOOR FREEDOM",
   outdoorTitle: "America in the Wild",
-  outdoorDescription: "17 million recreational boats, thousands of campgrounds, millions of acres of public land, and the freedom to go. Hunting, fishing, sailing, hiking — outdoor recreation is not a privilege here; it's part of the baseline standard of living.",
+  outdoorDescription: "17 million recreational boats, thousands of campgrounds, millions of acres of public land, and the freedom to go. Hunting, fishing, sailing, hiking: outdoor recreation is built into the baseline standard of living.",
   citiesLabel: "CITIES OF AMERICA",
-  citiesDesc: "Coast to coast — vibrant metropolises, state capitals, and thriving mid-size cities that define American urban life.",
+  citiesDesc: "Coast to coast: vibrant metropolises, state capitals, and thriving mid-size cities that define American urban life.",
   aerialLabel: "AMERICA FROM ABOVE",
   aerialTitle: "Cities at Altitude",
-  aerialDesc: "From 1,000 feet up, America's great cities reveal their true scale — engineered grids of steel, glass, and water that pulse with the nation's economic and cultural energy.",
+  aerialDesc: "At 1,000 feet up, America's great cities reveal their true scale: engineered grids of steel, glass, and water pulsing with economic and cultural energy.",
   lakeCaption: "Chicago at Twilight — Lake Michigan",
   manhattanCaption: "Midtown Manhattan — Golden Hour",
   nycTopDownCaption: "NYC Midtown — Top Down",
@@ -977,7 +977,7 @@ const qolCopyRo: QualityOfLifeCopy = {
     {
       title: "Aviația Generală și Cerul Privat",
       description:
-        "Flota de aviație civilă din SUA numără 220.000 de aeronave înregistrate — 42% din flota globală, depășind masiv China (5.366) și Canada (4.888).",
+        "Flota de aviație civilă din SUA numără 220.000 de aeronave înregistrate, reprezentând 42% din flota globală și depășind masiv China (5.366) și Canada (4.888).",
       source: "Aircraft Owners and Pilots Association (AOPA)",
       sourceUrl: "https://download.aopa.org/Media/General-Aviation-Explained-r5.pdf",
     },
@@ -991,7 +991,7 @@ const qolCopyRo: QualityOfLifeCopy = {
     {
       title: "Civilizația Depozitării Personale (Self-Storage)",
       description:
-        "SUA dețin 90% din stocul global de spații de depozitare personală, cu peste 50.000 de facilități — mai multe decât locațiile McDonald's, Starbucks și Subway la un loc.",
+        "SUA dețin 90% din stocul global de spații de depozitare personală, cu peste 50.000 de facilități, mai multe decât locațiile McDonald's, Starbucks și Subway la un loc.",
       source: "SpareFoot Industry Statistics",
       sourceUrl: "https://www.sparefoot.com/self-storage/news/1432-self-storage-industry-statistics/",
     },
@@ -1005,7 +1005,7 @@ const qolCopyRo: QualityOfLifeCopy = {
     {
       title: "Sistemul Bibliotecilor Publice",
       description:
-        "SUA operează peste 17.000 de biblioteci publice — mai multe decât numărul total de locații McDonald's la nivel global. Gratuite pentru rezidenți, ele împrumută peste 1,3 miliarde de materiale anual.",
+        "SUA operează peste 17.000 de biblioteci publice, mai multe decât numărul total de locații McDonald's la nivel global. Gratuite pentru rezidenți, ele împrumută peste 1,3 miliarde de materiale anual.",
       source: "American Library Association (ALA)",
       sourceUrl: "https://www.ala.org/tools/libfactsheets/olfacts01",
     },
@@ -1037,7 +1037,7 @@ const qolCopyRo: QualityOfLifeCopy = {
   incomeTitle: "Venit Disponibil și Generozitate Privată",
   incomeSubtitle: "Cum își consolidează averea clasa de mijloc și cum susține comunitățile.",
   incomeParagraph1:
-    "Statele Unite au constant cel mai mare Venit Disponibil Net Ajustat al Gospodăriilor din OCDE. Mai important, în ceea ce privește Consumul Individual Real (AIC) — care măsoară toate bunurile și serviciile consumate efectiv de gospodării — SUA este fără rival.",
+    "Statele Unite ocupă constant primul loc în clasamentul Venitului Disponibil Net Ajustat al Gospodăriilor din OCDE. La Consumul Individual Real (AIC), care măsoară toate bunurile și serviciile consumate efectiv de gospodării inclusiv cele finanțate de stat, SUA este fără rival.",
   incomeParagraph2:
     "Chiar și cele mai sărace state din SUA au niveluri de consum real mai mari decât țări din Europa de Vest precum Marea Britanie, Franța sau Germania. Americanii donează voluntar un procent mare din venit, ocupând prima poziție în World Giving Index.",
   incomeItems: [
@@ -1106,12 +1106,12 @@ const qolCopyRo: QualityOfLifeCopy = {
   luxuryLabel: "LUX DEMOCRATIZAT",
   outdoorLabel: "LIBERTATE ÎN AER LIBER",
   outdoorTitle: "America în Natură",
-  outdoorDescription: "17 milioane de ambarcațiuni, mii de campinguri, milioane de acri de pădure și libertatea de a pleca oricând — vânătoare, pescuit, navigație, drumeție. Accesul la natură nu este un privilegiu; este parte din standardul de viață american.",
+  outdoorDescription: "17 milioane de ambarcațiuni, mii de campinguri, milioane de acri de pădure și libertatea de a pleca oricând: vânătoare, pescuit, navigație, drumeție. Accesul la natură face parte din standardul de viață american.",
   citiesLabel: "ORAȘELE AMERICII",
-  citiesDesc: "De la coasta la coastă — metropole vibrante, capitalele statelor și orașe de dimensiuni medii prospere.",
+  citiesDesc: "De la coastă la coastă: metropole vibrante, capitalele statelor și orașe de dimensiuni medii prospere.",
   aerialLabel: "AMERICA VĂZUTĂ DE SUS",
   aerialTitle: "Metropole la Altitudine",
-  aerialDesc: "De la 300 de metri înălțime, orașele americane dezvăluie adevărata lor amploare — rețele de oțel și sticlă care adăpostesc inima economică și culturală a națiunii.",
+  aerialDesc: "De la 300 de metri înălțime, orașele americane dezvăluie adevărata lor amploare: rețele de oțel și sticlă care adăpostesc inima economică și culturală a națiunii.",
   lakeCaption: "Chicago la Amurg — Lacul Michigan",
   manhattanCaption: "Midtown Manhattan — Ora de Aur",
   nycTopDownCaption: "New York City — Vedere de Sus",

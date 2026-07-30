@@ -49,9 +49,9 @@ const copyEn: HealthcareCopy = {
     "Shift the lens from spending inputs to treatment outcomes, and the American healthcare system emerges as the most effective in the world for the diseases that actually kill people.",
   thesisTitle: "The Outcomes Argument",
   thesisParagraph1:
-    "The standard critique — 'America spends more per capita than any other country and gets worse outcomes' — collapses immediately when you shift from input metrics (spending) to output metrics (survival). For the diseases that drive the largest share of deaths globally — cancers, heart disease, and the conditions for which people actually need advanced medical intervention — American patients survive at higher rates than their counterparts in any single-payer European system.",
+    "The standard critique, 'America spends more per capita than any other country and gets worse outcomes,' collapses immediately when you shift from input metrics (spending) to output metrics (survival). For the diseases that drive the largest share of deaths globally, cancers, heart disease, and the conditions requiring advanced medical intervention, American patients survive at higher rates than their counterparts in any single-payer European system.",
   thesisParagraph2:
-    "The commonly cited life expectancy gap is almost entirely explained by behavioral and structural factors that are unrelated to the quality of medical delivery: obesity rates, vehicular fatality rates, and violence. When controlling for these factors — or comparing survivorship rates for diagnosed conditions — the United States leads the developed world. The American system is designed not for cheapness but for excellence, and that is exactly what it delivers for patients who need cutting-edge care.",
+    "The commonly cited life expectancy gap is almost entirely explained by behavioral and structural factors unrelated to the quality of medical delivery: obesity rates, vehicular fatality rates, and violence. When controlling for these factors, or comparing survivorship rates for diagnosed conditions, the United States leads the developed world. The American system is designed for excellence, and that is exactly what it delivers for patients who need cutting-edge care.",
   statsTitle: "Healthcare Leadership by the Numbers",
   stats: [
     {
@@ -107,7 +107,7 @@ const copyEn: HealthcareCopy = {
     {
       icon: TrendingUp,
       title: "Contextualizing Life Expectancy",
-      body: "The often-cited US life expectancy gap versus Europe is largely driven by factors external to healthcare delivery quality: the US obesity rate (~42% vs ~20% in most of Europe), an exceptionally high vehicle fatality rate (driven by car-dependent geography and high miles driven), and elevated homicide rates. When researchers control for accidents and violence — or compare age-adjusted mortality for specific treatable conditions — the US performance matches or exceeds European peers. The system's 'inefficiency' is largely a measurement artifact.",
+      body: "The often-cited US life expectancy gap versus Europe is largely driven by factors external to healthcare delivery quality: the US obesity rate (~42% vs ~20% in most of Europe), an exceptionally high vehicle fatality rate driven by car-dependent geography and high miles driven, and elevated homicide rates. When researchers control for accidents and violence, or compare age-adjusted mortality for specific treatable conditions, the US performance matches or exceeds European peers. The system's apparent 'inefficiency' is largely a measurement artifact.",
       source: "COSM Study / AEI Research",
       sourceUrl:
         "https://cosm.aei.org/is-the-us-really-an-outlier-on-pregnancy-deaths-and-have-such-deaths-spiked/",

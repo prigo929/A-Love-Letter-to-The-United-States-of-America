@@ -44,7 +44,7 @@ const copyEn: WagesCopy = {
   breadcrumbParent: "Quality of Life",
   breadcrumbPage: "Wages & Purchasing Power",
   heroTagline: "THE PURCHASING POWER ADVANTAGE",
-  heroTitle: "More Money, Lower Costs — The American Wage Premium",
+  heroTitle: "More Money, Lower Costs: The American Wage Premium",
   heroSubtitle:
     "Adjusted for purchasing power parity, the American worker earns more, spends less on essentials, and keeps more after tax than workers in virtually any other developed nation.",
   thesisTitle: "PPP: The Only Honest Comparison",
@@ -150,7 +150,7 @@ const copyRo: WagesCopy = {
   breadcrumbParent: "Calitatea Vieții",
   breadcrumbPage: "Salarii și Putere de Cumpărare",
   heroTagline: "AVANTAJUL PUTERII DE CUMPĂRARE",
-  heroTitle: "Mai Mulți Bani, Costuri Mai Mici — Prima de Salarizare Americană",
+  heroTitle: "Mai Mulți Bani, Costuri Mai Mici: Prima de Salarizare Americană",
   heroSubtitle:
     "Ajustat la paritatea puterii de cumpărare, muncitorul american câștigă mai mult, cheltuiește mai puțin pe esențiale și păstrează mai mult după impozitare decât muncitorii din practic orice altă națiune dezvoltată.",
   thesisTitle: "PPP: Singura Comparație Corectă",
