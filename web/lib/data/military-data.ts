@@ -890,7 +890,7 @@ export function getWeaponSystems(locale: Locale): WeaponSystem[] {
         speed: "Mach 2,25 (supercroazieră: Mach 1,82)",
         range: "2.570 km (cu 2 rezervoare ext.)",
         description: "Prădătorul suprem al cerului. F-22 Raptor este singurul avion de vânătoare invizibil capabil de supercroazieră operațional din lume.",
-        significance: "Supercroaziera — abilitatea de a depăși Mach 1 fără postcombustie — combinată cu invizibilitatea extremă face ca F-22 să fie aproape imposibil de angajat.",
+        significance: "Supercroaziera: abilitatea de a depăși Mach 1 fără postcombustie, combinată cu invizibilitatea radar, permite dominarea cerului înainte ca inamicul să știe că este acolo.",
         specs: [
           { label: "Generație", value: "Generația a 5-a" },
           { label: "Viteză", value: "Mach 2,25 (Mach 1,82 supercroazieră)" },
@@ -1023,8 +1023,8 @@ export function getDARPAPrograms(locale: Locale): DARPAProgram[] {
       case "hypersonic": return {
         ...p,
         category: "SISTEME OFENSIVE",
-        description: "HAWC și HACM sunt rachete cu propulsie scramjet care călătoresc cu Mach 5+ — prea repede pentru a fi interceptate.",
-        significance: "Face ca toate sistemele actuale de apărare — Patriot, S-400, THAAD — să fie efectiv depășite."
+        description: "HAWC și HACM sunt rachete cu propulsie scramjet care călătoresc cu Mach 5+, prea repede pentru a fi interceptate de sistemele antiaeriene existente.",
+        significance: "Face ca toate sistemele actuale de apărare (Patriot, S-400, THAAD) să fie efectiv depășite în fața atacurilor hipersonice."
       };
       case "autonomous": return {
         ...p,
@@ -1042,7 +1042,7 @@ export function getDARPAPrograms(locale: Locale): DARPAProgram[] {
         ...p,
         category: "RĂZBOI INFORMAȚIONAL",
         description: "Gravimetrele cuantice pot detecta urmele submarinelor de la altitudine orbitală. Computerele cuantice vor sparge standardele actuale de criptare.",
-        significance: "Cine obține primul superioritatea în calculul cuantic poate decripta toate comunicațiile criptate existente — militare, diplomatice, financiare."
+        significance: "Cine obține primul superioritatea în calculul cuantic poate decripta toate comunicațiile inamice în timp real."
       };
       case "cyber-offensive": return {
         ...p,

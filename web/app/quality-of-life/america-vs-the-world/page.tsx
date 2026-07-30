@@ -17,7 +17,7 @@ import {
 export const metadata: Metadata = {
   title: "America vs. the World",
   description:
-    "What everyday life actually looks like in normal American suburbia versus the rest of the developed world — and the institutional reasons the gap is so large.",
+    "What everyday life actually looks like in normal American suburbia versus the rest of the developed world, and the institutional reasons the gap is so large.",
 };
 
 interface VersusCopy {
@@ -77,21 +77,21 @@ const copyEn: VersusCopy = {
   heroDescription:
     "Not Manhattan, not Beverly Hills: a standard affluent suburb like The Woodlands north of Houston already looks like science fiction next to a major European city. Free markets, secure property rights, and competent institutions build this physical reality.",
   thesisEyebrow: "WHY THE GAP EXISTS",
-  thesisTitle: "Institutions First — Not Geography, Not Luck",
+  thesisTitle: "Institutions First: Not Geography, Not Luck",
   thesisP1:
     "The difference between a North-Houston suburb and a city like Iași stems from accumulated institutional capital built over generations, rather than natural resources or current income alone. Secure property rights, deep capital markets, functioning contract law, and a government that mostly facilitates private capital let wealth compound continuously. The Woodlands operates as a controlled experiment: a private developer planned the trails, parks, town center, and drainage with minimal state interference, demonstrating what markets optimize for when citizens are free to build.",
   thesisP2:
-    "The most underrated part is the price paradox. For tradable goods — electronics, cars, appliances, clothing — and especially fuel, American prices are frequently lower in absolute terms, even though the American worker earns several times more. The wage-adjusted gap is enormous: the same week of groceries that costs an American two hours of work costs far more labor-hours elsewhere, for an equivalent or lower-quality basket. Capital per worker, competition as a quality ratchet, and the franchise model standardizing quality across geography do the work no planning committee ever could.",
+    "The most underrated part is the price paradox. For tradable goods (electronics, cars, appliances, clothing) and especially fuel, American prices are frequently lower in absolute terms, even though the American worker earns several times more. The wage-adjusted gap is enormous: the same week of groceries that costs an American two hours of work costs far more labor-hours elsewhere, for an equivalent or lower-quality basket. Capital per worker, competition as a quality ratchet, and the franchise model standardizing quality across geography do the work no planning committee ever could.",
   sweepEyebrow: "CATEGORY BY CATEGORY",
   sweepTitle: "Where the Difference Is Civilizational",
   sweepIntro:
-    "Across domain after domain, the American baseline — the normal, unremarkable version — outclasses the best available in much of the developed world. A recurring lens: The Woodlands / north Houston versus Iași, Romania.",
+    "Across domain after domain, the American baseline: the normal, unremarkable version, outclasses the best available in much of the developed world. A recurring lens: The Woodlands / north Houston versus Iași, Romania.",
   domains: [
-    { icon: ShoppingCart, title: "Retail & Grocery Scale", body: "An H-E-B or Costco runs a supply chain among the most sophisticated in human history — bulk quantities, in-store sushi and tortillas, USDA-graded beef, year-round produce — at prices that embarrass most European hypermarkets." },
+    { icon: ShoppingCart, title: "Retail & Grocery Scale", body: "An H-E-B or Costco runs a supply chain among the most sophisticated in human history: bulk quantities, in-store sushi and tortillas, USDA-graded beef, year-round produce, at prices that embarrass most European hypermarkets." },
     { icon: Home, title: "Housing per Square Foot", body: "A new ~2,400 sq ft single-family home with a garage and yard, on land that appreciates — versus a smaller, older apartment for a similar price per square meter. Permissive zoning and a deep construction industry make space ordinary." },
     { icon: Fuel, title: "Energy & Fuel", body: "Texas produces, refines, and distributes its own energy in a competitive market. Gas often under $3/gallon versus a ~$6/gallon equivalent earned on a fraction of the wage — cheap energy quietly lowers the cost of everything else." },
     { icon: Stethoscope, title: "Healthcare & Equipment", body: "The Texas Medical Center is the largest medical complex on Earth, 30 minutes away — robotic surgery, genomic medicine, clinical trials, and drugs that won't reach many countries for years. (With the honest caveat of billing for the uninsured.)" },
-    { icon: Package, title: "Logistics & Delivery", body: "Amazon next-day — sometimes same-day — to a suburban address, on a fulfillment network of hundreds of warehouses. Any product in America arrives within 48 hours, usually free." },
+    { icon: Package, title: "Logistics & Delivery", body: "Amazon next-day, sometimes same-day, to a suburban address, on a fulfillment network of hundreds of warehouses. Any product in America arrives within 48 hours, usually free." },
     { icon: Briefcase, title: "Business Formation", body: "An LLC in ~20 minutes online for a few hundred dollars; a business bank account the same week; a thick ecosystem of accountants, lenders, and investors that says, plainly: we want you to build here." },
     { icon: Building2, title: "Financial Products", body: "The 30-year fixed mortgage turned homeownership into a middle-class norm; rewards credit cards and a credit-score system let ordinary people capture real value and borrow to build economic lives." },
     { icon: Trophy, title: "Youth Sports Facilities", body: "A Texas public high school football stadium seating 10,000–20,000, with pro-grade turf, lighting, and a weight room — funded by a local tax base that actually generates revenue." },

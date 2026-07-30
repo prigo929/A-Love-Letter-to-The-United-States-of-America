@@ -44,8 +44,8 @@ export const EXPLORER_STATES: Record<string, StateData> = {
     nickname: { en: "Yellowhammer State", ro: "Statul Ciocănitoarei Galbene" },
     industry: { en: "Aerospace, Automotive, Forestry", ro: "Aerospațial, Auto, Silvicultură" },
     story: {
-      en: "Huntsville—known as 'Rocket City'—is where NASA's Saturn V rockets that sent American astronauts to the moon were designed and tested.",
-      ro: "Huntsville—cunoscut ca 'Orașul Rachetelor'—este locul unde au fost proiectate și testate rachetele Saturn V de la NASA care au trimis astronauții americani pe Lună."
+      en: "Huntsville, known as 'Rocket City', is where NASA's Saturn V rockets that sent American astronauts to the Moon were designed and tested.",
+      ro: "Huntsville, cunoscut ca 'Orașul Rachetelor', este locul unde au fost proiectate și testate rachetele Saturn V ale NASA care au trimis astronauții americani pe Lună."
     }
   },
   AK: {
@@ -80,8 +80,8 @@ export const EXPLORER_STATES: Record<string, StateData> = {
     nickname: { en: "Grand Canyon State", ro: "Statul Marelui Canion" },
     industry: { en: "Technology, Tourism, Copper Mining", ro: "Tehnologie, Turism, Exploatarea Cuprului" },
     story: {
-      en: "Home to the Grand Canyon—one of the seven natural wonders of the world—and a booming technology hub in the Phoenix metropolitan area.",
-      ro: "Găzduiește Marele Canion—una dintre cele șapte minuni naturale ale lumii—și un hub tehnologic în plină ascensiune în zona metropolitană Phoenix."
+      en: "Home to the Grand Canyon, one of the seven natural wonders of the world, and a booming technology sector in Phoenix.",
+      ro: "Găzduiește Marele Canion, una dintre cele șapte minuni naturale ale lumii, și un hub tehnologic în plină expansiune în Phoenix."
     }
   },
   AR: {
@@ -296,8 +296,8 @@ export const EXPLORER_STATES: Record<string, StateData> = {
     nickname: { en: "Hoosier State", ro: "Statul Hoosier" },
     industry: { en: "Automotive, Pharmaceuticals, Manufacturing", ro: "Automobile, Farmaceutice, Industrie Manufacturieră" },
     story: {
-      en: "Hosts the Indianapolis 500—the world's oldest and largest single-day sporting event, attracting hundreds of thousands of racing fans.",
-      ro: "Găzduiește cursa Indianapolis 500—cea mai veche și mai mare competiție sportivă de o singură zi din lume, atrăgând sute de mii de fani."
+      en: "Hosts the Indianapolis 500: the world's oldest and largest single-day sporting event, attracting over 300,000 spectators.",
+      ro: "Găzduiește Indianapolis 500: cel mai vechi și mai mare eveniment sportiv de o zi din lume, atrăgând peste 300.000 de spectatori."
     }
   },
   IA: {

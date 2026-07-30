@@ -113,10 +113,10 @@ interface Entry {
 }
 
 const MAP: Record<string, Entry[]> = {
-  // ── Overview ──────────────────────────────────────────────────────────────
+  // Overview
   "World_War_II_Overview::Pearl Harbor Attack and Immediate Response": [
     { src: ussArizona, en: "The battleship USS Arizona explodes at Pearl Harbor, 7 December 1941.", ro: "Cuirasatul USS Arizona explodează la Pearl Harbor, 7 decembrie 1941." },
-    { src: fdrJointSession, en: "FDR asks Congress for a declaration of war — the “Day of Infamy” speech, 8 December 1941.", ro: "FDR cere Congresului declararea războiului — discursul „Zilei Infamiei”, 8 decembrie 1941." },
+    { src: fdrJointSession, en: "FDR asks Congress for a declaration of war: the “Day of Infamy” speech, 8 December 1941.", ro: "FDR cere Congresului declararea războiului: discursul „Day of Infamy”, 8 decembrie 1941." },
   ],
   "World_War_II_Overview::Declarations of War and Initial Mobilization": [
     { src: hitlerWar, en: "Hitler declares war on the United States, 11 December 1941.", ro: "Hitler declară război Statelor Unite, 11 decembrie 1941." },
@@ -139,7 +139,7 @@ const MAP: Record<string, Entry[]> = {
     { src: shermanFlame, en: "A flamethrower Sherman clears a Japanese bunker on Iwo Jima, March 1945.", ro: "Un tanc Sherman cu aruncător de flăcări curăță un buncăr japonez pe Iwo Jima, martie 1945." },
   ],
   "World_War_II_Overview::Manhattan Project and Atomic Development": [
-    { src: trinityTest, en: "The Trinity test — the first detonation of a nuclear weapon, 16 July 1945.", ro: "Testul Trinity — prima detonare a unei arme nucleare, 16 iulie 1945." },
+    { src: trinityTest, en: "The Trinity test: the first detonation of a nuclear weapon, 16 July 1945.", ro: "Testul Trinity: prima detonare a unei arme nucleare, 16 iulie 1945." },
     { src: oppenheimerGroves, en: "Oppenheimer and Groves inspect ground zero at the Trinity site.", ro: "Oppenheimer și Groves inspectează epicentrul la locul testului Trinity." },
   ],
   "World_War_II_Overview::Firebombing and Atomic Bombings": [
@@ -154,7 +154,7 @@ const MAP: Record<string, Entry[]> = {
     { src: seniorOfficials, en: "America's senior military leadership, 1945.", ro: "Conducerea militară superioară a Americii, 1945." },
   ],
 
-  // ── Military ──────────────────────────────────────────────────────────────
+  // Military
   "World_War_II_Military::Europe-First Policy and Coalition Warfare": [
     { src: eagleSquadron, en: "American volunteers of No. 71 “Eagle” Squadron scramble to their Hurricanes, 1941.", ro: "Voluntari americani ai Escadrilei 71 „Eagle” aleargă la avioanele Hurricane, 1941." },
   ],
@@ -196,7 +196,7 @@ const MAP: Record<string, Entry[]> = {
     { src: flyingTigers, en: "The “Flying Tigers” of the 1st American Volunteer Group over China, 1942.", ro: "„Tigrii Zburători” ai Primului Grup American de Voluntari deasupra Chinei, 1942." },
   ],
 
-  // ── Home Front ────────────────────────────────────────────────────────────
+  // Home Front
   "World_War_II_Home_Front::Economic Mobilization": [
     { src: cioLeaders, en: "CIO leaders listen to FDR's Day of Infamy speech and pledge support, December 1941.", ro: "Liderii CIO ascultă discursul „Zilei Infamiei” al lui FDR și promit sprijin, decembrie 1941." },
   ],
@@ -222,7 +222,7 @@ const MAP: Record<string, Entry[]> = {
   ],
   "World_War_II_Home_Front::Advertising, Posters, and Bond Drives": [
     { src: victoryGarden, en: "A “Victory Garden” home-front poster.", ro: "Un afiș „Grădina Victoriei” de pe frontul intern." },
-    { src: servicePoster, en: "“Service on the Home Front” — a WPA civilian-defense poster.", ro: "„Serviciu pe Frontul Intern” — un afiș WPA de apărare civilă." },
+    { src: servicePoster, en: "“Service on the Home Front”: a WPA civilian-defense poster.", ro: "„Service on the Home Front”: un afiș al apărării civile WPA." },
   ],
   "World_War_II_Home_Front::Hollywood and Entertainment Contributions": [
     { src: speedComics, en: "Wartime patriotism in pop culture: the cover of Speed Comics #32, 1944.", ro: "Patriotism de război în cultura pop: coperta Speed Comics #32, 1944." },
@@ -232,7 +232,7 @@ const MAP: Record<string, Entry[]> = {
     { src: tireSizes, en: "A worker beside the range of tire sizes required by military aircraft.", ro: "O muncitoare lângă gama de dimensiuni de anvelope necesare avioanelor militare." },
   ],
 
-  // ── Manhattan Project ─────────────────────────────────────────────────────
+  // Manhattan Project
   "World_War_II_Manhattan_Project::Einstein-Szilard Letter and Roosevelt's Response": [
     { src: fdrLetter, en: "Vannevar Bush's cover letter forwarding the atomic bomb report to FDR, 1942.", ro: "Scrisoarea de însoțire a lui Vannevar Bush care înaintează raportul despre bomba atomică către FDR, 1942." },
   ],
@@ -264,7 +264,7 @@ const MAP: Record<string, Entry[]> = {
     { src: trumanAEA, en: "Truman signs the Atomic Energy Act of 1946, creating the Atomic Energy Commission.", ro: "Truman semnează Legea Energiei Atomice din 1946, creând Comisia pentru Energie Atomică." },
   ],
 
-  // ── Lend-Lease ────────────────────────────────────────────────────────────
+  // Lend-Lease
   "World_War_II_Lend_Lease::Roosevelt's Arsenal of Democracy Speech": [
     { src: fdrLendLease, en: "FDR signs the Lend-Lease bill to aid Britain and China, March 1941.", ro: "FDR semnează legea Lend-Lease pentru a ajuta Marea Britanie și China, martie 1941." },
   ],
@@ -306,7 +306,7 @@ const EXTRA: Record<string, Entry[]> = {
     { src: asiaMap1939, en: "The Asia-Pacific region on the eve of war, 1939.", ro: "Regiunea Asia-Pacific în ajunul războiului, 1939." },
   ],
   "World_War_II_Military::Iwo Jima and Okinawa: Bloody Island Fights": [
-    { src: iwoFlagIconic, en: "Six Marines raise the flag atop Mount Suribachi — Rosenthal's iconic photograph, 23 February 1945.", ro: "Șase pușcași marini înalță drapelul pe muntele Suribachi — fotografia iconică a lui Rosenthal, 23 februarie 1945." },
+    { src: iwoFlagIconic, en: "Six Marines raise the flag atop Mount Suribachi: Rosenthal's iconic photograph, 23 February 1945.", ro: "Șase pușcași marini înalță drapelul pe Muntele Suribachi: fotografia iconică a lui Rosenthal, 23 februarie 1945." },
   ],
   "World_War_II_Manhattan_Project::Establishment of the Manhattan Engineer District": [
     { src: orgChart, en: "The Manhattan Project organizational chart, 1 May 1946.", ro: "Organigrama Proiectului Manhattan, 1 mai 1946." },
@@ -321,7 +321,7 @@ const EXTRA: Record<string, Entry[]> = {
     { src: securityPoster, en: "A security poster warning workers to safeguard documents.", ro: "Un afiș de securitate care avertizează lucrătorii să protejeze documentele." },
   ],
   "World_War_II_Manhattan_Project::Budget Allocations and Resource Mobilization": [
-    { src: mhExpenditures, en: "Manhattan Project monthly expenditures, 1943–1946 — peaking at $111.4M in August 1944.", ro: "Cheltuielile lunare ale Proiectului Manhattan, 1943–1946 — vârf de 111,4 mil. $ în august 1944." },
+    { src: mhExpenditures, en: "Manhattan Project monthly expenditures, 1943–1946, peaking at $111.4M in June 1944.", ro: "Cheltuielile lunare ale Proiectului Manhattan, 1943–1946, atingând vârful la 111,4 mil. $ în iunie 1944." },
     { src: mhEmployment, en: "Manhattan Project contractor employment, 1942–1946.", ro: "Ocuparea forței de muncă a contractorilor Proiectului Manhattan, 1942–1946." },
   ],
   "World_War_II_Home_Front::Minority Group Labor Contributions": [

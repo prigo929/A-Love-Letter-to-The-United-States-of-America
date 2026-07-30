@@ -104,8 +104,8 @@ const CARDS: MisconceptionCard[] = [
     icon: ShieldAlert,
     myth: { en: "Just ask for an itemized bill and the hospital charges vanish.", ro: "Cere doar o factură detaliată și costurile spitalicești dispar." },
     reality: {
-      en: "The viral 'itemized bill' hack is mostly myth — but real protections exist: hospitals must publish prices, the uninsured can negotiate, nonprofit hospitals must offer charity care, and the No Surprises Act bans most out-of-network surprise billing. Insured patients also hit an annual out-of-pocket maximum.",
-      ro: "Trucul viral cu 'factura detaliată' e în mare parte fals — dar protecțiile reale există: spitalele trebuie să publice prețuri, neasigurații pot negocia, spitalele non-profit oferă asistență caritabilă, iar No Surprises Act interzice majoritatea facturilor-surpriză. Asigurații au și un plafon anual al cheltuielilor.",
+      en: "The viral 'itemized bill' hack is mostly myth, but real protections exist: hospitals must publish prices, the uninsured can negotiate, nonprofit hospitals must offer charity care, and the No Surprises Act bans most out-of-network surprise billing. Insured patients also hit an annual out-of-pocket maximum.",
+      ro: "Trucul viral cu 'factura detaliată' e în mare parte fals, dar protecțiile reale există: spitalele trebuie să publice prețuri, neasigurații pot negocia, spitalele non-profit oferă asistență caritabilă, iar No Surprises Act interzice majoritatea facturilor-surpriză. Asigurații au și un plafon anual al cheltuielilor.",
     },
     stat: { value: "2022", label: { en: "No Surprises Act ended most surprise out-of-network bills", ro: "No Surprises Act a oprit majoritatea facturilor-surpriză" } },
   },
@@ -114,8 +114,8 @@ const CARDS: MisconceptionCard[] = [
     icon: Layers,
     myth: { en: "America lets companies sell food that Europe has banned as poison.", ro: "America permite alimente pe care Europa le-a interzis ca otravă." },
     reality: {
-      en: "The 'banned in Europe' list conflates hazard with risk. The FDA regulates by dose and exposure while the EU often applies the precautionary principle; several flagged substances are permitted in both markets at controlled levels — and the US has the world's largest organic-food market by sales.",
-      ro: "Lista 'interzis în Europa' confundă pericolul cu riscul. FDA reglementează după doză și expunere, iar UE aplică des principiul precauției; multe substanțe vizate sunt permise în ambele piețe la niveluri controlate — iar SUA are cea mai mare piață de alimente bio din lume.",
+      en: "The 'banned in Europe' list conflates hazard with risk. The FDA regulates by dose and exposure while the EU often applies the precautionary principle; several flagged substances are permitted in both markets at controlled levels, and the US has the world's largest organic-food market by sales.",
+      ro: "Lista 'interzis în Europa' confundă pericolul cu riscul. FDA reglementează după doză și expunere, iar UE aplică des principiul precauției; multe substanțe vizate sunt permise în ambele piețe la niveluri controlate, iar SUA are cea mai mare piață de alimente bio din lume.",
     },
     stat: { value: "#1", label: { en: "largest organic-food market in the world by sales", ro: "cea mai mare piață de alimente bio din lume" } },
   },
@@ -236,7 +236,7 @@ export default async function MisconceptionsPage() {
   const title = isRo ? "Mit vs. Realitate" : "Myth vs. Reality";
   const description = isRo
     ? "Demistificarea celor mai răspândite narațiuni despre Statele Unite, comparând afirmația virală cu datele auditate."
-    : "Deconstructing the most common narratives about the United States — the viral claim set against the audited data.";
+    : "Deconstructing the most common narratives about the United States: the viral claim set against the audited data.";
 
   const sourcedCount = CARDS.filter((c) => c.sourceUrl).length;
 

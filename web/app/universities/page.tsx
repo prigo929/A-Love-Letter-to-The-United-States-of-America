@@ -19,19 +19,19 @@ import {
 } from "@/components/economy/EconomyAnimations";
 
 const campusPhotos = [
-  { key: "harvardFall" as const,        label: "Harvard University",          sub: "Cambridge, MA — Charles River fall foliage" },
+  { key: "harvardFall" as const,        label: "Harvard University",          sub: "Cambridge, MA: Charles River fall foliage" },
   { key: "harvardWidener" as const,     label: "Widener Library, Harvard",     sub: "Cambridge, MA" },
   { key: "harvardCommencement" as const,label: "Harvard Commencement",         sub: "Tercentenary Theatre" },
   { key: "harvardRowers" as const,      label: "Rowing on the Charles River",  sub: "Cambridge, MA" },
   { key: "harvardLawGrads" as const,    label: "Harvard Law School",           sub: "Cambridge, MA" },
-  { key: "yaleAerial" as const,         label: "Yale University",              sub: "New Haven, CT — Aerial" },
-  { key: "yaleKlineTower" as const,     label: "Yale Science Hill",            sub: "New Haven, CT — Long Island Sound view" },
+  { key: "yaleAerial" as const,         label: "Yale University",              sub: "New Haven, CT: Aerial" },
+  { key: "yaleKlineTower" as const,     label: "Yale Science Hill",            sub: "New Haven, CT: Long Island Sound view" },
   { key: "princeton2" as const,         label: "Princeton University",         sub: "Princeton, NJ" },
   { key: "dartmouth" as const,          label: "Dartmouth College",            sub: "Hanover, NH" },
-  { key: "brown" as const,              label: "Brown University",             sub: "Providence, RI — Main Green" },
+  { key: "brown" as const,              label: "Brown University",             sub: "Providence, RI: Main Green" },
   { key: "dukeChapel" as const,         label: "Duke Chapel",                  sub: "West Campus, Duke University, Durham, NC" },
-  { key: "chicagoAerial" as const,      label: "University of Chicago",        sub: "Chicago, IL — Aerial view" },
-  { key: "berkeleyHills" as const,      label: "UC Berkeley",                  sub: "Berkeley, CA — View from the hills" },
+  { key: "chicagoAerial" as const,      label: "University of Chicago",        sub: "Chicago, IL: Aerial view" },
+  { key: "berkeleyHills" as const,      label: "UC Berkeley",                  sub: "Berkeley, CA: View from the hills" },
 ];
 
 export const metadata: Metadata = {
@@ -73,8 +73,8 @@ const copyEn: UniversitiesCopy = {
   heroTitle: "Top American Universities",
   heroSubtitle: "A competitive, market-driven ecosystem combining massive private endowments, federal research grants, and a culture that rewards output over seniority.",
   thesisTitle: "Higher Education: The World's University",
-  thesisParagraph1: "Of the top 20 universities in every major global ranking — QS, Times Higher Education, the Shanghai ARWU — American institutions consistently occupy 15 to 17 spots. This is the direct product of a competitive, market-driven model that funds research through a combination of federal grants, massive private endowments, and tuition revenues, and rewards output over seniority.",
-  thesisParagraph2: "The US attracts more international graduate students and produces more peer-reviewed research output than any other nation. The fact that the global elite — from China, India, South Korea, and Western Europe — still overwhelmingly choose American universities for their most ambitious children is the most unambiguous market endorsement imaginable.",
+  thesisParagraph1: "Of the top 20 universities in every major global ranking (QS, Times Higher Education, the Shanghai ARWU), American institutions consistently occupy 15 to 17 spots. This is the direct product of a competitive, market-driven model that funds research through a combination of federal grants, massive private endowments, and tuition revenues, and rewards output over seniority.",
+  thesisParagraph2: "The US attracts more international graduate students and produces more peer-reviewed research output than any other nation. The fact that the global elite (from China, India, South Korea, and Western Europe) still overwhelmingly choose American universities for their most ambitious children is the most unambiguous market endorsement imaginable.",
   statsTitle: "Higher Education Power Metrics",
   gridTitle: "Explore University Sectors",
   gridItems: [
@@ -86,19 +86,19 @@ const copyEn: UniversitiesCopy = {
     },
     {
       title: "STEM Powerhouses",
-      description: "MIT, Stanford, and Caltech — the intellectual crucibles that invented Silicon Valley and power global tech.",
+      description: "MIT, Stanford, and Caltech: the intellectual crucibles that invented Silicon Valley and power global tech.",
       href: "/universities/stem-powerhouses",
       badge: "Tech & Science"
     },
     {
       title: "Business Schools",
-      description: "Harvard Business School, Wharton, and Chicago Booth — training the managers and financiers of global capitalism.",
+      description: "Harvard Business School, Wharton, and Chicago Booth: training the managers and financiers of global capitalism.",
       href: "/universities/business-schools",
       badge: "Management"
     },
     {
       title: "Public Research Systems",
-      description: "UC Berkeley, Michigan, and UT Austin — state systems that democratize research and drive local economies.",
+      description: "UC Berkeley, Michigan, and UT Austin: state systems that democratize research and drive local economies.",
       href: "/universities/public-research-universities",
       badge: "Public Research"
     }
@@ -127,32 +127,32 @@ const copyRo: UniversitiesCopy = {
   heroTitle: "Universități de Elită",
   heroSubtitle: "Un ecosistem competitiv, bazat pe piață, care combină fonduri private masive, granturi federale de cercetare și o cultură a meritocrației.",
   thesisTitle: "Învățământul Superior: Universitatea Lumii",
-  thesisParagraph1: "Din primele 20 de universități în fiecare clasament global major — QS, Times Higher Education, Shanghai ARWU — instituțiile americane ocupă în mod constant între 15 și 17 locuri. Acesta este produsul direct al unui model competitiv, orientat spre piață, care finanțează cercetarea printr-o combinație de granturi federale, donații private masive și taxe de școlarizare.",
-  thesisParagraph2: "SUA atrag mai mulți studenți internaționali de elită și produc mai multă cercetare de pionierat decât orice altă națiune. Faptul că elitele globale — din China, India, Coreea de Sud și Europa de Vest — aleg în mod covârșitor universitățile americane pentru copiii lor reprezintă cel mai clar gir pe care piața îl poate oferi.",
+  thesisParagraph1: "Din primele 20 de universități în fiecare clasament global major (QS, Times Higher Education, Shanghai ARWU), instituțiile americane ocupă în mod constant între 15 și 17 locuri. Acesta este produsul direct al unui model competitiv, orientat spre piață, care finanțează cercetarea printr-o combinație de granturi federale, donații private masive și taxe de școlarizare.",
+  thesisParagraph2: "SUA atrag mai mulți studenți internaționali de elită și produc mai multă cercetare de pionierat decât orice altă națiune. Faptul că elitele globale (din China, India, Coreea de Sud și Europa de Vest) aleg în mod covârșitor universitățile americane pentru copiii lor reprezintă cel mai clar gir pe care piața îl poate oferi.",
   statsTitle: "Metrici ale Excelenței Academice",
   gridTitle: "Explorează Sectoarele Universitare",
   gridItems: [
     {
       title: "Ivy League",
-      description: "Harvard, Yale, Princeton — ancorele istorice ale prestigiului academic și rețelelor de leadership global.",
+      description: "Harvard, Yale, Princeton: ancorele istorice ale prestigiului academic și rețelelor de leadership global.",
       href: "/universities/ivy-league",
       badge: "Moștenire Academică"
     },
     {
       title: "Centre STEM",
-      description: "MIT, Stanford și Caltech — creuzetele intelectuale care au inventat Silicon Valley și alimentează tehnologia mondială.",
+      description: "MIT, Stanford și Caltech: creuzetele intelectuale care au inventat Silicon Valley și alimentează tehnologia mondială.",
       href: "/universities/stem-powerhouses",
       badge: "Știință & Tehnologie"
     },
     {
       title: "Școli de Business",
-      description: "Harvard Business School, Wharton și Chicago Booth — pregătirea managerilor și finanțiștilor capitalismului global.",
+      description: "Harvard Business School, Wharton și Chicago Booth: pregătirea managerilor și finanțiștilor capitalismului global.",
       href: "/universities/business-schools",
       badge: "Management"
     },
     {
       title: "Sisteme de Cercetare Publică",
-      description: "UC Berkeley, Michigan și UT Austin — sisteme de stat care democratizează accesul la cercetarea de vârf.",
+      description: "UC Berkeley, Michigan și UT Austin: sisteme de stat care democratizează accesul la cercetarea de vârf.",
       href: "/universities/public-research-universities",
       badge: "Cercetare Publică"
     }

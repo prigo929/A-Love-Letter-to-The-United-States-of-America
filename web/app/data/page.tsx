@@ -6,7 +6,7 @@ import { DataObservatory } from "@/components/data/DataObservatory";
 export const metadata: Metadata = {
   title: "Data | America by the Numbers",
   description:
-    "America by the numbers — economic output, capital markets, innovation, science, and military strength, every figure tied to a primary source.",
+    "America by the numbers: economic output, capital markets, innovation, science, and military strength, every figure tied to a primary source.",
   alternates: { canonical: "/data" },
   openGraph: {
     title: "Data | America by the Numbers",

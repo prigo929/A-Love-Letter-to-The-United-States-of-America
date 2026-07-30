@@ -49,9 +49,9 @@ const copyEn: WagesCopy = {
     "Adjusted for purchasing power parity, the American worker earns more, spends less on essentials, and keeps more after tax than workers in virtually any other developed nation.",
   thesisTitle: "PPP: The Only Honest Comparison",
   thesisParagraph1:
-    "Nominal wage comparisons between countries are largely meaningless. What matters is purchasing power parity (PPP) — how much your wage actually buys in your home country. When adjusted for PPP, US wages rank #2 in the entire OECD, surpassed only by Switzerland. More importantly, the American advantage compounds when you factor in what those wages must cover: food, energy, and housing costs as a share of income are all dramatically lower in the US than in peer nations.",
+    "Nominal wage comparisons between countries are largely meaningless. What matters is purchasing power parity (PPP): how much your wage actually buys in your home country. When adjusted for PPP, US wages rank #2 in the entire OECD, surpassed only by Switzerland. More importantly, the American advantage compounds when you factor in what those wages must cover: food, energy, and housing costs as a share of income are all dramatically lower in the US than in peer nations.",
   thesisParagraph2:
-    "The American middle class also benefits from a highly progressive tax code that concentrates the income tax burden on the wealthy. The top 1% pays approximately 40% of all federal income taxes; the bottom 50% pays just 3%. There is no national Value Added Tax (VAT) — a regressive tax that European workers pay on nearly every purchase — giving American consumers a structural cost advantage that compounds every time they buy groceries, electronics, or clothes.",
+    "The American middle class also benefits from a highly progressive tax code that concentrates the income tax burden on the wealthy. The top 1% pays approximately 40% of all federal income taxes; the bottom 50% pays just 3%. There is no national Value Added Tax (VAT), a regressive tax that European workers pay on nearly every purchase, giving American consumers a structural cost advantage that compounds every time they buy groceries, electronics, or clothes.",
   statsTitle: "Wages & Income by the Numbers",
   stats: [
     {
@@ -64,19 +64,19 @@ const copyEn: WagesCopy = {
       value: "~6%",
       label: "Income Spent on Food",
       description:
-        "Americans spend the lowest share of their income on food of any nation — approximately 6%, versus 10–15% in Europe and much higher globally. Calorie abundance is guaranteed.",
+        "Americans spend the lowest share of their income on food of any nation: approximately 6%, versus 10–15% in Europe and much higher globally. Calorie abundance is guaranteed.",
     },
     {
       value: "40%",
       label: "Top 1% Tax Share",
       description:
-        "The top 1% of earners pays approximately 40% of all federal income taxes — the most progressive income tax distribution in the developed world.",
+        "The top 1% of earners pays approximately 40% of all federal income taxes: the most progressive income tax distribution in the developed world.",
     },
     {
       value: "#1",
       label: "Household Disposable Income",
       description:
-        "OECD Net Adjusted Disposable Income consistently places US households at the top of the developed world — more room for savings, investing, and discretionary spending.",
+        "OECD Net Adjusted Disposable Income consistently places US households at the top of the developed world: more room for savings, investing, and discretionary spending.",
     },
   ],
   pillarsTitle: "The Four Pillars of American Wage Advantage",
@@ -91,7 +91,7 @@ const copyEn: WagesCopy = {
     {
       icon: BarChart3,
       title: "Food, Energy, and Housing Cost Advantage",
-      body: "Americans spend approximately 6% of their income on food — the lowest share of any nation — versus 10–15% in Western Europe and far more in emerging markets. US electricity rates are among the lowest in the developed world thanks to abundant natural gas from the shale revolution and a deregulated energy market. Gasoline is dramatically cheaper than in Europe (often less than half the price per gallon in Germany or France). These lower essential costs function as a hidden wage increase that compounds year over year.",
+      body: "Americans spend approximately 6% of their income on food, the lowest share of any nation, versus 10–15% in Western Europe and far more in emerging markets. US electricity rates are among the lowest in the developed world thanks to abundant natural gas from the shale revolution and a deregulated energy market. Gasoline is dramatically cheaper than in Europe (often less than half the price per gallon in Germany or France). These lower essential costs function as a hidden wage increase that compounds year over year.",
       source: "USDA ERS / Our World in Data / EIA",
       sourceUrl:
         "https://ourworldindata.org/grapher/food-expenditure-share-gdp?country=~USA",

@@ -140,14 +140,14 @@ export function getCulturePillars(locale: Locale): CulturePillar[] {
 const SUBPAGES_EN: CultureSubpage[] = [
   {
     id: "overview",
-    category: "Soft Power · Overview",
-    title: "The Engine of Soft Power",
-    stat: "$900B+",
-    statLabel: "Cultural exports",
+    category: "Soft Power · The Paradox",
+    title: "What Makes It American",
+    stat: "600+",
+    statLabel: "Episodes of Americana",
     imageKey: "overview",
-    href: "/culture/overview",
+    href: "/culture#what-is-american-culture",
     size: "large",
-    description: "How the global export of movies, food, fashion, and technology turned the American lifestyle into the default interface for modern civilization.",
+    description: "The paradox beneath the soft-power story: the most intensely American culture is the least exportable, and what the world consumes is the sanded-down version.",
   },
   {
     id: "film",
@@ -242,14 +242,14 @@ const SUBPAGES_EN: CultureSubpage[] = [
 const SUBPAGES_RO: CultureSubpage[] = [
   {
     id: "overview",
-    category: "Soft Power · Ansamblu",
-    title: "Motorul Puterii Soft",
-    stat: "$900Mld+",
-    statLabel: "Exporturi culturale",
+    category: "Soft Power · Paradoxul",
+    title: "Ce Îl Face American",
+    stat: "600+",
+    statLabel: "Episoade de Americana",
     imageKey: "overview",
-    href: "/culture/overview",
+    href: "/culture#what-is-american-culture",
     size: "large",
-    description: "Cum exportul global de filme, mâncare, modă și tehnologie a transformat stilul de viață american în interfața implicită a civilizației moderne.",
+    description: "Paradoxul din spatele puterii soft: cea mai intens americană cultură este cea mai greu de exportat, iar ceea ce consumă lumea este versiunea curățată de americanism.",
   },
   {
     id: "film",

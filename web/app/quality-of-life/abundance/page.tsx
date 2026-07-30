@@ -46,9 +46,9 @@ const copyEn: AbundanceCopy = {
     "Air conditioning in 90% of homes. 800 cars per 1,000 people. 17 million recreational boats. 10.7 million swimming pools. The American consumer economy produces a standard of living with no peer.",
   thesisTitle: "Democratized Luxury at Scale",
   thesisParagraph1:
-    "When economists talk about living standards, they reach for GDP per capita or wage data. But those abstractions fail to capture what daily American life actually looks like in physical terms. The right lens is the density of consumer goods — the tangible objects that define comfort, mobility, and freedom in everyday life. By that measure, the United States stands utterly apart from any other society in human history.",
+    "When economists talk about living standards, they reach for GDP per capita or wage data. But those abstractions fail to capture what daily American life actually looks like in physical terms. The right lens is the density of consumer goods: the tangible objects that define comfort, mobility, and freedom in everyday life. By that measure, the United States stands utterly apart from any other society in human history.",
   thesisParagraph2:
-    "Private swimming pools. Personal aircraft. Recreational boats. In-unit washer-dryer. Central air conditioning in August. Full-size garage refrigerator. A second car. A self-storage unit for the overflow. These are not descriptions of a wealthy American's lifestyle — they are descriptions of the median American household, particularly in the Sun Belt and South. The American consumer economy has industrialized luxury and democratized it to a degree that no other civilization has approached.",
+    "Private swimming pools. Personal aircraft. Recreational boats. In-unit washer-dryer. Central air conditioning in August. Full-size garage refrigerator. A second car. A self-storage unit for the overflow. These are not descriptions of a wealthy American's lifestyle: they describe the median American household, particularly in the Sun Belt and South. The American consumer economy has industrialized luxury and democratized it to a degree that no other civilization has approached.",
   statsTitle: "Consumer Abundance by the Numbers",
   stats: [
     {
@@ -61,13 +61,13 @@ const copyEn: AbundanceCopy = {
       value: "800",
       label: "Vehicles per 1,000 People",
       description:
-        "The US has ~800 vehicles per 1,000 people — among the highest densities in the world, enabling the suburban lifestyle and continent-spanning personal mobility.",
+        "The US has ~800 vehicles per 1,000 people: among the highest densities in the world, enabling the suburban lifestyle and continent-spanning personal mobility.",
     },
     {
       value: "17M",
       label: "Recreational Boats",
       description:
-        "Approximately 17 million recreational boats are owned by 15 million American households — more than any other nation by a wide margin.",
+        "Approximately 17 million recreational boats are owned by 15 million American households: more than any other nation by a wide margin.",
     },
     {
       value: "10.7M",
@@ -84,7 +84,7 @@ const copyEn: AbundanceCopy = {
       items: [
         {
           title: "Air Conditioning: 90%+ of Homes",
-          body: "Roughly 90% of US homes are equipped with air conditioning, making sweltering summers entirely manageable. By contrast, only 10–20% of European homes have AC. This gap is not explained by climate alone — northern US states with mild summers have nearly universal AC adoption. Cheap electricity from the shale energy revolution makes year-round climate control a standard expectation rather than a luxury.",
+          body: "Roughly 90% of US homes are equipped with air conditioning, making sweltering summers entirely manageable. By contrast, only 10–20% of European homes have AC. This gap is not explained by climate alone: northern US states with mild summers have nearly universal AC adoption. Cheap electricity from the shale energy revolution makes year-round climate control a standard expectation rather than a luxury.",
           source: "International Energy Agency / Statista",
           sourceUrl:
             "https://www.statista.com/chart/34786/respondents-who-have-an-air-conditioner/",

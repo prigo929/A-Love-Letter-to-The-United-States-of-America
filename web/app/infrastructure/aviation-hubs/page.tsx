@@ -52,14 +52,14 @@ export default async function AviationHubsPage() {
         heroBody:
           "Nicio națiune nu zboară ca America. Peste 19.000 de aeroporturi, cele mai aglomerate huburi de pe planetă și un sistem de control al traficului aerian care mută aproape trei milioane de oameni în fiecare zi, fără ca cei mai mulți să se gândească vreodată la asta.",
         heroStats: [
-          { value: "19,514", label: "aeroporturi în SUA — mai multe decât în orice altă țară" },
+          { value: "19,514", label: "aeroporturi în SUA: mai multe decât în orice altă țară" },
           { value: "44,7 mil.", label: "îmbarcări pe an la Atlanta, cel mai aglomerat aeroport de pe Pământ" },
           { value: "~45,000", label: "zboruri gestionate zilnic de controlul traficului aerian FAA" },
         ],
         storyTitle: "O națiune construită pentru zbor",
         lede: "Când frații Wright s-au ridicat de pe o dună din Carolina de Nord în 1903, au zburat 37 de metri. Un secol mai târziu, urmașii lor mută un continent prin aer în fiecare zi.",
         storyP1:
-          "Sistemul aerian american nu este un lanț de aeroporturi, ci o rețea. Marile huburi — Atlanta, Chicago, Dallas, Denver — adună zboruri din sute de orașe mai mici și le redistribuie, astfel încât aproape orice punct din țară să fie la cel mult două escale de oricare altul.",
+          "Sistemul aerian american nu este un lanț de aeroporturi, ci o rețea. Marile huburi: Atlanta, Chicago, Dallas, Denver, adună zboruri din sute de orașe mai mici și le redistribuie, astfel încât aproape orice punct din țară să fie la cel mult două escale de oricare altul.",
         storyP2:
           "Sub această rețea comercială se află una și mai mare: mii de aerodromuri mici, heliporturi și piste de iarbă care țin America generală în aer. Împreună formează cel mai dens sistem de aviație pe care l-a cunoscut vreodată o singură țară.",
         numbersTitle: "Anatomia sistemului",
@@ -106,23 +106,22 @@ export default async function AviationHubsPage() {
         gaTitle: "Cerul de dedesubt",
         gaP:
           "Dincolo de companiile aeriene există o a doua Americă aeriană: peste 200.000 de aeronave de aviație generală, de la avioane cu un singur motor la jeturi de afaceri, folosind mii de aeroporturi mici pe care majoritatea oamenilor nu le văd niciodată. Este libertatea de a zbura, scrisă în asfalt și iarbă în fiecare comitat al țării.",
-        quote:
-          "Aviația nu s-a mulțumit niciodată cu cerul. A vrut întregul continent la o zi distanță de oriunde — și l-a obținut.",
-        quoteAttribution: "Despre epoca aviației americane",
-        quoteTitle: "Un continent la o zi distanță",
-        prevLink: "↑ Prezentare Infrastructură",
+        quote: "Odată ce ai gustat zborul, vei merge pe pământ cu ochii îndreptați spre cer.",
+        quoteAttribution: "Pionierii aviației americane",
+        quoteTitle: "Cucerirea Distanței",
+        prevLink: "↑ Infrastructură",
         nextLink: "Porturile Maritime →",
       }
     : {
         breadcrumbSection: "Infrastructure",
         breadcrumbPage: "Aviation Hubs",
-        heroEyebrow: "The Global Aviation Hubs",
-        heroLead: "THE BUSIEST",
-        heroAccent: "SKY ON EARTH.",
+        heroEyebrow: "Global Aviation Hubs",
+        heroLead: "THE CONTINENTAL",
+        heroAccent: "SKYLINE.",
         heroBody:
-          "No nation flies like America. More than 19,000 airports, the busiest hubs on the planet, and an air traffic control system that moves nearly three million people every day, most of them never giving it a second thought.",
+          "Atlanta is the busiest passenger airport on Earth. Memphis is the primary express cargo hub. Together with Chicago, Dallas, and Denver, they form an invisible grid where thousands of jets move passengers and freight simultaneously across three million square miles.",
         heroStats: [
-          { value: "19,514", label: "airports in the U.S. — more than any other country" },
+          { value: "19,514", label: "airports in the U.S.: more than any other country" },
           { value: "44.7M", label: "enplanements a year at Atlanta, the busiest airport on Earth" },
           { value: "~45,000", label: "flights handled every day by FAA air traffic control" },
         ],

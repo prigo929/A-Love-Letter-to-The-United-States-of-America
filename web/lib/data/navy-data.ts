@@ -1548,7 +1548,7 @@ export const NAVY_HUMANITARIAN_MISSIONS: NavyHumanitarianMission[] = [
   {
     name: "USNS Mercy & Comfort Deployments",
     year: "Ongoing",
-    description: "The Navy operates two 1,000-bed hospital ships — USNS Mercy (Pacific) and USNS Comfort (Atlantic). They deploy for humanitarian missions, providing surgeries, dental care, and medical training across developing nations.",
+    description: "The Navy operates two 1,000-bed hospital ships: USNS Mercy (Pacific) and USNS Comfort (Atlantic). Converted from supertankers, these floating medical centers deploy to major natural disasters, providing surgeries, dental care, and medical training across developing nations.",
     impact: "500,000+ patients treated",
     asset: "USNS Mercy (T-AH-19) · USNS Comfort (T-AH-20)",
     accent: "#7d93ab",
@@ -1585,7 +1585,7 @@ export function getNavyHumanitarianMissions(locale: Locale): NavyHumanitarianMis
     {
       name: "Desfășurările USNS Mercy și Comfort",
       year: "În desfășurare",
-      description: "Marina operează două nave spital cu 1.000 de paturi — USNS Mercy (Pacific) și USNS Comfort (Atlantic). Se desfășoară în misiuni umanitare, oferind intervenții chirurgicale, asistență dentară și instruire medicală.",
+      description: "Marina operează două nave spital cu 1.000 de paturi: USNS Mercy (Pacific) și USNS Comfort (Atlantic). Convertite din supertancuri, aceste centre medicale plutitoare intervin la dezastre majore, oferind intervenții chirurgicale, asistență dentară și instruire medicală.",
       impact: "Peste 500.000 pacienți tratați",
       asset: "USNS Mercy (T-AH-19) · USNS Comfort (T-AH-20)",
       accent: "#7d93ab",

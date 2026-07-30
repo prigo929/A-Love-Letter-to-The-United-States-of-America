@@ -58,7 +58,7 @@ const copyEn: HousingCopy = {
       value: "2,301",
       label: "Sq Ft Average Home",
       description:
-        "The average new single-family home in the US is 2,301 sq ft — the largest in the world. Germany averages ~1,170 sq ft; Japan averages ~1,023 sq ft.",
+        "The average new single-family home in the US is 2,301 sq ft, making it the largest in the world. Germany averages ~1,170 sq ft; Japan averages ~1,023 sq ft.",
     },
     {
       value: "#2",
@@ -70,13 +70,13 @@ const copyEn: HousingCopy = {
       value: "65.6%",
       label: "Homeownership Rate",
       description:
-        "Nearly two-thirds of American households own their homes — a rate that has held steady for decades, spanning a wide cross-section of income levels and regions.",
+        "Nearly two-thirds of American households own their homes: a rate that has held steady for decades, spanning a wide cross-section of income levels and regions.",
     },
     {
       value: "~90%",
       label: "Fixed-Rate Mortgage Share",
       description:
-        "Approximately 90% of US mortgages are 30-year fixed-rate loans — a product that barely exists outside the United States and shields borrowers from rate-shock.",
+        "Approximately 90% of US mortgages are 30-year fixed-rate loans: a product that barely exists outside the United States and shields borrowers from rate-shock.",
     },
   ],
   pillarsTitle: "Four Pillars of American Housing Strength",
@@ -84,7 +84,7 @@ const copyEn: HousingCopy = {
     {
       icon: Key,
       title: "The 30-Year Fixed Mortgage: A Global Anomaly",
-      body: "Most countries offer only adjustable-rate or 5–10-year fixed mortgages. When rates rise, European and Asian homeowners see their monthly payments reset upward. American homeowners locked into a 30-year fixed rate are completely insulated. This instrument, backed by Fannie Mae and Freddie Mac through the secondary mortgage market, transfers the long-term interest-rate risk from homeowners to capital markets — creating the single most powerful residential wealth-building tool in history.",
+      body: "Most countries offer only adjustable-rate or 5–10-year fixed mortgages. When rates rise, European and Asian homeowners see their monthly payments reset upward. American homeowners locked into a 30-year fixed rate are completely insulated. This instrument, backed by Fannie Mae and Freddie Mac through the secondary mortgage market, transfers the long-term interest-rate risk from homeowners to capital markets, creating the single most powerful residential wealth-building tool in history.",
       source: "CNBC / Fannie Mae 2024",
       sourceUrl:
         "https://www.cnbc.com/2024/05/07/why-the-30-year-fixed-rate-mortgage-is-a-uniquely-american-construct.html",
@@ -92,7 +92,7 @@ const copyEn: HousingCopy = {
     {
       icon: Home,
       title: "Size, Space, and Suburban Scale",
-      body: "The American single-family home averages over 2,300 sq ft — a footprint that includes multiple bedrooms, a 2-car garage, a backyard, and often a finished basement or attic. The suburbs that house the majority of Americans are a product of the Interstate Highway System, cheap land, and a legal tradition of fee-simple ownership (full private title with no feudal legacy). This spatial abundance is the product of policy, infrastructure, and cultural preference working in alignment.",
+      body: "The American single-family home averages over 2,300 sq ft, featuring multiple bedrooms, a 2-car garage, a backyard, and often a finished basement or attic. The suburbs that house the majority of Americans are a product of the Interstate Highway System, cheap land, and a legal tradition of fee-simple ownership (full private title with no feudal legacy). This spatial abundance is the product of policy, infrastructure, and cultural preference working in alignment.",
       source: "World Population Review 2026",
       sourceUrl:
         "https://worldpopulationreview.com/country-rankings/house-size-by-country",

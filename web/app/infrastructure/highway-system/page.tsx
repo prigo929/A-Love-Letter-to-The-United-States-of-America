@@ -59,15 +59,16 @@ export default async function HighwaySystemPage() {
           "Cel mai mare proiect de lucrări publice din istoria omenirii: o rețea de autostrăzi cu acces controlat care traversează fiecare stat, urcă Munții Stâncoși la 3.401 metri și nu se oprește niciodată la o intersecție.",
         heroStats: [
           { value: "1956", label: "legea semnată de Eisenhower" },
-          { value: "3,020 mi", label: "cea mai lungă rută — I-90" },
-          { value: "25.9%", label: "din milele parcurse de vehicule în SUA, 2024" },
+          { value: "47.856 mi", label: "mile de autostrăzi interstatale" },
+          { value: "3.020 mi", label: "cea mai lungă rută: I-90" },
+          { value: "0", label: "semafoare pe întreaga rețea" },
         ],
-        lede: "Înainte de a exista Sistemul, traversarea Americii cu mașina era o expediție. După el, a devenit un drept.",
+        lede: "Autostrada care a creat America suburbană modernă.",
         storyTitle: "De la noroi la autostradă",
         storyP1:
-          "În vara lui 1919, Armata SUA a trimis un convoi motorizat de la Washington la San Francisco, ca să afle cât durează traversarea propriei țări. Răspunsul: 62 de zile. Camioanele s-au scufundat în noroi până la osii, au rupt poduri de lemn și au avansat, în medie, cu viteza unui om la pas. Printre ofițerii convoiului se afla un tânăr locotenent-colonel pe nume Dwight D. Eisenhower.",
+          "În 1919, un tânăr locotenent-colonel pe nume Dwight D. Eisenhower s-a alăturat unui convoi militar care traversa continentul de la Washington la San Francisco. Călătoria a durat 62 de zile, a distrus zeci de vehicule pe drumuri neasfaltate și a lăsat în mintea viitorului președinte o lecție de neuitat.",
         storyP2:
-          "Un sfert de secol mai târziu, același om a văzut autostrăzile Germaniei — și, ca președinte, a semnat în 1956 Federal-Aid Highway Act: guvernul federal plătea 90% din costuri, dintr-un fond alimentat de taxa pe benzină, iar statele construiau. Patruzeci de ani mai târziu, harta Americii fusese redesenată.",
+          "Un sfert de secol mai târziu, același om a văzut autostrăzile Germaniei, și, ca președinte, a semnat în 1956 Federal-Aid Highway Act. Proiectul care a urmat a mutat mai mult pământ decât construirea Canalului Panama, a legat fiecare oraș mare de pe continent și a schimbat pentru totdeauna unde trăiesc și lucrează americanii.",
         bandAlt: "Construcția autostrăzilor interstatale, anii 1950",
         bandTitle: "90% federal, 100% continental",
         bandP1:

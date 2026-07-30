@@ -80,7 +80,7 @@ export const COOPERATION_AGREEMENTS: CooperationAgreement[] = [
     members: ALL_50,
     network: false,
     hub: {
-      label: { en: "Commission seat — Lexington, Kentucky", ro: "Sediul comisiei — Lexington, Kentucky" },
+      label: { en: "Commission seat: Lexington, Kentucky", ro: "Sediul comisiei: Lexington, Kentucky" },
       coordinates: LEXINGTON_KY,
     },
     blurb: {
@@ -89,7 +89,7 @@ export const COOPERATION_AGREEMENTS: CooperationAgreement[] = [
     },
     history: {
       en: "Its 1937 predecessor was a single page and had no enforcement mechanism, so states simply ignored transfer requests they disliked. After six decades of drift the states rewrote it from scratch, creating an interstate commission with rulemaking power. It is a rare case of the states building their own regulator rather than waiting for Congress.",
-      ro: "Predecesorul din 1937 avea o singură pagină și niciun mecanism de aplicare, așa că statele ignorau cererile de transfer incomode. După șase decenii, statele l-au rescris integral, creând o comisie interstatală cu putere de reglementare — un caz rar în care statele își construiesc propriul regulator.",
+      ro: "Predecesorul din 1937 avea o singură pagină și niciun mecanism de aplicare, așa că statele ignorau cererile de transfer incomode. După șase decenii, statele l-au rescris integral, creând o comisie interstatală cu putere de reglementare, un caz rar în care statele își construiesc propriul regulator.",
     },
   },
   {

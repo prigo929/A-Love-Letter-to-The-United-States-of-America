@@ -32,8 +32,8 @@ const getPageMetadata = (locale: Locale) => ({
       : "Trade & Exports | Economy",
   description:
     locale === "ro"
-      ? "America exportă peste 2 trilioane de dolari în bunuri — avioane, semiconductori, dispozitive medicale, petrol și produse agricole — plus trilioane în servicii, software și expertiză financiară."
-      : "America exports $2T+ in goods — aircraft, semiconductors, medical devices, petroleum, and agricultural products — plus trillions in services, software, and financial expertise.",
+      ? "America exportă peste 2 trilioane de dolari în bunuri (avioane, semiconductori, dispozitive medicale, petrol și produse agricole), plus trilioane în servicii, software și expertiză financiară."
+      : "America exports $2T+ in goods (aircraft, semiconductors, medical devices, petroleum, and agricultural products), plus trillions in services, software, and financial expertise.",
   alternates: { canonical: "/economy/trade-and-exports" },
 });
 

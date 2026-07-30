@@ -126,9 +126,10 @@ export default async function DamsBridgesPage() {
         heroBody:
           "When America wanted to grow, it poured concrete into the canyons of the West and strung steel across its bays. The result: structures so large they reseated rivers, lit up cities, and redefined what a nation could build.",
         heroStats: [
-          { value: "726 ft", label: "Hoover Dam — tallest on Earth in 1936" },
-          { value: "4,200 ft", label: "Golden Gate main span" },
-          { value: "6.6M tons", label: "concrete in Hoover Dam" },
+          { value: "726 ft", label: "Hoover Dam: tallest on Earth in 1936" },
+          { value: "4,200 ft", label: "Golden Gate main span length" },
+          { value: "~6,809 MW", label: "Grand Coulee: the largest power station in the U.S." },
+          { value: "1883", label: "Brooklyn Bridge: first steel-wire suspension bridge" },
         ],
         storyTitle: "The American Engineering Sublime",
         lede: "A dam stops a river that has run for a million years. A bridge holds a mile of steel in the air. America turned both into a form of public art.",

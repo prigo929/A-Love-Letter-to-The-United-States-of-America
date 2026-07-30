@@ -58,13 +58,13 @@ const copyEn: HealthcareCopy = {
       value: "#1",
       label: "Cancer Survival Rates",
       description:
-        "The US leads the OECD in 5-year survival rates for breast cancer, prostate cancer, colorectal cancer, and leukemia — the four most common oncologic conditions.",
+        "The US leads the OECD in 5-year survival rates for breast cancer, prostate cancer, colorectal cancer, and leukemia: the four most common oncologic conditions.",
     },
     {
       value: "40.2",
       label: "MRI Scanners per Million",
       description:
-        "The US has 40.2 MRI units per million population — among the highest densities in the OECD, enabling faster diagnosis and earlier-stage detection.",
+        "The US has 40.2 MRI units per million population: among the highest densities in the OECD, enabling faster diagnosis and earlier-stage detection.",
     },
     {
       value: "~50%",
@@ -84,7 +84,7 @@ const copyEn: HealthcareCopy = {
     {
       icon: Activity,
       title: "Cancer Survival: The Definitive Benchmark",
-      body: "The US leads the OECD in 5-year survival rates across all major cancer types. For breast cancer, the US 5-year survival rate is ~91% versus ~83% in the UK. For prostate cancer: ~98% in the US versus ~88% in the UK and ~85% in Germany. For colorectal cancer: ~67% US versus ~60% UK. These are not small margins — they represent tens of thousands of additional patients surviving each year. The mechanism is faster time-to-treatment and broader access to cutting-edge therapeutic protocols including immunotherapy and targeted biologics.",
+      body: "The US leads the OECD in 5-year survival rates across all major cancer types. For breast cancer, the US 5-year survival rate is ~91% versus ~83% in the UK. For prostate cancer: ~98% in the US versus ~88% in the UK and ~85% in Germany. For colorectal cancer: ~67% US versus ~60% UK. These are not small margins: they represent tens of thousands of additional patients surviving each year. The mechanism is faster time-to-treatment and broader access to cutting-edge therapeutic protocols including immunotherapy and targeted biologics.",
       source: "OECD Health at a Glance 2023",
       sourceUrl:
         "https://www.oecd.org/en/publications/health-at-a-glance-2023_7a7afb35-en.html",
@@ -92,7 +92,7 @@ const copyEn: HealthcareCopy = {
     {
       icon: Microscope,
       title: "Diagnostic Equipment Density",
-      body: "The United States has more MRI and CT scanners per capita than virtually any other OECD nation. MRI availability translates directly to earlier-stage cancer detection — and earlier stage detection directly translates to higher survival rates. Patients in single-payer systems routinely wait weeks to months for these scans; American patients with insurance typically receive them within days. The US also leads in PET scanner density and robotic surgical systems.",
+      body: "The United States has more MRI and CT scanners per capita than virtually any other OECD nation. MRI availability translates directly to earlier-stage cancer detection, and earlier stage detection directly translates to higher survival rates. Patients in single-payer systems routinely wait weeks to months for these scans; American patients with insurance typically receive them within days. The US also leads in PET scanner density and robotic surgical systems.",
       source: "OECD Diagnostic Equipment Database 2023",
       sourceUrl:
         "https://www.oecd.org/en/publications/health-at-a-glance-2023_7a7afb35-en.html",
@@ -100,14 +100,14 @@ const copyEn: HealthcareCopy = {
     {
       icon: Pill,
       title: "Pharmaceutical Innovation Leadership",
-      body: "The vast majority of breakthrough drugs and therapies originate in the United States. The high price of pharmaceuticals in the US cross-subsidizes global drug development — including the drugs used in European single-payer systems at artificially low prices. Without American pharmaceutical profits, the R&D pipeline that produced mRNA vaccines, targeted cancer therapies, HIV antiretrovirals, and Alzheimer's drugs would not exist. The US is the engine of global medical progress.",
+      body: "The vast majority of breakthrough drugs and therapies originate in the United States. The high price of pharmaceuticals in the US cross-subsidizes global drug development, including the drugs used in European single-payer systems at artificially low prices. Without American pharmaceutical profits, the R&D pipeline that produced mRNA vaccines, targeted cancer therapies, HIV antiretrovirals, and Alzheimer's drugs would not exist. The US is the engine of global medical progress.",
       source: "PhRMA / FDA Annual Reports",
       sourceUrl: "https://www.fda.gov/patients/drug-development-process/step-4-fda-drug-review",
     },
     {
       icon: TrendingUp,
       title: "Contextualizing Life Expectancy",
-      body: "The often-cited US life expectancy gap versus Europe is largely driven by factors external to healthcare delivery quality: the US obesity rate (~42% vs ~20% in most of Europe), an exceptionally high vehicle fatality rate driven by car-dependent geography and high miles driven, and elevated homicide rates. When researchers control for accidents and violence, or compare age-adjusted mortality for specific treatable conditions, the US performance matches or exceeds European peers. The system's apparent 'inefficiency' is largely a measurement artifact.",
+      body: "The often-cited US life expectancy gap versus Europe is largely driven by factors external to healthcare delivery quality: the US obesity rate (~42% vs ~20% in most of Europe), an exceptionally high vehicle fatality rate driven by car-dependent geography and high miles driven, and elevated homicide rates. When researchers control for accidents and violence, or compare age-adjusted mortality for specific treatable conditions, the US performance matches or exceeds European peers.",
       source: "COSM Study / AEI Research",
       sourceUrl:
         "https://cosm.aei.org/is-the-us-really-an-outlier-on-pregnancy-deaths-and-have-such-deaths-spiked/",

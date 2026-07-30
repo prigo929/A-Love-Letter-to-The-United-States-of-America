@@ -111,8 +111,8 @@ export const HIGHWAY_ROUTES: NetworkRoute[] = [
     lengthLabel: "≈3,400 mi",
     year: "1913",
     description: {
-      en: "America's first coast-to-coast automobile road, stitched together from dirt tracks and county lanes a decade before numbered highways existed. Driving it took weeks — and proved a continent could be crossed by car.",
-      ro: "Primul drum auto de la o coastă la alta a Americii, cusut din drumuri de pământ și ulițe de comitat, cu un deceniu înaintea autostrăzilor numerotate. Traversarea dura săptămâni — dar a dovedit că un continent poate fi străbătut cu mașina.",
+      en: "America's first coast-to-coast automobile road, stitched together from dirt tracks and county lanes a decade before numbered highways existed. Driving it took weeks, and proved a continent could be crossed by car.",
+      ro: "Primul drum auto de la o coastă la alta a Americii, cusut din drumuri de pământ și ulițe de comitat, cu un deceniu înaintea autostrăzilor numerotate. Traversarea dura săptămâni, dar a dovedit că un continent poate fi străbătut cu mașina.",
     },
   },
   {
