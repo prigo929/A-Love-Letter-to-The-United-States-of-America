@@ -23,6 +23,7 @@ type TextMetrics = {
 // We keep the public URL stable so the component does not need to know
 // which source file in /VIDEOS was copied into /public/videos.
 const FLAG_VIDEO_URL = "/videos/flag-loop.mp4";
+const FLAG_POSTER_URL = "/videos/flag-loop-poster.jpg";
 
 function escapeXml(value: string) {
   // SVG markup is just text under the hood, so special characters must be
@@ -45,15 +46,11 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
   // We render one invisible HTML text node first, then ask the browser how big
   // it really is. That measured size becomes the source of truth for the SVGs.
   const measureRef = useRef<HTMLSpanElement>(null);
-  // We keep a ref to the <video> so we can inspect its load state and manually
-  // reset playback before the final paused frame becomes visible.
   const videoRef = useRef<HTMLVideoElement>(null);
-  // This lock prevents multiple loop-reset events from firing at nearly the
-  // same time when the video is close to its final frame.
-  const restartLockRef = useRef(false);
   const [metrics, setMetrics] = useState<TextMetrics | null>(null);
   const [videoReady, setVideoReady] = useState(false);
   const [videoError, setVideoError] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const idBase = sanitizeId(useId());
 
   useEffect(() => {
@@ -108,121 +105,81 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
   }, [text]);
 
   useEffect(() => {
-    // Whenever the word changes, treat the video as "not ready" again until
-    // the new render confirms otherwise.
     setVideoReady(false);
     setVideoError(false);
+    setIsPlaying(false);
   }, [text]);
 
+  // Video playback management & Low Power Mode / Autoplay detection
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    const seekableVideo = video as HTMLVideoElement & {
-      fastSeek?: (time: number) => void;
-    };
 
-    restartLockRef.current = false;
-    let restartTimeoutId: number | null = null;
-
-    if (video.readyState >= 3) {
-      // If the browser already has enough data to play the video (for example
-      // because it came from cache), mark it ready immediately.
+    if (video.readyState >= 2) {
       setVideoReady(true);
     }
 
-    const resumePlayback = () => {
-      void video.play().catch(() => {
-        // Ignore autoplay/playback promise noise. The fallback UI already
-        // handles real loading failures through `videoError`.
-      });
-    };
+    let isIntersecting = true;
 
-    const restartFromBeginning = () => {
-      if (restartLockRef.current || !video.duration) return;
-      restartLockRef.current = true;
-      video.pause();
+    const handlePlay = () => setIsPlaying(true);
+    const handlePause = () => setIsPlaying(false);
+    const handleEnded = () => setIsPlaying(false);
 
-      // Some browsers need the seek to finish before a new `play()` call will
-      // actually resume motion. We wait for `seeked`, then clear the lock.
-      const handleSeeked = () => {
-        restartLockRef.current = false;
-        resumePlayback();
-      };
+    video.addEventListener("play", handlePlay);
+    video.addEventListener("playing", handlePlay);
+    video.addEventListener("pause", handlePause);
+    video.addEventListener("ended", handleEnded);
 
-      video.addEventListener("seeked", handleSeeked, { once: true });
-      if (typeof seekableVideo.fastSeek === "function") {
-        seekableVideo.fastSeek(0.02);
-      } else {
-        video.currentTime = 0.02;
-      }
-
-      // Safety net: if `seeked` is skipped or delayed, still try to resume.
-      restartTimeoutId = window.setTimeout(() => {
-        if (!restartLockRef.current) return;
-        restartLockRef.current = false;
-        resumePlayback();
-      }, 120);
-    };
-
-    const syncLoop = () => {
-      // Jump back slightly before the final frame so the user never sees the
-      // native pause that some browsers show at the end of a loop.
-      if (video.duration && video.currentTime >= video.duration - 0.22) {
-        restartFromBeginning();
+    const attemptPlay = () => {
+      if (!video || !isIntersecting) return;
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch(() => {
+            // Low Power Mode or Autoplay restricted.
+            // Pause gracefully and display static img poster through mask.
+            setIsPlaying(false);
+          });
       }
     };
 
-    const handleEnded = () => {
-      restartFromBeginning();
-    };
+    attemptPlay();
 
-    const handlePause = () => {
-      // Mobile browsers can briefly enter a paused state at the end of the
-      // clip before firing all the normal loop events. If that happens while
-      // the page is visible, restart immediately.
-      if (
-        document.visibilityState === "visible" &&
-        (video.ended || (video.duration && video.currentTime >= video.duration - 0.25))
-      ) {
-        restartFromBeginning();
-      }
-    };
+    // IntersectionObserver to pause video when off-screen for battery/GPU performance
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isIntersecting = entry.isIntersecting;
+        if (entry.isIntersecting) {
+          attemptPlay();
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.1 }
+    );
 
-    let rafId: number | null = null;
-    const loop = () => {
-      syncLoop();
-      rafId = requestAnimationFrame(loop);
-    };
-
-    if (document.visibilityState === "visible") {
-      rafId = requestAnimationFrame(loop);
-    }
+    observer.observe(video);
 
     const handleVisibilityChange = () => {
-      if (document.visibilityState === "visible") {
-        if (!rafId) rafId = requestAnimationFrame(loop);
+      if (document.visibilityState === "visible" && isIntersecting) {
+        attemptPlay();
       } else {
-        if (rafId) {
-          cancelAnimationFrame(rafId);
-          rafId = null;
-        }
+        video.pause();
       }
     };
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
-    video.addEventListener("timeupdate", syncLoop);
-    video.addEventListener("ended", handleEnded);
-    video.addEventListener("pause", handlePause);
 
     return () => {
-      if (restartTimeoutId !== null) {
-        window.clearTimeout(restartTimeoutId);
-      }
-      if (rafId) cancelAnimationFrame(rafId);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-      video.removeEventListener("timeupdate", syncLoop);
-      video.removeEventListener("ended", handleEnded);
+      video.removeEventListener("play", handlePlay);
+      video.removeEventListener("playing", handlePlay);
       video.removeEventListener("pause", handlePause);
+      video.removeEventListener("ended", handleEnded);
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, [text]);
 
@@ -256,7 +213,6 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
     return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
   }, [metrics, text]);
 
-  // The video element naturally displays its poster while loading.
   const statesLineStyle = {
     display: "block",
     fontWeight: 900,
@@ -265,7 +221,6 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
     width: "fit-content",
   } as const;
 
-  const gradientId = `${idBase}-gradient`;
   const shadowFilterId = `${idBase}-shadow`;
   const horizontalBleed = metrics ? Math.max(metrics.fontSize * 0.08, 8) : 0;
   const verticalBleed = metrics ? Math.max(metrics.fontSize * 0.18, 12) : 0;
@@ -274,6 +229,19 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
 
   return (
     <span className="relative isolate mx-auto block w-fit" style={statesLineStyle}>
+      {/* Inline styles to suppress WebKit native media controls / play button bubbles */}
+      <style>{`
+        video::-webkit-media-controls-start-playback-button,
+        video::-webkit-media-controls-play-button,
+        video::-webkit-media-controls-overlay-play-button,
+        video::-webkit-media-controls {
+          display: none !important;
+          -webkit-appearance: none !important;
+          opacity: 0 !important;
+          pointer-events: none !important;
+        }
+      `}</style>
+
       <span
         ref={measureRef}
         aria-hidden="true"
@@ -284,8 +252,7 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
         {text}
       </span>
 
-      {/* Pre-render the video so the browser starts downloading it immediately.
-          It stays hidden until we have the font metrics to generate the SVG mask. */}
+      {/* Video / Poster layer with text mask */}
       <span
         aria-hidden="true"
         className="pointer-events-none absolute block overflow-hidden"
@@ -308,28 +275,41 @@ export function StatesVideoTitle({ text, shadow }: StatesVideoTitleProps) {
             : { opacity: 0 }
         }
       >
+        {/* Pure static image fallback for Low Power Mode / paused state.
+            An <img> tag never renders WebKit play button bubbles. */}
+        <img
+          src={FLAG_POSTER_URL}
+          alt=""
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
+            isPlaying ? "opacity-0" : "opacity-100"
+          }`}
+        />
+
+        {/* Video element: hidden via visibility when paused so Safari cannot overlay play controls */}
         <video
           ref={videoRef}
-          className="absolute inset-0 h-full w-full object-cover"
+          className={`absolute inset-0 h-full w-full object-cover pointer-events-none transition-opacity duration-300 ${
+            isPlaying ? "opacity-100" : "opacity-0 invisible"
+          }`}
           src={FLAG_VIDEO_URL}
+          poster={FLAG_POSTER_URL}
           autoPlay
           muted
           playsInline
           loop
           preload="metadata"
+          tabIndex={-1}
+          aria-hidden="true"
           onCanPlay={() => setVideoReady(true)}
           onLoadedData={() => setVideoReady(true)}
-          onError={() => {
-            console.log("Video Error");
-            setVideoError(true);
-          }}
+          onError={() => setVideoError(true)}
         />
       </span>
 
       {metrics ? (
         <>
           {/* Soft shadow layer. This sits behind both the video version and the
-              gradient fallback so the middle word matches the other hero lines. */}
+              static fallback so the middle word matches the other hero lines. */}
           <svg
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 block overflow-visible"
