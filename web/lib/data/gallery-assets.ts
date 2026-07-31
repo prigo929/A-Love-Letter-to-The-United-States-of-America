@@ -167,7 +167,7 @@ import asset0163 from "@/IMAGES/Culture/Iconic Things/Blue Jeans and White Sneak
 import asset0164 from "@/IMAGES/Culture/Iconic Things/Buck-Atoms-Cosmic-Curios-Route-66-Sign-And-Statue-In-Tulsa-Oklahoma.jpg";
 import asset0165 from "@/IMAGES/Culture/Iconic Things/Cinderella Castle at Disney World Orlando.jpg";
 import asset0166 from "@/IMAGES/Culture/Iconic Things/Classic-Cars-Parked-At-Mels-Drive-In-Universal-Studios-Hollywood.jpg";
-import asset0167 from "@/IMAGES/Culture/Iconic Things/Coca Cola Glass full.jpeg";
+import asset0167 from "@/IMAGES/Culture/Companies/Coca Cola 3 bottles.jpg";
 import asset0168 from "@/IMAGES/Culture/Iconic Things/Flos-V8-Cafe-Neon-Sign-At-Dusk-In-Cars-Land-Disney-California-Adventure.jpg";
 import asset0169 from "@/IMAGES/Culture/Iconic Things/Flos-V8-Cafe-Neon-Sign-Illuminated-At-Night-Cars-Land-Disney-California-Adventure.jpg";
 import asset0170 from "@/IMAGES/Culture/Iconic Things/Route-66-Shield-Painted-On-Desert-Highway-At-Sunrise.jpg";
@@ -1094,7 +1094,7 @@ const RAW_GALLERY_ASSETS = [
   { path: "Culture/Iconic Things/Buck-Atoms-Cosmic-Curios-Route-66-Sign-And-Statue-In-Tulsa-Oklahoma.jpg", src: asset0164 },
   { path: "Culture/Iconic Things/Cinderella Castle at Disney World Orlando.jpg", src: asset0165 },
   { path: "Culture/Iconic Things/Classic-Cars-Parked-At-Mels-Drive-In-Universal-Studios-Hollywood.jpg", src: asset0166 },
-  { path: "Culture/Iconic Things/Coca Cola Glass full.jpeg", src: asset0167 },
+  { path: "Culture/Companies/Coca Cola 3 bottles.jpg", src: asset0167 },
   { path: "Culture/Iconic Things/Flos-V8-Cafe-Neon-Sign-At-Dusk-In-Cars-Land-Disney-California-Adventure.jpg", src: asset0168 },
   { path: "Culture/Iconic Things/Flos-V8-Cafe-Neon-Sign-Illuminated-At-Night-Cars-Land-Disney-California-Adventure.jpg", src: asset0169 },
   { path: "Culture/Iconic Things/Route-66-Shield-Painted-On-Desert-Highway-At-Sunrise.jpg", src: asset0170 },

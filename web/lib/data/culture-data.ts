@@ -814,7 +814,7 @@ export const CULTURE_MEDIA_WALL_IMAGES = [
   "/images/culture/Iconic Things/1920s Speakeasy Design.jpg",
   "/images/culture/Iconic Things/American Diner inside.jpg",
   "/images/culture/Iconic Things/Blue Jeans and White Sneakers.jpg",
-  "/images/culture/Iconic Things/Coca Cola Glass full.jpeg",
+  "/images/culture/Companies/Coca Cola 3 bottles.jpg",
 ];
 
 export const BRAND_AD_LOGOS = [
