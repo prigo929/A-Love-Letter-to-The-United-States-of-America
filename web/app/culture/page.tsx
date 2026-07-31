@@ -21,6 +21,7 @@ import { SITE_IMAGES } from "@/lib/site-images";
 import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
 import DeepDiveSection from "@/components/shared/DeepDiveSection";
 import { CultureAmericana } from "@/components/culture/CultureAmericana";
+import { GlobalContributionsMatrix } from "@/components/culture/GlobalContributionsMatrix";
 import { IconicPhotographs } from "@/components/shared/IconicPhotographs";
 import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
 
@@ -167,6 +168,9 @@ export default async function CulturePage() {
 
       {/* §4b, What Is American Culture: the export paradox */}
       <CultureAmericana isRo={isRo} />
+
+      {/* §4c, What Every Country Added: the immigration & melting-pot synthesis */}
+      <GlobalContributionsMatrix />
 
       {/* Parallax Divider 1, Times Square Iconic */}
       <CultureParallaxDivider imageSrc={SITE_IMAGES.culture.timesSquareIconic} alt="Times Square Iconic" />
