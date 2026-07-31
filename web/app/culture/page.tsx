@@ -22,6 +22,8 @@ import { VERTICALS_THEMATIC_DATA } from "@/lib/data/verticals-thematic-data";
 import DeepDiveSection from "@/components/shared/DeepDiveSection";
 import { CultureAmericana } from "@/components/culture/CultureAmericana";
 import { GlobalContributionsMatrix } from "@/components/culture/GlobalContributionsMatrix";
+import { HolidaysTraditionsCanon } from "@/components/culture/HolidaysTraditionsCanon";
+import { AmericanaOddsAndEnds } from "@/components/culture/AmericanaOddsAndEnds";
 import { IconicPhotographs } from "@/components/shared/IconicPhotographs";
 import { DEEP_DIVE_THEMES } from "@/lib/deep-dive-themes";
 
@@ -171,6 +173,48 @@ export default async function CulturePage() {
 
       {/* §4c, What Every Country Added: the immigration & melting-pot synthesis */}
       <GlobalContributionsMatrix />
+
+      {/* §4d, Holidays & Traditions: Why Are These Things American Christmas Symbols */}
+      <section className="culture-bg text-[#F5EDD8] py-24 border-t border-white/5">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8">
+          <div className="text-center mb-16">
+            <p className="font-body text-[11px] uppercase tracking-[0.3em] text-glory-gold font-bold mb-3">
+              {isRo ? "SĂRBĂTORI ȘI TRADIȚII" : "HOLIDAYS & TRADITIONS"}
+            </p>
+            <h2 className="culture-text-hero text-[#F5EDD8] text-4xl sm:text-6xl font-black tracking-tight">
+              {isRo ? "CANONUL CRĂCIUNULUI AMERICAN" : "THE AMERICAN CHRISTMAS CANON"}
+            </h2>
+            <p className="mx-auto mt-6 max-w-3xl font-editorial text-xl italic text-[#F5EDD8]/80 leading-relaxed">
+              {isRo
+                ? "„Oamenii de zăpadă victoricieni, omul de turtă dulce, șosetele de pe șemineu, laurul antic și bastonașul de mentă: cum au devenit cinci simboluri secundare părți fundamentale din sărbătorile americane.”"
+                : "“Victorian snowmen, gingerbread men, hearthside stockings, ancient holly, and hooked peppermint canes: how five secondary symbols became indispensable elements of American holiday life.”"}
+            </p>
+            <div className="w-24 h-px bg-glory-gold/30 mx-auto mt-8" />
+          </div>
+          <HolidaysTraditionsCanon />
+        </div>
+      </section>
+
+      {/* §4e, Odds & Ends of Americana */}
+      <section className="culture-bg text-[#F5EDD8] pb-24 border-t border-white/5">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 pt-12">
+          <div className="text-center mb-16">
+            <p className="font-body text-[11px] uppercase tracking-[0.3em] text-glory-gold font-bold mb-3">
+              {isRo ? "CURIOSITĂȚI & FOLCLOR" : "CURIOSITIES & FOLKLORE"}
+            </p>
+            <h2 className="culture-text-hero text-[#F5EDD8] text-4xl sm:text-6xl font-black tracking-tight">
+              {isRo ? "ELEMENTE DIVERSE DE AMERICANA" : "ODDS & ENDS OF AMERICANA"}
+            </h2>
+            <p className="mx-auto mt-6 max-w-3xl font-editorial text-xl italic text-[#F5EDD8]/80 leading-relaxed">
+              {isRo
+                ? "„Păpuși bobblehead, culori fluorescente Day-Glo, Frankenstein-ul de la Hollywood, popcorn-ul la cinema, zarurile D20 și vulturul pleșuv: șase povestiri scurte din textura culturală a Americii.”"
+                : "“Bobblehead dolls, fluorescent Day-Glo colors, Hollywood's Frankenstein, cinema popcorn, D20 dice, and the Bald Eagle: six short tales from the cultural fabric of American life.”"}
+            </p>
+            <div className="w-24 h-px bg-glory-gold/30 mx-auto mt-8" />
+          </div>
+          <AmericanaOddsAndEnds />
+        </div>
+      </section>
 
       {/* Parallax Divider 1, Times Square Iconic */}
       <CultureParallaxDivider imageSrc={SITE_IMAGES.culture.timesSquareIconic} alt="Times Square Iconic" />
