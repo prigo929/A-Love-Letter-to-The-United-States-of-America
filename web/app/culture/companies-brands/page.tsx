@@ -7,6 +7,7 @@ import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
 import { CultureStyles, CultureBrandLogosMarquee } from "@/components/culture/CulturePageComponents";
+import { MascotCanon } from "@/components/culture/MascotCanon";
 import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
@@ -188,6 +189,28 @@ export default async function CultureCompaniesBrandsPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* CREAM: Why Do So Many Things Have Mascots */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-24 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
+            <div className="text-center mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "BRANDING & IDENTITATE VIZUALĂ" : "BRANDING & VISUAL IDENTITY"}
+              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">
+                {isRo ? "DE CE AU ATÂTEA LUCRURI MASCOTE" : "WHY DO SO MANY THINGS HAVE MASCOTS"}
+              </h2>
+              <p className="mx-auto mt-6 max-w-2xl font-editorial text-lg text-[#0C0907]/60">
+                {isRo
+                  ? "De la buldogul Yale din 1889 și portretele fondatorilor victorieni, la era de aur a cerealelor TV și creatura хаotică Gritty: cum au devenit mascotele cele mai puternice instrumente de identitate ale brandurilor."
+                  : "From the 1889 Yale Bulldog and Victorian founder portraits to the postwar TV cereal boom and Philadelphia's chaotic Gritty: how mascots became America's ultimate branding device."}
+              </p>
+              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
+            </div>
+            <MascotCanon />
           </div>
         </section>
 
