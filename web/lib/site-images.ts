@@ -278,10 +278,42 @@ import cultureCowboysStadium from "@/IMAGES/Culture/Sports/Stadiums/Wide-Interio
 import cultureStatueOfLiberty from "@/IMAGES/Culture/Iconic Things/Statue Of Liberty.jpg";
 import cocaCola3Bottles from "@/IMAGES/Culture/Companies/Coca Cola 3 bottles.jpg";
 
-// New Core Visuals
 import fashionJeansSneakers from "@/IMAGES/Culture/Iconic Things/Blue Jeans and White Sneakers.jpg";
 import dinerInside from "@/IMAGES/Culture/Iconic Things/American Diner inside.jpg";
 import speakeasyDesign from "@/IMAGES/Culture/Iconic Things/1920s Speakeasy Design.jpg";
+
+// Organized Mascots
+import mascotHandsomeDan from "@/IMAGES/Culture/Mascots/Handsome Dan.avif";
+import mascotQuakerOats from "@/IMAGES/Culture/Mascots/Quaker Oats Founder.webp";
+import mascotMrPeanut from "@/IMAGES/Culture/Mascots/Mr Peanut.png";
+import mascotCampbellsSoup from "@/IMAGES/Culture/Mascots/Campbells Soup Kids.jpg";
+import mascotTonyTheTiger from "@/IMAGES/Culture/Mascots/Tony the Tiger.jpg";
+import mascotCapnCrunch from "@/IMAGES/Culture/Mascots/Capn Crunch.webp";
+import mascotPillsburyDoughboy from "@/IMAGES/Culture/Mascots/Pillsbury Doughboy.webp";
+import mascotGritty from "@/IMAGES/Culture/Mascots/Gritty Mascot.webp";
+
+// Organized Aesthetics
+import aestheticCabin from "@/IMAGES/Culture/Aesthetics/Rustic Cabin Outdoors.jpg";
+import aestheticCircus from "@/IMAGES/Culture/Aesthetics/Circus Carnival Aesthetic.jpg";
+import aestheticWildWest from "@/IMAGES/Culture/Aesthetics/Wild West Saloon.jpg";
+import aestheticFarmhouse from "@/IMAGES/Culture/Aesthetics/Cozy Farmhouse Kitchen.png";
+import aestheticNautical from "@/IMAGES/Culture/Aesthetics/Nautical Sailing Aesthetic.webp";
+import aestheticDiner from "@/IMAGES/Culture/Aesthetics/1950s Retro Diner.webp";
+import aestheticIndustrial from "@/IMAGES/Culture/Aesthetics/Industrial Loft Living.webp";
+import aestheticSuburbanMall from "@/IMAGES/Culture/Aesthetics/Suburban Shopping Mall.jpg";
+
+// Organized Christmas
+import christmasSnowman from "@/IMAGES/Culture/Christmas/Victorian Snowman.jpg";
+import christmasGingerbread from "@/IMAGES/Culture/Christmas/Gingerbread Man Cookie.webp";
+import christmasStocking from "@/IMAGES/Culture/Christmas/Christmas Stocking Hearth.jpg";
+import christmasHolly from "@/IMAGES/Culture/Christmas/Holly Sprig Berries.jpg";
+import christmasCandyCane from "@/IMAGES/Culture/Christmas/Peppermint Candy Cane.jpg";
+
+// Organized Americana
+import americanaDayGlo from "@/IMAGES/Culture/Americana/Day Glo Neon.jpg";
+import americanaFrankenstein from "@/IMAGES/Culture/Americana/Universal Frankenstein 1931.jpg";
+import americanaBlockbuster from "@/IMAGES/Culture/Americana/Blockbuster VHS Store.webp";
+import americanaDnd from "@/IMAGES/Culture/Americana/Dnd Beholder Dice.webp";
 
 
 // New Movie Posters
@@ -829,6 +861,40 @@ export const SITE_IMAGES = {
     vaultUniden1987: vaultUniden1987.src,
     vaultCocaCola1989: vaultCocaCola1989.src,
     vaultCocaCola1988: vaultCocaCola1988.src,
+    cocaCola3Bottles: cocaCola3Bottles.src,
+
+    // Mascots
+    mascotHandsomeDan: mascotHandsomeDan.src,
+    mascotQuakerOats: mascotQuakerOats.src,
+    mascotMrPeanut: mascotMrPeanut.src,
+    mascotCampbellsSoup: mascotCampbellsSoup.src,
+    mascotTonyTheTiger: mascotTonyTheTiger.src,
+    mascotCapnCrunch: mascotCapnCrunch.src,
+    mascotPillsburyDoughboy: mascotPillsburyDoughboy.src,
+    mascotGritty: mascotGritty.src,
+
+    // Aesthetics
+    aestheticCabin: aestheticCabin.src,
+    aestheticCircus: aestheticCircus.src,
+    aestheticWildWest: aestheticWildWest.src,
+    aestheticFarmhouse: aestheticFarmhouse.src,
+    aestheticNautical: aestheticNautical.src,
+    aestheticDiner: aestheticDiner.src,
+    aestheticIndustrial: aestheticIndustrial.src,
+    aestheticSuburbanMall: aestheticSuburbanMall.src,
+
+    // Christmas
+    christmasSnowman: christmasSnowman.src,
+    christmasGingerbread: christmasGingerbread.src,
+    christmasStocking: christmasStocking.src,
+    christmasHolly: christmasHolly.src,
+    christmasCandyCane: christmasCandyCane.src,
+
+    // Americana
+    americanaDayGlo: americanaDayGlo.src,
+    americanaFrankenstein: americanaFrankenstein.src,
+    americanaBlockbuster: americanaBlockbuster.src,
+    americanaDnd: americanaDnd.src,
     vaultTiffany1967: vaultTiffany1967.src,
     waltDisney: iconWaltDisney.src,
     louisArmstrong: iconLouisArmstrong.src,
