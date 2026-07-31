@@ -8,6 +8,7 @@ import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
 import { CultureStyles } from "@/components/culture/CulturePageComponents";
 import { SITE_IMAGES } from "@/lib/site-images";
+import { AdvancedEnglishConcepts } from "@/components/culture/AdvancedEnglishConcepts";
 
 export const metadata: Metadata = {
   title: "English Language | The American Operating System",
@@ -251,6 +252,9 @@ export default async function EnglishLanguagePage() {
             </div>
           </div>
         </section>
+
+        {/* Super Advanced English Concepts (JJ McCullough research) */}
+        <AdvancedEnglishConcepts />
 
         <div className="h-16 w-full gradient-cream-to-dark" />
 
