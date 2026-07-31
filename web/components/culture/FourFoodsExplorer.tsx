@@ -206,7 +206,8 @@ export function FourFoodsExplorer() {
                   src={f.image}
                   alt={ro ? f.nameRo : f.name}
                   fill
-                  sizes="160px"
+                  sizes="(max-width: 640px) 25vw, 400px"
+                  quality={95}
                   className="object-cover transition-all duration-300"
                   style={{
                     filter: on ? "none" : "grayscale(0.35)",
