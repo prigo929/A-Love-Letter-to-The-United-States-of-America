@@ -8,10 +8,13 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { useState } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 interface MascotEra {
   id: string;
+  image: string;
   era: string;
   eraRo: string;
   title: string;
@@ -31,6 +34,7 @@ interface MascotEra {
 const MASCOT_ERAS: MascotEra[] = [
   {
     id: "victorian",
+    image: SITE_IMAGES.culture.mascotHandsomeDan,
     era: "1880s – 1900s",
     eraRo: "1880 – 1900",
     title: "Victorian Authority & Regimental Luck",
@@ -52,6 +56,7 @@ const MASCOT_ERAS: MascotEra[] = [
   },
   {
     id: "early-cartoon",
+    image: SITE_IMAGES.culture.mascotMrPeanut,
     era: "1910s – 1930s",
     eraRo: "1910 – 1930",
     title: "Early Animation & Commercial Caricatures",
@@ -73,6 +78,7 @@ const MASCOT_ERAS: MascotEra[] = [
   },
   {
     id: "golden-age",
+    image: SITE_IMAGES.culture.mascotTonyTheTiger,
     era: "1950s – 1970s",
     eraRo: "1950 – 1970",
     title: "The Postwar TV & Cereal Golden Age",
@@ -94,6 +100,7 @@ const MASCOT_ERAS: MascotEra[] = [
   },
   {
     id: "modern-antihero",
+    image: SITE_IMAGES.culture.mascotGritty,
     era: "1980s – Present",
     eraRo: "1980 – Prezent",
     title: "Local Underdogs, Irony & Anti-Mascots",
@@ -201,8 +208,17 @@ export function MascotCanon() {
             </div>
           </div>
 
-          {/* Right column: detailed breakdown */}
-          <div className="flex flex-col justify-center gap-4 lg:pl-6 lg:border-l lg:border-[#0C0907]/10">
+          {/* Right column: image & detailed breakdown */}
+          <div className="flex flex-col justify-center gap-6 lg:pl-6 lg:border-l lg:border-[#0C0907]/10">
+            <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0_15px_40px_rgba(12,9,7,0.12)] border border-[#0C0907]/10">
+              <Image
+                src={active.image}
+                alt={active.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 40vw"
+              />
+            </div>
             <p className="font-editorial text-lg md:text-xl leading-relaxed text-[#0C0907]/85">
               {ro ? active.detailRo : active.detail}
             </p>

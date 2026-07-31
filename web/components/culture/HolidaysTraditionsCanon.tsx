@@ -8,10 +8,13 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { useState } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 interface ChristmasSymbol {
   id: string;
+  image: string;
   name: string;
   nameRo: string;
   originEra: string;
@@ -29,6 +32,7 @@ interface ChristmasSymbol {
 const CHRISTMAS_SYMBOLS: ChristmasSymbol[] = [
   {
     id: "snowman",
+    image: SITE_IMAGES.culture.christmasSnowman,
     name: "The Snowman",
     nameRo: "Omul de zăpadă",
     originEra: "Victorian Print Media & 1950 Radio",
@@ -48,6 +52,7 @@ const CHRISTMAS_SYMBOLS: ChristmasSymbol[] = [
   },
   {
     id: "gingerbread",
+    image: SITE_IMAGES.culture.christmasGingerbread,
     name: "The Gingerbread Man",
     nameRo: "Omul de turtă dulce",
     originEra: "Medieval Spices & 1875 St. Nicholas Magazine",
@@ -67,6 +72,7 @@ const CHRISTMAS_SYMBOLS: ChristmasSymbol[] = [
   },
   {
     id: "stockings",
+    image: SITE_IMAGES.culture.christmasStocking,
     name: "Christmas Stockings",
     nameRo: "Șosetele de Crăciun",
     originEra: "Ancient Shoe Offerings to Hearthside Socks",
@@ -86,6 +92,7 @@ const CHRISTMAS_SYMBOLS: ChristmasSymbol[] = [
   },
   {
     id: "holly",
+    image: SITE_IMAGES.culture.christmasHolly,
     name: "Holly",
     nameRo: "Iedera cu bobițe (Laurul)",
     originEra: "Roman Saturnalia to Mid-December Winter Decor",
@@ -105,6 +112,7 @@ const CHRISTMAS_SYMBOLS: ChristmasSymbol[] = [
   },
   {
     id: "candy-cane",
+    image: SITE_IMAGES.culture.christmasCandyCane,
     name: "The Candy Cane",
     nameRo: "Bastonașul de zahăr",
     originEra: "17th C. Peppermint Sticks & 1920s Georgia Production",
@@ -210,8 +218,17 @@ export function HolidaysTraditionsCanon() {
             </div>
           </div>
 
-          {/* Right Column */}
-          <div className="flex flex-col justify-center gap-4 lg:pl-6 lg:border-l lg:border-white/10">
+          {/* Right Column: image & text */}
+          <div className="flex flex-col justify-center gap-6 lg:pl-6 lg:border-l lg:border-white/10">
+            <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)] border border-white/10">
+              <Image
+                src={active.image}
+                alt={active.name}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 40vw"
+              />
+            </div>
             <p className="font-editorial text-lg md:text-xl leading-relaxed text-[#F5EDD8]/90">
               {ro ? active.detailRo : active.detail}
             </p>

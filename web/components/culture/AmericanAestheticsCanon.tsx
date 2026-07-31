@@ -8,10 +8,13 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { useState } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 interface AestheticItem {
   id: string;
+  image: string;
   number: string;
   name: string;
   nameRo: string;
@@ -30,6 +33,7 @@ interface AestheticItem {
 const AESTHETICS: AestheticItem[] = [
   {
     id: "cabin",
+    image: SITE_IMAGES.culture.aestheticCabin,
     number: "01",
     name: "The Cabin / Outdoors Aesthetic",
     nameRo: "Estetica de cabană și natură",
@@ -50,6 +54,7 @@ const AESTHETICS: AestheticItem[] = [
   },
   {
     id: "circus",
+    image: SITE_IMAGES.culture.aestheticCircus,
     number: "02",
     name: "The Circus & Carnival Aesthetic",
     nameRo: "Estetica de circ și bâlci",
@@ -70,6 +75,7 @@ const AESTHETICS: AestheticItem[] = [
   },
   {
     id: "wild-west",
+    image: SITE_IMAGES.culture.aestheticWildWest,
     number: "03",
     name: "The Wild West / Saloon Aesthetic",
     nameRo: "Estetica Wild West și Saloon",
@@ -90,6 +96,7 @@ const AESTHETICS: AestheticItem[] = [
   },
   {
     id: "farmhouse",
+    image: SITE_IMAGES.culture.aestheticFarmhouse,
     number: "04",
     name: "The Farmhouse Aesthetic",
     nameRo: "Estetica de casă de fermă",
@@ -110,6 +117,7 @@ const AESTHETICS: AestheticItem[] = [
   },
   {
     id: "nautical",
+    image: SITE_IMAGES.culture.aestheticNautical,
     number: "05",
     name: "The Coastal / Nautical Aesthetic",
     nameRo: "Estetica marină și de coastă",
@@ -130,6 +138,7 @@ const AESTHETICS: AestheticItem[] = [
   },
   {
     id: "diner",
+    image: SITE_IMAGES.culture.aestheticDiner,
     number: "06",
     name: "The 1950s Diner / Rockabilly Aesthetic",
     nameRo: "Estetica Diner '50 și Rockabilly",
@@ -150,6 +159,7 @@ const AESTHETICS: AestheticItem[] = [
   },
   {
     id: "industrial",
+    image: SITE_IMAGES.culture.aestheticIndustrial,
     number: "07",
     name: "The Industrial Loft Aesthetic",
     nameRo: "Estetica de loft industrial",
@@ -170,6 +180,7 @@ const AESTHETICS: AestheticItem[] = [
   },
   {
     id: "suburban-mall",
+    image: SITE_IMAGES.culture.aestheticSuburbanMall,
     number: "08",
     name: "The Suburban Mall / 1980s Neon Aesthetic",
     nameRo: "Estetica de mall suburban și neon '80",
@@ -284,8 +295,17 @@ export function AmericanAestheticsCanon() {
             </div>
           </div>
 
-          {/* Right column: detailed description */}
-          <div className="flex flex-col justify-center gap-4 lg:pl-6 lg:border-l lg:border-[#0C0907]/10">
+          {/* Right column: image & detailed description */}
+          <div className="flex flex-col justify-center gap-6 lg:pl-6 lg:border-l lg:border-[#0C0907]/10">
+            <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0_15px_40px_rgba(12,9,7,0.12)] border border-[#0C0907]/10">
+              <Image
+                src={active.image}
+                alt={active.name}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 40vw"
+              />
+            </div>
             <p className="font-editorial text-lg md:text-xl leading-relaxed text-[#0C0907]/85">
               {ro ? active.descriptionRo : active.description}
             </p>

@@ -8,10 +8,13 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { useState } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 interface AmericanaCuriosity {
   id: string;
+  image: string;
   topic: string;
   topicRo: string;
   category: string;
@@ -30,6 +33,7 @@ interface AmericanaCuriosity {
 const CURIOSITIES: AmericanaCuriosity[] = [
   {
     id: "funko-bobbleheads",
+    image: SITE_IMAGES.culture.americanaBlockbuster,
     topic: "Bobbleheads & Funko Pops",
     topicRo: "Dolls Bobblehead și Funko Pops",
     category: "Collectibles & Toys",
@@ -48,6 +52,7 @@ const CURIOSITIES: AmericanaCuriosity[] = [
   },
   {
     id: "day-glo",
+    image: SITE_IMAGES.culture.americanaDayGlo,
     topic: "Day-Glo Neon Pigments",
     topicRo: "Pigmenții neon Day-Glo",
     category: "Visual Tech & Pop Art",
@@ -66,6 +71,7 @@ const CURIOSITIES: AmericanaCuriosity[] = [
   },
   {
     id: "frankenstein",
+    image: SITE_IMAGES.culture.americanaFrankenstein,
     topic: "Universal's Green Frankenstein",
     topicRo: "Frankenstein-ul verde Universal",
     category: "Cinema & Monster Lore",
@@ -84,6 +90,7 @@ const CURIOSITIES: AmericanaCuriosity[] = [
   },
   {
     id: "blockbuster-popcorn",
+    image: SITE_IMAGES.culture.americanaBlockbuster,
     topic: "Blockbuster & Cinema Popcorn",
     topicRo: "Blockbuster și Popcorn-ul de Cinema",
     category: "Media & Concession Systems",
@@ -102,6 +109,7 @@ const CURIOSITIES: AmericanaCuriosity[] = [
   },
   {
     id: "dnd-beholder",
+    image: SITE_IMAGES.culture.americanaDnd,
     topic: "Dungeons & Dragons & D20",
     topicRo: "Dungeons & Dragons și D20",
     category: "Gaming & Modern Myth",
@@ -120,6 +128,7 @@ const CURIOSITIES: AmericanaCuriosity[] = [
   },
   {
     id: "bald-eagle",
+    image: SITE_IMAGES.culture.statueOfLiberty,
     topic: "The Bald Eagle & Great Seal",
     topicRo: "Vulturul pleșuv și Marele Sigiliu",
     category: "National Symbols",
@@ -219,8 +228,17 @@ export function AmericanaOddsAndEnds() {
             </div>
           </div>
 
-          {/* Right column */}
-          <div className="flex flex-col justify-center gap-4 lg:pl-6 lg:border-l lg:border-white/10">
+          {/* Right column: image & text */}
+          <div className="flex flex-col justify-center gap-6 lg:pl-6 lg:border-l lg:border-white/10">
+            <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)] border border-white/10">
+              <Image
+                src={active.image}
+                alt={active.topic}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 40vw"
+              />
+            </div>
             <p className="font-editorial text-lg md:text-xl leading-relaxed text-[#F5EDD8]/90">
               {ro ? active.detailRo : active.detail}
             </p>
