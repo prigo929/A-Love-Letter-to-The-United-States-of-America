@@ -154,6 +154,20 @@ export default async function GrowingUpAmericanPage() {
               </p>
               <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
             </div>
+
+            <div className="mx-auto mb-16 max-w-3xl space-y-6 font-editorial text-lg leading-relaxed text-[#0C0907]/75">
+              <p>
+                {isRo
+                  ? "Liceul american a evoluat din academiile de la începutul secolului XIX, unde părinții bogați își trimiteau băieții câțiva ani înainte de facultate. La mijlocul anilor 1800, reformatori inspirați de Germania au introdus sortarea pe vârste pe care o știm azi: școala elementară, apoi liceul de patru ani, apoi universitatea. Până la începutul secolului XX, liceul devenise parte a sistemului public prin care treceau toți copiii, iar legile muncii și trecerea de la o economie agricolă au făcut ca elevii să rămână în școală până pe la 18 ani."
+                  : "American high school evolved out of early-19th-century academies, where wealthy parents sent their boys for a few years before college. In the mid-1800s, German-inspired reformers introduced the age-sorting we know today: elementary school, then a four-year secondary school, then university. By the early 20th century high school had become part of the public system every child passed through, and child-labor laws and the move off the farm kept teenagers in school until around 18."}
+              </p>
+              <p>
+                {isRo
+                  ? "Adolescenții boom-ului de după al Doilea Război Mondial au fost prima generație cu o adolescență stabilă și prima vizată ca demografie de consum aparte. Divertismentul timpuriu evita școala ca fiind plictisitoare, dar până în anii 1980 cineaștii boomeri au făcut din liceu decorul american prin excelență al maturizării, uneori pentru râs (Fast Times at Ridgemont High), alteori mai profund (filmele lui John Hughes), iar la TV de la Saved by the Bell la Degrassi. Densitatea acestor povești a produs un repertoriu fix de eroi, ticăloși și conflicte, îmbrățișat mai târziu post-ironic de High School Musical și Glee. Acesta este repertoriul de mai jos."
+                  : "The teenagers of the postwar baby boom were the first generation with a stable adolescence and the first targeted as a distinct consumer demographic. Early entertainment avoided school as boring, but by the 1980s boomer filmmakers made high school the definitive American coming-of-age setting, sometimes for laughs (Fast Times at Ridgemont High), sometimes more deeply (the films of John Hughes), and on TV from Saved by the Bell to Degrassi. The density of those stories bred a fixed roster of heroes, villains and conflicts, later embraced post-ironically by High School Musical and Glee. That roster is the deck below."}
+              </p>
+            </div>
+
             <HighSchoolTropes />
           </div>
         </section>
