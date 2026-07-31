@@ -254,6 +254,11 @@ export const NAV_SECTIONS = [
         href: "/culture/english-language",
         description: "The lingua franca of science, aviation, and code",
       },
+      {
+        label: "Growing Up American",
+        href: "/culture/growing-up-american",
+        description: "Toys, school supplies, and Hollywood high school clichés",
+      },
     ],
   },
   {
@@ -868,6 +873,10 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "/culture/english-language": {
         label: "Limba Engleză",
         description: "Lingua franca a științei, aviației și codului",
+      },
+      "/culture/growing-up-american": {
+        label: "Copilăria Americană",
+        description: "Jucării, rechizite școlare și clișeele liceului de la Hollywood",
       },
     },
   },

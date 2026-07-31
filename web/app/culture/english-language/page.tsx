@@ -33,7 +33,7 @@ export default async function EnglishLanguagePage() {
       ? "În spatele fiecărei linii de cod compilate în Tokyo, Berlin sau São Paulo stau cuvintele cheie în engleză, standardul voluntar care scalează eficiența globală."
       : "Behind every line of code compiled in Tokyo, Berlin, or São Paulo lie English keywords, the voluntary standard scaling global efficiency.",
     backLink: isRo ? "← Înapoi la Modă" : "← Back to Fashion",
-    nextLink: isRo ? "Prezentare Generală →" : "Overview →",
+    nextLink: isRo ? "Copilăria Americană →" : "Growing Up American →",
   };
 
   const domains = [
@@ -337,7 +337,7 @@ export default async function EnglishLanguagePage() {
 
           <div className="flex items-center justify-between border-t border-white/10 pt-12 font-body">
             <a href="/culture/fashion" className="text-xs uppercase tracking-widest text-[#F5EDD8]/50 hover:text-white transition-colors">{content.backLink}</a>
-            <a href="/culture" className="text-xs uppercase tracking-widest text-glory-gold hover:text-white transition-colors">{content.nextLink}</a>
+            <a href="/culture/growing-up-american" className="text-xs uppercase tracking-widest text-glory-gold hover:text-white transition-colors">{content.nextLink}</a>
           </div>
         </div>
 

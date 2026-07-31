@@ -160,6 +160,17 @@ export default async function GrowingUpAmericanPage() {
 
         <div className="h-16 w-full gradient-cream-to-dark" />
 
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-12">
+          <div className="flex items-center justify-between border-t border-white/10 pt-12 font-body">
+            <a href="/culture/english-language" className="text-xs uppercase tracking-widest text-[#F5EDD8]/50 hover:text-white transition-colors">
+              {isRo ? "← Înapoi la Limba Engleză" : "← Back to English Language"}
+            </a>
+            <a href="/culture/entertainment" className="text-xs uppercase tracking-widest text-glory-gold hover:text-white transition-colors">
+              {isRo ? "Film & Divertisment →" : "Film & Entertainment →"}
+            </a>
+          </div>
+        </div>
+
         <div className="culture-bg">
           <AskAmericaCTA
             locale={locale}
