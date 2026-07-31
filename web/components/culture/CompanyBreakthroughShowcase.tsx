@@ -1,14 +1,21 @@
 "use client";
 
 // ─── CompanyBreakthroughShowcase ─────────────────────────────────────────────
-// "Company Breakthrough Showcase": Highlighting specific iconic American companies,
-// their breakthrough product/innovation, official company logo, stats, and impact.
+// "Company Breakthrough Showcase": Highlighting 12 iconic American companies,
+// clean unboxed official logos, 2-row selector grid, founder quotes, milestones,
+// and breakthrough innovations.
 // Written in editorial voice: zero em dashes, zero AI tropes.
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { useState } from "react";
 import Image from "next/image";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+
+interface CompanyMilestone {
+  year: string;
+  label: string;
+  labelRo: string;
+}
 
 interface FeaturedCompany {
   id: string;
@@ -22,12 +29,17 @@ interface FeaturedCompany {
   statValue: string;
   statLabel: string;
   statLabelRo: string;
+  founderQuote: string;
+  founderQuoteRo: string;
+  founderName: string;
   tagline: string;
   taglineRo: string;
   story: string;
   storyRo: string;
   culturalImpact: string;
   culturalImpactRo: string;
+  milestones: CompanyMilestone[];
+  innovations: { en: string; ro: string }[];
 }
 
 const FEATURED_COMPANIES: FeaturedCompany[] = [
@@ -43,6 +55,9 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
     statValue: "$3.4 Trillion",
     statLabel: "World's Most Valuable Brand",
     statLabelRo: "Cel mai valoros brand din lume",
+    founderQuote: "Design is not just what it looks like and feels like. Design is how it works.",
+    founderQuoteRo: "Designul nu înseamnă doar cum arată și cum se simte. Designul înseamnă cum funcționează.",
+    founderName: "Steve Jobs",
     tagline: "Putting a pocket supercomputer into the hands of billions",
     taglineRo: "A pus un supercomputer de buzunar în mâinile a miliarde de oameni",
     story:
@@ -53,6 +68,16 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
       "Created the app economy, mobile photography, and redefined how humans communicate, work, navigate, and record daily life globally.",
     culturalImpactRo:
       "A creat economia aplicațiilor, fotografia mobilă și a redefinit modul în care oamenii comunică, lucrează și înregistrează viața de zi cu zi.",
+    milestones: [
+      { year: "1984", label: "Macintosh GUI & Mouse", labelRo: "Macintosh Interfață Grafică" },
+      { year: "2001", label: "iPod 1,000 Songs in Pocket", labelRo: "iPod 1.000 de Melodii în Buzunar" },
+      { year: "2007", label: "iPhone Glass Touch", labelRo: "iPhone Ecran Tactil de Sticlă" },
+    ],
+    innovations: [
+      { en: "Capacitive Multi-Touch Display", ro: "Ecran Capacitiv Multi-Touch" },
+      { en: "iOS App Store Ecosystem", ro: "Ecosistemul App Store iOS" },
+      { en: "Custom Silicon M-Series Chips", ro: "Cipuri Proprii Apple Silicon" },
+    ],
   },
   {
     id: "nike",
@@ -66,6 +91,9 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
     statValue: "150+ Markets",
     statLabel: "Global Athletic & Culture Leader",
     statLabelRo: "Lider global în atletism și cultură",
+    founderQuote: "If you have a body, you are an athlete.",
+    founderQuoteRo: "Dacă ai un corp, ești un atlet.",
+    founderName: "Bill Bowerman",
     tagline: "Transforming athletic gear into global streetwear and human ambition",
     taglineRo: "Transformarea echipamentului sportiv în stil streetwear și ambiție umană",
     story:
@@ -76,6 +104,16 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
       "Elevated performance sportswear into high-fashion streetwear and established 'Just Do It' as a global manifesto of human potential.",
     culturalImpactRo:
       "A ridicat îmbrăcămintea sportivă la rang de modă urbană și a consacrat sloganul „Just Do It” ca manifest al potențialului uman.",
+    milestones: [
+      { year: "1971", label: "Swoosh Logo Design", labelRo: "Designul Logo-ului Swoosh" },
+      { year: "1984", label: "Air Jordan Sneaker Contract", labelRo: "Contractul Air Jordan" },
+      { year: "1988", label: "Just Do It Campaign", labelRo: "Campania Just Do It" },
+    ],
+    innovations: [
+      { en: "Waffle Iron Rubber Soles", ro: "Tălpi de Cauciuc cu Textură de Vafe" },
+      { en: "Encapsulated Nike Air Cushioning", ro: "Pernă de Aer Incapsulată Nike Air" },
+      { en: "Flyknit Seamless Weave", ro: "Țesătură Fără Cusături Flyknit" },
+    ],
   },
   {
     id: "cocacola",
@@ -89,6 +127,9 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
     statValue: "1.9 Billion",
     statLabel: "Daily Servings Reached Worldwide",
     statLabelRo: "Porții zilnice consumate în lume",
+    founderQuote: "Wherever you go, Coca-Cola is within an arm's reach of desire.",
+    founderQuoteRo: "Oriunde mergi, Coca-Cola este la îndemâna dorinței.",
+    founderName: "Robert Woodruff",
     tagline: "The most recognized trademark on Earth",
     taglineRo: "Cel mai recunoscut logo de pe Pământ",
     story:
@@ -99,6 +140,16 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
       "Exported American soda fountain culture worldwide and shaped the modern visual image of Santa Claus through Haddon Sundblom's 1931 illustrations.",
     culturalImpactRo:
       "A exportat cultura americană a băuturilor răcoritoare și a conturat imaginea modernă a lui Moș Crăciun prin ilustrațiile din 1931 ale lui Haddon Sundblom.",
+    milestones: [
+      { year: "1886", label: "Atlanta Soda Fountain Origin", labelRo: "Originea în Atlanta" },
+      { year: "1915", label: "Contoured Bottle Patent", labelRo: "Brevetul Sticlei Conturate" },
+      { year: "1971", label: "Hilltop Global Harmony Ad", labelRo: "Reclama Globală Hilltop" },
+    ],
+    innovations: [
+      { en: "Independent Bottling Franchise Network", ro: "Rețea de Francize de Îmbuteliere Independentă" },
+      { en: "Tactile Contoured Bottle Package", ro: "Ambalaj Tactil cu Sticlă Conturată" },
+      { en: "Global Brand Licensing System", ro: "Sistem Global de Licențiere a Brandului" },
+    ],
   },
   {
     id: "levis",
@@ -112,6 +163,9 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
     statValue: "170+ Years",
     statLabel: "The Democratic Uniform of Humanity",
     statLabelRo: "Uniforma democratică a omenirii",
+    founderQuote: "They are the most democratic piece of clothing ever invented.",
+    founderQuoteRo: "Sunt cel mai democratic articol vestimentar inventat vreodată.",
+    founderName: "Yves Saint Laurent",
     tagline: "Workwear born in the California Gold Rush that conquered every continent",
     taglineRo: "Haine de muncă din Goana după Aur care au cucerit toate continentele",
     story:
@@ -122,6 +176,16 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
       "Created the single most democratic fashion item in history: worn equally by farmhands, rock icons, tech billionaires, and heads of state.",
     culturalImpactRo:
       "A creat cel mai democratic articol vestimentar din istorie: purtat la fel de fermieri, vedete rock, miliardari din tech și șefi de stat.",
+    milestones: [
+      { year: "1873", label: "Copper-Rivet Patent", labelRo: "Brevetul Nitului de Cupru" },
+      { year: "1934", label: "First Lady Levi's Blue Jeans", labelRo: "Primii Blugi Levi's pentru Femei" },
+      { year: "1960s", label: "Global Youth Counterculture", labelRo: "Simbolul Contraculturii Tinerilor" },
+    ],
+    innovations: [
+      { en: "Copper Rivet Strain Reinforcement", ro: "Ranforsare cu Nituri de Cupru" },
+      { en: "Heavyweight Cone Mills Denim", ro: "Material Denim Rezistent Cone Mills" },
+      { en: "Arcuate Double-Stitch Pocket", ro: "Cusătură Dublă Arcuite pe Buzunar" },
+    ],
   },
   {
     id: "ford",
@@ -135,6 +199,9 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
     statValue: "15 Million",
     statLabel: "Model T Cars Produced (1908–1927)",
     statLabelRo: "Automobile Model T produse (1908–1927)",
+    founderQuote: "Whether you think you can or think you can't, you're right.",
+    founderQuoteRo: "Fie că crezi că poți, fie că crezi că nu poți, ai dreptate.",
+    founderName: "Henry Ford",
     tagline: "Democratizing personal mobility and inventing mass production",
     taglineRo: "Democratizarea mobilității personale și inventarea producției în masă",
     story:
@@ -145,6 +212,16 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
       "Pioneered mass industrial manufacturing, paved the way for modern highway infrastructure, and reshaped American geography.",
     culturalImpactRo:
       "A fost pionierul producției industriale de masă, deschizând drumul pentru infrastructura rutieră modernă și reconfigurând geografia americană.",
+    milestones: [
+      { year: "1908", label: "Model T Debut ($850)", labelRo: "Lansarea Model T (850$)" },
+      { year: "1913", label: "Highland Park Moving Assembly Line", labelRo: "Linia Mobilă de Asamblare" },
+      { year: "1914", label: "$5-a-Day Worker Wage", labelRo: "Salariul de 5$ pe Zi" },
+    ],
+    innovations: [
+      { en: "Continuous Moving Assembly Line", ro: "Linie Mobilă Continuă de Asamblare" },
+      { en: "Standardized Interchangeable Parts", ro: "Piese Standardizate Interschimbabile" },
+      { en: "High-Wage Mass Consumer Economics", ro: "Economia Consumului de Masă cu Salarii Mari" },
+    ],
   },
   {
     id: "mcdonalds",
@@ -158,6 +235,9 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
     statValue: "40,000+",
     statLabel: "Restaurants Serving 69M Customers Daily",
     statLabelRo: "Restaurante ce deservesc 69M clienți zilnic",
+    founderQuote: "None of us is as good as all of us.",
+    founderQuoteRo: "Niciunul dintre noi nu este la fel de bun ca noi toți împreună.",
+    founderName: "Ray Kroc",
     tagline: "Exporting standardized dining speed and global family convenience",
     taglineRo: "Exportul vitezei culinare standardizate și al confortului de familie",
     story:
@@ -168,6 +248,16 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
       "Established the global fast-food paradigm, popularized drive-thru dining, and created the Golden Arches symbol recognized by 88% of the planet.",
     culturalImpactRo:
       "A consacrat paradigma globală fast-food, a popularizat serviciul drive-thru și a creat simbolul Arcadelor de Aur recunoscut de 88% din populație.",
+    milestones: [
+      { year: "1948", label: "Speedee Kitchen Assembly System", labelRo: "Sistemul Bucătăriei Rapide" },
+      { year: "1954", label: "Ray Kroc National Franchise Buyout", labelRo: "Franciza Națională Ray Kroc" },
+      { year: "1968", label: "The Big Mac Global Debut", labelRo: "Lansarea Globală Big Mac" },
+    ],
+    innovations: [
+      { en: "Standardized Factory Kitchen Assembly", ro: "Bucătărie Standardizată Liniară" },
+      { en: "Automated Drive-Thru Service Window", ro: "Serviciul Drive-Thru Automatizat" },
+      { en: "Planetary Quality Franchise Operating Manual", ro: "Manualul Global de Operare al Francizei" },
+    ],
   },
   {
     id: "disney",
@@ -181,6 +271,9 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
     statValue: "$200B+",
     statLabel: "World's Premier Storytelling Empire",
     statLabelRo: "Cel mai mare imperiu de povești din lume",
+    founderQuote: "It's kind of fun to do the impossible.",
+    founderQuoteRo: "Este destul de distractiv să faci imposibilul.",
+    founderName: "Walt Disney",
     tagline: "Building a century-old empire of animation, imagination, and theme parks",
     taglineRo: "Construirea unui imperiu de un secol de animație, imaginație și parcuri",
     story:
@@ -191,6 +284,16 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
       "Set the global standard for animated feature films, family entertainment, and created a story IP empire encompassing Pixar, Marvel, and Star Wars.",
     culturalImpactRo:
       "A stabilit standardul global pentru filme de animație, divertisment de familie și a creat un imperiu ce include Pixar, Marvel și Star Wars.",
+    milestones: [
+      { year: "1928", label: "Steamboat Willie (Mickey Debut)", labelRo: "Steamboat Willie (Debut Mickey)" },
+      { year: "1937", label: "Snow White First Feature Film", labelRo: "Alba ca Zăpada Primul Lungmetraj" },
+      { year: "1955", label: "Disneyland Theme Park Grand Opening", labelRo: "Deschiderea Disneyland" },
+    ],
+    innovations: [
+      { en: "Multiplane Camera Animated Depth", ro: "Cameră Multiplan pentru Adâncime în Animație" },
+      { en: "Immersive Physical Imagineering Theme Parks", ro: "Parcuri Tematice Imersive Physical Imagineering" },
+      { en: "Transmedia IP Universe Franchise Architecture", ro: "Arhitectură de Franciză Transmedia IP" },
+    ],
   },
   {
     id: "google",
@@ -204,6 +307,9 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
     statValue: "92%",
     statLabel: "Global Search Market Share in 50+ Languages",
     statLabelRo: "Cota de piață globală căutare în 50+ limbi",
+    founderQuote: "Organize the world's information and make it universally accessible.",
+    founderQuoteRo: "Organizarea informațiilor lumii și accesibilizarea lor universală.",
+    founderName: "Larry Page & Sergey Brin",
     tagline: "Organizing the world's information and making it universally accessible",
     taglineRo: "Organizarea informațiilor lumii și accesibilizarea lor universală",
     story:
@@ -214,6 +320,16 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
       "Turned 'Google' into a universal verb in 50+ languages, created Android powering billions of smartphones, and mapped the physical planet via Google Maps.",
     culturalImpactRo:
       "A transformat „a căuta pe Google” într-un verb universal în 50+ limbi, a creat Android și a cartografiat planeta fizică prin Google Maps.",
+    milestones: [
+      { year: "1998", label: "PageRank Search Engine Launch", labelRo: "Lansarea Motorului PageRank" },
+      { year: "2008", label: "Android Mobile OS & Chrome Browser", labelRo: "Android OS & Chrome Browser" },
+      { year: "2015", label: "Alphabet Holding Parent Structure", labelRo: "Structura Mamă Alphabet" },
+    ],
+    innovations: [
+      { en: "Hyperlink Graph PageRank Algorithm", ro: "Algoritmul PageRank bazat pe Hiperlink" },
+      { en: "Minimalist Distraction-Free Single Search UI", ro: "Interfață Minimalistă cu Bară Unică" },
+      { en: "Global Distributed Infrastructure & Server Nodes", ro: "Noduri Globale de Infrastructură Servitoare" },
+    ],
   },
   {
     id: "amazon",
@@ -227,6 +343,9 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
     statValue: "30%+",
     statLabel: "Global Cloud Internet Infrastructure (AWS)",
     statLabelRo: "Infrastructură cloud internet globală (AWS)",
+    founderQuote: "Your margin is my opportunity.",
+    founderQuoteRo: "Marja ta de profit este oportunitatea mea.",
+    founderName: "Jeff Bezos",
     tagline: "From online bookstore to the infrastructure layer of global commerce",
     taglineRo: "De la librărie online la stratul de infrastructură al comerțului global",
     story:
@@ -237,6 +356,16 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
       "Redefined consumer expectations for instant package delivery and powers over 30% of the entire global internet infrastructure via AWS.",
     culturalImpactRo:
       "A redefinit așteptările clienților pentru livrare rapidă și alimentează peste 30% din infrastructura globală de internet prin AWS.",
+    milestones: [
+      { year: "1994", label: "Online Garage Bookstore", labelRo: "Librăria Online din Garaj" },
+      { year: "2005", label: "Amazon Prime Fast 2-Day Shipping", labelRo: "Livrarea Rapidă Amazon Prime" },
+      { year: "2006", label: "AWS Cloud Infrastructure Debut", labelRo: "Lansarea Cloud-ului AWS" },
+    ],
+    innovations: [
+      { en: "Patented One-Click Checkout System", ro: "Sistem Brevetat de Comandă One-Click" },
+      { en: "Robotic Automated Fulfillment Warehouses", ro: "Depozite Robotizate Automatizate" },
+      { en: "Elastic On-Demand Cloud Infrastructure (AWS)", ro: "Infrastructură Cloud la Cerere (AWS)" },
+    ],
   },
   {
     id: "microsoft",
@@ -250,6 +379,9 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
     statValue: "$3.1 Trillion",
     statLabel: "Operating System of the Global Knowledge Economy",
     statLabelRo: "Sistemul de operare al economiei globale a cunoașterii",
+    founderQuote: "A computer on every desk and in every home.",
+    founderQuoteRo: "Un computer pe fiecare birou și în fiecare casă.",
+    founderName: "Bill Gates",
     tagline: "A computer on every desk and in every home",
     taglineRo: "Un computer pe fiecare birou și în fiecare casă",
     story:
@@ -260,6 +392,16 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
       "Standardized corporate productivity, powered personal computing for billions, and built cloud platform Azure alongside gaming empire Xbox.",
     culturalImpactRo:
       "A standardizat productivitatea corporativă, a alimentat informatica personală pentru miliarde de oameni și a creat Azure și Xbox.",
+    milestones: [
+      { year: "1985", label: "Windows 1.0 Graphic Interface", labelRo: "Interfața Grafică Windows 1.0" },
+      { year: "1995", label: "Windows 95 Global Release", labelRo: "Lansarea Globală Windows 95" },
+      { year: "2014", label: "Cloud-First Azure Cloud Pivot", labelRo: "Pivotul Către Cloud Azure" },
+    ],
+    innovations: [
+      { en: "Standardized Desktop Windowing GUI", ro: "Interfață Grafică Standardizată Desktop" },
+      { en: "Microsoft Office Productivity Suite", ro: "Pachetul de Productivitate Microsoft Office" },
+      { en: "Azure Enterprise Cloud & AI Platform", ro: "Platforma Enterprise Cloud Azure & AI" },
+    ],
   },
   {
     id: "walmart",
@@ -273,6 +415,9 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
     statValue: "2.1 Million",
     statLabel: "World's Largest Private Employer",
     statLabelRo: "Cel mai mare angajator privat din lume",
+    founderQuote: "There is only one boss. The customer.",
+    founderQuoteRo: "Există un singur șef. Clientul.",
+    founderName: "Sam Walton",
     tagline: "Everyday Low Prices serving 265 million weekly customers",
     taglineRo: "Prețuri mici zilnic ce deservesc 265M de clienți săptămânal",
     story:
@@ -283,6 +428,16 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
       "Transformed global supply chain logistics, revolutionized suburban retail architecture, and expanded purchasing power for middle-class families.",
     culturalImpactRo:
       "A transformat logistica lanțurilor de aprovizionare, a revoluționat retailul suburban și a extins puterea de cumpărare a familiilor.",
+    milestones: [
+      { year: "1962", label: "Store #1 Rogers Arkansas", labelRo: "Magazinul #1 Rogers Arkansas" },
+      { year: "1983", label: "Sam's Club Wholesale Launch", labelRo: "Lansarea Sam's Club" },
+      { year: "1988", label: "First Supercenter Retail Store", labelRo: "Primul Supercenter Retail" },
+    ],
+    innovations: [
+      { en: "Everyday Low Price (EDLP) High-Volume System", ro: "Sistemul EDLP cu Volum Mare" },
+      { en: "Barcode Point-of-Sale Supply Tracking", ro: "Urmărirea Stocurilor cu Coduri de Bare" },
+      { en: "Private Satellite Communications Distribution", ro: "Distribuție prin Satelit Privat" },
+    ],
   },
   {
     id: "starbucks",
@@ -296,16 +451,29 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
     statValue: "36,000+",
     statLabel: "Global Outlets Across 86 Nations",
     statLabelRo: "Locații globale în 86 de țări",
+    founderQuote: "We are not in the coffee business serving people. We are in the people business serving coffee.",
+    founderQuoteRo: "Nu suntem în afacerea cu cafea servind oameni. Suntem în afacerea cu oameni servind cafea.",
+    founderName: "Howard Schultz",
     tagline: "Inventing the third place between home and office",
     taglineRo: "Inventarea celui de-al treilea spațiu între casă și birou",
     story:
-      "Inspired by Milanese espresso bars, Howard Schultz acquired Starbucks in 1987 with the vision of creating 'the third place' — a comfortable, welcoming space between home and work. Starbucks introduced specialty coffee, custom Italian-style espresso beverages, and café workspace culture to the global mainstream.",
+      "Inspired by Milanese espresso bars, Howard Schultz acquired Starbucks in 1987 with the vision of creating 'the third place', a comfortable, welcoming space between home and work. Starbucks introduced specialty coffee, custom Italian-style espresso beverages, and café workspace culture to the global mainstream.",
     storyRo:
-      "Inspirat de barurile de espresso din Milano, Howard Schultz a achiziționat Starbucks în 1987 cu viziunea de a crea „al treilea spațiu” — un loc primitor între casă și birou. Starbucks a introdus cafeaua de specialitate și cultura cafenelei.",
+      "Inspirat de barurile de espresso din Milano, Howard Schultz a achiziționat Starbucks în 1987 cu viziunea de a crea „al treilea spațiu”, un loc primitor între casă și birou. Starbucks a introdus cafeaua de specialitate și cultura cafenelei.",
     culturalImpact:
       "Exported European-style coffee craftsmanship worldwide and established the modern laptop café environment of digital nomads and remote work.",
     culturalImpactRo:
       "A exportat meșteșugul cafelei de specialitate și a creat mediul modern al cafenelei pentru munca la distanță și nomazii digitali.",
+    milestones: [
+      { year: "1971", label: "Pike Place Market Seattle Origin", labelRo: "Originea în Pike Place Seattle" },
+      { year: "1987", label: "Howard Schultz Italian Espresso Buyout", labelRo: "Achiziția Espresso Howard Schultz" },
+      { year: "2009", label: "Mobile Order & Pay Rewards System", labelRo: "Sistemul Mobile Order & Pay" },
+    ],
+    innovations: [
+      { en: "The Third Place Café Concept", ro: "Conceptul Cafenelei Al Treilea Spațiu" },
+      { en: "Custom Italian-Style Beverage Personalization", ro: "Personalizarea Băuturilor în Stil Italian" },
+      { en: "Digital Rewards & Mobile Payment Stack", ro: "Platforma Digitală de Plată și Loialitate" },
+    ],
   },
 ];
 
@@ -318,8 +486,8 @@ export function CompanyBreakthroughShowcase() {
 
   return (
     <div className="my-16">
-      {/* Selector Tabs: Company Logos & Names */}
-      <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-12 gap-2.5 mb-10">
+      {/* 2-Row Selector Grid: 6 columns per row */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-12">
         {FEATURED_COMPANIES.map((c, i) => {
           const on = i === sel;
           return (
@@ -327,7 +495,7 @@ export function CompanyBreakthroughShowcase() {
               key={c.id}
               type="button"
               onClick={() => setSel(i)}
-              className="flex flex-col items-center justify-center p-3 rounded-2xl transition-all duration-300 border"
+              className="flex flex-col items-center justify-center p-4 rounded-2xl transition-all duration-300 border"
               style={{
                 cursor: "pointer",
                 backgroundColor: on ? "#0C0907" : "rgba(255,255,255,0.04)",
@@ -337,18 +505,19 @@ export function CompanyBreakthroughShowcase() {
                 boxShadow: on ? "0 15px 35px rgba(0,0,0,0.5)" : "none",
               }}
             >
-              <div className="relative h-6 w-full mb-1.5 flex items-center justify-center">
+              {/* Clean logo display without any box wrapper */}
+              <div className="relative h-7 w-full mb-2 flex items-center justify-center">
                 <Image
                   src={c.logoFile}
                   alt={c.name}
-                  width={50}
-                  height={24}
-                  className={`object-contain max-h-6 max-w-[50px] ${
+                  width={64}
+                  height={28}
+                  className={`object-contain max-h-7 max-w-[64px] ${
                     c.logoInvert ? "brightness-0 invert opacity-90" : ""
                   }`}
                 />
               </div>
-              <span className="font-body text-[9px] font-bold uppercase tracking-wider text-center truncate w-full">
+              <span className="font-body text-[10px] font-bold uppercase tracking-wider text-center truncate w-full">
                 {c.name}
               </span>
             </button>
@@ -356,37 +525,56 @@ export function CompanyBreakthroughShowcase() {
         })}
       </div>
 
-      {/* Main Feature Card */}
+      {/* Active Company Feature Card */}
       <div key={active.id} className="culture-glass rounded-3xl border border-white/10 p-8 md:p-12 shadow-[0_30px_90px_rgb(0,0,0,0.5)]">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr] items-start">
-          {/* Left Column: Logo Badge, Breakthrough Product, Stat */}
-          <div>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="flex items-center justify-center h-14 w-24 rounded-xl bg-white/10 border border-white/15 p-2 backdrop-blur-md">
-                <Image
-                  src={active.logoFile}
-                  alt={active.name}
-                  width={80}
-                  height={36}
-                  className={`object-contain max-h-9 ${
-                    active.logoInvert ? "brightness-0 invert" : ""
-                  }`}
-                />
-              </div>
-              <div>
-                <span className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-glory-gold block">
-                  {ro ? `FONDATĂ ÎN ${active.foundedYear}` : `FOUNDED IN ${active.foundedYear}`}
-                </span>
-                <span className="font-macro-display text-2xl font-black text-white">
-                  {active.name}
-                </span>
-              </div>
+        {/* Header Bar: Clean Logo (No Box) & Founded Year */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-8 pb-6 border-b border-white/10">
+          <div className="flex items-center gap-6">
+            <div className="relative h-12 w-36 flex items-center shrink-0">
+              <Image
+                src={active.logoFile}
+                alt={active.name}
+                fill
+                className={`object-contain object-left ${
+                  active.logoInvert ? "brightness-0 invert" : ""
+                }`}
+              />
             </div>
+            <div>
+              <span className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-glory-gold block mb-0.5">
+                {ro ? `ESTABILITĂ ÎN ${active.foundedYear}` : `FOUNDED IN ${active.foundedYear}`}
+              </span>
+              <span className="font-macro-display text-2xl font-black text-white">
+                {active.name}
+              </span>
+            </div>
+          </div>
 
+          <div className="flex items-center gap-2">
+            <span className="rounded-full bg-glory-gold/10 border border-glory-gold/30 px-4 py-1.5 font-body text-xs font-bold text-glory-gold uppercase tracking-widest">
+              {ro ? `Inovație ${active.breakthroughYear}` : `Breakthrough ${active.breakthroughYear}`}
+            </span>
+          </div>
+        </div>
+
+        {/* Founder Quote Banner */}
+        <div className="rounded-2xl bg-white/[0.03] border border-white/10 p-6 mb-10">
+          <p className="font-editorial text-xl italic text-[#F5EDD8] leading-relaxed mb-2">
+            &ldquo;{ro ? active.founderQuoteRo : active.founderQuote}&rdquo;
+          </p>
+          <p className="font-body text-xs font-bold uppercase tracking-widest text-glory-gold">
+            By {active.founderName}
+          </p>
+        </div>
+
+        {/* 2-Column Content Layout */}
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] items-start">
+          {/* Left Column: Breakthrough Product, Key Stat, and 3 Milestone Chips */}
+          <div className="space-y-6">
             {/* Breakthrough Product Box */}
-            <div className="rounded-2xl bg-white/5 border border-white/10 p-6 mb-6">
+            <div className="rounded-2xl bg-white/5 border border-white/10 p-6">
               <span className="font-body text-[10px] font-bold uppercase tracking-[0.25em] text-[#E8391B] block mb-1">
-                {ro ? `INOVAȚIE CHEIE (${active.breakthroughYear})` : `BREAKTHROUGH PRODUCT (${active.breakthroughYear})`}
+                {ro ? "PRODUS / INOVAȚIE EMBLEMATICĂ" : "ICONIC BREAKTHROUGH PRODUCT"}
               </span>
               <h4 className="font-macro-display text-2xl sm:text-3xl font-black text-white leading-tight">
                 {ro ? active.breakthroughProductRo : active.breakthroughProduct}
@@ -402,22 +590,54 @@ export function CompanyBreakthroughShowcase() {
                 {ro ? active.statLabelRo : active.statLabel}
               </p>
             </div>
+
+            {/* Historical Milestones List */}
+            <div className="rounded-2xl bg-white/[0.02] border border-white/10 p-6">
+              <p className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-[#F5EDD8]/50 mb-4">
+                {ro ? "REPERE ISTORICE" : "HISTORICAL MILESTONES"}
+              </p>
+              <div className="space-y-3">
+                {active.milestones.map((m, idx) => (
+                  <div key={idx} className="flex items-center gap-3 text-xs">
+                    <span className="rounded bg-glory-gold/20 text-glory-gold font-mono font-bold px-2 py-0.5">
+                      {m.year}
+                    </span>
+                    <span className="font-body text-[#F5EDD8]/80 font-medium">
+                      {ro ? m.labelRo : m.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Right Column: Story & Cultural Legacy */}
-          <div className="flex flex-col justify-between h-full lg:pl-6 lg:border-l lg:border-white/10">
+          {/* Right Column: Origin Story, Core Innovations, and Cultural Legacy */}
+          <div className="space-y-6 lg:pl-6 lg:border-l lg:border-white/10">
             <div>
-              <p className="font-editorial text-xl italic text-glory-gold/90 leading-relaxed mb-6">
-                &ldquo;{ro ? active.taglineRo : active.tagline}&rdquo;
-              </p>
-
-              <p className="font-editorial text-lg md:text-xl leading-relaxed text-[#F5EDD8]/90 mb-8">
+              <p className="font-editorial text-lg md:text-xl leading-relaxed text-[#F5EDD8]/90 mb-6">
                 {ro ? active.storyRo : active.story}
               </p>
             </div>
 
+            {/* Core Innovations List */}
+            <div className="rounded-2xl bg-white/5 border border-white/10 p-6">
+              <p className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-glory-gold mb-3">
+                {ro ? "INOVAȚII TEHNICE ȘI COMERCIALE" : "CORE TECHNICAL & COMMERCIAL INNOVATIONS"}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {active.innovations.map((inn, idx) => (
+                  <span
+                    key={idx}
+                    className="rounded-lg bg-white/10 border border-white/10 px-3 py-1.5 font-body text-xs font-semibold text-[#F5EDD8]"
+                  >
+                    {ro ? inn.ro : inn.en}
+                  </span>
+                ))}
+              </div>
+            </div>
+
             {/* Cultural Legacy Banner */}
-            <div className="rounded-2xl bg-white/[0.03] border border-white/10 p-5 mt-4">
+            <div className="rounded-2xl bg-white/[0.03] border border-white/10 p-6">
               <p className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-[#F5EDD8]/50 mb-2">
                 {ro ? "MOȘTENIRE CULTURALĂ GLOBALĂ" : "GLOBAL CULTURAL LEGACY"}
               </p>
