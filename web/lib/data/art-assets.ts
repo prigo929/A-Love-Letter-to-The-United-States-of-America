@@ -34,6 +34,23 @@ import pollockConvergence from "@/IMAGES/Art/Convergence by Jackson Pollock 1952
 import lichtensteinWhaam from "@/IMAGES/Art/Whaam! by Roy Lichtenstein.png";
 import StuartWashington from "@/IMAGES/Art/Gilbert_Stuart_1796_portrait_of_Washington.jpg";
 import leutzeWashington from "@/IMAGES/Art/Washington_Crossing_the_Delaware_by_Emanuel_Leutze,_MMA-NYC,_1851.jpg";
+// Hudson River School (added)
+import durandKindredSpirits from "@/IMAGES/Art/Durand - Kindred Spirits - 1849.jpg";
+import coleConsummation from "@/IMAGES/Art/Cole - Course of Empire Consummation - 1836.jpg";
+import coleVoyage from "@/IMAGES/Art/Cole - Voyage of Life Youth - 1842.jpg";
+import churchAndes from "@/IMAGES/Art/Church - Heart of the Andes - 1859.jpg";
+import churchEcuador from "@/IMAGES/Art/Church - Andes of Ecuador - 1855.jpg";
+import moranYellowstone from "@/IMAGES/Art/Moran - Grand Canyon of the Yellowstone - 1872.jpg";
+import kensettLakeGeorge from "@/IMAGES/Art/Kensett - Lake George - 1869.jpg";
+import bierstadtLandersPeak from "@/IMAGES/Art/Bierstadt - Rocky Mountains Landers Peak - 1863.jpg";
+// Modern & Pop Art (added)
+import rothkoOrangeRedYellow from "@/IMAGES/Art/Rothko - Orange Red Yellow - 1961.jpg";
+import deKooningWomanI from "@/IMAGES/Art/de Kooning - Woman I - 1952.jpg";
+import warholSoupCans from "@/IMAGES/Art/Warhol - Campbells Soup Cans - 1962.jpg";
+import johnsFlag from "@/IMAGES/Art/Jasper Johns - Flag - 1955.jpg";
+import woodAmericanGothic from "@/IMAGES/Art/Grant Wood - American Gothic - 1930.jpg";
+import hopperNighthawks from "@/IMAGES/Art/Hopper - Nighthawks - 1942.jpg";
+import wesselmannStillLife from "@/IMAGES/Art/Wesselmann - Still Life 35 - 1963.jpg";
 
 export interface ArtAsset {
   src: string;

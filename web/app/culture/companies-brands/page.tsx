@@ -8,6 +8,8 @@ import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
 import { CultureStyles, CultureBrandLogosMarquee } from "@/components/culture/CulturePageComponents";
 import { MascotCanon } from "@/components/culture/MascotCanon";
+import { BrandAdsArchive } from "@/components/culture/BrandAdsArchive";
+import { BrandAnatomyInteractive } from "@/components/culture/BrandAnatomyInteractive";
 import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
@@ -164,6 +166,25 @@ export default async function CultureCompaniesBrandsPage() {
               ))}
             </div>
           </div>
+
+          {/* Dark: The Anatomy of American Brand Power */}
+          <div className="mt-24 border-t border-white/5 pt-20">
+            <div className="text-center mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-glory-gold font-bold mb-3">
+                {isRo ? "ARHITECTURA BRANDULUI" : "BRAND ARCHITECTURE"}
+              </p>
+              <h2 className="culture-text-hero text-[#F5EDD8] text-4xl sm:text-6xl font-black tracking-tight">
+                {isRo ? "ANATOMIA PUTEREI DE BRAND" : "THE ANATOMY OF BRAND POWER"}
+              </h2>
+              <p className="mx-auto mt-6 max-w-3xl font-editorial text-xl italic text-[#F5EDD8]/80 leading-relaxed">
+                {isRo
+                  ? "„De ce corporațiile americane nu vând doar obiecte fizice, ci exportă sisteme complete de utilitate, interfețe intuitive, uniforme democratice și universuri narative.”"
+                  : "“Why American corporations do not merely sell commodities, but export complete systems of utility, intuitive interfaces, democratic uniforms, and storytelling universes.”"}
+              </p>
+              <div className="w-24 h-px bg-glory-gold/30 mx-auto mt-8" />
+            </div>
+            <BrandAnatomyInteractive />
+          </div>
         </div>
 
         <div className="h-16 w-full gradient-dark-to-cream" />
@@ -235,6 +256,28 @@ export default async function CultureCompaniesBrandsPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* CREAM: Vintage Print Ad Vault */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-24 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
+            <div className="text-center mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "PUBLICITATE & ARHIVĂ VINTAGE" : "VINTAGE PRINT AD ARCHIVE"}
+              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">
+                {isRo ? "RECLAME CARE AU SCHIMBAT CULTURA" : "ADS THAT SHAPED CULTURE"}
+              </h2>
+              <p className="mx-auto mt-6 max-w-2xl font-editorial text-lg text-[#0C0907]/60">
+                {isRo
+                  ? "Explorează reclamele tipărite istorice de la Coca-Cola, Ford, KFC, Pac-Man și Tiffany & Co. care au definit gustul comercial și nostalgia secolului XX."
+                  : "Explore archival print advertising campaigns from Coca-Cola, Ford, KFC, Pac-Man, and Tiffany & Co. that defined 20th-century commercial taste and nostalgia."}
+              </p>
+              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
+            </div>
+            <BrandAdsArchive />
           </div>
         </section>
 
