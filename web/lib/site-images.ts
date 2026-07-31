@@ -481,6 +481,17 @@ import supplyRuler from "@/IMAGES/Culture/School Supplies/Ruler.jpg";
 import supplyScissors from "@/IMAGES/Culture/School Supplies/Scissors.jpg";
 import supplyPaper from "@/IMAGES/Culture/School Supplies/Paper.jpg";
 import schoolHallway from "@/IMAGES/Culture/School/High School Hallway.jpg";
+import symTrain from "@/IMAGES/Culture/Toy Symbols/Tin Train.jpg";
+import symSoldiers from "@/IMAGES/Culture/Toy Symbols/Toy Soldiers.jpg";
+import symDrum from "@/IMAGES/Culture/Toy Symbols/Toy Drum.jpg";
+import symDoll from "@/IMAGES/Culture/Toy Symbols/Antique Doll.jpg";
+import symTeddy from "@/IMAGES/Culture/Toy Symbols/Teddy Bear.jpg";
+import symKite from "@/IMAGES/Culture/Toy Symbols/Kite.jpg";
+import symRockingHorse from "@/IMAGES/Culture/Toy Symbols/Rocking Horse.jpg";
+import symCowboyHat from "@/IMAGES/Culture/Toy Symbols/Cowboy Hat.jpg";
+import growingUpToyStore from "@/IMAGES/Culture/Growing Up/Toy Store.jpg";
+import growingUpClassroom from "@/IMAGES/Culture/Growing Up/Classroom.jpg";
+import growingUpFootballNight from "@/IMAGES/Culture/Growing Up/Football Night.jpg";
 import stadiumAsuArizona from "@/IMAGES/Culture/Sports/Stadiums/ASU Arizona NFL Stadium.jpg";
 import stadiumAttKickoff from "@/IMAGES/Culture/Sports/Stadiums/AT&T Stadium match kickoff(Wisconsin_-_Alabama).jpg";
 import stadiumCarolina from "@/IMAGES/Culture/Sports/Stadiums/Aerial-Cityscape-View-Of-Carolina-Panthers-Bank-Of-America-Stadium-In-Charlotte.jpg";
@@ -956,6 +967,17 @@ export const SITE_IMAGES = {
     supplyScissors: supplyScissors.src,
     supplyPaper: supplyPaper.src,
     schoolHallway: schoolHallway.src,
+    symTrain: symTrain.src,
+    symSoldiers: symSoldiers.src,
+    symDrum: symDrum.src,
+    symDoll: symDoll.src,
+    symTeddy: symTeddy.src,
+    symKite: symKite.src,
+    symRockingHorse: symRockingHorse.src,
+    symCowboyHat: symCowboyHat.src,
+    growingUpToyStore: growingUpToyStore.src,
+    growingUpClassroom: growingUpClassroom.src,
+    growingUpFootballNight: growingUpFootballNight.src,
     aliVsFrazierJab: sportsAliVsFrazierJab.src,
     aliVsFrazier1971: sportsAliVsFrazier1971.src,
     marchMadness: sportsMarchMadness.src,

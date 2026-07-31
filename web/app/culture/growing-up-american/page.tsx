@@ -4,7 +4,7 @@ import { Home, ChevronRight } from "lucide-react";
 import { getServerLocale } from "@/lib/i18n/server";
 import { AskAmericaCTA } from "@/components/interactive/AskAmericaCTA";
 import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
-import { CultureStyles } from "@/components/culture/CulturePageComponents";
+import { CultureStyles, CultureParallaxDivider } from "@/components/culture/CulturePageComponents";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { ToyCanon } from "@/components/culture/ToyCanon";
 import { ToySymbols } from "@/components/culture/ToySymbols";
@@ -92,6 +92,8 @@ export default async function GrowingUpAmericanPage() {
           </div>
         </section>
 
+        <CultureParallaxDivider imageSrc={SITE_IMAGES.culture.growingUpToyStore} alt="A classic American toy store aisle" heightClassName="h-[42vh]" />
+
         {/* CREAM: Why toy symbols are old & weird */}
         <section className="relative culture-cream-bg text-[#0C0907] pb-24 overflow-hidden border-t border-[#0C0907]/5">
           <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
@@ -114,6 +116,8 @@ export default async function GrowingUpAmericanPage() {
           </div>
         </section>
 
+        <CultureParallaxDivider imageSrc={SITE_IMAGES.culture.growingUpClassroom} alt="A modern American public high school classroom" heightClassName="h-[42vh]" />
+
         {/* CREAM: The School Supplies Canon */}
         <section className="relative culture-cream-bg text-[#0C0907] pb-24 overflow-hidden border-t border-[#0C0907]/5">
           <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
@@ -135,6 +139,8 @@ export default async function GrowingUpAmericanPage() {
             <SchoolSuppliesCanon />
           </div>
         </section>
+
+        <CultureParallaxDivider imageSrc={SITE_IMAGES.culture.growingUpFootballNight} alt="A Friday-night high school football stadium under the lights" heightClassName="h-[42vh]" />
 
         {/* CREAM: The High School Clichés */}
         <section className="relative culture-cream-bg text-[#0C0907] pb-28 overflow-hidden border-t border-[#0C0907]/5">

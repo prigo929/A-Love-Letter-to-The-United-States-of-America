@@ -277,8 +277,8 @@ export function ToyCanon() {
         <span className="font-macro-display text-4xl font-black leading-none text-[#E8391B]">{IN_HOUSE}/8</span>
         <p className="font-editorial text-sm leading-relaxed text-[#0C0907]/70">
           {ro
-            ? "Doar două din cele opt au fost inventate chiar de Hasbro. Compania fondată în 1923 de frații Hassenfeld, imigranți polonezi din Rhode Island, a construit un imperiu de peste un miliard de dolari pe an nu inventând jucării, ci cumpărându-le, alături de companiile care le făceau: Kenner, Milton Bradley, Parker Brothers, Cap Toys."
-            : "Only two of the eight were invented by Hasbro itself. The company the Hassenfeld brothers, Polish immigrants, founded in Rhode Island in 1923 built a billion-dollar-a-year empire not by inventing toys but by buying them, along with the companies that made them: Kenner, Milton Bradley, Parker Brothers, Cap Toys."}
+            ? "Doar două din cele opt au fost inventate chiar de Hasbro. Compania fondată în 1923 de frații Hassenfeld, imigranți polonezi din Rhode Island, a construit un imperiu de peste un miliard de dolari pe an nu inventând jucării, ci cumpărându-le, alături de companiile care le făceau: Kenner, Milton Bradley, Parker Brothers, Cap Toys. Absența evidentă din acest canon Hasbro este cea mai iconică jucărie a marii rivale Mattel: Barbie."
+            : "Only two of the eight were invented by Hasbro itself. The company the Hassenfeld brothers, Polish immigrants, founded in Rhode Island in 1923 built a billion-dollar-a-year empire not by inventing toys but by buying them, along with the companies that made them: Kenner, Milton Bradley, Parker Brothers, Cap Toys. The glaring absence from this Hasbro canon is the most iconic toy of its great rival Mattel: Barbie."}
         </p>
       </div>
     </div>

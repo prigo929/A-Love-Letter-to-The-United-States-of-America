@@ -13,11 +13,16 @@
 // Cream/parchment editorial surface (dark text on cream).
 
 import { useState } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { SITE_IMAGES } from "@/lib/site-images";
+
+const C = SITE_IMAGES.culture;
 
 interface ToyIcon {
   key: string;
   icon: string;
+  image: string;
   name: string;
   nameRo: string;
   tag: string;
@@ -30,6 +35,7 @@ const SYMBOLS: ToyIcon[] = [
   {
     key: "train",
     icon: "🚂",
+    image: C.symTrain,
     name: "The Toy Train",
     nameRo: "Trenulețul",
     tag: "Tin plate & clockwork",
@@ -42,6 +48,7 @@ const SYMBOLS: ToyIcon[] = [
   {
     key: "soldier",
     icon: "🪖",
+    image: C.symSoldiers,
     name: "The Toy Soldier",
     nameRo: "Soldățelul",
     tag: "The martial nursery",
@@ -54,6 +61,7 @@ const SYMBOLS: ToyIcon[] = [
   {
     key: "drum",
     icon: "🥁",
+    image: C.symDrum,
     name: "The Toy Drum",
     nameRo: "Toba",
     tag: "Marching-band culture",
@@ -66,6 +74,7 @@ const SYMBOLS: ToyIcon[] = [
   {
     key: "doll",
     icon: "🎎",
+    image: C.symDoll,
     name: "The Doll",
     nameRo: "Păpușa",
     tag: "The golden age of the doll",
@@ -78,6 +87,7 @@ const SYMBOLS: ToyIcon[] = [
   {
     key: "teddy",
     icon: "🧸",
+    image: C.symTeddy,
     name: "The Teddy Bear",
     nameRo: "Ursulețul de pluș",
     tag: "Nouveau primitivism",
@@ -90,6 +100,7 @@ const SYMBOLS: ToyIcon[] = [
   {
     key: "kite",
     icon: "🪁",
+    image: C.symKite,
     name: "The Kite",
     nameRo: "Zmeul",
     tag: "The natural-material revival",
@@ -102,6 +113,7 @@ const SYMBOLS: ToyIcon[] = [
   {
     key: "rockinghorse",
     icon: "🎠",
+    image: C.symRockingHorse,
     name: "The Rocking Horse",
     nameRo: "Căluțul de lemn",
     tag: "Ancient-looking, actually Victorian",
@@ -114,6 +126,7 @@ const SYMBOLS: ToyIcon[] = [
   {
     key: "cowboyhat",
     icon: "🤠",
+    image: C.symCowboyHat,
     name: "The Cowboy Hat",
     nameRo: "Pălăria de cowboy",
     tag: "The 1950s addition",
@@ -143,18 +156,25 @@ export function ToySymbols() {
               type="button"
               onClick={() => setSel(i)}
               aria-current={on}
-              className="group flex flex-col items-center gap-2 rounded-2xl border p-3 transition-all duration-300"
+              className="group flex flex-col items-center gap-2 rounded-2xl border p-2 transition-all duration-300"
               style={{
                 cursor: "pointer",
                 borderColor: on ? "#E8391B" : "rgba(12,9,7,0.12)",
-                backgroundColor: on ? "rgba(232,57,27,0.06)" : "rgba(255,255,255,0.4)",
+                backgroundColor: on ? "#fffdf7" : "rgba(255,255,255,0.4)",
                 transform: on ? "translateY(-4px)" : "none",
                 boxShadow: on ? "0 16px 36px rgb(12,9,7,0.12)" : "none",
               }}
             >
-              <span className="text-3xl leading-none sm:text-4xl" style={{ filter: on ? "none" : "grayscale(0.45)" }}>
-                {s.icon}
-              </span>
+              <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-white">
+                <Image
+                  src={s.image}
+                  alt={ro ? s.nameRo : s.name}
+                  fill
+                  sizes="160px"
+                  className="object-cover transition-all duration-300 group-hover:scale-105"
+                  style={{ filter: on ? "none" : "grayscale(0.4)" }}
+                />
+              </div>
               <span
                 className="text-center font-body text-[10px] font-bold uppercase leading-tight tracking-wide"
                 style={{ color: on ? "#E8391B" : "rgba(12,9,7,0.5)" }}
@@ -167,9 +187,15 @@ export function ToySymbols() {
       </div>
 
       {/* Active symbol */}
-      <div key={active.key} className="mt-10 grid gap-8 rounded-3xl border border-[#0C0907]/10 bg-white/50 p-7 md:grid-cols-[auto_1fr] md:items-center md:gap-12 md:p-10">
-        <div className="flex items-center justify-center">
-          <span className="text-7xl leading-none md:text-8xl">{active.icon}</span>
+      <div key={active.key} className="mt-10 grid gap-8 rounded-3xl border border-[#0C0907]/10 bg-white/50 p-7 md:grid-cols-[minmax(0,0.7fr)_1fr] md:items-center md:gap-12 md:p-10">
+        <div className="relative aspect-square w-full overflow-hidden rounded-2xl border border-[#0C0907]/10 bg-white shadow-[0_20px_50px_rgb(12,9,7,0.12)]">
+          <Image
+            src={active.image}
+            alt={ro ? active.nameRo : active.name}
+            fill
+            sizes="(max-width: 768px) 100vw, 32vw"
+            className="object-cover"
+          />
         </div>
         <div>
           <p className="mb-2 font-body text-[10px] font-bold uppercase tracking-[0.35em] text-[#E8391B]">
