@@ -919,6 +919,7 @@ const TOC_IMAGES: Record<string, string> = {
   fashion: SITE_IMAGES.culture.fashionJeansSneakers,
   music: SITE_IMAGES.culture.jazzClub,
   english: SITE_IMAGES.culture.timesSquareIconic,
+  growingup: SITE_IMAGES.culture.toyGiJoe,
 };
 
 interface CultureBentoGridProps {

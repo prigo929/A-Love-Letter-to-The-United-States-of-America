@@ -465,6 +465,22 @@ import ballTennis from "@/IMAGES/Culture/Sports/Balls/Tennis Ball.jpg";
 import ballGolf from "@/IMAGES/Culture/Sports/Balls/Golf Ball.jpg";
 import ballSoccer from "@/IMAGES/Culture/Sports/Balls/Soccer Ball.jpg";
 import ballKickball from "@/IMAGES/Culture/Sports/Balls/Kickball.jpg";
+import toyGiJoe from "@/IMAGES/Culture/Toys/GI Joe.jpg";
+import toyPlayDoh from "@/IMAGES/Culture/Toys/Play-Doh.jpg";
+import toyPotatoHead from "@/IMAGES/Culture/Toys/Mr Potato Head.jpg";
+import toyOperation from "@/IMAGES/Culture/Toys/Operation.jpg";
+import toyStretch from "@/IMAGES/Culture/Toys/Stretch Armstrong.jpg";
+import toyGlowWorm from "@/IMAGES/Culture/Toys/Glow Worm.jpg";
+import toyPetMonster from "@/IMAGES/Culture/Toys/My Pet Monster.jpg";
+import toyMonopoly from "@/IMAGES/Culture/Toys/Monopoly.jpg";
+import supplyPencil from "@/IMAGES/Culture/School Supplies/Pencil.jpg";
+import supplyPen from "@/IMAGES/Culture/School Supplies/Pen.jpg";
+import supplyCrayons from "@/IMAGES/Culture/School Supplies/Crayons.jpg";
+import supplyEraser from "@/IMAGES/Culture/School Supplies/Eraser.jpg";
+import supplyRuler from "@/IMAGES/Culture/School Supplies/Ruler.jpg";
+import supplyScissors from "@/IMAGES/Culture/School Supplies/Scissors.jpg";
+import supplyPaper from "@/IMAGES/Culture/School Supplies/Paper.jpg";
+import schoolHallway from "@/IMAGES/Culture/School/High School Hallway.jpg";
 import stadiumAsuArizona from "@/IMAGES/Culture/Sports/Stadiums/ASU Arizona NFL Stadium.jpg";
 import stadiumAttKickoff from "@/IMAGES/Culture/Sports/Stadiums/AT&T Stadium match kickoff(Wisconsin_-_Alabama).jpg";
 import stadiumCarolina from "@/IMAGES/Culture/Sports/Stadiums/Aerial-Cityscape-View-Of-Carolina-Panthers-Bank-Of-America-Stadium-In-Charlotte.jpg";
@@ -924,6 +940,22 @@ export const SITE_IMAGES = {
     ballGolf: ballGolf.src,
     ballSoccer: ballSoccer.src,
     ballKickball: ballKickball.src,
+    toyGiJoe: toyGiJoe.src,
+    toyPlayDoh: toyPlayDoh.src,
+    toyPotatoHead: toyPotatoHead.src,
+    toyOperation: toyOperation.src,
+    toyStretch: toyStretch.src,
+    toyGlowWorm: toyGlowWorm.src,
+    toyPetMonster: toyPetMonster.src,
+    toyMonopoly: toyMonopoly.src,
+    supplyPencil: supplyPencil.src,
+    supplyPen: supplyPen.src,
+    supplyCrayons: supplyCrayons.src,
+    supplyEraser: supplyEraser.src,
+    supplyRuler: supplyRuler.src,
+    supplyScissors: supplyScissors.src,
+    supplyPaper: supplyPaper.src,
+    schoolHallway: schoolHallway.src,
     aliVsFrazierJab: sportsAliVsFrazierJab.src,
     aliVsFrazier1971: sportsAliVsFrazier1971.src,
     marchMadness: sportsMarchMadness.src,

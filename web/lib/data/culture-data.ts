@@ -237,6 +237,17 @@ const SUBPAGES_EN: CultureSubpage[] = [
     size: "small",
     description: "The lingua franca of commerce, science, aviation, and the internet, American English is the operating language of the modern world.",
   },
+  {
+    id: "growingup",
+    category: "Childhood · School",
+    title: "Growing Up American",
+    stat: "8 + 7",
+    statLabel: "Toys and school supplies",
+    imageKey: "growingup",
+    href: "/culture/growing-up-american",
+    size: "medium",
+    description: "The Hasbro toy canon, the big-seven school supplies, and the clichés of the Hollywood high school, the texture of an American childhood.",
+  },
 ];
 
 const SUBPAGES_RO: CultureSubpage[] = [
@@ -338,6 +349,17 @@ const SUBPAGES_RO: CultureSubpage[] = [
     href: "/culture/english-language",
     size: "small",
     description: "Limba franca a comerțului, științei, aviației și internetului, engleza americană este limba de operare a lumii moderne.",
+  },
+  {
+    id: "growingup",
+    category: "Copilărie · Școală",
+    title: "Copilăria Americană",
+    stat: "8 + 7",
+    statLabel: "Jucării și rechizite",
+    imageKey: "growingup",
+    href: "/culture/growing-up-american",
+    size: "medium",
+    description: "Canonul de jucării Hasbro, rechizitele celor șapte și clișeele liceului de la Hollywood, textura unei copilării americane.",
   },
 ];
 
