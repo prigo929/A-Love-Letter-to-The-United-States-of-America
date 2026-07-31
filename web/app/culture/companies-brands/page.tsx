@@ -9,7 +9,7 @@ import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
 import { CultureStyles, CultureBrandLogosMarquee } from "@/components/culture/CulturePageComponents";
 import { MascotCanon } from "@/components/culture/MascotCanon";
 import { BrandAdsArchive } from "@/components/culture/BrandAdsArchive";
-import { BrandAnatomyInteractive } from "@/components/culture/BrandAnatomyInteractive";
+import { CompanyBreakthroughShowcase } from "@/components/culture/CompanyBreakthroughShowcase";
 import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
@@ -167,23 +167,23 @@ export default async function CultureCompaniesBrandsPage() {
             </div>
           </div>
 
-          {/* Dark: The Anatomy of American Brand Power */}
+          {/* Dark: Specific Company & Product Breakthrough Showcase */}
           <div className="mt-24 border-t border-white/5 pt-20">
             <div className="text-center mb-16">
               <p className="font-body text-[11px] uppercase tracking-[0.3em] text-glory-gold font-bold mb-3">
-                {isRo ? "ARHITECTURA BRANDULUI" : "BRAND ARCHITECTURE"}
+                {isRo ? "PIONIERII INDUSTRIEI AMERICANE" : "PIONEERS OF AMERICAN INDUSTRY"}
               </p>
               <h2 className="culture-text-hero text-[#F5EDD8] text-4xl sm:text-6xl font-black tracking-tight">
-                {isRo ? "ANATOMIA PUTEREI DE BRAND" : "THE ANATOMY OF BRAND POWER"}
+                {isRo ? "INOVAȚIILE CARE AU SCHIMBAT LUMEA" : "BREAKTHROUGHS THAT RESHAPED THE WORLD"}
               </h2>
               <p className="mx-auto mt-6 max-w-3xl font-editorial text-xl italic text-[#F5EDD8]/80 leading-relaxed">
                 {isRo
-                  ? "„De ce corporațiile americane nu vând doar obiecte fizice, ci exportă sisteme complete de utilitate, interfețe intuitive, uniforme democratice și universuri narative.”"
-                  : "“Why American corporations do not merely sell commodities, but export complete systems of utility, intuitive interfaces, democratic uniforms, and storytelling universes.”"}
+                  ? "„De la blugii 501 Levi's și sticla conturată Coca-Cola la iPhone-ul Apple și linia de asamblare Ford: poveștile produselor iconice care au redefinit viața de zi cu zi.”"
+                  : "“From Levi's 501 blue jeans and Coca-Cola's contoured bottle to Apple's iPhone and Ford's assembly line: the stories of iconic products that redefined daily human life.”"}
               </p>
               <div className="w-24 h-px bg-glory-gold/30 mx-auto mt-8" />
             </div>
-            <BrandAnatomyInteractive />
+            <CompanyBreakthroughShowcase />
           </div>
         </div>
 
