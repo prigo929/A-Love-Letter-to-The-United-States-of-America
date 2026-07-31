@@ -124,7 +124,7 @@ export default async function ConstitutionPage() {
         <div
           className="pointer-events-none absolute inset-0 z-0"
           style={{
-            backgroundImage: "url('/images/constitution/marble-texture.webp')",
+            backgroundImage: "url('/images/constitution/marble-texture.jpg')",
             backgroundRepeat: "repeat",
             backgroundSize: "512px 512px",
             opacity: 0.025,
@@ -147,7 +147,7 @@ export default async function ConstitutionPage() {
         <div
           className="pointer-events-none absolute inset-0 z-0"
           style={{
-            backgroundImage: "url('/images/constitution/marble-texture.webp')",
+            backgroundImage: "url('/images/constitution/marble-texture.jpg')",
             backgroundRepeat: "repeat",
             backgroundSize: "512px 512px",
             opacity: 0.025,

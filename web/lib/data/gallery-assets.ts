@@ -46,7 +46,7 @@ import asset0042 from "@/IMAGES/Cities/Nice Building in Savannah GA with GA Flag
 import asset0043 from "@/IMAGES/Cities/Seattle Central Library.jpg";
 import asset0044 from "@/IMAGES/Cities/Seattle Skyline Day.jpg";
 import asset0045 from "@/IMAGES/Cities/Seattle Skyline at Night.jpg";
-import asset0046 from "@/IMAGES/Cities/Seattle-Public-Libraries_Seattle-Central-Library.webp";
+import asset0046 from "@/IMAGES/Cities/Seattle-Public-Libraries_Seattle-Central-Library.jpg";
 import asset0047 from "@/IMAGES/Cities/Universal Studios Holywood Entrance.jpg";
 import asset0048 from "@/IMAGES/Cities/home-nyc-skyline.jpg";
 import asset0049 from "@/IMAGES/Constitution/A view of the north side of Independence Hall in Philadelphia, showing the main building in the center with the east and west wings on the sides.jpg";
@@ -64,7 +64,7 @@ import asset0060 from "@/IMAGES/Constitution/We The People Wooden Background.jpg
 import asset0061 from "@/IMAGES/Constitution/bill-of-rights-page-1.jpg";
 import asset0062 from "@/IMAGES/Constitution/constitution-page-1.jpg";
 import asset0063 from "@/IMAGES/Constitution/marble-texture.png";
-import asset0064 from "@/IMAGES/Constitution/marble-texture.webp";
+import asset0064 from "@/IMAGES/Constitution/marble-texture.jpg";
 import asset0065 from "@/IMAGES/Constitution/the-new-york-public-library-L3D6oyQO6Do-unsplash.jpg";
 import asset0066 from "@/IMAGES/Constitution/usa-independence-day-composition-with-declaration.jpg";
 import asset0067 from "@/IMAGES/Constitution/usa-independence-day-concept-with-declaration-independence.jpg";
@@ -125,7 +125,7 @@ import asset0121 from "@/IMAGES/Culture/Famous People/07_michael_jackson.jpg";
 import asset0122 from "@/IMAGES/Culture/Famous People/08_michael_jordan.jpg";
 import asset0123 from "@/IMAGES/Culture/Famous People/09_martin_luther_king_jr.jpg";
 import asset0124 from "@/IMAGES/Culture/Famous People/10_arnold_schwarzenegger.jpg";
-import asset0125 from "@/IMAGES/Culture/Famous People/Andy Warhol with Campbells Soup Cans.webp";
+import asset0125 from "@/IMAGES/Culture/Famous People/Andy Warhol with Campbells Soup Cans.jpg";
 import asset0126 from "@/IMAGES/Culture/Famous People/Elvis Meeting Nixon.jpg";
 import asset0127 from "@/IMAGES/Culture/Famous People/Schwarzenegger at Muscle Beach.jpeg";
 import asset0128 from "@/IMAGES/Culture/Fashion/Black Sneakers Nike Air Force 1 Low with US Flag under them.jpg";
@@ -245,7 +245,7 @@ import asset0241 from "@/IMAGES/Culture/Music/Imagine Dragons at Mohegan Sun in 
 import asset0242 from "@/IMAGES/Culture/Music/Lineup of Maroon 5 since 2020. Clockwise from top left, Adam Levine, Jesse Carmichael, James Valentine, Matt Flynn, PJ Morton, Sam Farrar.jpg";
 import asset0243 from "@/IMAGES/Culture/Music/Live-Jazz-Band-Performing-On-Stage-With-Neon-Jazz-Sign-And-Red-Curtains.jpg";
 import asset0244 from "@/IMAGES/Culture/Music/Madonna performing during the 1987 Whos That Girl World Tour.jpg";
-import asset0245 from "@/IMAGES/Culture/Music/Michael Jackson Tour pic.webp";
+import asset0245 from "@/IMAGES/Culture/Music/Michael Jackson Tour pic.jpg";
 import asset0246 from "@/IMAGES/Culture/Music/Michael Jackson in a press photo dated to 1983.jpg";
 import asset0247 from "@/IMAGES/Culture/Music/Pitbull performing in 2011.jpg";
 import asset0248 from "@/IMAGES/Culture/Music/Pitbull performing with Enrique Iglesias at the Frank Erwin Center in Austin, Texas, 2015.jpg";
@@ -274,10 +274,10 @@ import asset0270 from "@/IMAGES/Culture/Sports/James during his first season wit
 import asset0271 from "@/IMAGES/Culture/Sports/Jesse Owens at the Berlin Olympics.jpeg";
 import asset0272 from "@/IMAGES/Culture/Sports/LeBron James at Los Angeles Lakers @ Cleveland Cavaliers, March 21, 2022.jpg";
 import asset0273 from "@/IMAGES/Culture/Sports/Looking back across a pond on the 18th hole at Heritage Palms Golf Course, Indio.jpg";
-import asset0274 from "@/IMAGES/Culture/Sports/Muhammad Ali Landing Powerful Left Jab On Joe Frazier During Historic Bout.webp";
+import asset0274 from "@/IMAGES/Culture/Sports/Muhammad Ali Landing Powerful Left Jab On Joe Frazier During Historic Bout.jpg";
 import asset0275 from "@/IMAGES/Culture/Sports/Muhammad Ali Leaning Back From Joe Frazier Left Hook Fight Of The Century 1971.jpg";
 import asset0276 from "@/IMAGES/Culture/Sports/NCAA March Madness Tournament Basketball Court MSG.jpg";
-import asset0277 from "@/IMAGES/Culture/Sports/NCAA March Madness Tournament Basketball Court MSG.webp";
+import asset0277 from "@/IMAGES/Culture/Sports/NCAA March Madness Tournament Basketball Court MSG.jpg";
 import asset0278 from "@/IMAGES/Culture/Sports/Stadiums/ASU Arizona NFL Stadium.jpg";
 import asset0279 from "@/IMAGES/Culture/Sports/Stadiums/AT&T Stadium match kickoff(Wisconsin_-_Alabama).jpg";
 import asset0280 from "@/IMAGES/Culture/Sports/Stadiums/Aerial Panorama Rose Bowl Stadium Game Day Sunset San Gabriel Mountains.jpg";
@@ -353,7 +353,7 @@ import asset0349 from "@/IMAGES/Founders/john-adams.jpg";
 import asset0350 from "@/IMAGES/Founders/john-jay.jpg";
 import asset0351 from "@/IMAGES/Founders/thomas-jefferson.jpg";
 import asset0352 from "@/IMAGES/History/Antonin Scalia.jpg";
-import asset0353 from "@/IMAGES/History/Bush at Ground Zero with the Bullhorn.webp";
+import asset0353 from "@/IMAGES/History/Bush at Ground Zero with the Bullhorn.jpg";
 import asset0354 from "@/IMAGES/History/MLK at the Lincoln Memorial.jpg";
 import asset0355 from "@/IMAGES/History/Migrant Mother.jpg";
 import asset0356 from "@/IMAGES/History/Mount Rushmore Under Construction.jpg";
@@ -749,8 +749,8 @@ import asset0745 from "@/IMAGES/Science/A garden like arrangement of beautiful g
 import asset0746 from "@/IMAGES/Science/Aerial_view_of_Wake_Island_in_July_2014.jpg";
 import asset0747 from "@/IMAGES/Science/Blacksmoker_in_Atlantic_Ocean underwater seabed hydrothermal vents minerals close-up.jpg";
 import asset0748 from "@/IMAGES/Science/DNA 3D.jpg";
-import asset0749 from "@/IMAGES/Science/Iconic/Damadian and the First MRI Scanner.webp";
-import asset0750 from "@/IMAGES/Science/Iconic/Einstein and Hubble at Mount Wilson.webp";
+import asset0749 from "@/IMAGES/Science/Iconic/Damadian and the First MRI Scanner.jpg";
+import asset0750 from "@/IMAGES/Science/Iconic/Einstein and Hubble at Mount Wilson.jpg";
 import asset0751 from "@/IMAGES/Science/Iconic/Glenn Seaborg and the Periodic Table.jpg";
 import asset0752 from "@/IMAGES/Science/Iconic/Lawrence and the Cyclotron.jpg";
 import asset0753 from "@/IMAGES/Science/Iconic/Nikola Tesla in his Colorado Springs Laboratory.jpg";
@@ -795,7 +795,7 @@ import asset0791 from "@/IMAGES/Technology/Commercial Space & SpaceX/spacex--p-K
 import asset0792 from "@/IMAGES/Technology/EA HQ campus logo.jpg";
 import asset0793 from "@/IMAGES/Technology/Fiber Optic Cable.jpg";
 import asset0794 from "@/IMAGES/Technology/Google Data Center Midlothian Texas at Dusk with Water Tanks and GCUB Generator Yard.jpg";
-import asset0795 from "@/IMAGES/Technology/Iconic/1980s Family with their First Home Computer.webp";
+import asset0795 from "@/IMAGES/Technology/Iconic/1980s Family with their First Home Computer.jpg";
 import asset0796 from "@/IMAGES/Technology/Iconic/Bell Opening the New York to Chicago Line.jpg";
 import asset0797 from "@/IMAGES/Technology/Iconic/ENIAC in Operation.jpg";
 import asset0798 from "@/IMAGES/Technology/Iconic/Grace Hopper and the Harvard Mark I.jpg";
@@ -973,7 +973,7 @@ const RAW_GALLERY_ASSETS = [
   { path: "Cities/Seattle Central Library.jpg", src: asset0043 },
   { path: "Cities/Seattle Skyline Day.jpg", src: asset0044 },
   { path: "Cities/Seattle Skyline at Night.jpg", src: asset0045 },
-  { path: "Cities/Seattle-Public-Libraries_Seattle-Central-Library.webp", src: asset0046 },
+  { path: "Cities/Seattle-Public-Libraries_Seattle-Central-Library.jpg", src: asset0046 },
   { path: "Cities/Universal Studios Holywood Entrance.jpg", src: asset0047 },
   { path: "Cities/home-nyc-skyline.jpg", src: asset0048 },
   { path: "Constitution/A view of the north side of Independence Hall in Philadelphia, showing the main building in the center with the east and west wings on the sides.jpg", src: asset0049 },
@@ -991,7 +991,7 @@ const RAW_GALLERY_ASSETS = [
   { path: "Constitution/bill-of-rights-page-1.jpg", src: asset0061 },
   { path: "Constitution/constitution-page-1.jpg", src: asset0062 },
   { path: "Constitution/marble-texture.png", src: asset0063 },
-  { path: "Constitution/marble-texture.webp", src: asset0064 },
+  { path: "Constitution/marble-texture.jpg", src: asset0064 },
   { path: "Constitution/the-new-york-public-library-L3D6oyQO6Do-unsplash.jpg", src: asset0065 },
   { path: "Constitution/usa-independence-day-composition-with-declaration.jpg", src: asset0066 },
   { path: "Constitution/usa-independence-day-concept-with-declaration-independence.jpg", src: asset0067 },
@@ -1052,7 +1052,7 @@ const RAW_GALLERY_ASSETS = [
   { path: "Culture/Famous People/08_michael_jordan.jpg", src: asset0122 },
   { path: "Culture/Famous People/09_martin_luther_king_jr.jpg", src: asset0123 },
   { path: "Culture/Famous People/10_arnold_schwarzenegger.jpg", src: asset0124 },
-  { path: "Culture/Famous People/Andy Warhol with Campbells Soup Cans.webp", src: asset0125 },
+  { path: "Culture/Famous People/Andy Warhol with Campbells Soup Cans.jpg", src: asset0125 },
   { path: "Culture/Famous People/Elvis Meeting Nixon.jpg", src: asset0126 },
   { path: "Culture/Famous People/Schwarzenegger at Muscle Beach.jpeg", src: asset0127 },
   { path: "Culture/Fashion/Black Sneakers Nike Air Force 1 Low with US Flag under them.jpg", src: asset0128 },
@@ -1172,7 +1172,7 @@ const RAW_GALLERY_ASSETS = [
   { path: "Culture/Music/Lineup of Maroon 5 since 2020. Clockwise from top left, Adam Levine, Jesse Carmichael, James Valentine, Matt Flynn, PJ Morton, Sam Farrar.jpg", src: asset0242 },
   { path: "Culture/Music/Live-Jazz-Band-Performing-On-Stage-With-Neon-Jazz-Sign-And-Red-Curtains.jpg", src: asset0243 },
   { path: "Culture/Music/Madonna performing during the 1987 Whos That Girl World Tour.jpg", src: asset0244 },
-  { path: "Culture/Music/Michael Jackson Tour pic.webp", src: asset0245 },
+  { path: "Culture/Music/Michael Jackson Tour pic.jpg", src: asset0245 },
   { path: "Culture/Music/Michael Jackson in a press photo dated to 1983.jpg", src: asset0246 },
   { path: "Culture/Music/Pitbull performing in 2011.jpg", src: asset0247 },
   { path: "Culture/Music/Pitbull performing with Enrique Iglesias at the Frank Erwin Center in Austin, Texas, 2015.jpg", src: asset0248 },
@@ -1201,10 +1201,10 @@ const RAW_GALLERY_ASSETS = [
   { path: "Culture/Sports/Jesse Owens at the Berlin Olympics.jpg", src: asset0271 },
   { path: "Culture/Sports/LeBron James at Los Angeles Lakers @ Cleveland Cavaliers, March 21, 2022.jpg", src: asset0272 },
   { path: "Culture/Sports/Looking back across a pond on the 18th hole at Heritage Palms Golf Course, Indio.jpg", src: asset0273 },
-  { path: "Culture/Sports/Muhammad Ali Landing Powerful Left Jab On Joe Frazier During Historic Bout.webp", src: asset0274 },
+  { path: "Culture/Sports/Muhammad Ali Landing Powerful Left Jab On Joe Frazier During Historic Bout.jpg", src: asset0274 },
   { path: "Culture/Sports/Muhammad Ali Leaning Back From Joe Frazier Left Hook Fight Of The Century 1971.jpg", src: asset0275 },
   { path: "Culture/Sports/NCAA March Madness Tournament Basketball Court MSG.jpg", src: asset0276 },
-  { path: "Culture/Sports/NCAA March Madness Tournament Basketball Court MSG.webp", src: asset0277 },
+  { path: "Culture/Sports/NCAA March Madness Tournament Basketball Court MSG.jpg", src: asset0277 },
   { path: "Culture/Sports/Stadiums/ASU Arizona NFL Stadium.jpg", src: asset0278 },
   { path: "Culture/Sports/Stadiums/AT&T Stadium match kickoff(Wisconsin_-_Alabama).jpg", src: asset0279 },
   { path: "Culture/Sports/Stadiums/Aerial Panorama Rose Bowl Stadium Game Day Sunset San Gabriel Mountains.jpg", src: asset0280 },
@@ -1280,7 +1280,7 @@ const RAW_GALLERY_ASSETS = [
   { path: "Founders/john-jay.jpg", src: asset0350 },
   { path: "Founders/thomas-jefferson.jpg", src: asset0351 },
   { path: "History/Antonin Scalia.jpg", src: asset0352 },
-  { path: "History/Bush at Ground Zero with the Bullhorn.webp", src: asset0353 },
+  { path: "History/Bush at Ground Zero with the Bullhorn.jpg", src: asset0353 },
   { path: "History/MLK at the Lincoln Memorial.jpg", src: asset0354 },
   { path: "History/Migrant Mother.jpg", src: asset0355 },
   { path: "History/Mount Rushmore Under Construction.jpg", src: asset0356 },
@@ -1676,8 +1676,8 @@ const RAW_GALLERY_ASSETS = [
   { path: "Science/Aerial_view_of_Wake_Island_in_July_2014.jpg", src: asset0746 },
   { path: "Science/Blacksmoker_in_Atlantic_Ocean underwater seabed hydrothermal vents minerals close-up.jpg", src: asset0747 },
   { path: "Science/DNA 3D.jpg", src: asset0748 },
-  { path: "Science/Iconic/Damadian and the First MRI Scanner.webp", src: asset0749 },
-  { path: "Science/Iconic/Einstein and Hubble at Mount Wilson.webp", src: asset0750 },
+  { path: "Science/Iconic/Damadian and the First MRI Scanner.jpg", src: asset0749 },
+  { path: "Science/Iconic/Einstein and Hubble at Mount Wilson.jpg", src: asset0750 },
   { path: "Science/Iconic/Glenn Seaborg and the Periodic Table.jpg", src: asset0751 },
   { path: "Science/Iconic/Lawrence and the Cyclotron.jpg", src: asset0752 },
   { path: "Science/Iconic/Nikola Tesla in his Colorado Springs Laboratory.jpg", src: asset0753 },
@@ -1722,7 +1722,7 @@ const RAW_GALLERY_ASSETS = [
   { path: "Technology/EA HQ campus logo.jpg", src: asset0792 },
   { path: "Technology/Fiber Optic Cable.jpg", src: asset0793 },
   { path: "Technology/Google Data Center Midlothian Texas at Dusk with Water Tanks and GCUB Generator Yard.jpg", src: asset0794 },
-  { path: "Technology/Iconic/1980s Family with their First Home Computer.webp", src: asset0795 },
+  { path: "Technology/Iconic/1980s Family with their First Home Computer.jpg", src: asset0795 },
   { path: "Technology/Iconic/Bell Opening the New York to Chicago Line.jpg", src: asset0796 },
   { path: "Technology/Iconic/ENIAC in Operation.jpg", src: asset0797 },
   { path: "Technology/Iconic/Grace Hopper and the Harvard Mark I.jpg", src: asset0798 },

@@ -371,7 +371,7 @@ const INDUSTRY_ENGINEERING: IconicPhoto[] = [
     location: "World Trade Center site, New York City",
     rights: "public-domain",
     source: "White House photo / National Archives (federal work, PD).",
-    imagePath: "History/Bush at Ground Zero with the Bullhorn.webp",
+    imagePath: "History/Bush at Ground Zero with the Bullhorn.jpg",
   },
   {
     id: "first-integrated-circuit",
@@ -1477,7 +1477,7 @@ const CULTURE_SPORTS: IconicPhoto[] = [
     location: "New York City",
     rights: "needs-license",
     source: "Press/Getty (and Warhol estate for the artwork): license or supply.",
-    imagePath: "Culture/Famous People/Andy Warhol with Campbells Soup Cans.webp",
+    imagePath: "Culture/Famous People/Andy Warhol with Campbells Soup Cans.jpg",
   },
   {
     id: "beatles-arriving-jfk-airport",
@@ -1846,7 +1846,7 @@ const SCIENCE_INVENTION: IconicPhoto[] = [
     location: "Mount Wilson Observatory, California",
     rights: "needs-license",
     source: "Carnegie Observatories archives: request; some PD frames exist.",
-    imagePath: "Science/Iconic/Einstein and Hubble at Mount Wilson.webp",
+    imagePath: "Science/Iconic/Einstein and Hubble at Mount Wilson.jpg",
   },
   {
     id: "feynman-playing-the-bongos",
@@ -2118,7 +2118,7 @@ const SCIENCE_PIONEERS: IconicPhoto[] = [
     location: "Brooklyn, New York",
     rights: "needs-license",
     source: "FONAR / Smithsonian: request permission.",
-    imagePath: "Science/Iconic/Damadian and the First MRI Scanner.webp",
+    imagePath: "Science/Iconic/Damadian and the First MRI Scanner.jpg",
   },
   {
     id: "thomas-hunt-morgan-fly-room",
@@ -2342,7 +2342,7 @@ const QUALITY_OF_LIFE: IconicPhoto[] = [
     location: "United States",
     rights: "needs-license",
     source: "Press/archives: request or substitute CC frame.",
-    imagePath: "Technology/Iconic/1980s Family with their First Home Computer.webp",
+    imagePath: "Technology/Iconic/1980s Family with their First Home Computer.jpg",
   },
   {
     id: "first-blockbuster-video-store",

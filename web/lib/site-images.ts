@@ -284,13 +284,13 @@ import speakeasyDesign from "@/IMAGES/Culture/Iconic Things/1920s Speakeasy Desi
 
 // Organized Mascots
 import mascotHandsomeDan from "@/IMAGES/Culture/Mascots/Handsome Dan.avif";
-import mascotQuakerOats from "@/IMAGES/Culture/Mascots/Quaker Oats Founder.webp";
+import mascotQuakerOats from "@/IMAGES/Culture/Mascots/Quaker Oats Founder.jpg";
 import mascotMrPeanut from "@/IMAGES/Culture/Mascots/Mr Peanut.png";
 import mascotCampbellsSoup from "@/IMAGES/Culture/Mascots/Campbells Soup Kids.jpg";
 import mascotTonyTheTiger from "@/IMAGES/Culture/Mascots/Tony the Tiger.jpg";
-import mascotCapnCrunch from "@/IMAGES/Culture/Mascots/Capn Crunch.webp";
-import mascotPillsburyDoughboy from "@/IMAGES/Culture/Mascots/Pillsbury Doughboy.webp";
-import mascotGritty from "@/IMAGES/Culture/Mascots/Gritty Mascot.webp";
+import mascotCapnCrunch from "@/IMAGES/Culture/Mascots/Capn Crunch.jpg";
+import mascotPillsburyDoughboy from "@/IMAGES/Culture/Mascots/Pillsbury Doughboy.jpg";
+import mascotGritty from "@/IMAGES/Culture/Mascots/Gritty Mascot.jpg";
 import mascotGeicoGecko from "@/IMAGES/Culture/Mascots/Geico Gecko.jpg";
 
 // Organized Aesthetics
@@ -298,14 +298,14 @@ import aestheticCabin from "@/IMAGES/Culture/Aesthetics/Rustic Cabin Outdoors.jp
 import aestheticCircus from "@/IMAGES/Culture/Aesthetics/Circus Carnival Aesthetic.jpg";
 import aestheticWildWest from "@/IMAGES/Culture/Aesthetics/Wild West Saloon.jpg";
 import aestheticFarmhouse from "@/IMAGES/Culture/Aesthetics/Cozy Farmhouse Kitchen.png";
-import aestheticNautical from "@/IMAGES/Culture/Aesthetics/Nautical Sailing Aesthetic.webp";
-import aestheticDiner from "@/IMAGES/Culture/Aesthetics/1950s Retro Diner.webp";
-import aestheticIndustrial from "@/IMAGES/Culture/Aesthetics/Industrial Loft Living.webp";
+import aestheticNautical from "@/IMAGES/Culture/Aesthetics/Nautical Sailing Aesthetic.jpg";
+import aestheticDiner from "@/IMAGES/Culture/Aesthetics/1950s Retro Diner.jpg";
+import aestheticIndustrial from "@/IMAGES/Culture/Aesthetics/Industrial Loft Living.jpg";
 import aestheticSuburbanMall from "@/IMAGES/Culture/Aesthetics/Suburban Shopping Mall.jpg";
 
 // Organized Christmas
 import christmasSnowman from "@/IMAGES/Culture/Christmas/Victorian Snowman.jpg";
-import christmasGingerbread from "@/IMAGES/Culture/Christmas/Gingerbread Man Cookie.webp";
+import christmasGingerbread from "@/IMAGES/Culture/Christmas/Gingerbread Man Cookie.jpg";
 import christmasStocking from "@/IMAGES/Culture/Christmas/Christmas Stocking Hearth.jpg";
 import christmasHolly from "@/IMAGES/Culture/Christmas/Holly Sprig Berries.jpg";
 import christmasCandyCane from "@/IMAGES/Culture/Christmas/Peppermint Candy Cane.jpg";
@@ -313,8 +313,8 @@ import christmasCandyCane from "@/IMAGES/Culture/Christmas/Peppermint Candy Cane
 // Organized Americana
 import americanaDayGlo from "@/IMAGES/Culture/Americana/Day Glo Neon.jpg";
 import americanaFrankenstein from "@/IMAGES/Culture/Americana/Universal Frankenstein 1931.jpg";
-import americanaBlockbuster from "@/IMAGES/Culture/Americana/Blockbuster VHS Store.webp";
-import americanaDnd from "@/IMAGES/Culture/Americana/Dnd Beholder Dice.webp";
+import americanaBlockbuster from "@/IMAGES/Culture/Americana/Blockbuster VHS Store.jpg";
+import americanaDnd from "@/IMAGES/Culture/Americana/Dnd Beholder Dice.jpg";
 
 
 // New Movie Posters
@@ -472,7 +472,7 @@ import foodMcdonaldsFries from "@/IMAGES/Culture/Food/McDonalds Fries.jpg";
 import foodChickenMcnuggets from "@/IMAGES/Culture/Food/Chicken McNuggets.jpg";
 
 // Sports: new action images
-import sportsAliVsFrazierJab from "@/IMAGES/Culture/Sports/Muhammad Ali Landing Powerful Left Jab On Joe Frazier During Historic Bout.webp";
+import sportsAliVsFrazierJab from "@/IMAGES/Culture/Sports/Muhammad Ali Landing Powerful Left Jab On Joe Frazier During Historic Bout.jpg";
 import sportsAliVsFrazier1971 from "@/IMAGES/Culture/Sports/Muhammad Ali Leaning Back From Joe Frazier Left Hook Fight Of The Century 1971.jpg";
 import sportsMarchMadness from "@/IMAGES/Culture/Sports/NCAA March Madness Tournament Basketball Court MSG.jpg";
 import sportsBasketballDunk from "@/IMAGES/Culture/Sports/Stadiums/Miami-Heat-Player-Dunking-During-Game-Against-Orlando-Magic-At-Amway-Center.jpg";

@@ -22,7 +22,7 @@ export function LuxuryClosing({ isRo }: { isRo: boolean }) {
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage: "url('/images/constitution/marble-texture.webp')",
+          backgroundImage: "url('/images/constitution/marble-texture.jpg')",
           backgroundRepeat: "repeat",
           backgroundSize: "512px 512px",
           opacity: 0.02,

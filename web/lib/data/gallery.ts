@@ -813,7 +813,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
   },
 
   // ── Iconic American photographs: batch 8 (user-supplied) ──
-  "Technology/Iconic/1980s Family with their First Home Computer.webp": {
+  "Technology/Iconic/1980s Family with their First Home Computer.jpg": {
     alt: "The personal computer enters the home.",
     caption: "A 1980s Family with their First Apple II or IBM PC (1980s)",
     description:
@@ -841,7 +841,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
       "Levittown's mass-produced houses made homeownership attainable for millions of postwar families and defined the American suburb.",
     location: "Long Island, New York",
   },
-  "Culture/Famous People/Andy Warhol with Campbells Soup Cans.webp": {
+  "Culture/Famous People/Andy Warhol with Campbells Soup Cans.jpg": {
     alt: "The pop-art icon beside his most famous work.",
     caption: "Andy Warhol with his Campbell's Soup Cans (1964)",
     description:
@@ -890,7 +890,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
       "The 1858 transatlantic telegraph cable, backed by American financier Cyrus Field, briefly connected continents and previewed instant global communication.",
     location: "Atlantic Ocean",
   },
-  "Science/Iconic/Damadian and the First MRI Scanner.webp": {
+  "Science/Iconic/Damadian and the First MRI Scanner.jpg": {
     alt: "The inventor beside 'Indomitable,' the first MRI machine.",
     caption: "Raymond Damadian and the First MRI Scanner (1977)",
     description:
@@ -925,7 +925,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
       "The drive-in theater married two American loves: cars and movies: into a defining leisure pastime of the 1950s.",
     location: "United States",
   },
-  "Science/Iconic/Einstein and Hubble at Mount Wilson.webp": {
+  "Science/Iconic/Einstein and Hubble at Mount Wilson.jpg": {
     alt: "Theory meets observation atop Mount Wilson.",
     caption: "Albert Einstein and Edwin Hubble at Mount Wilson (1931)",
     description:
@@ -960,7 +960,7 @@ const CURATED_IMAGE_OVERRIDES: Record<string, GalleryOverride> = {
       "The 77-day siege of Khe Sanh in 1968 was one of the most intense engagements of the Vietnam War, sustained largely by aerial resupply.",
     location: "Khe Sanh, South Vietnam",
   },
-  "History/Bush at Ground Zero with the Bullhorn.webp": {
+  "History/Bush at Ground Zero with the Bullhorn.jpg": {
     alt: "“I can hear you: and the people who knocked these buildings down will hear all of us soon.”",
     caption: "President George W. Bush at Ground Zero with the Bullhorn (2001)",
     description:

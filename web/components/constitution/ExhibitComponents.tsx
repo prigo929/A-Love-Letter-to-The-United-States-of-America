@@ -317,7 +317,7 @@ export function BreathingSection({
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage: "url('/images/constitution/marble-texture.webp')",
+          backgroundImage: "url('/images/constitution/marble-texture.jpg')",
           backgroundRepeat: "repeat",
           backgroundSize: "512px 512px",
           opacity: 0.025,
@@ -437,7 +437,7 @@ export function ScrollToDissolveEntrance({
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage: "url('/images/constitution/marble-texture.webp')",
+          backgroundImage: "url('/images/constitution/marble-texture.jpg')",
           backgroundRepeat: "repeat",
           backgroundSize: "512px 512px",
           opacity: 0.015,
@@ -565,7 +565,7 @@ export function WeThePeople({ isRo }: { isRo: boolean }) {
         <div
           className="pointer-events-none absolute inset-0"
           style={{
-            backgroundImage: "url('/images/constitution/marble-texture.webp')",
+            backgroundImage: "url('/images/constitution/marble-texture.jpg')",
             backgroundRepeat: "repeat",
             backgroundSize: "512px 512px",
             opacity: 0.02,
