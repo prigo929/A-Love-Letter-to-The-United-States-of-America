@@ -12,9 +12,17 @@ import Image from "next/image";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { SITE_IMAGES } from "@/lib/site-images";
 
+interface MascotImageItem {
+  src: string;
+  alt: string;
+  caption: string;
+  captionRo: string;
+  contain?: boolean;
+}
+
 interface MascotEra {
   id: string;
-  image: string;
+  images: MascotImageItem[];
   era: string;
   eraRo: string;
   title: string;
@@ -34,7 +42,20 @@ interface MascotEra {
 const MASCOT_ERAS: MascotEra[] = [
   {
     id: "victorian",
-    image: SITE_IMAGES.culture.mascotHandsomeDan,
+    images: [
+      {
+        src: SITE_IMAGES.culture.mascotHandsomeDan,
+        alt: "Handsome Dan Yale Bulldog mascot portrait",
+        caption: "Handsome Dan · Yale Bulldog (1889)",
+        captionRo: "Handsome Dan · Buldogul Yale (1889)",
+      },
+      {
+        src: SITE_IMAGES.culture.mascotQuakerOats,
+        alt: "Quaker Oats founder portrait on vintage box",
+        caption: "Quaker Oats Man (1877)",
+        captionRo: "Omul Quaker Oats (1877)",
+      },
+    ],
     era: "1880s – 1900s",
     eraRo: "1880 – 1900",
     title: "Victorian Authority & Regimental Luck",
@@ -56,7 +77,21 @@ const MASCOT_ERAS: MascotEra[] = [
   },
   {
     id: "early-cartoon",
-    image: SITE_IMAGES.culture.mascotMrPeanut,
+    images: [
+      {
+        src: SITE_IMAGES.culture.mascotMrPeanut,
+        alt: "Planters Mr. Peanut vintage cartoon mascot",
+        caption: "Mr. Peanut · Planters (1916)",
+        captionRo: "Mr. Peanut · Planters (1916)",
+        contain: true,
+      },
+      {
+        src: SITE_IMAGES.culture.mascotCampbellsSoup,
+        alt: "Campbell's Soup Kids vintage print advertisement",
+        caption: "Campbell's Soup Kids (1904)",
+        captionRo: "Copiii Campbell's Soup (1904)",
+      },
+    ],
     era: "1910s – 1930s",
     eraRo: "1910 – 1930",
     title: "Early Animation & Commercial Caricatures",
@@ -68,9 +103,9 @@ const MASCOT_ERAS: MascotEra[] = [
     detail:
       "As hand-drawn animation emerged in the 1910s, drawing thousands of individual frames required simplified geometry: circle heads, solid lines, and pie eyes. Advertisers realized customers formed deep emotional bonds with simple cartoon icons. Early corporate characters like Mr. Peanut (1916) and the Campbell's Soup Kids capitalized on theatrical animation techniques to stand out on crowded grocer shelves.",
     detailRo:
-      "Pe măsură ce animația desenată de mână a apărut în anii 1910, desenarea miilor de cadre individuale a necesitat o geometrie simplificată: capete circulare, linii solide și ochi simpli. Publicitarii au realizat că clienții dezvoltau legături emoționale profunde cu personajele de desene animate. Primele mascote precum Mr. Peanut (1916) și copiii Campbell's Soup au folosit aceste tehnici pentru a ieși în evidență pe rafturi.",
+      "Pe măsură ce animația desenată de mână a apărut în anii 1910, desenarea miilor de cadre individuale a necesit o geometrie simplificată: capete circulare, linii solide și ochi simpli. Publicitarii au realizat că clienții dezvoltau legături emoționale profunde cu personajele de desene animate. Primele mascote precum Mr. Peanut (1916) și copiii Campbell's Soup au folosit aceste tehnici pentru a ieși în evidență pe rafturi.",
     examples: ["Mr. Peanut (Planters, 1916)", "Campbell's Soup Kids (1904)", "Wrigley Spearmint Men (1915)"],
-    examplesRo: ["Mr. Peanut (Planters, 1916)", "Copiii Campbell's Soup (1094)", "Oamenii Wrigley Spearmint (1915)"],
+    examplesRo: ["Mr. Peanut (Planters, 1916)", "Copiii Campbell's Soup (1904)", "Oamenii Wrigley Spearmint (1915)"],
     worthKnowing:
       "Mr. Peanut was originally drawn by a 14-year-old schoolboy named Antonio Gentile, who won a Planters Peanuts contest in 1916.",
     worthKnowingRo:
@@ -78,7 +113,26 @@ const MASCOT_ERAS: MascotEra[] = [
   },
   {
     id: "golden-age",
-    image: SITE_IMAGES.culture.mascotTonyTheTiger,
+    images: [
+      {
+        src: SITE_IMAGES.culture.mascotTonyTheTiger,
+        alt: "Kellogg's Frosted Flakes Tony the Tiger cereal box",
+        caption: "Tony the Tiger · Kellogg's (1952)",
+        captionRo: "Tony the Tiger · Kellogg's (1952)",
+      },
+      {
+        src: SITE_IMAGES.culture.mascotCapnCrunch,
+        alt: "Cap'n Crunch cereal box drawn by Jay Ward animators",
+        caption: "Cap'n Crunch · Quaker (1963)",
+        captionRo: "Cap'n Crunch · Quaker (1963)",
+      },
+      {
+        src: SITE_IMAGES.culture.mascotPillsburyDoughboy,
+        alt: "Pillsbury Doughboy Poppin' Fresh icon jar",
+        caption: "Pillsbury Doughboy (1965)",
+        captionRo: "Pillsbury Doughboy (1965)",
+      },
+    ],
     era: "1950s – 1970s",
     eraRo: "1950 – 1970",
     title: "The Postwar TV & Cereal Golden Age",
@@ -100,7 +154,14 @@ const MASCOT_ERAS: MascotEra[] = [
   },
   {
     id: "modern-antihero",
-    image: SITE_IMAGES.culture.mascotGritty,
+    images: [
+      {
+        src: SITE_IMAGES.culture.mascotGritty,
+        alt: "Philadelphia Flyers mascot Gritty at hockey game",
+        caption: "Gritty · Philadelphia Flyers (2018)",
+        captionRo: "Gritty · Philadelphia Flyers (2018)",
+      },
+    ],
     era: "1980s – Present",
     eraRo: "1980 – Prezent",
     title: "Local Underdogs, Irony & Anti-Mascots",
@@ -166,7 +227,7 @@ export function MascotCanon() {
 
       {/* Dossier card */}
       <div key={active.id} className="bg-white/60 backdrop-blur-md rounded-3xl border border-[#0C0907]/10 p-8 md:p-12 shadow-[0_20px_60px_rgba(12,9,7,0.06)]">
-        <div className="grid gap-8 lg:grid-cols-[1fr_1.3fr] items-start">
+        <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr] items-start">
           <div>
             <div className="flex items-center gap-3 mb-3">
               <span className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-[#E8391B]">
@@ -208,18 +269,31 @@ export function MascotCanon() {
             </div>
           </div>
 
-          {/* Right column: image & detailed breakdown */}
-          <div className="flex flex-col justify-center gap-6 lg:pl-6 lg:border-l lg:border-[#0C0907]/10">
-            <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0_15px_40px_rgba(12,9,7,0.12)] border border-[#0C0907]/10">
-              <Image
-                src={active.image}
-                alt={active.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 40vw"
-              />
+          {/* Right column: Era Images Gallery & detailed breakdown */}
+          <div className="flex flex-col gap-6 lg:pl-6 lg:border-l lg:border-[#0C0907]/10">
+            {/* Gallery of Era Images */}
+            <div className={`grid gap-4 ${active.images.length === 1 ? 'grid-cols-1' : active.images.length === 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 sm:grid-cols-3'}`}>
+              {active.images.map((img, idx) => (
+                <div key={idx} className="group relative rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(12,9,7,0.08)] border border-[#0C0907]/10 bg-white/40">
+                  <div className="relative aspect-4/3 w-full overflow-hidden bg-[#0C0907]/[0.03]">
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className={img.contain ? "object-contain p-3" : "object-cover group-hover:scale-105 transition-transform duration-500"}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+                  <div className="p-3 bg-white/80 backdrop-blur-sm border-t border-[#0C0907]/5 text-center">
+                    <p className="font-body text-[10px] font-bold uppercase tracking-wider text-[#0C0907]/75">
+                      {ro ? img.captionRo : img.caption}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
-            <p className="font-editorial text-lg md:text-xl leading-relaxed text-[#0C0907]/85">
+
+            <p className="font-editorial text-lg md:text-xl leading-relaxed text-[#0C0907]/85 mt-2">
               {ro ? active.detailRo : active.detail}
             </p>
           </div>
