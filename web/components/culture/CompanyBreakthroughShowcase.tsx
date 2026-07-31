@@ -215,6 +215,98 @@ const FEATURED_COMPANIES: FeaturedCompany[] = [
     culturalImpactRo:
       "A transformat „a căuta pe Google” într-un verb universal în 50+ limbi, a creat Android și a cartografiat planeta fizică prin Google Maps.",
   },
+  {
+    id: "amazon",
+    name: "Amazon",
+    logoFile: "/ASSETS/Companies/Amazon_Logo_0.svg",
+    logoInvert: false,
+    foundedYear: "1994",
+    breakthroughProduct: "One-Click Shopping & Amazon Web Services (AWS)",
+    breakthroughProductRo: "Cumpărăturile One-Click și Amazon Web Services (AWS)",
+    breakthroughYear: "2006",
+    statValue: "30%+",
+    statLabel: "Global Cloud Internet Infrastructure (AWS)",
+    statLabelRo: "Infrastructură cloud internet globală (AWS)",
+    tagline: "From online bookstore to the infrastructure layer of global commerce",
+    taglineRo: "De la librărie online la stratul de infrastructură al comerțului global",
+    story:
+      "Jeff Bezos launched Amazon as an online bookstore from a Seattle garage in 1994. By expanding into one-click ordering, Prime fast delivery, and launching Amazon Web Services (AWS) in 2006 to power the world's cloud computing, Amazon became the backbone of modern global logistics and digital commerce.",
+    storyRo:
+      "Jeff Bezos a lansat Amazon ca librărie online într-un garaj din Seattle în 1994. Extinzându-se în comenzi cu un singur clic, livrare rapidă Prime și lansând AWS în 2006, Amazon a devenit coloana vertebrală a logisticii globale.",
+    culturalImpact:
+      "Redefined consumer expectations for instant package delivery and powers over 30% of the entire global internet infrastructure via AWS.",
+    culturalImpactRo:
+      "A redefinit așteptările clienților pentru livrare rapidă și alimentează peste 30% din infrastructura globală de internet prin AWS.",
+  },
+  {
+    id: "microsoft",
+    name: "Microsoft",
+    logoFile: "/ASSETS/Companies/Microsoft_Logo_0.svg",
+    logoInvert: false,
+    foundedYear: "1975",
+    breakthroughProduct: "Windows Graphic Operating System & Office",
+    breakthroughProductRo: "Sistemul de Operare Grafic Windows și Office",
+    breakthroughYear: "1995",
+    statValue: "$3.1 Trillion",
+    statLabel: "Operating System of the Global Knowledge Economy",
+    statLabelRo: "Sistemul de operare al economiei globale a cunoașterii",
+    tagline: "A computer on every desk and in every home",
+    taglineRo: "Un computer pe fiecare birou și în fiecare casă",
+    story:
+      "Bill Gates and Paul Allen founded Microsoft with the bold vision of putting a computer on every desk. With Windows 95, Microsoft unified graphical interfaces, desktop productivity software, and internet networking, building the foundational software stack of the modern global office.",
+    storyRo:
+      "Bill Gates și Paul Allen au fondat Microsoft cu viziunea de a pune un computer pe fiecare birou. Cu Windows 95, Microsoft a unificat interfețele grafice și software-ul de birou, construind temelia muncii moderne.",
+    culturalImpact:
+      "Standardized corporate productivity, powered personal computing for billions, and built cloud platform Azure alongside gaming empire Xbox.",
+    culturalImpactRo:
+      "A standardizat productivitatea corporativă, a alimentat informatica personală pentru miliarde de oameni și a creat Azure și Xbox.",
+  },
+  {
+    id: "walmart",
+    name: "Walmart",
+    logoFile: "/ASSETS/Companies/Walmart_logo_(2008).svg",
+    logoInvert: false,
+    foundedYear: "1962",
+    breakthroughProduct: "Big-Box Retail Logistics & Everyday Low Prices",
+    breakthroughProductRo: "Logistica Retail Big-Box și Prețuri Mici Zilnic",
+    breakthroughYear: "1962",
+    statValue: "2.1 Million",
+    statLabel: "World's Largest Private Employer",
+    statLabelRo: "Cel mai mare angajator privat din lume",
+    tagline: "Everyday Low Prices serving 265 million weekly customers",
+    taglineRo: "Prețuri mici zilnic ce deservesc 265M de clienți săptămânal",
+    story:
+      "Sam Walton opened the first Walmart in Rogers, Arkansas, operating on the radical premise of selling goods at lower profit margins to pass volume savings to working-class families. Walmart pioneered real-time barcode inventory tracking and satellite distribution networks, creating the world's most efficient retail machine.",
+    storyRo:
+      "Sam Walton a deschis primul Walmart în Rogers, Arkansas, mizând pe vânzarea mărfurilor cu marje mici pentru a oferi economii familiilor. Walmart a fost pionier în urmărirea stocurilor prin coduri de bare și distribuție prin satelit.",
+    culturalImpact:
+      "Transformed global supply chain logistics, revolutionized suburban retail architecture, and expanded purchasing power for middle-class families.",
+    culturalImpactRo:
+      "A transformat logistica lanțurilor de aprovizionare, a revoluționat retailul suburban și a extins puterea de cumpărare a familiilor.",
+  },
+  {
+    id: "starbucks",
+    name: "Starbucks",
+    logoFile: "/ASSETS/Companies/Starbucks_Corporation_Logo_2011.svg",
+    logoInvert: false,
+    foundedYear: "1971",
+    breakthroughProduct: "The Third Place & Espresso Culture",
+    breakthroughProductRo: "Al Treilea Spațiu și Cultura Espresso",
+    breakthroughYear: "1987",
+    statValue: "36,000+",
+    statLabel: "Global Outlets Across 86 Nations",
+    statLabelRo: "Locații globale în 86 de țări",
+    tagline: "Inventing the third place between home and office",
+    taglineRo: "Inventarea celui de-al treilea spațiu între casă și birou",
+    story:
+      "Inspired by Milanese espresso bars, Howard Schultz acquired Starbucks in 1987 with the vision of creating 'the third place' — a comfortable, welcoming space between home and work. Starbucks introduced specialty coffee, custom Italian-style espresso beverages, and café workspace culture to the global mainstream.",
+    storyRo:
+      "Inspirat de barurile de espresso din Milano, Howard Schultz a achiziționat Starbucks în 1987 cu viziunea de a crea „al treilea spațiu” — un loc primitor între casă și birou. Starbucks a introdus cafeaua de specialitate și cultura cafenelei.",
+    culturalImpact:
+      "Exported European-style coffee craftsmanship worldwide and established the modern laptop café environment of digital nomads and remote work.",
+    culturalImpactRo:
+      "A exportat meșteșugul cafelei de specialitate și a creat mediul modern al cafenelei pentru munca la distanță și nomazii digitali.",
+  },
 ];
 
 export function CompanyBreakthroughShowcase() {
@@ -227,7 +319,7 @@ export function CompanyBreakthroughShowcase() {
   return (
     <div className="my-16">
       {/* Selector Tabs: Company Logos & Names */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 mb-10">
+      <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-12 gap-2.5 mb-10">
         {FEATURED_COMPANIES.map((c, i) => {
           const on = i === sel;
           return (
@@ -235,7 +327,7 @@ export function CompanyBreakthroughShowcase() {
               key={c.id}
               type="button"
               onClick={() => setSel(i)}
-              className="flex flex-col items-center justify-center p-4 rounded-2xl transition-all duration-300 border"
+              className="flex flex-col items-center justify-center p-3 rounded-2xl transition-all duration-300 border"
               style={{
                 cursor: "pointer",
                 backgroundColor: on ? "#0C0907" : "rgba(255,255,255,0.04)",
@@ -245,18 +337,18 @@ export function CompanyBreakthroughShowcase() {
                 boxShadow: on ? "0 15px 35px rgba(0,0,0,0.5)" : "none",
               }}
             >
-              <div className="relative h-7 w-full mb-2 flex items-center justify-center">
+              <div className="relative h-6 w-full mb-1.5 flex items-center justify-center">
                 <Image
                   src={c.logoFile}
                   alt={c.name}
-                  width={60}
-                  height={28}
-                  className={`object-contain max-h-7 max-w-[60px] ${
+                  width={50}
+                  height={24}
+                  className={`object-contain max-h-6 max-w-[50px] ${
                     c.logoInvert ? "brightness-0 invert opacity-90" : ""
                   }`}
                 />
               </div>
-              <span className="font-body text-[10px] font-bold uppercase tracking-wider text-center">
+              <span className="font-body text-[9px] font-bold uppercase tracking-wider text-center truncate w-full">
                 {c.name}
               </span>
             </button>

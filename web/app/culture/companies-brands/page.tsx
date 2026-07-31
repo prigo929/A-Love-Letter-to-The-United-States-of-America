@@ -38,84 +38,6 @@ export default async function CultureCompaniesBrandsPage() {
     nextLink: isRo ? "Mâncare și Băuturi →" : "Food & Drinks →",
   };
 
-  const brands = [
-    {
-      name: "Apple",
-      value: "$3.4T",
-      valueLabel: isRo ? "Capitalizare de piață" : "Market Cap",
-      desc: isRo ? "Inventatorul interfețelor intuitive care conectează lumea. iPhone-ul a redefinit comunicarea umană la nivel global." : "The inventor of intuitive interfaces that connect the world. The iPhone redefined human communication on a planetary scale.",
-    },
-    {
-      name: "Nike",
-      value: "$150B+",
-      valueLabel: isRo ? "Valoare brand" : "Brand Value",
-      desc: isRo ? "Pionierul culturii streetwear și al cultului performanței. Just Do It a devenit un manifest global al ambiției." : "The pioneer of streetwear culture and the performance cult. Just Do It became a global manifesto of human ambition.",
-    },
-    {
-      name: "Coca-Cola",
-      value: "1.9B",
-      valueLabel: isRo ? "Porții zilnice" : "Daily Servings",
-      desc: isRo ? "Cel mai recunoscut logo din lume, servit de 1,9 miliarde de ori zilnic în peste 200 de țări." : "The most recognized logo on Earth, served 1.9 billion times daily across over 200 nations.",
-    },
-    {
-      name: "Levi's",
-      value: "1853",
-      valueLabel: isRo ? "An fondare" : "Founded",
-      desc: isRo ? "Creatorul uniformei globale a modernității: blugii albaștri, îmbrăcămintea de muncă care a cucerit planeta." : "The creator of modernity's global uniform: blue jeans, workwear that captured the entire planet.",
-    },
-  ];
-
-  const megaBrands = [
-    {
-      name: "Walmart",
-      value: "2.1M",
-      valueLabel: isRo ? "Angajați globali" : "Global Employees",
-      desc: isRo ? "Cel mai mare angajator privat de pe Pământ. Walmart a inventat logistica big-box retail și deservește 265 milioane de clienți săptămânal în 20+ țări." : "The largest private employer on Earth. Walmart invented big-box retail logistics and serves 265 million customers weekly across 20+ countries.",
-    },
-    {
-      name: "Amazon",
-      value: "30%+",
-      valueLabel: isRo ? "Internet global (AWS)" : "Global Internet (AWS)",
-      desc: isRo ? "AWS alimentează 30%+ din internet. Prime a redefinit așteptările de livrare globale. Amazon este stratul de infrastructură al comerțului modern." : "AWS powers 30%+ of the internet. Prime redefined global delivery expectations. Amazon is the infrastructure layer of modern commerce worldwide.",
-    },
-    {
-      name: "Ford",
-      value: "1908",
-      valueLabel: isRo ? "Modelul T · Linia de asamblare" : "Model T · Assembly Line",
-      desc: isRo ? "Ford a inventat producția de masă ca paradigmă economică. Modelul T a democratizat mobilitatea personală și a schimbat structura societății americane." : "Ford invented mass production as an economic paradigm. The Model T democratized personal mobility and reshaped the structure of American society.",
-    },
-    {
-      name: "Google",
-      value: "92%",
-      valueLabel: isRo ? "Cota piața mondială search" : "Global Search Market Share",
-      desc: isRo ? "'A căuta pe Google' este un verb în 50+ de limbi. Infrastructura informațională a planetei, Search, Maps, Gmail, YouTube, toate alimentate de o companie americană." : "'To Google' is a verb in 50+ languages. The information infrastructure of the planet, Search, Maps, Gmail, YouTube, all powered by one American company.",
-    },
-    {
-      name: "Disney",
-      value: "$200B+",
-      valueLabel: isRo ? "Valoare brand + IP" : "Brand + IP Value",
-      desc: isRo ? "Mickey Mouse, Marvel, Star Wars, Pixar, ESPN, National Geographic, Disney controlează mai multă proprietate intelectuală culturală decât orice altă companie de pe planetă. Un imperiu construit pe puterea poveștilor." : "Mickey Mouse, Marvel, Star Wars, Pixar, ESPN, National Geographic, Disney controls more cultural intellectual property than any other company on Earth. An empire built entirely on the power of storytelling.",
-    },
-    {
-      name: "McDonald's",
-      value: "100+",
-      valueLabel: isRo ? "Țări cu restaurante" : "Countries with restaurants",
-      desc: isRo ? "McDonald's nu vinde doar burgeri, exportă un sistem standardizat de experiență culinară la scară globală. Arcurile de aur sunt mai recunoscute decât Crucea Roșie pe toate continentele." : "McDonald's doesn't just sell burgers, it exports a standardized culinary experience system at global scale. The Golden Arches are recognized by more people worldwide than the Red Cross.",
-    },
-    {
-      name: "Microsoft",
-      value: "$3.1T",
-      valueLabel: isRo ? "Capitalizare de piață" : "Market Capitalization",
-      desc: isRo ? "Windows, Office, Azure, Xbox, LinkedIn, GitHub, Microsoft a construit sistemul de operare al economiei globale a cunoașterii. Achiziția Activision Blizzard (2023, 69 miliarde $) a consolidat și imperiul global al gaming-ului." : "Windows, Office, Azure, Xbox, LinkedIn, GitHub, Microsoft built the operating system of the global knowledge economy. The Activision Blizzard acquisition (2023, $69B) consolidated the global gaming empire.",
-    },
-    {
-      name: "Starbucks",
-      value: "36,000+",
-      valueLabel: isRo ? "Locații globale" : "Global Locations",
-      desc: isRo ? "Starbucks a inventat 'al treilea loc', nici acasă, nici la birou, ci spațiul neutru al productivității moderne. A exportat cultura cafelei de specialitate și personalizarea beverajelor în 86 de țări." : "Starbucks invented 'the third place', neither home nor office, but the neutral space of modern productivity. It exported specialty coffee culture and beverage personalization to 86 countries worldwide.",
-    },
-  ];
-
   return (
     <>
       <MacroStyles />
@@ -167,7 +89,7 @@ export default async function CultureCompaniesBrandsPage() {
             </div>
           </div>
 
-          {/* Dark: Specific Company & Product Breakthrough Showcase */}
+          {/* Dark: Interactive Specific Company & Product Breakthrough Showcase */}
           <div className="mt-24 border-t border-white/5 pt-20">
             <div className="text-center mb-16">
               <p className="font-body text-[11px] uppercase tracking-[0.3em] text-glory-gold font-bold mb-3">
@@ -189,34 +111,10 @@ export default async function CultureCompaniesBrandsPage() {
 
         <div className="h-16 w-full gradient-dark-to-cream" />
 
-        {/* CREAM: Brand cards */}
-        <section className="relative culture-cream-bg text-[#0C0907] py-24 md:py-32 overflow-hidden">
+        {/* CREAM: Why Do So Many Things Have Mascots */}
+        <section className="relative culture-cream-bg text-[#0C0907] py-24 overflow-hidden">
           <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
           <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
-            <div className="text-center mb-16">
-              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
-                {isRo ? "PILONII LOGO-ULUI" : "LOGO PILLARS"}
-              </p>
-              <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "IMPERIUL MĂRCILOR" : "THE BRAND EMPIRE"}</h2>
-              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
-            </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {brands.map((b, i) => (
-                <div key={i} className="bg-white/40 backdrop-blur-md rounded-2xl p-8 border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.03)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.08)] hover:-translate-y-1.5 transition-all duration-500">
-                  <p className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-[#E8391B] mb-3">{b.name}</p>
-                  <p className="font-macro-display text-4xl font-black text-[#0C0907] tracking-tight mb-1">{b.value}</p>
-                  <p className="font-body text-xs font-bold uppercase tracking-wider text-[#0C0907]/45 mb-5">{b.valueLabel}</p>
-                  <p className="font-editorial text-sm text-[#0C0907]/70 leading-relaxed">{b.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CREAM: Why Do So Many Things Have Mascots */}
-        <section className="relative culture-cream-bg text-[#0C0907] pb-24 overflow-hidden border-t border-[#0C0907]/5">
-          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
-          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
             <div className="text-center mb-16">
               <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
                 {isRo ? "BRANDING & IDENTITATE VIZUALĂ" : "BRANDING & VISUAL IDENTITY"}
@@ -232,30 +130,6 @@ export default async function CultureCompaniesBrandsPage() {
               <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
             </div>
             <MascotCanon />
-          </div>
-        </section>
-
-        {/* CREAM: Mega-brands, Walmart, Amazon, Ford, Google */}
-        <section className="relative culture-cream-bg text-[#0C0907] pb-0 overflow-hidden border-t border-[#0C0907]/5">
-          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
-          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20 pb-20">
-            <div className="text-center mb-16">
-              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
-                {isRo ? "INFRASTRUCTURA LUMII MODERNE" : "THE INFRASTRUCTURE OF THE MODERN WORLD"}
-              </p>
-              <h2 className="culture-text-hero text-[#0C0907] mt-4">{isRo ? "GIGANȚII TEHNO-INDUSTRIALI" : "TECH & INDUSTRIAL GIANTS"}</h2>
-              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
-            </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {megaBrands.map((b, i) => (
-                <div key={i} className="bg-white/40 backdrop-blur-md rounded-2xl p-8 border border-[#0C0907]/5 shadow-[0_8px_30px_rgb(12,9,7,0.03)] hover:shadow-[0_20px_50px_rgb(12,9,7,0.08)] hover:-translate-y-1.5 transition-all duration-500">
-                  <p className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-[#E8391B] mb-3">{b.name}</p>
-                  <p className="font-macro-display text-4xl font-black text-[#0C0907] tracking-tight mb-1">{b.value}</p>
-                  <p className="font-body text-xs font-bold uppercase tracking-wider text-[#0C0907]/45 mb-5">{b.valueLabel}</p>
-                  <p className="font-editorial text-sm text-[#0C0907]/70 leading-relaxed">{b.desc}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
