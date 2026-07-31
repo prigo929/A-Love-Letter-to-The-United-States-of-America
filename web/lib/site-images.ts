@@ -276,6 +276,7 @@ import cultureNflStadium from "@/IMAGES/Culture/Sports/Stadiums/Wide-Angle-Night
 import cultureBaseballPark from "@/IMAGES/Culture/Sports/Stadiums/Scenic-Daytime-View-Of-PNC-Park-Baseball-Stadium-And-Pittsburgh-Skyline.jpg";
 import cultureCowboysStadium from "@/IMAGES/Culture/Sports/Stadiums/Wide-Interior-View-Of-Packed-ATT-Stadium-During-Dallas-Cowboys-Football-Game.jpg";
 import cultureStatueOfLiberty from "@/IMAGES/Culture/Iconic Things/Statue Of Liberty.jpg";
+import cocaCola3Bottles from "@/IMAGES/Culture/Companies/Coca Cola 3 bottles.jpg";
 
 // New Core Visuals
 import fashionJeansSneakers from "@/IMAGES/Culture/Iconic Things/Blue Jeans and White Sneakers.jpg";
