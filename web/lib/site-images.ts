@@ -457,6 +457,14 @@ import sportsGolfPond from "@/IMAGES/Culture/Sports/Looking back across a pond o
 import sportsGolfBall from "@/IMAGES/Culture/Sports/a golf ball in focus on Golf course.jpg";
 import sportsJesseOwens from "@/IMAGES/Culture/Sports/Jesse Owens at the Berlin Olympics.jpeg";
 import sportsDreamTeam from "@/IMAGES/Culture/Sports/The 1992 USA Basketball Dream Team.jpg";
+import ballFootball from "@/IMAGES/Culture/Sports/Balls/Football.jpg";
+import ballBasketball from "@/IMAGES/Culture/Sports/Balls/Basketball.png";
+import ballVolleyball from "@/IMAGES/Culture/Sports/Balls/Volleyball.jpg";
+import ballBaseball from "@/IMAGES/Culture/Sports/Balls/Baseball.jpg";
+import ballTennis from "@/IMAGES/Culture/Sports/Balls/Tennis Ball.jpg";
+import ballGolf from "@/IMAGES/Culture/Sports/Balls/Golf Ball.jpg";
+import ballSoccer from "@/IMAGES/Culture/Sports/Balls/Soccer Ball.jpg";
+import ballKickball from "@/IMAGES/Culture/Sports/Balls/Kickball.jpg";
 import stadiumAsuArizona from "@/IMAGES/Culture/Sports/Stadiums/ASU Arizona NFL Stadium.jpg";
 import stadiumAttKickoff from "@/IMAGES/Culture/Sports/Stadiums/AT&T Stadium match kickoff(Wisconsin_-_Alabama).jpg";
 import stadiumCarolina from "@/IMAGES/Culture/Sports/Stadiums/Aerial-Cityscape-View-Of-Carolina-Panthers-Bank-Of-America-Stadium-In-Charlotte.jpg";
@@ -908,6 +916,14 @@ export const SITE_IMAGES = {
     // Sports: action & venues
     jesseOwens: sportsJesseOwens.src,
     dreamTeam1992: sportsDreamTeam.src,
+    ballFootball: ballFootball.src,
+    ballBasketball: ballBasketball.src,
+    ballVolleyball: ballVolleyball.src,
+    ballBaseball: ballBaseball.src,
+    ballTennis: ballTennis.src,
+    ballGolf: ballGolf.src,
+    ballSoccer: ballSoccer.src,
+    ballKickball: ballKickball.src,
     aliVsFrazierJab: sportsAliVsFrazierJab.src,
     aliVsFrazier1971: sportsAliVsFrazier1971.src,
     marchMadness: sportsMarchMadness.src,

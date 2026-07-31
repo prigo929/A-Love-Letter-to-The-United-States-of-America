@@ -8,6 +8,7 @@ import { MacroStyles, MacroHero, CountUp } from "@/components/economy/EconomyAni
 import { CultureStyles } from "@/components/culture/CulturePageComponents";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { PhotoLightboxGrid } from "@/components/shared/PhotoLightboxGrid";
+import { EightAmericanBalls } from "@/components/culture/EightAmericanBalls";
 
 export const metadata: Metadata = {
   title: "American Sports & Soft Power | The American Operating System",
@@ -176,6 +177,28 @@ export default async function CultureSportsPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* CREAM: The Eight American Balls (interactive canon) */}
+        <section className="relative culture-cream-bg text-[#0C0907] pb-24 overflow-hidden border-t border-[#0C0907]/5">
+          <div className="absolute inset-0 bg-parchment-texture opacity-30 pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 pt-20">
+            <div className="text-center mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-[#0C0907]/45 font-bold">
+                {isRo ? "SETUL DE TIMBRE USPS DIN 2017" : "THE 2017 USPS STAMP SET"}
+              </p>
+              <h2 className="culture-text-hero text-[#0C0907] mt-4">
+                {isRo ? "CELE OPT MINGI AMERICANE" : "THE EIGHT AMERICAN BALLS"}
+              </h2>
+              <p className="mx-auto mt-6 max-w-2xl font-editorial text-lg text-[#0C0907]/60">
+                {isRo
+                  ? "În 2017, Poșta SUA a emis timbre pentru cele mai iconice mingi americane, printre cele mai recognoscibile obiecte produse vreodată de cultura țării. A fost unul dintre multele astfel de seturi: USPS a mai emis timbre cu supereroi americani, staruri de film mut, deserturi cu înghețată și mâncăruri Tex-Mex, fiecare un mic canon oficial. Fiecare minge de aici ascunde o poveste despre cum a ajuns să arate așa. Apasă pe oricare."
+                  : "In 2017, the U.S. Postal Service issued stamps for America's most iconic sports balls, some of the most recognizable objects the country's culture has ever produced. It was one of many such sets: the USPS has also put out stamps for American superheroes, silent-film stars, ice-cream desserts, and Tex-Mex favorites, each its own small official canon. Every ball here hides a story of how it came to look the way it does. Click any of them."}
+              </p>
+              <div className="w-24 h-px bg-[#0C0907]/15 mx-auto mt-8" />
+            </div>
+            <EightAmericanBalls />
           </div>
         </section>
 
