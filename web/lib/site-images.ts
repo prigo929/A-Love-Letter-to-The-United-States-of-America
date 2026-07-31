@@ -291,6 +291,7 @@ import mascotTonyTheTiger from "@/IMAGES/Culture/Mascots/Tony the Tiger.jpg";
 import mascotCapnCrunch from "@/IMAGES/Culture/Mascots/Capn Crunch.webp";
 import mascotPillsburyDoughboy from "@/IMAGES/Culture/Mascots/Pillsbury Doughboy.webp";
 import mascotGritty from "@/IMAGES/Culture/Mascots/Gritty Mascot.webp";
+import mascotGeicoGecko from "@/IMAGES/Culture/Mascots/Geico Gecko.jpg";
 
 // Organized Aesthetics
 import aestheticCabin from "@/IMAGES/Culture/Aesthetics/Rustic Cabin Outdoors.jpg";
@@ -872,6 +873,7 @@ export const SITE_IMAGES = {
     mascotCapnCrunch: mascotCapnCrunch.src,
     mascotPillsburyDoughboy: mascotPillsburyDoughboy.src,
     mascotGritty: mascotGritty.src,
+    mascotGeicoGecko: mascotGeicoGecko.src,
 
     // Aesthetics
     aestheticCabin: aestheticCabin.src,

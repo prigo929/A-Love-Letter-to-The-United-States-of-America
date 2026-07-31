@@ -297,12 +297,12 @@ export function AmericanAestheticsCanon() {
 
           {/* Right column: image & detailed description */}
           <div className="flex flex-col justify-center gap-6 lg:pl-6 lg:border-l lg:border-[#0C0907]/10">
-            <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0_15px_40px_rgba(12,9,7,0.12)] border border-[#0C0907]/10">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_15px_40px_rgba(12,9,7,0.12)] border border-[#0C0907]/10 bg-white/70">
               <Image
                 src={active.image}
                 alt={active.name}
                 fill
-                className="object-cover"
+                className="object-contain p-3"
                 sizes="(max-width: 768px) 100vw, 40vw"
               />
             </div>

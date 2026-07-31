@@ -230,12 +230,12 @@ export function AmericanaOddsAndEnds() {
 
           {/* Right column: image & text */}
           <div className="flex flex-col justify-center gap-6 lg:pl-6 lg:border-l lg:border-white/10">
-            <div className="relative aspect-4/3 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)] border border-white/10">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)] border border-white/10 bg-white/5">
               <Image
                 src={active.image}
                 alt={active.topic}
                 fill
-                className="object-cover"
+                className="object-contain p-3"
                 sizes="(max-width: 768px) 100vw, 40vw"
               />
             </div>

@@ -161,6 +161,12 @@ const MASCOT_ERAS: MascotEra[] = [
         caption: "Gritty · Philadelphia Flyers (2018)",
         captionRo: "Gritty · Philadelphia Flyers (2018)",
       },
+      {
+        src: SITE_IMAGES.culture.mascotGeicoGecko,
+        alt: "GEICO Gecko iconic commercial mascot",
+        caption: "GEICO Gecko (1999)",
+        captionRo: "GEICO Gecko (1999)",
+      },
     ],
     era: "1980s – Present",
     eraRo: "1980 – Prezent",
@@ -274,18 +280,18 @@ export function MascotCanon() {
             {/* Gallery of Era Images */}
             <div className={`grid gap-4 ${active.images.length === 1 ? 'grid-cols-1' : active.images.length === 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 sm:grid-cols-3'}`}>
               {active.images.map((img, idx) => (
-                <div key={idx} className="group relative rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(12,9,7,0.08)] border border-[#0C0907]/10 bg-white/40">
-                  <div className="relative aspect-4/3 w-full overflow-hidden bg-[#0C0907]/[0.03]">
+                <div key={idx} className="group relative rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(12,9,7,0.08)] border border-[#0C0907]/10 bg-white/70">
+                  <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#0C0907]/[0.04]">
                     <Image
                       src={img.src}
                       alt={img.alt}
                       fill
-                      className={img.contain ? "object-contain p-3" : "object-cover group-hover:scale-105 transition-transform duration-500"}
+                      className="object-contain p-3 transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </div>
-                  <div className="p-3 bg-white/80 backdrop-blur-sm border-t border-[#0C0907]/5 text-center">
-                    <p className="font-body text-[10px] font-bold uppercase tracking-wider text-[#0C0907]/75">
+                  <div className="p-3 bg-white/90 backdrop-blur-sm border-t border-[#0C0907]/5 text-center">
+                    <p className="font-body text-[10px] font-bold uppercase tracking-wider text-[#0C0907]/80">
                       {ro ? img.captionRo : img.caption}
                     </p>
                   </div>
