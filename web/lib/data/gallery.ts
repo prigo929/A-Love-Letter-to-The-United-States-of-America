@@ -7,6 +7,7 @@ export const GALLERY_CATEGORIES = [
   "American Life",
   "Brand Ads",
   "Cinema",
+  "Fine Art",
   "Cities",
   "Collages",
   "Constitution",
@@ -76,6 +77,10 @@ const CATEGORY_DEFAULTS: Record<
   "Cinema": {
     location: "Hollywood, California",
     theme: "American Cinematic History",
+  },
+  "Fine Art": {
+    location: "United States",
+    theme: "American Painting & Fine Art",
   },
   "Cities": {
     location: "United States",
@@ -1168,6 +1173,7 @@ function getCategory(path: string): Exclude<GalleryCategory, "All"> {
     } else if (sub === "Fashion") {
       return "American Life";
     }
+    return "American Life";
   }
   if (first === "Leadership" || first === "Outdoors Lifestyle" || first === "Quality of Life") {
     return "American Life";
@@ -1180,6 +1186,12 @@ function getCategory(path: string): Exclude<GalleryCategory, "All"> {
   }
   if (first === "Tech & Commerce") {
     return "Technology";
+  }
+  if (first === "Art") {
+    return "Fine Art";
+  }
+  if (first === "Architecture") {
+    return "US Buildings";
   }
   return first as Exclude<GalleryCategory, "All">;
 }

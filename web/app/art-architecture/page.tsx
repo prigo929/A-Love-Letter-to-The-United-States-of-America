@@ -95,12 +95,12 @@ const GALLERY_TILES = [
   },
   {
     href: "/art-architecture/american-realism",
-    imageSrc: ART_ASSETS.leutzeWashington.src,
-    imageAlt: "Washington Crossing the Delaware by Emanuel Leutze, 1851",
-    era: "1870 – 1940",
+    imageSrc: ART_ASSETS.homerGulfStream.src,
+    imageAlt: "The Gulf Stream by Winslow Homer, 1899",
+    era: "1860 – 1950",
     title: "American Realism",
     description:
-      "Hopper's lonely diners, Homer's crashing waves, Eakins's unflinching portraits. A movement that looked America in the eye and refused to flinch.",
+      "Homer's indifferent sea, Eakins's bloody operating theater, Hopper's lonely diners. The unflinching counter-tradition to the idealized wilderness.",
   },
   {
     href: "/art-architecture/smithsonian-museums",
@@ -221,10 +221,10 @@ const SUB_PAGE_CARDS = [
   {
     href: "/art-architecture/american-realism",
     title: "American Realism",
-    description: "Hopper, Homer, Eakins: an unflinching visual account of American life.",
+    description: "Homer, Eakins, Sargent, the Ashcan School: an unflinching visual account of American life.",
     badge: "FINE ART",
-    imageSrc: ART_ASSETS.leutzeWashington.src,
-    imageAlt: "Washington Crossing the Delaware by Emanuel Leutze",
+    imageSrc: ART_ASSETS.eakinsGrossClinic.src,
+    imageAlt: "The Gross Clinic by Thomas Eakins, 1875",
   },
   {
     href: "/art-architecture/modern-pop-art",

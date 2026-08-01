@@ -889,6 +889,74 @@ import asset0885 from "@/IMAGES/University/Yale Aerial.jpg";
 import asset0886 from "@/IMAGES/University/central-campus-aerial-sunset_paul-coco.jpg";
 import asset0887 from "@/IMAGES/University/zoshua-colah-Juzqxc8MwtU-unsplash.jpg";
 
+import galleryAdd0000 from "@/IMAGES/Art/Albert Bierstadt - Valley of the Yosemite - 1864.jpg";
+import galleryAdd0001 from "@/IMAGES/Art/Bellows - Stag at Sharkeys - 1909.jpg";
+import galleryAdd0002 from "@/IMAGES/Art/Bierstadt - Among the Sierra Nevada Mountains - 1868.jpg";
+import galleryAdd0003 from "@/IMAGES/Art/Bierstadt - Rocky Mountains Landers Peak - 1863.jpg";
+import galleryAdd0004 from "@/IMAGES/Art/Church - Andes of Ecuador - 1855.jpg";
+import galleryAdd0005 from "@/IMAGES/Art/Church - Heart of the Andes - 1859.jpg";
+import galleryAdd0006 from "@/IMAGES/Art/Cole - Course of Empire Consummation - 1836.jpg";
+import galleryAdd0007 from "@/IMAGES/Art/Cole - Voyage of Life Youth - 1842.jpg";
+import galleryAdd0008 from "@/IMAGES/Art/Convergence by Jackson Pollock 1952.jpeg";
+import galleryAdd0009 from "@/IMAGES/Art/Durand - Kindred Spirits - 1849.jpg";
+import galleryAdd0010 from "@/IMAGES/Art/Eakins - The Gross Clinic - 1875.jpg";
+import galleryAdd0011 from "@/IMAGES/Art/Gilbert_Stuart_1796_portrait_of_Washington.jpg";
+import galleryAdd0012 from "@/IMAGES/Art/Grant Wood - American Gothic - 1930.jpg";
+import galleryAdd0013 from "@/IMAGES/Art/Homer - Snap the Whip - 1872.jpg";
+import galleryAdd0014 from "@/IMAGES/Art/Homer - The Gulf Stream - 1899.jpg";
+import galleryAdd0015 from "@/IMAGES/Art/Hopper - Nighthawks - 1942.jpg";
+import galleryAdd0016 from "@/IMAGES/Art/Howard Chandler Christy Scene at the Signing of the Constitution of the United States.jpg";
+import galleryAdd0017 from "@/IMAGES/Art/Jasper Johns - Flag - 1955.jpg";
+import galleryAdd0018 from "@/IMAGES/Art/Kensett - Lake George - 1869.jpg";
+import galleryAdd0019 from "@/IMAGES/Art/Moran - Grand Canyon of the Yellowstone - 1872.jpg";
+import galleryAdd0020 from "@/IMAGES/Art/Rothko - Orange Red Yellow - 1961.jpg";
+import galleryAdd0021 from "@/IMAGES/Art/Sargent - Madame X - 1884.jpg";
+import galleryAdd0022 from "@/IMAGES/Art/Warhol - Campbells Soup Cans - 1962.jpg";
+import galleryAdd0023 from "@/IMAGES/Art/Washington_Crossing_the_Delaware_by_Emanuel_Leutze,_MMA-NYC,_1851.jpg";
+import galleryAdd0024 from "@/IMAGES/Art/Wesselmann - Still Life 35 - 1963.jpg";
+import galleryAdd0025 from "@/IMAGES/Art/Whaam! by Roy Lichtenstein.png";
+import galleryAdd0026 from "@/IMAGES/Art/Whistler - Whistlers Mother - 1871.jpg";
+import galleryAdd0027 from "@/IMAGES/Art/Wyeth - Christinas World - 1948.jpg";
+import galleryAdd0028 from "@/IMAGES/Art/de Kooning - Woman I - 1952.jpg";
+import galleryAdd0029 from "@/IMAGES/Architecture/111_West_57th_Street.png";
+import galleryAdd0030 from "@/IMAGES/Architecture/270 Park Avenue.jpg";
+import galleryAdd0031 from "@/IMAGES/Architecture/432_Park_Avenue,_NY_(cropped).jpg";
+import galleryAdd0032 from "@/IMAGES/Architecture/Air and Space Museum Interior.jpg";
+import galleryAdd0033 from "@/IMAGES/Architecture/Art Institute of Chicago.jpg";
+import galleryAdd0034 from "@/IMAGES/Architecture/BoA_Tower.jpg";
+import galleryAdd0035 from "@/IMAGES/Architecture/Brooklyn_Bridge_NYC.jpg";
+import galleryAdd0036 from "@/IMAGES/Architecture/Central_Park_Tower_April_2021.jpg";
+import galleryAdd0037 from "@/IMAGES/Architecture/Chicago_Loop.jpg";
+import galleryAdd0038 from "@/IMAGES/Architecture/Chrysler_Building.jpg";
+import galleryAdd0039 from "@/IMAGES/Architecture/Empire_State_Building.jpg";
+import galleryAdd0040 from "@/IMAGES/Architecture/Empire_State_Building_night_view.jpg";
+import galleryAdd0041 from "@/IMAGES/Architecture/Flatiron_Building.jpg";
+import galleryAdd0042 from "@/IMAGES/Architecture/Gateway_Arch_St_Louis.jpg";
+import galleryAdd0043 from "@/IMAGES/Architecture/Getty Center.jpg";
+import galleryAdd0044 from "@/IMAGES/Architecture/Guggenheim_Museum.jpg";
+import galleryAdd0045 from "@/IMAGES/Architecture/Home_Insurance_Building.jpg";
+import galleryAdd0046 from "@/IMAGES/Architecture/Hudson_Yards_from_Hudson_Commons_(95131p)_(30_Hudson_Yards).jpg";
+import galleryAdd0047 from "@/IMAGES/Architecture/Metropolitan Museum of Art.jpg";
+import galleryAdd0048 from "@/IMAGES/Architecture/National Air and Space Museum.jpg";
+import galleryAdd0049 from "@/IMAGES/Architecture/National Gallery East Building.jpg";
+import galleryAdd0050 from "@/IMAGES/Architecture/National Gallery West Building.jpg";
+import galleryAdd0051 from "@/IMAGES/Architecture/National Museum of Natural History.jpg";
+import galleryAdd0052 from "@/IMAGES/Architecture/One_Vanderbilt_April_2021.jpg";
+import galleryAdd0053 from "@/IMAGES/Architecture/One_World_Trade_Center,_Financial_District,_Manhattan,_New_York.jpg";
+import galleryAdd0054 from "@/IMAGES/Architecture/Seagram_Building.jpg";
+import galleryAdd0055 from "@/IMAGES/Architecture/Smithsonian_Castle.jpg";
+import galleryAdd0056 from "@/IMAGES/Architecture/The_Woolworth_Building_in_New_York_City.jpg";
+import galleryAdd0057 from "@/IMAGES/Architecture/Trump International Hotel and Tower.jpg";
+import galleryAdd0058 from "@/IMAGES/Architecture/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City.jpg";
+import galleryAdd0059 from "@/IMAGES/Architecture/Wainwright_Building.jpg";
+import galleryAdd0060 from "@/IMAGES/Architecture/Willis-Tower-Chicago.jpg";
+import galleryAdd0061 from "@/IMAGES/Aerials/Aerial view of the National Mall in Washington DC featuring the Lincoln Memorial Washington Monument and United States Capitol building.jpg";
+import galleryAdd0062 from "@/IMAGES/Aerials/Aerial view of the Pentagon and Arlington National Cemetery with the Potomac River and Washington DC skyline.jpg";
+import galleryAdd0063 from "@/IMAGES/Aerials/Aerial view of the Pentagon building and parade grounds in Arlington Virginia with surrounding highways.jpg";
+import galleryAdd0064 from "@/IMAGES/Aerials/Aerial view of the Pentagon in Arlington Virginia with the Potomac River and Washington Monument in the background.jpg";
+import galleryAdd0065 from "@/IMAGES/Aerials/Aerial view of the Washington Monument and Jefferson Memorial with the Potomac River and Reagan National Airport in Washington DC.jpg";
+import galleryAdd0066 from "@/IMAGES/Aerials/Aerial_view_from_above_the_U.S._Capitol,_looking_west_along_the_National_Mall,_Washington,_D.C_LCCN2011635406.jpg";
+
 // ── Subpage photographs ───────────────────────────────────────────────────
 import con2ndOakley from "@/IMAGES/Constitution/Subpage/annie-oakley.jpg";
 import con2ndAthens from "@/IMAGES/Constitution/Subpage/battle-of-athens-tn.jpg";
@@ -1845,6 +1913,73 @@ const RAW_GALLERY_ASSETS = [
   { path: "Constitution/Subpage/sep-state-of-union.jpg", src: conSepSotu },
   { path: "Constitution/Subpage/sep-supreme-court.jpg", src: conSepCourt },
   { path: "Constitution/Subpage/winchester-1873.jpg", src: con2ndWinchester },
+  { path: "Art/Albert Bierstadt - Valley of the Yosemite - 1864.jpg", src: galleryAdd0000 },
+  { path: "Art/Bellows - Stag at Sharkeys - 1909.jpg", src: galleryAdd0001 },
+  { path: "Art/Bierstadt - Among the Sierra Nevada Mountains - 1868.jpg", src: galleryAdd0002 },
+  { path: "Art/Bierstadt - Rocky Mountains Landers Peak - 1863.jpg", src: galleryAdd0003 },
+  { path: "Art/Church - Andes of Ecuador - 1855.jpg", src: galleryAdd0004 },
+  { path: "Art/Church - Heart of the Andes - 1859.jpg", src: galleryAdd0005 },
+  { path: "Art/Cole - Course of Empire Consummation - 1836.jpg", src: galleryAdd0006 },
+  { path: "Art/Cole - Voyage of Life Youth - 1842.jpg", src: galleryAdd0007 },
+  { path: "Art/Convergence by Jackson Pollock 1952.jpeg", src: galleryAdd0008 },
+  { path: "Art/Durand - Kindred Spirits - 1849.jpg", src: galleryAdd0009 },
+  { path: "Art/Eakins - The Gross Clinic - 1875.jpg", src: galleryAdd0010 },
+  { path: "Art/Gilbert_Stuart_1796_portrait_of_Washington.jpg", src: galleryAdd0011 },
+  { path: "Art/Grant Wood - American Gothic - 1930.jpg", src: galleryAdd0012 },
+  { path: "Art/Homer - Snap the Whip - 1872.jpg", src: galleryAdd0013 },
+  { path: "Art/Homer - The Gulf Stream - 1899.jpg", src: galleryAdd0014 },
+  { path: "Art/Hopper - Nighthawks - 1942.jpg", src: galleryAdd0015 },
+  { path: "Art/Howard Chandler Christy Scene at the Signing of the Constitution of the United States.jpg", src: galleryAdd0016 },
+  { path: "Art/Jasper Johns - Flag - 1955.jpg", src: galleryAdd0017 },
+  { path: "Art/Kensett - Lake George - 1869.jpg", src: galleryAdd0018 },
+  { path: "Art/Moran - Grand Canyon of the Yellowstone - 1872.jpg", src: galleryAdd0019 },
+  { path: "Art/Rothko - Orange Red Yellow - 1961.jpg", src: galleryAdd0020 },
+  { path: "Art/Sargent - Madame X - 1884.jpg", src: galleryAdd0021 },
+  { path: "Art/Warhol - Campbells Soup Cans - 1962.jpg", src: galleryAdd0022 },
+  { path: "Art/Washington_Crossing_the_Delaware_by_Emanuel_Leutze,_MMA-NYC,_1851.jpg", src: galleryAdd0023 },
+  { path: "Art/Wesselmann - Still Life 35 - 1963.jpg", src: galleryAdd0024 },
+  { path: "Art/Whaam! by Roy Lichtenstein.png", src: galleryAdd0025 },
+  { path: "Art/Whistler - Whistlers Mother - 1871.jpg", src: galleryAdd0026 },
+  { path: "Art/Wyeth - Christinas World - 1948.jpg", src: galleryAdd0027 },
+  { path: "Art/de Kooning - Woman I - 1952.jpg", src: galleryAdd0028 },
+  { path: "Architecture/111_West_57th_Street.png", src: galleryAdd0029 },
+  { path: "Architecture/270 Park Avenue.jpg", src: galleryAdd0030 },
+  { path: "Architecture/432_Park_Avenue,_NY_(cropped).jpg", src: galleryAdd0031 },
+  { path: "Architecture/Air and Space Museum Interior.jpg", src: galleryAdd0032 },
+  { path: "Architecture/Art Institute of Chicago.jpg", src: galleryAdd0033 },
+  { path: "Architecture/BoA_Tower.jpg", src: galleryAdd0034 },
+  { path: "Architecture/Brooklyn_Bridge_NYC.jpg", src: galleryAdd0035 },
+  { path: "Architecture/Central_Park_Tower_April_2021.jpg", src: galleryAdd0036 },
+  { path: "Architecture/Chicago_Loop.jpg", src: galleryAdd0037 },
+  { path: "Architecture/Chrysler_Building.jpg", src: galleryAdd0038 },
+  { path: "Architecture/Empire_State_Building.jpg", src: galleryAdd0039 },
+  { path: "Architecture/Empire_State_Building_night_view.jpg", src: galleryAdd0040 },
+  { path: "Architecture/Flatiron_Building.jpg", src: galleryAdd0041 },
+  { path: "Architecture/Gateway_Arch_St_Louis.jpg", src: galleryAdd0042 },
+  { path: "Architecture/Getty Center.jpg", src: galleryAdd0043 },
+  { path: "Architecture/Guggenheim_Museum.jpg", src: galleryAdd0044 },
+  { path: "Architecture/Home_Insurance_Building.jpg", src: galleryAdd0045 },
+  { path: "Architecture/Hudson_Yards_from_Hudson_Commons_(95131p)_(30_Hudson_Yards).jpg", src: galleryAdd0046 },
+  { path: "Architecture/Metropolitan Museum of Art.jpg", src: galleryAdd0047 },
+  { path: "Architecture/National Air and Space Museum.jpg", src: galleryAdd0048 },
+  { path: "Architecture/National Gallery East Building.jpg", src: galleryAdd0049 },
+  { path: "Architecture/National Gallery West Building.jpg", src: galleryAdd0050 },
+  { path: "Architecture/National Museum of Natural History.jpg", src: galleryAdd0051 },
+  { path: "Architecture/One_Vanderbilt_April_2021.jpg", src: galleryAdd0052 },
+  { path: "Architecture/One_World_Trade_Center,_Financial_District,_Manhattan,_New_York.jpg", src: galleryAdd0053 },
+  { path: "Architecture/Seagram_Building.jpg", src: galleryAdd0054 },
+  { path: "Architecture/Smithsonian_Castle.jpg", src: galleryAdd0055 },
+  { path: "Architecture/The_Woolworth_Building_in_New_York_City.jpg", src: galleryAdd0056 },
+  { path: "Architecture/Trump International Hotel and Tower.jpg", src: galleryAdd0057 },
+  { path: "Architecture/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City.jpg", src: galleryAdd0058 },
+  { path: "Architecture/Wainwright_Building.jpg", src: galleryAdd0059 },
+  { path: "Architecture/Willis-Tower-Chicago.jpg", src: galleryAdd0060 },
+  { path: "Aerials/Aerial view of the National Mall in Washington DC featuring the Lincoln Memorial Washington Monument and United States Capitol building.jpg", src: galleryAdd0061 },
+  { path: "Aerials/Aerial view of the Pentagon and Arlington National Cemetery with the Potomac River and Washington DC skyline.jpg", src: galleryAdd0062 },
+  { path: "Aerials/Aerial view of the Pentagon building and parade grounds in Arlington Virginia with surrounding highways.jpg", src: galleryAdd0063 },
+  { path: "Aerials/Aerial view of the Pentagon in Arlington Virginia with the Potomac River and Washington Monument in the background.jpg", src: galleryAdd0064 },
+  { path: "Aerials/Aerial view of the Washington Monument and Jefferson Memorial with the Potomac River and Reagan National Airport in Washington DC.jpg", src: galleryAdd0065 },
+  { path: "Aerials/Aerial_view_from_above_the_U.S._Capitol,_looking_west_along_the_National_Mall,_Washington,_D.C_LCCN2011635406.jpg", src: galleryAdd0066 },
 ] as const satisfies readonly GalleryAssetRecord[];
 
 export const GALLERY_ASSETS: readonly GalleryAssetRecord[] = Array.from(
