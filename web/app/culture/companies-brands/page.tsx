@@ -10,6 +10,7 @@ import { CultureStyles, CultureBrandLogosMarquee } from "@/components/culture/Cu
 import { MascotCanon } from "@/components/culture/MascotCanon";
 import { BrandAdsArchive } from "@/components/culture/BrandAdsArchive";
 import { CompanyBreakthroughShowcase } from "@/components/culture/CompanyBreakthroughShowcase";
+import { CorporateLineageTimeline } from "@/components/culture/CorporateLineageTimeline";
 import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
@@ -87,6 +88,25 @@ export default async function CultureCompaniesBrandsPage() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Dark: Corporate Lineage Timeline (5 Eras) */}
+          <div className="mt-24 border-t border-white/5 pt-20">
+            <div className="text-center mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-glory-gold font-bold mb-3">
+                {isRo ? "EVOLUȚIA ISTORICĂ A CAPITALISMULUI AMERICAN" : "THE HISTORICAL LINEAGE OF AMERICAN CAPITALISM"}
+              </p>
+              <h2 className="culture-text-hero text-[#F5EDD8] text-4xl sm:text-6xl font-black tracking-tight">
+                {isRo ? "CRONOLOGIA LINIILOR DE SÂNGE CORPORATIVE" : "THE CORPORATE LINEAGE TIMELINE"}
+              </h2>
+              <p className="mx-auto mt-6 max-w-3xl font-editorial text-xl italic text-[#F5EDD8]/80 leading-relaxed">
+                {isRo
+                  ? "„Cum au evoluat inovațiile corporative americane în 5 ere economice distincte, de la căile ferate și abur în anii 1850 până la rețelele cloud și inteligența artificială generativă.”"
+                  : "“How American corporate innovation evolved across 5 distinct economic eras, from 1850s steam and railroads to cloud networks and generative artificial intelligence.”"}
+              </p>
+              <div className="w-24 h-px bg-glory-gold/30 mx-auto mt-8" />
+            </div>
+            <CorporateLineageTimeline />
           </div>
 
           {/* Dark: Interactive Specific Company & Product Breakthrough Showcase */}
