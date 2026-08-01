@@ -9,10 +9,7 @@ import { MacroStyles, MacroHero } from "@/components/economy/EconomyAnimations";
 import { CultureStyles, CultureBrandLogosMarquee } from "@/components/culture/CulturePageComponents";
 import { MascotCanon } from "@/components/culture/MascotCanon";
 import { BrandAdsArchive } from "@/components/culture/BrandAdsArchive";
-import { CompanyBreakthroughShowcase } from "@/components/culture/CompanyBreakthroughShowcase";
-import { CorporateLineageTimeline } from "@/components/culture/CorporateLineageTimeline";
-import { IconicSlogansGrid } from "@/components/culture/IconicSlogansGrid";
-import { FoundersGarageGrid } from "@/components/culture/FoundersGarageGrid";
+import { MasterCorporateHub } from "@/components/culture/MasterCorporateHub";
 import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
@@ -92,80 +89,9 @@ export default async function CultureCompaniesBrandsPage() {
             </div>
           </div>
 
-          {/* Dark: Corporate Lineage Timeline (5 Eras) */}
-          <div className="mt-24 border-t border-white/5 pt-20">
-            <div className="text-center mb-16">
-              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-glory-gold font-bold mb-3">
-                {isRo ? "EVOLUȚIA ISTORICĂ A CAPITALISMULUI AMERICAN" : "THE HISTORICAL LINEAGE OF AMERICAN CAPITALISM"}
-              </p>
-              <h2 className="culture-text-hero text-[#F5EDD8] text-4xl sm:text-6xl font-black tracking-tight">
-                {isRo ? "CRONOLOGIA LINIILOR DE SÂNGE CORPORATIVE" : "THE CORPORATE LINEAGE TIMELINE"}
-              </h2>
-              <p className="mx-auto mt-6 max-w-3xl font-editorial text-xl italic text-[#F5EDD8]/80 leading-relaxed">
-                {isRo
-                  ? "„Cum au evoluat inovațiile corporative americane în 5 ere economice distincte, de la căile ferate și abur în anii 1850 până la rețelele cloud și inteligența artificială generativă.”"
-                  : "“How American corporate innovation evolved across 5 distinct economic eras, from 1850s steam and railroads to cloud networks and generative artificial intelligence.”"}
-              </p>
-              <div className="w-24 h-px bg-glory-gold/30 mx-auto mt-8" />
-            </div>
-            <CorporateLineageTimeline />
-          </div>
-
-          {/* Dark: Interactive Specific Company & Product Breakthrough Showcase */}
-          <div className="mt-24 border-t border-white/5 pt-20">
-            <div className="text-center mb-16">
-              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-glory-gold font-bold mb-3">
-                {isRo ? "PIONIERII INDUSTRIEI AMERICANE" : "PIONEERS OF AMERICAN INDUSTRY"}
-              </p>
-              <h2 className="culture-text-hero text-[#F5EDD8] text-4xl sm:text-6xl font-black tracking-tight">
-                {isRo ? "INOVAȚIILE CARE AU SCHIMBAT LUMEA" : "BREAKTHROUGHS THAT RESHAPED THE WORLD"}
-              </h2>
-              <p className="mx-auto mt-6 max-w-3xl font-editorial text-xl italic text-[#F5EDD8]/80 leading-relaxed">
-                {isRo
-                  ? "„De la blugii 501 Levi's și sticla conturată Coca-Cola la iPhone-ul Apple și linia de asamblare Ford: poveștile produselor iconice care au redefinit viața de zi cu zi.”"
-                  : "“From Levi's 501 blue jeans and Coca-Cola's contoured bottle to Apple's iPhone and Ford's assembly line: the stories of iconic products that redefined daily human life.”"}
-              </p>
-              <div className="w-24 h-px bg-glory-gold/30 mx-auto mt-8" />
-            </div>
-            <CompanyBreakthroughShowcase />
-          </div>
-
-          {/* Dark: Iconic Commercial Slogans Grid */}
-          <div className="mt-24 border-t border-white/5 pt-20">
-            <div className="text-center mb-16">
-              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-glory-gold font-bold mb-3">
-                {isRo ? "SLOGANURILE CARE AU MODELAT LIMBAJUL UMAN" : "SLOGANS THAT SHAPED HUMAN VOCABULARY"}
-              </p>
-              <h2 className="culture-text-hero text-[#F5EDD8] text-4xl sm:text-6xl font-black tracking-tight">
-                {isRo ? "MANIFESTELE CULTURALE ALE BRANDURILOR" : "THE CULTURAL MANIFESTOS OF BRANDS"}
-              </h2>
-              <p className="mx-auto mt-6 max-w-3xl font-editorial text-xl italic text-[#F5EDD8]/80 leading-relaxed">
-                {isRo
-                  ? "„Cum au transformat cele mai puternice sloganuri din publicitatea americană deciziile de cumpărare în concepte filosofice și expresii uzuale în limba vorbită pe tot globul.”"
-                  : "“How America's most powerful commercial slogans transformed buying choices into philosophical concepts and universal phrases across global speech.”"}
-              </p>
-              <div className="w-24 h-px bg-glory-gold/30 mx-auto mt-8" />
-            </div>
-            <IconicSlogansGrid />
-          </div>
-
-          {/* Dark: Founders' Garage & Small-Town Roots */}
-          <div className="mt-24 border-t border-white/5 pt-20">
-            <div className="text-center mb-16">
-              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-glory-gold font-bold mb-3">
-                {isRo ? "GARAGEURILE FONDATOARE ȘI RĂDĂCINILE PROVINCIALE" : "THE FOUNDERS' GARAGES & SMALL-TOWN ROOTS"}
-              </p>
-              <h2 className="culture-text-hero text-[#F5EDD8] text-4xl sm:text-6xl font-black tracking-tight">
-                {isRo ? "PUNCTUL DE PLECARE AL IMPERIILOR CORPORATIVE" : "WHERE CORPORATE EMPIRES WERE BORN"}
-              </h2>
-              <p className="mx-auto mt-6 max-w-3xl font-editorial text-xl italic text-[#F5EDD8]/80 leading-relaxed">
-                {isRo
-                  ? "„De la garajele de suburbie din Los Altos, Palo Alto și Bellevue la un mic magazin 5&10 din Bentonville: poveștile primilor metri pătrați unde au luat naștere giganții de trilioane de dolari.”"
-                  : "“From suburban single-car garages in Los Altos, Palo Alto, and Bellevue to a small 5&10 store in Bentonville: the stories of the first square feet where multi-trillion-dollar giants were born.”"}
-              </p>
-              <div className="w-24 h-px bg-glory-gold/30 mx-auto mt-8" />
-            </div>
-            <FoundersGarageGrid />
+          {/* Dark: Unified Master Corporate Hub */}
+          <div className="mt-20 border-t border-white/5 pt-16">
+            <MasterCorporateHub />
           </div>
         </div>
 
