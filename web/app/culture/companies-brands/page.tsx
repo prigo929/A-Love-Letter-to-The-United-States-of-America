@@ -11,6 +11,7 @@ import { MascotCanon } from "@/components/culture/MascotCanon";
 import { BrandAdsArchive } from "@/components/culture/BrandAdsArchive";
 import { CompanyBreakthroughShowcase } from "@/components/culture/CompanyBreakthroughShowcase";
 import { CorporateLineageTimeline } from "@/components/culture/CorporateLineageTimeline";
+import { IconicSlogansGrid } from "@/components/culture/IconicSlogansGrid";
 import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
@@ -126,6 +127,25 @@ export default async function CultureCompaniesBrandsPage() {
               <div className="w-24 h-px bg-glory-gold/30 mx-auto mt-8" />
             </div>
             <CompanyBreakthroughShowcase />
+          </div>
+
+          {/* Dark: Iconic Commercial Slogans Grid */}
+          <div className="mt-24 border-t border-white/5 pt-20">
+            <div className="text-center mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-glory-gold font-bold mb-3">
+                {isRo ? "SLOGANURILE CARE AU MODELAT LIMBAJUL UMAN" : "SLOGANS THAT SHAPED HUMAN VOCABULARY"}
+              </p>
+              <h2 className="culture-text-hero text-[#F5EDD8] text-4xl sm:text-6xl font-black tracking-tight">
+                {isRo ? "MANIFESTELE CULTURALE ALE BRANDURILOR" : "THE CULTURAL MANIFESTOS OF BRANDS"}
+              </h2>
+              <p className="mx-auto mt-6 max-w-3xl font-editorial text-xl italic text-[#F5EDD8]/80 leading-relaxed">
+                {isRo
+                  ? "„Cum au transformat cele mai puternice sloganuri din publicitatea americană deciziile de cumpărare în concepte filosofice și expresii uzuale în limba vorbită pe tot globul.”"
+                  : "“How America's most powerful commercial slogans transformed buying choices into philosophical concepts and universal phrases across global speech.”"}
+              </p>
+              <div className="w-24 h-px bg-glory-gold/30 mx-auto mt-8" />
+            </div>
+            <IconicSlogansGrid />
           </div>
         </div>
 
