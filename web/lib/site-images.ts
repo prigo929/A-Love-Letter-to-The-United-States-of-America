@@ -316,6 +316,14 @@ import americanaFrankenstein from "@/IMAGES/Culture/Americana/Universal Frankens
 import americanaBlockbuster from "@/IMAGES/Culture/Americana/Blockbuster VHS Store.jpg";
 import americanaDnd from "@/IMAGES/Culture/Americana/Dnd Beholder Dice.jpg";
 
+// Organized Founders Garages
+import garageAmazon from "@/IMAGES/Culture/Companies/Founders Garages and Roots/Amazon Garage.jpg";
+import garageApple from "@/IMAGES/Culture/Companies/Founders Garages and Roots/Apple Garage.jpg";
+import garageGoogle from "@/IMAGES/Culture/Companies/Founders Garages and Roots/Google Garage.jpg";
+import garageHp from "@/IMAGES/Culture/Companies/Founders Garages and Roots/HP Garage.jpg";
+import garageHarley from "@/IMAGES/Culture/Companies/Founders Garages and Roots/Harley Davidson Shed.jpg";
+import garageWalmart from "@/IMAGES/Culture/Companies/Founders Garages and Roots/Walmart Walton 510 Store.jpg";
+
 
 // New Movie Posters
 import vaultBladeRunner from "@/IMAGES/Culture/Movie Posters/Blade Runner 1982 cinematic neo-noir poster.jpg";
@@ -874,6 +882,14 @@ export const SITE_IMAGES = {
     mascotPillsburyDoughboy: mascotPillsburyDoughboy.src,
     mascotGritty: mascotGritty.src,
     mascotGeicoGecko: mascotGeicoGecko.src,
+
+    // Garages
+    garageAmazon: garageAmazon.src,
+    garageApple: garageApple.src,
+    garageGoogle: garageGoogle.src,
+    garageHp: garageHp.src,
+    garageHarley: garageHarley.src,
+    garageWalmart: garageWalmart.src,
 
     // Aesthetics
     aestheticCabin: aestheticCabin.src,

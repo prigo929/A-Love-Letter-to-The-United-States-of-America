@@ -12,6 +12,7 @@ import { BrandAdsArchive } from "@/components/culture/BrandAdsArchive";
 import { CompanyBreakthroughShowcase } from "@/components/culture/CompanyBreakthroughShowcase";
 import { CorporateLineageTimeline } from "@/components/culture/CorporateLineageTimeline";
 import { IconicSlogansGrid } from "@/components/culture/IconicSlogansGrid";
+import { FoundersGarageGrid } from "@/components/culture/FoundersGarageGrid";
 import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
@@ -146,6 +147,25 @@ export default async function CultureCompaniesBrandsPage() {
               <div className="w-24 h-px bg-glory-gold/30 mx-auto mt-8" />
             </div>
             <IconicSlogansGrid />
+          </div>
+
+          {/* Dark: Founders' Garage & Small-Town Roots */}
+          <div className="mt-24 border-t border-white/5 pt-20">
+            <div className="text-center mb-16">
+              <p className="font-body text-[11px] uppercase tracking-[0.3em] text-glory-gold font-bold mb-3">
+                {isRo ? "GARAGEURILE FONDATOARE ȘI RĂDĂCINILE PROVINCIALE" : "THE FOUNDERS' GARAGES & SMALL-TOWN ROOTS"}
+              </p>
+              <h2 className="culture-text-hero text-[#F5EDD8] text-4xl sm:text-6xl font-black tracking-tight">
+                {isRo ? "PUNCTUL DE PLECARE AL IMPERIILOR CORPORATIVE" : "WHERE CORPORATE EMPIRES WERE BORN"}
+              </h2>
+              <p className="mx-auto mt-6 max-w-3xl font-editorial text-xl italic text-[#F5EDD8]/80 leading-relaxed">
+                {isRo
+                  ? "„De la garajele de suburbie din Los Altos, Palo Alto și Bellevue la un mic magazin 5&10 din Bentonville: poveștile primilor metri pătrați unde au luat naștere giganții de trilioane de dolari.”"
+                  : "“From suburban single-car garages in Los Altos, Palo Alto, and Bellevue to a small 5&10 store in Bentonville: the stories of the first square feet where multi-trillion-dollar giants were born.”"}
+              </p>
+              <div className="w-24 h-px bg-glory-gold/30 mx-auto mt-8" />
+            </div>
+            <FoundersGarageGrid />
           </div>
         </div>
 
