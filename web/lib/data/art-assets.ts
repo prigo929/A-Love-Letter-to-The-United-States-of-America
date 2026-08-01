@@ -51,6 +51,25 @@ import johnsFlag from "@/IMAGES/Art/Jasper Johns - Flag - 1955.jpg";
 import woodAmericanGothic from "@/IMAGES/Art/Grant Wood - American Gothic - 1930.jpg";
 import hopperNighthawks from "@/IMAGES/Art/Hopper - Nighthawks - 1942.jpg";
 import wesselmannStillLife from "@/IMAGES/Art/Wesselmann - Still Life 35 - 1963.jpg";
+// American Realism (added)
+import homerGulfStream from "@/IMAGES/Art/Homer - The Gulf Stream - 1899.jpg";
+import homerSnapWhip from "@/IMAGES/Art/Homer - Snap the Whip - 1872.jpg";
+import eakinsGrossClinic from "@/IMAGES/Art/Eakins - The Gross Clinic - 1875.jpg";
+import sargentMadameX from "@/IMAGES/Art/Sargent - Madame X - 1884.jpg";
+import whistlerMother from "@/IMAGES/Art/Whistler - Whistlers Mother - 1871.jpg";
+import bellowsStag from "@/IMAGES/Art/Bellows - Stag at Sharkeys - 1909.jpg";
+import wyethChristina from "@/IMAGES/Art/Wyeth - Christinas World - 1948.jpg";
+// Museums & institutions (added)
+import guggenheimMuseum from "@/IMAGES/Architecture/Guggenheim_Museum.jpg";
+import airSpaceMuseum from "@/IMAGES/Architecture/National Air and Space Museum.jpg";
+import airSpaceInterior from "@/IMAGES/Architecture/Air and Space Museum Interior.jpg";
+import naturalHistoryMuseum from "@/IMAGES/Architecture/National Museum of Natural History.jpg";
+import natGalleryWest from "@/IMAGES/Architecture/National Gallery West Building.jpg";
+import natGalleryEast from "@/IMAGES/Architecture/National Gallery East Building.jpg";
+import metMuseum from "@/IMAGES/Architecture/Metropolitan Museum of Art.jpg";
+import artInstituteChicago from "@/IMAGES/Architecture/Art Institute of Chicago.jpg";
+import gettyCenter from "@/IMAGES/Architecture/Getty Center.jpg";
+import mallAerial from "@/IMAGES/Aerials/Aerial_view_from_above_the_U.S._Capitol,_looking_west_along_the_National_Mall,_Washington,_D.C_LCCN2011635406.jpg";
 
 export interface ArtAsset {
   src: string;
@@ -368,6 +387,125 @@ export const ART_ASSETS = {
     altRo: "Still Life #35, Tom Wesselmann, 1963: Pop Art American",
     credit: "Wesselmann - Still Life 35 - 1963.jpg · Local Asset",
     license: "Educational use",
+  },
+  homerGulfStream: {
+    src: homerGulfStream.src,
+    alt: "The Gulf Stream, Winslow Homer, 1899",
+    altRo: "The Gulf Stream, Winslow Homer, 1899",
+    credit: "Homer - The Gulf Stream - 1899.jpg · Local Asset",
+    license: "Public domain",
+  },
+  homerSnapWhip: {
+    src: homerSnapWhip.src,
+    alt: "Snap the Whip, Winslow Homer, 1872",
+    altRo: "Snap the Whip, Winslow Homer, 1872",
+    credit: "Homer - Snap the Whip - 1872.jpg · Local Asset",
+    license: "Public domain",
+  },
+  eakinsGrossClinic: {
+    src: eakinsGrossClinic.src,
+    alt: "The Gross Clinic, Thomas Eakins, 1875",
+    altRo: "The Gross Clinic, Thomas Eakins, 1875",
+    credit: "Eakins - The Gross Clinic - 1875.jpg · Local Asset",
+    license: "Public domain",
+  },
+  sargentMadameX: {
+    src: sargentMadameX.src,
+    alt: "Madame X, John Singer Sargent, 1884",
+    altRo: "Madame X, John Singer Sargent, 1884",
+    credit: "Sargent - Madame X - 1884.jpg · Local Asset",
+    license: "Public domain",
+  },
+  whistlerMother: {
+    src: whistlerMother.src,
+    alt: "Arrangement in Grey and Black No. 1 (Whistler's Mother), James McNeill Whistler, 1871",
+    altRo: "Aranjament în gri și negru nr. 1 (Mama lui Whistler), James McNeill Whistler, 1871",
+    credit: "Whistler - Whistlers Mother - 1871.jpg · Local Asset",
+    license: "Public domain",
+  },
+  bellowsStag: {
+    src: bellowsStag.src,
+    alt: "Stag at Sharkey's, George Bellows, 1909: the Ashcan School",
+    altRo: "Stag at Sharkey's, George Bellows, 1909: Școala Ashcan",
+    credit: "Bellows - Stag at Sharkeys - 1909.jpg · Local Asset",
+    license: "Public domain",
+  },
+  wyethChristina: {
+    src: wyethChristina.src,
+    alt: "Christina's World, Andrew Wyeth, 1948",
+    altRo: "Christina's World, Andrew Wyeth, 1948",
+    credit: "Wyeth - Christinas World - 1948.jpg · Local Asset",
+    license: "Educational use",
+  },
+  guggenheimMuseum: {
+    src: guggenheimMuseum.src,
+    alt: "The Solomon R. Guggenheim Museum, Frank Lloyd Wright, 1959, New York",
+    altRo: "Muzeul Solomon R. Guggenheim, Frank Lloyd Wright, 1959, New York",
+    credit: "Guggenheim_Museum.jpg · Local Asset",
+    license: "CC BY-SA",
+  },
+  airSpaceMuseum: {
+    src: airSpaceMuseum.src,
+    alt: "The National Air and Space Museum, Washington, D.C.",
+    altRo: "Muzeul Național al Aerului și Spațiului, Washington, D.C.",
+    credit: "National Air and Space Museum.jpg · Local Asset",
+    license: "CC BY-SA",
+  },
+  airSpaceInterior: {
+    src: airSpaceInterior.src,
+    alt: "The Boeing Milestones of Flight Hall, National Air and Space Museum",
+    altRo: "Sala Boeing Milestones of Flight, Muzeul Aerului și Spațiului",
+    credit: "Air and Space Museum Interior.jpg · Local Asset",
+    license: "CC BY-SA",
+  },
+  naturalHistoryMuseum: {
+    src: naturalHistoryMuseum.src,
+    alt: "The National Museum of Natural History, Washington, D.C.",
+    altRo: "Muzeul Național de Istorie Naturală, Washington, D.C.",
+    credit: "National Museum of Natural History.jpg · Local Asset",
+    license: "CC BY-SA",
+  },
+  natGalleryWest: {
+    src: natGalleryWest.src,
+    alt: "The National Gallery of Art, West Building, Washington, D.C.",
+    altRo: "Galeria Națională de Artă, Clădirea de Vest, Washington, D.C.",
+    credit: "National Gallery West Building.jpg · Local Asset",
+    license: "CC BY-SA",
+  },
+  natGalleryEast: {
+    src: natGalleryEast.src,
+    alt: "The National Gallery of Art, East Building, I. M. Pei, 1978",
+    altRo: "Galeria Națională de Artă, Clădirea de Est, I. M. Pei, 1978",
+    credit: "National Gallery East Building.jpg · Local Asset",
+    license: "CC BY-SA",
+  },
+  metMuseum: {
+    src: metMuseum.src,
+    alt: "The Metropolitan Museum of Art, Fifth Avenue, New York",
+    altRo: "Metropolitan Museum of Art, Fifth Avenue, New York",
+    credit: "Metropolitan Museum of Art.jpg · Local Asset",
+    license: "CC BY-SA",
+  },
+  artInstituteChicago: {
+    src: artInstituteChicago.src,
+    alt: "The Art Institute of Chicago",
+    altRo: "Institutul de Artă din Chicago",
+    credit: "Art Institute of Chicago.jpg · Local Asset",
+    license: "CC BY-SA",
+  },
+  gettyCenter: {
+    src: gettyCenter.src,
+    alt: "The Getty Center, Richard Meier, 1997, Los Angeles",
+    altRo: "Getty Center, Richard Meier, 1997, Los Angeles",
+    credit: "Getty Center.jpg · Local Asset",
+    license: "CC BY-SA",
+  },
+  mallAerial: {
+    src: mallAerial.src,
+    alt: "Aerial view west along the National Mall from the U.S. Capitol, Washington, D.C.",
+    altRo: "Vedere aeriană spre vest de-a lungul National Mall de la Capitoliu, Washington, D.C.",
+    credit: "National Mall Aerial · Local Asset",
+    license: "Public domain",
   },
 } as const satisfies Record<string, ArtAsset>;
 
