@@ -1,19 +1,22 @@
 "use client";
 
 // ─── ConstitutionReader ──────────────────────────────────────────────────────
-// A three-pane reading room for the full text of the Constitution.
-//   • Left  — a collapsible outline that scroll-spies the reader's position.
-//   • Center — the verbatim document on a paper surface, in elegant serif type.
-//   • Right — a context panel with seven tabs (plain English, history, cases,
-//             related amendments, related provisions, modern examples, debates).
-// Hovering a related-clause chip glows the target in the document; a timeline
-// slider lights up the clauses that mattered most in each constitutional era.
+// A three-pane reading room for the full text of the Constitution, themed to
+// match the rest of the Constitution exhibit: a dark, museum-like surround with
+// the document itself set on a lit sheet of parchment.
+//   • Left  — a sticky outline that scroll-spies the reader's position.
+//   • Center — the verbatim document on a paper sheet, in elegant serif type.
+//   • Right — a sticky context panel with seven tabs (plain English, history,
+//             cases, related amendments, related provisions, examples, debates).
+// A sticky timeline strip lights up the clauses that mattered in each era; a
+// reading-progress bar tracks how far through the document you are.
 //
 // The document text stays in its authentic 18th-century English; the annotations
 // and the interface are bilingual (EN/RO).
 
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { WeThePeopleSignature } from "@/components/constitution/WeThePeopleSignature";
 import {
   CONSTITUTION,
   CONSTITUTION_ERAS,
@@ -21,14 +24,30 @@ import {
   type ClauseContext,
 } from "@/lib/data/constitution-text";
 
-// ── Palette ───────────────────────────────────────────────────────────────────
+// ── Dark surround palette (matches the Constitution hub) ──────────────────────
+const VOID = "#080B12";
+const PANEL = "#10151C";
+const GOLD = "#C9A84C";
+const GOLD_LINE = "rgba(201,168,76,0.18)";
+const CREAM = "#F5F0E8";
+const MUTE = "#B8B4AC";
+const FAINT = "#7C776B";
+const EMBER = "#D9895F"; // warm red-gold used for the active clause on dark
+
+// ── Paper (document) palette ──────────────────────────────────────────────────
+const PAPER = "#f2e8cf";
 const INK = "#2a2016";
 const INK_SOFT = "#5c4f3c";
-const GOLD = "#8a6d1f";
-const SEAL = "#7c1d12";
-const PAPER = "#f4ecd8";
+const PGOLD = "#8a6d1f";
+const PSEAL = "#7c1d12";
 
 const SERIF = "'Playfair Display', Georgia, 'Times New Roman', serif";
+const PAPER_TEXTURE = "/images/constitution/parchment-paper.jpg";
+
+// Sticky offsets (the site header is fixed at h-20 ≈ 5rem).
+const TIMELINE_TOP = "lg:top-[5.5rem]";
+const PANEL_TOP = "lg:top-[9.5rem]";
+const PANEL_MAXH = "lg:max-h-[calc(100vh-10.5rem)]";
 
 // ── Tab definitions ───────────────────────────────────────────────────────────
 type TabKey = keyof Pick<
@@ -47,8 +66,6 @@ const TABS: { key: TabKey; en: string; ro: string }[] = [
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-// Flatten the tree into the ordered list of readable leaves (Preamble + every
-// Section), plus a lookup for chip labels.
 function collectLeaves(nodes: ClauseNode[]): ClauseNode[] {
   const out: ClauseNode[] = [];
   for (const n of nodes) {
@@ -63,7 +80,6 @@ function collectAll(nodes: ClauseNode[], map: Map<string, ClauseNode>) {
     if (n.children) collectAll(n.children, map);
   }
 }
-
 function tabHasContent(ctx: ClauseContext | undefined, key: TabKey, isRo: boolean): boolean {
   if (!ctx) return false;
   if (key === "cases") return ctx.cases.length > 0;
@@ -91,10 +107,12 @@ export function ConstitutionReader() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [tab, setTab] = useState<TabKey>("plain");
   const [hoverId, setHoverId] = useState<string | null>(null);
-  const [eraIdx, setEraIdx] = useState<number>(-1); // -1 = no era selected
+  const [eraIdx, setEraIdx] = useState<number>(-1);
   const [outlineOpen, setOutlineOpen] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const sectionRefs = useRef<Map<string, HTMLElement>>(new Map());
+  const docRef = useRef<HTMLDivElement>(null);
   const registerRef = useCallback((id: string, el: HTMLElement | null) => {
     if (el) sectionRefs.current.set(id, el);
     else sectionRefs.current.delete(id);
@@ -109,22 +127,35 @@ export function ConstitutionReader() {
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
         if (visible[0]) setActiveId((visible[0].target as HTMLElement).dataset.nodeId || "");
       },
-      { rootMargin: "-15% 0px -70% 0px", threshold: 0 }
+      { rootMargin: "-20% 0px -70% 0px", threshold: 0 }
     );
     sectionRefs.current.forEach((el) => obs.observe(el));
     return () => obs.disconnect();
   }, [leaves]);
 
+  // Reading-progress: how far through the document sheet we have scrolled.
+  useEffect(() => {
+    const onScroll = () => {
+      const el = docRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const total = rect.height - window.innerHeight;
+      const passed = Math.min(Math.max(-rect.top, 0), Math.max(total, 1));
+      setProgress(total > 0 ? passed / total : 0);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const focusId = selectedId ?? activeId;
   const focusNode = nodeMap.get(focusId);
   const focusCtx = focusNode?.context;
 
-  // Which tabs are available for the focused node.
   const availableTabs = useMemo(
     () => TABS.filter((t) => tabHasContent(focusCtx, t.key, isRo)),
     [focusCtx, isRo]
   );
-  // Keep the active tab valid when the focus changes.
   useEffect(() => {
     if (availableTabs.length && !availableTabs.some((t) => t.key === tab)) {
       setTab(availableTabs[0].key);
@@ -134,41 +165,41 @@ export function ConstitutionReader() {
   const scrollToNode = useCallback((id: string) => {
     const el = sectionRefs.current.get(id);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      const y = el.getBoundingClientRect().top + window.scrollY - 150;
+      window.scrollTo({ top: y, behavior: "smooth" });
       setSelectedId(id);
     }
   }, []);
 
-  // Era highlight set.
   const eraHighlights = useMemo(
     () => (eraIdx >= 0 ? new Set(CONSTITUTION_ERAS[eraIdx].highlights) : new Set<string>()),
     [eraIdx]
   );
 
   return (
-    <div
-      className="serif-headings relative"
-      style={{ background: PAPER, color: INK }}
-    >
-      {/* Warm vignette */}
+    <div className="serif-headings relative" style={{ background: VOID, color: CREAM }}>
+      {/* Marble ambient layer, matching the rest of the exhibit */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-0"
         style={{
-          backgroundImage:
-            "radial-gradient(1200px 600px at 50% -10%, rgba(138,109,31,0.12), transparent 60%)",
+          backgroundImage: "url('/images/constitution/marble-texture.png')",
+          backgroundRepeat: "repeat",
+          backgroundSize: "512px 512px",
+          opacity: 0.03,
+          mixBlendMode: "screen",
         }}
       />
-      {/* Paper grain */}
-      <div
-        aria-hidden
-        className="bg-parchment-texture pointer-events-none absolute inset-0 z-0 opacity-70"
-      />
+      {/* Reading-progress bar, pinned just under the fixed site header */}
+      <div className="fixed left-0 right-0 top-16 z-40 h-[3px] bg-transparent md:top-20">
+        <div
+          className="h-full origin-left transition-[width] duration-150"
+          style={{ width: `${progress * 100}%`, background: `linear-gradient(90deg, ${PGOLD}, ${GOLD})` }}
+        />
+      </div>
 
-      {/* ── Calligraphy overture ─────────────────────────────────────────────── */}
       <Overture isRo={isRo} />
 
-      {/* ── Timeline slider ──────────────────────────────────────────────────── */}
       <TimelineSlider
         isRo={isRo}
         eraIdx={eraIdx}
@@ -176,17 +207,15 @@ export function ConstitutionReader() {
         onJump={(ids) => ids[0] && scrollToNode(ids[0])}
       />
 
-      {/* ── Three-pane body ──────────────────────────────────────────────────── */}
-      <div className="relative z-10 mx-auto max-w-[1400px] px-4 pb-24 sm:px-6 lg:px-8">
-        <div className="lg:grid lg:grid-cols-[210px_minmax(0,1fr)_380px] lg:gap-8 xl:grid-cols-[230px_minmax(0,1fr)_410px]">
+      <div className="relative z-10 w-full px-4 pb-28 sm:px-6 lg:px-10">
+        <div className="lg:grid lg:grid-cols-[210px_minmax(0,1fr)_390px] lg:gap-8 xl:grid-cols-[230px_minmax(0,1fr)_420px]">
 
           {/* ── LEFT: Outline ── */}
-          <aside className="lg:sticky lg:top-4 lg:h-[calc(100vh-2rem)] lg:self-start lg:overflow-y-auto">
-            {/* Mobile toggle */}
+          <aside className={`${PANEL_TOP} lg:sticky ${PANEL_MAXH} lg:self-start lg:overflow-y-auto lg:pr-1`}>
             <button
               onClick={() => setOutlineOpen((v) => !v)}
               className="mb-3 flex w-full items-center justify-between rounded-lg border px-4 py-2.5 text-left text-xs font-semibold uppercase tracking-[0.2em] lg:hidden"
-              style={{ borderColor: "rgba(138,109,31,0.3)", color: GOLD }}
+              style={{ borderColor: GOLD_LINE, color: GOLD }}
             >
               {isRo ? "Cuprins" : "Outline"}
               <span>{outlineOpen ? "−" : "+"}</span>
@@ -195,10 +224,7 @@ export function ConstitutionReader() {
               className={`${outlineOpen ? "block" : "hidden"} mb-8 lg:block`}
               aria-label={isRo ? "Cuprinsul Constituției" : "Constitution outline"}
             >
-              <p
-                className="mb-3 hidden text-[10px] font-semibold uppercase tracking-[0.28em] lg:block"
-                style={{ color: GOLD }}
-              >
+              <p className="mb-3 hidden text-[10px] font-semibold uppercase tracking-[0.28em] lg:block" style={{ color: GOLD }}>
                 {isRo ? "Cuprins" : "The Document"}
               </p>
               <Outline
@@ -215,21 +241,38 @@ export function ConstitutionReader() {
             </nav>
           </aside>
 
-          {/* ── CENTER: Document ── */}
+          {/* ── CENTER: Document sheet ── */}
           <main className="min-w-0">
-            <Document
-              nodes={CONSTITUTION}
-              isRo={isRo}
-              registerRef={registerRef}
-              focusId={focusId}
-              hoverId={hoverId}
-              eraHighlights={eraHighlights}
-              onSelect={setSelectedId}
-            />
+            <div
+              ref={docRef}
+              className="relative overflow-hidden rounded-2xl px-5 py-10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] ring-1 sm:px-10 md:px-14"
+              style={{
+                backgroundColor: PAPER,
+                backgroundImage: `linear-gradient(rgba(242,232,207,0.55), rgba(242,232,207,0.55)), url('${PAPER_TEXTURE}')`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              {/* Warm inner glow at the top of the sheet */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{ boxShadow: `inset 0 0 120px rgba(124,29,18,0.06)` }}
+              />
+              <Document
+                nodes={CONSTITUTION}
+                isRo={isRo}
+                registerRef={registerRef}
+                focusId={focusId}
+                hoverId={hoverId}
+                eraHighlights={eraHighlights}
+                onSelect={setSelectedId}
+              />
+            </div>
           </main>
 
           {/* ── RIGHT: Context ── */}
-          <aside className="mt-10 lg:mt-0 lg:sticky lg:top-4 lg:h-[calc(100vh-2rem)] lg:self-start lg:overflow-y-auto">
+          <aside className={`mt-10 lg:mt-0 ${PANEL_TOP} lg:sticky ${PANEL_MAXH} lg:self-start lg:overflow-y-auto lg:pl-1`}>
             <ContextPanel
               node={focusNode}
               ctx={focusCtx}
@@ -251,64 +294,22 @@ export function ConstitutionReader() {
 // ── Calligraphy overture ──────────────────────────────────────────────────────
 function Overture({ isRo }: { isRo: boolean }) {
   return (
-    <header className="relative z-10 mx-auto max-w-4xl px-4 pt-16 pb-10 text-center sm:pt-24">
-      <p
-        className="mb-4 text-[11px] font-semibold uppercase tracking-[0.4em]"
-        style={{ color: GOLD }}
-      >
+    <header className="relative z-10 mx-auto max-w-4xl px-4 pt-16 pb-8 text-center sm:pt-20">
+      <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.4em]" style={{ color: GOLD }}>
         {isRo ? "Textul integral" : "The Full Text"}
       </p>
-      <div className="reader-overture">
-        <span
-          className="font-signature block leading-none"
-          style={{ color: INK, fontSize: "clamp(3rem, 11vw, 7rem)" }}
-        >
-          We the People
-        </span>
-      </div>
-      {/* Hand-drawn flourish that draws itself */}
-      <svg
-        viewBox="0 0 400 40"
-        className="mx-auto mt-2 h-8 w-64"
-        fill="none"
-        aria-hidden
-      >
-        <path
-          d="M10 25 C 80 5, 140 5, 200 22 S 320 40, 390 15"
-          stroke={GOLD}
-          strokeWidth="2"
-          strokeLinecap="round"
-          className="reader-flourish"
-        />
-      </svg>
-      <p
-        className="mx-auto mt-6 max-w-xl text-base leading-relaxed"
-        style={{ color: INK_SOFT, fontFamily: SERIF }}
-      >
+      {/* The same self-drawing 1787 calligraphy used on the Constitution hub */}
+      <WeThePeopleSignature />
+      <p className="mx-auto -mt-2 max-w-xl text-base leading-relaxed" style={{ color: MUTE, fontFamily: SERIF }}>
         {isRo
-          ? "Constituția Statelor Unite, cuvânt cu cuvânt. Alege o secțiune pentru a-i vedea traducerea, istoria, cazurile-cheie și dezbaterile din jurul ei."
+          ? "Constituția Statelor Unite, cuvânt cu cuvânt. Alege orice secțiune pentru a-i vedea traducerea pe înțeles, istoria, cazurile-cheie și dezbaterile din jurul ei."
           : "The Constitution of the United States, word for word. Select any section to read its plain-English meaning, its history, the landmark cases, and the debates that still surround it."}
       </p>
-
-      <style>{`
-        .reader-overture span { opacity: 0; animation: readerFade 1.4s ease forwards 0.15s; }
-        .reader-flourish {
-          stroke-dasharray: 620;
-          stroke-dashoffset: 620;
-          animation: readerDraw 2s ease forwards 0.7s;
-        }
-        @keyframes readerFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-        @keyframes readerDraw { to { stroke-dashoffset: 0; } }
-        @media (prefers-reduced-motion: reduce) {
-          .reader-overture span { opacity: 1; animation: none; }
-          .reader-flourish { stroke-dashoffset: 0; animation: none; }
-        }
-      `}</style>
     </header>
   );
 }
 
-// ── Timeline slider ───────────────────────────────────────────────────────────
+// ── Timeline slider (sticky strip) ────────────────────────────────────────────
 function TimelineSlider({
   isRo,
   eraIdx,
@@ -322,51 +323,51 @@ function TimelineSlider({
 }) {
   const active = eraIdx >= 0 ? CONSTITUTION_ERAS[eraIdx] : null;
   return (
-    <div className="relative z-10 mx-auto mb-4 max-w-4xl px-4">
+    <div className={`sticky ${TIMELINE_TOP} z-30 mb-6`}>
       <div
-        className="rounded-2xl border px-5 py-4"
-        style={{ borderColor: "rgba(138,109,31,0.25)", background: "rgba(255,255,255,0.35)" }}
+        className="w-full border-y px-4 py-3 backdrop-blur-md sm:px-6 lg:px-10"
+        style={{ borderColor: GOLD_LINE, background: "rgba(8,11,18,0.82)" }}
       >
-        <div className="mb-3 flex items-center justify-between">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.28em]" style={{ color: GOLD }}>
+        <div className="flex items-center gap-3 overflow-x-auto">
+          <span className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.28em]" style={{ color: GOLD }}>
             {isRo ? "Cronologie" : "Timeline"}
-          </p>
+          </span>
+          <div className="flex gap-2">
+            {CONSTITUTION_ERAS.map((era, i) => {
+              const on = i === eraIdx;
+              return (
+                <button
+                  key={era.id}
+                  onClick={() => {
+                    setEraIdx(on ? -1 : i);
+                    if (!on) onJump(era.highlights);
+                  }}
+                  className="shrink-0 rounded-full border px-3 py-1 text-xs font-semibold transition-colors"
+                  style={{
+                    borderColor: on ? GOLD : GOLD_LINE,
+                    background: on ? "rgba(201,168,76,0.15)" : "transparent",
+                    color: on ? GOLD : MUTE,
+                  }}
+                >
+                  <span style={{ fontFamily: SERIF }}>{era.year}</span>
+                  <span className="ml-1.5 hidden md:inline">{isRo ? era.labelRo : era.label}</span>
+                </button>
+              );
+            })}
+          </div>
           {active && (
             <button
               onClick={() => setEraIdx(-1)}
-              className="text-[10px] font-semibold uppercase tracking-[0.2em]"
-              style={{ color: SEAL }}
+              className="ml-auto shrink-0 text-[10px] font-semibold uppercase tracking-[0.2em]"
+              style={{ color: EMBER }}
             >
               {isRo ? "Resetează" : "Reset"}
             </button>
           )}
         </div>
-        <div className="flex flex-wrap gap-2">
-          {CONSTITUTION_ERAS.map((era, i) => {
-            const on = i === eraIdx;
-            return (
-              <button
-                key={era.id}
-                onClick={() => {
-                  setEraIdx(on ? -1 : i);
-                  if (!on) onJump(era.highlights);
-                }}
-                className="rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors"
-                style={{
-                  borderColor: on ? SEAL : "rgba(138,109,31,0.3)",
-                  background: on ? SEAL : "transparent",
-                  color: on ? PAPER : INK_SOFT,
-                }}
-              >
-                <span style={{ fontFamily: SERIF }}>{era.year}</span>
-                <span className="ml-1.5 hidden sm:inline">{isRo ? era.labelRo : era.label}</span>
-              </button>
-            );
-          })}
-        </div>
         {active && (
-          <p className="mt-3 text-sm leading-relaxed" style={{ color: INK_SOFT, fontFamily: SERIF }}>
-            <span className="font-semibold" style={{ color: INK }}>
+          <p className="mt-2 text-sm leading-relaxed" style={{ color: MUTE, fontFamily: SERIF }}>
+            <span className="font-semibold" style={{ color: CREAM }}>
               {isRo ? active.labelRo : active.label}.
             </span>{" "}
             {isRo ? active.blurbRo : active.blurb}
@@ -400,13 +401,10 @@ function Outline({
         if (isGroup) {
           return (
             <li key={node.id} className="pt-2">
-              <p
-                className="mb-1 text-[11px] font-bold uppercase tracking-[0.12em]"
-                style={{ color: GOLD, fontFamily: SERIF }}
-              >
+              <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.12em]" style={{ color: GOLD, fontFamily: SERIF }}>
                 {node.ref}
               </p>
-              <ul className="space-y-0.5 border-l pl-3" style={{ borderColor: "rgba(138,109,31,0.25)" }}>
+              <ul className="space-y-0.5 border-l pl-3" style={{ borderColor: GOLD_LINE }}>
                 {node.children!.map((child) => (
                   <OutlineLink
                     key={child.id}
@@ -458,9 +456,12 @@ function OutlineLink({
 }) {
   const isActive = node.id === activeId;
   const isFocus = node.id === focusId;
-  // A short label: use the section number for nested items, else the ref.
   const label = nested
-    ? (isRo ? node.headingRo : node.heading).replace(/^Section\s+/i, "§").replace(/^Secțiunea\s+/i, "§").split("—")[0].trim()
+    ? (isRo ? node.headingRo : node.heading)
+        .replace(/^Section\s+/i, "§")
+        .replace(/^Secțiunea\s+/i, "§")
+        .split("—")[0]
+        .trim()
     : (isRo ? node.headingRo : node.heading);
   return (
     <li>
@@ -468,8 +469,8 @@ function OutlineLink({
         onClick={() => onSelect(node.id)}
         className="group block w-full rounded px-2 py-1 text-left text-[13px] leading-snug transition-colors"
         style={{
-          color: isFocus ? SEAL : isActive ? INK : INK_SOFT,
-          background: isFocus ? "rgba(124,29,18,0.07)" : "transparent",
+          color: isFocus ? GOLD : isActive ? CREAM : MUTE,
+          background: isFocus ? "rgba(201,168,76,0.1)" : "transparent",
           fontWeight: isActive || isFocus ? 700 : 400,
           fontFamily: SERIF,
         }}
@@ -480,7 +481,7 @@ function OutlineLink({
             width: 6,
             height: 6,
             borderRadius: 9999,
-            background: eraOn ? GOLD : isFocus ? SEAL : "transparent",
+            background: eraOn ? GOLD : isFocus ? GOLD : "transparent",
             boxShadow: eraOn ? `0 0 6px ${GOLD}` : "none",
           }}
         />
@@ -490,7 +491,7 @@ function OutlineLink({
   );
 }
 
-// ── Document (center) ─────────────────────────────────────────────────────────
+// ── Document (center, on paper) ───────────────────────────────────────────────
 function Document({
   nodes,
   isRo,
@@ -516,8 +517,8 @@ function Document({
       blocks.push(
         <h2
           key={node.id}
-          className="mb-6 mt-14 border-b pb-3 text-center text-3xl font-bold first:mt-0 sm:text-4xl"
-          style={{ color: INK, fontFamily: SERIF, borderColor: "rgba(138,109,31,0.3)" }}
+          className="mb-6 mt-16 border-b pb-3 text-center text-3xl font-bold first:mt-0 sm:text-4xl"
+          style={{ color: INK, fontFamily: SERIF, borderColor: "rgba(138,109,31,0.35)" }}
         >
           {isRo ? node.headingRo : node.heading}
         </h2>
@@ -556,7 +557,7 @@ function Document({
       firstLeaf = false;
     }
   }
-  return <div className="mx-auto max-w-[46rem]">{blocks}</div>;
+  return <div className="relative mx-auto max-w-[46rem]">{blocks}</div>;
 }
 
 function Section({
@@ -582,38 +583,35 @@ function Section({
 }) {
   const isFocus = node.id === focusId;
   const isHover = node.id === hoverId;
-  const paras = node.text.split("\n\n");
+  const body = isRo && node.textRo ? node.textRo : node.text;
+  const paras = body.split("\n\n");
 
   return (
     <section
       ref={(el) => registerRef(node.id, el)}
       data-node-id={node.id}
       onClick={() => onSelect(node.id)}
-      className="group relative scroll-mt-6 cursor-pointer rounded-lg px-4 py-5 transition-all sm:px-6"
+      className="group relative scroll-mt-40 cursor-pointer rounded-lg px-4 py-5 transition-all sm:px-6"
       style={{
-        background: isHover
-          ? "rgba(138,109,31,0.14)"
-          : isFocus
-          ? "rgba(124,29,18,0.04)"
-          : "transparent",
-        boxShadow: isFocus ? `inset 3px 0 0 ${SEAL}` : eraOn ? `inset 3px 0 0 ${GOLD}` : "none",
+        background: isHover ? "rgba(138,109,31,0.16)" : isFocus ? "rgba(124,29,18,0.05)" : "transparent",
+        boxShadow: isFocus ? `inset 3px 0 0 ${PSEAL}` : eraOn ? `inset 3px 0 0 ${PGOLD}` : "none",
       }}
     >
       <div className="mb-2 flex items-center gap-3">
-        <span className="text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: GOLD }}>
+        <span className="text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: PGOLD }}>
           {node.ref}
         </span>
         {node.amended && (
           <span
             className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em]"
-            style={{ background: "rgba(124,29,18,0.1)", color: SEAL }}
+            style={{ background: "rgba(124,29,18,0.1)", color: PSEAL }}
           >
             {isRo ? "Modificat" : "Amended"}
           </span>
         )}
         <span
           className="ml-auto text-[10px] font-semibold uppercase tracking-[0.2em] opacity-0 transition-opacity group-hover:opacity-100"
-          style={{ color: SEAL }}
+          style={{ color: PSEAL }}
         >
           {isRo ? "Context →" : "Context →"}
         </span>
@@ -638,7 +636,7 @@ function Section({
       {node.amended && (node.amendedNote || node.amendedNoteRo) && (
         <p
           className="mt-3 rounded-md border-l-2 px-4 py-2 text-sm italic leading-relaxed"
-          style={{ borderColor: SEAL, color: INK_SOFT, background: "rgba(124,29,18,0.05)", fontFamily: SERIF }}
+          style={{ borderColor: PSEAL, color: INK_SOFT, background: "rgba(124,29,18,0.05)", fontFamily: SERIF }}
         >
           {isRo ? node.amendedNoteRo : node.amendedNote}
         </p>
@@ -650,7 +648,7 @@ function Section({
           line-height: 0.8;
           float: left;
           padding: 0.05em 0.12em 0 0;
-          color: ${SEAL};
+          color: ${PSEAL};
           font-family: ${SERIF};
           font-weight: 700;
         }
@@ -682,26 +680,22 @@ function ContextPanel({
   onJump: (id: string) => void;
 }) {
   return (
-    <div
-      className="rounded-2xl border p-5 sm:p-6"
-      style={{ borderColor: "rgba(138,109,31,0.28)", background: "rgba(255,255,255,0.45)" }}
-    >
+    <div className="rounded-2xl border p-5 sm:p-6" style={{ borderColor: GOLD_LINE, background: PANEL }}>
       <p className="text-[10px] font-semibold uppercase tracking-[0.28em]" style={{ color: GOLD }}>
         {node?.ref ?? ""}
       </p>
-      <h4 className="mt-1 text-lg font-bold leading-tight" style={{ color: INK, fontFamily: SERIF }}>
+      <h4 className="mt-1 text-lg font-bold leading-tight" style={{ color: CREAM, fontFamily: SERIF }}>
         {node ? (isRo ? node.headingRo : node.heading) : ""}
       </h4>
 
       {!ctx || availableTabs.length === 0 ? (
-        <p className="mt-4 text-sm leading-relaxed" style={{ color: INK_SOFT, fontFamily: SERIF }}>
+        <p className="mt-4 text-sm leading-relaxed" style={{ color: MUTE, fontFamily: SERIF }}>
           {isRo
             ? "Selectează o secțiune din text pentru a-i vedea contextul: explicație pe înțeles, istorie, cazuri la Curtea Supremă și dezbateri."
             : "Select a section of the text to see its context: plain-English meaning, history, Supreme Court cases, and the debates around it."}
         </p>
       ) : (
         <>
-          {/* Tabs */}
           <div className="mt-4 flex flex-wrap gap-1.5">
             {availableTabs.map((t) => {
               const on = t.key === tab;
@@ -711,9 +705,9 @@ function ContextPanel({
                   onClick={() => setTab(t.key)}
                   className="rounded-full px-2.5 py-1 text-[11px] font-semibold transition-colors"
                   style={{
-                    background: on ? INK : "transparent",
-                    color: on ? PAPER : INK_SOFT,
-                    border: `1px solid ${on ? INK : "rgba(138,109,31,0.3)"}`,
+                    background: on ? GOLD : "transparent",
+                    color: on ? VOID : MUTE,
+                    border: `1px solid ${on ? GOLD : GOLD_LINE}`,
                   }}
                 >
                   {isRo ? t.ro : t.en}
@@ -722,16 +716,15 @@ function ContextPanel({
             })}
           </div>
 
-          {/* Body */}
-          <div className="mt-4 text-[15px] leading-relaxed" style={{ color: INK, fontFamily: SERIF }}>
+          <div className="mt-4 text-[15px] leading-relaxed" style={{ color: CREAM, fontFamily: SERIF }}>
             {tab === "cases" ? (
               <ul className="space-y-3">
                 {ctx.cases.map((c) => (
                   <li key={c.name}>
-                    <p className="font-semibold" style={{ color: SEAL }}>
-                      {c.name} <span style={{ color: INK_SOFT }}>· {c.year}</span>
+                    <p className="font-semibold" style={{ color: GOLD }}>
+                      {c.name} <span style={{ color: FAINT }}>· {c.year}</span>
                     </p>
-                    <p className="text-sm" style={{ color: INK_SOFT }}>
+                    <p className="text-sm" style={{ color: MUTE }}>
                       {isRo ? c.noteRo : c.note}
                     </p>
                   </li>
@@ -752,8 +745,8 @@ function ContextPanel({
                       onClick={() => target && onJump(id)}
                       className="rounded-full border px-3 py-1 text-xs font-semibold transition-colors"
                       style={{
-                        borderColor: "rgba(138,109,31,0.35)",
-                        color: target ? SEAL : INK_SOFT,
+                        borderColor: GOLD_LINE,
+                        color: target ? GOLD : FAINT,
                         cursor: target ? "pointer" : "default",
                       }}
                       title={target ? (isRo ? target.headingRo : target.heading) : undefined}
@@ -763,7 +756,7 @@ function ContextPanel({
                   );
                 })}
                 {tab === "amendments" && (
-                  <p className="mt-1 w-full text-xs italic" style={{ color: INK_SOFT }}>
+                  <p className="mt-1 w-full text-xs italic" style={{ color: FAINT }}>
                     {isRo
                       ? "Amendamentele conexe vor deveni interactive pe măsură ce sunt adăugate."
                       : "Related amendments become clickable as they are added to the reader."}

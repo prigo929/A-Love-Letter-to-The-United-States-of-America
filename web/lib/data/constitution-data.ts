@@ -793,6 +793,14 @@ export function getRightsAtRiskStats(isRo: boolean) {
 
 export const CONSTITUTION_SUB_PAGES = [
   {
+    href: "/constitution/the-document",
+    title: "Read the Full Text",
+    description: "The entire Constitution, word for word, with meaning, history, and cases for every clause",
+    imageSrc: SITE_IMAGES.constitution.pg1,
+    imageAlt: "United States Constitution, page one, original parchment, National Archives",
+    badge: "The Full Text",
+  },
+  {
     href: "/constitution/bill-of-rights",
     title: "The Bill of Rights",
     description: "10 amendments, 45 rights, 235 years of protection",
@@ -855,13 +863,14 @@ export const CONSTITUTION_SUB_PAGES = [
 export function getConstitutionSubPages(locale: Locale) {
   if (locale === "ro") {
     return [
-      { ...CONSTITUTION_SUB_PAGES[0], title: "Declarația Drepturilor",     description: "10 amendamente, 45 drepturi, 235 de ani de protecție" },
-      { ...CONSTITUTION_SUB_PAGES[1], title: "Primul Amendament",          description: "Cea mai largă protecție a libertății de exprimare din lume" },
-      { ...CONSTITUTION_SUB_PAGES[2], title: "Laboratoare ale Democrației",description: "50 de state, 50 de experimente de politici publice" },
-      { ...CONSTITUTION_SUB_PAGES[3], title: "Separarea Puterilor",        description: "Sistemul care face tirania aproape imposibilă" },
-      { ...CONSTITUTION_SUB_PAGES[4], title: "250 de Ani",                 description: "60 de alegeri, niciun coup: recordul neîntrerupt al democrației americane" },
-      { ...CONSTITUTION_SUB_PAGES[5], title: "Doar în America",            description: "Procurori aleși, jurii mari, inițiative cetățenești: mecanisme democratice unice în lume" },
-      { ...CONSTITUTION_SUB_PAGES[6], title: "Al Doilea Amendament",        description: "Dreptul individual la autoapărare și de a deține arme de foc" },
+      { ...CONSTITUTION_SUB_PAGES[0], title: "Citește Textul Integral",     description: "Întreaga Constituție, cuvânt cu cuvânt, cu sens, istorie și cazuri pentru fiecare clauză" },
+      { ...CONSTITUTION_SUB_PAGES[1], title: "Declarația Drepturilor",     description: "10 amendamente, 45 drepturi, 235 de ani de protecție" },
+      { ...CONSTITUTION_SUB_PAGES[2], title: "Primul Amendament",          description: "Cea mai largă protecție a libertății de exprimare din lume" },
+      { ...CONSTITUTION_SUB_PAGES[3], title: "Laboratoare ale Democrației",description: "50 de state, 50 de experimente de politici publice" },
+      { ...CONSTITUTION_SUB_PAGES[4], title: "Separarea Puterilor",        description: "Sistemul care face tirania aproape imposibilă" },
+      { ...CONSTITUTION_SUB_PAGES[5], title: "250 de Ani",                 description: "60 de alegeri, niciun coup: recordul neîntrerupt al democrației americane" },
+      { ...CONSTITUTION_SUB_PAGES[6], title: "Doar în America",            description: "Procurori aleși, jurii mari, inițiative cetățenești: mecanisme democratice unice în lume" },
+      { ...CONSTITUTION_SUB_PAGES[7], title: "Al Doilea Amendament",        description: "Dreptul individual la autoapărare și de a deține arme de foc" },
     ];
   }
   return CONSTITUTION_SUB_PAGES;

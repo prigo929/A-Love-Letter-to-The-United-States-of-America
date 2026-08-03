@@ -37,7 +37,8 @@ export interface ClauseNode {
   ref: string; // short reference label, e.g. "Art. I, §8"
   heading: string;
   headingRo: string;
-  text: string; // verbatim
+  text: string; // verbatim (authentic English)
+  textRo?: string; // Romanian translation of the verbatim text
   amended?: boolean;
   amendedNote?: string;
   amendedNoteRo?: string;
@@ -328,5 +329,325 @@ export const CONSTITUTION: ClauseNode[] = [
         },
       },
     ],
+  },
+
+  // ─── Article II — The Executive ─────────────────────────────────────────────
+  {
+    id: "art2",
+    ref: "Article II",
+    heading: "Article II — The Executive Branch",
+    headingRo: "Articolul II — Puterea Executivă",
+    text: "",
+    children: [
+      {
+        id: "art2-s1", ref: "Art. II, §1", heading: "Section 1 — The Presidency & Election", headingRo: "Secțiunea 1 — Președinția și alegerea",
+        text: "The executive Power shall be vested in a President of the United States of America. He shall hold his Office during the Term of four Years, and, together with the Vice President, chosen for the same Term, be elected, as follows:\n\nEach State shall appoint, in such Manner as the Legislature thereof may direct, a Number of Electors, equal to the whole Number of Senators and Representatives to which the State may be entitled in the Congress...\n\nThe Congress may determine the Time of chusing the Electors, and the Day on which they shall give their Votes; which Day shall be the same throughout the United States.\n\nNo Person except a natural born Citizen... shall be eligible to the Office of President; neither shall any person be eligible to that Office who shall not have attained to the Age of thirty five Years, and been fourteen Years a Resident within the United States.\n\nBefore he enter on the Execution of his Office, he shall take the following Oath or Affirmation:—\"I do solemnly swear (or affirm) that I will faithfully execute the Office of President of the United States, and will to the best of my Ability, preserve, protect and defend the Constitution of the United States.\"",
+        amended: true,
+        amendedNote: "The original procedure for electors to cast two undifferentiated votes was replaced by the 12th Amendment (1804), which created separate ballots for President and Vice President. Succession is now governed by the 25th Amendment (1967).",
+        amendedNoteRo: "Procedura originală prin care electorii dădeau două voturi nediferențiate a fost înlocuită de Amendamentul 12 (1804), care a creat buletine separate pentru Președinte și Vicepreședinte. Succesiunea e guvernată acum de Amendamentul 25 (1967).",
+        context: {
+          plain: "A single President holds the executive power for a four-year term, chosen not directly by voters but by electors each state appoints, the Electoral College. The President must be a natural-born citizen at least 35 years old and takes a fixed oath to defend the Constitution.",
+          plainRo: "Un singur Președinte deține puterea executivă pentru un mandat de patru ani, ales nu direct de alegători, ci de electori numiți de fiecare stat, Colegiul Electoral. Președintele trebuie să fie cetățean născut în SUA, de cel puțin 35 de ani, și depune un jurământ fix de a apăra Constituția.",
+          history: "The Electoral College was a compromise between electing the President by Congress and by direct popular vote. The Framers vested \"the executive power\" in one person, rejecting a plural executive, so responsibility would be clear.",
+          historyRo: "Colegiul Electoral a fost un compromis între alegerea Președintelui de către Congres și votul popular direct. Fondatorii au învestit „puterea executivă” într-o singură persoană, respingând un executiv plural, pentru ca responsabilitatea să fie clară.",
+          cases: [
+            { name: "Bush v. Gore", year: "2000", note: "Halted a Florida recount, effectively deciding the presidential election on Equal Protection grounds.", noteRo: "A oprit renumărarea din Florida, decizând efectiv alegerile prezidențiale pe temeiul Egalei Protecții." },
+            { name: "Chiafalo v. Washington", year: "2020", note: "States may bind their electors to the popular vote and penalize \"faithless\" electors.", noteRo: "Statele își pot obliga electorii să respecte votul popular și pot penaliza electorii „necredincioși”." },
+          ],
+          amendments: ["amend-12", "amend-22", "amend-25"],
+          related: ["art2-s2", "art1-s3"],
+          examples: "Every four years the Electoral College, not the national popular vote, formally chooses the President, and twice since 2000 the popular-vote loser has won the presidency.",
+          examplesRo: "La fiecare patru ani Colegiul Electoral, nu votul popular național, alege formal Președintele, iar de două ori din 2000 câștigătorul a fost cel care a pierdut votul popular.",
+          debates: "Whether to abolish the Electoral College for a national popular vote is one of the longest-running structural debates in American politics.",
+          debatesRo: "Dacă să se desființeze Colegiul Electoral în favoarea votului popular național e una dintre cele mai vechi dezbateri structurale din politica americană.",
+        },
+      },
+      {
+        id: "art2-s2", ref: "Art. II, §2", heading: "Section 2 — Powers of the President", headingRo: "Secțiunea 2 — Puterile Președintelui",
+        text: "The President shall be Commander in Chief of the Army and Navy of the United States, and of the Militia of the several States, when called into the actual Service of the United States... and he shall have Power to grant Reprieves and Pardons for Offenses against the United States, except in Cases of Impeachment.\n\nHe shall have Power, by and with the Advice and Consent of the Senate, to make Treaties, provided two thirds of the Senators present concur; and he shall nominate, and by and with the Advice and Consent of the Senate, shall appoint Ambassadors, other public Ministers and Consuls, Judges of the supreme Court, and all other Officers of the United States...\n\nThe President shall have Power to fill up all Vacancies that may happen during the Recess of the Senate.",
+        context: {
+          plain: "The President commands the military, can grant pardons, makes treaties with two-thirds Senate approval, and nominates ambassadors, judges, and other officers, who need Senate confirmation.",
+          plainRo: "Președintele comandă armata, poate acorda grațieri, încheie tratate cu aprobarea a două treimi din Senat și numește ambasadori, judecători și alți funcționari, care au nevoie de confirmarea Senatului.",
+          history: "The Appointments and Treaty Clauses are the Senate's principal checks on the President. The pardon power, nearly unlimited for federal crimes, descends from the royal prerogative of mercy.",
+          historyRo: "Clauzele Numirilor și Tratatelor sunt principalele controale ale Senatului asupra Președintelui. Puterea de grațiere, aproape nelimitată pentru infracțiuni federale, coboară din prerogativa regală a milei.",
+          cases: [
+            { name: "NLRB v. Noel Canning", year: "2014", note: "Limited the recess-appointment power; the Senate decides when it is in recess.", noteRo: "A limitat puterea numirilor în vacanță; Senatul decide când e în vacanță." },
+            { name: "Trump v. United States", year: "2024", note: "Recognized broad presidential immunity for official acts within core executive powers.", noteRo: "A recunoscut o imunitate prezidențială largă pentru actele oficiale din puterile executive de bază." },
+          ],
+          amendments: [],
+          related: ["art2-s1", "art1-s8", "art3-s1"],
+          examples: "Supreme Court confirmations, treaty ratifications, and high-profile pardons all run through the powers listed here.",
+          examplesRo: "Confirmările la Curtea Supremă, ratificările de tratate și grațierile de mare profil trec toate prin puterile enumerate aici.",
+          debates: "How far the commander-in-chief power lets a President wage war without Congress, and how far the pardon power reaches, are enduring separation-of-powers disputes.",
+          debatesRo: "Cât de departe îi permite puterea de comandant-șef unui Președinte să poarte război fără Congres, și cât de departe ajunge puterea de grațiere, sunt dispute durabile ale separării puterilor.",
+        },
+      },
+      {
+        id: "art2-s3", ref: "Art. II, §3", heading: "Section 3 — Duties: Take Care", headingRo: "Secțiunea 3 — Îndatoriri: Vegherea legii",
+        text: "He shall from time to time give to the Congress Information of the State of the Union, and recommend to their Consideration such Measures as he shall judge necessary and expedient... he shall receive Ambassadors and other public Ministers; he shall take Care that the Laws be faithfully executed, and shall Commission all the Officers of the United States.",
+        context: {
+          plain: "The President must report to Congress on the state of the union, may recommend legislation, receives foreign ambassadors, and above all must \"take Care that the Laws be faithfully executed.\"",
+          plainRo: "Președintele trebuie să raporteze Congresului despre starea uniunii, poate recomanda legi, primește ambasadori străini și, mai presus de toate, trebuie să „vegheze ca legile să fie fidel executate”.",
+          history: "The Take Care Clause makes the President the nation's chief law-enforcer, bound to carry out laws even ones he opposes. The duty to \"receive Ambassadors\" grew into the President's dominant role in recognizing foreign governments.",
+          historyRo: "Clauza Vegherii face din Președinte principalul executor al legii națiunii, obligat să aplice legi chiar și pe cele la care se opune. Datoria de a „primi ambasadori” a crescut în rolul dominant al Președintelui de a recunoaște guverne străine.",
+          cases: [
+            { name: "Youngstown Sheet & Tube v. Sawyer", year: "1952", note: "The President cannot seize private steel mills; executive power is at its lowest against Congress's will.", noteRo: "Președintele nu poate confisca oțelării private; puterea executivă e la minim împotriva voinței Congresului." },
+          ],
+          amendments: [],
+          related: ["art2-s2", "art1-s7"],
+          examples: "The annual State of the Union address and disputes over enforcing (or declining to enforce) immigration and other laws rest on this section.",
+          examplesRo: "Discursul anual despre Starea Uniunii și disputele privind aplicarea (sau neaplicarea) legilor de imigrație și a altora se sprijină pe această secțiune.",
+          debates: "Prosecutorial discretion, how far a President may decline to enforce laws he disagrees with, is a recurring Take Care Clause controversy.",
+          debatesRo: "Discreția de urmărire penală, cât de departe poate un Președinte refuza să aplice legi cu care nu e de acord, e o controversă recurentă a Clauzei Vegherii.",
+        },
+      },
+      {
+        id: "art2-s4", ref: "Art. II, §4", heading: "Section 4 — Impeachment", headingRo: "Secțiunea 4 — Punerea sub acuzare",
+        text: "The President, Vice President and all civil Officers of the United States, shall be removed from Office on Impeachment for, and Conviction of, Treason, Bribery, or other high Crimes and Misdemeanors.",
+        context: {
+          plain: "The President, Vice President, and other federal officials can be removed for treason, bribery, or \"high Crimes and Misdemeanors\", impeached by the House and convicted by the Senate.",
+          plainRo: "Președintele, Vicepreședintele și alți oficiali federali pot fi înlăturați pentru trădare, mituire sau „infracțiuni și delicte grave”, puși sub acuzare de Cameră și condamnați de Senat.",
+          history: "\"High Crimes and Misdemeanors\" is borrowed from English impeachment practice and was left deliberately broad, covering serious abuses of public trust, not only indictable crimes.",
+          historyRo: "„Infracțiuni și delicte grave” e împrumutat din practica engleză a punerii sub acuzare și a fost lăsat deliberat larg, acoperind abuzuri grave de încredere publică, nu doar infracțiuni penale.",
+          cases: [],
+          amendments: ["amend-25"],
+          related: ["art1-s2", "art1-s3"],
+          examples: "Three presidents have been impeached; the process links directly to the House's sole power to impeach and the Senate's sole power to try.",
+          examplesRo: "Trei președinți au fost puși sub acuzare; procesul se leagă direct de puterea exclusivă a Camerei de a acuza și a Senatului de a judeca.",
+          debates: "What counts as a \"high Crime\", and whether impeachment is a legal or fundamentally political judgment, is argued every time it is used.",
+          debatesRo: "Ce contează drept „infracțiune gravă” și dacă punerea sub acuzare e o judecată juridică sau fundamental politică se dezbate de fiecare dată când e folosită.",
+        },
+      },
+    ],
+  },
+
+  // ─── Article III — The Judiciary ────────────────────────────────────────────
+  {
+    id: "art3",
+    ref: "Article III",
+    heading: "Article III — The Judicial Branch",
+    headingRo: "Articolul III — Puterea Judecătorească",
+    text: "",
+    children: [
+      {
+        id: "art3-s1", ref: "Art. III, §1", heading: "Section 1 — The Courts", headingRo: "Secțiunea 1 — Instanțele",
+        text: "The judicial Power of the United States, shall be vested in one supreme Court, and in such inferior Courts as the Congress may from time to time ordain and establish. The Judges, both of the supreme and inferior Courts, shall hold their Offices during good Behaviour, and shall, at stated Times, receive for their Services, a Compensation, which shall not be diminished during their Continuance in Office.",
+        context: {
+          plain: "There is one Supreme Court, and Congress may create the lower federal courts. Federal judges serve \"during good Behaviour\", effectively for life, and their pay cannot be cut, to keep them independent.",
+          plainRo: "Există o singură Curte Supremă, iar Congresul poate crea instanțele federale inferioare. Judecătorii federali servesc „cât timp se poartă bine”, practic pe viață, iar salariul nu le poate fi redus, pentru a le păstra independența.",
+          history: "Life tenure and protected salaries were the Framers' answer to how you make judges fearless: a judge who cannot be fired or starved out can rule against the powerful.",
+          historyRo: "Mandatul pe viață și salariile protejate au fost răspunsul Fondatorilor la cum faci judecătorii neînfricați: un judecător care nu poate fi concediat sau înfometat poate decide împotriva celor puternici.",
+          cases: [
+            { name: "Marbury v. Madison", year: "1803", note: "Established judicial review, the Court's power to strike down laws that violate the Constitution.", noteRo: "A stabilit controlul judiciar, puterea Curții de a anula legile care încalcă Constituția." },
+          ],
+          amendments: [],
+          related: ["art3-s2", "art2-s2"],
+          examples: "The entire federal court system, from district courts to the Supreme Court, is built on this one section.",
+          examplesRo: "Întregul sistem judiciar federal, de la instanțele de district la Curtea Supremă, e construit pe această singură secțiune.",
+          debates: "Whether life tenure still serves the country, and proposals for Supreme Court term limits, spring directly from \"good Behaviour.\"",
+          debatesRo: "Dacă mandatul pe viață mai servește țara, și propunerile pentru limitarea mandatelor la Curtea Supremă, izvorăsc direct din „buna purtare”.",
+        },
+      },
+      {
+        id: "art3-s2", ref: "Art. III, §2", heading: "Section 2 — Jurisdiction & Jury Trial", headingRo: "Secțiunea 2 — Competența și judecata cu jurați",
+        text: "The judicial Power shall extend to all Cases, in Law and Equity, arising under this Constitution, the Laws of the United States, and Treaties made... to Controversies between two or more States;... between Citizens of different States...\n\nIn all Cases affecting Ambassadors... and those in which a State shall be Party, the supreme Court shall have original Jurisdiction. In all the other Cases before mentioned, the supreme Court shall have appellate Jurisdiction...\n\nThe Trial of all Crimes, except in Cases of Impeachment, shall be by Jury; and such Trial shall be held in the State where the said Crimes shall have been committed.",
+        amended: true,
+        amendedNote: "Suits against a state by citizens of another state were removed from federal jurisdiction by the 11th Amendment (1795).",
+        amendedNoteRo: "Procesele împotriva unui stat de către cetățeni ai altui stat au fost scoase din competența federală de Amendamentul 11 (1795).",
+        context: {
+          plain: "Federal courts hear cases arising under the Constitution and federal law, disputes between states, and cases between citizens of different states. The Supreme Court hears a few kinds of cases first, and the rest on appeal. All federal crimes must be tried by jury.",
+          plainRo: "Instanțele federale judecă procese ce decurg din Constituție și legea federală, dispute între state și cazuri între cetățeni ai unor state diferite. Curtea Supremă judecă câteva tipuri de cazuri direct, restul în apel. Toate infracțiunile federale trebuie judecate cu jurați.",
+          history: "This section defines the reach of federal courts. \"Arising under this Constitution\" plus Marbury's judicial review is what makes the Supreme Court the final word on constitutional meaning.",
+          historyRo: "Această secțiune definește întinderea instanțelor federale. „Ce decurge din această Constituție” plus controlul judiciar din Marbury e ceea ce face din Curtea Supremă ultimul cuvânt asupra sensului constituțional.",
+          cases: [
+            { name: "Chisholm v. Georgia", year: "1793", note: "Allowed a citizen to sue a state, prompting the 11th Amendment to reverse it.", noteRo: "A permis unui cetățean să dea în judecată un stat, ceea ce a dus la Amendamentul 11 care l-a inversat." },
+          ],
+          amendments: ["amend-11", "amend-6", "amend-7"],
+          related: ["art3-s1", "art3-s3"],
+          examples: "The jury-trial guarantee here, expanded by the 6th and 7th Amendments, underlies the American jury system.",
+          examplesRo: "Garanția judecății cu jurați de aici, extinsă de Amendamentele 6 și 7, stă la baza sistemului american de jurați.",
+          debates: "State sovereign immunity, how far the 11th Amendment shields states from lawsuits, is a heavily litigated federalism question rooted here.",
+          debatesRo: "Imunitatea suverană a statelor, cât de mult le protejează Amendamentul 11 de procese, e o chestiune de federalism intens litigată, înrădăcinată aici.",
+        },
+      },
+      {
+        id: "art3-s3", ref: "Art. III, §3", heading: "Section 3 — Treason", headingRo: "Secțiunea 3 — Trădarea",
+        text: "Treason against the United States, shall consist only in levying War against them, or in adhering to their Enemies, giving them Aid and Comfort. No Person shall be convicted of Treason unless on the Testimony of two Witnesses to the same overt Act, or on Confession in open Court.\n\nThe Congress shall have Power to declare the Punishment of Treason, but no Attainder of Treason shall work Corruption of Blood, or Forfeiture except during the Life of the Person attainted.",
+        context: {
+          plain: "Treason is defined narrowly and is the only crime defined in the Constitution: making war on the United States or aiding its enemies. Conviction needs either two witnesses to the same act or a confession in open court.",
+          plainRo: "Trădarea e definită restrâns și e singura infracțiune definită în Constituție: purtarea de război împotriva Statelor Unite sau ajutarea inamicilor lor. Condamnarea are nevoie fie de doi martori la același act, fie de o mărturisire în instanță deschisă.",
+          history: "The Framers, who had just committed treason against Britain, deliberately made treason hard to prove so it could not be used, as in England, to crush political opponents.",
+          historyRo: "Fondatorii, care tocmai comiseseră trădare împotriva Marii Britanii, au făcut trădarea greu de dovedit intenționat, ca să nu poată fi folosită, ca în Anglia, pentru a zdrobi adversarii politici.",
+          cases: [
+            { name: "Cramer v. United States", year: "1945", note: "The two-witness rule is strict; each witness must testify to the same overt act of aid.", noteRo: "Regula celor doi martori e strictă; fiecare martor trebuie să depună mărturie despre același act manifest de ajutor." },
+          ],
+          amendments: [],
+          related: ["art3-s2"],
+          examples: "Treason prosecutions are extremely rare in American history, precisely because the bar set here is so high.",
+          examplesRo: "Urmăririle pentru trădare sunt extrem de rare în istoria americană, tocmai fiindcă pragul stabilit aici e atât de ridicat.",
+          debates: "\"Aid and Comfort\" and what counts as \"levying War\" resurface in debates over sedition, insurrection, and modern political violence.",
+          debatesRo: "„Ajutor și sprijin” și ce înseamnă „purtarea de război” reapar în dezbaterile despre sediție, insurecție și violența politică modernă.",
+        },
+      },
+    ],
+  },
+
+  // ─── Article IV — The States ────────────────────────────────────────────────
+  {
+    id: "art4",
+    ref: "Article IV",
+    heading: "Article IV — The States",
+    headingRo: "Articolul IV — Statele",
+    text: "",
+    children: [
+      {
+        id: "art4-s1", ref: "Art. IV, §1", heading: "Section 1 — Full Faith & Credit", headingRo: "Secțiunea 1 — Credință și încredere deplină",
+        text: "Full Faith and Credit shall be given in each State to the public Acts, Records, and judicial Proceedings of every other State. And the Congress may by general Laws prescribe the Manner in which such Acts, Records and Proceedings shall be proved, and the Effect thereof.",
+        context: {
+          plain: "Each state must honor the laws, records, and court judgments of the other states.",
+          plainRo: "Fiecare stat trebuie să onoreze legile, actele și hotărârile judecătorești ale celorlalte state.",
+          history: "This clause knits fifty legal systems into one country: a court judgment or public record valid in one state is recognized across the others.",
+          historyRo: "Această clauză leagă cincizeci de sisteme juridice într-o singură țară: o hotărâre sau un act public valabil într-un stat e recunoscut în celelalte.",
+          cases: [
+            { name: "Obergefell v. Hodges", year: "2015", note: "Required states to recognize same-sex marriages performed in other states (decided mainly on the 14th Amendment).", noteRo: "A cerut statelor să recunoască căsătoriile între persoane de același sex din alte state (decis mai ales pe Amendamentul 14)." },
+          ],
+          amendments: ["amend-14"],
+          related: ["art4-s2"],
+          examples: "Driver's licenses, marriage certificates, and court judgments recognized across state lines all rest on Full Faith and Credit.",
+          examplesRo: "Permisele de conducere, certificatele de căsătorie și hotărârile recunoscute peste granițele statale se sprijină pe Credința și încrederea deplină.",
+          debates: "How far one state must honor another's controversial judgments has surfaced in fights over marriage and, more recently, cross-state legal conflicts.",
+          debatesRo: "Cât trebuie un stat să onoreze hotărârile controversate ale altuia a apărut în luptele despre căsătorie și, mai recent, în conflictele juridice între state.",
+        },
+      },
+      {
+        id: "art4-s2", ref: "Art. IV, §2", heading: "Section 2 — Privileges & Extradition", headingRo: "Secțiunea 2 — Privilegii și extrădare",
+        text: "The Citizens of each State shall be entitled to all Privileges and Immunities of Citizens in the several States.\n\nA Person charged in any State with Treason, Felony, or other Crime, who shall flee from Justice, and be found in another State, shall on Demand of the executive Authority of the State from which he fled, be delivered up, to be removed to the State having Jurisdiction of the Crime.",
+        amended: true,
+        amendedNote: "This section originally included the Fugitive Slave Clause requiring escaped enslaved people to be returned; it was voided by the 13th Amendment (1865).",
+        amendedNoteRo: "Această secțiune includea inițial Clauza Sclavilor Fugari, care cerea returnarea persoanelor înrobite evadate; a fost anulată de Amendamentul 13 (1865).",
+        context: {
+          plain: "A state must treat citizens of other states largely as it treats its own, and must extradite fugitives back to the state where they are charged.",
+          plainRo: "Un stat trebuie să trateze cetățenii altor state în mare ca pe ai săi și trebuie să extrădeze fugarii înapoi în statul unde sunt acuzați.",
+          history: "The Privileges and Immunities Clause stops states from treating out-of-staters as foreigners. The section once also held the Fugitive Slave Clause, one of the Constitution's original compromises with slavery, erased after the Civil War.",
+          historyRo: "Clauza Privilegiilor și Imunităților împiedică statele să-i trateze pe cei din afara statului ca pe străini. Secțiunea conținea cândva și Clauza Sclavilor Fugari, unul dintre compromisurile originale cu sclavia, ștearsă după Războiul Civil.",
+          cases: [
+            { name: "Saenz v. Roe", year: "1999", note: "Protected the right to travel and to be treated equally after moving to a new state.", noteRo: "A protejat dreptul de a călători și de a fi tratat egal după mutarea într-un stat nou." },
+          ],
+          amendments: ["amend-13", "amend-14"],
+          related: ["art4-s1"],
+          examples: "Interstate extradition of criminal suspects and equal treatment of new residents flow from this section.",
+          examplesRo: "Extrădarea între state a suspecților și tratamentul egal al noilor rezidenți decurg din această secțiune.",
+          debates: "How much a state may favor its own residents, in tuition, hunting licenses, or jobs, is still litigated under Privileges and Immunities.",
+          debatesRo: "Cât poate un stat să-și favorizeze proprii rezidenți, la taxe de studii, permise de vânătoare sau locuri de muncă, e încă litigat sub Privilegii și Imunități.",
+        },
+      },
+      {
+        id: "art4-s3", ref: "Art. IV, §3", heading: "Section 3 — New States & Territories", headingRo: "Secțiunea 3 — State noi și teritorii",
+        text: "New States may be admitted by the Congress into this Union; but no new State shall be formed or erected within the Jurisdiction of any other State... without the Consent of the Legislatures of the States concerned as well as of the Congress.\n\nThe Congress shall have Power to dispose of and make all needful Rules and Regulations respecting the Territory or other Property belonging to the United States.",
+        context: {
+          plain: "Congress admits new states and governs federal territories and property. A state cannot be carved out of an existing state without that state's consent.",
+          plainRo: "Congresul admite state noi și guvernează teritoriile și proprietatea federală. Un stat nu poate fi format din altul existent fără consimțământul acelui stat.",
+          history: "This clause let the United States grow from thirteen states to fifty, admitting new states as equals rather than as colonies.",
+          historyRo: "Această clauză a permis Statelor Unite să crească de la treisprezece la cincizeci de state, admițând state noi ca egale, nu ca pe colonii.",
+          cases: [],
+          amendments: [],
+          related: ["art4-s4"],
+          examples: "The path to statehood for territories, and debates over statehood for Washington, D.C., and Puerto Rico, run through this clause.",
+          examplesRo: "Drumul spre statalitate al teritoriilor și dezbaterile despre statalitatea Washington D.C. și Puerto Rico trec prin această clauză.",
+          debates: "Whether D.C. or Puerto Rico should become states is a live political question governed by this section.",
+          debatesRo: "Dacă D.C. sau Puerto Rico ar trebui să devină state e o chestiune politică vie guvernată de această secțiune.",
+        },
+      },
+      {
+        id: "art4-s4", ref: "Art. IV, §4", heading: "Section 4 — Guarantee Clause", headingRo: "Secțiunea 4 — Clauza Garanției",
+        text: "The United States shall guarantee to every State in this Union a Republican Form of Government, and shall protect each of them against Invasion; and on Application of the Legislature, or of the Executive (when the Legislature cannot be convened) against domestic Violence.",
+        context: {
+          plain: "The federal government guarantees every state a republican (representative) form of government and will protect states against invasion and, on request, against internal violence.",
+          plainRo: "Guvernul federal garantează fiecărui stat o formă de guvernare republicană (reprezentativă) și va proteja statele împotriva invaziei și, la cerere, împotriva violenței interne.",
+          history: "The Guarantee Clause promises that no state may slide into monarchy or dictatorship. Its meaning is largely enforced through politics rather than the courts.",
+          historyRo: "Clauza Garanției promite că niciun stat nu poate aluneca în monarhie sau dictatură. Sensul ei e aplicat în mare prin politică, nu prin instanțe.",
+          cases: [
+            { name: "Luther v. Borden", year: "1849", note: "What counts as a \"republican\" government is a political question for Congress, not the courts.", noteRo: "Ce înseamnă un guvern „republican” e o chestiune politică pentru Congres, nu pentru instanțe." },
+          ],
+          amendments: [],
+          related: ["art4-s3", "art1-s8"],
+          examples: "Federal troops sent to protect states, and the promise of representative government, rest on this clause.",
+          examplesRo: "Trupele federale trimise să protejeze statele și promisiunea guvernării reprezentative se sprijină pe această clauză.",
+          debates: "Whether the Guarantee Clause can be used in court, for example against extreme gerrymandering, is a long-debated question.",
+          debatesRo: "Dacă Clauza Garanției poate fi folosită în instanță, de exemplu împotriva gerrymandering-ului extrem, e o chestiune îndelung dezbătută.",
+        },
+      },
+    ],
+  },
+
+  // ─── Article V — Amendment ──────────────────────────────────────────────────
+  {
+    id: "art5",
+    ref: "Article V",
+    heading: "Article V — Amending the Constitution",
+    headingRo: "Articolul V — Modificarea Constituției",
+    text: "The Congress, whenever two thirds of both Houses shall deem it necessary, shall propose Amendments to this Constitution, or, on the Application of the Legislatures of two thirds of the several States, shall call a Convention for proposing Amendments, which in either Case, shall be valid to all Intents and Purposes, as Part of this Constitution, when ratified by the Legislatures of three fourths of the several States, or by Conventions in three fourths thereof... Provided that... no State, without its Consent, shall be deprived of its equal Suffrage in the Senate.",
+    context: {
+      plain: "The Constitution can be amended in two stages: an amendment is proposed by two-thirds of both houses of Congress (or a convention called by two-thirds of the states), then ratified by three-fourths of the states. No state can be stripped of its equal vote in the Senate without agreeing.",
+      plainRo: "Constituția poate fi modificată în două etape: un amendament e propus de două treimi din ambele camere ale Congresului (sau de o convenție cerută de două treimi din state), apoi ratificat de trei sferturi din state. Niciun stat nu poate fi privat de votul său egal în Senat fără acord.",
+      history: "Article V makes the Constitution hard, but not impossible, to change. This deliberate difficulty is why it has been amended only 27 times in more than 230 years.",
+      historyRo: "Articolul V face Constituția greu, dar nu imposibil, de schimbat. Această dificultate deliberată e motivul pentru care a fost modificată doar de 27 de ori în peste 230 de ani.",
+      cases: [
+        { name: "Coleman v. Miller", year: "1939", note: "Many questions about the amendment process are political questions left to Congress.", noteRo: "Multe întrebări despre procesul de amendare sunt chestiuni politice lăsate Congresului." },
+      ],
+      amendments: [],
+      related: ["art1-s3", "art7"],
+      examples: "All 27 amendments were proposed by Congress; the never-used convention route is periodically revived by state campaigns.",
+      examplesRo: "Toate cele 27 de amendamente au fost propuse de Congres; ruta convenției, niciodată folosită, e reînviată periodic de campanii statale.",
+      debates: "Whether to call an Article V \"convention of states\", and how one would be limited, is a recurring and contested proposal.",
+      debatesRo: "Dacă să se convoace o „convenție a statelor” în baza Articolului V, și cum ar fi limitată, e o propunere recurentă și disputată.",
+    },
+  },
+
+  // ─── Article VI — Supremacy ─────────────────────────────────────────────────
+  {
+    id: "art6",
+    ref: "Article VI",
+    heading: "Article VI — Federal Supremacy",
+    headingRo: "Articolul VI — Supremația Federală",
+    text: "All Debts contracted and Engagements entered into, before the Adoption of this Constitution, shall be as valid against the United States under this Constitution, as under the Confederation.\n\nThis Constitution, and the Laws of the United States which shall be made in Pursuance thereof; and all Treaties made... shall be the supreme Law of the Land; and the Judges in every State shall be bound thereby...\n\nThe Senators and Representatives before mentioned, and the Members of the several State Legislatures, and all executive and judicial Officers... shall be bound by Oath or Affirmation, to support this Constitution; but no religious Test shall ever be required as a Qualification to any Office or public Trust under the United States.",
+    context: {
+      plain: "The Constitution, federal law, and treaties are \"the supreme Law of the Land\", overriding conflicting state law. Every official swears to support the Constitution, and no religious test may ever be required for office.",
+      plainRo: "Constituția, legea federală și tratatele sunt „legea supremă a țării”, având prioritate față de legea statală contrară. Fiecare oficial jură să susțină Constituția, iar niciun test religios nu poate fi cerut vreodată pentru funcție.",
+      history: "The Supremacy Clause is what makes federalism work: when state and federal law collide, federal law wins. The ban on religious tests was radical in 1787, when many states still required officeholders to be Protestant or Christian.",
+      historyRo: "Clauza Supremației e ceea ce face federalismul să funcționeze: când legea statală și cea federală se ciocnesc, câștigă legea federală. Interzicerea testelor religioase era radicală în 1787, când multe state cereau ca funcționarii să fie protestanți sau creștini.",
+      cases: [
+        { name: "McCulloch v. Maryland", year: "1819", note: "A state cannot tax or obstruct a valid federal institution; federal law is supreme.", noteRo: "Un stat nu poate impozita sau obstrucționa o instituție federală validă; legea federală e supremă." },
+        { name: "Gibbons v. Ogden", year: "1824", note: "Valid federal law preempts conflicting state law.", noteRo: "Legea federală validă are prioritate față de legea statală contrară." },
+      ],
+      amendments: ["amend-1", "amend-10"],
+      related: ["art1-s8", "art3-s2"],
+      examples: "Federal preemption of state laws, from drug regulation to immigration, is decided under the Supremacy Clause every year.",
+      examplesRo: "Prioritatea federală asupra legilor statale, de la reglementarea drogurilor la imigrație, e decisă sub Clauza Supremației în fiecare an.",
+      debates: "How much room states have to set their own course, from cannabis to climate to immigration, is a constant supremacy-and-federalism tension.",
+      debatesRo: "Cât spațiu au statele să-și urmeze propriul drum, de la canabis la climă la imigrație, e o tensiune constantă între supremație și federalism.",
+    },
+  },
+
+  // ─── Article VII — Ratification ─────────────────────────────────────────────
+  {
+    id: "art7",
+    ref: "Article VII",
+    heading: "Article VII — Ratification",
+    headingRo: "Articolul VII — Ratificarea",
+    text: "The Ratification of the Conventions of nine States, shall be sufficient for the Establishment of this Constitution between the States so ratifying the Same.\n\nDone in Convention by the Unanimous Consent of the States present the Seventeenth Day of September in the Year of our Lord one thousand seven hundred and Eighty seven... In Witness whereof We have hereunto subscribed our Names, Go. Washington—Presidt. and deputy from Virginia.",
+    context: {
+      plain: "The Constitution would take effect once nine of the thirteen states ratified it, and it was signed in Philadelphia on September 17, 1787.",
+      plainRo: "Constituția intra în vigoare odată ce nouă din cele treisprezece state o ratificau, și a fost semnată la Philadelphia pe 17 septembrie 1787.",
+      history: "Requiring only nine states, not all thirteen, was itself bold: it let the new Constitution go into effect without unanimous consent, bypassing states that might have blocked it forever.",
+      historyRo: "Cerința de doar nouă state, nu toate treisprezece, era ea însăși îndrăzneață: a permis noii Constituții să intre în vigoare fără consimțământ unanim, ocolind statele care ar fi putut-o bloca la nesfârșit.",
+      cases: [],
+      amendments: [],
+      related: ["preamble", "art5"],
+      examples: "September 17 is now celebrated as Constitution Day, marking the signing recorded in this article.",
+      examplesRo: "17 septembrie e sărbătorit acum ca Ziua Constituției, marcând semnarea consemnată în acest articol.",
+      debates: "The decision to ratify by state conventions, rather than legislatures, was meant to root the Constitution in the people, echoing \"We the People.\"",
+      debatesRo: "Decizia de a ratifica prin convenții statale, nu prin legislaturi, era menită să înrădăcineze Constituția în popor, în ecoul lui „We the People”.",
+    },
   },
 ];
