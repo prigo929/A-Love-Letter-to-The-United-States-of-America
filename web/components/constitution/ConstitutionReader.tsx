@@ -191,13 +191,7 @@ export function ConstitutionReader() {
           mixBlendMode: "screen",
         }}
       />
-      {/* Reading-progress bar, pinned just under the fixed site header */}
-      <div className="fixed left-0 right-0 top-16 z-40 h-[3px] bg-transparent md:top-20">
-        <div
-          className="h-full origin-left transition-[width] duration-150"
-          style={{ width: `${progress * 100}%`, background: `linear-gradient(90deg, ${PGOLD}, ${GOLD})` }}
-        />
-      </div>
+
 
       <Overture isRo={isRo} />
 
