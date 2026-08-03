@@ -45,10 +45,10 @@ const PSEAL = "#7c1d12";
 const SERIF = "'Playfair Display', Georgia, 'Times New Roman', serif";
 const PAPER_TEXTURE = "/images/constitution/parchment-paper.jpg";
 
-// Sticky offsets (the site header is fixed at h-20 ≈ 5rem).
-const TIMELINE_TOP = "lg:top-[5.5rem]";
-const PANEL_TOP = "lg:top-[9.5rem]";
-const PANEL_MAXH = "lg:max-h-[calc(100vh-10.5rem)]";
+// Sticky offsets (the site header is fixed at h-16 md:h-20).
+const TIMELINE_TOP = "top-16 md:top-20 lg:top-[5.5rem]";
+const PANEL_TOP = "top-28 md:top-36 lg:top-[9.5rem]";
+const PANEL_MAXH = "max-h-[calc(100vh-11rem)]";
 
 // ── Tab definitions ───────────────────────────────────────────────────────────
 type TabKey = keyof Pick<
@@ -212,7 +212,7 @@ export function ConstitutionReader() {
         <div className="lg:grid lg:grid-cols-[190px_minmax(0,1fr)_340px] xl:grid-cols-[210px_minmax(0,1fr)_370px] 2xl:grid-cols-[230px_minmax(0,1fr)_400px] lg:gap-6 xl:gap-8 w-full">
 
           {/* ── LEFT: Outline ── */}
-          <aside className={`${PANEL_TOP} lg:sticky ${PANEL_MAXH} lg:self-start lg:overflow-y-auto lg:pr-1`}>
+          <aside className={`${PANEL_TOP} sticky ${PANEL_MAXH} self-start overflow-y-auto pr-1`}>
             <button
               onClick={() => setOutlineOpen((v) => !v)}
               className="mb-3 flex w-full items-center justify-between rounded-lg border px-4 py-2.5 text-left text-xs font-semibold uppercase tracking-[0.2em] lg:hidden"
@@ -273,7 +273,7 @@ export function ConstitutionReader() {
           </main>
 
           {/* ── RIGHT: Context ── */}
-          <aside className={`mt-10 lg:mt-0 ${PANEL_TOP} lg:sticky ${PANEL_MAXH} lg:self-start lg:overflow-y-auto lg:pl-1`}>
+          <aside className={`mt-10 lg:mt-0 ${PANEL_TOP} sticky ${PANEL_MAXH} self-start overflow-y-auto pl-1`}>
             <ContextPanel
               node={focusNode}
               ctx={focusCtx}
@@ -403,7 +403,7 @@ function Outline({
           return (
             <li key={node.id} className="pt-2">
               <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.12em]" style={{ color: GOLD, fontFamily: SERIF }}>
-                {node.ref}
+                {isRo ? (node.id === "amendments" ? "AMENDAMENTE" : node.headingRo ? node.headingRo.split("—")[0].trim().toUpperCase() : node.ref.toUpperCase()) : node.ref}
               </p>
               <ul className="space-y-0.5 border-l pl-3" style={{ borderColor: GOLD_LINE }}>
                 {node.children!.map((child) => (
