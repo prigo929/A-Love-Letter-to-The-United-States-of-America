@@ -166,6 +166,29 @@ export function ConstitutionReader() {
   const focusNode = nodeMap.get(focusId);
   const focusCtx = focusNode?.context;
 
+  const outlineAsideRef = useRef<HTMLElement | null>(null);
+
+  // Table of Contents auto-scroll: keep active section focused & centered in outline panel
+  useEffect(() => {
+    if (!focusId) return;
+    const asideEl = outlineAsideRef.current;
+    if (!asideEl) return;
+
+    const activeBtn = asideEl.querySelector<HTMLElement>(`[data-outline-id="${focusId}"]`);
+    if (!activeBtn) return;
+
+    const containerRect = asideEl.getBoundingClientRect();
+    const btnRect = activeBtn.getBoundingClientRect();
+
+    const relativeTop = btnRect.top - containerRect.top + asideEl.scrollTop;
+    const targetScrollTop = relativeTop - asideEl.clientHeight / 2 + btnRect.height / 2;
+
+    asideEl.scrollTo({
+      top: Math.max(0, targetScrollTop),
+      behavior: "smooth",
+    });
+  }, [focusId]);
+
   const availableTabs = useMemo(
     () => TABS.filter((t) => tabHasContent(focusCtx, t.key, isRo)),
     [focusCtx, isRo]
@@ -219,7 +242,7 @@ export function ConstitutionReader() {
         <div className="lg:grid lg:grid-cols-[190px_minmax(0,1fr)_340px] xl:grid-cols-[210px_minmax(0,1fr)_370px] 2xl:grid-cols-[230px_minmax(0,1fr)_400px] lg:gap-6 xl:gap-8 w-full">
 
           {/* ── LEFT: Outline ── */}
-          <aside className={`${PANEL_TOP} sticky ${PANEL_MAXH} self-start overflow-y-auto pr-1`}>
+          <aside ref={outlineAsideRef} className={`${PANEL_TOP} sticky ${PANEL_MAXH} self-start overflow-y-auto pr-1`}>
             <button
               onClick={() => setOutlineOpen((v) => !v)}
               className="mb-3 flex w-full items-center justify-between rounded-lg border px-4 py-2.5 text-left text-xs font-semibold uppercase tracking-[0.2em] lg:hidden"
@@ -474,6 +497,7 @@ function OutlineLink({
   return (
     <li>
       <button
+        data-outline-id={node.id}
         onClick={() => onSelect(node.id)}
         className="group block w-full rounded px-2 py-1 text-left text-[13px] leading-snug transition-colors"
         style={{
