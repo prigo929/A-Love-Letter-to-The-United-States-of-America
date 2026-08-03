@@ -2209,308 +2209,268 @@ This section is for future AI-assisted edits. The goal is to explain how the cod
 
 ## 📜 Deep Dive: Constitution & Democracy Exhibit
 
-The Constitution exhibit is the most technically complex section of the platform, designed to feel like a high-end digital museum.
+The Constitution exhibit is the most technically complex section of the platform, functioning as a museum-grade digital exhibition engineered around 250 years of democratic stability.
 
 <p align="center">
   <img src="web/IMAGES/Constitution/National Archives Bill of Rights.jpg" width="600" alt="National Archives Bill of Rights" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
-### 1. The Cinematic Exhibit Architecture
+### 1. Architectural Blueprint & Server-Client Hybrid Pattern
+- **Server-Side Data Orchestration (`app/constitution/page.tsx`)**: Fetches full bilingual datasets (`constitution-data.ts`, `federalism-data.ts`, `electoral-map-data.ts`) on the server using `getServerLocale()`. This ensures zero Cumulative Layout Shift (`CLS`), full SSR indexing for search crawlers, and rapid initial paint.
+- **Client-Interactive Component Islands**: Complex stateful interfaces—such as `PolicyLaboratory`, `SeparationDiagram`, `ElectoralMap`, and `AmendmentAccordion`—are isolated as client islands to keep the server bundle lean and fast.
+- **Museum Label Design System (`components/constitution/ExhibitComponents.tsx`)**: Implements specialized UI wrappers (`ExhibitCase`, `ConservationSpotlight`, `AccessionLabel`, `ProvenanceBadge`) that format historical facts into physical museum plaque layouts.
 
-We use a "Server-Hub, Client-Interactive" pattern:
-- **Server-Side Hub (`app/constitution/page.tsx`)**: Fetches all bilingual data (metrics, clauses, founders) on the server using `getServerLocale()`. This ensures zero layout shift (CLS) and perfect SEO for both English and Romanian versions.
-- **Client-Interactive Sections**: Complex animations (like the `ClauseVault` or `SeparationDiagram`) are isolated into client components to keep the main page light and performant.
-- **Exhibit Components**: We use a specialized component library in `components/constitution/ExhibitComponents.tsx` (e.g., `ExhibitCase`, `ConservationSpotlight`, `AccessionLabel`) to wrap data in a consistent, premium aesthetic that mimics physical museum labels.
+### 2. Algorithmic State Engines & Data Simulators
+- **Policy Laboratory (`PolicyLaboratory.tsx`)**: A multidimensional scoring engine that calculates the Euclidean distance between user-configured policy levers (tax rates, regulatory scale, social policies) and real-world 50-state data. Returns a real-time percentage match to state policy environments.
+- **Tri-Branch Separation Visualizer (`SeparationDiagram.tsx`)**: An interactive vector state machine mapping historic checks and balances (presidential vetoes, congressional overrides, Supreme Court judicial reviews) across co-equal branches.
+- **Founding Constellation (`constitution-data.ts`)**: Relational graph mapping coordinate nodes (`cx`, `cy`) for 12 Founders, displaying historical collaboration networks, Federalist/Anti-Federalist debates, and constitutional authorship.
+- **Constitution Race Visualizer (`ConstitutionAnimations.tsx`)**: Animated time-series simulation tracking the longevity of the 1787 US Constitution against global constitutional collapses and re-writes.
+- **1788–2024 Electoral Archive Map (`ElectoralMap.tsx`)**: Interactive vector map rendering presidential, senate, house, and gubernatorial elections across 236 years with deterministic mid-term seat-flip logic and bipartite Senate representation splits.
 
-### 2. Interactive Logic & Simulators
-
-- **Policy Laboratory (Federalism)**: Located in `components/constitution/PolicyLaboratory.tsx`. It uses a **multidimensional scoring engine** that calculates the Euclidean distance between user-defined policy levers and the real-world metrics of all 50 states. It provides a "Policy Match" percentage based on fiscal, social, and regulatory alignment.
-- **Equilibrium Diagram (Separation of Powers)**: A visual state machine in `components/constitution/ConstitutionAnimations.tsx`. It maps historical "Checks and Balances" cases to interactive vectors, demonstrating the permanent tension between the Legislative, Executive, and Judicial branches.
-- **Founding Constellation**: An SVG-based interaction that uses coordinate mapping (`cx`, `cy` in `constitution-data.ts`) to visualize the ideological and personal connections between the Founders.
-
-### 3. Visual Excellence & Animation
-
-- **Centralized Motion**: All high-fidelity transitions are orchestrated via `lib/animations.ts`. We avoid inline Framer Motion variants to ensure timing consistency across the exhibit.
-- **Tactile Document Design**: We use `mix-blend-mode: screen` with static marble textures (`marble-texture.webp`) and `InkParticles` to create a "living parchment" feel. This is significantly more performant than using video backgrounds for the same effect.
-- **Bilingual Schema Integrity**: All data in `lib/data/constitution-data.ts` and `lib/data/federalism-data.ts` must follow the strict `text` / `textRo` parity. The exhibit is designed to be fully substantive in both languages.
+### 3. Motion System & Parchment Rendering
+- **Centralized Animation Tokens (`lib/animations.ts`)**: All timing curves, spring stiffnesses, and Framer Motion variants are centrally declared to enforce timing harmony.
+- **Tactile Parchment Canvas**: Combines SVG grain overlays with GPU-accelerated CSS animations (`ConstitutionAurora`), `InkParticles`, and `mix-blend-mode: screen` on static marble textures (`marble-texture.webp`).
+- **Strict Bilingual Field Parity**: All data structures in `lib/data/constitution-data.ts` strictly enforce `en` / `ro` field parity at the type definition layer.
 
 ---
 
 ## 📈 Deep Dive: Economy & Capital Narrative Engine
 
-The Economy vertical functions as a high-fidelity data visualizer, translating complex macroeconomic indicators into compelling, editorial-grade stories.
+The Economy vertical translates complex macroeconomic indicators, capital market liquidity, and venture capital flows into Wall Street Journal-grade financial journalism.
 
 <p align="center">
   <img src="web/IMAGES/Economy/100 dollar bill.jpg" width="600" alt="Exorbitant Privilege 100 Dollar Bill" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
-### 1. Hardened Responsive Charting
-We developed custom configurations on top of the Recharts library to handle dense historical data without mobile degradation:
-- **Angle-Optimized Labels**: Rotated X-axis indicators (e.g., `-35 degrees`) and shifted text anchors to guarantee readability on compact viewports.
-- **High-Contrast USA Highlights**: Leveraged a conditional renderer that checks if a data item represents the United States, automatically applying our primary `Glory Gold` HSL color fill while keeping comparison countries in subtle, desaturated slate tones.
-- **Explicit Safety Gutters**: Configured custom margin objects on the `ResponsiveContainer` wrapper to prevent label clipping along chart edges.
+### 1. Macro-Capital Editorial Aesthetic & Typography
+- **Heavy Editorial Typography**: Pairs heavy serif headers (`E.B. Garamond` / `Playfair`) with bold metadata labels (`.macro-eyebrow` at 18px/900 weight, `.macro-metadata` at 16px/900 weight) to guarantee extreme legibility on high-contrast obsidian backgrounds.
+- **Glassmorphic Data Cards**: Dark slate cards (`border-white/10`, `bg-white/4`) featuring large numeric counter animations, high-contrast borders, and clean source attributions.
+- **Sticky Table of Contents (`FloatingTOC.tsx`)**: Side-pinned navigation tracking active viewport sections as users scroll through the $32.4T GDP overview.
 
-### 2. Live Telemetry Simulators
-- **Dynamic Debt Ticker**: An active timer in `/economy/debt` utilizing high-frequency interval counts to project real-time shifts in the national budget based on official annual deficit models.
-- **Startup Seat Cartogram**: Built a specialized geographic model representing the 435 seats of the US House of Representatives, styled as a modular grid where states glow based on active venture capital activity.
+### 2. Custom Recharts & Financial Data Engine
+- **Angle-Optimized Chart Axes**: Rotated X-axis tick labels (`-35°`) and dynamic tick filtering to prevent label collision on mobile screens.
+- **Glory Gold Highlight Conditionals**: Chart wrappers (`GdpBarChart`, `VCBarChart`) inspect data items to automatically apply `Glory Gold` HSL fills to the United States while muting peer nations in desaturated slate.
+- **Reference Line Event Annotations**: The `SP500Chart` embeds historical event markers (1929 Crash, WWII, 2008 GFC, 2020 COVID, 2026 AI Boom) directly onto the 90-year logarithmic price curve.
+- **18-Chart Capital Markets Suite (`/economy/capital-markets`)**: Covers S&P 500, NASDAQ, VIX, Buffett Indicator, Fed Funds Rate, Yield Curve Inversion, High-Yield Spreads, Shiller CAPE, Household Net Worth, and M2 Money Supply.
+
+### 3. Startup & Dollar Reserve Observatories
+- **Venture Capital Ecosystem Dossiers (`/economy/startups-venture-capital`)**: Tracks 659 unicorn companies across Silicon Valley, NYC, Boston, Austin, and Miami, featuring a startup timeline from 1975 to the generative AI era.
+- **Dollar Dominance & Reserve Currency Observatory (`/economy/dollar-dominance`)**: Analyzes the dollar's 56.8% global reserve share, DXY index, petrodollar mechanics, dedollarization empirical audits, and a high-resolution vintage bill gallery.
 
 ---
 
 ## 🌲 Deep Dive: Natural Majesty & Continental Scale
 
-The Nature vertical is designed for absolute atmospheric immersion, letting developers and users explore the vast scale of the American wilderness.
+The Nature vertical provides an immersive spatial experience celebrating North America's 63 National Parks, Arctic tundra, desert canyons, and 85 million NPS conservation acres.
 
 <p align="center">
   <img src="web/IMAGES/Landscapes/Grand Teton National Park.jpg" width="600" alt="Grand Teton National Park Mountain Marvel" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
-### 1. Spatial Editorial Animations
-- **Canyon Strata Reveal**: An interactive scroll component that uses Framer Motion's `useScroll` hook to translate layered vector svgs representing the geological strata of the Grand Canyon, exposing different factual eras as the user descends.
-- **Geyser Eruption Interval**: A client-side state machine displaying a real-time countdown to the next geyser eruption, utilizing dynamic particle canvases to simulate hot-water eruptions upon countdown completion.
-- **Aurora Ambient Lights**: Utilizes absolute-positioned CSS radial-gradients with slow GPU-friendly keyframe animations to create the green shimmering curtains of the Northern Lights behind your Alaska fact sheets.
+### 1. Spatial Editorial Animations & Particle Canvases
+- **Geological Strata Reveal (`CanyonStrataReveal.tsx`)**: Interactive scroll component using Framer Motion's `useScroll` hook to translate layered vector SVGs representing 1.8 billion years of Grand Canyon rock strata.
+- **Geyser Eruption Simulator (`Yellowstone`)**: Dynamic particle canvas simulating hydrothermal eruptions and supervolcano geothermal activity.
+- **Ken-Burns Crossfade Engine (`NatureHeroCrossfade.tsx`)**: Coordinated scale-and-fade image engine smoothly transitioning between five high-resolution landscape panoramas.
+- **Aurora Borealis Ambient Lighting (`Alaska`)**: GPU-accelerated CSS keyframe animations simulating green curtain auroras over Alaskan wilderness fact sheets.
 
-### 2. High-Contrast Legibility Standards
-We implemented strict typographic rules sitewide to safeguard readability:
-- **Earthy Grids & Spotlights**: Enforced high-contrast background spots (with an absolute minimum of `70%–85%` contrast values) to keep all labels, quotes, and metadata extremely legible over our dynamic natural backgrounds.
-- **Typographic Scale Guards**: Replaced fluid, low-contrast text scales with hard labels (minimum `14px` at `800` weight for secondary labels, and `16px` at `900` weight for headings).
+### 2. High-Contrast Typographic System
+- **Spatial Metadata Labels**: High-contrast text labels (`.nat-text-label` at 16px/900 weight, `.nat-text-metadata` at 14px/800 weight) engineered to remain legible over dynamic photography.
+- **Ecological Biodiversity Observatory (`BiodiversityChart.tsx`)**: Comparative data visualizations mapping US climate zones and protected land networks against global peers.
+- **Natural Resources & Energy Infrastructure (`/natural-resources`)**: Deep-dive gallery and data observatory detailing agricultural basins, center-pivot irrigation, mineral wealth, nuclear power, and water infrastructure (Hoover Dam, California Aqueduct).
 
 ---
 
 ## 🎭 Deep Dive: Culture & The American Operating System
 
-The Culture vertical explores the global reach of the "American Operating System", soft power, democratic tastes, and corporate exports that shape modern lifestyle.
+The Culture vertical examines "The American Operating System"—how soft power, democratic tastes, Hollywood cinema, music, fashion, and private corporate logos formed a global cultural operating system.
 
 <p align="center">
   <img src="web/IMAGES/Culture/Iconic Things/Times Square.jpg" width="600" alt="Times Square: Heart of Global Culture" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
-### 1. Life Magazine × Warm Editorial Design
-- **Dark-to-Cream Rhythm**: The pages cycle between high-contrast dark sections and soft cream panels, mirroring the premium printing look of vintage mid-century American photojournals.
-- **Brand Logo Marquee**: Implements an infinite, GPU-accelerated horizontal marquee looping iconic American corporate logos (Apple, Nike, Coca-Cola) to illustrate private enterprise prominence.
+### 1. Master Corporate Hub (`MasterCorporateHub.tsx`)
+- **5 Economic Eras Timeline**: Interactive timeline spanning Industrial Foundations (1850s–1890s), Mass Production & Flight (1900s–1930s), Suburban Boom (1940s–1960s), Computing Networks (1970s–1990s), and Cloud & AI (2000s–Present).
+- **Foundational Product Breakthroughs**: Highlights 6 revolutionary products (Levi's 501 Jeans 1873, Model T 1908, iPhone 2007, etc.).
+- **Iconic Slogans Dossier**: Analyzes slogans that shaped vocabulary (*"Just Do It"*, *"Think Different"*, *"I'd Like to Buy the World a Coke"*).
+- **Founders' Garages Grid**: Highlighting humble beginnings (Apple in Los Altos, Amazon in Bellevue, HP in Palo Alto, Disney in North Hollywood, Walmart in Bentonville, Harley-Davidson in Milwaukee).
 
 <p align="center">
   <img src="web/IMAGES/Culture/Iconic Things/American Diner inside.jpg" width="600" alt="Classic American Diner: Democratized Culinary Spaces" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
-### 2. Immersive Cultural Directories
-- **Music Mapping**: Interactive audio-visual nodes tracking the regional births of Jazz, Blues, Rock & Roll, and Hip-Hop.
-- **Asymmetry of Influence**: Implements Recharts radar grids displaying how cultural exports dominate global trade balances.
-- **Interactive Archive Vault**: Allows users to scroll through cards summarizing decades of cultural influence (from the 1920s Jazz Age to the 1990s digital dawn).
+### 2. Interactive Culinary & Soft Power Explorers
+- **Democratic Palate Explorers (`/culture/food-and-drinks`)**: Interactive modules for Four Foods (`FourFoodsExplorer`), Seven Desserts (`SevenDessertsExplorer`), Pizza Americanization (5-chapter dossier), Fast Food Big Three (`FastFoodBigThree`), and Chip Flavor Canon (`ChipFlavorCanon`).
+- **Eight American Balls Canon (`/culture/sports`)**: Interactive exploration of American sports heritage, stadium economics, Olympic dominance, and SI Covers Vault.
+- **Childhood & High School Tropes (`/culture/growing-up-american`)**: Toy Canon (`ToyCanon`), Victorian toy symbols (`ToySymbols`), School Supplies Canon (`SchoolSuppliesCanon`), and High School Clichés (`HighSchoolTropes`).
+- **8 Distinctly American Aesthetics (`/culture/fashion`)**: Interactive fashion canon tracking denim, Western wear, Ivy style, and global streetwear (`AmericanAestheticsCanon`).
 
 ---
 
 ## 💡 Deep Dive: Innovation & Technological Stack
 
-The Innovation vertical illustrates the synthesis of public foundational research (DARPA, NASA) and high-risk venture capital that powers the global technological frontier.
+The Innovation vertical details how public foundational research (ARPANET, NASA, NIH, DARPA) combined with private venture risk to build the modern digital world.
 
 <p align="center">
   <img src="web/IMAGES/Technology/Space/Buzz_salutes_the_U.S._Flag on the lunar surface.jpg" width="600" alt="Apollo 11 Moon Landing: The Ultimate Frontier" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
-### 1. The Semiconductor and AI Chokehold
-- **GPU Cluster Visualizations**: Explores Silicon Valley's design leadership, charting raw GPU node counts, AI training clusters, and global semiconductor revenue distribution.
-- **Wafer Design Strata**: Graphic breakdowns detailing intellectual property layers (EDA software, chip instruction sets, packaging) controlled by US firms.
+### 1. Silicon Valley AI & Semiconductor Chokehold
+- **GPU Cluster Visualizations (`/innovation/ai-and-tech`)**: Charts raw GPU node density, frontier AI training clusters, and CUDA software moat dominance.
+- **Smartphone & Silicon Duopoly (`/innovation/smartphones`)**: Examines the 2007 iPhone launch, A18 Pro silicon architecture, iOS/Android 99% global OS share, and App Store economics.
 
 <p align="center">
   <img src="web/IMAGES/Technology/NVIDIA H100 GPU on new SXM5 Module. GTC2022_SXM5_01_v001_DL.png" width="600" alt="NVIDIA H100 SXM5 Module: Powering Generative AI" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
-### 2. Decentralized Cloud and Space Logistics
-- **Hyper-Scale Infrastructure**: Plots AWS, Azure, and Google Cloud server density, showing how US companies host the global modern digital commons.
-- **Orbital Capital**: Documents commercial space breakthroughs (SpaceX reusable rocketry, Starlink constellations) and deep-space history (Apollo/Saturn V).
-
----
-
-> *“We choose to go to the Moon in this decade and do the other things, not because they are easy, but because they are hard; because that challenge is one that we are willing to accept.”*  
-> 🚀 **John F. Kennedy** · *Rice University Address, 1962*
+### 2. Hyper-Scale Cloud & Commercial Orbit Access
+- **Hyper-Scale Infrastructure (`/innovation/cloud-computing`)**: Maps AWS, Azure, and Google Cloud global server footprints powering the digital economy.
+- **Commercial Space Orbit (`/innovation/space-technology`)**: Documents SpaceX Starship reusability, Starlink satellite arrays, Artemis lunar return, and Apollo legacy archives.
+- **Unreal Engine 5 Real-Time Showcase (`/innovation/gaming`)**: Audits US gaming engine leadership, real-time graphics rendering stats, and top studio ecosystems.
 
 ---
 
 ## 🎖️ Deep Dive: The Arsenal of Democracy & Global Posture
 
-The Military vertical provides a comprehensive, interactive dossier tracking the defense logistics, space dominance, nuclear triad, and naval posture that support international security stability.
+The Military vertical provides a 6-page defense-tech intelligence platform detailing force structure, carrier strike groups, stealth aviation, nuclear triad, and global bases.
 
 <p align="center">
   <img src="web/IMAGES/Military/Navy/uss_gerald_r_ford_ford_class_cvn.jpg" width="600" alt="USS Gerald R. Ford CVN Strike Group: Absolute Deterrence" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
-### 1. Vector Jitter-Clustering Naval Coordinates
-- **Circular Orbit Mapping**: Standardized custom trigonometric clustering to space out aircraft carriers docked at identical coordinates, ensuring clean hover details and clickability for Norfolk, San Diego, and Yokosuka bases.
-- **Spec-Sheet Dossier Overlays**: Custom UI drawers detailing armament payload, aviation wing size, and nuclear core specifications for Nimitz and Gerald R. Ford class carriers.
+### 1. Live Global Command Map (`GlobalCommandMap.tsx`)
+- **Trigonometric Jitter-Clustering**: Implements circular orbit displacement algorithms to resolve overlapping homeport markers for Carrier Strike Groups stationed at Norfolk, San Diego, and Yokosuka.
+- **Weapon System Spec Modals (`WeaponSystemCard.tsx`)**: High-fidelity detail drawers for Ford-class carriers, Arleigh Burke Flight III destroyers, Ohio/Virginia submarines, F-22, F-35, B-2, and B-21 Raider.
 
-### 2. Triad Deterrence & IC Intelligence Networks
-- **Three-Legged Deterrence Simulator**: Interactive vector triangle mapping silo, bomber (B-2, B-21), and ballistic submarine (Ohio, Columbia class) readiness states.
-- **Five Eyes Intelligence Geometry**: Interactive visualization outlining intelligence-sharing interfaces (NSA, CIA, GCHQ, etc.) alongside chronological failures and agency scope profiles.
-
-### 3. Global Bases & Logistics Command
-- **Global Command Map**: An SVG-driven world projection mapping domestic hubs, overseas bases, and regional theater operational sectors.
-- **Base Dossier Drawers**: Classified dossier panels detailing coordinates, branch command, mission summaries, and infrastructure capability metrics for 23 strategic installations.
-- **Alliance & Force Multipliers**: Integrated details detailing the logistics backbone of TRANSCOM, AMC, SDDC, and AUKUS/NATO collective security networks.
-
----
-
-> *“To be prepared for war is one of the most effectual means of preserving peace.”*  
-> ⚓️ **George Washington** · *First Annual Message to Congress, 1790*
+### 2. Triad Deterrence & Intelligence Community
+- **Nuclear Triad Simulator (`NuclearTriadDiagram.tsx`)**: Interactive vector triangle explaining land-based Minuteman III ICBMs, sea-based Trident II D5 SSBNs, and air-based strategic bombers.
+- **Five Eyes & Intelligence Pentagon (`/military/intelligence`)**: Vector geometry mapping Five Eyes intelligence sharing alongside CIA, NSA, NRO, NGA, DIA agency dossiers and interactive redaction-bar cards.
+- **Global Bases Network (`/military/global-bases`)**: 23-installation intelligence briefing featuring an interactive world globe, regional theater breakdown, and installation dossier drawers with high-res local images.
 
 ---
 
 ## 🔬 Deep Dive: Science, Innovation & Higher Education
 
-The Science and Universities verticals outline the core research ecosystems, academic endowments, and tech-transfer frameworks that drive global innovation.
+The Science and Universities verticals audit Nobel Prize leadership, DOE national laboratories, pharmaceutical breakthroughs, and university research engines.
 
 <p align="center">
   <img src="web/IMAGES/University/Yale Aerial.jpg" width="600" alt="Ivy League Academic Excellence: Yale University" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
-### 1. Nobel Laureate Metrics & Historical Inventions
-- **Empirical Chronology**: Charts the developmental trajectory of civilization-defining technologies across pre-1890 (telegraph), 1890–1945 (assembly line), and post-war (transistor, microchip) milestones.
-- **Biomedical Hegemony**: Detailed timelines tracking major NIH-backed achievements, DNA sequencing breakthroughs, and CRISPR/mRNA platform development.
+### 1. DOE National Labs Scrollytelling & Patent Dashboards
+- **DOE Labs Scrollytelling (`ScrollytellPin.tsx`)**: Pinned scrollytelling tour visiting Oak Ridge, Berkeley Lab, Lawrence Livermore, Argonne, and Sandia National Laboratories.
+- **3-Era Inventions Dashboards (`InventionsDashboard.tsx`)**: Interactive patent search dashboards for Pre-1890 Industrial Inventions, 1890–1945 Mass Production, and Post-1991 Digital Miracles.
+- **Biomedical Miracles (`/science/medicine-and-biotech`)**: Audits NIH research budgets, polio vaccine, DNA structure, synthetic insulin, Human Genome Project, mRNA vaccines, and plasma technology.
 
-### 2. Research Powerhouses & Tech Transfer
-- **Ivy League & STEM Endowments**: Custom comparisons of endowment scaling, patents granted per research dollar, and startup spin-off rates (MIT, Stanford, Berkeley).
-- **Public Land-Grant Systems**: Evaluates the civic return on investment of major state university research grids.
-
----
-
-> *“Science is a cooperative enterprise, spanning the generations. It's the passing of a torch.”*  
-> 🔬 **Carl Sagan** · *Cosmos, 1980*
+### 2. Higher Education & Tech-Transfer Engine
+- **Ivy League & STEM Endowments (`/universities`)**: Custom comparison of Harvard, Yale, Princeton, MIT, Stanford, and Caltech endowments, research expenditures, and patent spin-offs.
+- **Public Flagship Scale (`/universities/public-research-universities`)**: Evaluates UC Berkeley, Michigan, UT Austin, and UCLA public research infrastructure.
 
 ---
 
 ## 🗺️ Deep Dive: Map Explorer & Visual Heritage Archive
 
-The Data and Media verticals act as the empirical visual gallery of the platform, combining spatial vector state data with historical imagery.
+The Data and Media verticals combine interactive spatial vector mapping with a 980+ image cinematic photo gallery.
 
 <p align="center">
   <img src="web/IMAGES/Cities/Seattle Skyline at Night.jpg" width="600" alt="Seattle Skyline: Illuminated Urban Grid" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
-### 1. Interactive 50-State SVG Map Engine
-- **GDP & Demographics Heatmaps**: Implements state-by-state heat coloring representing GDP scales, population density, and historical statehood dates.
-- **Regional State Chronicles**: Responsive detail panels containing curated regional summaries and Statehood profiles.
+### 1. Interactive 50-State SVG Map Explorer (`MapExplorerClient.tsx`)
+- **GDP & Population Heatmap Layers**: Render state-by-state color scales representing nominal GDP, population count, land area, and historical statehood order.
+- **Per-State Chronicle Drawers**: Side panels containing state-by-state economic metrics, statehood history, flag artwork, and regional summaries.
 
-### 2. Media Masonry & Full-Bleed Lightbox Gallery
-- **980+ Curator-Sorted Photos**: Optimized image grid organized by category tags (Landscapes, Cities, Technology, Space, Military, History) utilizing Framer Motion layout transitions.
-- **Safari-Fit Viewport Lightboxes**: Custom full-screen modal overlays featuring responsive zooming and bilingual asset descriptions.
-
----
-
-> *“The United States is a land of passage... it is a society in constant motion.”*  
-> 🗺️ **Alexis de Tocqueville** · *Democracy in America, 1835*
+### 2. 980+ Image Cinematic Photo Gallery (`GalleryExperience.tsx`)
+- **Category Masonry Grid**: Filterable image gallery with category tabs (Aerials, Cities, Fine Art, US Buildings, Military, History, Nature) powered by Framer Motion layout transitions.
+- **Lightbox Zoom & Bilingual Metadata**: Full-screen lightbox modal displaying high-resolution photos, captions, and bilingual descriptions.
 
 ---
 
 ## 🌎 Deep Dive: Global Alliances & Quality of Life
 
-This section details the treaty structures that secure the free world alongside domestic standards of living, purchasing power, and asset density.
+Audits post-1945 international treaty alliances alongside real-world domestic living standards.
 
 <p align="center">
   <img src="web/IMAGES/Housing/Charming suburban house with front porch, landscaping, and white facade.jpg" width="600" alt="Suburban Abundance: Suburban Housing Standards" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
-### 1. Treaty Alliances & Geopolitical Posture
-- **NATO Defense Parity**: Charts collective defense spend percentages, troop deployment capabilities, and the logistical backbone of Pax Americana.
-- **Foreign Policy Doctrines**: Evaluates the historical evolution of diplomacy, trade routes, and international reserve currencies.
+### 1. Treaty Networks & Pax Americana
+- **NATO Defense Spending & Missile Defense (`/global-leadership/nato`)**: Audits Article 5 collective security, European missile defense shields, and NATO enlargement.
+- **Freedom of Navigation & Undersea Cables (`/global-leadership/pax-americana`)**: Maps carrier strike group ocean patrols, public GPS maintenance, and transoceanic fiber-optic cable security.
 
-### 2. Standards of Living & Consumer Abundance
-- **OECD PPP Compensation Comparisons**: Visualizes real disposable income, wages, and purchasing power adjustments.
-- **Housing & Infrastructure Scales**: Charts typical home square footage, diagnostic machinery density, and asset holdings compared to Peer developed nations.
-
----
-
-> *“The world must be made safe for democracy. Its peace must be planted upon the tested foundations of political liberty.”*  
-> 🕊️ **Woodrow Wilson** · *Address to Congress, 1917*
+### 2. Standard of Living & Consumer Abundance (`/quality-of-life`)
+- **US vs. Developed World Benchmark Table (`CountryBarChart.tsx`)**: Direct empirical comparison of average housing size (2,400 sq ft), PPP disposable income, appliance density, and cancer survival rates.
+- **Consumer Abundance Observatory (`/quality-of-life/abundance`)**: Physical density metrics for climate control, home appliances, vehicles, pools, and self-storage industry economics.
 
 ---
 
 ## 💬 Deep Dive: Ask America Interactive AI Oracle
 
-The Interactive vertical at `/interactive` functions as a tokenized search and synthesis agent, designed to provide comprehensive bilingual answers to civic questions.
+The Ask America AI Oracle at `/interactive` provides a guided chatbot interface preloaded with arguments from all 12 platform verticals.
 
 <p align="center">
   <img src="web/IMAGES/US Buildings/The White House in Washington DC, as viewed from the front lawn.jpg" width="600" alt="Ask America Interactive AI Oracle: The White House" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
-### 1. Tokenized Query Analysis & Archive Matching
-- **Keyword Weighting Algorithms**: Implements clean client-side token parsing to strip common stopwords and apply relevance-boosting filters for matches in article titles and summaries.
-- **Cross-Vertical Query Routing**: Connects input prompts to relevant content nodes across all 12 platform verticals, producing synthesized summaries with direct source citations.
+### 1. Tokenized Prompt Matrix & Domain Router
+- **Preloaded Civic Prompt Categories**: Quick-start query pills covering Economy, Constitution, Military, Technology, National Parks, and Culture.
+- **Synthesized Argument Outputs**: Generates clear, structured answers with direct section links and primary data citations.
 
-### 2. High-Performance Chat Interfaces
-- **State-Persistent Message Streams**: Employs interactive modal dialogs and inline chat islands to sustain conversation context.
-- **Bilingual Response Parity**: Ensures instant translation of both predefined query templates and dynamic responses.
-
----
-
-> *“Information is the currency of democracy.”*  
-> 🏛️ **Thomas Jefferson** · *attributed*
+### 2. State-Persistent Chat UI (`AskAmerica.tsx`)
+- **Inline & Modal Modes**: Seamless integration both as a standalone page (`/interactive`) and as inline CTA banners at the bottom of major vertical hubs.
+- **Bilingual Query Support**: Full support for both English and Romanian user prompts.
 
 ---
 
 ## 🎥 Deep Dive: America in Motion Video Archive
 
-The Video vertical at `/videos` hosts high-definition films illustrating the continental scale, cities, infrastructure, and daily neighborhoods of the United States.
+The Video library at `/videos` provides a cinematic showcase of 16K/8K aerials and landscape films.
 
 <p align="center">
   <img src="web/IMAGES/Culture/Cinema/Illuminated-Chicago-Theatre-Marquee-Sign-At-Night-With-Street-View.jpg" width="600" alt="Chicago Theatre Marquee: Cinematic Landscapes" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
-### 1. Responsive 16K/8K Aerial Showcases
-- **Single-Column Video Rails**: Displays full-bleed YouTube embeds of major geographic and urban drone footage (North Carolina, metropolitan skylines) side-by-side with historical commentary.
-- **Lazy-Loaded Video Frame Placeholders**: Optimizes Largest Contentful Paint (`LCP`) by displaying static blur-up poster overlays before the video elements enter the viewport.
+### 1. High-Definition Aerial & City Showcase
+- **Curated Video Cards**: Embedded YouTube players presenting aerial footage of American skylines, national parks, and infrastructure corridors.
+- **Poster Image Placeholders**: Blur-up static poster images guaranteeing fast page loads before video player activation.
 
-### 2. Monolith Local Clip Library
-- **Muted Looping Background Assets**: Organizes all site-wide video files (SpaceX rocketry, Steve Jobs archive clips, military aviation, Times Square) in a single registry, with built-in playback controls.
-
----
-
-> *“The cinematic eye does not just record; it mythologizes and reveals.”*  
-> 🎬 **Hollywood Archivist**
+### 2. High-Quality Local Video Library
+- **Background Video Components**: Looping local video assets (such as Apple technology reels, Michael Jordan sports reels, B-2 bomber flyovers, and CIA headquarters) featuring user-controlled audio mute/unmute toggles.
 
 ---
 
 ## 🧠 Deep Dive: Common Misconceptions (Myth vs. Reality)
 
-The Misconceptions module at `/data/misconceptions` serves as an audited statistical checkpoint, contrasting viral narratives with verified global indicators.
+The Misconceptions module at `/data/misconceptions` serves as an audited empirical checkpoint contrasting common myths with international data.
 
 <p align="center">
   <img src="web/IMAGES/Constitution/United States National Archives Building, Washington D.C.jpg" width="600" alt="National Archives Building: Beacon of Truth" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
 ### 1. Audited International Data Matching
-- **Demographic Definitions Audits**: Exposes reporting methodology variances between US CDC and EU national registries, such as maternal mortality tracking windows.
-- **OECD Progressive Tax Analytics**: Highlights data models demonstrating that the US federal income tax grid remains the most progressive in the G7.
+- **CDC vs. EU Demographic Reporting**: Exposes statistical reporting differences (e.g. maternal mortality window definitions) between CDC and European registries.
+- **Progressive Tax Analytics**: Demonstrates OECD data showing the US federal income tax system is the most progressive in the G7.
 
-### 2. Logistical and Infrastructure Reality Checks
-- **Freight-Rail Network Metrics**: Dissects freight shipping efficiency (double-stacked rail capacity) versus standard passenger rail grids.
-- **Verifiable Sourced Badges**: Embeds click-through verification links to AEI, OECD, Cato, and World Bank datasets.
-
----
-
-> *“Truth is generally the best vindication against slander.”*  
-> ⚖️ **Abraham Lincoln** · *Letter to Edwin M. Stanton, 1864*
+### 2. Physical & Logistics Fact Audits
+- **Freight Rail Efficiency**: Audits American freight rail double-stack container efficiency versus European rail networks.
+- **Clickable Primary Sources**: Primary source link badges to IMF, OECD, BEA, Census, and World Bank datasets.
 
 ---
 
 ## 🏛️ Deep Dive: United States Profile Tabbed Dashboard
 
-The United States Profile at `/united-states` acts as a high-fidelity interactive dashboard organizing the nation's core demographics, symbols, and history.
+The United States Profile at `/united-states` acts as a neoclassical reference dossier organizing the nation's core profile.
 
 <p align="center">
   <img src="web/IMAGES/Cities/Manhattan One World Trade Center Close-up.jpg" width="600" alt="One World Trade Center: United States Profile Tabbed Dashboard" style="box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 20px auto;" />
 </p>
 
-### 1. Interactive 8-Section Tab Controller
-- **Framer Motion Active-Tab States**: Uses smooth horizontal transitions to cycle between Identity, History, Geography, Government, Foreign Relations, Economy, Demographics, and Culture.
-- **Sourced Wikipedia Datasets**: Translates and displays comprehensive sub-tables for government divisions, GDP progression, and population densities.
+### 1. Interactive 8-Tab Navigation Controller (`UnitedStatesClient.tsx`)
+- **8 Core Vertical Tabs**: Identity & Symbols, History, Geography, Government & Law, Foreign Relations, Economy, Demographics, and Culture.
+- **Tabbed Article Reader**: Smooth Framer Motion transitions between article text, structured data tables, and deep-dive jump links.
 
-### 2. High-Density Quick Fact Strips
-- **Census Telemetry Metric Cards**: Features quick-stats on total land area, national symbols, population counts, and global economic share.
-- **Visual Grid Dividers**: Integrates high-resolution geographical map visualizers and flag compositions into the tab panels.
-
----
-
-> *“The republic is not a final product; it is a permanent task.”*  
-> 🦅 **Civic Voice**
+### 2. High-Density Quick Fact Strip & Map Lightbox Grid
+- **Quick Fact Strip**: Live metric pills covering land area, population, capital, GDP, and national mottos.
+- **Stylized 50-State Map Lightbox**: High-resolution image lightbox grid displaying American flag map artwork and demographic distribution maps.
 
 ---
 
