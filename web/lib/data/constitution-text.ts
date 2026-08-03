@@ -7,9 +7,11 @@
 // text itself stays in its authentic 18th-century English for both locales; the
 // annotations (plain English, history, cases, debates, examples) are bilingual.
 //
-// This file is authored incrementally: the Preamble and Article I are complete
-// with full seven-field context. Articles II–VII and Amendments 1–27 are being
-// added to the same tree; the reader renders whatever nodes are present.
+// This file is authored incrementally. The Preamble and Articles I–VII are
+// complete with full seven-field context; the 27 Amendments live in
+// constitution-amendments.ts and are appended to the tree below.
+
+import { AMENDMENTS } from "./constitution-amendments";
 
 export interface CaseRef {
   name: string;
@@ -650,4 +652,7 @@ export const CONSTITUTION: ClauseNode[] = [
       debatesRo: "Decizia de a ratifica prin convenții statale, nu prin legislaturi, era menită să înrădăcineze Constituția în popor, în ecoul lui „We the People”.",
     },
   },
+
+  // ─── The 27 Amendments ──────────────────────────────────────────────────────
+  ...AMENDMENTS,
 ];
