@@ -12,6 +12,7 @@
 // constitution-amendments.ts and are appended to the tree below.
 
 import { AMENDMENTS } from "./constitution-amendments";
+import { RICH_CONTEXT } from "./constitution-context-rich";
 
 export interface CaseRef {
   name: string;
@@ -671,3 +672,14 @@ export const CONSTITUTION: ClauseNode[] = [
     children: AMENDMENTS,
   },
 ];
+
+// Merge the deeper Preamble/Articles context (constitution-context-rich.ts) over
+// the base first-pass context. The Amendments already carry rich context inline.
+function enrichContext(nodes: ClauseNode[]) {
+  for (const n of nodes) {
+    const rich = RICH_CONTEXT[n.id];
+    if (n.context && rich) Object.assign(n.context, rich);
+    if (n.children) enrichContext(n.children);
+  }
+}
+enrichContext(CONSTITUTION);
