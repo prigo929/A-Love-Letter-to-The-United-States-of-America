@@ -23,6 +23,7 @@ import {
   type ClauseNode,
   type ClauseContext,
 } from "@/lib/data/constitution-text";
+import { CONSTITUTION_TEXT_RO } from "@/lib/data/constitution-text-ro";
 
 // ── Dark surround palette (matches the Constitution hub) ──────────────────────
 const VOID = "#080B12";
@@ -207,8 +208,8 @@ export function ConstitutionReader() {
         onJump={(ids) => ids[0] && scrollToNode(ids[0])}
       />
 
-      <div className="relative z-10 w-full max-w-[1920px] mx-auto px-4 pb-28 sm:px-8 lg:px-12 xl:px-16 2xl:px-24">
-        <div className="lg:grid lg:grid-cols-[230px_minmax(0,1fr)_420px] lg:gap-8 xl:grid-cols-[260px_minmax(0,1fr)_460px]">
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 pb-28">
+        <div className="lg:grid lg:grid-cols-[280px_minmax(0,1fr)_440px] xl:grid-cols-[320px_minmax(0,1fr)_500px] 2xl:grid-cols-[360px_minmax(0,1fr)_560px] lg:gap-6 xl:gap-8 w-full">
 
           {/* ── LEFT: Outline ── */}
           <aside className={`${PANEL_TOP} lg:sticky ${PANEL_MAXH} lg:self-start lg:overflow-y-auto lg:pr-1`}>
@@ -294,13 +295,13 @@ export function ConstitutionReader() {
 // ── Calligraphy overture ──────────────────────────────────────────────────────
 function Overture({ isRo }: { isRo: boolean }) {
   return (
-    <header className="relative z-10 mx-auto max-w-4xl px-4 pt-16 pb-8 text-center sm:pt-20">
+    <header className="relative z-10 w-full max-w-5xl mx-auto px-4 pt-16 pb-8 text-center sm:pt-20">
       <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.4em]" style={{ color: GOLD }}>
         {isRo ? "Textul integral" : "The Full Text"}
       </p>
       {/* The same self-drawing 1787 calligraphy used on the Constitution hub */}
       <WeThePeopleSignature />
-      <p className="mx-auto -mt-2 max-w-xl text-base leading-relaxed" style={{ color: MUTE, fontFamily: SERIF }}>
+      <p className="mx-auto -mt-2 max-w-2xl text-base leading-relaxed" style={{ color: MUTE, fontFamily: SERIF }}>
         {isRo
           ? "Constituția Statelor Unite, cuvânt cu cuvânt. Alege orice secțiune pentru a-i vedea traducerea pe înțeles, istoria, cazurile-cheie și dezbaterile din jurul ei."
           : "The Constitution of the United States, word for word. Select any section to read its plain-English meaning, its history, the landmark cases, and the debates that still surround it."}
@@ -557,7 +558,7 @@ function Document({
       firstLeaf = false;
     }
   }
-  return <div className="relative mx-auto max-w-[46rem]">{blocks}</div>;
+  return <div className="relative w-full">{blocks}</div>;
 }
 
 function Section({
@@ -583,7 +584,7 @@ function Section({
 }) {
   const isFocus = node.id === focusId;
   const isHover = node.id === hoverId;
-  const body = isRo && node.textRo ? node.textRo : node.text;
+  const body = isRo ? node.textRo ?? CONSTITUTION_TEXT_RO[node.id] ?? node.text : node.text;
   const paras = body.split("\n\n");
 
   return (

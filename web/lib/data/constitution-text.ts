@@ -654,5 +654,12 @@ export const CONSTITUTION: ClauseNode[] = [
   },
 
   // ─── The 27 Amendments ──────────────────────────────────────────────────────
-  ...AMENDMENTS,
+  {
+    id: "amendments",
+    ref: "Amendments",
+    heading: "The Amendments",
+    headingRo: "Amendamentele",
+    text: "",
+    children: AMENDMENTS,
+  },
 ];
