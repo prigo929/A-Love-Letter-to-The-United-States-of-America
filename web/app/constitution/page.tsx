@@ -154,7 +154,7 @@ export default async function ConstitutionPage() {
             mixBlendMode: "screen",
           }}
         />
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-[1920px] px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 mx-auto">
 
           {/* ── I. The Document ─────────────────────────────────────────────── 
               This is the first major chapter of our digital exhibit.
@@ -362,7 +362,7 @@ export default async function ConstitutionPage() {
           THE UNBROKEN LINE, Vertical transfer of power timeline
           ══════════════════════════════════════════════════════════════════════ */}
       <div className="relative bg-[#080B12]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-[1920px] px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 mx-auto">
           <Entablature
             chapter="VI"
             title={copy.chapter6Title}
@@ -450,7 +450,7 @@ export default async function ConstitutionPage() {
           VII. THE GREAT STABILITY, Electoral Archive Map
           ══════════════════════════════════════════════════════════════════════ */}
       <div className="relative bg-[#080B12]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-[1920px] px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 mx-auto">
           {/* ── Breathing section, emotional reset ── */}
           <BreathingSection word={isRo ? "UNIUNE" : "UNION"} />
 

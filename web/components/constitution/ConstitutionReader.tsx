@@ -207,8 +207,8 @@ export function ConstitutionReader() {
         onJump={(ids) => ids[0] && scrollToNode(ids[0])}
       />
 
-      <div className="relative z-10 w-full px-4 pb-28 sm:px-6 lg:px-10">
-        <div className="lg:grid lg:grid-cols-[210px_minmax(0,1fr)_390px] lg:gap-8 xl:grid-cols-[230px_minmax(0,1fr)_420px]">
+      <div className="relative z-10 w-full max-w-[1920px] mx-auto px-4 pb-28 sm:px-8 lg:px-12 xl:px-16 2xl:px-24">
+        <div className="lg:grid lg:grid-cols-[230px_minmax(0,1fr)_420px] lg:gap-8 xl:grid-cols-[260px_minmax(0,1fr)_460px]">
 
           {/* ── LEFT: Outline ── */}
           <aside className={`${PANEL_TOP} lg:sticky ${PANEL_MAXH} lg:self-start lg:overflow-y-auto lg:pr-1`}>

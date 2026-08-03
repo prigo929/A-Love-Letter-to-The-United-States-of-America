@@ -30,7 +30,7 @@ export default async function TheDocumentPage() {
     <div className="bg-[#080B12]">
       {/* Breadcrumb sits just below the main menu */}
       <div className="border-b border-[rgba(201,168,76,0.14)] px-4 pt-24 pb-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-[1440px]">
+        <div className="w-full max-w-[1920px] px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 mx-auto">
           <Breadcrumb
             dark
             items={[

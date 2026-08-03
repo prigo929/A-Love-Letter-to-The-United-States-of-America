@@ -124,7 +124,7 @@ export default async function SeparationOfPowersPage() {
           quality={100}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#080B12]/70 to-[#080B12]" />
-        <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 w-full max-w-[1920px] px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 mx-auto">
           <Breadcrumb items={[{ label: isRo ? "Constituție" : "Constitution", href: "/constitution" }, { label: isRo ? "Separarea Puterilor" : "Separation of Powers" }]} className="mb-8" />
           <p className="mb-4 font-body text-xs font-semibold uppercase tracking-[0.3em] text-[#C9A84C]">{isRo ? "Separarea Puterilor" : "Separation of Powers"}</p>
           <h1 className="mb-6 font-hero leading-none" style={{ fontSize: "clamp(3rem,7vw,6rem)" }}>
@@ -140,7 +140,7 @@ export default async function SeparationOfPowersPage() {
       </div>
 
       <div className="bg-[#080B12]">
-        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 space-y-16">
+        <div className="w-full max-w-[1920px] px-4 py-16 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 mx-auto space-y-16">
 
           {/* Interactive diagram */}
           <section>
