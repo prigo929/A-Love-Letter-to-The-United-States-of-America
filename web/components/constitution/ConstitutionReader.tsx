@@ -209,7 +209,7 @@ export function ConstitutionReader() {
       />
 
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 pb-28">
-        <div className="lg:grid lg:grid-cols-[280px_minmax(0,1fr)_440px] xl:grid-cols-[320px_minmax(0,1fr)_500px] 2xl:grid-cols-[360px_minmax(0,1fr)_560px] lg:gap-6 xl:gap-8 w-full">
+        <div className="lg:grid lg:grid-cols-[190px_minmax(0,1fr)_340px] xl:grid-cols-[210px_minmax(0,1fr)_370px] 2xl:grid-cols-[230px_minmax(0,1fr)_400px] lg:gap-6 xl:gap-8 w-full">
 
           {/* ── LEFT: Outline ── */}
           <aside className={`${PANEL_TOP} lg:sticky ${PANEL_MAXH} lg:self-start lg:overflow-y-auto lg:pr-1`}>

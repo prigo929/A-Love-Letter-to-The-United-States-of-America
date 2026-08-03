@@ -283,7 +283,7 @@ import dinerInside from "@/IMAGES/Culture/Iconic Things/American Diner inside.jp
 import speakeasyDesign from "@/IMAGES/Culture/Iconic Things/1920s Speakeasy Design.jpg";
 
 // Organized Mascots
-import mascotHandsomeDan from "@/IMAGES/Culture/Mascots/Handsome Dan.avif";
+import mascotHandsomeDan from "@/IMAGES/Culture/Mascots/Handsome Dan.jpg";
 import mascotQuakerOats from "@/IMAGES/Culture/Mascots/Quaker Oats Founder.jpg";
 import mascotMrPeanut from "@/IMAGES/Culture/Mascots/Mr Peanut.png";
 import mascotCampbellsSoup from "@/IMAGES/Culture/Mascots/Campbells Soup Kids.jpg";
