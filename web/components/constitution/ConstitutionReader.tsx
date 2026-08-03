@@ -189,6 +189,17 @@ export function ConstitutionReader() {
     });
   }, [focusId]);
 
+  // Escape key listener: deselect explicitly pinned selection to resume dynamic scroll-spy focus
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedId(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   const availableTabs = useMemo(
     () => TABS.filter((t) => tabHasContent(focusCtx, t.key, isRo)),
     [focusCtx, isRo]
@@ -214,7 +225,11 @@ export function ConstitutionReader() {
   );
 
   return (
-    <div className="serif-headings relative" style={{ background: VOID, color: CREAM }}>
+    <div
+      onClick={() => setSelectedId(null)}
+      className="serif-headings relative cursor-default"
+      style={{ background: VOID, color: CREAM }}
+    >
       {/* Marble ambient layer, matching the rest of the exhibit */}
       <div
         aria-hidden
@@ -303,7 +318,10 @@ export function ConstitutionReader() {
           </main>
 
           {/* ── RIGHT: Context ── */}
-          <aside className={`mt-10 lg:mt-0 ${PANEL_TOP} sticky ${PANEL_MAXH} self-start overflow-y-auto pl-1`}>
+          <aside
+            onClick={(e) => e.stopPropagation()}
+            className={`mt-10 lg:mt-0 ${PANEL_TOP} sticky ${PANEL_MAXH} self-start overflow-y-auto pl-1`}
+          >
             <ContextPanel
               node={focusNode}
               ctx={focusCtx}
@@ -498,7 +516,10 @@ function OutlineLink({
     <li>
       <button
         data-outline-id={node.id}
-        onClick={() => onSelect(node.id)}
+        onClick={(e) => {
+          e.stopPropagation();
+          onSelect(node.id);
+        }}
         className="group block w-full rounded px-2 py-1 text-left text-[13px] leading-snug transition-colors"
         style={{
           color: isFocus ? GOLD : isActive ? CREAM : MUTE,
@@ -622,7 +643,10 @@ function Section({
     <section
       ref={(el) => registerRef(node.id, el)}
       data-node-id={node.id}
-      onClick={() => onSelect(node.id)}
+      onClick={(e) => {
+        e.stopPropagation();
+        onSelect(node.id);
+      }}
       className="group relative scroll-mt-40 cursor-pointer rounded-lg px-4 py-5 transition-all sm:px-6"
       style={{
         background: isHover ? "rgba(138,109,31,0.16)" : isFocus ? "rgba(124,29,18,0.05)" : "transparent",
