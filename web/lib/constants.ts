@@ -171,6 +171,11 @@ export const NAV_SECTIONS = [
     badge: "Est. 1776",
     items: [
       {
+        label: "Read the Full Text",
+        href: "/constitution/the-document",
+        description: "The Constitution, word for word",
+      },
+      {
         label: "Bill of Rights",
         href: "/constitution/bill-of-rights",
         description: "The first 10 amendments",
@@ -806,6 +811,10 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
     description: "250 de ani de guvernare democratică neîntreruptă",
     badge: "Fondată în 1776",
     items: {
+      "/constitution/the-document": {
+        label: "Citește Textul Integral",
+        description: "Constituția, cuvânt cu cuvânt",
+      },
       "/constitution/bill-of-rights": {
         label: "Carta Drepturilor",
         description: "Primele 10 amendamente",

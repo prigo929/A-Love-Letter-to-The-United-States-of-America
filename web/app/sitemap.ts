@@ -63,6 +63,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     
     // Constitution
     "/constitution",
+    "/constitution/the-document",
     "/constitution/bill-of-rights",
     "/constitution/first-amendment",
     "/constitution/second-amendment",
