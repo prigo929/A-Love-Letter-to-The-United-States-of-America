@@ -200,10 +200,7 @@ export function ConstitutionReader() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  const availableTabs = useMemo(
-    () => TABS.filter((t) => tabHasContent(focusCtx, t.key, isRo)),
-    [focusCtx, isRo]
-  );
+  const availableTabs = TABS;
   useEffect(() => {
     if (availableTabs.length && !availableTabs.some((t) => t.key === tab)) {
       setTab(availableTabs[0].key);
@@ -774,57 +771,66 @@ function ContextPanel({
 
           <div className="mt-4 text-[15px] leading-relaxed" style={{ color: CREAM, fontFamily: SERIF }}>
             {tab === "cases" ? (
-              <ul className="space-y-3">
-                {ctx.cases.map((c) => (
-                  <li key={c.name}>
-                    <p className="font-semibold" style={{ color: GOLD }}>
-                      {c.name} <span style={{ color: FAINT }}>· {c.year}</span>
-                    </p>
-                    <p className="text-sm" style={{ color: MUTE }}>
-                      {isRo ? c.noteRo : c.note}
-                    </p>
-                  </li>
-                ))}
-              </ul>
+              ctx.cases && ctx.cases.length > 0 ? (
+                <ul className="space-y-3">
+                  {ctx.cases.map((c) => (
+                    <li key={c.name}>
+                      <p className="font-semibold" style={{ color: GOLD }}>
+                        {c.name} <span style={{ color: FAINT }}>· {c.year}</span>
+                      </p>
+                      <p className="text-sm" style={{ color: MUTE }}>
+                        {isRo ? c.noteRo : c.note}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-sm italic leading-relaxed" style={{ color: MUTE }}>
+                  {isRo
+                    ? "Această secțiune este guvernată de decizii judiciare generale și practică constituțională istorică."
+                    : "This section is governed by general judicial precedents and historical constitutional practice."}
+                </p>
+              )
             ) : tab === "amendments" || tab === "related" ? (
-              <div className="flex flex-wrap gap-2">
-                {(tab === "amendments" ? ctx.amendments : ctx.related).map((id) => {
-                  const target = nodeMap.get(id);
-                  const label = target ? target.ref : id.replace("amend-", isRo ? "Am. " : "Amend. ");
-                  return (
-                    <button
-                      key={id}
-                      onMouseEnter={() => onHover(id)}
-                      onMouseLeave={() => onHover(null)}
-                      onFocus={() => onHover(id)}
-                      onBlur={() => onHover(null)}
-                      onClick={() => target && onJump(id)}
-                      className="rounded-full border px-3 py-1 text-xs font-semibold transition-colors"
-                      style={{
-                        borderColor: GOLD_LINE,
-                        color: target ? GOLD : FAINT,
-                        cursor: target ? "pointer" : "default",
-                      }}
-                      title={target ? (isRo ? target.headingRo : target.heading) : undefined}
-                    >
-                      {label}
-                    </button>
-                  );
-                })}
-                {tab === "amendments" && (
-                  <p className="mt-1 w-full text-xs italic" style={{ color: FAINT }}>
-                    {isRo
-                      ? "Amendamentele conexe vor deveni interactive pe măsură ce sunt adăugate."
-                      : "Related amendments become clickable as they are added to the reader."}
-                  </p>
-                )}
-              </div>
+              (tab === "amendments" ? ctx.amendments : ctx.related) && (tab === "amendments" ? ctx.amendments : ctx.related).length > 0 ? (
+                <div className="flex flex-wrap gap-2">
+                  {(tab === "amendments" ? ctx.amendments : ctx.related).map((id) => {
+                    const target = nodeMap.get(id);
+                    const label = target ? target.ref : id.replace("amend-", isRo ? "Am. " : "Amend. ");
+                    return (
+                      <button
+                        key={id}
+                        onMouseEnter={() => onHover(id)}
+                        onMouseLeave={() => onHover(null)}
+                        onFocus={() => onHover(id)}
+                        onBlur={() => onHover(null)}
+                        onClick={() => target && onJump(id)}
+                        className="rounded-full border px-3 py-1 text-xs font-semibold transition-colors"
+                        style={{
+                          borderColor: GOLD_LINE,
+                          color: target ? GOLD : FAINT,
+                          cursor: target ? "pointer" : "default",
+                        }}
+                        title={target ? (isRo ? target.headingRo : target.heading) : undefined}
+                      >
+                        {label}
+                      </button>
+                    );
+                  })}
+                </div>
+              ) : (
+                <p className="text-sm italic leading-relaxed" style={{ color: MUTE }}>
+                  {isRo
+                    ? "Previziunile conexe fac parte din cadrul structural al Constituției."
+                    : "Related provisions connect across the broader structural framework of Articles I through VII."}
+                </p>
+              )
             ) : (
               <p>
-                {tab === "plain" && (isRo ? ctx.plainRo : ctx.plain)}
-                {tab === "history" && (isRo ? ctx.historyRo : ctx.history)}
-                {tab === "examples" && (isRo ? ctx.examplesRo : ctx.examples)}
-                {tab === "debates" && (isRo ? ctx.debatesRo : ctx.debates)}
+                {tab === "plain" && (isRo ? ctx.plainRo || ctx.plain : ctx.plain)}
+                {tab === "history" && (isRo ? ctx.historyRo || ctx.history : ctx.history)}
+                {tab === "examples" && (isRo ? ctx.examplesRo || ctx.examples : ctx.examples)}
+                {tab === "debates" && (isRo ? ctx.debatesRo || ctx.debates : ctx.debates)}
               </p>
             )}
           </div>
