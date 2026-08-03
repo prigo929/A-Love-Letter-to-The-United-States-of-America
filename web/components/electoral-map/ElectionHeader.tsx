@@ -54,24 +54,34 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
   const v2 = isOffYear ? 0 : (tally[p2] || 0);
   const otherVotes = isOffYear ? 0 : Object.entries(tally).filter(([p]) => p !== p1 && p !== p2).reduce((s, [,v]) => s + v, 0);
 
+  const neededVotes = viewMode === "President" ? Math.floor(totalSeats / 2) + 1 : viewMode === "Senate" ? 50 : viewMode === "House" ? 218 : Math.floor(totalSeats / 2) + 1;
+
   const thresholdLabel = isRo 
-    ? (viewMode === "President" ? "270 PENTRU VICTORIE" : viewMode === "Senate" ? "50 PENTRU CONTROL" : viewMode === "House" ? "218 PENTRU VICTORIE" : "CÂȘTIGĂTOR")
-    : (viewMode === "President" ? "270 TO WIN" : viewMode === "Senate" ? "50 FOR CONTROL" : viewMode === "House" ? "218 TO WIN" : "WINNER");
+    ? (viewMode === "President" ? `${neededVotes} PENTRU VICTORIE` : viewMode === "Senate" ? "50 PENTRU CONTROL" : viewMode === "House" ? "218 PENTRU VICTORIE" : "CÂȘTIGĂTOR")
+    : (viewMode === "President" ? `${neededVotes} TO WIN` : viewMode === "Senate" ? "50 FOR CONTROL" : viewMode === "House" ? "218 TO WIN" : "WINNER");
   
   const topParty = parties[0]?.[0] || "OTHER";
   const secondParty = parties[1]?.[0] || "OTHER";
 
+  const getCandidateName = (pCode: string) => {
+    if (!pCode) return "";
+    if (yd.thirdPartyCandidates?.[pCode]) return yd.thirdPartyCandidates[pCode];
+    if (pCode === "DEM" || pCode === "DR" || pCode === "SDEM" || pCode === "DR-J") return yd.demCandidate;
+    if (pCode === "REP" || pCode === "FED" || pCode === "WHIG" || pCode === "NR" || pCode === "DR-A") return yd.repCandidate;
+    return PARTY_FULL_NAMES[pCode] || pCode;
+  };
+
   const getPopVote = (pCode: string) => {
     if (viewMode !== "President" || isOffYear) return 0;
-    // Mapping historical slots to data fields
-    if (pCode === "DR" || pCode === "DEM" || pCode === "SDEM" || pCode === "DR-J") return yd.demPopVote;
+    const name = getCandidateName(pCode);
+    if (name === yd.demCandidate) return yd.demPopVote;
+    if (name === yd.repCandidate) return yd.repPopVote;
+    if (pCode === "DEM" || pCode === "DR" || pCode === "SDEM" || pCode === "DR-J") return yd.demPopVote;
     if (pCode === "REP" || pCode === "FED" || pCode === "WHIG" || pCode === "NR" || pCode === "DR-A") return yd.repPopVote;
     return 0;
   };
 
-  // Render dummy candidates/popular vote for NYT style
-  // Since we don't have historical candidate lists wired in, we'll use placeholders styled properly
-
+  // Render candidates / popular vote
   let netGainStr = "";
   if (viewMode === "House" || viewMode === "Senate" || viewMode === "Governor") {
     const currIdx = ELECTORAL_HISTORY.findIndex(h => h.year === year);
@@ -132,13 +142,7 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
                 <span className="font-display text-2xl font-black text-[#F5F0E8]">{parties[0]?.[1] || 0}</span>
                 <div className="flex flex-col">
                   <span className="font-body text-xs font-semibold uppercase tracking-wider" style={{ color: PARTY_COLORS[parties[0]?.[0]] }}>
-                    {viewMode === "President" ? (
-                      (yd.thirdPartyCandidates?.[parties[0]?.[0]] || 
-                       ((parties[0]?.[0] === "DEM" || (year < 1860 && parties[0]?.[0] === "DR")) ? yd.demCandidate :
-                        (parties[0]?.[0] === "REP" || (year < 1860 && parties[0]?.[0] === "FED")) ? yd.repCandidate : 
-                        yd.demCandidate || PARTY_FULL_NAMES[parties[0]?.[0]] || parties[0]?.[0])
-                      )
-                    ) : PARTY_FULL_NAMES[parties[0]?.[0]] || parties[0]?.[0]}
+                    {viewMode === "President" ? getCandidateName(parties[0]?.[0]) : PARTY_FULL_NAMES[parties[0]?.[0]] || parties[0]?.[0]}
                     {!isOffYear && parties[0]?.[1] > (parties[1]?.[1] || 0) && <span className="ml-1 text-white">✓</span>}
                   </span>
                   {viewMode === "President" && !isOffYear && getPopVote(parties[0]?.[0]) > 0 && (
@@ -157,13 +161,7 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
                 <div className="flex items-center gap-2">
                   <div className="flex flex-col items-end">
                     <span className="font-body text-xs font-semibold uppercase tracking-wider" style={{ color: PARTY_COLORS[parties[1]?.[0]] }}>
-                      {viewMode === "President" ? (
-                        (yd.thirdPartyCandidates?.[parties[1]?.[0]] || 
-                         ((parties[1]?.[0] === "DEM" || (year < 1860 && parties[1]?.[0] === "DR")) ? yd.demCandidate :
-                          (parties[1]?.[0] === "REP" || (year < 1860 && parties[1]?.[0] === "FED")) ? yd.repCandidate : 
-                          yd.repCandidate || PARTY_FULL_NAMES[parties[1]?.[0]] || parties[1]?.[0])
-                        )
-                      ) : PARTY_FULL_NAMES[parties[1]?.[0]] || parties[1]?.[0]}
+                      {viewMode === "President" ? getCandidateName(parties[1]?.[0]) : PARTY_FULL_NAMES[parties[1]?.[0]] || parties[1]?.[0]}
                     </span>
                     {viewMode === "President" && !isOffYear && getPopVote(parties[1]?.[0]) > 0 && (
                       <span className="font-body text-xs font-medium text-[#B8B4AC] opacity-90">
@@ -214,10 +212,10 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
           })}
 
           {/* Center Threshold Line */}
-          <div className="absolute inset-y-0 left-1/2 z-10 w-[3px] -translate-x-1/2 bg-black" />
+          <div className="absolute inset-y-0 z-10 w-[3px] -translate-x-1/2 bg-black" style={{ left: `${(neededVotes / totalSeats) * 100}%` }} />
           
           {/* Threshold Label (Above the bar) */}
-          <div className="absolute left-1/2 -top-[18px] z-20 -translate-x-1/2 whitespace-nowrap rounded-full border border-[#C9A84C]/25 bg-[#080B12] px-2 py-0.5 font-body text-xs font-bold uppercase tracking-wider text-[#C9A84C]">
+          <div className="absolute -top-[18px] z-20 -translate-x-1/2 whitespace-nowrap rounded-full border border-[#C9A84C]/25 bg-[#080B12] px-2 py-0.5 font-body text-xs font-bold uppercase tracking-wider text-[#C9A84C]" style={{ left: `${(neededVotes / totalSeats) * 100}%` }}>
             {thresholdLabel}
           </div>
         </div>
