@@ -13,6 +13,7 @@ import Link from "next/link";
 import { Breadcrumb }       from "@/components/layout/Breadcrumb";
 import { QuoteBlock }       from "@/components/sections/QuoteBlock";
 import { ConstitutionAurora, InkParticles, AmendmentAccordion } from "@/components/constitution/ConstitutionAnimations";
+import { IncorporationBridge } from "@/components/constitution/IncorporationBridge";
 import { getServerLocale }  from "@/lib/i18n/server";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import { BILL_OF_RIGHTS }   from "@/lib/data/constitution-data";
@@ -202,6 +203,11 @@ export default async function BillOfRightsPage() {
                 : "Click any amendment to see its original text, what it means today, and how it compares globally."}
             </p>
             <AmendmentAccordion amendments={BILL_OF_RIGHTS} />
+          </section>
+
+          {/* ── 14th Amendment Incorporation Bridge ─────────────────────── */}
+          <section>
+            <IncorporationBridge isRo={isRo} />
           </section>
 
           {/* Facts grid */}

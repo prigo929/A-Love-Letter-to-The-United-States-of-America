@@ -222,6 +222,32 @@ export default async function ConstitutionPage() {
               {copy.vaultDescription}
             </p>
             <ClauseVault clauses={getConstitutionClauses(isRo)} isRo={isRo} />
+
+            {/* ── Read the full text CTA ─────────────────────────────────────
+                Sends visitors into the interactive reading room that holds the
+                Constitution verbatim, clause by clause, with full context. */}
+            <Link
+              href="/constitution/the-document"
+              className="group mt-8 flex flex-col gap-4 overflow-hidden rounded-2xl border border-[rgba(201,168,76,0.25)] bg-linear-to-br from-[#141017] to-[#0d0a12] p-6 transition-all hover:border-[rgba(201,168,76,0.5)] hover:shadow-[0_0_50px_rgba(201,168,76,0.1)] sm:flex-row sm:items-center sm:justify-between sm:p-8"
+            >
+              <div>
+                <p className="mb-2 font-body text-xs font-semibold uppercase tracking-[0.25em] text-[#C9A84C]">
+                  {isRo ? "Sala de lectură" : "The Reading Room"}
+                </p>
+                <h3 className="mb-2 font-display text-2xl text-[#F5F0E8]">
+                  {isRo ? "Citește Constituția, cuvânt cu cuvânt" : "Read the Constitution, word for word"}
+                </h3>
+                <p className="max-w-xl font-body text-sm leading-relaxed text-[#B8B4AC]">
+                  {isRo
+                    ? "Textul integral pe hârtie, cu un cuprins care îți urmărește derularea și explicații pe înțeles, istorie, cazuri la Curtea Supremă și dezbateri pentru fiecare clauză."
+                    : "The full text on paper, with an outline that follows your scroll and plain-English meaning, history, Supreme Court cases, and debates for every clause."}
+                </p>
+              </div>
+              <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[rgba(201,168,76,0.4)] bg-[rgba(201,168,76,0.08)] px-5 py-2.5 font-body text-sm font-semibold text-[#C9A84C] transition-colors group-hover:bg-[rgba(201,168,76,0.15)]">
+                {isRo ? "Deschide textul" : "Open the text"}
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </span>
+            </Link>
           </Section>
 
           {/* ── Breathing section, emotional reset ── */}
