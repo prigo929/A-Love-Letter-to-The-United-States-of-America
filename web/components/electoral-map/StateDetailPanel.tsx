@@ -78,35 +78,34 @@ export function StateDetailPanel({
         <h2 className="mb-1 pr-8 font-display text-4xl font-black leading-none text-[#F5F0E8]">
           {stateName}
         </h2>
-        <div className="mb-5 flex items-center gap-2 font-body text-[10px] uppercase tracking-widest text-[#6B6860]"
-          style={{ fontVariantNumeric: "tabular-nums" }}>
+        <div className="mb-5 flex flex-wrap items-center gap-2 font-body text-xs font-semibold uppercase tracking-wider text-[#B8B4AC]">
           {admitted && (
-            <span className="border border-[rgba(201,168,76,0.12)] bg-[rgba(201,168,76,0.04)] px-1.5 py-0.5">
+            <span className="rounded-full border border-[rgba(201,168,76,0.25)] bg-[rgba(201,168,76,0.08)] px-2.5 py-0.5 text-[#C9A84C]">
               {isRo ? "ADMIS" : "ADMITTED"} {admitted}
             </span>
           )}
           <span>•</span>
-          <span className="border border-[rgba(201,168,76,0.12)] bg-[rgba(201,168,76,0.04)] px-1.5 py-0.5">
+          <span className="rounded-full border border-[rgba(201,168,76,0.25)] bg-[rgba(201,168,76,0.08)] px-2.5 py-0.5 text-[#C9A84C]">
             {data.electoralVotes} EV
           </span>
           <span>•</span>
-          <span className="text-[#C9A84C]">{year}</span>
+          <span className="text-[#C9A84C] font-bold">{year}</span>
         </div>
 
         {/* ── THE 4 RACES ─────────────────────────────────────────────────── */}
-        <div className="grid grid-cols-2 gap-2 mb-5">
+        <div className="grid grid-cols-2 gap-2.5 mb-5">
           {races.map((r) => (
             <div key={r.label}
-              className="relative overflow-hidden border border-[rgba(255,255,255,0.04)] bg-[rgba(255,255,255,0.02)]"
+              className="relative overflow-hidden rounded-lg border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)]"
               style={{ borderLeftWidth: 3, borderLeftColor: pc(r.blocks[0].party) }}
             >
               <div className="px-3 py-2.5">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-body text-[8px] uppercase tracking-widest text-[#6B6860]">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="font-body text-xs font-semibold uppercase tracking-wider text-[#8A8780]">
                     {r.label}
                   </span>
                   {r.blocks.length === 1 && r.blocks[0].flipped && (
-                    <span className="animate-pulse rounded-sm bg-[#C9A84C]/20 px-1 py-[1px] font-body text-[7px] font-bold uppercase tracking-widest text-[#C9A84C]">
+                    <span className="animate-pulse rounded-full bg-[#C9A84C]/20 px-2 py-0.5 font-body text-xs font-bold uppercase tracking-wider text-[#C9A84C]">
                       FLIP
                     </span>
                   )}
@@ -115,13 +114,13 @@ export function StateDetailPanel({
                   {r.blocks.map((b, i) => (
                     <div key={i} className="flex items-center justify-between">
                       <div className="flex items-center gap-1.5">
-                        <div className="h-2 w-2 rounded-[1px]" style={{ background: pc(b.party) }} />
-                        <span className="font-body text-[12px] font-bold text-[#F5F0E8]">
+                        <div className="h-2 w-2 rounded-full" style={{ background: pc(b.party) }} />
+                        <span className="font-body text-sm font-bold text-[#F5F0E8]">
                           {b.detail}
                         </span>
                       </div>
                       {r.blocks.length > 1 && b.flipped && (
-                        <span className="animate-pulse rounded-sm bg-[#C9A84C]/20 px-1 py-[1px] font-body text-[7px] font-bold uppercase tracking-widest text-[#C9A84C]">
+                        <span className="animate-pulse rounded-full bg-[#C9A84C]/20 px-2 py-0.5 font-body text-xs font-bold uppercase tracking-wider text-[#C9A84C]">
                           FLIP
                         </span>
                       )}
@@ -136,14 +135,14 @@ export function StateDetailPanel({
         {/* ── House Detail (if data exists) ────────────────────────────────── */}
         {data.house.totalReps > 0 && (
           <div className="mb-5">
-            <p className="mb-1.5 font-body text-[8px] uppercase tracking-widest text-[#6B6860]">
+            <p className="mb-2 font-body text-xs font-semibold uppercase tracking-wider text-[#8A8780]">
               {isRo ? "Distribuție Cameră" : "House Breakdown"}
             </p>
-            <div className="flex h-3 w-full overflow-hidden rounded-[1px]">
+            <div className="flex h-3 w-full overflow-hidden rounded-full">
               <div style={{ width: `${(data.house.p1Reps / data.house.totalReps) * 100}%`, background: pc(cd.p1) }} />
               <div style={{ width: `${(data.house.p2Reps / data.house.totalReps) * 100}%`, background: pc(cd.p2) }} />
             </div>
-            <div className="mt-1 flex justify-between font-body text-[8px] text-[#6B6860]" style={{ fontVariantNumeric: "tabular-nums" }}>
+            <div className="mt-1.5 flex justify-between font-body text-xs font-medium text-[#B8B4AC]">
               <span>{cd.p1} {data.house.p1Reps}</span>
               <span>{data.house.totalReps} {isRo ? "total" : "total"}</span>
               <span>{cd.p2} {data.house.p2Reps}</span>
@@ -155,7 +154,7 @@ export function StateDetailPanel({
         {history.length > 0 && (
 /* This sparkline provides a generational view of the state's political shifts. */
             <div>
-              <p className="mb-2 font-body text-[8px] uppercase tracking-widest text-[#6B6860]">
+              <p className="mb-2 font-body text-xs font-semibold uppercase tracking-wider text-[#8A8780]">
                 {isRo ? "Istorie Prezidențială" : "Presidential History"} · {history[0]?.year}–{history[history.length - 1]?.year}
               </p>
             <div className="relative flex items-end gap-[2px]" style={{ height: 80 }}>
@@ -184,10 +183,10 @@ export function StateDetailPanel({
             </div>
 
             {/* Sparkline axis labels */}
-            <div className="mt-1 flex justify-between font-body text-[6px] text-[#6B6860]" style={{ fontVariantNumeric: "tabular-nums" }}>
+            <div className="mt-1.5 flex justify-between font-body text-xs font-medium text-[#B8B4AC]">
               <span>{history[0]?.year}</span>
               {sparkTip && (
-                <span className="text-[#F5F0E8]">
+                <span className="text-[#F5F0E8] font-semibold">
                   {sparkTip.year} · <span style={{ color: pc(sparkTip.party) }}>{sparkTip.party}</span>
                 </span>
               )}
@@ -195,9 +194,9 @@ export function StateDetailPanel({
             </div>
 
             {/* Year marker for current */}
-            <div className="mt-1 flex justify-between font-body text-[7px]">
-              <span className="text-[#6B6860]">{history.length} {isRo ? "alegeri" : "elections"}</span>
-              <span className="text-[#C9A84C]">▲ {year}</span>
+            <div className="mt-1 flex justify-between font-body text-xs font-medium">
+              <span className="text-[#8A8780]">{history.length} {isRo ? "alegeri" : "elections"}</span>
+              <span className="text-[#C9A84C] font-bold">▲ {year}</span>
             </div>
           </div>
         )}

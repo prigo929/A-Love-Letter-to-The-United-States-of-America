@@ -78,19 +78,19 @@ export function TimelineScrubber({
 
   return (
     <div className="relative w-full select-none touch-none">
-      <div className="mb-1.5 flex items-center justify-between px-0.5">
+      <div className="mb-2 flex items-center justify-between px-1">
         <div className="flex items-center gap-2">
           <button onClick={() => setPlaying(p => !p)}
-            className="flex h-5 w-5 items-center justify-center border border-[rgba(201,168,76,0.2)] bg-[rgba(201,168,76,0.04)] text-[#C9A84C] transition-all hover:bg-[rgba(201,168,76,0.12)]"
+            className="flex h-6 w-6 items-center justify-center rounded-md border border-[rgba(201,168,76,0.3)] bg-[rgba(201,168,76,0.1)] text-[#C9A84C] transition-all hover:bg-[rgba(201,168,76,0.2)]"
             aria-label={playing ? "Pause" : "Play"}>
-            <span className="text-[8px]">{playing ? "⏸" : "▶"}</span>
+            <span className="text-xs">{playing ? "⏸" : "▶"}</span>
           </button>
-          <span className="font-body text-[8px] uppercase tracking-[0.2em] text-[#6B6860]">
+          <span className="font-body text-xs font-semibold uppercase tracking-wider text-[#8A8780]">
             {isRo ? "Cronologie" : "Timeline"} · {years.length} {isRo ? "alegeri" : "elections"}
           </span>
         </div>
         <motion.span key={currentYear} initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-          className="font-body text-sm font-bold text-[#C9A84C]" style={{ fontVariantNumeric: "tabular-nums" }}>
+          className="font-body text-base font-bold text-[#C9A84C]">
           {currentYear}
         </motion.span>
       </div>
@@ -109,9 +109,9 @@ export function TimelineScrubber({
           return (
             <g key={era.label}>
               <rect x={x1} y={4} width={Math.max(0, x2 - x1)} height={TRACK_H - 8} fill={era.color} />
-              <text x={(x1 + x2) / 2} y={12} textAnchor="middle"
-                fill="rgba(201,168,76,0.25)" fontSize="6" fontFamily="'Inter',sans-serif"
-                fontWeight="600" letterSpacing="0.1em">
+              <text x={(x1 + x2) / 2} y={13} textAnchor="middle"
+                fill="rgba(201,168,76,0.4)" fontSize="9" fontFamily="'Inter', sans-serif"
+                fontWeight="600" letterSpacing="0.05em">
                 {era.label.toUpperCase()}
               </text>
             </g>
@@ -119,7 +119,7 @@ export function TimelineScrubber({
         })}
 
         <line x1={PX} y1={TRACK_H / 2} x2={TW - PX} y2={TRACK_H / 2}
-          stroke="rgba(201,168,76,0.1)" strokeWidth={1} />
+          stroke="rgba(201,168,76,0.15)" strokeWidth={1} />
 
         {years.map((y) => {
           const x = yearToX(y);
@@ -153,8 +153,8 @@ export function TimelineScrubber({
             else if (y === MAX_YEAR) { positionClasses = "-translate-x-full"; leftStyle = "100%"; }
 
             return (
-              <div key={`lbl-${y}`} className={`absolute font-body tracking-tighter whitespace-nowrap ${positionClasses} ${active ? "text-[10px] font-bold text-[#C9A84C] -translate-y-[6px] z-10" : hov ? "text-[9px] text-[rgba(201,168,76,0.6)] z-0" : "text-[9px] text-[rgba(201,168,76,0.3)] z-0"}`} style={{ left: leftStyle, fontVariantNumeric: "tabular-nums" }}>
-                <span className={active ? "bg-[#080B12] px-1 py-0.5 rounded-sm" : ""}>{y}</span>
+              <div key={`lbl-${y}`} className={`absolute font-body whitespace-nowrap ${positionClasses} ${active ? "text-xs font-bold text-[#C9A84C] -translate-y-[6px] z-10" : hov ? "text-xs font-medium text-[rgba(201,168,76,0.8)] z-0" : "text-xs font-medium text-[rgba(201,168,76,0.4)] z-0"}`} style={{ left: leftStyle }}>
+                <span className={active ? "bg-[#080B12] px-1.5 py-0.5 rounded-full border border-[#C9A84C]/30" : ""}>{y}</span>
               </div>
             );
           })}

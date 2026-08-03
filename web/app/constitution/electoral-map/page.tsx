@@ -59,7 +59,7 @@ export default async function ElectoralMapPage() {
             className="mb-8"
           />
 
-          <p className="mb-4 font-body text-xs font-semibold uppercase tracking-[0.3em] text-[#C9A84C]">
+          <p className="mb-4 font-body text-xs font-semibold uppercase tracking-wider text-[#C9A84C]">
             {isRo ? "Arhiva Electorală" : "Electoral Archive"}
           </p>
 
@@ -98,12 +98,12 @@ export default async function ElectoralMapPage() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-sm border border-[rgba(201,168,76,0.15)] bg-[rgba(201,168,76,0.05)] px-4 py-2"
+                className="flex items-center rounded-full border border-[rgba(201,168,76,0.25)] bg-[rgba(201,168,76,0.08)] px-4 py-2"
               >
-                <span className="mr-2 font-display text-lg font-bold text-[#C9A84C]">
+                <span className="mr-2.5 font-display text-xl font-bold text-[#C9A84C]">
                   {stat.value}
                 </span>
-                <span className="font-body text-xs uppercase tracking-[0.15em] text-[#8A8780]">
+                <span className="font-body text-xs font-semibold uppercase tracking-wider text-[#B8B4AC]">
                   {stat.label}
                 </span>
               </div>
@@ -233,30 +233,24 @@ export default async function ElectoralMapPage() {
                     <p className="font-display text-lg font-bold text-[#C9A84C]">
                       {item.pillar}
                     </p>
-                    <span className="rounded-sm bg-[rgba(201,168,76,0.08)] px-2 py-0.5 font-body text-[10px] uppercase tracking-[0.15em] text-[#8A8780]">
+                    <span className="rounded-full bg-[rgba(201,168,76,0.1)] px-3 py-1 font-body text-xs font-semibold uppercase tracking-wider text-[#B8B4AC]">
                       {item.mechanism}
                     </span>
                   </div>
                   <div className="mb-3 flex gap-4">
                     <div>
-                      <p className="font-body text-[10px] uppercase tracking-[0.15em] text-[#6B6860]">
+                      <p className="font-body text-xs uppercase tracking-wider text-[#8A8780]">
                         {isRo ? "Frecvență" : "Frequency"}
                       </p>
-                      <p
-                        className="font-body text-sm font-semibold text-[#F5F0E8]"
-                        style={{ fontVariantNumeric: "tabular-nums" }}
-                      >
+                      <p className="font-body text-sm font-semibold text-[#F5F0E8]">
                         {item.frequency}
                       </p>
                     </div>
                     <div>
-                      <p className="font-body text-[10px] uppercase tracking-[0.15em] text-[#6B6860]">
+                      <p className="font-body text-xs uppercase tracking-wider text-[#8A8780]">
                         {isRo ? "Locuri" : "Seats"}
                       </p>
-                      <p
-                        className="font-body text-sm font-semibold text-[#F5F0E8]"
-                        style={{ fontVariantNumeric: "tabular-nums" }}
-                      >
+                      <p className="font-body text-sm font-semibold text-[#F5F0E8]">
                         {item.seats}
                       </p>
                     </div>

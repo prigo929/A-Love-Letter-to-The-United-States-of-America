@@ -345,7 +345,7 @@ const HouseStateGroup = memo(({ cs, isHovered, isDimmed, onMouseEnter, onMouseLe
         </g>
       ))}
       <text x={cs.label.x} y={cs.label.y} textAnchor="middle" 
-        fill={isHovered ? "#F5F0E8" : "#666"} fontSize="9" fontFamily="Inter, sans-serif" fontWeight="600" 
+        fill={isHovered ? "#F5F0E8" : "#8A8780"} fontSize="10" fontFamily="'Inter', sans-serif" fontWeight="600" 
         style={{ transition: "fill 0.15s", pointerEvents: "none", userSelect: "none", opacity: isDimmed ? 0.2 : 1 }}>
         {cs.label.text}
       </text>
@@ -646,20 +646,20 @@ export function MapRenderer({ year, viewMode, onStateClick, isRo }: { year: numb
       {tip && (
         <div className="pointer-events-none fixed z-50"
           style={{ left: Math.min(tip.x + 12, typeof window !== "undefined" ? window.innerWidth - 230 : 800), top: Math.max(tip.y - 56, 8) }}>
-          <div className="border border-[rgba(201,168,76,0.2)] bg-[#080B12]/97 px-3 py-2 backdrop-blur-sm" style={{ minWidth: 180 }}>
-            <p className="font-body text-[11px] font-bold tracking-wide text-[#F5F0E8]">{tip.name}</p>
-            <p className="mt-0.5 font-body text-[10px] text-[#8A8780]">{tip.detail}</p>
+          <div className="rounded-lg border border-[rgba(201,168,76,0.3)] bg-[#080B12]/97 px-3.5 py-2.5 backdrop-blur-md shadow-xl" style={{ minWidth: 180 }}>
+            <p className="font-body text-sm font-bold text-[#F5F0E8]">{tip.name}</p>
+            <p className="mt-0.5 font-body text-xs text-[#B8B4AC]">{tip.detail}</p>
             {tip.party && (
-              <div className="mt-1 flex items-center gap-1.5">
+              <div className="mt-1.5 flex items-center gap-2">
                 {Array.isArray(tip.party) ? tip.party.map((p, i) => (
-                  <div key={i} className="flex items-center gap-1">
-                    <div className="h-[6px] w-[6px]" style={{ background: pc(p) }} />
-                    <span className="font-body text-[8px] uppercase tracking-widest text-[#6B6860]">{p}</span>
+                  <div key={i} className="flex items-center gap-1.5">
+                    <div className="h-2 w-2 rounded-full" style={{ background: pc(p) }} />
+                    <span className="font-body text-xs font-semibold uppercase tracking-wider text-[#8A8780]">{p}</span>
                   </div>
                 )) : (
-                  <div className="flex items-center gap-1">
-                    <div className="h-[6px] w-[6px]" style={{ background: pc(tip.party) }} />
-                    <span className="font-body text-[8px] uppercase tracking-widest text-[#6B6860]">{PARTY_FULL_NAMES[tip.party] || tip.party}</span>
+                  <div className="flex items-center gap-1.5">
+                    <div className="h-2 w-2 rounded-full" style={{ background: pc(tip.party) }} />
+                    <span className="font-body text-xs font-semibold uppercase tracking-wider text-[#8A8780]">{PARTY_FULL_NAMES[tip.party] || tip.party}</span>
                   </div>
                 )}
               </div>
@@ -670,8 +670,8 @@ export function MapRenderer({ year, viewMode, onStateClick, isRo }: { year: numb
       {/* Off-Year Overlay */}
       {isOffYear && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
-          <div className="bg-[#080B12]/60 px-8 py-4 border border-[rgba(201,168,76,0.3)] backdrop-blur-md shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-            <span className="font-body text-[10px] md:text-[12px] uppercase tracking-[0.6em] text-[#C9A84C] font-black text-center block">
+          <div className="bg-[#080B12]/60 px-8 py-4 rounded-full border border-[rgba(201,168,76,0.3)] backdrop-blur-md shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+            <span className="font-body text-xs md:text-sm uppercase tracking-wider text-[#C9A84C] font-bold text-center block">
               {isRo ? "AN INTERMEDIAR: FĂRĂ ALEGERI PREZIDENȚIALE" : "OFF-YEAR: NO PRESIDENTIAL ELECTION"}
             </span>
           </div>
