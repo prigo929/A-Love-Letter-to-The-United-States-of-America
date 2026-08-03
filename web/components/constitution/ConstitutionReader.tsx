@@ -46,9 +46,9 @@ const SERIF = "'Playfair Display', Georgia, 'Times New Roman', serif";
 const PAPER_TEXTURE = "/images/constitution/parchment-paper.jpg";
 
 // Sticky offsets (the site header is fixed at h-16 md:h-20).
-const TIMELINE_TOP = "top-16 md:top-20 lg:top-[5.5rem]";
-const PANEL_TOP = "top-28 md:top-36 lg:top-[9.5rem]";
-const PANEL_MAXH = "max-h-[calc(100vh-11rem)]";
+const TIMELINE_TOP = "top-16 md:top-20";
+const PANEL_TOP = "top-32 md:top-[8.25rem]";
+const PANEL_MAXH = "max-h-[calc(100vh-9.5rem)]";
 
 // ── Tab definitions ───────────────────────────────────────────────────────────
 type TabKey = keyof Pick<
@@ -327,7 +327,7 @@ function TimelineSlider({
     <div className={`sticky ${TIMELINE_TOP} z-30 mb-6`}>
       <div
         className="w-full border-y px-4 py-3 backdrop-blur-md sm:px-6 lg:px-10"
-        style={{ borderColor: GOLD_LINE, background: "rgba(8,11,18,0.82)" }}
+        style={{ borderColor: GOLD_LINE, background: "rgba(8,11,18,0.92)" }}
       >
         <div className="flex items-center gap-3 overflow-x-auto">
           <span className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.28em]" style={{ color: GOLD }}>
@@ -518,8 +518,8 @@ function Document({
       blocks.push(
         <h2
           key={node.id}
-          className="mb-6 mt-16 border-b pb-3 text-center text-3xl font-bold first:mt-0 sm:text-4xl"
-          style={{ color: INK, fontFamily: SERIF, borderColor: "rgba(138,109,31,0.35)" }}
+          className="sticky top-32 md:top-[8.25rem] z-20 mb-6 mt-16 border-b py-3 text-center text-3xl font-bold first:mt-0 sm:text-4xl shadow-sm"
+          style={{ color: INK, fontFamily: SERIF, borderColor: "rgba(138,109,31,0.35)", backgroundColor: "rgba(242,232,207,0.95)" }}
         >
           {isRo ? node.headingRo : node.heading}
         </h2>
