@@ -406,78 +406,116 @@ The website is styled like an art-directed editorial manuscript, with distinct c
 | **📊 Data & Media** | **"Editorial Dark"**<br>• Full-bleed masonry / mosaic gallery<br>• Category filter strip with animated transitions<br>• Tactical SVG map with heatmap overlays | • **Cinematic Photo Gallery** (`/gallery`): 980+-image masonry archive spanning all site verticals (including the newer **Fine Art** and **US Buildings** category tabs for the paintings and architecture), with category tabs, lightbox zoom, and full bilingual copy.<br>• **U.S. Map Explorer** (`/explorer`): Interactive 50-state SVG map with GDP/population/statehood heatmaps, per-state data panels, search, regional filters, and per-state regional chronicle copy.<br>• **Data Fact Sheet** (`/data`): Curated empirical reference database.<br>• **We Must Fight** (`/history/we-must-fight`): Full-screen cinematic Reagan speech experience with synchronized video, transcript, and historical context. | • `/data`<br>• `/gallery`<br>• `/explorer`<br>• `/videos`<br>• `/united-states`<br>• `/immigration-demographics`<br>• `/interactive`<br>• `/data/misconceptions`<br>• `/history/we-must-fight` |
 ## 📖 Comprehensive Page Atlas & Architectural Directory
 
-A comprehensive, page-by-page reference of what each of the site's ~114 routes contains: its core argument, on-page sections in scroll order, key interactive engines, and data files (`lib/data/*`).
+A complete, page-by-page reference of every single route (~114 routes total across 14 site verticals). Each entry details the core thesis/argument, top-to-bottom scroll sequence, custom component engines, and primary data sources (`lib/data/*`).
 
 <details>
-<summary><strong>🏠 Core Pages & Global Overview (3 Routes)</strong></summary>
+<summary><strong>🏠 Core Pages & Global Profile (3 Routes)</strong></summary>
 
-- **`/` (Home)**: The front door and thesis statement for the entire platform.
-  - **Summary:** A cinematic hero gives way to an editorial opening statement, a bar of animated headline counters, and a card grid routing to all major verticals. Features four "Why America" blocks, map preview, video previews, data charts, rotating quote carousel (Lincoln, Reagan, Einstein, JFK), gallery preview, and Supabase newsletter signup.
-  - **Sections:** Cinematic Hero → Opening Statement → 6-Counter Stat Bar → 10-Section Navigation Grid → "Why America" Feature Blocks → Map Preview → Video Preview → Data Teaser Charts → Quote Carousel → Gallery Preview → Newsletter Signup.
-  - **Key Engines:** `HeroSection`, `StatBar`, `SectionGrid`, `WhyAmericaSection`, `MapPreviewSection`, `DataTeaserSection`, `QuoteCarousel`, `NewsletterSection`.
-- **`/sitemap`**: Complete link index of every route on the site, grouped by vertical.
-- **`/united-states`**: Comprehensive single-page bilingual country profile (history, geography, government, economy, demographics, culture).
-  - **Key Engines:** `UnitedStatesClient`.
+- **`/` (Homepage)**: The front door and thesis statement establishing the U.S. as "The Greatest Nation in History."
+  - **Summary:** Opens on a cinematic hero crossfade over Midtown Manhattan at golden hour, transitioning into an illuminated parchment editorial statement, a live 6-counter stat bar, a 10-section vertical navigation grid, four "Why America" editorial feature cards, interactive SVG map preview, video library showcase, data teaser charts, rotating quote carousel (Lincoln, Reagan, Einstein, JFK), gallery preview, and a Supabase-backed newsletter signup module.
+  - **Sections:** Cinematic Hero → Parchment Opening Statement → Live 6-Counter Stat Bar → 10-Section Navigation Grid → "Why America" Feature Blocks → Map Preview → Video Teasers → Data Teaser Charts → Quote Carousel → Photo Gallery Preview → Newsletter Signup.
+  - **Key Engines:** `HeroSection`, `OpeningStatement`, `StatBar`, `SectionGrid`, `WhyAmericaSection`, `MapPreviewSection`, `VideoSection`, `DataTeaserSection`, `QuoteCarousel`, `GalleryPreviewSection`, `NewsletterSection`.
+  - **Data Sources:** `lib/data/home-data.ts`, `lib/constants.ts`.
+
+- **`/sitemap` (All Sections Index)**: Plain-text complete sitemap directory for instant discoverability.
+  - **Summary:** Groups every major page and deep-dive subpage by vertical with clear bilingual summaries and direct jump links.
+  - **Sections:** Page Header → 3-Column Vertical Cards Grid → Subpage Bullet Links.
+  - **Data Sources:** `lib/constants.ts` (`getLocalizedNavSections`).
+
+- **`/united-states` (United States Country Profile)**: Neoclassical tabbed reference dossier summarizing the nation in full.
+  - **Summary:** Features an interactive 8-tab dashboard covering Identity & Symbols, History, Geography, Government & Law, Foreign Relations, Economy, Demographics, and Culture. Includes quick-fact strips, data comparison tables, and stylized 50-state map illustrations.
+  - **Sections:** Hero Title & Quick-Fact Strip → Toggleable 18-Fact Grid → Stylized 50-State Map Lightbox Grid → 8-Tab Interactive Sidebar / Mobile Dropdown → Tabbed Article Reader + Subsections + Data Tables → Specialized Deep-Dive Footers.
+  - **Key Engines:** `UnitedStatesClient`, `QuickFactStrip`, `AllQuickFacts`, `DataTable`, `SectionContent`, `PhotoLightboxGrid`.
+  - **Data Sources:** `lib/data/united-states-data.ts`.
 
 </details>
 
 <details>
-<summary><strong>📈 Economy (The Engine of the World · $32.4T GDP · 6 Routes)</strong></summary>
+<summary><strong>📈 Economy (The Engine of the World · 6 Routes)</strong></summary>
 
-- **`/economy` (Main Hub)**: The vertical's landing page establishing America as "the engine of the world."
-  - **Summary:** Flows from a $32.4T-GDP overview through capital markets, venture capital, dollar dominance, and trade, previewing each deep-dive route.
-  - **Sections:** Overview + Hero Stat Cards → GDP & Scale Charts → Capital Markets (S&P 500) → Venture Capital & Startups → Dollar Dominance → Trade & Exports → Sub-page Nav → Iconic Photographs Strip → Deep Dive Archive → AI Oracle CTA.
-  - **Key Engines:** `MacroHero`, `MacroStat`, `GdpBarChart`, `SP500Chart`, `VCBarChart`, `DollarReserveChart`, `FloatingTOC`, `DeepDiveSection`.
+- **`/economy` (Economy Main Hub)**: Flagship landing page establishing America as the $32.4T engine of the global economy.
+  - **Summary:** Flows from a macro hero overview into long-run GDP charts, capital markets showcase, venture capital ecosystem maps, dollar reserve charts, trade category breakdowns, iconic photograph galleries, and the Ask America AI Oracle CTA.
+  - **Sections:** Macro Hero → Breadcrumb → Section 1: Overview & 4 Stat Cards → Section 2: GDP & Scale (Bar Charts + State Map Link) → Pull Quote 1 (Alexander Hamilton) → Section 3: Capital Markets ($69T Band + S&P 500 Chart) → Section 4: Venture Capital & Startups (VC Chart + Startup Timeline + City Ecosystem Cards) → Pull Quote 2 → Section 5: Dollar Dominance (Reserve Share Chart + Currency Gallery) → Section 6: Trade & Exports (Port Infrastructure Band + Category Bars) → Sub-Page Card Grid → Iconic Photographs → Deep Dive Archive → Ask America Oracle CTA.
+  - **Key Engines:** `MacroHero`, `MacroStat`, `GdpBarChart`, `SP500Chart`, `VCBarChart`, `DollarReserveChart`, `InfrastructureBand`, `FloatingTOC`, `DeepDiveSection`, `IconicPhotographs`.
   - **Data Sources:** `lib/data/economy-data.ts`, `lib/data/verticals-thematic-data.ts`.
-- **`/economy/gdp-growth` (GDP & Scale)**: $32.4T GDP, 130+ years as #1 economy.
-  - **Summary:** Traces the long-run GDP curve, global & per-capita comparisons, sector composition, G7 divergence, R&D spending, productivity, public debt, and a clickable state-GDP map.
-  - **Sections:** 18 Recharts visualizations → Long-run GDP → Global comparison → Per-capita → Sector composition → GDP-vs-labor → G7 divergence → State-GDP map → Editorial insights.
-  - **Key Engines:** `GdpHistoryChart`, `StateGdpMap`, Recharts suite.
+
+- **`/economy/gdp-growth` (GDP & Economic Scale)**: ~18 Recharts visualizations tracing 130+ years of American GDP dominance.
+  - **Summary:** Detailed empirical breakdown of nominal and per-capita GDP, G7 divergence, sector composition, R&D intensity, labor productivity, real growth curves, public debt analysis, and a clickable state-by-state GDP heatmap.
+  - **Sections:** Hero Header → 18 Interactive Recharts Visualizations (Historical GDP, Per Capita, Sector Share, G7 Gap, R&D/Productivity) → Interactive State GDP Heatmap → Empirical Fact Grid → Counterweight Section ("Who is Left Behind?") → Editorial Conclusions.
+  - **Key Engines:** `GdpHistoryChart`, `StateGdpMap`, Recharts Suite.
   - **Data Sources:** `lib/data/economy-data.ts`.
-- **`/economy/capital-markets` (Capital Markets)**: $69T market capitalization.
-  - **Summary:** A tour of the world's deepest capital markets, stacking the S&P 500, NASDAQ, VIX, Buffett Indicator, Fed funds, yield curve, credit spreads, and Shiller CAPE.
-  - **Key Engines:** ~18 Interactive Recharts components.
+
+- **`/economy/capital-markets` (Capital Markets & Financial System)**: Deep dive into the $69T American equity and credit markets.
+  - **Summary:** Analyzes why US Treasuries set the global risk-free rate. Features interactive charts for S&P 500, NASDAQ, VIX volatility, Buffett Indicator, Federal Reserve funds rate, yield curve inversion, credit spreads, Shiller CAPE, and household net worth.
+  - **Sections:** Hero Header → Market Cap Comparison → 18 Interactive Financial Charts → Federal Reserve Policy Breakdown → Democratization of Retail Capital → Private Equity & Venture Integration → Institutional Regulatory Safeguards.
+  - **Key Engines:** `SP500Chart`, Market Visualizers Suite.
   - **Data Sources:** `lib/data/economy-data.ts`.
-- **`/economy/startups-venture-capital` (Venture Capital)**: 65% of global VC, 659 unicorns.
-  - **Summary:** Covers VC history, deal stages, unicorn share, IPOs, business formation, dry powder, and exits, alongside a startup timeline and top ecosystem cards.
+
+- **`/economy/startups-venture-capital` (Venture Capital & Startups)**: Detailed analysis of the world’s primary venture engine (65% of global VC).
+  - **Summary:** Tracks startup creation from garage origins to 659 unicorn companies. Features VC funding stage breakdowns, IPO history, business formation spikes, dry powder stats, startup timeline (1975–present), and city ecosystem dossiers (Silicon Valley, NYC, Boston, Austin, Miami).
+  - **Sections:** Hero Header → VC Country Share Chart → Funding Stages & Deal Sizes → Startup Timeline Grid → Top Ecosystem Cards → Top VC Firm Cards → Exits & IPO Dynamics.
+  - **Key Engines:** `VCBarChart`, `StartupTimeline`, Ecosystem Cards.
   - **Data Sources:** `lib/data/economy-data.ts`.
-- **`/economy/dollar-dominance` (Dollar Dominance)**: 56.8% of foreign exchange reserves.
-  - **Summary:** Traces Bretton Woods, the petrodollar, reserve-share trends, dollar-index charts, dedollarization analysis, and a vintage dollar-bill gallery.
+
+- **`/economy/dollar-dominance` (The Dollar & Bretton Woods)**: The story of the dollar’s 56.8% global foreign exchange reserve share.
+  - **Summary:** Examines Bretton Woods, the petrodollar recycling model, currency index trends, dedollarization myths vs realities, and a high-resolution gallery of vintage currency bills.
+  - **Sections:** Hero Header → Reserve Currency Share Chart → DXY Dollar Index Chart → Bretton Woods Timeline → Petrodollar Mechanics → Dedollarization Empirical Audit → Currency Gallery.
+  - **Key Engines:** `DollarReserveChart`, Currency Lightbox.
   - **Data Sources:** `lib/data/economy-data.ts`.
-- **`/economy/trade-and-exports` (Trade & Exports)**: Export categories, trade balance, and logistics.
-  - **Summary:** Examines export categories, trading partners, top export companies, and the structural logistics backbone supporting American trade.
+
+- **`/economy/trade-and-exports` (Global Trade & Logistics)**: Deep dive into American physical and digital export capabilities.
+  - **Summary:** Details export categories (aerospace, medical devices, refined energy, software, agriculture), major global trading partners, top export corporations, and the logistics backbone (ports, rail hubs, air cargo).
+  - **Sections:** Hero Header → Export Category Bar Charts → Trade Balance Breakdown → Top Export Partners & Firms → Supply Chain Logistics Backbone → Services Export Strength.
+  - **Key Engines:** Trade Category Visualizers.
   - **Data Sources:** `lib/data/economy-data.ts`.
 
 </details>
 
 <details>
-<summary><strong>🌲 Nature (Unrivaled Natural Majesty · 8 Routes)</strong></summary>
+<summary><strong>🌲 Nature & Natural Resources (8 Routes)</strong></summary>
 
-- **`/nature` (Main Hub)**: Landing page for American natural majesty.
-  - **Summary:** Opens on a 5-landscape crossfade and moves through a stat wall, Roosevelt/Muir quotes, national-parks visitor chart, Crown Jewels cinematic grid, biodiversity data, regional wonders, and landscape mosaic.
+- **`/nature` (Nature Main Hub)**: Visual celebration of American natural majesty across Arctic tundra, desert canyons, and tropical rainforests.
+  - **Summary:** Opens with a crossfading 5-landscape hero, Roosevelt and Muir parallax quotes, national park visitor charts, Crown Jewels cinematic grid, biodiversity breakdown, regional wonders, and landscape photo mosaic.
+  - **Sections:** 5-Landscape Crossfade Hero → Animated Stat Wall → Roosevelt Parallax Quote → NPS Visitor Trend Chart → Muir Quote → Crown Jewels Cinematic Grid → Biodiversity Visualizer → Regional Wonders Grid → Landscape Mosaic → Subpage Navigation Cards → Deep Dive Archive.
   - **Key Engines:** `NatureHeroCrossfade`, `ParkVisitorsChart`, `BiodiversityChart`, `ParkCinematicGrid`, `RegionCardsGrid`.
   - **Data Sources:** `lib/data/nature-data.ts`, `lib/data/verticals-thematic-data.ts`.
-- **`/nature/national-parks` (National Parks)**: 63 parks, 423 NPS sites, 85M acres.
-  - **Summary:** Explores visitor trends, crown-jewel park grids, and NPS site statistics.
+
+- **`/nature/national-parks` (National Parks System)**: In-depth exploration of the 63 National Parks and 423 NPS sites.
+  - **Summary:** Traces the 1872 creation of Yellowstone through the modern 85-million-acre park system, featuring visitor trends, crown jewel grids, and NPS conservation data.
+  - **Sections:** Hero → Stat Wall → Visitor Trends Chart → Crown Jewels Grid → Parallax Divider → Complete Parks Table → Fact Modules → Subpage Nav.
   - **Key Engines:** `ParkVisitorsChart`, `ParkCinematicGrid`.
   - **Data Sources:** `lib/data/nature-data.ts`.
-- **`/nature/alaska` (Alaska)**: 663,000 sq mi wilderness.
-  - **Summary:** Features Denali, 100,000 glaciers, wildlife tables, and full-width glacier parallax bands.
+
+- **`/nature/alaska` (Alaska Wilderness)**: Showcase of the 663,000 sq mi last frontier.
+  - **Summary:** Details Denali (20,310 ft), 100,000 glaciers, three million lakes, Arctic wildlife, and glacier retreat analysis.
+  - **Sections:** Hero → Stat Wall → Denali Spotlight → Wildlife Table → Full-Bleed Glacier Parallax Band → Fact Modules → Subpage Nav.
   - **Data Sources:** `lib/data/nature-data.ts`.
-- **`/nature/grand-canyon` (Grand Canyon)**: 1.8 billion years of exposed strata.
-  - **Summary:** Anchored by an interactive geological strata-reveal timeline (`CanyonStrataReveal`) and scale comparison.
+
+- **`/nature/grand-canyon` (Grand Canyon Geological Strata)**: 1.8 billion years of Earth history.
+  - **Summary:** Anchored by an interactive geological strata-reveal timeline (`CanyonStrataReveal`), rock layer composition, scale visualizers, and Colorado River erosion history.
+  - **Sections:** Hero → Stat Wall → Interactive `CanyonStrataReveal` Timeline → Image Comparison → Parallax Band → Fact Modules → Subpage Nav.
+  - **Key Engines:** `CanyonStrataReveal`.
   - **Data Sources:** `lib/data/nature-data.ts`.
-- **`/nature/yellowstone` (Yellowstone)**: First national park and supervolcano.
-  - **Summary:** Geyser eruption simulators, hydrothermal feature breakdowns, and bison/wildlife tables.
+
+- **`/nature/yellowstone` (Yellowstone Supervolcano & Geysers)**: World’s first national park and active geothermal wonderland.
+  - **Summary:** Geyser eruption simulators, hydrothermal feature breakdowns (Old Faithful, Grand Prismatic), supervolcano geology, and bison/grizzly recovery data.
+  - **Sections:** Hero → Stat Wall → Geyser Simulation → Hydrothermal Breakdown → Parallax Divider → Wildlife Table → Fact Modules → Subpage Nav.
   - **Data Sources:** `lib/data/nature-data.ts`.
-- **`/nature/rockies` (Rocky Mountains)**: 3,000 miles, 53 fourteeners.
-  - **Summary:** High-altitude mountain parks, glacial lakes, and peak elevation grids.
+
+- **`/nature/rockies` (Rocky Mountain Chain)**: The 3,000-mile continental divide.
+  - **Summary:** Features Colorado’s 53 fourteeners, high-altitude alpine tundra, glacial lakes, wildlife corridors, and mountain park networks.
+  - **Sections:** Hero → Stat Wall → Fourteeners Grid → Alpine Lakes Showcase → Parallax Divider → Fact Modules → Subpage Nav.
   - **Data Sources:** `lib/data/nature-data.ts`.
-- **`/nature/great-lakes` (Great Lakes)**: 21% of world surface freshwater.
-  - **Summary:** Dedicated lakes chart (`GreatLakesChart`), water-security analysis, and industrial Midwest watershed breakdown.
+
+- **`/nature/great-lakes` (Great Lakes Freshwater Engine)**: 21% of world surface freshwater.
+  - **Summary:** Dedicated lakes chart (`GreatLakesChart`), bathymetry, water security analysis, and the industrial/environmental watershed of Superior, Michigan, Huron, Erie, and Ontario.
+  - **Sections:** Hero → Stat Wall → Wave Section + `GreatLakesChart` → Lakes Showcase → Water Security Block → Fact Modules → Subpage Nav.
+  - **Key Engines:** `GreatLakesChart`.
   - **Data Sources:** `lib/data/nature-data.ts`.
-- **`/natural-resources` (Natural Resources)**: #1 oil & gas producer, top LNG exporter, agricultural superpower.
-  - **Summary:** Energy, nuclear, agriculture, center-pivot irrigation, minerals, water security, and public lands.
+
+- **`/natural-resources` (Energy, Minerals & Agriculture)**: Comprehensive analysis of American resource independence.
+  - **Summary:** Covers #1 oil & gas production, top LNG export capacity, nuclear energy fleet, center-pivot irrigation agriculture, critical minerals, and public land management.
+  - **Sections:** Overview → Pillar Navigation → Energy & Oil/Gas → Renewables & Nuclear → Agriculture & Irrigation → Minerals & Water → Public Lands → Milestones Timeline → Photo Gallery → Deep Dive CTA.
   - **Key Engines:** `ResourceGrid`, `ResourceGallery`, `GdpBarChart`.
   - **Data Sources:** `lib/data/natural-resources-data.ts`, `lib/data/natural-resources-gallery-data.ts`.
 
@@ -486,24 +524,37 @@ A comprehensive, page-by-page reference of what each of the site's ~114 routes c
 <details>
 <summary><strong>🎖️ Military (The Arsenal of Democracy · 6 Routes)</strong></summary>
 
-- **`/military` (Main Hub)**: Cinematic main hub for American military power.
-  - **Summary:** Features looping video hero, global stat wall, budget comparison, branch selector, SOCOM grid, Global Command Map, weapons dossiers, nuclear triad simulation, DARPA future systems grid, base drawer, NATO/AUKUS alliances, and public-domain photo archive.
+- **`/military` (Military Main Hub)**: "Minimalist black-ops" showcase of American defense supremacy.
+  - **Summary:** Looping video hero leads into global stat walls, budget comparison charts, branch selectors, SOCOM specs, live Global Command Map of all 11 carrier strike groups, weapons dossiers, nuclear triad simulator, DARPA future systems grid, base drawers, NATO/AUKUS alliances, and public-domain photo archives.
+  - **Sections:** Looping Video Hero → Global Stat Wall → Dominance Overview + Budget Comparison Bar → Branch Selector → SOCOM Grid → Global Command Map → Weapon Systems Dossiers → B-2 Stealth Interlude → Nuclear Triad Simulation → Intelligence Network Map → DARPA Future Systems Grid → Orbital Space Interlude → Defense Industrial Base → NATO/AUKUS Alliance Grid → Full-Viewport Quote → Iconic Photos → Deep Dive Archive.
   - **Key Engines:** `GlobalCommandMap`, `NuclearTriadDiagram`, `DARPAProgramGrid`, `BranchSelector`, `WeaponSystemCard`, `BudgetComparisonBar`.
   - **Data Sources:** `lib/data/military-data.ts`, `lib/data/domestic-bases-data.ts`, `lib/data/global-bases-data.ts`, `lib/data/overseas-bases-data.ts`.
-- **`/military/navy` (US Navy)**: Carrier strike groups, submarines, Aegis, naval aviation.
-  - **Summary:** Fleet comparison, capability grids, operational console, air-wing composition, weapons showcase, and SpecWar.
+
+- **`/military/navy` (US Navy Carrier & Sea Power)**: Defense-tech analysis of naval aviation and maritime dominance.
+  - **Summary:** Details 11 Supercarriers, Ohio/Virginia-class attack submarines, Aegis missile defense, naval air wings, operational consoles, weapons dossiers, and special warfare (SEALs).
+  - **Sections:** Parallax Hero → Metric Strip → Fleet Comparison → Capability Grid → "Fly Navy" Video → Air-Wing Composition → Operational Console → Bases → Platform Showcase → Weapons Console → Heritage Timeline → Future Tech → Special Warfare (SEALs).
   - **Data Sources:** `lib/data/navy-data.ts`.
-- **`/military/air-force` (US Air Force)**: Air superiority, stealth, strategic deterrence.
-  - **Summary:** B-2 video hero, fleet metrics, operational console, stealth platform dossiers, and rapid mobility analysis.
+
+- **`/military/air-force` (US Air Force Air Superiority)**: Air power, stealth bombers, and rapid global mobility.
+  - **Summary:** B-2 Spirit/B-21 Raider video hero, F-22/F-35 stealth fighters, SAC nuclear deterrence, KC-46 refueling, and autonomous combat air systems.
+  - **Sections:** B-2 Video Hero → Metric Strip → Fleet Comparison → Capability Grid → Operational Console → Stealth Platform Showcase → Heritage Timeline → Air Force Bases → Autonomous Air Future.
   - **Data Sources:** `lib/data/airforce-data.ts`.
-- **`/military/space-force` (US Space Force)**: GPS, missile warning, orbital defense.
-  - **Summary:** Satellite constellations, space-domain awareness, orbital defense platforms, and launch architecture.
+
+- **`/military/space-force` (US Space Force & Orbital Defense)**: Orbital surveillance, GPS satellite constellations, and space domain awareness.
+  - **Summary:** Details GPS III satellite arrays, space launch delta wings, missile warning radar networks, and resilient satellite architecture.
+  - **Sections:** Space Video Hero → Metric Strip → Fleet/Sat Comparison → Capability Grid → Operational Console → Satellite Showcase → Heritage Timeline → Space Force Bases → Future Orbit Tech.
   - **Data Sources:** `lib/data/spaceforce-data.ts`.
-- **`/military/global-bases` (Global Bases)**: 750+ bases forward posture.
-  - **Summary:** Global Command Map, regional theater grid, base-dossier drawer, logistics backbone, and alliance networks.
+
+- **`/military/global-bases` (Global Bases & Forward Posture)**: Briefing on 750+ military installations worldwide.
+  - **Summary:** Global Command Map, regional theater breakdown (INDOPACOM, EUCOM, CENTCOM), TRANSCOM logistics backbone, and interactive base dossier drawers.
+  - **Sections:** Video Hero → Strategic Thesis → Global Command Map → Regional Theater Grid → Base Dossier Drawer → TRANSCOM Logistics Backbone → Alliance Network → Domestic & Overseas Installation List.
+  - **Key Engines:** `GlobalCommandMap`, Base Drawer.
   - **Data Sources:** `lib/data/domestic-bases-data.ts`, `lib/data/global-bases-data.ts`, `lib/data/overseas-bases-data.ts`.
-- **`/military/intelligence` (Intelligence Community)**: SIGINT, HUMINT, GEOINT, cyber defense.
-  - **Summary:** CIA video hero, agency dossiers, redaction-bar disciplines, reading room vault, Five Eyes network pentagon, and intelligence history.
+
+- **`/military/intelligence` (US Intelligence Community & Five Eyes)**: "Classified dossier" breakdown of SIGINT, HUMINT, GEOINT, and cyber defense.
+  - **Summary:** CIA video hero, agency dossiers (CIA, NSA, NGA, DIA, NRO), interactive redaction-bar discipline cards, CIA Reading Room "Vault," Five Eyes SVG pentagon, and historical intelligence audits.
+  - **Sections:** CIA Video Hero → Key Stats → Agency Dossiers → Redaction-Bar Discipline Cards → The Vault (CIA Reading Room) → Installation Map → Five Eyes SVG Pentagon → Heritage Timeline → Historical Intelligence Failures Audit → Future Cyber Programs.
+  - **Key Engines:** Redaction Cards, Five Eyes Pentagon SVG.
   - **Data Sources:** `lib/data/intelligence-data.ts`.
 
 </details>
@@ -511,190 +562,386 @@ A comprehensive, page-by-page reference of what each of the site's ~114 routes c
 <details>
 <summary><strong>🦅 Constitution (250 Years of Democratic Stability · 9 Routes)</strong></summary>
 
-- **`/constitution` (Main Hub)**: Cinematic civic exhibit.
-  - **Summary:** Ambient audio, founders constellation, Bill of Rights, separation of powers diagram, federalism hook, Constitution Race timeline, and "The World Without" analysis.
+- **`/constitution` (Constitution Main Hub)**: "Sovereign civic exhibit" celebrating the world’s oldest active written constitution.
+  - **Summary:** Ambient audio, founders constellation, Bill of Rights, interactive separation of powers diagram, policy laboratories hook, Constitution Race timeline, and "The World Without" structural analysis.
+  - **Sections:** Neoclassical Hero + Ambient Audio → Founders Constellation → Bill of Rights Parchment → Separation of Powers Interactive SVG → Federalism Hook → Constitution Race Timeline → "The World Without" Analysis → Subpage Cards → Deep Dive Archive.
   - **Key Engines:** `SeparationDiagram`, `FederalismHook`, `ConstitutionRace`, `ElectoralMap`, `RightsCounter`, `WorldWithout`, `AmendmentAccordion`, `FloatingTOC`.
   - **Data Sources:** `lib/data/constitution-data.ts`.
-- **`/constitution/electoral-map` (Electoral Archive)**: Interactive election map (1788–2024).
-  - **Summary:** Presidential, Senate, House, and Gubernatorial election archives with deterministic seat-flip logic and bipartisan delegation rendering.
-- **`/constitution/federalism` (Federalism)**: 50 policy laboratories.
-  - **Summary:** Interactive `PolicyLaboratory` (design-your-state matcher) and 10th Amendment state-rights case studies.
-- **`/constitution/separation-of-powers` (Separation of Powers)**: Three co-equal branches.
-  - **Summary:** Interactive `SeparationDiagram`, branch powers cards, and anti-tyranny structural safeguards.
+
+- **`/constitution/electoral-map` (1788–2024 Electoral Archive)**: Museum-grade election dataset spanning 236 years.
+  - **Summary:** Interactive election maps for every presidential, senate, house, and gubernatorial race since 1788, featuring deterministic mid-term seat-flip logic and dynamic bipartite delegation rendering.
+  - **Sections:** Hero + Stat Pills → `ElectoralMap` Orchestrator (Presidential/Senate/House/Gubernatorial filters) → How-to-Read Guide → Four Pillars of Elections → Historical Quote.
+  - **Key Engines:** `ElectoralMap`.
+  - **Data Sources:** `lib/data/electoral-map-data.ts`.
+
+- **`/constitution/federalism` (50 Policy Laboratories)**: 10th Amendment state sovereignty and competitive governance.
+  - **Summary:** Features `PolicyLaboratory` (an interactive design-your-ideal-state matcher), real-world state case studies (taxation, environmental laws, education), and constitutional federalism limits.
+  - **Sections:** Hero → `PolicyLaboratory` Interactive Matcher → Laboratories in Action Cards → 10th Amendment Callout → Legal Boundary Precedents.
+  - **Key Engines:** `PolicyLaboratory`.
+
+- **`/constitution/separation-of-powers` (Tri-Branch Safeguards)**: Executive, legislative, and judicial checks & balances.
+  - **Summary:** Interactive `SeparationDiagram` visualizer, branch powers dossiers, veto/override mechanics, judicial review (Marbury v. Madison), and anti-tyranny structural checklists.
+  - **Sections:** Hero → Interactive `SeparationDiagram` → Executive/Legislative/Judicial Branch Dossiers → "Tyranny Impossible" Checklist → Supreme Court Landmark Precedents.
+  - **Key Engines:** `SeparationDiagram`.
   - **Data Sources:** `lib/data/constitution-data.ts`.
-- **`/constitution/democracy-track-record` (Democracy Track Record)**: 237 years, zero coups.
-  - **Summary:** Transfer of power timeline (`TransferTimeline`), Seven Greatest Tests of democracy, and constitutional longevity comparisons.
+
+- **`/constitution/democracy-track-record` (237-Year Transfer Record)**: 60 elections, zero military coups.
+  - **Summary:** Tracks peaceful transfer of power, transfer timeline (`TransferTimeline`), the Seven Greatest Tests of American democracy (Civil War, Great Depression, Watergate, 1968), and constitutional longevity comparisons.
+  - **Sections:** Opening Stats → `TransferTimeline` → The Seven Greatest Tests Dossiers → Constitutional Age Comparison Chart → Verdict Bar.
+  - **Key Engines:** `TransferTimeline`.
   - **Data Sources:** `lib/data/constitution-data.ts`.
-- **`/constitution/bill-of-rights` (Bill of Rights)**: First ten amendments.
-  - **Summary:** Parchment hero, amendment accordion (`AmendmentAccordion`), historical context, and rights counters.
+
+- **`/constitution/bill-of-rights` (First Ten Amendments)**: The foundation of individual civil liberties.
+  - **Summary:** Parchment hero stage, interactive amendment accordion (`AmendmentAccordion`), historical ratifying context, rights counters, and landmark Supreme Court protections.
+  - **Sections:** Parchment Hero → Amendment Content → Parchment Feature Card → Historical Ratification Context → `AmendmentAccordion` → Empirical Facts Grid.
+  - **Key Engines:** `AmendmentAccordion`, `RightsCounter`.
   - **Data Sources:** `lib/data/constitution-data.ts`.
-- **`/constitution/first-amendment` (First Amendment)**: Free speech, press, and religion.
-  - **Summary:** Original text, protected categories, landmark Supreme Court cases, and global free-speech comparison.
-- **`/constitution/second-amendment` (Second Amendment)**: Right to keep and bear arms.
-  - **Summary:** Original text, historical context, landmark cases (Heller, Bruen), and post-Bruen legal terrain.
-- **`/constitution/unique-features` (Only in America)**: Unique civic mechanisms.
-  - **Summary:** Elected DAs, grand juries, citizen ballot initiatives, and global comparative analysis.
+
+- **`/constitution/first-amendment` (Free Speech & Assembly)**: Absolute protection of speech, religion, and press.
+  - **Summary:** Original text, protected vs unprotected speech categories, landmark Supreme Court cases (Tinker, Texas v. Johnson, NYT v. Sullivan), and global free-speech legal contrast.
+  - **Sections:** Original Parchment Text → Protected Categories Breakdown → Supreme Court Landmark Case Studies → Global Free Speech Comparative Index.
+
+- **`/constitution/second-amendment` (Right to Keep and Bear Arms)**: Textual analysis and post-2022 legal jurisprudence.
+  - **Summary:** The 27-word text, historical militia context, landmark Supreme Court rulings (Heller, McDonald, Bruen), and current post-Bruen constitutional carry landscape.
+  - **Sections:** Original Text → Historical Founding Context → Landmark Supreme Court Rulings (Heller, Bruen) → Post-Bruen Legal Landscape.
+
+- **`/constitution/unique-features` (Only-in-America Civic Mechanics)**: Democratic mechanisms unique to the US.
+  - **Summary:** Explores elected DAs and sheriffs, citizen grand juries, ballot initiatives, recall elections, and New England town hall direct democracy.
+  - **Sections:** Hero → Elected Officials Pyramid → 5 Unique Feature Cards → Global Comparative Contrast Table.
 
 </details>
 
 <details>
 <summary><strong>🎭 Culture (The Global Cultural Powerhouse · 10 Routes)</strong></summary>
 
-- **`/culture` (Main Hub)**: "The American Operating System" hub page.
+- **`/culture` (Culture Main Hub)**: "The American Operating System" establishing culture as America's ultimate soft power.
   - **Summary:** Video hero, bento subpage nav, Export Paradox (`CultureAmericana`), Global Contributions Matrix, Holidays & Traditions, brand logos marquee, soft-power budget, timeline scroll, and quote carousel.
+  - **Sections:** Video Hero → Bento Subpage Nav → Numbers Strip → Thesis Block → Export Paradox (`CultureAmericana`) → What Every Country Added (`GlobalContributionsMatrix`) → Holidays & Traditions → Odds & Ends of Americana → Brand Logos Marquee → Soft Power Budget → Culinary & Language Sections → Timeline Scroll → Bono Viewport Quote → Music/Sports/Fashion Grid → Hollywood Editorial → Deep Dive Archive.
+  - **Key Engines:** `CultureAmericana`, `GlobalContributionsMatrix`, Marquee.
   - **Data Sources:** `lib/data/culture-data.ts`, `lib/data/verticals-thematic-data.ts`.
-- **`/culture/companies-brands` (Companies & Brands)**: The logo empire.
-  - **Summary:** Features **Master Corporate Hub** (`MasterCorporateHub.tsx`) combining 5 Economic Eras, Foundational Product Breakthroughs, Iconic Slogans (*"Just Do It"*, *"Think Different"*), and Founders' Garages (Los Altos, Bellevue, Palo Alto) into one unified dashboard, plus Mascot Canon and Vintage Print Ad Vault.
+
+- **`/culture/companies-brands` (Companies & Brands)**: "The Logo Empire" and global brand dominance.
+  - **Summary:** Features **Master Corporate Hub** (`MasterCorporateHub.tsx`) combining 5 Economic Eras, Foundational Product Breakthroughs, Iconic Slogans (*"Just Do It"*, *"Think Different"*), and Founders’ Garages (Los Altos, Bellevue, Palo Alto) into one unified dashboard, plus Mascot Canon and Vintage Print Ad Vault.
+  - **Sections:** Hero → Dark Thesis → Master Corporate Hub → Mascot Canon (`MascotCanon`) → Vintage Print Ad Vault (`BrandAdsArchive`) → Brand Logos Marquee → Route 66 Parallax → Sports Franchise Economy.
   - **Key Engines:** `MasterCorporateHub`, `MascotCanon`, `BrandAdsArchive`.
-- **`/culture/food-and-drinks` (Food & Drinks)**: The democratic palate.
-  - **Summary:** Four Foods (`FourFoodsExplorer`), Seven Desserts (`SevenDessertsExplorer`), Pizza Americanization (5-chapter dossier), Fast Food Big Three, Chip Flavor Canon, BBQ Regional Map, and Vintage Ad Vault.
+
+- **`/culture/food-and-drinks` (The Democratic Palate)**: How America industrialized and democratized global cuisine.
+  - **Summary:** Stack of interactive "canon" explorers: Four Foods (`FourFoodsExplorer`), Seven Desserts (`SevenDessertsExplorer`), Pizza Americanization (5-chapter dossier), Fast Food Big Three, Chip Flavor Canon, BBQ Regional Map, and Vintage Ad Vault.
+  - **Sections:** Dark Thesis → Food Pillars → Four Foods Explorer → Seven Desserts Explorer → Pizza Americanization (5-Chapter Dossier) → Fast Food Big Three → Chip Flavor Canon → How American Food Changed → BBQ Map → Breakfast Culture → Dish Catalogue → Diner Parallax & Vintage Ad Vault.
   - **Key Engines:** `FourFoodsExplorer`, `SevenDessertsExplorer`, `PizzaAmericanizationExplorer`, `FastFoodBigThree`, `ChipFlavorCanon`, `FoodEvolutionExplorer`.
-- **`/culture/sports` (Sports)**: The stadium nation.
-  - **Summary:** Eight American Balls (`EightAmericanBalls`), golf, boxing, NASCAR, Olympic dominance, soccer revolution, and SI Covers Vault.
-  - **Key Engines:** `EightAmericanBalls`.
-- **`/culture/growing-up-american` (Growing Up American)**: Childhood & school.
-  - **Summary:** Toy Canon (`ToyCanon`), Toy Symbols (`ToySymbols`), School Supplies (`SchoolSuppliesCanon`), and High School Clichés (`HighSchoolTropes`).
-- **`/culture/english-language` (English Language)**: The global lingua franca.
-  - **Summary:** Global vocabulary conquest, magazine vault, Advanced English Concepts (`AdvancedEnglishConcepts`), and Times Square parallax.
+
+- **`/culture/sports` (The Stadium Nation)**: The $80B sports ecosystem and athletic supremacy.
+  - **Summary:** Eight American Balls (`EightAmericanBalls`), golf, boxing, college sports, NASCAR, Olympic dominance, soccer revolution, and SI Covers Vault.
+  - **Sections:** Dark Thesis → Sports Pillars → Eight American Balls Canon → Golf & Boxing Features → College Sports & Tailgating → NASCAR & Motorsports → Olympic Dominance & Legends → Soccer Revolution → SI Covers Vault.
+  - **Key Engines:** `EightAmericanBalls`, SI Covers Vault.
+
+- **`/culture/growing-up-american` (Childhood & School Culture)**: The texture of American childhood.
+  - **Summary:** Hasbro/Mattel Toy Canon (`ToyCanon`), Victorian toy symbols (`ToySymbols`), School Supplies Canon (`SchoolSuppliesCanon`), and High School Clichés (`HighSchoolTropes`).
+  - **Sections:** Toy Canon → Why Toy Symbols Are Old → Parallax Dividers → School Supplies Canon → High School Clichés Grid.
+  - **Key Engines:** `ToyCanon`, `ToySymbols`, `SchoolSuppliesCanon`, `HighSchoolTropes`.
+
+- **`/culture/english-language` (The Global Lingua Franca)**: English as the invisible global operating system.
+  - **Summary:** Global vocabulary conquest, magazine vault, American technical terms, and interactive Advanced English Concepts (`AdvancedEnglishConcepts`).
+  - **Sections:** Dark Thesis → Domain Cards → Magazine Vault → Words That Conquered the World → Advanced English Concepts → Times Square Parallax → Lingua Franca of Code & Aviation.
   - **Key Engines:** `AdvancedEnglishConcepts`.
-- **`/culture/fashion` (Fashion)**: The uniform of global rebellion.
-  - **Summary:** 8 American Aesthetics (`AmericanAestheticsCanon`), Western wear, denim history, vintage ads, and subculture movements.
+
+- **`/culture/fashion` (The Uniform of Youth & Rebellion)**: Denim, sneakers, and streetwear.
+  - **Summary:** 8 American Aesthetics (`AmericanAestheticsCanon`), Western wear, denim history, vintage ad vault, and subculture movements.
+  - **Sections:** Dark Thesis → Fashion Pillars → 8 Distinctly American Aesthetics → Western Wear Gallery → Vintage Ad Vault → American Designers → Subculture Movements.
   - **Key Engines:** `AmericanAestheticsCanon`.
-- **`/culture/entertainment` (Entertainment)**: Film, television, streaming, and gaming.
-  - **Summary:** Shared cinematic film module (`FilmAndStorytellingClient`), streaming platforms, theme parks, magazine archives, and gaming hubs.
+
+- **`/culture/entertainment` (Hollywood & The Attention Machine)**: Film, television, streaming, and gaming.
+  - **Summary:** Shared cinematic film module (`FilmAndStorytellingClient`), streaming platforms (Netflix, Disney), theme parks, magazine archives, and gaming hubs.
+  - **Sections:** Video Hero → Editorial Thesis → Cinematic Epochs & Visual Grammar → Streaming Platforms → Theme Parks → Magazine Archive → Gaming Integration.
   - **Data Sources:** `lib/data/culture-data.ts`, `lib/data/gallery.ts`.
-- **`/culture/music-genres` (Music Genres)**: The sound of global export.
+
+- **`/culture/music-genres` (The Sound of Global Export)**: Regional American inventions that conquered global soundscapes.
   - **Summary:** Founding genres (Blues, Jazz, Country, Rock, Hip-Hop), Pop icons, Broadway, album vaults, and vinyl archives.
-- **`/culture/film-and-storytelling` (Film & Storytelling)**: Dedicated cinematic film module (`FilmAndStorytellingClient`).
+  - **Sections:** Dark Thesis → Founding Genres → Pop Icons → R&B, Punk & Broadway → Modern Stars → Vinyl Archive.
+
+- **`/culture/film-and-storytelling` (Hollywood Visual Grammar)**: Dedicated cinematic film module.
+  - **Summary:** Focuses on Hollywood auteurs, narrative structures, visual storytelling grammar, and global box office reach (`FilmAndStorytellingClient`).
 
 </details>
 
 <details>
 <summary><strong>🖼️ Art & Architecture (The Visual & Built Legacy · 6 Routes)</strong></summary>
 
-- **`/art-architecture` (Main Hub)**: Visual legacy hub.
-  - **Summary:** Hero crossfade, stat wall, Wright/Jefferson/Lin quotes, curated gallery grid, era timeline, and subpage directory.
+- **`/art-architecture` (Art & Architecture Hub)**: Visual heritage timeline connecting skyscraper, wilderness, canvas, and museum.
+  - **Summary:** Crossfade hero, stat wall, Wright/Jefferson/Lin quotes, curated gallery grid, era timeline, and subpage directory.
+  - **Sections:** Hero Crossfade → Stat Wall → Wright Parallax Quote → Overview Narrative → Curated Gallery Grid → Jefferson Quote → Era Timeline (Horizontal Scroll) → Maya Lin Quote → Pollock Parallax → Subpage Cards → Deep Dive CTA.
   - **Key Engines:** `ArtHeroCrossfade`, `ArtStatWall`, `ArtGalleryGrid`, `ArtEraTimeline`, `ArtSubPageCards`.
   - **Data Sources:** `lib/data/art-assets.ts`.
-- **`/art-architecture/skyscraper-revolution` (Skyscraper Revolution)**: The height race.
-  - **Summary:** Interactive to-scale `SkyscraperRace`, modern supertalls grid, engineering suite, and proportional visualizer.
+
+- **`/art-architecture/skyscraper-revolution` (The Height Race)**: The one architectural form invented in America.
+  - **Summary:** Interactive to-scale `SkyscraperRace`, modern supertalls grid, engineering visualizer suite (elevator, steel frame, wind tuning), and proportional scale visualizer.
+  - **Sections:** To-Scale `SkyscraperRace` → Modern Supertalls Gallery → Engineering Visualizer Suite → Three Essential Inventions → Full-Bleed Chicago Skyline.
   - **Key Engines:** `SkyscraperRace`, `SkyscraperVisualizations`, `SkyscraperInteractiveVisuals`.
   - **Data Sources:** `lib/data/art-assets.ts`.
-- **`/art-architecture/hudson-river-school` (Hudson River School)**: First American art movement.
-  - **Summary:** Gilt-framed wall gallery featuring Thomas Cole, Frederic Edwin Church, Asher Brown Durand, and John Frederick Kensett.
+
+- **`/art-architecture/hudson-river-school` (America’s First Art Movement)**: Gilt-framed sublime landscape gallery.
+  - **Summary:** Thomas Cole, Frederic Edwin Church (*The Heart of the Andes*), Asher Brown Durand (*Kindred Spirits*), John Frederick Kensett Luminism, and Bierstadt/Moran western national park canvases.
+  - **Sections:** Sublime Hero → Drop-Cap Thesis → Thomas Cole → Church *Andes* Band → Durand *Kindred Spirits* → Church Blockbusters → Luminism (Kensett) → Bierstadt & Moran Parks Canvases.
   - **Key Engines:** `ArtFramedPlate`, `SpotlightPiece`, `ArtParallaxBand`.
   - **Data Sources:** `lib/data/art-assets.ts`.
-- **`/art-architecture/modern-pop-art` (Modern & Pop Art)**: Paris to New York.
-  - **Summary:** Abstract Expressionism (Pollock, Rothko, de Kooning), Pop Art (Warhol, Lichtenstein, Johns), and Neo-Expressionism (Basquiat).
+
+- **`/art-architecture/modern-pop-art` (Paris to New York)**: The mid-century shift of global art capital to NYC.
+  - **Summary:** Abstract Expressionism (Pollock, Rothko, de Kooning), Pop Art (Warhol, Lichtenstein, Johns), Regionalism (Grant Wood, Hopper), and 1980s Street Art (Basquiat).
+  - **Sections:** Typographic Hero over Pollock → Thesis → American Scene (Wood, Hopper) → Abstract Expressionism (Pollock, Rothko) → Pop Art White Cube (Warhol, Lichtenstein) → Street Art Close.
   - **Data Sources:** `lib/data/art-assets.ts`.
-- **`/art-architecture/american-realism` (American Realism)**: "Truth vs. the Sublime".
-  - **Summary:** Cool grey gallery featuring Winslow Homer, Thomas Eakins, George Bellows, John Singer Sargent, and Andrew Wyeth.
+
+- **`/art-architecture/american-realism` (Truth vs. The Sublime)**: Unflinching counter-tradition in American painting.
+  - **Summary:** Winslow Homer, Thomas Eakins, George Bellows (Ashcan School), John Singer Sargent, James McNeill Whistler, and Andrew Wyeth on a cool museum-grey wall.
+  - **Sections:** Homer Hero → Thesis → Winslow Homer → Thomas Eakins → George Bellows Band → Cosmopolitans (Sargent, Whistler) → Ashcan School → Andrew Wyeth Close.
   - **Data Sources:** `lib/data/art-assets.ts`.
-- **`/art-architecture/smithsonian-museums` (Smithsonian & Museums)**: The nation's attic.
-  - **Summary:** National Mall Smithsonian museums (Air & Space, Natural History), National Gallery of Art, and major city museums (Met, Guggenheim, Art Institute, Getty).
+
+- **`/art-architecture/smithsonian-museums` (The Nation’s Attic)**: Architecture of the Smithsonian National Mall and great city museums.
+  - **Summary:** Smithsonian Institution Castle, Air & Space Museum, Natural History, National Gallery of Art (West + East buildings), Met, Guggenheim, Art Institute of Chicago, and Getty Center.
+  - **Sections:** Castle Hero → Thesis + Stats → Smithsonian on the Mall Grid → Air & Space Interior → National Gallery Architecture → Great City Museums Showcase.
   - **Data Sources:** `lib/data/art-assets.ts`.
 
 </details>
 
 <details>
-<summary><strong>💡 Innovation & 🔬 Science (Tech Ecosystems & Empirical R&D · 11 Routes)</strong></summary>
+<summary><strong>💡 Innovation & 🔬 Science (11 Routes)</strong></summary>
 
-- **`/innovation` (Innovation Hub)**: Technological ecosystem hub.
-  - **Summary:** Overview, R&D budgets, VC statistics, unicorn density, and sub-page deep dives.
+- **`/innovation` (Innovation Main Hub)**: High-tech ecosystem hub establishing America’s technological leadership.
+  - **Summary:** R&D budget data, VC funding density, unicorn counts, sub-page deep dives, and Ask America CTA.
+  - **Sections:** Overview → Fact Grid → Subpage Deep-Dive Directory → Iconic Photographs → AI Oracle CTA.
   - **Data Sources:** `lib/data/verticals-thematic-data.ts`.
-- **`/innovation/internet-history` (Internet History)**: ARPANET to the web.
-  - **Summary:** Key milestones, platform dominance, cloud infrastructure, browser wars, and e-commerce expansion.
-- **`/innovation/ai-and-tech` (AI & Semiconductors)**: Silicon Valley AI stack.
-  - **Summary:** Looping video hero, computing stats, CUDA software moat, frontier AI labs, and physical GPU infrastructure.
-- **`/innovation/smartphones` (Smartphones)**: iPhone to iOS/Android duopoly.
-  - **Summary:** Video hero, mobile stats, A18 Pro spec grid, app economy data, and Apple campus gallery.
-- **`/innovation/cloud-computing` (Cloud Computing)**: Virtualization to hyper-scale data centers.
-  - **Summary:** Cloud architecture layers, AWS/Google/Azure market data, and data-center parallax bands.
-- **`/innovation/space-technology` (Space Tech)**: Commercial orbit access & exploration.
-  - **Summary:** GPS constellation, SpaceX launch statistics, Starship/Artemis, and Apollo legacy archives.
-- **`/innovation/gaming` (Gaming)**: Atari to Unreal Engine 5.
-  - **Summary:** US gaming dominance, Unreal Engine technology showcase, engine stats, and studio galleries.
-- **`/science` (Science Hub)**: R&D infrastructure & patent indexes.
-  - **Summary:** Era-card chronology, shale revolution, and Department of Energy (DOE) national labs scrollytelling (`ScrollytellPin`).
-- **`/science/inventions-pre-1890`**, **`/inventions-1890-1945`**, **`/inventions-post-1991`** (Inventions Chronology):
-  - **Summary:** Interactive `InventionsDashboard` archives tracking historical patents and technological breakthroughs.
-  - **Data Sources:** `lib/data/inventions-pre-1890-data.ts`, `lib/data/inventions-1890-1945-data.ts`, `lib/data/inventions-post-1991-data.ts`.
-- **`/science/medicine-and-biotech` (Medicine & Biotech)**: Life sciences miracles.
-  - **Summary:** NIH research budgets, pharmaceutical breakthroughs, synthetic insulin, mRNA vaccines, and plasma tech.
+
+- **`/innovation/internet-history` (ARPANET to the Platform Web)**: The creation of the global internet.
+  - **Summary:** ARPANET 1969 first message, TCP/IP, web browser wars, e-commerce, cloud infrastructure, and platform dominance.
+  - **Sections:** Thesis → Stats → Milestones → Platform Dominance → Infrastructure → Browser Wars → E-Commerce.
+
+- **`/innovation/ai-and-tech` (Silicon Valley AI & Semiconductor Stack)**: Frontier AI models and GPU computing.
+  - **Summary:** Looping video hero, CUDA software moat, NVIDIA chip architecture, OpenAI/Anthropic frontier labs, and physical GPU data centers.
+  - **Sections:** Looping Video Hero → Thesis → Computing Stats → CUDA Moat → Frontier AI Labs → GPU Infrastructure.
+
+- **`/innovation/smartphones` (The Smartphone Revolution)**: iPhone debut to mobile economy dominance.
+  - **Summary:** Video hero, A18 Pro spec grid, iOS/Android duopoly, App Store economy stats, and Apple Park architecture gallery.
+  - **Sections:** Video Hero → Thesis → Smartphone Stats → Milestones → iOS/Android Duopoly → A18 Pro Spec Grid → Apple Campus Gallery.
+
+- **`/innovation/cloud-computing` (Hyper-Scale Cloud Infrastructure)**: AWS, Azure, and Google Cloud footprint.
+  - **Summary:** Virtualization, cloud architecture layers, data center parallax bands, and global cloud market share.
+  - **Sections:** Cover Hero → Thesis → Cloud Stats → Milestones → Architectural Layers → Data-Center Parallax Band.
+
+- **`/innovation/space-technology` (Commercial Space & Deep Exploration)**: Commercial orbit access and lunar return.
+  - **Summary:** GPS satellite constellation, SpaceX reusable launches, Starship/Artemis programs, and Apollo legacy archives.
+  - **Sections:** Video Hero → Space Stats → Milestones → GPS → SpaceX Parallax Band → Starship & Artemis → Apollo Legacy Gallery.
+
+- **`/innovation/gaming` (Game Engine Supremacy)**: Atari coin cabinets to Unreal Engine 5.
+  - **Summary:** US game industry dominance, Unreal Engine technology showcase, real-time graphics stats, and game studio directory.
+  - **Sections:** Thesis → Key Stats → Milestones → Unreal Engine Showcase → Engine Stats → Studio Gallery.
+
+- **`/science` (Science Main Hub)**: R&D infrastructure, patents, and DOE National Labs.
+  - **Summary:** Nobel prizes, shale revolution, era invention chronology, and pinned scrollytelling tour of DOE national laboratories (`ScrollytellPin`).
+  - **Sections:** Thesis → Stats → Era Chronology → Shale Revolution → DOE National Labs Pinned Scrollytelling (`ScrollytellPin`).
+  - **Key Engines:** `ScrollytellPin`.
+
+- **`/science/inventions-pre-1890` (Early Industrial Patents)**: 1776–1890 patent breakthroughs.
+  - **Summary:** Lightning rod, cotton gin, telegraph, vulcanized rubber, reaper, sewing machine, telephone, and incandescent bulb.
+  - **Key Engines:** `InventionsDashboard`.
+  - **Data Sources:** `lib/data/inventions-pre-1890-data.ts`.
+
+- **`/science/inventions-1890-1945` (Mass Production Era Inventions)**: 1890–1945 technological leaps.
+  - **Summary:** Airplane, assembly line, liquid rocket, AC power transmission, FM radio, radar, and Manhattan Project technology.
+  - **Key Engines:** `InventionsDashboard`.
+  - **Data Sources:** `lib/data/inventions-1890-1945-data.ts`.
+
+- **`/science/inventions-post-1991` (Digital & Post-War Miracles)**: 1991–Present modern technological breakthroughs.
+  - **Summary:** Transistor, microprocessor, internet, GPS constellation, NEXRAD Doppler radar, mRNA vaccines, and quantum processors.
+  - **Key Engines:** `InventionsDashboard`.
+  - **Data Sources:** `lib/data/inventions-post-1991-data.ts`.
+
+- **`/science/medicine-and-biotech` (Life Sciences & Biotechnology)**: Biomedical miracles and clinical research.
+  - **Summary:** NIH research budgets, polio vaccine, DNA structure discovery, synthetic insulin, Human Genome Project, mRNA vaccines, and blood plasma technologies.
+  - **Sections:** Thesis → Milestones → NIH Research → Pharma Innovation → Synthetic Biology & Plasma.
 
 </details>
 
 <details>
-<summary><strong>🎓 Universities · 🌱 Quality of Life · 🌎 Global Leadership (14 Routes)</strong></summary>
+<summary><strong>🎓 Universities (5 Routes)</strong></summary>
 
-- **`/universities` (Universities Hub)**: Higher education power.
-  - **Summary:** Ken-Burns hero, count-up academic stats, global rankings, and campus photo mosaics.
-- **`/universities/ivy-league` (Ivy League)**: Endowments & global influence.
-  - **Summary:** Endowments data, Big Four features, research output, and comparison tables.
-- **`/universities/stem-powerhouses` (STEM Powerhouses)**: MIT, Stanford, Caltech, CMU.
-  - **Summary:** STEM research stats, technology transfer, and Bayh-Dole Act analysis.
-- **`/universities/business-schools` (Business Schools)**: HBS, Wharton, Stanford GSB.
-  - **Summary:** MBA statistics, venture capital generation, and executive leadership pipelines.
-- **`/universities/public-research-universities` (Public Research)**: UC Berkeley, Michigan, UT Austin, UCLA.
-  - **Summary:** Public university research scale, state funding models, and patent outputs.
-- **`/quality-of-life` (Quality of Life Hub)**: Standard of living parameters.
-  - **Summary:** Everyday abundance, democratized luxury, infrastructure, income/charitable giving, healthcare, and city rankings.
-- **`/quality-of-life/abundance` (Consumer Abundance)**: Everyday material wealth.
-  - **Summary:** Grocery abundance, climate/appliance availability, mobility, recreation, and overflow storage economics.
-- **`/quality-of-life/america-vs-the-world` (America vs World)**: Developed world comparative analysis.
-  - **Summary:** Price-wage paradox, US vs Romania comparative benchmarks (`CountryBarChart`), housing sizes, and PPP wages.
-  - **Key Engines:** `CountryBarChart`.
-- **`/quality-of-life/housing`**, **`/wages`**, **`/healthcare`** (Standard of Living Pillars):
-  - **Summary:** Housing square footage, median disposable income, PPP wage benchmarks, and cancer survival rate comparisons (`CountryBarChart`).
-  - **Key Engines:** `CountryBarChart`.
-- **`/global-leadership` (Global Leadership Hub)**: Indispensable nation role since 1945.
-  - **Summary:** International footprint, reserve currency role, treaty networks, and global leadership stats.
-- **`/global-leadership/nato` (NATO Alliance)**: Collective defense & Article 5.
-  - **Summary:** Article 5 history, missile defense shields, expansion (Sweden/Finland), and defense spending obligations.
-- **`/global-leadership/pax-americana` (Pax Americana)**: Freedom of navigation & global security.
-  - **Summary:** 750+ global bases, 11 carrier strike groups, GPS network, and undersea cable security.
-- **`/global-leadership/un` (UN & World Order)**: International institution stewardship.
-  - **Summary:** Founding of UN/IMF/World Bank, Eleanor Roosevelt, PEPFAR global health initiatives, and aid funding.
-- **`/global-leadership/foreign-policy` (Foreign Policy)**: Diplomacy & humanitarian aid.
-  - **Summary:** From Monroe Doctrine to modern multilateral alliances, HADR disaster response, and soft power diplomacy.
+- **`/universities` (Universities Main Hub)**: Higher education research engine holding 15–17 of the top 20 global spots.
+  - **Summary:** Ken-Burns hero, count-up academic stats, global university rankings, research funding stats, and campus photo mosaic.
+  - **Sections:** Ken-Burns Hero → Thesis → Count-Up Academic Stats → Grid Links → Library Parallax → Rankings Table → Campus Photo Mosaic.
+
+- **`/universities/ivy-league` (Ivy League Endowments & Influence)**: 300+ years of academic tradition.
+  - **Summary:** Harvard, Yale, Princeton, Columbia endowments, research output, alumni leadership pipelines, and comparative financial tables.
+  - **Sections:** Hero → Thesis → Endowment Stats → The Big Four Features → Parallax Divider → Financial & Ranking Comparison Table.
+
+- **`/universities/stem-powerhouses` (MIT, Stanford, Caltech, CMU)**: Technological invention engines.
+  - **Summary:** Technology transfer systems, Bayh-Dole Act impact, corporate spin-offs, patent filings, and engineering research labs.
+  - **Sections:** Hero → Thesis → STEM Stats → Institution Pillars → Parallax Divider → Bayh-Dole Act Analysis.
+
+- **`/universities/business-schools` (HBS, Wharton, Stanford GSB)**: Management education and venture capital pipelines.
+  - **Summary:** HBS case method, Wharton finance, Stanford GSB venture creation, MBA salary data, and executive networks.
+  - **Sections:** Hero → Thesis → Business School Stats → Institution Pillars → Parallax Divider → Venture Capital Creation Data.
+
+- **`/universities/public-research-universities` (Public Flagships at Scale)**: UC Berkeley, Michigan, UT Austin, UCLA.
+  - **Summary:** Massive public research scale, state land-grant university model, accessible high-tier education, and federal research grants.
+  - **Sections:** Hero → Thesis → Public University Stats → Institution Pillars → Parallax Divider → Patent Output Benchmarks.
 
 </details>
 
 <details>
-<summary><strong>📜 History & Literature (17 Routes)</strong></summary>
+<summary><strong>🌱 Quality of Life (6 Routes)</strong></summary>
 
-- **`/history` (Chronicle Hub)**: Rendered by `HistoryClient` (1776 → present, bilingual).
-- **`/history/*`** (15 Thematic Chapters: `founding-principles`, `frontier-and-expansion`, `union-and-liberty`, `industrial-rise`, `populism-and-labor`, `reform-and-rights`, `american-dream`, `crisis-and-resilience`, `world-wars`, `cold-war`, `reagan-revolution`, `post-9-11-america`, `american-exceptionalism`, `free-markets`, `faith-and-reform`):
-  - **Summary:** Rendered by `ThematicSubpageClient` (hero → detailed chronicle chapters → `BookShowcase`).
+- **`/quality-of-life` (Quality of Life Main Hub)**: Standard of living parameters and material abundance.
+  - **Summary:** Everyday consumer abundance, democratized luxury, disposable income, private charitable giving, healthcare outcomes, and top city rankings.
+  - **Sections:** Suburbs Hero → Flagship "America vs. World" CTA → Everyday Abundance Stats → Democratized Luxury → Infrastructure Band → Outdoors Photo Grid → Income & Giving → Healthcare → City Rankings.
+
+- **`/quality-of-life/abundance` (Consumer Density & Material Wealth)**: The physical density of American living.
+  - **Summary:** Appliance availability (AC, washers, dishwashers), vehicle ownership, boat/pool density, housing space, and self-storage industry economics.
+  - **Sections:** Thesis → Stats → Grocery Abundance → Categories Breakdown (Climate, Mobility, Recreation, Storage) with Video Breaks.
+
+- **`/quality-of-life/america-vs-the-world` (Suburbs vs. Developed World)**: Comparative empirical benchmarks.
+  - **Summary:** Price-wage paradox, US vs Romania comparative table (`CountryBarChart`), housing size comparisons, PPP-adjusted wages, and living standard caveats.
+  - **Sections:** Thesis → Category Sweep → City Comparisons → Price-Wage Paradox → US vs Romania Benchmark Table → Twelve Cities Comparison → Caveats & Conclusions.
+  - **Key Engines:** `CountryBarChart`.
+
+- **`/quality-of-life/housing` (Housing & Real Estate)**: World’s largest average living space (2,400 sq ft).
+  - **Summary:** 30-year fixed-rate mortgage system, single-family homes, homeownership rates, and living space comparisons per capita.
+  - **Key Engines:** `CountryBarChart`.
+
+- **`/quality-of-life/wages` (Purchasing Power & Disposable Income)**: Median disposable income leadership.
+  - **Summary:** PPP-adjusted wage rates, disposable income after taxes/transfers, consumer purchasing power, and wage growth trajectory.
+  - **Key Engines:** `CountryBarChart`.
+
+- **`/quality-of-life/healthcare` (Healthcare Outcomes & Diagnostic Scale)**: World-leading medical survival rates.
+  - **Summary:** Cancer survival rates (breast, prostate, colon), diagnostic scanner density (MRI/CT per capita), medical innovation speed, and life expectancy analysis.
+  - **Key Engines:** `CountryBarChart`.
+
+</details>
+
+<details>
+<summary><strong>🌎 Global Leadership (5 Routes)</strong></summary>
+
+- **`/global-leadership` (Global Leadership Main Hub)**: Indispensable nation role since 1945.
+  - **Summary:** International security footprint, global reserve currency, treaty networks, foreign aid stewardship, and leadership stats.
+  - **Sections:** Hero → Large Stat Wall → Editorial Quote → Thesis → Global Dollar Role → Subpage Directory.
+
+- **`/global-leadership/nato` (NATO Alliance & Collective Defense)**: Article 5 and western security.
+  - **Summary:** History of NATO, Article 5 invocation (9/11), European missile defense shields, NATO enlargement (Sweden/Finland), and defense spending commitments.
+  - **Sections:** Hero → Stats → Quote → Thesis → Alliance Pillars → Missile Defense Shields → Expansion Analysis.
+
+- **`/global-leadership/pax-americana` (Freedom of Navigation & Security)**: Protecting global commons.
+  - **Summary:** 750+ global bases, 11 carrier strike groups, ocean trade lane protection, GPS constellation maintenance, and undersea fiber-optic cable defense.
+  - **Sections:** Hero → Stats → Thesis → Maritime Pillars → GPS Network → Cyber & Undersea Cable Security.
+
+- **`/global-leadership/un` (UN & International Architecture)**: Founding and stewardship of global institutions.
+  - **Summary:** Founding of UN, IMF, World Bank, Eleanor Roosevelt Universal Declaration of Human Rights, PEPFAR HIV initiative, and humanitarian funding leadership.
+  - **Sections:** Hero → Stats → Thesis → Institutional Pillars → Eleanor Roosevelt Spotlight → PEPFAR Global Health.
+
+- **`/global-leadership/foreign-policy` (Diplomacy & Humanitarian Aid)**: Evolution of American foreign relations.
+  - **Summary:** Monroe Doctrine to modern multilateral treaties, HADR (Humanitarian Assistance & Disaster Relief) deployment, Peace Corps, and soft power diplomacy.
+  - **Sections:** Hero → Stats → Quote → Thesis → Policy Pillars → HADR Disaster Response → Soft Power Diplomacy.
+
+</details>
+
+<details>
+<summary><strong>📜 History & Demographics (17 Routes)</strong></summary>
+
+- **`/history` (Historical Chronicle Main Hub)**: Sovereign chronicle of liberty rendered by `HistoryClient` (1776–Present).
+  - **Summary:** Interactive timeline tracing the founding, expansion, industrialization, world wars, cold war, and modern era in full bilingual text.
+  - **Key Engines:** `HistoryClient`.
+
+- **`/history/*` (15 Thematic History Chapters)**: Dedicated deep-dive chapters rendered by `ThematicSubpageClient`.
+  - **Chapters:** `founding-principles`, `frontier-and-expansion`, `union-and-liberty`, `industrial-rise`, `populism-and-labor`, `reform-and-rights`, `american-dream`, `crisis-and-resilience`, `world-wars`, `cold-war`, `reagan-revolution`, `post-9-11-america`, `american-exceptionalism`, `free-markets`, `faith-and-reform`.
+  - **Summary:** Each chapter provides full-page editorial chronicles, archival imagery, quotes, and primary literature recommendations via `BookShowcase`.
+  - **Key Engines:** `ThematicSubpageClient`, `BookShowcase`.
   - **Data Sources:** `lib/data/history-thematic-data.ts`, `lib/data/wwii-history-images.ts`.
-- **`/history/we-must-fight` (We Must Fight)**: Full-screen Reagan speech experience.
-  - **Summary:** Synchronized video, transcript, and historical context (`WeMustFightClient`).
-- **`/literature-philosophy` (Literature & Philosophy Hub)**: Four centuries of American thought.
-  - **Summary:** Scroll-illuminated intro (`ScrollIlluminatedText`), era timeline (`EraTimeline`), and subpage cards.
+
+- **`/history/we-must-fight` (We Must Fight Full Speech Experience)**: Interactive Reagan 1964 address.
+  - **Summary:** Full-screen synchronized video player (`WeMustFightClient`), transcript highlights, and historical context notes.
+  - **Key Engines:** `WeMustFightClient`.
+
+- **`/immigration-demographics` (Demographic Chronicle)**: Story of the American melting pot.
+  - **Summary:** Waves of immigration, racial composition, religious pluralism, educational attainment, and demographic evolution (`ThematicSubpageClient`).
+  - **Data Sources:** `lib/data/verticals-thematic-data.ts`.
+
+</details>
+
+<details>
+<summary><strong>📚 Literature & Philosophy (6 Routes)</strong></summary>
+
+- **`/literature-philosophy` (Literature & Philosophy Hub)**: Four centuries of American intellectual heritage.
+  - **Summary:** Scroll-illuminated introduction (`ScrollIlluminatedText`), 400-year era timeline (`EraTimeline`), pull-quotes, and subpage card grid.
+  - **Key Engines:** `ScrollIlluminatedText`, `EraTimeline`.
   - **Data Sources:** `lib/data/literature-assets.ts`, `lib/data/literature-eras.ts`.
-- **`/literature-philosophy/american-novel`**, **`/oratory-poetry`**, **`/transcendentalism`**, **`/pragmatism`**, **`/sci-fi-myth`**:
-  - **Summary:** First sentences wall (`OpeningLinesWall`), manuscript parallax (`ManuscriptParallax`), Gettysburg Address annotation (`AnnotatedPassage`), Emerson/Thoreau transcendentalism, James/Dewey pragmatism, and Heinlein/Bradbury sci-fi.
+
+- **`/literature-philosophy/american-novel` (The Great American Novel)**: First sentences wall and literary classics.
+  - **Summary:** Opening sentence wall (`OpeningLinesWall`), manuscript parallax band (`ManuscriptParallax`), and canonical novel showcases (Melville, Twain, Fitzgerald, Ellison, Morrison).
+  - **Key Engines:** `OpeningLinesWall`, `ManuscriptParallax`, `BookShowcase`.
+
+- **`/literature-philosophy/oratory-poetry` (American Oratory & Verse)**: Speech as a primary literary form.
+  - **Summary:** Gettysburg Address annotated manuscript (`AnnotatedPassage`), Frederick Douglass, Walt Whitman, Emily Dickinson, and inauguration poetry.
+  - **Key Engines:** `AnnotatedPassage`.
+
+- **`/literature-philosophy/transcendentalism` (Emerson & Thoreau)**: Self-reliance and nature philosophy.
+  - **Summary:** Ralph Waldo Emerson, Henry David Thoreau (*Walden*), civil disobedience, and American individualism.
+
+- **`/literature-philosophy/pragmatism` (Action Philosophy)**: America’s original philosophical contribution.
+  - **Summary:** William James, Charles Sanders Peirce, John Dewey, truth as practical effect, and democratic education.
+
+- **`/literature-philosophy/sci-fi-myth` (Frontier to Deep Space)**: Speculative fiction and modern mythmaking.
+  - **Summary:** Edgar Rice Burroughs, Ray Bradbury, Robert Heinlein, Isaac Asimov, Star Trek, and the space-age western mythos.
 
 </details>
 
 <details>
 <summary><strong>🏗️ Infrastructure & 📊 Data & Media (16 Routes)</strong></summary>
 
-- **`/infrastructure` (Infrastructure Hub)**: Continental scale engineering.
-  - **Summary:** `InfrastructureAtlas`, megaprojects band, chronology (`MegaTimeline`), and network cards.
+- **`/infrastructure` (Infrastructure Main Hub)**: Continental-scale engineering.
+  - **Summary:** Interactive `InfrastructureAtlas`, megaprojects band, chronology (`MegaTimeline`), and network cards routing to 7 subpages.
+  - **Key Engines:** `InfrastructureAtlas`, `MegaTimeline`.
   - **Data Sources:** `lib/data/infrastructure-network-data.ts`.
-- **`/infrastructure/highway-system`**, **`/rail-network`**, **`/power-grid`**, **`/aviation-hubs`**, **`/maritime-ports`**, **`/dams-bridges`**, **`/aqueducts-waterways`**:
-  - **Summary:** Interstate system (`NetworkMap`, `AnatomyDiagram`), transcontinental rail race, 3 power grids, airport hubs, maritime trade ports, dams/bridges comparison (`EngineeringComparison`), and water infrastructure.
-  - **Data Sources:** `lib/data/infrastructure-network-data.ts`.
-- **`/gallery` (Cinematic Photo Gallery)**: 980+ image masonry gallery.
-  - **Summary:** Masonry gallery with category tabs (Aerials, Cities, Fine Art, US Buildings, Military, etc.), lightbox zoom, and full bilingual copy (`GalleryExperience`).
+
+- **`/infrastructure/highway-system` (Interstate Highway System)**: World’s largest public works project.
+  - **Summary:** Origins, interactive `NetworkMap`, route-shield decoder, interchange typology (`InterchangeTypology`), and highway anatomy (`AnatomyDiagram`).
+  - **Key Engines:** `NetworkMap`, `AnatomyDiagram`, `InterchangeTypology`.
+
+- **`/infrastructure/rail-network` (Transcontinental Rail & Freight Titans)**: 140,000 miles of freight rail.
+  - **Summary:** Transcontinental race (1869), Chicago rail junction, interactive rail map, and Class I freight carriers.
+
+- **`/infrastructure/power-grid` (The Three Power Grids)**: The electrical backbone binding the continent.
+  - **Summary:** Eastern Interconnection, Western Interconnection, and Texas Grid (ERCOT), transmission map, and grid reliability stats.
+
+- **`/infrastructure/aviation-hubs` (Busiest Airspace on Earth)**: Airport hubs and air traffic control.
+  - **Summary:** Hartsfield-Jackson Atlanta, O’Hare, DFW, airport map, FAA radar network, and commercial aviation scale.
+
+- **`/infrastructure/maritime-ports` (Ports & Harbors)**: Gateway ports moving global trade.
+  - **Summary:** Port of Los Angeles/Long Beach, New York/New Jersey, Houston Ship Channel, interactive port map, and container throughput.
+
+- **`/infrastructure/dams-bridges` (Dams, Bridges & Civil Engineering)**: Engineering titans spanning rivers and canyons.
+  - **Summary:** Hoover Dam, Golden Gate Bridge, Brooklyn Bridge, civil engineering comparison (`EngineeringComparison`), and construction history.
+  - **Key Engines:** `EngineeringComparison`.
+
+- **`/infrastructure/aqueducts-waterways` (Water Infrastructure & Inland Waterways)**: Moving water across a continent.
+  - **Summary:** California State Water Project, Mississippi-Ohio inland waterway system, interactive water map, and lock/dam systems.
+
+- **`/gallery` (Cinematic Photo Gallery)**: 980+ image masonry gallery (`GalleryExperience`).
+  - **Summary:** Masonry gallery with category tabs (Aerials, Cities, Fine Art, US Buildings, Military, etc.), lightbox zoom, and full bilingual copy.
+  - **Key Engines:** `GalleryExperience`.
   - **Data Sources:** `lib/data/gallery.ts`, `lib/data/gallery-assets.ts`.
-- **`/explorer` (State Map Explorer)**: Interactive 50-state SVG map.
-  - **Summary:** GDP, population, and area heatmaps, per-state panels, regional filters, and state chronicle copy (`MapExplorerClient`).
+
+- **`/explorer` (State Map Explorer)**: Interactive 50-state SVG map (`MapExplorerClient`).
+  - **Summary:** GDP, population, and area heatmaps, per-state panels, regional filters, and state chronicle copy.
+  - **Key Engines:** `MapExplorerClient`.
+
 - **`/data` (Data Fact Observatory)**: Primary-sourced empirical reference database (`DataObservatory`).
-- **`/data/misconceptions` (Myth vs Reality)**: Sourced myth debunker with methodology callouts.
-- **`/videos` (Cinematic Film Library)**: 16K/8K aerials and landscape films (`YouTubeEmbed`, `LocalVideoCard`).
-- **`/interactive` (Ask America AI Oracle)**: Guided AI chatbot interface powered by arguments from all 12 verticals (`AskAmerica`).
+  - **Summary:** Empirical metrics tied to primary international sources (IMF, World Bank, BEA, Census, OECD).
+
+- **`/data/misconceptions` (Myth vs Reality Debunker)**: Empirical myth debunker.
+  - **Summary:** Sourced myth debunker built on international audited data, covering inequality, healthcare, manufacturing, and safety.
+
+- **`/videos` (Cinematic Film Library)**: 16K/8K aerial and landscape film library.
+  - **Summary:** High-definition video player cards showcasing American skylines, national parks, and everyday neighborhoods.
+
+- **`/interactive` (Ask America AI Oracle)**: Interactive AI chatbot interface (`AskAmerica`).
+  - **Summary:** Guided AI chatbot interface preloaded with arguments and facts from all 12 site verticals.
+  - **Key Engines:** `AskAmerica`.
 
 </details>
 
