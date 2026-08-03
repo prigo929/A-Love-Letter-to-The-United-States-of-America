@@ -134,6 +134,19 @@ export function ConstitutionReader() {
     return () => obs.disconnect();
   }, [leaves]);
 
+  // The site sets `body { overflow-x: hidden }`, which turns <body> into a
+  // scroll container and stops `position: sticky` from working for the outline,
+  // timeline, and context panel. `overflow-x: clip` clips horizontally the same
+  // way but does NOT create a scroll container, so sticky works again. We scope
+  // it to this page and restore the original value on unmount.
+  useEffect(() => {
+    const prev = document.body.style.overflowX;
+    document.body.style.overflowX = "clip";
+    return () => {
+      document.body.style.overflowX = prev;
+    };
+  }, []);
+
   // Reading-progress: how far through the document sheet we have scrolled.
   useEffect(() => {
     const onScroll = () => {
