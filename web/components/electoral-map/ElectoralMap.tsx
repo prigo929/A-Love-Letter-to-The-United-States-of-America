@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import type { ViewMode } from "@/lib/data/electoral-data";
 import { ELECTORAL_HISTORY, PARTY_COLORS, PARTY_FULL_NAMES } from "@/lib/data/electoral-data";
 import { MapRenderer } from "./MapRenderer";
+import { CountyMap } from "./CountyMap";
 import { TimelineScrubber } from "./TimelineScrubber";
 import { ElectionHeader } from "./ElectionHeader";
 import { StateDetailPanel } from "./StateDetailPanel";
@@ -19,8 +20,10 @@ const VIEWS: { key: ViewMode; en: string; ro: string; descEn: string; descRo: st
 export function ElectoralMap({ isRo }: { isRo?: boolean }) {
   const [year, setYear] = useState(YEARS[YEARS.length - 1]);
   const [view, setView] = useState<ViewMode>("President");
+  const [county, setCounty] = useState(false);
   const [sel, setSel] = useState<string | null>(null);
   const v = VIEWS.find((x) => x.key === view)!;
+  const showCounty = county && view === "President";
 
   // Keyboard Navigation: Enables rapid-fire historical analysis
   useEffect(() => {
@@ -77,11 +80,20 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
             {isRo ? m.ro : m.en}
           </button>
         ))}
+        {/* County granularity toggle, President view only */}
+        {view === "President" && (
+          <button onClick={() => setCounty((c) => !c)}
+            className={`relative px-4 py-2 rounded-full border transition-all font-body text-xs font-semibold uppercase tracking-wider ${showCounty ? "bg-[rgba(201,168,76,0.12)] border-[#C9A84C] text-[#C9A84C]" : "border-white/10 text-[#8A8780] hover:border-white/20 hover:text-[#F5F0E8]"}`}>
+            {isRo ? "Comitate" : "Counties"}
+          </button>
+        )}
       </div>
       <AnimatePresence mode="wait">
-        <motion.p key={view} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+        <motion.p key={view + String(showCounty)} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
           className="mb-4 text-center font-body text-xs font-medium uppercase tracking-wider text-[#8A8780]">
-          {isRo ? v.descRo : v.descEn}
+          {showCounty
+            ? (isRo ? "~3.100 de comitate · nuanță după marjă · 2000–2024" : "~3,100 counties · shaded by margin · 2000–2024")
+            : (isRo ? v.descRo : v.descEn)}
         </motion.p>
       </AnimatePresence>
 
@@ -90,7 +102,9 @@ export function ElectoralMap({ isRo }: { isRo?: boolean }) {
 
       {/* Map container - expanded for maximum visibility */}
       <div className="relative overflow-hidden rounded-xl border border-[rgba(201,168,76,0.12)] bg-[#080B12] p-4">
-        <MapRenderer year={year} viewMode={view} onStateClick={(n) => setSel(n)} isRo={isRo} />
+        {showCounty
+          ? <CountyMap year={year} isRo={isRo} />
+          : <MapRenderer year={year} viewMode={view} onStateClick={(n) => setSel(n)} isRo={isRo} />}
         <AnimatePresence>
           {sel && <StateDetailPanel stateName={sel} year={year} onClose={() => setSel(null)} isRo={isRo} />}
         </AnimatePresence>
