@@ -1368,6 +1368,10 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       transform: tooltipPos.x > 700 ? "translateX(-110%)" : undefined,
                     }}
                   >
+                    <div className="flex items-center justify-between gap-3 mb-1">
+                      <span className="font-display text-sm font-bold text-white">{hs.name[locale]}</span>
+                      <span className="font-hero text-xs" style={{ color: rc.label }}>{hs.abbrev}</span>
+                    </div>
 
                     {metric ? (
                       <>
@@ -1400,6 +1404,12 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 projection="geoAlbersUsa"
                 projectionConfig={{ scale: 960 }}
                 style={{ width: "100%", height: "100%" }}
+                onClick={(e: any) => {
+                  const target = e.target as HTMLElement;
+                  if (target && (target.tagName === "svg" || target.classList.contains("rsm-svg"))) {
+                    setSelectedFeature(null);
+                  }
+                }}
               >
                 <ZoomableGroup
                   zoom={zoomPosition.zoom}
@@ -2510,12 +2520,16 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
       {portalReady &&
         isLayerModalOpen &&
         createPortal(
-          <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/80 backdrop-blur-md">
+          <div
+            onClick={() => setIsLayerModalOpen(false)}
+            className="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/80 backdrop-blur-md cursor-pointer"
+          >
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative flex flex-col w-full max-w-5xl max-h-[88vh] bg-[#09090b] border border-white/15 rounded-3xl shadow-2xl overflow-hidden text-white"
+              onClick={(e) => e.stopPropagation()}
+              className="relative flex flex-col w-full max-w-5xl max-h-[88vh] bg-[#09090b] border border-white/15 rounded-3xl shadow-2xl overflow-hidden text-white cursor-default"
             >
               {/* Modal Header */}
               <div className="flex items-center justify-between px-6 py-5 border-b border-white/10 bg-white/[0.02]">
