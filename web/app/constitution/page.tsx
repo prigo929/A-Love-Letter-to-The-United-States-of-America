@@ -540,9 +540,9 @@ export default async function ConstitutionPage() {
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {subPages.slice(0, 6).map(page => (
                 <Link key={page.href} href={page.href}
-                  className="group relative overflow-hidden rounded-2xl border border-[rgba(201,168,76,0.12)] bg-[#12181F] transition-all duration-300 hover:border-[rgba(201,168,76,0.4)] hover:shadow-[0_0_40px_rgba(201,168,76,0.08)]"
+                  className="group relative flex flex-col h-full overflow-hidden rounded-2xl border border-[rgba(201,168,76,0.12)] bg-[#12181F] transition-all duration-300 hover:border-[rgba(201,168,76,0.4)] hover:shadow-[0_0_40px_rgba(201,168,76,0.08)]"
                 >
-                  <div className="relative h-44 overflow-hidden">
+                  <div className="relative h-44 shrink-0 overflow-hidden">
                     <Image src={page.imageSrc} alt={page.imageAlt} fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                       sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,33vw"
@@ -554,9 +554,11 @@ export default async function ConstitutionPage() {
                       {page.badge}
                     </span>
                   </div>
-                  <div className="p-5">
-                    <h3 className="mb-1.5 font-display text-lg font-semibold text-[#F5F0E8] transition-colors group-hover:text-[#C9A84C]">{page.title}</h3>
-                    <p className="font-body text-sm leading-relaxed text-[#6B6860]">{page.description}</p>
+                  <div className="flex flex-col flex-1 justify-between p-5">
+                    <div>
+                      <h3 className="mb-1.5 font-display text-lg font-semibold text-[#F5F0E8] transition-colors group-hover:text-[#C9A84C]">{page.title}</h3>
+                      <p className="font-body text-sm leading-relaxed text-[#6B6860]">{page.description}</p>
+                    </div>
                     <p className="mt-4 font-body text-xs font-semibold text-[#C9A84C] opacity-0 transition-opacity group-hover:opacity-100">
                       {copy.exploreCta}
                     </p>
@@ -565,13 +567,13 @@ export default async function ConstitutionPage() {
               ))}
             </div>
             {subPages.length > 6 && (
-              <div className="mt-5 flex justify-center">
-                <div className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-13px)]">
-                  {subPages.slice(6).map(page => (
-                    <Link key={page.href} href={page.href}
-                      className="group block relative overflow-hidden rounded-2xl border border-[rgba(201,168,76,0.12)] bg-[#12181F] transition-all duration-300 hover:border-[rgba(201,168,76,0.4)] hover:shadow-[0_0_40px_rgba(201,168,76,0.08)]"
+              <div className="mt-5 flex flex-wrap justify-center gap-5">
+                {subPages.slice(6).map(page => (
+                  <div key={page.href} className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-14px)]">
+                    <Link href={page.href}
+                      className="group relative flex flex-col h-full overflow-hidden rounded-2xl border border-[rgba(201,168,76,0.12)] bg-[#12181F] transition-all duration-300 hover:border-[rgba(201,168,76,0.4)] hover:shadow-[0_0_40px_rgba(201,168,76,0.08)]"
                     >
-                      <div className="relative h-44 overflow-hidden">
+                      <div className="relative h-44 shrink-0 overflow-hidden">
                         <Image src={page.imageSrc} alt={page.imageAlt} fill
                           className="object-cover transition-transform duration-700 group-hover:scale-110"
                           sizes="(max-width:640px) 100vw,(max-width:1024px) 50vw,33vw"
@@ -583,16 +585,18 @@ export default async function ConstitutionPage() {
                           {page.badge}
                         </span>
                       </div>
-                      <div className="p-5">
-                        <h3 className="mb-1.5 font-display text-lg font-semibold text-[#F5F0E8] transition-colors group-hover:text-[#C9A84C]">{page.title}</h3>
-                        <p className="font-body text-sm leading-relaxed text-[#6B6860]">{page.description}</p>
+                      <div className="flex flex-col flex-1 justify-between p-5">
+                        <div>
+                          <h3 className="mb-1.5 font-display text-lg font-semibold text-[#F5F0E8] transition-colors group-hover:text-[#C9A84C]">{page.title}</h3>
+                          <p className="font-body text-sm leading-relaxed text-[#6B6860]">{page.description}</p>
+                        </div>
                         <p className="mt-4 font-body text-xs font-semibold text-[#C9A84C] opacity-0 transition-opacity group-hover:opacity-100">
                           {copy.exploreCta}
                         </p>
                       </div>
                     </Link>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             )}
           </Section>
