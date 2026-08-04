@@ -901,6 +901,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
       const abbrev = FIPS_TO_ABBREV[fips] ?? "";
       const featureId = geo.id || props.GEOID || geo.rsmKey;
 
+      const isStateSelected = activeCensusLayerId === "states" && abbrev === selectedStateAbbrev;
       const isFeatureSelected = selectedFeature?.id === featureId || (props.GEOID && selectedFeature?.geoid === props.GEOID);
       const isHovered = hoveredStateAbbrev === abbrev || hoveredStateAbbrev === featureId;
 
@@ -908,18 +909,18 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
       if (activeCensusLayerId !== "states" && activeCensusLayerId !== "all_census_catalog") {
         if (isFeatureSelected) {
           return {
-            fill: "rgba(251, 191, 36, 0.72)",
+            fill: "rgba(251, 191, 36, 0.55)",
             stroke: "#fbbf24",
-            strokeWidth: 2.0,
+            strokeWidth: 1.8,
             outline: "none",
             transition: "all 0.15s ease",
           };
         }
         if (isHovered) {
           return {
-            fill: "rgba(251, 191, 36, 0.45)",
+            fill: "rgba(251, 191, 36, 0.35)",
             stroke: "#fbbf24",
-            strokeWidth: 1.4,
+            strokeWidth: 1.2,
             outline: "none",
             transition: "all 0.15s ease",
           };
@@ -957,45 +958,45 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
       } else if (heatmapMode === "none") {
         const rc = REGION_COLORS[state.region];
         fill = isHovered ? rc.hover : rc.base;
-        stroke = isHovered ? rc.border : rc.stroke;
+        stroke = isStateSelected || isHovered ? "#fbbf24" : rc.stroke;
       } else if (heatmapMode === "gdp") {
         const r = Math.sqrt(state.gdp / maxValues.maxGdp);
         fill = isHovered
           ? `hsla(38,95%,62%,${(0.35 + r * 0.55).toFixed(2)})`
           : `hsla(38,90%,50%,${(0.22 + r * 0.58).toFixed(2)})`;
-        stroke = isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
       } else if (heatmapMode === "population") {
         const r = Math.sqrt(state.population / maxValues.maxPop);
         fill = isHovered
           ? `hsla(210,85%,62%,${(0.35 + r * 0.55).toFixed(2)})`
           : `hsla(210,80%,52%,${(0.22 + r * 0.58).toFixed(2)})`;
-        stroke = isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
       } else if (heatmapMode === "amendments") {
         const amend = STATE_EXTENDED_DATA[abbrev]?.constitution.amendmentsCount ?? 0;
         const r = maxValues.maxAmend > 0 ? Math.sqrt(amend / maxValues.maxAmend) : 0;
         fill = isHovered
           ? `hsla(265,80%,68%,${(0.35 + r * 0.55).toFixed(2)})`
           : `hsla(265,72%,56%,${(0.22 + r * 0.58).toFixed(2)})`;
-        stroke = isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
       } else if (heatmapMode === "conLength") {
         const words = STATE_EXTENDED_DATA[abbrev]?.constitution.wordCount ?? 0;
         const r = maxValues.maxWords > 0 ? Math.sqrt(words / maxValues.maxWords) : 0;
         fill = isHovered
           ? `hsla(165,75%,58%,${(0.35 + r * 0.55).toFixed(2)})`
           : `hsla(165,68%,44%,${(0.22 + r * 0.58).toFixed(2)})`;
-        stroke = isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
       } else {
         const r = (51 - state.statehoodOrder) / 50;
         fill = isHovered
           ? `hsla(355,82%,58%,${(0.35 + r * 0.55).toFixed(2)})`
           : `hsla(355,76%,46%,${(0.22 + r * 0.58).toFixed(2)})`;
-        stroke = isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
       }
 
       return {
         fill,
         stroke,
-        strokeWidth: isHovered ? 1.4 : 0.85,
+        strokeWidth: isStateSelected ? 2.2 : isHovered ? 1.4 : 0.85,
         outline: "none",
         transition: "all 0.15s ease",
       };
@@ -1454,7 +1455,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                               setHoveredStateAbbrev(null);
                               setFeatureHoverInfo(null);
                             }}
-                            onClick={() => {
+                            onClick={(e: any) => {
+                              if (e && e.stopPropagation) e.stopPropagation();
                               const name = props.NAMELSAD || props.NAME || (abbrev ? EXPLORER_STATES[abbrev]?.name[locale] : null) || props.GEOID || "Boundary Feature";
                               const code = props.GEOID || props.GEOIDFQ || activeCensusLayer.code;
 
@@ -1515,7 +1517,13 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                               key={`${selectedGeo.rsmKey}-selected`}
                               geography={selectedGeo}
                               style={{
-                                default: { fill: "rgba(251, 191, 36, 0.70)", stroke: "#fbbf24", strokeWidth: 2.2, outline: "none", pointerEvents: "none" },
+                                default: {
+                                  fill: activeCensusLayer.id === "states" ? "none" : "rgba(251, 191, 36, 0.50)",
+                                  stroke: "#fbbf24",
+                                  strokeWidth: 2.5,
+                                  outline: "none",
+                                  pointerEvents: "none",
+                                },
                                 hover: { outline: "none" },
                                 pressed: { outline: "none" },
                               }}
@@ -1526,7 +1534,13 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                               key={`${hoveredGeo.rsmKey}-hover`}
                               geography={hoveredGeo}
                               style={{
-                                default: { fill: "rgba(251, 191, 36, 0.40)", stroke: "#fbbf24", strokeWidth: 1.4, outline: "none", pointerEvents: "none" },
+                                default: {
+                                  fill: activeCensusLayer.id === "states" ? "none" : "rgba(251, 191, 36, 0.30)",
+                                  stroke: activeCensusLayer.id === "states" ? "#ffffff" : "#fbbf24",
+                                  strokeWidth: 1.4,
+                                  outline: "none",
+                                  pointerEvents: "none",
+                                },
                                 hover: { outline: "none" },
                                 pressed: { outline: "none" },
                               }}
