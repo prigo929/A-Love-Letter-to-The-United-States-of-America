@@ -7,6 +7,7 @@ import { HISTORY_ERAS } from "./history-eras-data";
 import { DEEP_DIVE_THEMES, type DeepDiveTheme } from "../deep-dive-themes";
 
 export interface AllInDepthArticle extends ThematicTopic {
+  uid: string;
   domainCategory: "nature" | "constitution" | "economy" | "quality-of-life" | "military" | "global-leadership" | "demographics" | "culture" | "innovation" | "history";
   domainKey: string;
   categoryLabel: { en: string; ro: string };
@@ -89,9 +90,10 @@ export function getAllInDepthArticles(): AllInDepthArticle[] {
     };
     const theme = DEEP_DIVE_THEMES[key as keyof typeof DEEP_DIVE_THEMES] ?? HISTORY_THEME;
 
-    topics.forEach((topic) => {
+    topics.forEach((topic, idx) => {
       articles.push({
         ...topic,
+        uid: `vertical_${key}_${topic.id}_${idx}`,
         domainCategory: meta.category,
         domainKey: key,
         categoryLabel: meta.label,
@@ -103,9 +105,10 @@ export function getAllInDepthArticles(): AllInDepthArticle[] {
   // 2. History Thematic Data
   for (const [key, topics] of Object.entries(THEMATIC_HISTORY_DATA)) {
     const categoryLabel = HISTORY_THEMATIC_LABELS[key] ?? { en: "History", ro: "Istorie" };
-    topics.forEach((topic) => {
+    topics.forEach((topic, idx) => {
       articles.push({
         ...topic,
+        uid: `history_${key}_${topic.id}_${idx}`,
         domainCategory: "history",
         domainKey: `history-${key}`,
         categoryLabel,
@@ -115,9 +118,10 @@ export function getAllInDepthArticles(): AllInDepthArticle[] {
   }
 
   // 3. History Eras Data
-  HISTORY_ERAS.forEach((topic) => {
+  HISTORY_ERAS.forEach((topic, idx) => {
     articles.push({
       ...topic,
+      uid: `era_${topic.id}_${idx}`,
       domainCategory: "history",
       domainKey: "history-eras",
       categoryLabel: { en: "History Eras", ro: "Epoci Istorice" },

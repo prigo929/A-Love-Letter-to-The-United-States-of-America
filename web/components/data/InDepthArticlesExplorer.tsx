@@ -42,7 +42,7 @@ export function InDepthArticlesExplorer() {
 
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [activeId, setActiveId] = useState<string>(allArticles[0]?.id ?? "");
+  const [activeUid, setActiveUid] = useState<string>(allArticles[0]?.uid ?? "");
   const [openSections, setOpenSections] = useState<Set<number>>(new Set([0]));
   const readerRef = useRef<HTMLDivElement>(null);
 
@@ -79,13 +79,13 @@ export function InDepthArticlesExplorer() {
   // Keep active topic valid when filters change
   useEffect(() => {
     if (filteredArticles.length > 0) {
-      const exists = filteredArticles.some((a) => a.id === activeId);
+      const exists = filteredArticles.some((a) => a.uid === activeUid);
       if (!exists) {
-        setActiveId(filteredArticles[0].id);
+        setActiveUid(filteredArticles[0].uid);
         setOpenSections(new Set([0]));
       }
     }
-  }, [filteredArticles, activeId]);
+  }, [filteredArticles, activeUid]);
 
   // Hash deep linking support
   useEffect(() => {
@@ -93,10 +93,10 @@ export function InDepthArticlesExplorer() {
       const hash = window.location.hash;
       if (hash.startsWith("#deep-dive-") || hash.startsWith("#article-")) {
         const id = hash.replace("#deep-dive-", "").replace("#article-", "");
-        const matched = allArticles.find((t) => t.id.toLowerCase() === id.toLowerCase());
+        const matched = allArticles.find((t) => t.uid.toLowerCase() === id.toLowerCase() || t.id.toLowerCase() === id.toLowerCase());
         if (matched) {
           setSelectedCategory("all");
-          setActiveId(matched.id);
+          setActiveUid(matched.uid);
           setOpenSections(new Set([0]));
           setTimeout(() => {
             if (readerRef.current) {
@@ -115,8 +115,8 @@ export function InDepthArticlesExplorer() {
   }, [allArticles]);
 
   const activeArticle = useMemo(() => {
-    return allArticles.find((a) => a.id === activeId) ?? filteredArticles[0] ?? allArticles[0];
-  }, [allArticles, filteredArticles, activeId]);
+    return allArticles.find((a) => a.uid === activeUid) ?? filteredArticles[0] ?? allArticles[0];
+  }, [allArticles, filteredArticles, activeUid]);
 
   const pullQuote = useMemo(() => {
     return activeArticle ? extractPullQuote(activeArticle, isRo) : null;
@@ -138,8 +138,8 @@ export function InDepthArticlesExplorer() {
     });
   }
 
-  function handleTopicSelect(id: string) {
-    setActiveId(id);
+  function handleTopicSelect(uid: string) {
+    setActiveUid(uid);
     setOpenSections(new Set([0]));
     if (readerRef.current && window.innerWidth < 768) {
       const yOffset = -90;
@@ -291,7 +291,7 @@ export function InDepthArticlesExplorer() {
                 {isRo ? "Selectează un Subiect" : "Select Topic to Read"}
               </span>
               <span className="font-mono text-[11px] text-white/30">
-                {filteredArticles.findIndex((a) => a.id === activeId) + 1} / {filteredArticles.length}
+                {filteredArticles.findIndex((a) => a.uid === activeUid) + 1} / {filteredArticles.length}
               </span>
             </div>
 
@@ -302,12 +302,12 @@ export function InDepthArticlesExplorer() {
               }}
             >
               {filteredArticles.map((topic, i) => {
-                const isActive = topic.id === activeId;
+                const isActive = topic.uid === activeUid;
                 const accent = topic.theme.accent;
                 return (
                   <button
-                    key={topic.id}
-                    onClick={() => handleTopicSelect(topic.id)}
+                    key={topic.uid}
+                    onClick={() => handleTopicSelect(topic.uid)}
                     className="group relative text-left p-3.5 rounded-xl border transition-all duration-200 focus-visible:outline-none"
                     style={{
                       background: isActive ? `${accent}15` : "rgba(255,255,255,0.02)",
@@ -350,7 +350,7 @@ export function InDepthArticlesExplorer() {
               <div ref={readerRef} className="pt-6 border-t border-white/10">
                 <AnimatePresence mode="wait">
                   <motion.div
-                    key={activeArticle.id}
+                    key={activeArticle.uid}
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
