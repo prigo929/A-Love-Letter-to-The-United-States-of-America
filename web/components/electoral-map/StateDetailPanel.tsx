@@ -132,6 +132,23 @@ export function StateDetailPanel({
           ))}
         </div>
 
+        {/* ── Presidential popular vote (authoritative, 1976–2024) ─────────── */}
+        {data.president.demVotes !== undefined && (data.president.totalVotes || 0) > 0 && (
+          <div className="mb-5">
+            <p className="mb-2 font-body text-xs font-semibold uppercase tracking-wider text-[#8A8780]">
+              {isRo ? "Vot popular (prezidențial)" : "Popular Vote (President)"}
+            </p>
+            <div className="flex h-2.5 w-full overflow-hidden rounded-full bg-[rgba(255,255,255,0.06)]">
+              <div style={{ width: `${(data.president.demVotes! / data.president.totalVotes!) * 100}%`, background: pc("DEM") }} />
+              <div style={{ width: `${(data.president.repVotes! / data.president.totalVotes!) * 100}%`, background: pc("REP") }} />
+            </div>
+            <div className="mt-1.5 flex justify-between font-body text-xs text-[#B8B4AC]">
+              <span><span className="font-bold" style={{ color: pc("DEM") }}>D</span> {data.president.demVotes!.toLocaleString()} · {((data.president.demVotes! / data.president.totalVotes!) * 100).toFixed(1)}%</span>
+              <span>{((data.president.repVotes! / data.president.totalVotes!) * 100).toFixed(1)}% · {data.president.repVotes!.toLocaleString()} <span className="font-bold" style={{ color: pc("REP") }}>R</span></span>
+            </div>
+          </div>
+        )}
+
         {/* ── House Detail (if data exists) ────────────────────────────────── */}
         {data.house.totalReps > 0 && (
           <div className="mb-5">

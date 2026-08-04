@@ -5,13 +5,15 @@
  * - House: The composition of the lower chamber (435 seats, population-based).
  * - Governor: State-level executive leadership across the 50 states.
  */
+import { MODERN_PRES, MODERN_NATIONAL, MODERN_HOUSE, MODERN_SENATE } from "./electoral-returns-modern";
+
 export type ViewMode = "President" | "Senate" | "House" | "Governor";
 
 /**
  * StateData represents a snapshot of all political levels for a specific state in a specific year.
  */
 export interface StateData {
-  president: { party: string; candidate?: string; flipped: boolean };
+  president: { party: string; candidate?: string; flipped: boolean; demVotes?: number; repVotes?: number; totalVotes?: number };
   senate: { split: boolean; party1: string; party2: string; active: boolean };
   house: { p1Reps: number; p2Reps: number; totalReps: number };
   governor: { party: string; active: boolean };
@@ -716,6 +718,10 @@ function buildYear(year: number): YearData {
   const cd = CONGRESS_DATA[year] || { p1: "DEM", p2: "REP", houseShare: 0.5, senateShare: 0.5 };
   const majorityShare = cd.houseShare;
 
+  // Most recent presidential-election year with authoritative MIT data (1976+).
+  // For off-years the map keeps the last presidential result, so we resolve to it.
+  const mitPresYear = year >= 1976 ? year - ((year - 1976) % 4) : -1;
+
   for (const name of NAMES) {
     const admitted = STATE_ADMISSION[name] || 9999;
     if (admitted > year) continue; // State hadn't joined the Union yet
@@ -773,10 +779,40 @@ function buildYear(year: number): YearData {
       dH = HOUSE_OVR[year][name].p1;
     }
 
+    // ── Modern authoritative overrides (1976–2024, MIT Election Lab) ──────────
+    // Real per-state presidential winners + vote counts, real Senate delegations,
+    // and real House seat counts replace the estimates for these years.
+    let pParty = presParty, pCand = presCandidate;
+    let sP1 = senBase, sP2 = isSplit ? senOther : senBase, sSplit = isSplit, sActive = isSenateActive(year, name);
+    let hP1 = dH, hP2 = totalH - dH, hTot = totalH;
+    let presDem: number | undefined, presRep: number | undefined, presTot: number | undefined;
+
+    const mp = MODERN_PRES[mitPresYear]?.[name];
+    if (mp) {
+      if (mp.w === "DEM" || mp.w === "REP") pParty = mp.w;
+      pCand = pParty === "DEM" ? (PRESIDENTIAL_DATA[mitPresYear]?.dem || pCand)
+            : pParty === "REP" ? (PRESIDENTIAL_DATA[mitPresYear]?.rep || pCand) : pCand;
+      presDem = mp.d; presRep = mp.r; presTot = mp.t;
+    }
+    const ms = MODERN_SENATE[year]?.[name];
+    if (ms) {
+      sP1 = ms.p1 === "OTH" ? "IND" : ms.p1;
+      sP2 = ms.p2 === "OTH" ? "IND" : ms.p2;
+      sSplit = sP1 !== sP2;
+      sActive = ms.active;
+    }
+    const mh = MODERN_HOUSE[year]?.[name];
+    if (mh) {
+      const dem = mh.DEM || 0, rep = mh.REP || 0, oth = (mh.IND || 0) + (mh.OTH || 0);
+      hTot = dem + rep + oth;
+      hP1 = cd.p1 === "DEM" ? dem : cd.p1 === "REP" ? rep : dem;
+      hP2 = hTot - hP1;
+    }
+
     states[name] = {
-      president: { party: presParty, candidate: presCandidate, flipped: false },
-      senate: { split: isSplit, party1: senBase, party2: isSplit ? senOther : senBase, active: isSenateActive(year, name) },
-      house: { p1Reps: dH, p2Reps: totalH - dH, totalReps: totalH },
+      president: { party: pParty, candidate: pCand, flipped: false, demVotes: presDem, repVotes: presRep, totalVotes: presTot },
+      senate: { split: sSplit, party1: sP1, party2: sP2, active: sActive },
+      house: { p1Reps: hP1, p2Reps: hP2, totalReps: hTot },
       governor: { party: govParty, active: isGovernorActive(year, name) },
       electoralVotes: getElectoralVotes(year, name),
     };
@@ -788,11 +824,12 @@ function buildYear(year: number): YearData {
   }
 
   // ── HOUSE NORMALIZATION PASS ──────────────────────────────────────────────
+  // Skipped for years with authoritative MIT seat counts, so real data is kept.
   const targetP1 = Math.round(435 * cd.houseShare);
   let currentP1 = Object.values(states).reduce((sum, s) => sum + s.house.p1Reps, 0);
 
   let safety = 0;
-  while (currentP1 !== targetP1 && safety < 1000) {
+  while (!MODERN_HOUSE[year] && currentP1 !== targetP1 && safety < 1000) {
     safety++;
     const drift = targetP1 - currentP1;
     const direction = drift > 0 ? 1 : -1;
@@ -808,14 +845,17 @@ function buildYear(year: number): YearData {
     }
   }
 
-  return { 
-    year, 
+  // National popular vote: use exact MIT totals in authoritative presidential years.
+  const mn = year === mitPresYear ? MODERN_NATIONAL[year] : undefined;
+
+  return {
+    year,
     states,
-    demCandidate: pData.dem, 
-    repCandidate: pData.rep, 
-    demPopVote: pData.demV, 
-    repPopVote: pData.repV, 
-    totalPopVote: pData.totV,
+    demCandidate: pData.dem,
+    repCandidate: pData.rep,
+    demPopVote: mn ? mn.d : pData.demV,
+    repPopVote: mn ? mn.r : pData.repV,
+    totalPopVote: mn ? mn.t : pData.totV,
     unopposed: el?.unopposed,
     thirdPartyCandidates: el?.thirdPartyCandidates
   };
