@@ -124,7 +124,13 @@ for y in [yy for yy in prows and set(y for y, s in prows)]:
 for y in set(y for (y, s) in prows):
     NATL[y] = {"d": int(sum(pdem[y].values())), "r": int(sum(prep[y].values())), "t": int(sum(ptot[y].values()))}
 
-# ═══════════════ HOUSE (MIT 1976–2024; DC delegate excluded) ═══════════════
+# ═══════════════ HOUSE ═══════════════
+# 1976–2024: MIT (per-district general-election winners). Pre-1976: Voteview
+# seated members (HSall_members.csv), mapped to the era's party codes so the map
+# can split each state by CONGRESS_DATA's p1/p2.
+HOUSE = collections.defaultdict(lambda: collections.defaultdict(collections.Counter))
+
+# ── MIT 1976–2024 ──
 hrows = collections.defaultdict(list)
 with open(f"{BASE}/U.S. House 1976–2024/1976-2024-house.tab", encoding="utf-8", errors="replace") as f:
     for row in csv.DictReader(f):
@@ -142,10 +148,49 @@ with open(f"{BASE}/U.S. House 1976–2024/1976-2024-house.tab", encoding="utf-8"
         except Exception:
             v = 0
         hrows[(y, st, row["district"])].append((row["candidate"], (row["party"] or "").upper(), row["party"] or "", v))
-HOUSE = collections.defaultdict(lambda: collections.defaultdict(collections.Counter))
 for (y, st, dist), rows in hrows.items():
     p = mit_winner([(c, pu if "DEMOCRAT" in pu or "REPUBLICAN" in pu else "OTHER", pd, v) for c, pu, pd, v in rows])
     HOUSE[y][st][p] += 1
+
+# ── Voteview pre-1976 (Congresses 1–94, elected 1788–1974) ──
+# Voteview party_code -> the site's era party codes (see electoral-data.ts).
+VV_PARTY = {
+    5000: "FED", 4000: "DR",            # pro-/anti-Administration (Congs 1–3)
+    1: "FED", 13: "DR",
+    1346: "DR", 6000: "DR", 7000: "DR", 8000: "DR", 8888: "DR",  # 1822 factions
+    555: "DEM", 100: "DEM",              # Jacksonian / Democrat
+    22: "NR", 26: "NR", 1275: "NR",      # Adams / Anti-Jackson / National Republican
+    29: "WHIG", 200: "REP",
+    37: "CU", 44: "NULL", 340: "POP", 1060: "POP", 370: "PROG",
+    328: "IND", 329: "IND", 331: "IND",
+}
+seen_seat = {}   # (congress, state, district) -> True, to dedupe mid-term replacements
+with open(f"{BASE}/Voteview/HSall_members.csv", encoding="utf-8", errors="replace") as f:
+    for row in csv.DictReader(f):
+        if row["chamber"] != "House":
+            continue
+        try:
+            cong = int(float(row["congress"]))
+        except Exception:
+            continue
+        y = 1786 + 2 * cong
+        if y >= 1976:  # MIT is authoritative for the modern era
+            continue
+        st = PO2NAME.get(row["state_abbrev"])
+        if not st or st == "District of Columbia":
+            continue
+        dist = row["district_code"]
+        # dedupe replacements for numbered seats; keep every at-large (0) seat
+        if dist not in ("0", "0.0"):
+            key = (cong, st, dist)
+            if key in seen_seat:
+                continue
+            seen_seat[key] = True
+        try:
+            code = int(float(row["party_code"]))
+        except Exception:
+            code = -1
+        HOUSE[y][st][VV_PARTY.get(code, "OTH")] += 1
 
 # ═══════════════ SENATE (class-based, 1914–2024) ═══════════════
 sendf = pyreadr.read_r(f"{CTY}/dataverse_shareable_us_senate_county_returns_1908_2020.Rdata")["senate_elections_release"]
@@ -228,7 +273,8 @@ lines = [
     "export interface RetPresState { w: string; d: number; r: number; t: number; }",
     "export const RET_PRES: Record<number, Record<string, RetPresState>> = " + js({int(y): PRES[y] for y in sorted(PRES)}) + ";\n",
     "export const RET_NATIONAL: Record<number, { d: number; r: number; t: number }> = " + js({int(y): NATL[y] for y in sorted(NATL)}) + ";\n",
-    "export const RET_HOUSE: Record<number, Record<string, { DEM?: number; REP?: number; IND?: number; OTH?: number }>> = " + js({int(y): {st: dict(c) for st, c in HOUSE[y].items()} for y in sorted(HOUSE)}) + ";\n",
+    "// House seat counts keyed by the era's party code (DEM/REP/WHIG/FED/DR/NR/…).",
+    "export const RET_HOUSE: Record<number, Record<string, Record<string, number>>> = " + js({int(y): {st: dict(c) for st, c in HOUSE[y].items()} for y in sorted(HOUSE)}) + ";\n",
     "export const RET_SENATE: Record<number, Record<string, { p1: string; p2: string; active: boolean }>> = " + js({int(y): SEN[y] for y in sorted(SEN)}) + ";\n",
     "export const RET_GOV: Record<number, Record<string, string>> = " + js({int(y): GOV[y] for y in sorted(GOV)}) + ";",
 ]

@@ -813,9 +813,9 @@ function buildYear(year: number): YearData {
     }
     const rh = RET_HOUSE[year]?.[name];
     if (rh) {
-      const dem = rh.DEM || 0, rep = rh.REP || 0, oth = (rh.IND || 0) + (rh.OTH || 0);
-      hTot = dem + rep + oth;
-      hP1 = cd.p1 === "DEM" ? dem : cd.p1 === "REP" ? rep : dem;
+      // Real seat counts keyed by era party code; p1 = the year's majority party.
+      hTot = Object.values(rh).reduce((a, b) => a + b, 0);
+      hP1 = rh[cd.p1] || 0;
       hP2 = hTot - hP1;
     }
     const rg = RET_GOV[year]?.[name];
