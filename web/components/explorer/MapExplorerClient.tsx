@@ -901,32 +901,39 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
       const abbrev = FIPS_TO_ABBREV[fips] ?? "";
       const featureId = geo.id || props.GEOID || geo.rsmKey;
 
-      const isStateSelected = activeCensusLayerId === "states" && abbrev === selectedStateAbbrev;
       const isFeatureSelected = selectedFeature?.id === featureId || (props.GEOID && selectedFeature?.geoid === props.GEOID);
       const isHovered = hoveredStateAbbrev === abbrev || hoveredStateAbbrev === featureId;
 
-      // ── Selected Area: Vibrant Yellow Gold ──
-      if (isStateSelected || isFeatureSelected) {
+      // ── Non-State Census Layers ──
+      if (activeCensusLayerId !== "states" && activeCensusLayerId !== "all_census_catalog") {
+        if (isFeatureSelected) {
+          return {
+            fill: "rgba(251, 191, 36, 0.72)",
+            stroke: "#fbbf24",
+            strokeWidth: 2.0,
+            outline: "none",
+            transition: "all 0.15s ease",
+          };
+        }
+        if (isHovered) {
+          return {
+            fill: "rgba(251, 191, 36, 0.45)",
+            stroke: "#fbbf24",
+            strokeWidth: 1.4,
+            outline: "none",
+            transition: "all 0.15s ease",
+          };
+        }
         return {
-          fill: "rgba(251, 191, 36, 0.72)",
-          stroke: "#fbbf24",
-          strokeWidth: 2.0,
+          fill: "rgba(255, 255, 255, 0.08)",
+          stroke: "rgba(255, 255, 255, 0.28)",
+          strokeWidth: 0.65,
           outline: "none",
-          transition: "all 0.15s ease",
+          transition: "fill 0.15s ease",
         };
       }
 
-      // ── Hovered Area: Translucent Yellow Glow ──
-      if (isHovered) {
-        return {
-          fill: "rgba(251, 191, 36, 0.45)",
-          stroke: "#fbbf24",
-          strokeWidth: 1.4,
-          outline: "none",
-          transition: "all 0.15s ease",
-        };
-      }
-
+      // ── 2025 States Main Map Layer (Heatmaps & Region Colors) ──
       const state = EXPLORER_STATES[abbrev];
 
       if (!state || abbrev === "DC") {
@@ -956,44 +963,44 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
         fill = isHovered
           ? `hsla(38,95%,62%,${(0.35 + r * 0.55).toFixed(2)})`
           : `hsla(38,90%,50%,${(0.22 + r * 0.58).toFixed(2)})`;
-        stroke = "rgba(255,255,255,0.30)";
+        stroke = isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
       } else if (heatmapMode === "population") {
         const r = Math.sqrt(state.population / maxValues.maxPop);
         fill = isHovered
           ? `hsla(210,85%,62%,${(0.35 + r * 0.55).toFixed(2)})`
           : `hsla(210,80%,52%,${(0.22 + r * 0.58).toFixed(2)})`;
-        stroke = "rgba(255,255,255,0.30)";
+        stroke = isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
       } else if (heatmapMode === "amendments") {
         const amend = STATE_EXTENDED_DATA[abbrev]?.constitution.amendmentsCount ?? 0;
         const r = maxValues.maxAmend > 0 ? Math.sqrt(amend / maxValues.maxAmend) : 0;
         fill = isHovered
           ? `hsla(265,80%,68%,${(0.35 + r * 0.55).toFixed(2)})`
           : `hsla(265,72%,56%,${(0.22 + r * 0.58).toFixed(2)})`;
-        stroke = "rgba(255,255,255,0.30)";
+        stroke = isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
       } else if (heatmapMode === "conLength") {
         const words = STATE_EXTENDED_DATA[abbrev]?.constitution.wordCount ?? 0;
         const r = maxValues.maxWords > 0 ? Math.sqrt(words / maxValues.maxWords) : 0;
         fill = isHovered
           ? `hsla(165,75%,58%,${(0.35 + r * 0.55).toFixed(2)})`
           : `hsla(165,68%,44%,${(0.22 + r * 0.58).toFixed(2)})`;
-        stroke = "rgba(255,255,255,0.30)";
+        stroke = isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
       } else {
         const r = (51 - state.statehoodOrder) / 50;
         fill = isHovered
           ? `hsla(355,82%,58%,${(0.35 + r * 0.55).toFixed(2)})`
           : `hsla(355,76%,46%,${(0.22 + r * 0.58).toFixed(2)})`;
-        stroke = "rgba(255,255,255,0.30)";
+        stroke = isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
       }
 
       return {
         fill,
         stroke,
-        strokeWidth: 0.85,
+        strokeWidth: isHovered ? 1.4 : 0.85,
         outline: "none",
-        transition: "fill 0.15s ease",
+        transition: "all 0.15s ease",
       };
     },
-    [selectedStateAbbrev, hoveredStateAbbrev, heatmapMode, maxValues, selectedRegion, searchQuery, locale]
+    [activeCensusLayerId, selectedStateAbbrev, selectedFeature, hoveredStateAbbrev, selectedRegion, locale, searchQuery, heatmapMode, maxValues]
   );
 
   const regionButtons = [
