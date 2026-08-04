@@ -696,7 +696,13 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   }, []);
 
   const handleZoomOut = useCallback(() => {
-    setZoomPosition((prev) => ({ ...prev, zoom: Math.max(prev.zoom / 1.5, 0.8) }));
+    setZoomPosition((prev) => {
+      const nextZoom = Math.max(prev.zoom / 1.5, 1);
+      if (nextZoom <= 1.05) {
+        return { coordinates: [-96, 38], zoom: 1 };
+      }
+      return { ...prev, zoom: nextZoom };
+    });
   }, []);
 
   const handleResetZoom = useCallback(() => {
@@ -704,7 +710,11 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   }, []);
 
   const handleMoveEnd = useCallback((pos: { coordinates: [number, number]; zoom: number }) => {
-    setZoomPosition(pos);
+    if (pos.zoom <= 1.05) {
+      setZoomPosition({ coordinates: [-96, 38], zoom: 1 });
+    } else {
+      setZoomPosition(pos);
+    }
   }, []);
 
   const activeCensusLayer = useMemo(
