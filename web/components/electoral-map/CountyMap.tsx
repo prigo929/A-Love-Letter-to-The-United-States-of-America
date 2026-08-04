@@ -1,18 +1,28 @@
 "use client";
 
 // ─── CountyMap ────────────────────────────────────────────────────────────────
-// County-level presidential choropleth (2000–2024), drawn from the user's Census
-// 2025 county boundaries (public/maps/us-counties.geojson, converted from the
-// TIGER/cartographic shapefile) and MIT county presidential returns
-// (public/maps/county-returns.json). Each of the ~3,100 counties is filled by the
-// winning party, its saturation scaled by the margin, the classic "how close was
-// it" texture the state map cannot show.
+// County-level presidential choropleth (2000–2024). Boundaries come from us-atlas
+// counties-10m (the same curated source as the state map, so Alaska's antimeridian
+// islands and the AK/HI insets render cleanly under geoAlbersUsa). Colors come from
+// the user's MIT county presidential returns (public/maps/county-returns.json).
+// Each of the ~3,100 counties is filled by the winning party, its saturation scaled
+// by the margin — the "how close was it" texture the state map cannot show.
 
 import { memo, useEffect, useMemo, useState } from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 
-const GEO_URL = "/maps/us-counties.geojson";
+const GEO_URL = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 const RETURNS_URL = "/maps/county-returns.json";
+
+// 2-digit state FIPS → USPS, to label the hovered county.
+const FIPS_ST: Record<string, string> = {
+  "01": "AL", "02": "AK", "04": "AZ", "05": "AR", "06": "CA", "08": "CO", "09": "CT", "10": "DE", "11": "DC",
+  "12": "FL", "13": "GA", "15": "HI", "16": "ID", "17": "IL", "18": "IN", "19": "IA", "20": "KS", "21": "KY",
+  "22": "LA", "23": "ME", "24": "MD", "25": "MA", "26": "MI", "27": "MN", "28": "MS", "29": "MO", "30": "MT",
+  "31": "NE", "32": "NV", "33": "NH", "34": "NJ", "35": "NM", "36": "NY", "37": "NC", "38": "ND", "39": "OH",
+  "40": "OK", "41": "OR", "42": "PA", "44": "RI", "45": "SC", "46": "SD", "47": "TN", "48": "TX", "49": "UT",
+  "50": "VT", "51": "VA", "53": "WA", "54": "WV", "55": "WI", "56": "WY",
+};
 
 const DEM = "#4169E1";
 const REP = "#E64141";
@@ -94,9 +104,9 @@ export const CountyMap = memo(function CountyMap({ year, isRo }: { year: number;
           style={{ width: "100%", height: "auto" }}
         >
           <Geographies geography={geo}>
-            {({ geographies }: { geographies: Array<{ rsmKey: string; properties: Record<string, string> }> }) =>
+            {({ geographies }: { geographies: Array<{ rsmKey: string; id?: string | number; properties: Record<string, string> }> }) =>
               geographies.map((g) => {
-                const fips = g.properties.GEOID;
+                const fips = String(g.id ?? "").padStart(5, "0");
                 const res = yearData?.[fips];
                 let fill = "#141821";
                 if (res) {
@@ -116,8 +126,8 @@ export const CountyMap = memo(function CountyMap({ year, isRo }: { year: number;
                       pressed: { outline: "none" },
                     }}
                     onMouseEnter={() => {
-                      const name = g.properties.NAME;
-                      const st = g.properties.STUSPS;
+                      const name = g.properties.name;
+                      const st = FIPS_ST[fips.slice(0, 2)] ?? "";
                       if (!res) {
                         setHover({ name, state: st, text: isRo ? "fără date" : "no data" });
                         return;

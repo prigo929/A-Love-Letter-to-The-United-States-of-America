@@ -271,6 +271,29 @@ GOV_DEM_2022 = {"Arizona", "California", "Colorado", "Connecticut", "Delaware", 
 GOV[2022] = {st: ("DEM" if st in GOV_DEM_2022 else "REP") for st in ALL_STATES}
 GOV[2024] = dict(GOV[2022]); GOV[2024]["Louisiana"] = "REP"
 
+# ═══════════════ ELECTORAL VOTES ═══════════════
+# EV per state = House seats + 2 senators (DC = 3 via the 23rd Amendment). For
+# 1976–2024 this is derived exactly from the MIT House seat counts. For the
+# mid-century apportionments (which the old HISTORICAL_EV table did not cover),
+# authoritative tables below, each asserted to the correct national total.
+EV_1932 = {"Alabama":11,"Arizona":3,"Arkansas":9,"California":22,"Colorado":6,"Connecticut":8,"Delaware":3,"Florida":7,"Georgia":12,"Idaho":4,"Illinois":29,"Indiana":14,"Iowa":11,"Kansas":9,"Kentucky":11,"Louisiana":10,"Maine":5,"Maryland":8,"Massachusetts":17,"Michigan":19,"Minnesota":11,"Mississippi":9,"Missouri":15,"Montana":4,"Nebraska":7,"Nevada":3,"New Hampshire":4,"New Jersey":16,"New Mexico":3,"New York":47,"North Carolina":13,"North Dakota":4,"Ohio":26,"Oklahoma":11,"Oregon":5,"Pennsylvania":36,"Rhode Island":4,"South Carolina":8,"South Dakota":4,"Tennessee":11,"Texas":23,"Utah":4,"Vermont":3,"Virginia":11,"Washington":8,"West Virginia":8,"Wisconsin":12,"Wyoming":3}
+EV_1944 = {"Alabama":11,"Arizona":4,"Arkansas":9,"California":25,"Colorado":6,"Connecticut":8,"Delaware":3,"Florida":8,"Georgia":12,"Idaho":4,"Illinois":28,"Indiana":13,"Iowa":10,"Kansas":8,"Kentucky":11,"Louisiana":10,"Maine":5,"Maryland":8,"Massachusetts":16,"Michigan":19,"Minnesota":11,"Mississippi":9,"Missouri":15,"Montana":4,"Nebraska":6,"Nevada":3,"New Hampshire":4,"New Jersey":16,"New Mexico":4,"New York":47,"North Carolina":14,"North Dakota":4,"Ohio":25,"Oklahoma":10,"Oregon":6,"Pennsylvania":35,"Rhode Island":4,"South Carolina":8,"South Dakota":4,"Tennessee":12,"Texas":23,"Utah":4,"Vermont":3,"Virginia":11,"Washington":8,"West Virginia":8,"Wisconsin":12,"Wyoming":3}
+EV_1952 = {"Alabama":11,"Arizona":4,"Arkansas":8,"California":32,"Colorado":6,"Connecticut":8,"Delaware":3,"Florida":10,"Georgia":12,"Idaho":4,"Illinois":27,"Indiana":13,"Iowa":10,"Kansas":8,"Kentucky":10,"Louisiana":10,"Maine":5,"Maryland":9,"Massachusetts":16,"Michigan":20,"Minnesota":11,"Mississippi":8,"Missouri":13,"Montana":4,"Nebraska":6,"Nevada":3,"New Hampshire":4,"New Jersey":16,"New Mexico":4,"New York":45,"North Carolina":14,"North Dakota":4,"Ohio":25,"Oklahoma":8,"Oregon":6,"Pennsylvania":32,"Rhode Island":4,"South Carolina":8,"South Dakota":4,"Tennessee":11,"Texas":24,"Utah":4,"Vermont":3,"Virginia":12,"Washington":9,"West Virginia":8,"Wisconsin":12,"Wyoming":3}
+EV_1960 = dict(EV_1952); EV_1960.update({"Alaska":3,"Hawaii":3})  # AK+HI join; House temporarily 437
+EV_1964 = {"Alabama":10,"Alaska":3,"Arizona":5,"Arkansas":6,"California":40,"Colorado":6,"Connecticut":8,"Delaware":3,"District of Columbia":3,"Florida":14,"Georgia":12,"Hawaii":4,"Idaho":4,"Illinois":26,"Indiana":13,"Iowa":9,"Kansas":7,"Kentucky":9,"Louisiana":10,"Maine":4,"Maryland":10,"Massachusetts":14,"Michigan":21,"Minnesota":10,"Mississippi":7,"Missouri":12,"Montana":4,"Nebraska":5,"Nevada":3,"New Hampshire":4,"New Jersey":17,"New Mexico":4,"New York":43,"North Carolina":13,"North Dakota":4,"Ohio":26,"Oklahoma":8,"Oregon":6,"Pennsylvania":29,"Rhode Island":4,"South Carolina":8,"South Dakota":4,"Tennessee":11,"Texas":25,"Utah":4,"Vermont":3,"Virginia":12,"Washington":9,"West Virginia":7,"Wisconsin":12,"Wyoming":3}
+EV_1972 = {"Alabama":9,"Alaska":3,"Arizona":6,"Arkansas":6,"California":45,"Colorado":7,"Connecticut":8,"Delaware":3,"District of Columbia":3,"Florida":17,"Georgia":12,"Hawaii":4,"Idaho":4,"Illinois":26,"Indiana":13,"Iowa":8,"Kansas":7,"Kentucky":9,"Louisiana":10,"Maine":4,"Maryland":10,"Massachusetts":14,"Michigan":21,"Minnesota":10,"Mississippi":7,"Missouri":12,"Montana":4,"Nebraska":5,"Nevada":3,"New Hampshire":4,"New Jersey":17,"New Mexico":4,"New York":41,"North Carolina":13,"North Dakota":3,"Ohio":25,"Oklahoma":8,"Oregon":6,"Pennsylvania":27,"Rhode Island":4,"South Carolina":8,"South Dakota":4,"Tennessee":10,"Texas":26,"Utah":4,"Vermont":3,"Virginia":12,"Washington":9,"West Virginia":6,"Wisconsin":11,"Wyoming":3}
+RET_EV = {}
+for yr, tbl, want in [(1932, EV_1932, 531), (1944, EV_1944, 531), (1952, EV_1952, 531), (1960, EV_1960, 537), (1964, EV_1964, 538), (1972, EV_1972, 538)]:
+    got = sum(tbl.values())
+    assert got == want, f"EV {yr} sums to {got}, expected {want}"
+    RET_EV[yr] = tbl
+for y in range(1976, 2025, 4):
+    ev = {st: sum(cnt.values()) + 2 for st, cnt in HOUSE[y].items()}
+    ev["District of Columbia"] = 3
+    tot = sum(ev.values())
+    assert tot == 538, f"EV {y} sums to {tot}, expected 538"
+    RET_EV[y] = ev
+
 # ═══════════════ EMIT ═══════════════
 def js(o):
     return json.dumps(o, separators=(",", ":"))
@@ -285,7 +308,10 @@ lines = [
     "// House seat counts keyed by the era's party code (DEM/REP/WHIG/FED/DR/NR/…).",
     "export const RET_HOUSE: Record<number, Record<string, Record<string, number>>> = " + js({int(y): {st: dict(c) for st, c in HOUSE[y].items()} for y in sorted(HOUSE)}) + ";\n",
     "export const RET_SENATE: Record<number, Record<string, { p1: string; p2: string; active: boolean }>> = " + js({int(y): SEN[y] for y in sorted(SEN)}) + ";\n",
-    "export const RET_GOV: Record<number, Record<string, string>> = " + js({int(y): GOV[y] for y in sorted(GOV)}) + ";",
+    "export const RET_GOV: Record<number, Record<string, string>> = " + js({int(y): GOV[y] for y in sorted(GOV)}) + ";\n",
+    "// Electoral votes per state (House seats + 2; DC = 3). 1976–2024 exact from",
+    "// MIT House counts; mid-century apportionments 1932–1972 verified by total.",
+    "export const RET_EV: Record<number, Record<string, number>> = " + js({int(y): RET_EV[y] for y in sorted(RET_EV)}) + ";",
 ]
 with open(OUT, "w") as f:
     f.write("\n".join(lines))
