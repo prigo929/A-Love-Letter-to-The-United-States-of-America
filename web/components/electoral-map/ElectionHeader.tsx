@@ -56,10 +56,7 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
 
   const neededVotes = viewMode === "President" ? Math.floor(totalSeats / 2) + 1 : viewMode === "Senate" ? 50 : viewMode === "House" ? 218 : Math.floor(totalSeats / 2) + 1;
 
-  const thresholdLabel = isRo 
-    ? (viewMode === "President" ? `${neededVotes} PENTRU VICTORIE` : viewMode === "Senate" ? "50 PENTRU CONTROL" : viewMode === "House" ? "218 PENTRU VICTORIE" : "CÂȘTIGĂTOR")
-    : (viewMode === "President" ? `${neededVotes} TO WIN` : viewMode === "Senate" ? "50 FOR CONTROL" : viewMode === "House" ? "218 TO WIN" : "WINNER");
-  
+
   const topParty = parties[0]?.[0] || "OTHER";
   const secondParty = parties[1]?.[0] || "OTHER";
 
@@ -211,13 +208,6 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
             );
           })}
 
-          {/* Center Threshold Line */}
-          <div className="absolute inset-y-0 z-10 w-[3px] -translate-x-1/2 bg-black" style={{ left: `${(neededVotes / totalSeats) * 100}%` }} />
-          
-          {/* Threshold Label (Above the bar) */}
-          <div className="absolute -top-[18px] z-20 -translate-x-1/2 whitespace-nowrap rounded-full border border-[#C9A84C]/25 bg-[#080B12] px-2 py-0.5 font-body text-xs font-bold uppercase tracking-wider text-[#C9A84C]" style={{ left: `${(neededVotes / totalSeats) * 100}%` }}>
-            {thresholdLabel}
-          </div>
         </div>
       {/* ── BOTTOM DATA BAR ───────────────────────────────────────────────────── */}
       {viewMode === "President" && (
