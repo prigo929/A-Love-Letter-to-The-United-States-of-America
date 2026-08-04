@@ -135,6 +135,11 @@ export const metadata: Metadata = {
   // ── Icons ────────────────────────────────────────────────────────────────
   icons: {
     icon: "/favicon.svg",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/apple-touch-icon-precomposed.png", sizes: "180x180", type: "image/png" },
+      { url: "/apple-touch-icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
   },
 
   // ── Manifest ─────────────────────────────────────────────────────────────
