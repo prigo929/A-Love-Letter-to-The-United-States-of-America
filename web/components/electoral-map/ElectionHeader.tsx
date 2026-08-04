@@ -208,6 +208,8 @@ export function ElectionHeader({ year, viewMode, isRo }: { year: number; viewMod
             );
           })}
 
+          {/* Center Threshold Line */}
+          <div className="absolute inset-y-0 z-10 w-[3px] -translate-x-1/2 bg-black" style={{ left: `${(neededVotes / totalSeats) * 100}%` }} />
         </div>
       {/* ── BOTTOM DATA BAR ───────────────────────────────────────────────────── */}
       {viewMode === "President" && (
