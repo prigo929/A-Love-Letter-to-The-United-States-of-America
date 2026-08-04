@@ -655,6 +655,18 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   const [heatmapMode, setHeatmapMode] = useState<
     "none" | "gdp" | "population" | "statehood" | "amendments" | "conLength"
   >("none");
+  // Census Layer selection state (22 views)
+  const [activeCensusLayerId, setActiveCensusLayerId] = useState<string>("states");
+  const [isLayerModalOpen, setIsLayerModalOpen] = useState<boolean>(false);
+  const [layerSearchQuery, setLayerSearchQuery] = useState<string>("");
+  const [layerCategoryFilter, setLayerCategoryFilter] = useState<string>("all");
+  const [featureHoverInfo, setFeatureHoverInfo] = useState<{ label: string; details: string; code: string } | null>(null);
+
+  const activeCensusLayer = useMemo(
+    () => CENSUS_LAYERS.find((l) => l.id === activeCensusLayerId) ?? CENSUS_LAYERS[0],
+    [activeCensusLayerId]
+  );
+
   // Hover tooltip: {x, y} relative to the map container
   const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number } | null>(null);
 
@@ -849,6 +861,19 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
   const getGeographyStyle = useCallback(
     (geo: any) => {
+      if (activeCensusLayerId !== "states" && activeCensusLayerId !== "all_census_catalog") {
+        const props = geo.properties || {};
+        const featureId = geo.id || props.GEOID || geo.rsmKey;
+        const isHovered = hoveredStateAbbrev === featureId;
+        return {
+          fill: isHovered ? "rgba(232, 185, 35, 0.45)" : "rgba(255, 255, 255, 0.08)",
+          stroke: isHovered ? "rgba(232, 185, 35, 0.95)" : "rgba(255, 255, 255, 0.28)",
+          strokeWidth: 0.65,
+          outline: "none",
+          transition: "fill 0.15s ease",
+        };
+      }
+
       const fips = geo.id?.toString().padStart(2, "0") ?? "";
       const abbrev = FIPS_TO_ABBREV[fips] ?? "";
       const state = EXPLORER_STATES[abbrev];
