@@ -73,6 +73,7 @@ export function getFooterCopy(locale: Locale) {
           heading: "Date și Media",
           links: [
             { label: "Date și Studii", href: "/data" },
+            { label: "Articole în Detaliu", href: "/data/in-depth" },
             { label: "Galerie Foto", href: "/gallery" },
             { label: "Istorie", href: "/history" },
             { label: "Explorator de Hartă", href: "/explorer" },
@@ -117,6 +118,7 @@ export function getFooterCopy(locale: Locale) {
         heading: "Data & Media",
         links: [
           { label: "Data & Studies", href: "/data" },
+          { label: "In-Depth Articles", href: "/data/in-depth" },
           { label: "Photo Gallery", href: "/gallery" },
           { label: "History", href: "/history" },
           { label: "Map Explorer", href: "/explorer" },

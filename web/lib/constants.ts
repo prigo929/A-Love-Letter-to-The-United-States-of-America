@@ -550,6 +550,11 @@ export const NAV_SECTIONS = [
         description: "Interactive 50-state regional facts",
       },
       {
+        label: "In-Depth Articles",
+        href: "/data/in-depth",
+        description: "Complete repository of 188 long-form articles & deep dives",
+      },
+      {
         label: "Misconceptions",
         href: "/data/misconceptions",
         description: "Debunking common myths and narratives",
@@ -1114,6 +1119,10 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
       "/explorer": {
         label: "Explorator de Hartă",
         description: "Informații regionale interactive despre cele 50 de state",
+      },
+      "/data/in-depth": {
+        label: "Articole în Detaliu",
+        description: "Arhiva completă de 188 de articole detaliate și studii",
       },
       "/data/misconceptions": {
         label: "Concepții Greșite",

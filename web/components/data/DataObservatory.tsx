@@ -20,6 +20,7 @@ import {
   Map as MapIcon,
   Images,
   ShieldQuestion,
+  BookOpen,
 } from "lucide-react";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { GdpBarChart } from "@/components/data/GdpBarChart";
@@ -294,6 +295,7 @@ export function DataObservatory({ isRo }: { isRo: boolean }) {
 
   const tools = [
     { href: "/united-states", icon: Globe2, label: L("US Profile", "Profilul SUA"), desc: L("History, geography, government", "Istorie, geografie, guvern") },
+    { href: "/data/in-depth", icon: BookOpen, label: L("In-Depth Articles", "Articole în Detaliu"), desc: L("188 encyclopedic deep dives & studies", "188 de articole enciclopedice și studii") },
     { href: "/immigration-demographics", icon: Users, label: L("Immigration & Demographics", "Imigrație și Demografie"), desc: L("Population and immigration", "Populație și imigrație") },
     { href: "/gallery", icon: Images, label: L("Photo Gallery", "Galerie Foto"), desc: L("High-fidelity visual archive", "Arhivă vizuală de înaltă fidelitate") },
     { href: "/explorer", icon: MapIcon, label: L("Map Explorer", "Explorator de Hartă"), desc: L("Interactive 50-state facts", "Date interactive ale celor 50 de state") },

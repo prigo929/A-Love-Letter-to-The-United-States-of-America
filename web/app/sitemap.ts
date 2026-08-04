@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/interactive",
     "/explorer",
     "/data",
+    "/data/in-depth",
     "/data/misconceptions",
     "/gallery",
     "/videos",
