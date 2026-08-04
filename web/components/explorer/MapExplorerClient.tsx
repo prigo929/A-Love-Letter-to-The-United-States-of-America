@@ -1531,6 +1531,34 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   </Geographies>
                 </ZoomableGroup>
               </ComposableMap>
+
+              {/* Floating Magnifying Glass Zoom Controls (+ / - / Reset) */}
+              <div className="absolute bottom-12 right-4 z-20 flex flex-col items-center gap-1.5 rounded-2xl border border-[#fbbf24]/30 bg-black/90 p-2 backdrop-blur-md shadow-2xl">
+                <div className="flex items-center justify-center p-1 rounded-lg bg-[#fbbf24]/10 border border-[#fbbf24]/20 mb-0.5" title="Magnifying Glass Map Zoom">
+                  <Search className="h-3.5 w-3.5 text-[#fbbf24]" />
+                </div>
+                <button
+                  onClick={handleZoomIn}
+                  title="Zoom In (Magnify)"
+                  className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/5 hover:bg-[#fbbf24]/20 hover:text-[#fbbf24] text-white transition-colors cursor-pointer"
+                >
+                  <ZoomIn className="h-4 w-4" />
+                </button>
+                <button
+                  onClick={handleZoomOut}
+                  title="Zoom Out (Demagnify)"
+                  className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/5 hover:bg-[#fbbf24]/20 hover:text-[#fbbf24] text-white transition-colors cursor-pointer"
+                >
+                  <ZoomOut className="h-4 w-4" />
+                </button>
+                <button
+                  onClick={handleResetZoom}
+                  title="Reset View"
+                  className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/5 hover:bg-[#fbbf24]/20 hover:text-[#fbbf24] text-white transition-colors cursor-pointer"
+                >
+                  <RotateCcw className="h-3.5 w-3.5" />
+                </button>
+              </div>
             </div>
           </div>
 
