@@ -5,7 +5,7 @@
  * - House: The composition of the lower chamber (435 seats, population-based).
  * - Governor: State-level executive leadership across the 50 states.
  */
-import { RET_PRES, RET_NATIONAL, RET_HOUSE, RET_SENATE, RET_GOV } from "./electoral-returns";
+import { RET_PRES, RET_NATIONAL, RET_HOUSE, RET_SENATE, RET_GOV, RET_EV } from "./electoral-returns";
 
 // Presidential-election years for which we have authoritative per-state returns
 // (county aggregates 1868–1972 + MIT Election Lab 1976–2024). Sorted once.
@@ -135,7 +135,15 @@ export const HISTORICAL_EV: Record<number, Record<string, number>> = {
   1912: { "Alabama": 12, "Arizona": 3, "Arkansas": 9, "California": 13, "Colorado": 6, "Connecticut": 7, "Delaware": 3, "Florida": 6, "Georgia": 14, "Idaho": 4, "Illinois": 29, "Indiana": 15, "Iowa": 13, "Kansas": 10, "Kentucky": 13, "Louisiana": 10, "Maine": 6, "Maryland": 8, "Massachusetts": 18, "Michigan": 15, "Minnesota": 12, "Mississippi": 10, "Missouri": 18, "Montana": 4, "Nebraska": 8, "Nevada": 3, "New Hampshire": 4, "New Jersey": 14, "New Mexico": 3, "New York": 45, "North Carolina": 12, "North Dakota": 5, "Ohio": 24, "Oklahoma": 10, "Oregon": 5, "Pennsylvania": 38, "Rhode Island": 5, "South Carolina": 9, "South Dakota": 5, "Tennessee": 12, "Texas": 20, "Utah": 4, "Vermont": 4, "Virginia": 12, "Washington": 7, "West Virginia": 8, "Wisconsin": 13, "Wyoming": 3 }
 };
 
+const RET_EV_YEARS = Object.keys(RET_EV).map(Number).sort((a, b) => b - a);
+
 export function getElectoralVotes(year: number, state: string): number {
+  // Authoritative EV (House seats + 2 senators; DC = 3): RET_EV covers 1932–2024,
+  // keyed at each apportionment, resolved to the closest ≤ year. A state absent
+  // from the matched table had no votes that apportionment (e.g. DC before 1964).
+  const evMatch = RET_EV_YEARS.find((y) => y <= year);
+  if (evMatch !== undefined) return RET_EV[evMatch][state] ?? 0;
+  // Earlier elections come from the pre-1932 HISTORICAL_EV apportionments.
   const years = Object.keys(HISTORICAL_EV).map(Number).sort((a, b) => b - a);
   const matched = years.find((y) => y <= year);
   if (matched && HISTORICAL_EV[matched][state] !== undefined) {

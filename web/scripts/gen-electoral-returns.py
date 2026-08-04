@@ -287,12 +287,21 @@ for yr, tbl, want in [(1932, EV_1932, 531), (1944, EV_1944, 531), (1952, EV_1952
     got = sum(tbl.values())
     assert got == want, f"EV {yr} sums to {got}, expected {want}"
     RET_EV[yr] = tbl
-for y in range(1976, 2025, 4):
-    ev = {st: sum(cnt.values()) + 2 for st, cnt in HOUSE[y].items()}
+# Apportionment is fixed per census decade, but a single election can miss seats
+# (Louisiana's jungle primary, uncontested races). So take the MAX House count per
+# state across each census period — that recovers the full delegation — and key EV
+# at each apportionment-start year (getElectoralVotes resolves the closest ≤ year).
+CENSUS_PERIODS = {1984: (1982, 1990), 1992: (1992, 2000), 2004: (2002, 2010), 2012: (2012, 2020), 2024: (2022, 2024)}
+for key, (a, b) in CENSUS_PERIODS.items():
+    appt = collections.Counter()
+    for y in range(a, b + 1, 2):
+        for st, cnt in HOUSE.get(y, {}).items():
+            appt[st] = max(appt[st], sum(cnt.values()))
+    ev = {st: appt[st] + 2 for st in appt}
     ev["District of Columbia"] = 3
     tot = sum(ev.values())
-    assert tot == 538, f"EV {y} sums to {tot}, expected 538"
-    RET_EV[y] = ev
+    assert tot == 538, f"EV {key} sums to {tot}, expected 538"
+    RET_EV[key] = ev
 
 # ═══════════════ EMIT ═══════════════
 def js(o):
