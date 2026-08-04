@@ -817,6 +817,10 @@ function buildYear(year: number): YearData {
       hTot = Object.values(rh).reduce((a, b) => a + b, 0);
       hP1 = rh[cd.p1] || 0;
       hP2 = hTot - hP1;
+    } else if (RET_HOUSE[year]) {
+      // The year has authoritative House data but not this state: it seated no
+      // Representatives that Congress (e.g. the seceded South, 1862–1864).
+      hTot = 0; hP1 = 0; hP2 = 0;
     }
     const rg = RET_GOV[year]?.[name];
     if (rg) gParty = rg === "OTH" ? "IND" : rg;

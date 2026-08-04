@@ -253,7 +253,7 @@ ga = aggregate(govdf)
 gwin = collections.defaultdict(dict)  # state -> {year: party}
 for (y, st), (d, r, t) in ga.items():
     gwin[st][y] = county_winner(d, r, t)
-GYEARS = list(range(1866, 2025, 2))
+GYEARS = list(range(1866, 2021, 2))  # county data ends 2020
 GOV = collections.defaultdict(dict)
 for st, yr in gwin.items():
     yrs = sorted(yr.keys())
@@ -261,6 +261,15 @@ for st, yr in gwin.items():
         prev = [y for y in yrs if y <= Y]
         if prev:
             GOV[Y][st] = yr[prev[-1]]
+
+# 2021–2024 gubernatorial results (the county file ends 2020). Verified against
+# Wikipedia / Rutgers Eagleton: after the 2022 elections = 24 D / 26 R (Democrats
+# flipped AZ, MD, MA; Republicans flipped NV); the 2023 Louisiana flip (Landry)
+# makes the 2024 balance 23 D / 27 R. NH & VT re-elect every 2 years (both held R).
+ALL_STATES = [s for s in PO2NAME.values() if s != "District of Columbia"]
+GOV_DEM_2022 = {"Arizona", "California", "Colorado", "Connecticut", "Delaware", "Hawaii", "Illinois", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "New Jersey", "New Mexico", "New York", "North Carolina", "Oregon", "Pennsylvania", "Rhode Island", "Washington", "Wisconsin"}
+GOV[2022] = {st: ("DEM" if st in GOV_DEM_2022 else "REP") for st in ALL_STATES}
+GOV[2024] = dict(GOV[2022]); GOV[2024]["Louisiana"] = "REP"
 
 # ═══════════════ EMIT ═══════════════
 def js(o):
