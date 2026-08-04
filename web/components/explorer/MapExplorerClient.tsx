@@ -999,16 +999,32 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
           {/* ── CONTROLS TOOLBAR ── */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-white/[0.06] mb-4">
-            {/* Search */}
-            <div className="relative w-full md:max-w-md">
-              <Search className="absolute top-1/2 left-3.5 h-4 w-4 -translate-y-1/2 text-white/30" />
-              <input
-                type="text"
-                placeholder={translations.searchPlaceholder}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-full border border-white/[0.08] bg-transparent py-2.5 pl-10 pr-4 text-sm text-white placeholder-white/20 focus:border-[#fbbf24]/50 focus:outline-none transition-colors"
-              />
+            {/* Search & Census Layer Switcher */}
+            <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:max-w-xl">
+              <div className="relative w-full">
+                <Search className="absolute top-1/2 left-3.5 h-4 w-4 -translate-y-1/2 text-white/30" />
+                <input
+                  type="text"
+                  placeholder={translations.searchPlaceholder}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full rounded-full border border-white/[0.08] bg-transparent py-2.5 pl-10 pr-4 text-sm text-white placeholder-white/20 focus:border-[#fbbf24]/50 focus:outline-none transition-colors"
+                />
+              </div>
+
+              {/* Census Boundary Layer Selector Button */}
+              <button
+                onClick={() => setIsLayerModalOpen(true)}
+                className="flex items-center justify-between gap-2.5 rounded-full border border-[#fbbf24]/40 bg-[#fbbf24]/10 px-4 py-2.5 text-xs font-bold text-[#fbbf24] hover:bg-[#fbbf24]/20 hover:border-[#fbbf24] transition-all shadow-lg shrink-0 w-full sm:w-auto cursor-pointer"
+              >
+                <div className="flex items-center gap-2">
+                  <Globe className="h-4 w-4 text-[#fbbf24]" />
+                  <span className="truncate max-w-[160px] font-mono text-xs">{activeCensusLayer.name[locale]}</span>
+                </div>
+                <span className="rounded-md bg-[#fbbf24]/20 px-2 py-0.5 text-[9px] font-mono font-bold text-white uppercase tracking-wider">
+                  {activeCensusLayer.badge}
+                </span>
+              </button>
             </div>
 
             {/* Region Filter Pills */}
@@ -1254,33 +1270,49 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
               }}
               onMouseLeave={() => { setTooltipPos(null); }}
             >
-              {/* Hover tooltip */}
-              {tooltipPos && hoveredStateAbbrev && EXPLORER_STATES[hoveredStateAbbrev] && (() => {
-                const hs = EXPLORER_STATES[hoveredStateAbbrev];
-                const rc = REGION_COLORS[hs.region];
-                const con = STATE_EXTENDED_DATA[hoveredStateAbbrev]?.constitution;
+              {/* Hover tooltip for Census features or States */}
+              {tooltipPos && (featureHoverInfo || (hoveredStateAbbrev && EXPLORER_STATES[hoveredStateAbbrev])) && (() => {
+                if (featureHoverInfo) {
+                  return (
+                    <div
+                      className="pointer-events-none absolute z-30 flex flex-col gap-1 rounded-xl border border-[#fbbf24]/40 bg-black/90 px-3.5 py-2.5 shadow-2xl backdrop-blur-md font-body text-xs text-white"
+                      style={{
+                        left: Math.min(tooltipPos.x + 16, 760),
+                        top: Math.max(tooltipPos.y - 48, 12),
+                      }}
+                    >
+                      <span className="font-mono text-[9px] uppercase tracking-wider text-[#fbbf24] font-bold">
+                        {activeCensusLayer.name[locale]}
+                      </span>
+                      <span className="font-bold text-white text-sm">{featureHoverInfo.label}</span>
+                      <span className="font-mono text-[10px] text-white/50">{featureHoverInfo.details} • ID: {featureHoverInfo.code}</span>
+                    </div>
+                  );
+                }
 
-                // The tooltip leads with whichever metric the active overlay is
-                // colouring the map by, so hover always explains the shading.
+                const hs = EXPLORER_STATES[hoveredStateAbbrev!];
+                const rc = REGION_COLORS[hs.region];
+                const con = STATE_EXTENDED_DATA[hoveredStateAbbrev!]?.constitution;
+
                 const metric: { label: string; value: string; rank: string; color: string } | null =
                   heatmapMode === "gdp"
                     ? { label: translations.gdp, value: `$${hs.gdp}B`, rank: `#${gdpRanked.indexOf(hs.abbrev) + 1} / 50`, color: "#fbbf24" }
                     : heatmapMode === "population"
                     ? { label: translations.population, value: `${hs.population}M`, rank: `#${popRanked.indexOf(hs.abbrev) + 1} / 50`, color: "#60a5fa" }
                     : heatmapMode === "statehood"
-                    ? { label: translations.statehood, value: String(hs.statehoodYear), rank: `#${hs.statehoodOrder} / 50`, color: "#f87171" }
+                    ? { label: translations.statehood, value: `${hs.statehoodYear}`, rank: `#${hs.statehoodOrder} / 50`, color: "#f87171" }
                     : heatmapMode === "amendments" && con
-                    ? { label: translations.amendmentsLabel, value: String(con.amendmentsCount), rank: `#${amendRanked.indexOf(hs.abbrev) + 1} / 50`, color: "#a78bfa" }
+                    ? { label: translations.amendmentsLabel, value: `${con.amendmentsCount}`, rank: `#${amendRanked.indexOf(hs.abbrev) + 1} / 50`, color: "#a78bfa" }
                     : heatmapMode === "conLength" && con
                     ? { label: translations.lengthLabel, value: `${(con.wordCount / 1000).toFixed(1)}k`, rank: `#${wordRanked.indexOf(hs.abbrev) + 1} / 50`, color: "#2dd4bf" }
                     : null;
 
                 return (
                   <div
-                    className="pointer-events-none absolute z-50 rounded-xl border bg-black/90 backdrop-blur-md px-3 py-2.5 shadow-2xl"
+                    className="pointer-events-none absolute z-30 flex flex-col gap-1 rounded-2xl border bg-black/90 p-3 shadow-2xl backdrop-blur-md"
                     style={{
-                      left: tooltipPos.x + 14,
-                      top: tooltipPos.y - 52,
+                      left: Math.min(tooltipPos.x + 16, 760),
+                      top: Math.max(tooltipPos.y - 60, 12),
                       borderColor: metric ? `${metric.color}66` : rc.border,
                       minWidth: 160,
                       transform: tooltipPos.x > 700 ? "translateX(-110%)" : undefined,
@@ -1323,11 +1355,14 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 projectionConfig={{ scale: 960 }}
                 style={{ width: "100%", height: "100%" }}
               >
-                <Geographies geography={GEO_URL}>
+                <Geographies key={activeCensusLayer.id} geography={activeCensusLayer.url}>
                   {({ geographies }: { geographies: any[] }) => {
                     const baseGeos = geographies.map((geo) => {
                       const fips = geo.id?.toString().padStart(2, "0") ?? "";
                       const abbrev = FIPS_TO_ABBREV[fips] ?? "";
+                      const props = geo.properties || {};
+                      const featureId = geo.id || props.GEOID || geo.rsmKey;
+
                       return (
                         <Geography
                           key={geo.rsmKey}
@@ -2292,6 +2327,158 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 className="h-auto max-h-[85vh] w-auto max-w-[92vw] cursor-default object-contain"
               />
             </div>
+          </div>,
+          document.body
+        )}
+
+      {/* ── 2025 Census Cartographic Boundary Views Modal Portal ── */}
+      {portalReady &&
+        isLayerModalOpen &&
+        createPortal(
+          <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/80 backdrop-blur-md">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="relative flex flex-col w-full max-w-5xl max-h-[88vh] bg-[#09090b] border border-white/15 rounded-3xl shadow-2xl overflow-hidden text-white"
+            >
+              {/* Modal Header */}
+              <div className="flex items-center justify-between px-6 py-5 border-b border-white/10 bg-white/[0.02]">
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 rounded-2xl bg-[#fbbf24]/10 border border-[#fbbf24]/30">
+                    <Globe className="w-5 h-5 text-[#fbbf24]" />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-xl font-bold text-white leading-tight">
+                      {locale === "ro" ? "Vederi Hărți Recensământ // Seturi de Date 2025" : "Census Boundary Views // 2025 Cartographic Data"}
+                    </h3>
+                    <p className="font-mono text-xs text-white/40">
+                      cb_2025_us_all_500k • 21 Boundary Views + Full Dataset Catalog
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setIsLayerModalOpen(false)}
+                  className="p-2.5 rounded-full bg-white/5 hover:bg-white/15 text-white/60 hover:text-white transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Modal Filter Toolbar */}
+              <div className="p-6 pb-3 space-y-4 border-b border-white/10 bg-black/40">
+                {/* Search */}
+                <div className="relative w-full">
+                  <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
+                  <input
+                    type="text"
+                    value={layerSearchQuery}
+                    onChange={(e) => setLayerSearchQuery(e.target.value)}
+                    placeholder={locale === "ro" ? "Caută după nume sau cod (ex: 119th, counties, cbsa, tract, school)..." : "Search by name or code (e.g. 119th, counties, cbsa, tract, school)..."}
+                    className="w-full pl-10 pr-4 py-2.5 bg-white/[0.04] border border-white/15 rounded-xl font-body text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-[#fbbf24]"
+                  />
+                  {layerSearchQuery && (
+                    <button
+                      onClick={() => setLayerSearchQuery("")}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-white/40 hover:text-white"
+                    >
+                      ✕
+                    </button>
+                  )}
+                </div>
+
+                {/* Category Pills */}
+                <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+                  {[
+                    { id: "all", label: locale === "ro" ? "Toate 22 Vederile" : "All 22 Views" },
+                    { id: "states_regions", label: locale === "ro" ? "State și Regiuni" : "States & Regions" },
+                    { id: "political", label: locale === "ro" ? "Politic & Congres" : "Political & Congressional" },
+                    { id: "metro", label: locale === "ro" ? "Metropolitan & Comitate" : "Metropolitan & Counties" },
+                    { id: "education", label: locale === "ro" ? "Educație & Școli" : "Education & Schools" },
+                    { id: "micro", label: locale === "ro" ? "Micro-Recensământ" : "Census Micro-Tracts" },
+                    { id: "catalog", label: locale === "ro" ? "Catalog Complet" : "Full Catalog" },
+                  ].map((cat) => {
+                    const isActive = layerCategoryFilter === cat.id;
+                    return (
+                      <button
+                        key={cat.id}
+                        onClick={() => setLayerCategoryFilter(cat.id)}
+                        className="px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-all whitespace-nowrap"
+                        style={{
+                          background: isActive ? "rgba(251,191,36,0.15)" : "rgba(255,255,255,0.03)",
+                          borderColor: isActive ? "#fbbf24" : "rgba(255,255,255,0.08)",
+                          color: isActive ? "#fbbf24" : "rgba(255,255,255,0.5)",
+                        }}
+                      >
+                        {cat.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Modal Grid of 22 Layer Cards */}
+              <div className="p-6 overflow-y-auto max-h-[58vh] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 scrollbar-thin">
+                {CENSUS_LAYERS.filter((layer) => {
+                  const matchesCat = layerCategoryFilter === "all" || layer.category === layerCategoryFilter;
+                  const q = layerSearchQuery.toLowerCase().trim();
+                  const matchesSearch =
+                    !q ||
+                    layer.name.en.toLowerCase().includes(q) ||
+                    layer.name.ro.toLowerCase().includes(q) ||
+                    layer.code.toLowerCase().includes(q) ||
+                    layer.badge.toLowerCase().includes(q);
+                  return matchesCat && matchesSearch;
+                }).map((layer) => {
+                  const isSelected = activeCensusLayerId === layer.id;
+                  return (
+                    <button
+                      key={layer.id}
+                      onClick={() => {
+                        setActiveCensusLayerId(layer.id);
+                        setIsLayerModalOpen(false);
+                      }}
+                      className="group relative flex flex-col justify-between text-left p-4 rounded-2xl border transition-all duration-200"
+                      style={{
+                        background: isSelected ? "rgba(251,191,36,0.12)" : "rgba(255,255,255,0.02)",
+                        borderColor: isSelected ? "#fbbf24" : "rgba(255,255,255,0.08)",
+                      }}
+                    >
+                      <div>
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="font-mono text-[9px] font-bold text-[#fbbf24] bg-[#fbbf24]/10 px-2 py-0.5 rounded-md border border-[#fbbf24]/20">
+                            {layer.badge}
+                          </span>
+                          <span className="font-mono text-[9px] text-white/30 uppercase">
+                            {layer.categoryLabel[locale]}
+                          </span>
+                        </div>
+
+                        <h4 className="font-display text-sm font-bold text-white mb-1 leading-snug group-hover:text-[#fbbf24] transition-colors">
+                          {layer.name[locale]}
+                        </h4>
+
+                        <p className="font-mono text-[10px] text-[#fbbf24]/60 mb-2 truncate">
+                          {layer.code}
+                        </p>
+
+                        <p className="font-body text-xs text-white/50 leading-relaxed line-clamp-2">
+                          {layer.description[locale]}
+                        </p>
+                      </div>
+
+                      <div className="mt-4 pt-2 border-t border-white/5 flex items-center justify-between font-mono text-[10px]">
+                        <span className="text-white/30">
+                          {isSelected ? (locale === "ro" ? "✓ Activ pe hartă" : "✓ Active on Map") : (locale === "ro" ? "Apasă pentru încărcare" : "Click to render view")}
+                        </span>
+                        <span className="text-[#fbbf24] group-hover:translate-x-0.5 transition-transform">→</span>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </motion.div>
           </div>,
           document.body
         )}
