@@ -7,6 +7,7 @@ import {
   ComposableMap,
   Geographies,
   Geography,
+  ZoomableGroup,
 } from "react-simple-maps";
 import {
   Search,
@@ -26,6 +27,9 @@ import {
   Share2,
   X,
   ZoomIn,
+  ZoomOut,
+  RotateCcw,
+  Info,
   Landmark,
   Scale,
   ScrollText,
@@ -661,6 +665,37 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   const [layerSearchQuery, setLayerSearchQuery] = useState<string>("");
   const [layerCategoryFilter, setLayerCategoryFilter] = useState<string>("all");
   const [featureHoverInfo, setFeatureHoverInfo] = useState<{ label: string; details: string; code: string } | null>(null);
+  const [selectedFeature, setSelectedFeature] = useState<{
+    id: string;
+    name: string;
+    layerName: string;
+    layerCode: string;
+    geoid: string;
+    stateAbbrev: string;
+    properties: Record<string, any>;
+  } | null>(null);
+
+  // Zoom & Pan position state
+  const [zoomPosition, setZoomPosition] = useState<{ coordinates: [number, number]; zoom: number }>({
+    coordinates: [-96, 38],
+    zoom: 1,
+  });
+
+  const handleZoomIn = useCallback(() => {
+    setZoomPosition((prev) => ({ ...prev, zoom: Math.min(prev.zoom * 1.5, 8) }));
+  }, []);
+
+  const handleZoomOut = useCallback(() => {
+    setZoomPosition((prev) => ({ ...prev, zoom: Math.max(prev.zoom / 1.5, 0.8) }));
+  }, []);
+
+  const handleResetZoom = useCallback(() => {
+    setZoomPosition({ coordinates: [-96, 38], zoom: 1 });
+  }, []);
+
+  const handleMoveEnd = useCallback((pos: { coordinates: [number, number]; zoom: number }) => {
+    setZoomPosition(pos);
+  }, []);
 
   const activeCensusLayer = useMemo(
     () => CENSUS_LAYERS.find((l) => l.id === activeCensusLayerId) ?? CENSUS_LAYERS[0],
@@ -861,21 +896,37 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
   const getGeographyStyle = useCallback(
     (geo: any) => {
-      if (activeCensusLayerId !== "states" && activeCensusLayerId !== "all_census_catalog") {
-        const props = geo.properties || {};
-        const featureId = geo.id || props.GEOID || geo.rsmKey;
-        const isHovered = hoveredStateAbbrev === featureId;
+      const props = geo.properties || {};
+      const fips = geo.id?.toString().padStart(2, "0") ?? "";
+      const abbrev = FIPS_TO_ABBREV[fips] ?? "";
+      const featureId = geo.id || props.GEOID || geo.rsmKey;
+
+      const isStateSelected = activeCensusLayerId === "states" && abbrev === selectedStateAbbrev;
+      const isFeatureSelected = selectedFeature?.id === featureId || (props.GEOID && selectedFeature?.geoid === props.GEOID);
+      const isHovered = hoveredStateAbbrev === abbrev || hoveredStateAbbrev === featureId;
+
+      // ── Selected Area: Vibrant Yellow Gold ──
+      if (isStateSelected || isFeatureSelected) {
         return {
-          fill: isHovered ? "rgba(232, 185, 35, 0.45)" : "rgba(255, 255, 255, 0.08)",
-          stroke: isHovered ? "rgba(232, 185, 35, 0.95)" : "rgba(255, 255, 255, 0.28)",
-          strokeWidth: 0.65,
+          fill: "rgba(251, 191, 36, 0.72)",
+          stroke: "#fbbf24",
+          strokeWidth: 2.0,
           outline: "none",
-          transition: "fill 0.15s ease",
+          transition: "all 0.15s ease",
         };
       }
 
-      const fips = geo.id?.toString().padStart(2, "0") ?? "";
-      const abbrev = FIPS_TO_ABBREV[fips] ?? "";
+      // ── Hovered Area: Translucent Yellow Glow ──
+      if (isHovered) {
+        return {
+          fill: "rgba(251, 191, 36, 0.45)",
+          stroke: "#fbbf24",
+          strokeWidth: 1.4,
+          outline: "none",
+          transition: "all 0.15s ease",
+        };
+      }
+
       const state = EXPLORER_STATES[abbrev];
 
       if (!state || abbrev === "DC") {
@@ -889,7 +940,6 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
         state.abbrev.toLowerCase().includes(searchQuery.toLowerCase()) ||
         state.capital[locale].toLowerCase().includes(searchQuery.toLowerCase());
       const isMatch = matchesRegion && matchesSearch;
-      const isHovered = hoveredStateAbbrev === abbrev;
 
       let fill: string;
       let stroke: string;
@@ -1318,10 +1368,6 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       transform: tooltipPos.x > 700 ? "translateX(-110%)" : undefined,
                     }}
                   >
-                    <div className="flex items-center justify-between gap-3 mb-1">
-                      <span className="font-display text-sm font-bold text-white">{hs.name[locale]}</span>
-                      <span className="font-hero text-xs" style={{ color: rc.label }}>{hs.abbrev}</span>
-                    </div>
 
                     {metric ? (
                       <>
@@ -1355,73 +1401,203 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 projectionConfig={{ scale: 960 }}
                 style={{ width: "100%", height: "100%" }}
               >
-                <Geographies key={activeCensusLayer.id} geography={activeCensusLayer.url}>
-                  {({ geographies }: { geographies: any[] }) => {
-                    const baseGeos = geographies.map((geo) => {
-                      const fips = geo.id?.toString().padStart(2, "0") ?? "";
-                      const abbrev = FIPS_TO_ABBREV[fips] ?? "";
-                      const props = geo.properties || {};
-                      const featureId = geo.id || props.GEOID || geo.rsmKey;
+                <ZoomableGroup
+                  zoom={zoomPosition.zoom}
+                  center={zoomPosition.coordinates}
+                  onMoveEnd={handleMoveEnd}
+                >
+                  <Geographies key={activeCensusLayer.id} geography={activeCensusLayer.url}>
+                    {({ geographies }: { geographies: any[] }) => {
+                      const baseGeos = geographies.map((geo) => {
+                        const fips = geo.id?.toString().padStart(2, "0") ?? "";
+                        const abbrev = FIPS_TO_ABBREV[fips] ?? "";
+                        const props = geo.properties || {};
+                        const featureId = geo.id || props.GEOID || geo.rsmKey;
+
+                        return (
+                          <Geography
+                            key={geo.rsmKey}
+                            geography={geo}
+                            onMouseEnter={() => {
+                              if (activeCensusLayer.id === "states") {
+                                if (abbrev !== "DC") setHoveredStateAbbrev(abbrev);
+                              } else {
+                                const name = props.NAMELSAD || props.NAME || props.GEOID || "Boundary Feature";
+                                const stFips = props.STATEFP ? FIPS_TO_ABBREV[props.STATEFP] || props.STATEFP : "";
+                                const code = props.GEOID || props.GEOIDFQ || activeCensusLayer.code;
+                                setHoveredStateAbbrev(featureId);
+                                setFeatureHoverInfo({
+                                  label: name,
+                                  details: stFips ? `State: ${stFips}` : activeCensusLayer.name[locale],
+                                  code,
+                                });
+                              }
+                            }}
+                            onMouseLeave={() => {
+                              setHoveredStateAbbrev(null);
+                              setFeatureHoverInfo(null);
+                            }}
+                            onClick={() => {
+                              const name = props.NAMELSAD || props.NAME || (abbrev ? EXPLORER_STATES[abbrev]?.name[locale] : null) || props.GEOID || "Boundary Feature";
+                              const code = props.GEOID || props.GEOIDFQ || activeCensusLayer.code;
+
+                              if (activeCensusLayer.id === "states") {
+                                if (abbrev && abbrev !== "DC") {
+                                  setSelectedStateAbbrev(abbrev);
+                                  setSelectedFeature({
+                                    id: abbrev,
+                                    name: EXPLORER_STATES[abbrev]?.name[locale] || abbrev,
+                                    layerName: activeCensusLayer.name[locale],
+                                    layerCode: activeCensusLayer.code,
+                                    geoid: props.GEOID || FIPS_TO_ABBREV[abbrev] || abbrev,
+                                    stateAbbrev: abbrev,
+                                    properties: props,
+                                  });
+                                }
+                              } else {
+                                setSelectedFeature({
+                                  id: featureId,
+                                  name,
+                                  layerName: activeCensusLayer.name[locale],
+                                  layerCode: activeCensusLayer.code,
+                                  geoid: code,
+                                  stateAbbrev: props.STATEFP ? FIPS_TO_ABBREV[props.STATEFP] || props.STATEFP : "",
+                                  properties: props,
+                                });
+                              }
+                            }}
+                            style={{
+                              default: getGeographyStyle(geo),
+                              hover: { cursor: "pointer", outline: "none" },
+                              pressed: { outline: "none" },
+                            }}
+                          />
+                        );
+                      });
+
+                      const selectedGeo = geographies.find((geo) => {
+                        const fips = geo.id?.toString().padStart(2, "0") ?? "";
+                        const props = geo.properties || {};
+                        const featureId = geo.id || props.GEOID || geo.rsmKey;
+                        return FIPS_TO_ABBREV[fips] === selectedStateAbbrev || selectedFeature?.id === featureId;
+                      });
+                      const hoveredGeo = hoveredStateAbbrev
+                        ? geographies.find((geo) => {
+                            const fips = geo.id?.toString().padStart(2, "0") ?? "";
+                            const props = geo.properties || {};
+                            const featureId = geo.id || props.GEOID || geo.rsmKey;
+                            return FIPS_TO_ABBREV[fips] === hoveredStateAbbrev || hoveredStateAbbrev === featureId;
+                          })
+                        : null;
 
                       return (
-                        <Geography
-                          key={geo.rsmKey}
-                          geography={geo}
-                          onMouseEnter={() => { if (abbrev !== "DC") setHoveredStateAbbrev(abbrev); }}
-                          onMouseLeave={() => setHoveredStateAbbrev(null)}
-                          onClick={() => { if (abbrev && abbrev !== "DC") setSelectedStateAbbrev(abbrev); }}
-                          style={{
-                            default: getGeographyStyle(geo),
-                            hover: { cursor: abbrev === "DC" ? "default" : "pointer", outline: "none" },
-                            pressed: { outline: "none" },
-                          }}
-                        />
+                        <>
+                          {baseGeos}
+                          {selectedGeo && (
+                            <Geography
+                              key={`${selectedGeo.rsmKey}-selected`}
+                              geography={selectedGeo}
+                              style={{
+                                default: { fill: "rgba(251, 191, 36, 0.70)", stroke: "#fbbf24", strokeWidth: 2.2, outline: "none", pointerEvents: "none" },
+                                hover: { outline: "none" },
+                                pressed: { outline: "none" },
+                              }}
+                            />
+                          )}
+                          {hoveredGeo && (
+                            <Geography
+                              key={`${hoveredGeo.rsmKey}-hover`}
+                              geography={hoveredGeo}
+                              style={{
+                                default: { fill: "rgba(251, 191, 36, 0.40)", stroke: "#fbbf24", strokeWidth: 1.4, outline: "none", pointerEvents: "none" },
+                                hover: { outline: "none" },
+                                pressed: { outline: "none" },
+                              }}
+                            />
+                          )}
+                        </>
                       );
-                    });
-
-                    const selectedGeo = geographies.find((geo) => {
-                      const fips = geo.id?.toString().padStart(2, "0") ?? "";
-                      return FIPS_TO_ABBREV[fips] === selectedStateAbbrev;
-                    });
-                    const hoveredGeo = hoveredStateAbbrev
-                      ? geographies.find((geo) => {
-                          const fips = geo.id?.toString().padStart(2, "0") ?? "";
-                          return FIPS_TO_ABBREV[fips] === hoveredStateAbbrev;
-                        })
-                      : null;
-
-                    return (
-                      <>
-                        {baseGeos}
-                        {selectedGeo && (
-                          <Geography
-                            key={`${selectedGeo.rsmKey}-selected`}
-                            geography={selectedGeo}
-                            style={{
-                              default: { fill: "none", stroke: "#fbbf24", strokeWidth: 2.2, outline: "none", pointerEvents: "none" },
-                              hover: { outline: "none" },
-                              pressed: { outline: "none" },
-                            }}
-                          />
-                        )}
-                        {hoveredGeo && (
-                          <Geography
-                            key={`${hoveredGeo.rsmKey}-hover`}
-                            geography={hoveredGeo}
-                            style={{
-                              default: { fill: "none", stroke: "#ffffff", strokeWidth: 1.2, outline: "none", pointerEvents: "none" },
-                              hover: { outline: "none" },
-                              pressed: { outline: "none" },
-                            }}
-                          />
-                        )}
-                      </>
-                    );
-                  }}
-                </Geographies>
+                    }}
+                  </Geographies>
+                </ZoomableGroup>
               </ComposableMap>
             </div>
           </div>
+
+          {/* ── SELECTED FEATURE DATA INSPECTOR ── */}
+          {selectedFeature && (
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selectedFeature.id}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.25 }}
+                className="rounded-3xl border border-[#fbbf24]/40 bg-[#09090b] p-6 md:p-8 shadow-2xl relative overflow-hidden mb-8"
+              >
+                <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-white/10">
+                  <div className="flex items-center gap-3">
+                    <span className="px-3 py-1 rounded-full font-mono text-[10px] font-bold uppercase tracking-widest bg-[#fbbf24]/20 text-[#fbbf24] border border-[#fbbf24]/40">
+                      {selectedFeature.layerName}
+                    </span>
+                    <span className="font-mono text-xs text-white/40">
+                      Code: {selectedFeature.layerCode}
+                    </span>
+                  </div>
+
+                  <button
+                    onClick={() => setSelectedFeature(null)}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/15 text-xs text-white/70 hover:text-white transition-colors cursor-pointer"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                    <span>{locale === "ro" ? "Închide selecția" : "Deselect Area"}</span>
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                  <div className="lg:col-span-5 space-y-3">
+                    <h3 className="font-display text-2xl md:text-3xl font-extrabold text-white leading-tight">
+                      {selectedFeature.name}
+                    </h3>
+
+                    <div className="flex flex-wrap items-center gap-2 pt-2">
+                      <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 font-mono text-xs text-white/80">
+                        GEOID: {selectedFeature.geoid}
+                      </span>
+                      {selectedFeature.stateAbbrev && (
+                        <span className="px-2.5 py-1 rounded-lg bg-[#fbbf24]/10 border border-[#fbbf24]/30 font-mono text-xs text-[#fbbf24]">
+                          State: {selectedFeature.stateAbbrev}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Properties Attributes Table */}
+                  <div className="lg:col-span-7 rounded-2xl border border-white/10 bg-black/60 p-4 max-h-60 overflow-y-auto scrollbar-thin">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-white/40 font-bold block mb-3">
+                      {locale === "ro" ? "Atribute Cartografice Recensământ (Properties)" : "Census Cartographic Attributes"}
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
+                      {Object.entries(selectedFeature.properties).map(([k, v]) => {
+                        if (v === null || v === undefined) return null;
+                        let displayValue = String(v);
+                        if (k === "ALAND" || k === "AWATER") {
+                          const sqMiles = (Number(v) / 2589988.11).toFixed(2);
+                          displayValue = `${Number(v).toLocaleString()} m² (${sqMiles} sq mi)`;
+                        }
+                        return (
+                          <div key={k} className="flex flex-col bg-white/[0.03] p-2 rounded-lg border border-white/5">
+                            <span className="text-[10px] text-white/40 font-bold">{k}</span>
+                            <span className="text-white/90 truncate">{displayValue}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          )}
 
           {/* ── SELECTED STATE DETAIL PANEL ── */}
           <AnimatePresence mode="wait">
@@ -2293,7 +2469,6 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           </div>
 
         </div>
-      </div>
 
       {/* ── FULLSCREEN FLAG / SEAL VIEWER ──
           Rendered in a portal so it escapes the page's stacking contexts.
@@ -2482,6 +2657,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           </div>,
           document.body
         )}
+      </div>
     </div>
   );
 }
