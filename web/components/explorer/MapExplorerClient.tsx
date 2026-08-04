@@ -57,6 +57,16 @@ export interface CensusLayerItem {
   description: { en: string; ro: string };
 }
 
+// Helper to extract state abbreviation from any feature (works for both GEO_URL and Census shapefiles)
+export function getFeatureAbbrev(geo: any): string {
+  const fips = geo.id?.toString().padStart(2, "0") ?? "";
+  if (FIPS_TO_ABBREV[fips]) return FIPS_TO_ABBREV[fips];
+  const props = geo.properties || {};
+  if (props.STUSPS) return props.STUSPS;
+  if (props.STATEFP && FIPS_TO_ABBREV[props.STATEFP]) return FIPS_TO_ABBREV[props.STATEFP];
+  return "";
+}
+
 export const CENSUS_LAYERS: CensusLayerItem[] = [
   {
     id: "states",
@@ -64,7 +74,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     name: { en: "2025 States", ro: "Statele SUA 2025" },
     category: "states_regions",
     categoryLabel: { en: "States & Regions", ro: "State și Regiuni" },
-    url: "/maps/states-500k.json",
+    url: GEO_URL,
     badge: "50 States + DC",
     description: { en: "Official 2025 50-State and Territory Boundaries", ro: "Granițele oficiale 2025 ale celor 50 de state și teritorii" },
   },
@@ -897,8 +907,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   const getGeographyStyle = useCallback(
     (geo: any) => {
       const props = geo.properties || {};
-      const fips = geo.id?.toString().padStart(2, "0") ?? "";
-      const abbrev = FIPS_TO_ABBREV[fips] ?? "";
+      const abbrev = getFeatureAbbrev(geo);
       const featureId = geo.id || props.GEOID || geo.rsmKey;
 
       const isStateSelected = activeCensusLayerId === "states" && abbrev === selectedStateAbbrev;
@@ -1427,8 +1436,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <Geographies key={activeCensusLayer.id} geography={activeCensusLayer.url}>
                     {({ geographies }: { geographies: any[] }) => {
                       const baseGeos = geographies.map((geo) => {
-                        const fips = geo.id?.toString().padStart(2, "0") ?? "";
-                        const abbrev = FIPS_TO_ABBREV[fips] ?? "";
+                        const abbrev = getFeatureAbbrev(geo);
                         const props = geo.properties || {};
                         const featureId = geo.id || props.GEOID || geo.rsmKey;
 
@@ -1461,11 +1469,11 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                               const code = props.GEOID || props.GEOIDFQ || activeCensusLayer.code;
 
                               if (activeCensusLayer.id === "states") {
-                                if (abbrev && abbrev !== "DC") {
+                                if (abbrev && abbrev !== "DC" && EXPLORER_STATES[abbrev]) {
                                   setSelectedStateAbbrev(abbrev);
                                   setSelectedFeature({
                                     id: abbrev,
-                                    name: EXPLORER_STATES[abbrev]?.name[locale] || abbrev,
+                                    name: EXPLORER_STATES[abbrev].name[locale],
                                     layerName: activeCensusLayer.name[locale],
                                     layerCode: activeCensusLayer.code,
                                     geoid: props.GEOID || FIPS_TO_ABBREV[abbrev] || abbrev,
@@ -1495,17 +1503,17 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       });
 
                       const selectedGeo = geographies.find((geo) => {
-                        const fips = geo.id?.toString().padStart(2, "0") ?? "";
+                        const abbrev = getFeatureAbbrev(geo);
                         const props = geo.properties || {};
                         const featureId = geo.id || props.GEOID || geo.rsmKey;
-                        return FIPS_TO_ABBREV[fips] === selectedStateAbbrev || selectedFeature?.id === featureId;
+                        return (abbrev && abbrev === selectedStateAbbrev) || selectedFeature?.id === featureId;
                       });
                       const hoveredGeo = hoveredStateAbbrev
                         ? geographies.find((geo) => {
-                            const fips = geo.id?.toString().padStart(2, "0") ?? "";
+                            const abbrev = getFeatureAbbrev(geo);
                             const props = geo.properties || {};
                             const featureId = geo.id || props.GEOID || geo.rsmKey;
-                            return FIPS_TO_ABBREV[fips] === hoveredStateAbbrev || hoveredStateAbbrev === featureId;
+                            return (abbrev && abbrev === hoveredStateAbbrev) || hoveredStateAbbrev === featureId;
                           })
                         : null;
 
