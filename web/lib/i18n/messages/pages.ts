@@ -452,7 +452,7 @@ export function getConstitutionPageCopy(locale: Locale) {
       chapter9Description: "Fiecare pereche arată un drept american alături de realitatea din țări unde acel drept nu există.",
       madisonQuote: "Dacă oamenii ar fi îngeri, nu ar fi necesar niciun guvern. Dacă îngerii ar guverna oamenii, nu ar fi necesare controale externe sau interne ale guvernului.",
       madisonSource: "Federalistul Nr. 51, 1788",
-      chapter9DeepDives: "Imersiuni în Profunzime",
+      chapter9DeepDives: "Explorați mai Adânc",
       chapter9DeepDivesHeading: "Imersiuni în Profunzime",
       exploreCta: "Explorează →",
       tocItems: [
@@ -540,7 +540,7 @@ export function getConstitutionPageCopy(locale: Locale) {
     chapter9Description: "Each pair shows an American right alongside the reality in countries where that right does not exist.",
     madisonQuote: "If men were angels, no government would be necessary. If angels were to govern men, neither external nor internal controls on government would be necessary.",
     madisonSource: "Federalist No. 51, 1788",
-    chapter9DeepDives: "Deep Dives",
+    chapter9DeepDives: "Explore Deeper",
     chapter9DeepDivesHeading: "Deep Dives",
     exploreCta: "Explore →",
     tocItems: [
