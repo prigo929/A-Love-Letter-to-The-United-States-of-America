@@ -66,7 +66,6 @@ import { LOCAL_CENSUS_COUNTY_METRO_DATA } from "@/lib/data/census-county-metro-d
 
 import { ELECTION_2024_STATES, ELECTION_2020_STATES, getElectionColor } from "@/lib/data/election-data";
 import { US_NATIONAL_PARKS } from "@/lib/data/national-parks-data";
-import { HIGHWAY_ROUTES, RAIL_ROUTES } from "@/lib/data/infrastructure-network-data";
 import railData from "@/lib/data/rail-simplified.json";
 import interstateData from "@/lib/data/interstates-simplified.json";
 import hospitalsData from "@/lib/data/hospitals-points.json";
@@ -2553,77 +2552,46 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     }}
                   </Geographies>
 
-                  {/* Interstate Highways Overlay (Full Non-Simplified Network) */}
-                  {showInterstates && (
-                    <>
-                      {Object.entries(interstateData).flatMap(([iNum, data]: [string, any]) =>
-                        (data.segments || []).flatMap((seg: any[], sIdx: number) =>
-                          seg.slice(0, -1).map((pt: any, pIdx: number) => (
-                            <Line
-                              key={`interstate-bg-${iNum}-${sIdx}-${pIdx}`}
-                              from={pt}
-                              to={seg[pIdx + 1]}
-                              stroke="#fbbf24"
-                              strokeWidth={1.2}
-                              strokeLinecap="round"
-                            />
-                          ))
-                        )
-                      )}
-                      {/* Only the pre-numbered historic trails (Lincoln Highway, Route 66) lack
-                          real modern road geometry and stay schematic. The numbered Interstates
-                          in HIGHWAY_ROUTES are a ~15-waypoint stand-in for the highway-system
-                          page's stylized era map — drawing them here duplicated (and visibly
-                          disagreed with) the accurate NTAD-derived interstateData above. */}
-                      {HIGHWAY_ROUTES.filter((route) => route.era !== "interstate").map((route) =>
-                        route.waypoints.slice(0, -1).map((pt, idx) => (
+                  {/* Interstate Highways Overlay — accurate NTAD-derived geometry only.
+                      (HIGHWAY_ROUTES, a ~15-waypoint schematic stand-in built for the
+                      highway-system page's stylized "eras" map, used to be drawn on top
+                      of this and visibly disagreed with the real road shape — removed.) */}
+                  {showInterstates &&
+                    Object.entries(interstateData).flatMap(([iNum, data]: [string, any]) =>
+                      (data.segments || []).flatMap((seg: any[], sIdx: number) =>
+                        seg.slice(0, -1).map((pt: any, pIdx: number) => (
                           <Line
-                            key={`${route.id}-${idx}`}
+                            key={`interstate-bg-${iNum}-${sIdx}-${pIdx}`}
                             from={pt}
-                            to={route.waypoints[idx + 1]}
-                            stroke={route.color}
-                            strokeWidth={2.8}
-                            strokeDasharray={route.dashed ? "4 3" : undefined}
+                            to={seg[pIdx + 1]}
+                            stroke="#fbbf24"
+                            strokeWidth={1.2}
                             strokeLinecap="round"
                           />
                         ))
-                      )}
-                    </>
-                  )}
+                      )
+                    )}
 
-                  {/* Continental Rail Network Lines Overlay (Full Non-Simplified Network) */}
-                  {showAmtrakRail && (
-                    <>
-                      {Object.entries(railData).flatMap(([rrOwner, data]: [string, any]) =>
-                        (data.segments || []).flatMap((seg: any[], sIdx: number) =>
-                          seg.slice(0, -1).map((pt: any, pIdx: number) => (
-                            <Line
-                              key={`rail-bg-${rrOwner}-${sIdx}-${pIdx}`}
-                              from={pt}
-                              to={seg[pIdx + 1]}
-                              stroke={rrOwner === "BNSF" ? "#fb923c" : rrOwner === "UP" ? "#fbbf24" : "#38bdf8"}
-                              strokeWidth={0.9}
-                              strokeDasharray="3 2"
-                              strokeLinecap="round"
-                            />
-                          ))
-                        )
-                      )}
-                      {RAIL_ROUTES.map((route) =>
-                        route.waypoints.slice(0, -1).map((pt, idx) => (
+                  {/* Continental Rail Network Lines Overlay — accurate NTAD-derived
+                      geometry only. (RAIL_ROUTES, the same kind of schematic stand-in
+                      used by the rail-network page's "eras" map, removed for the same
+                      reason as HIGHWAY_ROUTES above.) */}
+                  {showAmtrakRail &&
+                    Object.entries(railData).flatMap(([rrOwner, data]: [string, any]) =>
+                      (data.segments || []).flatMap((seg: any[], sIdx: number) =>
+                        seg.slice(0, -1).map((pt: any, pIdx: number) => (
                           <Line
-                            key={`${route.id}-${idx}`}
+                            key={`rail-bg-${rrOwner}-${sIdx}-${pIdx}`}
                             from={pt}
-                            to={route.waypoints[idx + 1]}
-                            stroke={route.color}
-                            strokeWidth={2.5}
-                            strokeDasharray={route.dashed ? "5 3" : "4 3"}
+                            to={seg[pIdx + 1]}
+                            stroke={rrOwner === "BNSF" ? "#fb923c" : rrOwner === "UP" ? "#fbbf24" : "#38bdf8"}
+                            strokeWidth={0.9}
+                            strokeDasharray="3 2"
                             strokeLinecap="round"
                           />
                         ))
-                      )}
-                    </>
-                  )}
+                      )
+                    )}
 
                   {/* ⚡ US Electric Power Transmission Lines Overlay (HIFLD, 74.5k segments) */}
                   {showTransmissionLines &&
