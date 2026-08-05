@@ -81,9 +81,12 @@ const nextConfig: NextConfig = {
     turbopackFileSystemCacheForDev: false,
   },
 
+  // ─── Output File Tracing Root ─────────────────────────────────────
+  outputFileTracingRoot: path.resolve(__dirname, ".."),
+
   // ─── Turbopack ───────────────────────────────────────────────────
   turbopack: {
-    root: path.resolve(__dirname),
+    root: path.resolve(__dirname, ".."),
   },
 
   // ─── Compiler ────────────────────────────────────────────────────
