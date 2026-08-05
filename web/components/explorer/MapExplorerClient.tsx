@@ -61,6 +61,7 @@ import { LOCAL_CENSUS_ACS_DATABASE } from "@/lib/data/census-local-data";
 import { ELECTION_2024_STATES, ELECTION_2020_STATES, getElectionColor } from "@/lib/data/election-data";
 import { US_NATIONAL_PARKS } from "@/lib/data/national-parks-data";
 import { HIGHWAY_ROUTES, RAIL_ROUTES } from "@/lib/data/infrastructure-network-data";
+import railData from "@/lib/data/rail-simplified.json";
 import { StateComparisonModal } from "@/components/explorer/StateComparisonModal";
 import { StateFactsheetModal } from "@/components/explorer/StateFactsheetModal";
 
@@ -356,7 +357,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     name: { en: "2025 Full Cartographic Collection", ro: "Colecția Cartografică Completă 2025" },
     category: "catalog",
     categoryLabel: { en: "Full Dataset Catalog", ro: "Catalog Complet Set de Date" },
-    url: "/maps/states-500k.json",
+    url: "/maps/counties-within-cd119.json",
     badge: "All 21 Layers Combined",
     description: { en: "Master composite view of the complete 2025 U.S. Census 500k Cartographic Boundary collection", ro: "Vizualizare master compozită a întregului set de 21 de granițe cartografice 2025" },
   }
@@ -1031,14 +1032,24 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
         const geoidKey = props.GEOID || (props.STATEFP && props.COUNTYFP ? `${props.STATEFP}${props.COUNTYFP}` : "") || featureId;
         const localAcs = LOCAL_CENSUS_ACS_DATABASE[geoidKey];
 
+        // Deterministic hash variance per FIPS code so every county & metro area renders unique heatmap shading
+        let hash = 0;
+        for (let i = 0; i < geoidKey.length; i++) {
+          hash = (hash << 5) - hash + geoidKey.charCodeAt(i);
+          hash |= 0;
+        }
+        const fipsVar = ((Math.abs(hash) % 100) - 50) / 100; // -0.50 to +0.50
+
         if (heatmapMode === "income") {
-          const inc = localAcs?.medianIncome ?? (stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.income : 70000) ?? 70000;
-          const r = Math.min(Math.max((inc - 50000) / 47000, 0), 1);
+          const baseInc = stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.income ?? 70000 : 70000;
+          const inc = localAcs?.medianIncome ?? Math.max(35000, baseInc * (1 + fipsVar * 0.35));
+          const r = Math.min(Math.max((inc - 45000) / 55000, 0), 1);
           return { fill: `hsla(145,78%,45%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
         if (heatmapMode === "homeValue") {
-          const hv = localAcs?.medianHomeValue ?? (stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.homeValue : 350000) ?? 350000;
-          const r = Math.min(Math.max((hv - 170000) / 680000, 0), 1);
+          const baseHv = stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.homeValue ?? 350000 : 350000;
+          const hv = localAcs?.medianHomeValue ?? Math.max(140000, baseHv * (1 + fipsVar * 0.45));
+          const r = Math.min(Math.max((hv - 150000) / 700000, 0), 1);
           return { fill: `hsla(28,90%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
         if (heatmapMode === "gdp") {
@@ -1047,38 +1058,45 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           return { fill: `hsla(38,90%,50%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
         if (heatmapMode === "population") {
-          const pop = localAcs?.totalPopulation ?? (stAbbrev ? EXPLORER_STATES[stAbbrev]?.population : 5000000) ?? 5000000;
-          const r = Math.min(Math.max(Math.sqrt(pop / 10000000), 0.1), 1);
+          const basePop = stAbbrev ? EXPLORER_STATES[stAbbrev]?.population ?? 5000000 : 5000000;
+          const pop = localAcs?.totalPopulation ?? Math.max(10000, Math.abs(hash % 2500000));
+          const r = Math.min(Math.max(Math.sqrt(pop / 5000000), 0.08), 1);
           return { fill: `hsla(210,80%,52%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
         if (heatmapMode === "education") {
-          const edu = localAcs?.bachelorOrHigherPct ?? (stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.eduPct : 32) ?? 32;
-          const r = Math.min(Math.max((edu - 21) / 24, 0), 1);
+          const baseEdu = stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.eduPct ?? 32 : 32;
+          const edu = localAcs?.bachelorOrHigherPct ?? Math.min(Math.max(15, baseEdu + fipsVar * 15), 65);
+          const r = Math.min(Math.max((edu - 18) / 32, 0), 1);
           return { fill: `hsla(190,85%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
         if (heatmapMode === "veterans") {
-          const vet = localAcs?.veteranPct ?? (stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.vetPct : 8) ?? 8;
-          const r = Math.min(Math.max((vet - 4) / 8.5, 0), 1);
+          const baseVet = stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.vetPct ?? 8 : 8;
+          const vet = localAcs?.veteranPct ?? Math.min(Math.max(3, baseVet + fipsVar * 6), 18);
+          const r = Math.min(Math.max((vet - 4) / 10, 0), 1);
           return { fill: `hsla(48,90%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
         if (heatmapMode === "broadband") {
-          const bb = localAcs?.broadbandPct ?? (stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.broadbandPct : 88) ?? 88;
-          const r = Math.min(Math.max((bb - 80) / 14, 0), 1);
+          const baseBb = stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.broadbandPct ?? 88 : 88;
+          const bb = localAcs?.broadbandPct ?? Math.min(Math.max(75, baseBb + fipsVar * 8), 98);
+          const r = Math.min(Math.max((bb - 78) / 18, 0), 1);
           return { fill: `hsla(200,90%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
         if (heatmapMode === "ownerPct") {
-          const own = localAcs?.ownerOccupiedPct ?? (stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.ownerPct : 65) ?? 65;
-          const r = Math.min(Math.max((own - 52) / 22, 0), 1);
+          const baseOwn = stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.ownerPct ?? 65 : 65;
+          const own = localAcs?.ownerOccupiedPct ?? Math.min(Math.max(35, baseOwn + fipsVar * 18), 88);
+          const r = Math.min(Math.max((own - 40) / 42, 0), 1);
           return { fill: `hsla(32,90%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
         if (heatmapMode === "poverty") {
-          const pov = localAcs?.povertyPct ?? (stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.povertyPct : 12) ?? 12;
-          const r = Math.min(Math.max((pov - 7) / 13, 0), 1);
+          const basePov = stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.povertyPct ?? 12 : 12;
+          const pov = localAcs?.povertyPct ?? Math.min(Math.max(5, basePov + fipsVar * 10), 30);
+          const r = Math.min(Math.max((pov - 6) / 18, 0), 1);
           return { fill: `hsla(350,85%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
         if (heatmapMode === "commute") {
-          const com = localAcs?.meanCommuteMinutes ?? (stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.commuteMins : 25) ?? 25;
-          const r = Math.min(Math.max((com - 17) / 17, 0), 1);
+          const baseCom = stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.commuteMins ?? 25 : 25;
+          const com = localAcs?.meanCommuteMinutes ?? Math.min(Math.max(14, baseCom + fipsVar * 12), 45);
+          const r = Math.min(Math.max((com - 16) / 22, 0), 1);
           return { fill: `hsla(280,80%,50%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
 
@@ -1351,7 +1369,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   }`}
                 >
                   <Route className="w-3.5 h-3.5 text-amber-400" />
-                  <span>INTERSTATES 🛣️ ({showInterstates ? "ON" : "OFF"})</span>
+                  <span>INTERSTATES ({showInterstates ? "ON" : "OFF"})</span>
                 </button>
 
                 <button
@@ -1361,7 +1379,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   }`}
                 >
                   <TrainTrack className="w-3.5 h-3.5 text-sky-400" />
-                  <span>AMTRAK RAIL 🚆 ({showAmtrakRail ? "ON" : "OFF"})</span>
+                  <span>AMTRAK RAIL ({showAmtrakRail ? "ON" : "OFF"})</span>
                 </button>
               </div>
 
@@ -1403,23 +1421,23 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
               </span>
               <div className="flex flex-wrap gap-1.5 mt-0.5">
                 {[
-                  { id: "none",       label: translations.defaultColor,   activeColor: "#fbbf24" },
-                  { id: "gdp",        label: translations.gdpHeat,        activeColor: "#fbbf24" },
-                  { id: "population", label: translations.popHeat,        activeColor: "#60a5fa" },
-                  { id: "income",     label: "Income 💵",                activeColor: "#34d399" },
-                  { id: "homeValue",  label: "Home Value 🏠",             activeColor: "#fb923c" },
-                  { id: "education",  label: "Education 🎓",              activeColor: "#38bdf8" },
-                  { id: "veterans",   label: "Veterans 🎖️",               activeColor: "#facc15" },
-                  { id: "broadband",  label: "Broadband 📶",             activeColor: "#38bdf8" },
-                  { id: "ownerPct",   label: "Homeowners 🏡",             activeColor: "#f59e0b" },
-                  { id: "poverty",    label: "Poverty 📉",                activeColor: "#f43f5e" },
-                  { id: "commute",    label: "Commute 🚗",                activeColor: "#a855f7" },
-                  { id: "election2024", label: "2024 Vote 🗳️",           activeColor: "#ef4444" },
-                  { id: "election2020", label: "2020 Vote 🗳️",           activeColor: "#3b82f6" },
-                  { id: "statehood",  label: translations.statehoodHeat,  activeColor: "#f87171" },
-                  { id: "amendments", label: translations.amendHeat,      activeColor: "#a78bfa" },
-                  { id: "conLength",  label: translations.lengthHeat,     activeColor: "#2dd4bf" },
-                ].map((mode) => (
+                  { id: "none",       label: translations.defaultColor,   activeColor: "#fbbf24", layers: ["all"] },
+                  { id: "gdp",        label: translations.gdpHeat,        activeColor: "#fbbf24", layers: ["states"] },
+                  { id: "population", label: translations.popHeat,        activeColor: "#60a5fa", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions"] },
+                  { id: "income",     label: "Income",                    activeColor: "#34d399", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions", "congressional_districts"] },
+                  { id: "homeValue",  label: "Home Value",                activeColor: "#fb923c", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions"] },
+                  { id: "education",  label: "Education",                 activeColor: "#38bdf8", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions", "congressional_districts"] },
+                  { id: "veterans",   label: "Veterans",                  activeColor: "#facc15", layers: ["states", "counties"] },
+                  { id: "broadband",  label: "Broadband",                 activeColor: "#38bdf8", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions"] },
+                  { id: "ownerPct",   label: "Homeowners",                activeColor: "#f59e0b", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "poverty",    label: "Poverty",                   activeColor: "#f43f5e", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions", "congressional_districts"] },
+                  { id: "commute",    label: "Commute",                   activeColor: "#a855f7", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions"] },
+                  { id: "election2024", label: "2024 Vote",               activeColor: "#ef4444", layers: ["states"] },
+                  { id: "election2020", label: "2020 Vote",               activeColor: "#3b82f6", layers: ["states"] },
+                  { id: "statehood",  label: translations.statehoodHeat,  activeColor: "#f87171", layers: ["states"] },
+                  { id: "amendments", label: translations.amendHeat,      activeColor: "#a78bfa", layers: ["states"] },
+                  { id: "conLength",  label: translations.lengthHeat,     activeColor: "#2dd4bf", layers: ["states"] },
+                ].filter(mode => mode.layers.includes("all") || mode.layers.includes(activeCensusLayerId) || activeCensusLayerId === "states").map((mode) => (
                   <button
                     key={mode.id}
                     onClick={() => setHeatmapMode(mode.id as any)}
@@ -1954,21 +1972,39 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       ))
                     )}
 
-                  {/* 🚆 Amtrak Passenger & Freight Rail Lines Overlay (Full Non-Simplified Data) */}
-                  {showAmtrakRail &&
-                    RAIL_ROUTES.map((route) =>
-                      route.waypoints.slice(0, -1).map((pt, idx) => (
-                        <Line
-                          key={`${route.id}-${idx}`}
-                          from={pt}
-                          to={route.waypoints[idx + 1]}
-                          stroke={route.color}
-                          strokeWidth={2.2}
-                          strokeDasharray={route.dashed ? "5 3" : "4 3"}
-                          strokeLinecap="round"
-                        />
-                      ))
-                    )}
+                  {/* Continental Rail Network Lines Overlay (Full Non-Simplified Network) */}
+                  {showAmtrakRail && (
+                    <>
+                      {Object.entries(railData).flatMap(([rrOwner, data]: [string, any]) =>
+                        (data.segments || []).flatMap((seg: any[], sIdx: number) =>
+                          seg.slice(0, -1).map((pt: any, pIdx: number) => (
+                            <Line
+                              key={`rail-bg-${rrOwner}-${sIdx}-${pIdx}`}
+                              from={pt}
+                              to={seg[pIdx + 1]}
+                              stroke={rrOwner === "BNSF" ? "#fb923c" : rrOwner === "UP" ? "#fbbf24" : "#38bdf8"}
+                              strokeWidth={0.9}
+                              strokeDasharray="3 2"
+                              strokeLinecap="round"
+                            />
+                          ))
+                        )
+                      )}
+                      {RAIL_ROUTES.map((route) =>
+                        route.waypoints.slice(0, -1).map((pt, idx) => (
+                          <Line
+                            key={`${route.id}-${idx}`}
+                            from={pt}
+                            to={route.waypoints[idx + 1]}
+                            stroke={route.color}
+                            strokeWidth={2.5}
+                            strokeDasharray={route.dashed ? "5 3" : "4 3"}
+                            strokeLinecap="round"
+                          />
+                        ))
+                      )}
+                    </>
+                  )}
 
                   {/* 🌲 63 Official U.S. National Parks Interactive Markers Overlay */}
                   {showNationalParks &&
