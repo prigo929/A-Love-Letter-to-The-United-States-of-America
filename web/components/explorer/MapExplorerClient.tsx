@@ -8,6 +8,8 @@ import {
   Geographies,
   Geography,
   ZoomableGroup,
+  Marker,
+  Line,
 } from "react-simple-maps";
 import {
   Search,
@@ -39,6 +41,11 @@ import {
   Building2,
   PieChart,
   FileText,
+  Swords,
+  Printer,
+  History,
+  TrainTrack,
+  Vote,
 } from "lucide-react";
 import { EXPLORER_STATES, StateData } from "@/lib/data/explorer-data";
 import { STATE_EXTENDED_DATA } from "@/lib/data/state-details";
@@ -48,6 +55,12 @@ import { GEO_URL, FIPS_TO_ABBREV } from "@/lib/data/us-geo";
 import { InterstateCooperationMap } from "@/components/explorer/InterstateCooperationMap";
 import { StateRevenueBudget } from "@/components/explorer/StateRevenueBudget";
 import { fetchCensusAcsData, CensusAcsData } from "@/lib/services/census-api";
+
+import { ELECTION_2024_STATES, ELECTION_2020_STATES, getElectionColor } from "@/lib/data/election-data";
+import { US_NATIONAL_PARKS } from "@/lib/data/national-parks-data";
+import { MAJOR_INFRASTRUCTURE_NETWORKS } from "@/lib/data/infrastructure-data";
+import { StateComparisonModal } from "@/components/explorer/StateComparisonModal";
+import { StateFactsheetModal } from "@/components/explorer/StateFactsheetModal";
 
 export const STATE_DEMOGRAPHIC_BENCHMARKS: Record<string, { income: number; homeValue: number; eduPct: number; vetPct: number }> = {
   AL: { income: 59609, homeValue: 225000, eduPct: 27.5, vetPct: 9.1 },
@@ -724,10 +737,17 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   const [selectedRegion, setSelectedRegion] = useState<string>("All");
   const [sortBy, setSortBy] = useState<"name" | "gdp" | "population" | "statehood">("name");
   const [heatmapMode, setHeatmapMode] = useState<
-    "none" | "gdp" | "population" | "income" | "homeValue" | "education" | "veterans" | "statehood" | "amendments" | "conLength"
+    "none" | "gdp" | "population" | "income" | "homeValue" | "education" | "veterans" | "election2024" | "election2020" | "statehood" | "amendments" | "conLength"
   >("none");
   const [liveCensusData, setLiveCensusData] = useState<CensusAcsData | null>(null);
   const [isLoadingCensusData, setIsLoadingCensusData] = useState<boolean>(false);
+
+  // 🌟 New Feature Modal & Overlay States
+  const [isComparisonModalOpen, setIsComparisonModalOpen] = useState<boolean>(false);
+  const [isFactsheetModalOpen, setIsFactsheetModalOpen] = useState<boolean>(false);
+  const [showNationalParks, setShowNationalParks] = useState<boolean>(false);
+  const [showInfrastructure, setShowInfrastructure] = useState<boolean>(false);
+  const [historicalYearFilter, setHistoricalYearFilter] = useState<number>(1959);
   // Census Layer selection state (22 views)
   const [activeCensusLayerId, setActiveCensusLayerId] = useState<string>("states");
   const [isLayerModalOpen, setIsLayerModalOpen] = useState<boolean>(false);
@@ -1030,9 +1050,20 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
       let fill: string;
       let stroke: string;
 
-      if (!isMatch) {
+      if (state.statehoodYear > historicalYearFilter) {
+        fill = "#0c0c12";
+        stroke = "rgba(255,255,255,0.06)";
+      } else if (!isMatch) {
         fill = "#111111";
         stroke = "rgba(255,255,255,0.12)";
+      } else if (heatmapMode === "election2024") {
+        const res = ELECTION_2024_STATES[abbrev];
+        fill = getElectionColor(res, isHovered);
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+      } else if (heatmapMode === "election2020") {
+        const res = ELECTION_2020_STATES[abbrev];
+        fill = getElectionColor(res, isHovered);
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
       } else if (heatmapMode === "none") {
         const rc = REGION_COLORS[state.region];
         fill = isHovered ? rc.hover : rc.base;
@@ -1107,7 +1138,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
         transition: "all 0.15s ease",
       };
     },
-    [activeCensusLayerId, selectedStateAbbrev, selectedFeature, hoveredStateAbbrev, selectedRegion, locale, searchQuery, heatmapMode, maxValues]
+    [activeCensusLayerId, selectedStateAbbrev, selectedFeature, hoveredStateAbbrev, selectedRegion, locale, searchQuery, heatmapMode, maxValues, historicalYearFilter]
   );
 
   const regionButtons = [
@@ -1189,11 +1220,48 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   {activeCensusLayer.badge}
                 </span>
               </button>
+
+              {/* ⚔️ State Duel Comparison Button */}
+              <button
+                onClick={() => setIsComparisonModalOpen(true)}
+                className="flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-2.5 text-xs font-bold text-blue-400 hover:bg-blue-500/20 hover:border-blue-400 transition-all shadow-lg shrink-0 cursor-pointer"
+              >
+                <Swords className="h-4 w-4 text-blue-400" />
+                <span>Compare States</span>
+              </button>
+
+              {/* 🖨️ State Factsheet Generator Button */}
+              <button
+                onClick={() => setIsFactsheetModalOpen(true)}
+                className="flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-2.5 text-xs font-bold text-emerald-400 hover:bg-emerald-500/20 hover:border-emerald-400 transition-all shadow-lg shrink-0 cursor-pointer"
+              >
+                <Printer className="h-4 w-4 text-emerald-400" />
+                <span>Print Factsheet</span>
+              </button>
             </div>
 
-            {/* Region Filter Pills */}
+            {/* Region Filter Pills & Feature Toggles */}
             <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto justify-start md:justify-end pb-2 md:pb-0">
-              <ListFilter className="h-3.5 w-3.5 text-white/30 shrink-0 mr-1" />
+              <button
+                onClick={() => setShowNationalParks((prev) => !prev)}
+                className={`shrink-0 rounded-full px-3.5 py-1.5 text-[10px] font-bold uppercase transition-all flex items-center gap-1.5 cursor-pointer ${
+                  showNationalParks ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/50" : "bg-white/5 text-white/40 border border-white/10"
+                }`}
+              >
+                <Trees className="w-3 h-3 text-emerald-400" />
+                <span>63 Parks ({showNationalParks ? "ON" : "OFF"})</span>
+              </button>
+
+              <button
+                onClick={() => setShowInfrastructure((prev) => !prev)}
+                className={`shrink-0 rounded-full px-3.5 py-1.5 text-[10px] font-bold uppercase transition-all flex items-center gap-1.5 cursor-pointer ${
+                  showInfrastructure ? "bg-amber-500/20 text-amber-300 border border-amber-500/50" : "bg-white/5 text-white/40 border border-white/10"
+                }`}
+              >
+                <TrainTrack className="w-3 h-3 text-amber-400" />
+                <span>Rail & Roads ({showInfrastructure ? "ON" : "OFF"})</span>
+              </button>
+
               {regionButtons.map((reg) => {
                 const isActive = selectedRegion === reg.id;
                 return (
@@ -1235,6 +1303,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   { id: "homeValue",  label: "Home Value 🏠",             activeColor: "#fb923c" },
                   { id: "education",  label: "Education 🎓",              activeColor: "#38bdf8" },
                   { id: "veterans",   label: "Veterans 🎖️",               activeColor: "#facc15" },
+                  { id: "election2024", label: "2024 Vote 🗳️",           activeColor: "#ef4444" },
+                  { id: "election2020", label: "2020 Vote 🗳️",           activeColor: "#3b82f6" },
                   { id: "statehood",  label: translations.statehoodHeat,  activeColor: "#f87171" },
                   { id: "amendments", label: translations.amendHeat,      activeColor: "#a78bfa" },
                   { id: "conLength",  label: translations.lengthHeat,     activeColor: "#2dd4bf" },
@@ -1406,6 +1476,31 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   </div>
                 </div>
               )}
+            </div>
+
+            {/* 📜 Historical Territorial Expansion Timeline Slider (1776 – 1959) */}
+            <div className="relative z-20 m-3 flex flex-col gap-2 rounded-2xl border border-[#fbbf24]/30 bg-black/85 p-3 backdrop-blur-md max-w-none sm:absolute sm:top-4 sm:right-4 sm:m-0 sm:max-w-[260px] shadow-2xl">
+              <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-wider text-[#fbbf24] font-bold">
+                <span className="flex items-center gap-1.5">
+                  <History className="w-3.5 h-3.5 text-[#fbbf24]" />
+                  Statehood Era Timeline
+                </span>
+                <span className="text-white font-mono font-bold text-xs">{historicalYearFilter}</span>
+              </div>
+              <input
+                type="range"
+                min={1776}
+                max={1959}
+                step={1}
+                value={historicalYearFilter}
+                onChange={(e) => setHistoricalYearFilter(Number(e.target.value))}
+                className="w-full accent-[#fbbf24] cursor-pointer"
+              />
+              <div className="flex justify-between font-mono text-[9px] text-white/40 font-semibold">
+                <span>1776 (13 Orig.)</span>
+                <span>1803 (LA Purch.)</span>
+                <span>1959 (HI #50)</span>
+              </div>
             </div>
 
             {/* Region color legend: sits under the map on mobile, overlays it from `sm` up */}
@@ -1664,27 +1759,47 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                               }}
                             />
                           )}
-                          {hoveredGeo && (
-                            <Geography
-                              key={`${hoveredGeo.rsmKey}-hover`}
-                              geography={hoveredGeo}
-                              style={{
-                                default: {
-                                  fill: activeCensusLayer.id === "states" ? "none" : "rgba(251, 191, 36, 0.30)",
-                                  stroke: activeCensusLayer.id === "states" ? "#ffffff" : "#fbbf24",
-                                  strokeWidth: 1.4,
-                                  outline: "none",
-                                  pointerEvents: "none",
-                                },
-                                hover: { outline: "none" },
-                                pressed: { outline: "none" },
-                              }}
-                            />
-                          )}
                         </>
                       );
                     }}
                   </Geographies>
+
+                  {/* ⚡ Major Infrastructure Network Lines Overlay */}
+                  {showInfrastructure &&
+                    MAJOR_INFRASTRUCTURE_NETWORKS.map((line) => (
+                      <Line
+                        key={line.id}
+                        from={line.coordinates[0]}
+                        to={line.coordinates[line.coordinates.length - 1]}
+                        stroke={line.color}
+                        strokeWidth={2.5}
+                        strokeLinecap="round"
+                      />
+                    ))}
+
+                  {/* 🌲 63 Official U.S. National Parks Interactive Markers Overlay */}
+                  {showNationalParks &&
+                    US_NATIONAL_PARKS.map((park) => (
+                      <Marker
+                        key={park.id}
+                        coordinates={park.coordinates}
+                        onMouseEnter={() => {
+                          setFeatureHoverInfo({
+                            label: park.name,
+                            details: `State: ${park.state} • Est. ${park.established}`,
+                            code: `${(park.acres / 1000).toFixed(0)}k acres`,
+                          });
+                        }}
+                        onMouseLeave={() => setFeatureHoverInfo(null)}
+                      >
+                        <g transform="translate(-10, -20)">
+                          <circle r={7} fill="#10b981" stroke="#ffffff" strokeWidth={2} className="animate-pulse" />
+                          <text y={-8} x={0} textAnchor="middle" fill="#ffffff" fontSize={8} fontWeight="bold">
+                            🌲
+                          </text>
+                        </g>
+                      </Marker>
+                    ))}
                 </ZoomableGroup>
               </ComposableMap>
 
@@ -3093,6 +3208,22 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           document.body
         )}
       </div>
+
+      {/* ⚔️ Side-by-Side State Duel Comparison Modal */}
+      <StateComparisonModal
+        isOpen={isComparisonModalOpen}
+        onClose={() => setIsComparisonModalOpen(false)}
+        initialStateA={selectedStateAbbrev}
+        initialStateB={selectedStateAbbrev === "CA" ? "TX" : "CA"}
+      />
+
+      {/* 🖨️ Official State Factsheet PDF Generator Modal */}
+      <StateFactsheetModal
+        isOpen={isFactsheetModalOpen}
+        onClose={() => setIsFactsheetModalOpen(false)}
+        stateAbbrev={selectedStateAbbrev}
+        locale={locale}
+      />
     </div>
   );
 }
