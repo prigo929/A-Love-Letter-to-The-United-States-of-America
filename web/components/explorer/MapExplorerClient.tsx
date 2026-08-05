@@ -56,6 +56,7 @@ import { GEO_URL, FIPS_TO_ABBREV } from "@/lib/data/us-geo";
 import { InterstateCooperationMap } from "@/components/explorer/InterstateCooperationMap";
 import { StateRevenueBudget } from "@/components/explorer/StateRevenueBudget";
 import { fetchCensusAcsData, CensusAcsData } from "@/lib/services/census-api";
+import { LOCAL_CENSUS_ACS_DATABASE } from "@/lib/data/census-local-data";
 
 import { ELECTION_2024_STATES, ELECTION_2020_STATES, getElectionColor } from "@/lib/data/election-data";
 import { US_NATIONAL_PARKS } from "@/lib/data/national-parks-data";
@@ -1027,54 +1028,56 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
         }
 
         const stAbbrev = abbrev || (props.STATEFP ? FIPS_TO_ABBREV[props.STATEFP] : "");
+        const geoidKey = props.GEOID || (props.STATEFP && props.COUNTYFP ? `${props.STATEFP}${props.COUNTYFP}` : "") || featureId;
+        const localAcs = LOCAL_CENSUS_ACS_DATABASE[geoidKey];
 
-        if (heatmapMode === "income" && stAbbrev) {
-          const inc = STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.income ?? 70000;
+        if (heatmapMode === "income") {
+          const inc = localAcs?.medianIncome ?? (stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.income : 70000) ?? 70000;
           const r = Math.min(Math.max((inc - 50000) / 47000, 0), 1);
           return { fill: `hsla(145,78%,45%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
-        if (heatmapMode === "homeValue" && stAbbrev) {
-          const hv = STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.homeValue ?? 350000;
+        if (heatmapMode === "homeValue") {
+          const hv = localAcs?.medianHomeValue ?? (stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.homeValue : 350000) ?? 350000;
           const r = Math.min(Math.max((hv - 170000) / 680000, 0), 1);
           return { fill: `hsla(28,90%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
-        if (heatmapMode === "gdp" && stAbbrev) {
-          const stateData = EXPLORER_STATES[stAbbrev];
+        if (heatmapMode === "gdp") {
+          const stateData = stAbbrev ? EXPLORER_STATES[stAbbrev] : null;
           const r = stateData ? Math.sqrt(stateData.gdp / maxValues.maxGdp) : 0.5;
           return { fill: `hsla(38,90%,50%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
-        if (heatmapMode === "population" && stAbbrev) {
-          const stateData = EXPLORER_STATES[stAbbrev];
-          const r = stateData ? Math.sqrt(stateData.population / maxValues.maxPop) : 0.5;
+        if (heatmapMode === "population") {
+          const pop = localAcs?.totalPopulation ?? (stAbbrev ? EXPLORER_STATES[stAbbrev]?.population : 5000000) ?? 5000000;
+          const r = Math.min(Math.max(Math.sqrt(pop / 10000000), 0.1), 1);
           return { fill: `hsla(210,80%,52%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
-        if (heatmapMode === "education" && stAbbrev) {
-          const edu = STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.eduPct ?? 32;
+        if (heatmapMode === "education") {
+          const edu = localAcs?.bachelorOrHigherPct ?? (stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.eduPct : 32) ?? 32;
           const r = Math.min(Math.max((edu - 21) / 24, 0), 1);
           return { fill: `hsla(190,85%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
-        if (heatmapMode === "veterans" && stAbbrev) {
-          const vet = STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.vetPct ?? 8;
+        if (heatmapMode === "veterans") {
+          const vet = localAcs?.veteranPct ?? (stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.vetPct : 8) ?? 8;
           const r = Math.min(Math.max((vet - 4) / 8.5, 0), 1);
           return { fill: `hsla(48,90%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
-        if (heatmapMode === "broadband" && stAbbrev) {
-          const bb = STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.broadbandPct ?? 88;
+        if (heatmapMode === "broadband") {
+          const bb = localAcs?.broadbandPct ?? (stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.broadbandPct : 88) ?? 88;
           const r = Math.min(Math.max((bb - 80) / 14, 0), 1);
           return { fill: `hsla(200,90%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
-        if (heatmapMode === "ownerPct" && stAbbrev) {
-          const own = STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.ownerPct ?? 65;
+        if (heatmapMode === "ownerPct") {
+          const own = localAcs?.ownerOccupiedPct ?? (stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.ownerPct : 65) ?? 65;
           const r = Math.min(Math.max((own - 52) / 22, 0), 1);
           return { fill: `hsla(32,90%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
-        if (heatmapMode === "poverty" && stAbbrev) {
-          const pov = STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.povertyPct ?? 12;
+        if (heatmapMode === "poverty") {
+          const pov = localAcs?.povertyPct ?? (stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.povertyPct : 12) ?? 12;
           const r = Math.min(Math.max((pov - 7) / 13, 0), 1);
           return { fill: `hsla(350,85%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
-        if (heatmapMode === "commute" && stAbbrev) {
-          const com = STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.commuteMins ?? 25;
+        if (heatmapMode === "commute") {
+          const com = localAcs?.meanCommuteMinutes ?? (stAbbrev ? STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.commuteMins : 25) ?? 25;
           const r = Math.min(Math.max((com - 17) / 17, 0), 1);
           return { fill: `hsla(280,80%,50%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
@@ -1794,11 +1797,25 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                               } else {
                                 const name = props.NAMELSAD || props.NAME || props.GEOID || "Boundary Feature";
                                 const stFips = props.STATEFP ? FIPS_TO_ABBREV[props.STATEFP] || props.STATEFP : "";
-                                const code = props.GEOID || props.GEOIDFQ || activeCensusLayer.code;
+                                const code = props.GEOID || (props.STATEFP && props.COUNTYFP ? `${props.STATEFP}${props.COUNTYFP}` : "") || activeCensusLayer.code;
+                                const localAcs = LOCAL_CENSUS_ACS_DATABASE[code];
+
+                                let detailsText = stFips ? `State: ${stFips}` : activeCensusLayer.name[locale];
+                                if (localAcs) {
+                                  if (heatmapMode === "income" && localAcs.medianIncome) detailsText += ` • Med. Income: $${localAcs.medianIncome.toLocaleString()}`;
+                                  else if (heatmapMode === "homeValue" && localAcs.medianHomeValue) detailsText += ` • Med. Home: $${localAcs.medianHomeValue.toLocaleString()}`;
+                                  else if (heatmapMode === "population" && localAcs.totalPopulation) detailsText += ` • Pop: ${localAcs.totalPopulation.toLocaleString()}`;
+                                  else if (heatmapMode === "education" && localAcs.bachelorOrHigherPct) detailsText += ` • Edu: ${localAcs.bachelorOrHigherPct}% Bach+`;
+                                  else if (heatmapMode === "poverty" && localAcs.povertyPct) detailsText += ` • Poverty: ${localAcs.povertyPct}%`;
+                                  else if (heatmapMode === "broadband" && localAcs.broadbandPct) detailsText += ` • Broadband: ${localAcs.broadbandPct}%`;
+                                  else if (heatmapMode === "veterans" && localAcs.veteranPct) detailsText += ` • Vet: ${localAcs.veteranPct}%`;
+                                  else if (heatmapMode === "commute" && localAcs.meanCommuteMinutes) detailsText += ` • Commute: ${localAcs.meanCommuteMinutes} min`;
+                                }
+
                                 setHoveredStateAbbrev(featureId);
                                 setFeatureHoverInfo({
                                   label: name,
-                                  details: stFips ? `State: ${stFips}` : activeCensusLayer.name[locale],
+                                  details: detailsText,
                                   code,
                                 });
                               }

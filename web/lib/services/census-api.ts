@@ -69,9 +69,10 @@ export async function fetchCensusAcsData(params: {
   layerCode?: string;
   stateAbbrev?: string;
 }): Promise<CensusAcsData | null> {
-  const abbrev = params.stateAbbrev || (params.stateFips ? Object.keys(LOCAL_CENSUS_ACS_DATABASE).find(k => k === params.stateFips) : "");
-  if (abbrev && LOCAL_CENSUS_ACS_DATABASE[abbrev]) {
-    return LOCAL_CENSUS_ACS_DATABASE[abbrev];
+  const compositeCountyGeoid = (params.stateFips && params.countyFips) ? `${params.stateFips.padStart(2, "0")}${params.countyFips.padStart(3, "0")}` : "";
+  const keyToLookup = params.geoid || compositeCountyGeoid || params.stateAbbrev || "";
+  if (keyToLookup && LOCAL_CENSUS_ACS_DATABASE[keyToLookup]) {
+    return LOCAL_CENSUS_ACS_DATABASE[keyToLookup];
   }
 
   const cacheKey = `${params.layerCode || "geo"}:${params.geoid || ""}:${params.stateFips || ""}:${params.countyFips || ""}`;
