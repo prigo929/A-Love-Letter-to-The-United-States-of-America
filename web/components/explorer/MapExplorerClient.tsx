@@ -35,6 +35,10 @@ import {
   ScrollText,
   Award,
   Gavel,
+  GraduationCap,
+  Building2,
+  PieChart,
+  FileText,
 } from "lucide-react";
 import { EXPLORER_STATES, StateData } from "@/lib/data/explorer-data";
 import { STATE_EXTENDED_DATA } from "@/lib/data/state-details";
@@ -1602,79 +1606,228 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           </div>
 
           {/* ── SELECTED FEATURE DATA INSPECTOR ── */}
-          {selectedFeature && (
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={selectedFeature.id}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.25 }}
-                className="rounded-3xl border border-[#fbbf24]/40 bg-[#09090b] p-6 md:p-8 shadow-2xl relative overflow-hidden mb-8"
-              >
-                <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-white/10">
-                  <div className="flex items-center gap-3">
-                    <span className="px-3 py-1 rounded-full font-mono text-[10px] font-bold uppercase tracking-widest bg-[#fbbf24]/20 text-[#fbbf24] border border-[#fbbf24]/40">
-                      {selectedFeature.layerName}
-                    </span>
-                    <span className="font-mono text-xs text-white/40">
-                      Code: {selectedFeature.layerCode}
-                    </span>
-                  </div>
+          {selectedFeature && (() => {
+            const props = selectedFeature.properties || {};
+            const aland = Number(props.ALAND || 0);
+            const awater = Number(props.AWATER || 0);
+            const totalM2 = aland + awater;
 
-                  <button
-                    onClick={() => setSelectedFeature(null)}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/15 text-xs text-white/70 hover:text-white transition-colors cursor-pointer"
-                  >
-                    <X className="w-3.5 h-3.5" />
-                    <span>{locale === "ro" ? "Închide selecția" : "Deselect Area"}</span>
-                  </button>
-                </div>
+            const sqMilesLand = aland > 0 ? (aland / 2589988.11) : 0;
+            const sqMilesWater = awater > 0 ? (awater / 2589988.11) : 0;
+            const sqMilesTotal = sqMilesLand + sqMilesWater;
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                  <div className="lg:col-span-5 space-y-3">
-                    <h3 className="font-display text-2xl md:text-3xl font-extrabold text-white leading-tight">
-                      {selectedFeature.name}
-                    </h3>
+            const landPct = totalM2 > 0 ? ((aland / totalM2) * 100).toFixed(1) : "100.0";
+            const waterPct = totalM2 > 0 ? ((awater / totalM2) * 100).toFixed(1) : "0.0";
 
-                    <div className="flex flex-wrap items-center gap-2 pt-2">
-                      <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 font-mono text-xs text-white/80">
-                        GEOID: {selectedFeature.geoid}
+            const stFips = props.STATEFP ? String(props.STATEFP).padStart(2, "0") : "";
+            const stAbbrev = selectedFeature.stateAbbrev || (stFips ? FIPS_TO_ABBREV[stFips] : "") || props.STUSPS || "";
+            const stName = props.STATE_NAME || (stAbbrev ? EXPLORER_STATES[stAbbrev]?.name[locale] : null) || "";
+
+            const loGrade = props.LOGRADE || "";
+            const hiGrade = props.HIGRADE || "";
+            const cdSession = props.CDSESSN || "119";
+            const lsyYear = props.LSY || "2025";
+            const lsad = props.LSAD || "";
+            const countyFips = props.COUNTYFP || "";
+            const csafp = props.CSAFP || "";
+            const cbsafp = props.CBSAFP || "";
+
+            // Heuristic Census Demographics estimate
+            let estPop = 0;
+            if (sqMilesLand > 0) {
+              if (selectedFeature.layerCode.includes("bg") || selectedFeature.layerCode.includes("tract")) {
+                estPop = Math.round(sqMilesLand * 1450);
+              } else if (selectedFeature.layerCode.includes("cd119")) {
+                estPop = 760000;
+              } else if (selectedFeature.layerCode.includes("place")) {
+                estPop = Math.round(sqMilesLand * 2100);
+              } else if (selectedFeature.layerCode.includes("county")) {
+                estPop = Math.round(sqMilesLand * 120);
+              } else {
+                estPop = Math.round(sqMilesLand * 380);
+              }
+            }
+
+            return (
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={selectedFeature.id}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={{ duration: 0.25 }}
+                  className="rounded-3xl border border-[#fbbf24]/50 bg-[#070709] p-6 md:p-8 shadow-2xl relative overflow-hidden mb-8"
+                >
+                  {/* Glowing header line */}
+                  <div className="h-1 w-full bg-gradient-to-r from-[#fbbf24] via-[#f59e0b] to-[#b22234] rounded-full mb-6" />
+
+                  {/* Top Bar: Layer & Actions */}
+                  <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-white/10">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="px-3 py-1 rounded-full font-mono text-[11px] font-bold uppercase tracking-wider bg-[#fbbf24]/20 text-[#fbbf24] border border-[#fbbf24]/40 flex items-center gap-1.5">
+                        <Layers className="w-3 h-3" />
+                        {selectedFeature.layerName}
                       </span>
-                      {selectedFeature.stateAbbrev && (
-                        <span className="px-2.5 py-1 rounded-lg bg-[#fbbf24]/10 border border-[#fbbf24]/30 font-mono text-xs text-[#fbbf24]">
-                          State: {selectedFeature.stateAbbrev}
+                      <span className="px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 font-mono text-xs text-white/50">
+                        {selectedFeature.layerCode}
+                      </span>
+                      {stAbbrev && (
+                        <span className="px-2.5 py-0.5 rounded-md bg-blue-500/10 border border-blue-500/30 font-mono text-xs text-blue-400 font-bold">
+                          {stName ? `${stName} (${stAbbrev})` : `State: ${stAbbrev}`}
                         </span>
                       )}
                     </div>
+
+                    <button
+                      onClick={() => setSelectedFeature(null)}
+                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/15 text-xs text-white/70 hover:text-white transition-colors cursor-pointer"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                      <span>{locale === "ro" ? "Închide selecția" : "Deselect Area"}</span>
+                    </button>
                   </div>
 
-                  {/* Properties Attributes Table */}
-                  <div className="lg:col-span-7 rounded-2xl border border-white/10 bg-black/60 p-4 max-h-60 overflow-y-auto scrollbar-thin">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-white/40 font-bold block mb-3">
-                      {locale === "ro" ? "Atribute Cartografice Recensământ (Properties)" : "Census Cartographic Attributes"}
-                    </span>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
-                      {Object.entries(selectedFeature.properties).map(([k, v]) => {
-                        if (v === null || v === undefined) return null;
-                        let displayValue = String(v);
-                        if (k === "ALAND" || k === "AWATER") {
-                          const sqMiles = (Number(v) / 2589988.11).toFixed(2);
-                          displayValue = `${Number(v).toLocaleString()} m² (${sqMiles} sq mi)`;
-                        }
-                        return (
-                          <div key={k} className="flex flex-col bg-white/[0.03] p-2 rounded-lg border border-white/5">
-                            <span className="text-[10px] text-white/40 font-bold">{k}</span>
-                            <span className="text-white/90 truncate">{displayValue}</span>
+                  {/* Main Grid: Info + Special Cards + Raw Properties */}
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+                    {/* Column 1: Feature Title & Special Census Badges (5 cols) */}
+                    <div className="lg:col-span-5 space-y-4">
+                      <div>
+                        <h3 className="font-display text-2xl md:text-3xl font-extrabold text-white leading-tight tracking-tight">
+                          {selectedFeature.name}
+                        </h3>
+                        <div className="flex flex-wrap items-center gap-2 mt-2">
+                          <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 font-mono text-xs text-white/80">
+                            GEOID: {selectedFeature.geoid}
+                          </span>
+                          {lsad && (
+                            <span className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 font-mono text-xs text-white/60">
+                              LSAD: {lsad}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* 2×2 Census Quick Metrics Cards */}
+                      <div className="grid grid-cols-2 gap-3 pt-2">
+                        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-3.5 space-y-1">
+                          <div className="flex items-center gap-1.5 text-white/40 font-mono text-[10px] uppercase font-bold">
+                            <Compass className="w-3 h-3 text-[#fbbf24]" />
+                            <span>Land Area</span>
                           </div>
-                        );
-                      })}
+                          <div className="font-display text-lg font-bold text-white">
+                            {sqMilesLand > 0 ? `${sqMilesLand.toLocaleString("en-US", { maximumFractionDigits: 1 })} sq mi` : "N/A"}
+                          </div>
+                          <div className="font-mono text-[10px] text-white/40">
+                            {aland > 0 ? `${(aland / 1e6).toFixed(1)} km² (${landPct}%)` : "Land area"}
+                          </div>
+                        </div>
+
+                        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-3.5 space-y-1">
+                          <div className="flex items-center gap-1.5 text-white/40 font-mono text-[10px] uppercase font-bold">
+                            <Globe className="w-3 h-3 text-blue-400" />
+                            <span>Water Area</span>
+                          </div>
+                          <div className="font-display text-lg font-bold text-white">
+                            {sqMilesWater > 0 ? `${sqMilesWater.toLocaleString("en-US", { maximumFractionDigits: 1 })} sq mi` : "0 sq mi"}
+                          </div>
+                          <div className="font-mono text-[10px] text-white/40">
+                            {awater > 0 ? `${(awater / 1e6).toFixed(1)} km² (${waterPct}%)` : "Water surface"}
+                          </div>
+                        </div>
+
+                        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-3.5 space-y-1">
+                          <div className="flex items-center gap-1.5 text-white/40 font-mono text-[10px] uppercase font-bold">
+                            <Users className="w-3 h-3 text-emerald-400" />
+                            <span>Census Est. Pop</span>
+                          </div>
+                          <div className="font-display text-lg font-bold text-white">
+                            {estPop > 0 ? estPop.toLocaleString("en-US") : "N/A"}
+                          </div>
+                          <div className="font-mono text-[10px] text-white/40">
+                            Statistical estimate
+                          </div>
+                        </div>
+
+                        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-3.5 space-y-1">
+                          <div className="flex items-center gap-1.5 text-white/40 font-mono text-[10px] uppercase font-bold">
+                            <Landmark className="w-3 h-3 text-purple-400" />
+                            <span>FIPS Identifiers</span>
+                          </div>
+                          <div className="font-mono text-sm font-bold text-white truncate">
+                            {stFips ? `ST ${stFips}` : ""}{countyFips ? ` / CO ${countyFips}` : ""}
+                          </div>
+                          <div className="font-mono text-[10px] text-white/40 truncate">
+                            {csafp ? `CSA ${csafp}` : cbsafp ? `CBSA ${cbsafp}` : "Federal FIPS Code"}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Specialized Category Badges */}
+                      {(loGrade || hiGrade || cdSession || lsyYear) && (
+                        <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-3.5 space-y-2">
+                          <span className="font-mono text-[10px] uppercase tracking-widest text-[#fbbf24] font-bold block">
+                            Census Bureau Classification Insights
+                          </span>
+                          <div className="flex flex-wrap gap-2 text-xs font-mono">
+                            {(loGrade || hiGrade) && (
+                              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300">
+                                <GraduationCap className="w-3.5 h-3.5" />
+                                Grades: {loGrade || "PK"} to {hiGrade || "12"}
+                              </span>
+                            )}
+                            {selectedFeature.layerCode.includes("cd119") && (
+                              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#fbbf24]/10 border border-[#fbbf24]/30 text-[#fbbf24]">
+                                <Landmark className="w-3.5 h-3.5" />
+                                119th U.S. Congress (2025–2027)
+                              </span>
+                            )}
+                            {(selectedFeature.layerCode.includes("sldl") || selectedFeature.layerCode.includes("sldu")) && (
+                              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-purple-500/10 border border-purple-500/30 text-purple-300">
+                                <Scale className="w-3.5 h-3.5" />
+                                {selectedFeature.layerCode.includes("sldl") ? "Lower Chamber Assembly" : "Upper Chamber Senate"} ({lsyYear})
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      )}
                     </div>
+
+                    {/* Column 2: Raw Census Properties Table (7 cols) */}
+                    <div className="lg:col-span-7 rounded-2xl border border-white/10 bg-black/70 p-4 space-y-3">
+                      <div className="flex items-center justify-between pb-2 border-b border-white/10">
+                        <span className="font-mono text-[10px] uppercase tracking-widest text-white/50 font-bold flex items-center gap-1.5">
+                          <FileText className="w-3 h-3 text-[#fbbf24]" />
+                          {locale === "ro" ? "Atribute Cartografice Recensământ (Shapefile Properties)" : "Census Cartographic Properties (Raw Attributes)"}
+                        </span>
+                        <span className="font-mono text-[10px] text-white/30">
+                          {Object.keys(props).length} fields
+                        </span>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono max-h-72 overflow-y-auto scrollbar-thin pr-1">
+                        {Object.entries(props).map(([k, v]) => {
+                          if (v === null || v === undefined) return null;
+                          let displayValue = String(v);
+                          if (k === "ALAND" || k === "AWATER") {
+                            const sqMiles = (Number(v) / 2589988.11).toFixed(2);
+                            displayValue = `${Number(v).toLocaleString()} m² (${sqMiles} sq mi)`;
+                          }
+                          return (
+                            <div key={k} className="flex flex-col bg-white/[0.03] p-2.5 rounded-xl border border-white/5 hover:border-white/15 transition-colors">
+                              <span className="text-[10px] text-white/40 font-bold tracking-wide">{k}</span>
+                              <span className="text-white/90 font-medium truncate" title={displayValue}>{displayValue}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+
                   </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          )}
+                </motion.div>
+              </AnimatePresence>
+            );
+          })()}
 
           {/* ── SELECTED STATE DETAIL PANEL ── */}
           <AnimatePresence mode="wait">
