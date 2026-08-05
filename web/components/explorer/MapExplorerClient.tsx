@@ -1599,6 +1599,26 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <Footprints className="w-3.5 h-3.5 text-lime-400" />
                   <span>TRAILS ({showTrails ? "ON" : "OFF"})</span>
                 </button>
+
+                <button
+                  onClick={() => setShowParkBoundaries((prev) => !prev)}
+                  className={`rounded-full px-4 py-2 text-xs font-bold uppercase transition-all flex items-center gap-2 cursor-pointer shadow-md ${
+                    showParkBoundaries ? "bg-teal-500/20 text-teal-300 border border-teal-500/50" : "bg-white/5 text-white/50 border border-white/10 hover:bg-white/10"
+                  }`}
+                >
+                  <Landmark className="w-3.5 h-3.5 text-teal-400" />
+                  <span>PARK BOUNDARIES ({showParkBoundaries ? "ON" : "OFF"})</span>
+                </button>
+
+                <button
+                  onClick={() => setShowFederalLands((prev) => !prev)}
+                  className={`rounded-full px-4 py-2 text-xs font-bold uppercase transition-all flex items-center gap-2 cursor-pointer shadow-md ${
+                    showFederalLands ? "bg-amber-500/20 text-amber-300 border border-amber-500/50" : "bg-white/5 text-white/50 border border-white/10 hover:bg-white/10"
+                  }`}
+                >
+                  <Flag className="w-3.5 h-3.5 text-amber-400" />
+                  <span>FEDERAL LANDS ({showFederalLands ? "ON" : "OFF"})</span>
+                </button>
               </div>
 
               {/* Region Filter Buttons */}
@@ -2629,6 +2649,63 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         ))
                       )
                     )}
+
+                  {/* 🏞️ National Park Service Boundaries Overlay (official NPS, 442 units) —
+                      real polygon shapes, so park SIZE is visible on the map, not just a point. */}
+                  {showParkBoundaries && (
+                    <Geographies geography="/maps/national-park-boundaries.json">
+                      {({ geographies }: { geographies: Array<{ rsmKey: string; properties: Record<string, string> }> }) =>
+                        geographies.map((geo) => (
+                          <Geography
+                            key={geo.rsmKey}
+                            geography={geo}
+                            onMouseEnter={() => {
+                              setFeatureHoverInfo({
+                                label: geo.properties.UNIT_NAME || geo.properties.PARKNAME || "NPS Unit",
+                                details: `${geo.properties.UNIT_TYPE || "NPS Unit"} · ${geo.properties.STATE || ""}`,
+                                code: geo.properties.UNIT_CODE || "",
+                              });
+                            }}
+                            onMouseLeave={() => setFeatureHoverInfo(null)}
+                            style={{
+                              default: { fill: "rgba(16, 185, 129, 0.32)", stroke: "#10b981", strokeWidth: 0.6, outline: "none" },
+                              hover: { fill: "rgba(16, 185, 129, 0.55)", stroke: "#34d399", strokeWidth: 1, outline: "none", cursor: "pointer" },
+                              pressed: { outline: "none" },
+                            }}
+                          />
+                        ))
+                      }
+                    </Geographies>
+                  )}
+
+                  {/* 🇺🇸 Federal Lands Overlay (USGS PAD-US Federal Fee Managers, 5,361 parcels) —
+                      real polygon shapes showing the actual footprint of federal land ownership. */}
+                  {showFederalLands && (
+                    <Geographies geography="/maps/federal-lands.json">
+                      {({ geographies }: { geographies: Array<{ rsmKey: string; properties: Record<string, string> }> }) =>
+                        geographies.map((geo) => (
+                          <Geography
+                            key={geo.rsmKey}
+                            geography={geo}
+                            onMouseEnter={() => {
+                              const acres = Number(geo.properties.GIS_Acres);
+                              setFeatureHoverInfo({
+                                label: geo.properties.Unit_Nm || geo.properties.Mang_Name || "Federal Land",
+                                details: `${geo.properties.Mang_Name || geo.properties.Own_Name || ""} · ${geo.properties.State_Nm || ""}`,
+                                code: acres ? `${Math.round(acres).toLocaleString()} acres` : "",
+                              });
+                            }}
+                            onMouseLeave={() => setFeatureHoverInfo(null)}
+                            style={{
+                              default: { fill: "rgba(245, 158, 11, 0.28)", stroke: "#f59e0b", strokeWidth: 0.5, outline: "none" },
+                              hover: { fill: "rgba(245, 158, 11, 0.5)", stroke: "#fbbf24", strokeWidth: 1, outline: "none", cursor: "pointer" },
+                              pressed: { outline: "none" },
+                            }}
+                          />
+                        ))
+                      }
+                    </Geographies>
+                  )}
 
                   {/* 🏥 Hospitals & Clinics Overlay (HIFLD, 8,013 facilities) */}
                   {showHospitals &&
