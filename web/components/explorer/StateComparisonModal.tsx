@@ -1,16 +1,66 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, Swords, TrendingUp, DollarSign, Users, Landmark, GraduationCap, Award, Wifi, Home, Car, Scale, Briefcase, Globe, ShoppingCart } from "lucide-react";
+import { X, Swords, TrendingUp, DollarSign, GraduationCap, Landmark, Wifi, Home, Car, Globe, ShoppingCart } from "lucide-react";
 import { EXPLORER_STATES } from "@/lib/data/explorer-data";
 import { STATE_EXTENDED_DATA } from "@/lib/data/state-details";
 import { STATE_DEMOGRAPHIC_BENCHMARKS } from "@/components/explorer/MapExplorerClient";
+import { LOCAL_CENSUS_ACS_DATABASE } from "@/lib/data/census-local-data";
 
 interface StateComparisonModalProps {
   isOpen: boolean;
   onClose: () => void;
   initialStateA?: string;
   initialStateB?: string;
+}
+
+// A single neutral accent (gold) plus plain white/ink text for the two states —
+// no per-category rainbow. State A stays default white, State B is the accent.
+const ACCENT = "#C9A24A";
+
+function Row({
+  icon: Icon,
+  label,
+  a,
+  b,
+  unitA,
+  unitB,
+  subA,
+  subB,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  a: string;
+  b: string;
+  unitA?: string;
+  unitB?: string;
+  subA?: string;
+  subB?: string;
+}) {
+  return (
+    <div className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3">
+      <span className="mb-2 flex items-center gap-1.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-white/40">
+        <Icon className="h-3 w-3" />
+        {label}
+      </span>
+      <div className="grid grid-cols-2 gap-4 font-body">
+        <div>
+          <span className="font-mono text-lg font-bold text-white">
+            {a}
+            {unitA && <span className="ml-1 text-xs font-medium text-white/40">{unitA}</span>}
+          </span>
+          {subA && <span className="mt-0.5 block text-[11px] text-white/40">{subA}</span>}
+        </div>
+        <div className="text-right">
+          <span className="font-mono text-lg font-bold" style={{ color: ACCENT }}>
+            {b}
+            {unitB && <span className="ml-1 text-xs font-medium text-white/40">{unitB}</span>}
+          </span>
+          {subB && <span className="mt-0.5 block text-[11px] text-white/40">{subB}</span>}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function StateComparisonModal({
@@ -30,59 +80,60 @@ export function StateComparisonModal({
   const extB = STATE_EXTENDED_DATA[stateCodeB];
   const demoA = STATE_DEMOGRAPHIC_BENCHMARKS[stateCodeA];
   const demoB = STATE_DEMOGRAPHIC_BENCHMARKS[stateCodeB];
+  // Real ACS fields (work-from-home, foreign-born, SNAP, vehicle access) not
+  // covered by the benchmark table, pulled from the live-verified local dataset.
+  const acsA = LOCAL_CENSUS_ACS_DATABASE[stateCodeA];
+  const acsB = LOCAL_CENSUS_ACS_DATABASE[stateCodeB];
 
   if (!stateA || !stateB) return null;
 
   const statesList = Object.values(EXPLORER_STATES).sort((a, b) => a.name.en.localeCompare(b.name.en));
 
-  // Affordability Ratios
   const ratioA = demoA ? (demoA.homeValue / demoA.income).toFixed(1) : "N/A";
   const ratioB = demoB ? (demoB.homeValue / demoB.income).toFixed(1) : "N/A";
+
+  const gdpTotal = stateA.gdp + stateB.gdp;
 
   return (
     <div
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md overflow-y-auto cursor-pointer"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/85 p-4 backdrop-blur-md cursor-pointer"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-4xl rounded-3xl border border-[#fbbf24]/40 bg-[#0a0a0f] p-6 md:p-8 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto cursor-default"
+        className="relative max-h-[90vh] w-full max-w-3xl cursor-default space-y-5 overflow-y-auto rounded-3xl border border-white/10 bg-[#0a0a0f] p-6 shadow-2xl md:p-8"
       >
-        
-        {/* Glowing Top bar */}
-        <div className="h-1.5 w-full bg-gradient-to-r from-blue-500 via-[#fbbf24] to-emerald-500 rounded-full" />
-
-        {/* Modal Header */}
-        <div className="flex items-center justify-between">
+        {/* Header */}
+        <div className="flex items-center justify-between border-b border-white/10 pb-4">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-2xl bg-[#fbbf24]/10 border border-[#fbbf24]/30 text-[#fbbf24]">
-              <Swords className="w-6 h-6" />
+            <div className="rounded-xl border border-white/10 bg-white/5 p-2.5 text-white/70">
+              <Swords className="h-5 w-5" />
             </div>
             <div>
-              <h2 className="font-display text-2xl font-black text-white tracking-tight flex items-center gap-2">
-                State vs State Comparison Duel
+              <h2 className="font-display text-xl font-bold tracking-tight text-white">
+                State vs. State
               </h2>
-              <p className="font-body text-xs text-white/50">
-                Multi-category civic, demographic, economic, and affordability benchmark (Click outside to close)
+              <p className="font-body text-xs text-white/40">
+                Civic, demographic, and economic benchmarks · Census ACS 5-Year
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-full bg-white/5 hover:bg-white/15 text-white/70 hover:text-white transition-colors cursor-pointer"
+            className="rounded-full bg-white/5 p-2 text-white/50 transition-colors hover:bg-white/10 hover:text-white cursor-pointer"
           >
-            <X className="w-5 h-5" />
+            <X className="h-4 w-4" />
           </button>
         </div>
 
-        {/* State Selectors Header */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-          <div className="p-4 rounded-2xl border border-blue-500/30 bg-blue-500/5 space-y-2">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-blue-400 font-bold">State A</span>
+        {/* State Selectors */}
+        <div className="grid grid-cols-2 gap-3">
+          <div className="space-y-1.5 rounded-xl border border-white/10 bg-white/[0.02] p-3">
+            <span className="font-mono text-[10px] font-semibold uppercase tracking-widest text-white/40">State A</span>
             <select
               value={stateCodeA}
               onChange={(e) => setStateCodeA(e.target.value)}
-              className="w-full bg-black/80 border border-blue-500/40 rounded-xl px-3 py-2 text-white font-bold font-display text-lg focus:outline-none focus:border-blue-400 cursor-pointer"
+              className="w-full cursor-pointer rounded-lg border border-white/15 bg-black/60 px-3 py-2 font-display text-base font-bold text-white focus:border-white/30 focus:outline-none"
             >
               {statesList.map((s) => (
                 <option key={s.abbrev} value={s.abbrev}>
@@ -92,12 +143,13 @@ export function StateComparisonModal({
             </select>
           </div>
 
-          <div className="p-4 rounded-2xl border border-amber-500/30 bg-amber-500/5 space-y-2">
-            <span className="font-mono text-[10px] uppercase tracking-wider text-amber-400 font-bold">State B</span>
+          <div className="space-y-1.5 rounded-xl border border-white/10 bg-white/[0.02] p-3">
+            <span className="font-mono text-[10px] font-semibold uppercase tracking-widest text-white/40">State B</span>
             <select
               value={stateCodeB}
               onChange={(e) => setStateCodeB(e.target.value)}
-              className="w-full bg-black/80 border border-amber-500/40 rounded-xl px-3 py-2 text-white font-bold font-display text-lg focus:outline-none focus:border-amber-400 cursor-pointer"
+              className="w-full cursor-pointer rounded-lg border border-white/15 bg-black/60 px-3 py-2 font-display text-base font-bold focus:outline-none"
+              style={{ color: ACCENT }}
             >
               {statesList.map((s) => (
                 <option key={s.abbrev} value={s.abbrev}>
@@ -108,232 +160,99 @@ export function StateComparisonModal({
           </div>
         </div>
 
-        {/* Multi-Category Comparison Cards */}
-        <div className="space-y-4 pt-2">
-          
-          {/* Category 1: Economy & GDP */}
-          <div className="p-4 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-[#fbbf24] font-bold flex items-center gap-1.5">
-              <TrendingUp className="w-3.5 h-3.5 text-[#fbbf24]" />
-              State Economy & Gross State Product (GDP)
+        {/* Comparison rows */}
+        <div className="space-y-2.5">
+          <div className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3">
+            <span className="mb-2 flex items-center gap-1.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-white/40">
+              <TrendingUp className="h-3 w-3" />
+              Gross State Product
             </span>
-            <div className="grid grid-cols-12 gap-2 text-sm font-body items-center">
-              <div className="col-span-5 font-bold text-blue-400 font-mono text-lg text-left">
-                ${stateA.gdp} Billion
-              </div>
-              <div className="col-span-2 text-center text-xs text-white/50 uppercase font-bold font-mono">
-                GDP Output
-              </div>
-              <div className="col-span-5 font-bold text-amber-400 font-mono text-lg text-right">
-                ${stateB.gdp} Billion
-              </div>
+            <div className="mb-2 grid grid-cols-2 gap-4 font-mono">
+              <span className="text-lg font-bold text-white">${stateA.gdp}B</span>
+              <span className="text-right text-lg font-bold" style={{ color: ACCENT }}>${stateB.gdp}B</span>
             </div>
-            <div className="h-2.5 w-full bg-white/10 rounded-full flex overflow-hidden">
-              <div className="bg-blue-500 h-full transition-all" style={{ width: `${(stateA.gdp / (stateA.gdp + stateB.gdp)) * 100}%` }} />
-              <div className="bg-amber-500 h-full transition-all" style={{ width: `${(stateB.gdp / (stateA.gdp + stateB.gdp)) * 100}%` }} />
+            <div className="flex h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+              <div className="h-full bg-white/70" style={{ width: `${(stateA.gdp / gdpTotal) * 100}%` }} />
+              <div className="h-full" style={{ width: `${(stateB.gdp / gdpTotal) * 100}%`, background: ACCENT }} />
             </div>
           </div>
 
-          {/* Category 2: Median Income & Home Values (EQUAL SIZE & IMPORTANCE + AFFORDABILITY RATIO) */}
-          <div className="p-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="font-mono text-[11px] uppercase tracking-widest text-emerald-400 font-bold flex items-center gap-1.5">
-                <DollarSign className="w-3.5 h-3.5 text-emerald-400" />
-                Median Income & Home Value (Census ACS)
-              </span>
-              <span className="font-mono text-[10px] text-emerald-400/70 font-bold">Home Value / Income Ratio</span>
-            </div>
+          <Row
+            icon={DollarSign}
+            label="Median Household Income"
+            a={demoA ? `$${demoA.income.toLocaleString()}` : "N/A"}
+            b={demoB ? `$${demoB.income.toLocaleString()}` : "N/A"}
+            subA={`Home value $${demoA?.homeValue.toLocaleString() ?? "N/A"} · ${ratioA}× income`}
+            subB={`Home value $${demoB?.homeValue.toLocaleString() ?? "N/A"} · ${ratioB}× income`}
+          />
 
-            <div className="grid grid-cols-12 gap-4 text-sm font-body items-center">
-              {/* State A Values - Equal Size */}
-              <div className="col-span-5 space-y-1 font-mono text-left">
-                <div className="flex items-center justify-between bg-black/40 p-2.5 rounded-xl border border-blue-500/20">
-                  <span className="text-white/40 text-[10px] uppercase font-bold">Income</span>
-                  <span className="text-blue-300 font-bold text-base">${demoA?.income.toLocaleString() ?? "N/A"}</span>
-                </div>
-                <div className="flex items-center justify-between bg-black/40 p-2.5 rounded-xl border border-blue-500/20">
-                  <span className="text-white/40 text-[10px] uppercase font-bold">Home Val</span>
-                  <span className="text-blue-300 font-bold text-base">${demoA?.homeValue.toLocaleString() ?? "N/A"}</span>
-                </div>
-                <div className="text-[11px] font-mono text-blue-400 font-bold pt-1">
-                  Price-to-Income Ratio: <strong className="text-white">{ratioA}x</strong>
-                </div>
-              </div>
+          <Row
+            icon={Home}
+            label="Homeownership & Broadband"
+            a={`${demoA?.ownerPct ?? "—"}%`}
+            b={`${demoB?.ownerPct ?? "—"}%`}
+            unitA="own"
+            unitB="own"
+            subA={`Broadband access ${demoA?.broadbandPct ?? "—"}%`}
+            subB={`Broadband access ${demoB?.broadbandPct ?? "—"}%`}
+          />
 
-              <div className="col-span-2 text-center text-xs text-white/50 uppercase font-bold font-mono">
-                Equal Metric Benchmark
-              </div>
+          <Row
+            icon={Wifi}
+            label="Remote Work"
+            a={`${acsA?.workFromHomePct ?? "—"}%`}
+            b={`${acsB?.workFromHomePct ?? "—"}%`}
+            unitA="WFH"
+            unitB="WFH"
+          />
 
-              {/* State B Values - Equal Size */}
-              <div className="col-span-5 space-y-1 font-mono text-right">
-                <div className="flex items-center justify-between bg-black/40 p-2.5 rounded-xl border border-amber-500/20">
-                  <span className="text-white/40 text-[10px] uppercase font-bold">Income</span>
-                  <span className="text-amber-300 font-bold text-base">${demoB?.income.toLocaleString() ?? "N/A"}</span>
-                </div>
-                <div className="flex items-center justify-between bg-black/40 p-2.5 rounded-xl border border-amber-500/20">
-                  <span className="text-white/40 text-[10px] uppercase font-bold">Home Val</span>
-                  <span className="text-amber-300 font-bold text-base">${demoB?.homeValue.toLocaleString() ?? "N/A"}</span>
-                </div>
-                <div className="text-[11px] font-mono text-amber-400 font-bold pt-1">
-                  Price-to-Income Ratio: <strong className="text-white">{ratioB}x</strong>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Row
+            icon={Globe}
+            label="Foreign-Born Residents"
+            a={`${acsA?.foreignBornPct ?? "—"}%`}
+            b={`${acsB?.foreignBornPct ?? "—"}%`}
+          />
 
-          {/* Category 3: Housing & Broadband Digital Access */}
-          <div className="p-4 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-sky-400 font-bold flex items-center gap-1.5">
-              <Home className="w-3.5 h-3.5 text-sky-400" />
-              Homeownership Rate & High-Speed Broadband
-            </span>
-            <div className="grid grid-cols-12 gap-2 text-sm font-body items-center">
-              <div className="col-span-5 font-mono text-left">
-                <span className="font-bold text-blue-300 block text-base">{demoA?.ownerPct}% Homeowners</span>
-                <span className="text-xs text-white/50 block">Broadband Internet: {demoA?.broadbandPct}%</span>
-              </div>
-              <div className="col-span-2 text-center text-xs text-white/50 uppercase font-bold font-mono">
-                Housing & Net
-              </div>
-              <div className="col-span-5 font-mono text-right">
-                <span className="font-bold text-amber-300 block text-base">{demoB?.ownerPct}% Homeowners</span>
-                <span className="text-xs text-white/50 block">Broadband Internet: {demoB?.broadbandPct}%</span>
-              </div>
-            </div>
-          </div>
+          <Row
+            icon={ShoppingCart}
+            label="Poverty & SNAP Assistance"
+            a={`${demoA?.povertyPct ?? "—"}%`}
+            b={`${demoB?.povertyPct ?? "—"}%`}
+            unitA="poverty"
+            unitB="poverty"
+            subA={`SNAP households ${acsA?.snapPct ?? "—"}%`}
+            subB={`SNAP households ${acsB?.snapPct ?? "—"}%`}
+          />
 
-          {/* Category 4: Remote Work & Employment */}
-          <div className="p-4 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-teal-400 font-bold flex items-center gap-1.5">
-              <Briefcase className="w-3.5 h-3.5 text-teal-400" />
-              Work From Home % & Digital Economy
-            </span>
-            <div className="grid grid-cols-12 gap-2 text-sm font-body items-center">
-              <div className="col-span-5 font-mono text-left">
-                <span className="font-bold text-blue-300 block text-base">{((demoA?.broadbandPct || 85) * 0.16).toFixed(1)}% WFH Commuters</span>
-                <span className="text-xs text-white/50 block">Tech/Pro Sector: {((demoA?.eduPct || 30) * 0.75).toFixed(1)}%</span>
-              </div>
-              <div className="col-span-2 text-center text-xs text-white/50 uppercase font-bold font-mono">
-                Remote Work
-              </div>
-              <div className="col-span-5 font-mono text-right">
-                <span className="font-bold text-amber-300 block text-base">{((demoB?.broadbandPct || 85) * 0.16).toFixed(1)}% WFH Commuters</span>
-                <span className="text-xs text-white/50 block">Tech/Pro Sector: {((demoB?.eduPct || 30) * 0.75).toFixed(1)}%</span>
-              </div>
-            </div>
-          </div>
+          <Row
+            icon={Car}
+            label="Commute & Vehicle Access"
+            a={`${demoA?.commuteMins ?? "—"} min`}
+            b={`${demoB?.commuteMins ?? "—"} min`}
+            subA={`Zero-vehicle households ${acsA?.noVehiclePct ?? "—"}%`}
+            subB={`Zero-vehicle households ${acsB?.noVehiclePct ?? "—"}%`}
+          />
 
-          {/* Category 5: Immigrant & Foreign-Born Demographics */}
-          <div className="p-4 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-indigo-400 font-bold flex items-center gap-1.5">
-              <Globe className="w-3.5 h-3.5 text-indigo-400" />
-              Foreign-Born Residents & Language Diversity
-            </span>
-            <div className="grid grid-cols-12 gap-2 text-sm font-body items-center">
-              <div className="col-span-5 font-mono text-left">
-                <span className="font-bold text-blue-300 block text-base">{((demoA?.povertyPct || 12) * 1.1).toFixed(1)}% Foreign-Born</span>
-                <span className="text-xs text-white/50 block">Multilingual Households: {((demoA?.povertyPct || 12) * 1.4).toFixed(1)}%</span>
-              </div>
-              <div className="col-span-2 text-center text-xs text-white/50 uppercase font-bold font-mono">
-                Global Origin
-              </div>
-              <div className="col-span-5 font-mono text-right">
-                <span className="font-bold text-amber-300 block text-base">{((demoB?.povertyPct || 12) * 1.1).toFixed(1)}% Foreign-Born</span>
-                <span className="text-xs text-white/50 block">Multilingual Households: {((demoB?.povertyPct || 12) * 1.4).toFixed(1)}%</span>
-              </div>
-            </div>
-          </div>
+          <Row
+            icon={GraduationCap}
+            label="Education & Veterans"
+            a={`${demoA?.eduPct ?? "—"}%`}
+            b={`${demoB?.eduPct ?? "—"}%`}
+            unitA="bachelor's+"
+            unitB="bachelor's+"
+            subA={`Veteran rate ${demoA?.vetPct ?? "—"}%`}
+            subB={`Veteran rate ${demoB?.vetPct ?? "—"}%`}
+          />
 
-          {/* Category 6: Public Assistance & Poverty Rate */}
-          <div className="p-4 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-rose-400 font-bold flex items-center gap-1.5">
-              <ShoppingCart className="w-3.5 h-3.5 text-rose-400" />
-              Poverty Rate & SNAP Food Assistance
-            </span>
-            <div className="grid grid-cols-12 gap-2 text-sm font-body items-center">
-              <div className="col-span-5 font-mono text-left">
-                <span className="font-bold text-blue-300 block text-base">{demoA?.povertyPct}% Poverty Rate</span>
-                <span className="text-xs text-white/50 block">SNAP Households: {((demoA?.povertyPct || 12) * 0.9).toFixed(1)}%</span>
-              </div>
-              <div className="col-span-2 text-center text-xs text-white/50 uppercase font-bold font-mono">
-                Safety Net
-              </div>
-              <div className="col-span-5 font-mono text-right">
-                <span className="font-bold text-amber-300 block text-base">{demoB?.povertyPct}% Poverty Rate</span>
-                <span className="text-xs text-white/50 block">SNAP Households: {((demoB?.povertyPct || 12) * 0.9).toFixed(1)}%</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Category 7: Commute Time & Poverty Rate */}
-          <div className="p-4 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-purple-400 font-bold flex items-center gap-1.5">
-              <Car className="w-3.5 h-3.5 text-purple-400" />
-              Mean Commute Time & Vehicle Ownership
-            </span>
-            <div className="grid grid-cols-12 gap-2 text-sm font-body items-center">
-              <div className="col-span-5 font-mono text-left">
-                <span className="font-bold text-blue-300 block text-base">{demoA?.commuteMins} min Commute</span>
-                <span className="text-xs text-white/50 block">Zero-Vehicle Homes: {((demoA?.commuteMins || 25) * 0.3).toFixed(1)}%</span>
-              </div>
-              <div className="col-span-2 text-center text-xs text-white/50 uppercase font-bold font-mono">
-                Transit & Cars
-              </div>
-              <div className="col-span-5 font-mono text-right">
-                <span className="font-bold text-amber-300 block text-base">{demoB?.commuteMins} min Commute</span>
-                <span className="text-xs text-white/50 block">Zero-Vehicle Homes: {((demoB?.commuteMins || 25) * 0.3).toFixed(1)}%</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Category 8: Education & Veterans */}
-          <div className="p-4 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-blue-400 font-bold flex items-center gap-1.5">
-              <GraduationCap className="w-3.5 h-3.5 text-blue-400" />
-              Higher Education & Veteran Population
-            </span>
-            <div className="grid grid-cols-12 gap-2 text-sm font-body items-center">
-              <div className="col-span-5 font-mono text-left">
-                <span className="font-bold text-blue-300 block text-base">{demoA?.eduPct}% Bachelor's+</span>
-                <span className="text-xs text-white/50 block">Veteran Rate: {demoA?.vetPct}%</span>
-              </div>
-              <div className="col-span-2 text-center text-xs text-white/50 uppercase font-bold font-mono">
-                Edu & Vets
-              </div>
-              <div className="col-span-5 font-mono text-right">
-                <span className="font-bold text-amber-300 block text-base">{demoB?.eduPct}% Bachelor's+</span>
-                <span className="text-xs text-white/50 block">Veteran Rate: {demoB?.vetPct}%</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Category 9: Electoral Power & Constitution */}
-          <div className="p-4 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-[#fbbf24] font-bold flex items-center gap-1.5">
-              <Landmark className="w-3.5 h-3.5 text-[#fbbf24]" />
-              Electoral College Weight & Constitution Size
-            </span>
-            <div className="grid grid-cols-12 gap-2 text-sm font-body items-center">
-              <div className="col-span-5 font-mono text-left">
-                <span className="font-bold text-blue-300 block text-base">{extA?.electoralVotes ?? "N/A"} Electoral Votes</span>
-                <span className="text-xs text-white/50 block">
-                  {extA?.constitution.wordCount ? `${(extA.constitution.wordCount / 1000).toFixed(1)}k words (${extA.constitution.amendmentsCount} amend.)` : "Constitution"}
-                </span>
-              </div>
-              <div className="col-span-2 text-center text-xs text-white/50 uppercase font-bold font-mono">
-                EVs & Law
-              </div>
-              <div className="col-span-5 font-mono text-right">
-                <span className="font-bold text-amber-300 block text-base">{extB?.electoralVotes ?? "N/A"} Electoral Votes</span>
-                <span className="text-xs text-white/50 block">
-                  {extB?.constitution.wordCount ? `${(extB.constitution.wordCount / 1000).toFixed(1)}k words (${extB.constitution.amendmentsCount} amend.)` : "Constitution"}
-                </span>
-              </div>
-            </div>
-          </div>
-
+          <Row
+            icon={Landmark}
+            label="Electoral Weight"
+            a={`${extA?.electoralVotes ?? "N/A"}`}
+            b={`${extB?.electoralVotes ?? "N/A"}`}
+            unitA="votes"
+            unitB="votes"
+          />
         </div>
-
       </div>
     </div>
   );

@@ -47,6 +47,11 @@ import {
   TrainTrack,
   Route,
   Vote,
+  Hospital,
+  School,
+  Mountain,
+  Footprints,
+  TrainFront,
 } from "lucide-react";
 import { EXPLORER_STATES, StateData } from "@/lib/data/explorer-data";
 import { STATE_EXTENDED_DATA } from "@/lib/data/state-details";
@@ -57,12 +62,19 @@ import { InterstateCooperationMap } from "@/components/explorer/InterstateCooper
 import { StateRevenueBudget } from "@/components/explorer/StateRevenueBudget";
 import { fetchCensusAcsData, CensusAcsData } from "@/lib/services/census-api";
 import { LOCAL_CENSUS_ACS_DATABASE } from "@/lib/data/census-local-data";
+import { LOCAL_CENSUS_COUNTY_METRO_DATA } from "@/lib/data/census-county-metro-data";
 
 import { ELECTION_2024_STATES, ELECTION_2020_STATES, getElectionColor } from "@/lib/data/election-data";
 import { US_NATIONAL_PARKS } from "@/lib/data/national-parks-data";
 import { HIGHWAY_ROUTES, RAIL_ROUTES } from "@/lib/data/infrastructure-network-data";
 import railData from "@/lib/data/rail-simplified.json";
 import interstateData from "@/lib/data/interstates-simplified.json";
+import hospitalsData from "@/lib/data/hospitals-points.json";
+import schoolsData from "@/lib/data/schools-points.json";
+import volcanoesData from "@/lib/data/volcanoes-points.json";
+import amtrakStationsData from "@/lib/data/amtrak-stations-points.json";
+import transmissionLinesData from "@/lib/data/transmission-lines-segments.json";
+import trailsData from "@/lib/data/trails-segments.json";
 import { StateComparisonModal } from "@/components/explorer/StateComparisonModal";
 import { StateFactsheetModal } from "@/components/explorer/StateFactsheetModal";
 
@@ -124,7 +136,7 @@ export interface CensusLayerItem {
   id: string;
   code: string;
   name: { en: string; ro: string };
-  category: "states_regions" | "political" | "metro" | "education" | "micro" | "catalog";
+  category: "states_regions" | "political" | "metro" | "education" | "micro" | "catalog" | "reference";
   categoryLabel: { en: string; ro: string };
   url: string;
   badge: string;
@@ -261,6 +273,36 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     url: "/maps/csa.json",
     badge: "175 Combined Areas",
     description: { en: "Regional Economic Combined Metropolitan Conurbations", ro: "Conurbații economice regionale combinate" },
+  },
+  {
+    id: "zip_codes",
+    code: "usa_zip_code_areas",
+    name: { en: "ZIP Code Boundaries", ro: "Granițe Cod Poștal (ZIP)" },
+    category: "reference",
+    categoryLabel: { en: "Reference Boundaries", ro: "Granițe de Referință" },
+    url: "/maps/zip-codes.json",
+    badge: "32,294 ZIP Codes",
+    description: { en: "USPS ZIP Code Tabulation Areas Nationwide", ro: "Zonele de tabulare a codurilor poștale USPS la nivel național" },
+  },
+  {
+    id: "time_zones",
+    code: "ntad_time_zones",
+    name: { en: "Time Zones", ro: "Fusuri Orare" },
+    category: "reference",
+    categoryLabel: { en: "Reference Boundaries", ro: "Granițe de Referință" },
+    url: "/maps/time-zones.json",
+    badge: "9 Zones",
+    description: { en: "The 9 Official U.S. Time Zones, Coast to Coast and Territories", ro: "Cele 9 fusuri orare oficiale ale SUA, coastă la coastă și teritorii" },
+  },
+  {
+    id: "national_park_boundaries",
+    code: "nps_boundary",
+    name: { en: "National Park Service Boundaries", ro: "Granițele Serviciului Parcurilor Naționale" },
+    category: "reference",
+    categoryLabel: { en: "Reference Boundaries", ro: "Granițe de Referință" },
+    url: "/maps/national-park-boundaries.json",
+    badge: "442 NPS Units",
+    description: { en: "Every National Park Service Unit: Parks, Monuments, Historic Sites & More", ro: "Fiecare unitate a Serviciului Parcurilor Naționale: parcuri, monumente, situri istorice" },
   },
   {
     id: "metro_divisions",
@@ -752,6 +794,12 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   const [showNationalParks, setShowNationalParks] = useState<boolean>(false);
   const [showInterstates, setShowInterstates] = useState<boolean>(false);
   const [showAmtrakRail, setShowAmtrakRail] = useState<boolean>(false);
+  const [showHospitals, setShowHospitals] = useState<boolean>(false);
+  const [showSchools, setShowSchools] = useState<boolean>(false);
+  const [showVolcanoes, setShowVolcanoes] = useState<boolean>(false);
+  const [showAmtrakStations, setShowAmtrakStations] = useState<boolean>(false);
+  const [showTransmissionLines, setShowTransmissionLines] = useState<boolean>(false);
+  const [showTrails, setShowTrails] = useState<boolean>(false);
   const [historicalYearFilter, setHistoricalYearFilter] = useState<number>(1959);
   // Census Layer selection state (22 views)
   const [activeCensusLayerId, setActiveCensusLayerId] = useState<string>("states");
@@ -1031,7 +1079,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
         const stAbbrev = abbrev || (props.STATEFP ? FIPS_TO_ABBREV[props.STATEFP] : "");
         const geoidKey = props.GEOID || (props.STATEFP && props.COUNTYFP ? `${props.STATEFP}${props.COUNTYFP}` : "") || featureId;
-        const localAcs = LOCAL_CENSUS_ACS_DATABASE[geoidKey];
+        const localAcs = LOCAL_CENSUS_ACS_DATABASE[geoidKey] || LOCAL_CENSUS_COUNTY_METRO_DATA[geoidKey];
 
         // Deterministic hash variance per FIPS code so every county & metro area renders unique heatmap shading
         let hash = 0;
@@ -1489,6 +1537,66 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 >
                   <TrainTrack className="w-3.5 h-3.5 text-sky-400" />
                   <span>AMTRAK RAIL ({showAmtrakRail ? "ON" : "OFF"})</span>
+                </button>
+
+                <button
+                  onClick={() => setShowHospitals((prev) => !prev)}
+                  className={`rounded-full px-4 py-2 text-xs font-bold uppercase transition-all flex items-center gap-2 cursor-pointer shadow-md ${
+                    showHospitals ? "bg-rose-500/20 text-rose-300 border border-rose-500/50" : "bg-white/5 text-white/50 border border-white/10 hover:bg-white/10"
+                  }`}
+                >
+                  <Hospital className="w-3.5 h-3.5 text-rose-400" />
+                  <span>HOSPITALS ({showHospitals ? "ON" : "OFF"})</span>
+                </button>
+
+                <button
+                  onClick={() => setShowSchools((prev) => !prev)}
+                  className={`rounded-full px-4 py-2 text-xs font-bold uppercase transition-all flex items-center gap-2 cursor-pointer shadow-md ${
+                    showSchools ? "bg-indigo-500/20 text-indigo-300 border border-indigo-500/50" : "bg-white/5 text-white/50 border border-white/10 hover:bg-white/10"
+                  }`}
+                >
+                  <School className="w-3.5 h-3.5 text-indigo-400" />
+                  <span>PUBLIC SCHOOLS ({showSchools ? "ON" : "OFF"})</span>
+                </button>
+
+                <button
+                  onClick={() => setShowVolcanoes((prev) => !prev)}
+                  className={`rounded-full px-4 py-2 text-xs font-bold uppercase transition-all flex items-center gap-2 cursor-pointer shadow-md ${
+                    showVolcanoes ? "bg-orange-500/20 text-orange-300 border border-orange-500/50" : "bg-white/5 text-white/50 border border-white/10 hover:bg-white/10"
+                  }`}
+                >
+                  <Mountain className="w-3.5 h-3.5 text-orange-400" />
+                  <span>VOLCANOES ({showVolcanoes ? "ON" : "OFF"})</span>
+                </button>
+
+                <button
+                  onClick={() => setShowAmtrakStations((prev) => !prev)}
+                  className={`rounded-full px-4 py-2 text-xs font-bold uppercase transition-all flex items-center gap-2 cursor-pointer shadow-md ${
+                    showAmtrakStations ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/50" : "bg-white/5 text-white/50 border border-white/10 hover:bg-white/10"
+                  }`}
+                >
+                  <TrainFront className="w-3.5 h-3.5 text-cyan-400" />
+                  <span>RAIL STATIONS ({showAmtrakStations ? "ON" : "OFF"})</span>
+                </button>
+
+                <button
+                  onClick={() => setShowTransmissionLines((prev) => !prev)}
+                  className={`rounded-full px-4 py-2 text-xs font-bold uppercase transition-all flex items-center gap-2 cursor-pointer shadow-md ${
+                    showTransmissionLines ? "bg-yellow-500/20 text-yellow-300 border border-yellow-500/50" : "bg-white/5 text-white/50 border border-white/10 hover:bg-white/10"
+                  }`}
+                >
+                  <Zap className="w-3.5 h-3.5 text-yellow-400" />
+                  <span>POWER GRID ({showTransmissionLines ? "ON" : "OFF"})</span>
+                </button>
+
+                <button
+                  onClick={() => setShowTrails((prev) => !prev)}
+                  className={`rounded-full px-4 py-2 text-xs font-bold uppercase transition-all flex items-center gap-2 cursor-pointer shadow-md ${
+                    showTrails ? "bg-lime-500/20 text-lime-300 border border-lime-500/50" : "bg-white/5 text-white/50 border border-white/10 hover:bg-white/10"
+                  }`}
+                >
+                  <Footprints className="w-3.5 h-3.5 text-lime-400" />
+                  <span>TRAILS ({showTrails ? "ON" : "OFF"})</span>
                 </button>
               </div>
 
@@ -2238,7 +2346,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                                 const name = props.NAMELSAD || props.NAME || props.GEOID || "Boundary Feature";
                                 const stFips = props.STATEFP ? FIPS_TO_ABBREV[props.STATEFP] || props.STATEFP : "";
                                 const code = props.GEOID || (props.STATEFP && props.COUNTYFP ? `${props.STATEFP}${props.COUNTYFP}` : "") || activeCensusLayer.code;
-                                const localAcs = LOCAL_CENSUS_ACS_DATABASE[code];
+                                const localAcs = LOCAL_CENSUS_ACS_DATABASE[code] || LOCAL_CENSUS_COUNTY_METRO_DATA[code];
 
                                 // Deterministic hash variance for unlisted FIPS
                                 let hash = 0;
@@ -2462,7 +2570,12 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           ))
                         )
                       )}
-                      {HIGHWAY_ROUTES.map((route) =>
+                      {/* Only the pre-numbered historic trails (Lincoln Highway, Route 66) lack
+                          real modern road geometry and stay schematic. The numbered Interstates
+                          in HIGHWAY_ROUTES are a ~15-waypoint stand-in for the highway-system
+                          page's stylized era map — drawing them here duplicated (and visibly
+                          disagreed with) the accurate NTAD-derived interstateData above. */}
+                      {HIGHWAY_ROUTES.filter((route) => route.era !== "interstate").map((route) =>
                         route.waypoints.slice(0, -1).map((pt, idx) => (
                           <Line
                             key={`${route.id}-${idx}`}
@@ -2511,6 +2624,99 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       )}
                     </>
                   )}
+
+                  {/* ⚡ US Electric Power Transmission Lines Overlay (HIFLD, 74.5k segments) */}
+                  {showTransmissionLines &&
+                    transmissionLinesData.flatMap((line: any, lIdx: number) =>
+                      (line.segments || []).flatMap((seg: any[], sIdx: number) =>
+                        seg.slice(0, -1).map((pt: any, pIdx: number) => (
+                          <Line
+                            key={`transmission-${lIdx}-${sIdx}-${pIdx}`}
+                            from={pt}
+                            to={seg[pIdx + 1]}
+                            stroke="#facc15"
+                            strokeWidth={0.5}
+                            strokeOpacity={0.6}
+                          />
+                        ))
+                      )
+                    )}
+
+                  {/* 🥾 National Trails Overlay (USFS Motor Vehicle Use Maps, 23.3k trails) */}
+                  {showTrails &&
+                    trailsData.flatMap((trail: any, tIdx: number) =>
+                      (trail.segments || []).flatMap((seg: any[], sIdx: number) =>
+                        seg.slice(0, -1).map((pt: any, pIdx: number) => (
+                          <Line
+                            key={`trail-${tIdx}-${sIdx}-${pIdx}`}
+                            from={pt}
+                            to={seg[pIdx + 1]}
+                            stroke="#a3e635"
+                            strokeWidth={0.6}
+                            strokeDasharray="2 2"
+                            strokeOpacity={0.7}
+                          />
+                        ))
+                      )
+                    )}
+
+                  {/* 🏥 Hospitals & Clinics Overlay (HIFLD, 8,013 facilities) */}
+                  {showHospitals &&
+                    (hospitalsData as any[]).map((h, i) => (
+                      <Marker key={`hosp-${i}`} coordinates={[h.lon, h.lat]}>
+                        <circle r={2} fill="#fb7185" fillOpacity={0.85} />
+                      </Marker>
+                    ))}
+
+                  {/* 🏫 Public Schools Overlay (NCES, 102,178 schools) */}
+                  {showSchools &&
+                    (schoolsData as any[]).map((s, i) => (
+                      <Marker key={`school-${i}`} coordinates={[s.lon, s.lat]}>
+                        <circle r={1.4} fill="#818cf8" fillOpacity={0.75} />
+                      </Marker>
+                    ))}
+
+                  {/* 🌋 Monitored U.S. Volcanoes Overlay (USGS, 161 volcanoes) */}
+                  {showVolcanoes &&
+                    (volcanoesData as any[]).map((v, i) => (
+                      <Marker
+                        key={`volcano-${i}`}
+                        coordinates={[v.lon, v.lat]}
+                        onMouseEnter={() => {
+                          setFeatureHoverInfo({
+                            label: v.n,
+                            details: `${v.c || "USGS Monitored"}${v.e ? ` • ${Math.round(v.e)} ft` : ""}`,
+                            code: v.al || "Volcano",
+                          });
+                        }}
+                        onMouseLeave={() => setFeatureHoverInfo(null)}
+                      >
+                        <g className="cursor-pointer">
+                          <path d="M -5 4 L 0 -5 L 5 4 Z" fill="#fb923c" stroke="#ffffff" strokeWidth={0.8} />
+                        </g>
+                      </Marker>
+                    ))}
+
+                  {/* 🚉 Amtrak Rail Stations Overlay (BTS/NTAD, 1,031 stations) */}
+                  {showAmtrakStations &&
+                    (amtrakStationsData as any[]).map((st, i) => (
+                      <Marker
+                        key={`amtrak-stn-${i}`}
+                        coordinates={[st.lon, st.lat]}
+                        onMouseEnter={() => {
+                          setFeatureHoverInfo({
+                            label: st.n,
+                            details: `${st.c || ""}${st.s ? `, ${st.s}` : ""}`,
+                            code: st.code || "Amtrak",
+                          });
+                        }}
+                        onMouseLeave={() => setFeatureHoverInfo(null)}
+                      >
+                        <g className="cursor-pointer">
+                          <circle r={2.5} fill="#22d3ee" stroke="#ffffff" strokeWidth={1} />
+                        </g>
+                      </Marker>
+                    ))}
 
                   {/* 🌲 63 Official U.S. National Parks Interactive Markers Overlay */}
                   {showNationalParks &&
@@ -3885,6 +4091,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     { id: "metro", label: locale === "ro" ? "Metropolitan & Comitate" : "Metropolitan & Counties" },
                     { id: "education", label: locale === "ro" ? "Educație & Școli" : "Education & Schools" },
                     { id: "micro", label: locale === "ro" ? "Micro-Recensământ" : "Census Micro-Tracts" },
+                    { id: "reference", label: locale === "ro" ? "Granițe de Referință" : "Reference Boundaries" },
                     { id: "catalog", label: locale === "ro" ? "Catalog Complet" : "Full Catalog" },
                   ].map((cat) => {
                     const isActive = layerCategoryFilter === cat.id;

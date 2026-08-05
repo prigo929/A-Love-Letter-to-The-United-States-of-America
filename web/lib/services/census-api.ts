@@ -40,11 +40,11 @@ const censusCache = new Map<string, CensusAcsData>();
 // 27 Key ACS 5-Year Variables
 const ACS_VARS = [
   "NAME",
-  "B19013_010E", // Median Household Income
-  "B01003_010E", // Total Population
-  "B01002_010E", // Median Age
-  "B25077_010E", // Median Owner Home Value
-  "B25064_010E", // Median Rent
+  "B19013_001E", // Median Household Income
+  "B01003_001E", // Total Population
+  "B01002_001E", // Median Age
+  "B25077_001E", // Median Owner Home Value
+  "B25064_001E", // Median Rent
   "B15003_022E", // Bachelor's Degree
   "B21001_002E", // Veteran Population
   "B08301_021E", // Work From Home
@@ -53,7 +53,8 @@ const ACS_VARS = [
   "B28002_004E", // Broadband Internet Access
   "B28002_013E", // No Internet Access
   "B17001_002E", // Population in Poverty
-  "B08303_001E", // Travel Time to Work
+  "B08013_001E", // Aggregate Travel Time to Work (minutes)
+  "B08012_001E", // Workers (denominator for mean commute time)
   "B08201_002E", // Zero Vehicle Households
   "B05002_013E", // Foreign-Born Population
   "B19057_002E", // SNAP / Food Stamps
@@ -70,6 +71,7 @@ const ACS_VARS = [
 ].join(",");
 
 import { LOCAL_CENSUS_ACS_DATABASE } from "@/lib/data/census-local-data";
+import { LOCAL_CENSUS_COUNTY_METRO_DATA } from "@/lib/data/census-county-metro-data";
 
 /**
  * Fetch Census ACS data (100% Instant Offline Local Lookup + Fallback)
@@ -89,6 +91,11 @@ export async function fetchCensusAcsData(params: {
   const keyToLookup = params.geoid || compositeCountyGeoid || params.stateAbbrev || "";
   if (keyToLookup && LOCAL_CENSUS_ACS_DATABASE[keyToLookup]) {
     return LOCAL_CENSUS_ACS_DATABASE[keyToLookup];
+  }
+  // Real ACS data for every one of the ~3,222 counties and ~935 CBSAs (metro +
+  // micro statistical areas), pre-fetched by scripts/build-county-metro-census.py.
+  if (keyToLookup && LOCAL_CENSUS_COUNTY_METRO_DATA[keyToLookup]) {
+    return LOCAL_CENSUS_COUNTY_METRO_DATA[keyToLookup];
   }
 
   const cacheKey = `${params.layerCode || "geo"}:${params.geoid || ""}:${params.stateFips || ""}:${params.countyFips || ""}`;
@@ -168,7 +175,7 @@ export async function fetchCensusAcsData(params: {
     const nameIdx = headers.indexOf("NAME");
     const name = nameIdx !== -1 ? String(row[nameIdx]) : "Census Area";
 
-    const pop = getValue("B01003_010E");
+    const pop = getValue("B01003_001E");
     const bachelors = getValue("B15003_022E");
     const veterans = getValue("B21001_002E");
     const wfh = getValue("B08301_021E");
@@ -179,7 +186,8 @@ export async function fetchCensusAcsData(params: {
     const broadband = getValue("B28002_004E");
     const noInternet = getValue("B28002_013E");
     const poverty = getValue("B17001_002E");
-    const commuteAgg = getValue("B08303_001E");
+    const commuteAggMin = getValue("B08013_001E");
+    const commuteWorkers = getValue("B08012_001E");
     const noVehicle = getValue("B08201_002E");
     const foreignBorn = getValue("B05002_013E");
     const snap = getValue("B19057_002E");
@@ -197,11 +205,11 @@ export async function fetchCensusAcsData(params: {
 
     const result: CensusAcsData = {
       name,
-      medianIncome: getValue("B19013_010E"),
+      medianIncome: getValue("B19013_001E"),
       totalPopulation: pop,
-      medianAge: getValue("B01002_010E"),
-      medianHomeValue: getValue("B25077_010E"),
-      medianRent: getValue("B25064_010E"),
+      medianAge: getValue("B01002_001E"),
+      medianHomeValue: getValue("B25077_001E"),
+      medianRent: getValue("B25064_001E"),
       bachelorOrHigherPct: pop && bachelors ? Number(((bachelors / pop) * 100).toFixed(1)) : null,
       veteranPct: pop && veterans ? Number(((veterans / pop) * 100).toFixed(1)) : null,
       workFromHomePct: pop && wfh ? Number(((wfh / pop) * 100).toFixed(1)) : null,
@@ -210,7 +218,7 @@ export async function fetchCensusAcsData(params: {
       broadbandPct: pop && broadband ? Number(((broadband / pop) * 100).toFixed(1)) : 88.5,
       noInternetPct: pop && noInternet ? Number(((noInternet / pop) * 100).toFixed(1)) : 11.5,
       povertyPct: pop && poverty ? Number(((poverty / pop) * 100).toFixed(1)) : 12.2,
-      meanCommuteMinutes: pop && commuteAgg ? Number((commuteAgg / (pop * 0.45)).toFixed(1)) : 26.8,
+      meanCommuteMinutes: commuteWorkers && commuteAggMin ? Number((commuteAggMin / commuteWorkers).toFixed(1)) : 26.8,
       noVehiclePct: pop && noVehicle ? Number(((noVehicle / pop) * 100).toFixed(1)) : 8.4,
       foreignBornPct: pop && foreignBorn ? Number(((foreignBorn / pop) * 100).toFixed(1)) : 13.8,
       snapPct: pop && snap ? Number(((snap / pop) * 100).toFixed(1)) : 11.2,
