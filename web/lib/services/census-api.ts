@@ -33,6 +33,12 @@ export interface CensusAcsData {
 
 const CENSUS_API_KEY = process.env.NEXT_PUBLIC_CENSUS_API_KEY || "e5ee914a911db64a0f18d46b9f3e106c4c9765dd";
 const CENSUS_BASE_URL = "https://api.census.gov/data/2023/acs/acs5";
+// The ACS Data Profile ("DP") tables carry pre-computed, correctly-denominated
+// percentages straight from the Census Bureau — used for the five fields that
+// are error-prone to re-derive by hand (wrong universe/denominator, or no
+// single detail-table variable at all, e.g. health insurance coverage).
+const CENSUS_PROFILE_URL = "https://api.census.gov/data/2023/acs/acs5/profile";
+const PROFILE_VARS = ["DP02_0067PE", "DP02_0068PE", "DP03_0009PE", "DP03_0074PE", "DP03_0096PE"].join(",");
 
 // In-memory cache for Census API responses
 const censusCache = new Map<string, CensusAcsData>();
@@ -145,12 +151,18 @@ export async function fetchCensusAcsData(params: {
   const url = `${CENSUS_BASE_URL}?get=${ACS_VARS}&for=${encodeURIComponent(forQuery)}${
     inQuery ? `&in=${encodeURIComponent(inQuery)}` : ""
   }&key=${CENSUS_API_KEY}`;
+  const profileUrl = `${CENSUS_PROFILE_URL}?get=${PROFILE_VARS}&for=${encodeURIComponent(forQuery)}${
+    inQuery ? `&in=${encodeURIComponent(inQuery)}` : ""
+  }&key=${CENSUS_API_KEY}`;
 
   try {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 4000);
 
-    const res = await fetch(url, { signal: controller.signal });
+    const [res, profileRes] = await Promise.all([
+      fetch(url, { signal: controller.signal }),
+      fetch(profileUrl, { signal: controller.signal }).catch(() => null),
+    ]);
     clearTimeout(timeoutId);
 
     if (!res.ok) {
@@ -172,11 +184,29 @@ export async function fetchCensusAcsData(params: {
       return isNaN(val) || val <= -666666666 ? null : val;
     };
 
+    // Pre-computed Data Profile percentages (correct universe/denominator,
+    // and the only source for health-insurance coverage). Falls back to null
+    // (not a fabricated constant) if the profile request failed.
+    let profileHeaders: string[] = [];
+    let profileRow: any[] = [];
+    if (profileRes && profileRes.ok) {
+      const profileData = await profileRes.json();
+      if (Array.isArray(profileData) && profileData.length >= 2) {
+        profileHeaders = profileData[0];
+        profileRow = profileData[1];
+      }
+    }
+    const getProfileValue = (varName: string): number | null => {
+      const idx = profileHeaders.indexOf(varName);
+      if (idx === -1) return null;
+      const val = Number(profileRow[idx]);
+      return isNaN(val) || val <= -666666666 ? null : val;
+    };
+
     const nameIdx = headers.indexOf("NAME");
     const name = nameIdx !== -1 ? String(row[nameIdx]) : "Census Area";
 
     const pop = getValue("B01003_001E");
-    const bachelors = getValue("B15003_022E");
     const veterans = getValue("B21001_002E");
     const wfh = getValue("B08301_021E");
     const ownerUnits = getValue("B25003_002E");
@@ -190,10 +220,6 @@ export async function fetchCensusAcsData(params: {
     const commuteWorkers = getValue("B08012_001E");
     const noVehicle = getValue("B08201_002E");
     const foreignBorn = getValue("B05002_013E");
-    const snap = getValue("B19057_002E");
-    const unemployed = getValue("B23025_005E");
-    const laborForce = getValue("B23025_002E");
-    const highSchool = getValue("B15003_017E");
     const masters = getValue("B15003_023E");
     const professional = getValue("B15003_024E");
     const doctorate = getValue("B15003_025E");
@@ -210,7 +236,13 @@ export async function fetchCensusAcsData(params: {
       medianAge: getValue("B01002_001E"),
       medianHomeValue: getValue("B25077_001E"),
       medianRent: getValue("B25064_001E"),
-      bachelorOrHigherPct: pop && bachelors ? Number(((bachelors / pop) * 100).toFixed(1)) : null,
+      // Bachelor's-or-higher, HS-grad-or-higher, unemployment rate, SNAP receipt,
+      // and health-insurance coverage all come from the Data Profile's own
+      // pre-computed percentages: the detail-table math for these needs either a
+      // sum across several attainment brackets or a different universe/denominator
+      // than total population, and one field (insurance) has no single detail
+      // variable at all — DP already gets each of those right.
+      bachelorOrHigherPct: getProfileValue("DP02_0068PE"),
       veteranPct: pop && veterans ? Number(((veterans / pop) * 100).toFixed(1)) : null,
       workFromHomePct: pop && wfh ? Number(((wfh / pop) * 100).toFixed(1)) : null,
       ownerOccupiedPct: totalHousingUnits && ownerUnits ? Number(((ownerUnits / totalHousingUnits) * 100).toFixed(1)) : null,
@@ -221,10 +253,10 @@ export async function fetchCensusAcsData(params: {
       meanCommuteMinutes: commuteWorkers && commuteAggMin ? Number((commuteAggMin / commuteWorkers).toFixed(1)) : 26.8,
       noVehiclePct: pop && noVehicle ? Number(((noVehicle / pop) * 100).toFixed(1)) : 8.4,
       foreignBornPct: pop && foreignBorn ? Number(((foreignBorn / pop) * 100).toFixed(1)) : 13.8,
-      snapPct: pop && snap ? Number(((snap / pop) * 100).toFixed(1)) : 11.2,
-      unemploymentPct: laborForce && unemployed ? Number(((unemployed / laborForce) * 100).toFixed(1)) : null,
-      insuredPct: pop ? 91.5 : null, // ACS health insurance aggregate requires a separate lookup; using national baseline
-      highSchoolPct: pop && highSchool ? Number(((highSchool / pop) * 100).toFixed(1)) : null,
+      snapPct: getProfileValue("DP03_0074PE"),
+      unemploymentPct: getProfileValue("DP03_0009PE"),
+      insuredPct: getProfileValue("DP03_0096PE"),
+      highSchoolPct: getProfileValue("DP02_0067PE"),
       gradDegreePct: pop && gradDegrees > 0 ? Number(((gradDegrees / pop) * 100).toFixed(1)) : null,
       multiVehiclePct: totalHousingUnits && multiVehicleHH ? Number(((multiVehicleHH / totalHousingUnits) * 100).toFixed(1)) : null,
       vacancyPct: totalHousingAll && vacantUnits ? Number(((vacantUnits / totalHousingAll) * 100).toFixed(1)) : null,
