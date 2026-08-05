@@ -1519,8 +1519,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
             </div>
 
             {/* 📜 Historical Territorial Expansion Timeline Slider (1776 – 1959) */}
-            <div className="relative z-20 m-3 flex flex-col gap-3 rounded-2xl border border-[#fbbf24]/40 bg-black/90 p-4.5 backdrop-blur-md max-w-none sm:absolute sm:top-4 sm:right-4 sm:m-0 sm:min-w-[340px] sm:max-w-[360px] shadow-2xl space-y-1">
-              <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-wider text-[#fbbf24] font-bold pb-0.5">
+            <div className="relative z-20 m-3 flex flex-col gap-2 rounded-2xl border border-[#fbbf24]/40 bg-black/90 p-4 backdrop-blur-md max-w-none sm:absolute sm:top-4 sm:right-4 sm:m-0 sm:min-w-[390px] sm:max-w-[420px] shadow-2xl">
+              <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-wider text-[#fbbf24] font-bold">
                 <span className="flex items-center gap-2">
                   <History className="w-4 h-4 text-[#fbbf24]" />
                   STATEHOOD ERA TIMELINE
@@ -1534,12 +1534,12 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 step={1}
                 value={historicalYearFilter}
                 onChange={(e) => setHistoricalYearFilter(Number(e.target.value))}
-                className="w-full accent-[#fbbf24] cursor-pointer my-1.5 h-2"
+                className="w-full accent-[#fbbf24] cursor-pointer my-2 h-2"
               />
-              <div className="flex items-center justify-between font-mono text-[10px] text-white/60 font-semibold px-0.5 pt-1 gap-2">
-                <span className="truncate">1776 (13 Orig.)</span>
-                <span className="truncate text-center">1803 (LA Purch.)</span>
-                <span className="truncate text-right">1959 (HI #50)</span>
+              <div className="grid grid-cols-3 font-mono text-[11px] text-white/70 font-semibold pt-1 text-center">
+                <span className="text-left whitespace-nowrap">1776 (13 Orig.)</span>
+                <span className="text-center whitespace-nowrap">1803 (LA Purch.)</span>
+                <span className="text-right whitespace-nowrap">1959 (HI #50)</span>
               </div>
             </div>
 

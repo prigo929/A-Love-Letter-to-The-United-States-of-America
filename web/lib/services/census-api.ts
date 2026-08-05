@@ -86,11 +86,18 @@ export async function fetchCensusAcsData(params: {
   } else if (params.layerCode?.includes("cd119") && st && params.cd119Fips) {
     forQuery = `congressional district:${params.cd119Fips.padStart(2, "0")}`;
     inQuery = `state:${st}`;
-  } else if (params.layerCode?.includes("place") && st && params.placeFips) {
-    forQuery = `place:${params.placeFips.padStart(5, "0")}`;
+  } else if (params.layerCode?.includes("cbsa") && params.geoid) {
+    forQuery = `metropolitan statistical area/micropolitan statistical area:${params.geoid}`;
+  } else if (params.layerCode?.includes("unsd") && st && params.geoid) {
+    forQuery = `school district (unified):${params.geoid.slice(-5)}`;
     inQuery = `state:${st}`;
-  } else if (params.layerCode?.includes("tract") && st && co && params.tractCe) {
-    forQuery = `tract:${params.tractCe.padStart(6, "0")}`;
+  } else if (params.layerCode?.includes("place") && st && (params.placeFips || params.geoid)) {
+    const pf = params.placeFips || params.geoid?.slice(-5) || "";
+    forQuery = `place:${pf.padStart(5, "0")}`;
+    inQuery = `state:${st}`;
+  } else if (params.layerCode?.includes("tract") && st && co && (params.tractCe || params.geoid)) {
+    const tr = params.tractCe || params.geoid?.slice(-6) || "";
+    forQuery = `tract:${tr.padStart(6, "0")}`;
     inQuery = `state:${st} county:${co}`;
   } else if (params.layerCode?.includes("bg") && st && co && params.tractCe && params.blkGrpCe) {
     forQuery = `block group:${params.blkGrpCe}`;

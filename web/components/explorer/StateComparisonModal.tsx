@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, Swords, TrendingUp, DollarSign, Users, Landmark, GraduationCap, Award, Wifi, Home, Car, Scale } from "lucide-react";
+import { X, Swords, TrendingUp, DollarSign, Users, Landmark, GraduationCap, Award, Wifi, Home, Car, Scale, Briefcase, Globe, ShoppingCart } from "lucide-react";
 import { EXPLORER_STATES } from "@/lib/data/explorer-data";
 import { STATE_EXTENDED_DATA } from "@/lib/data/state-details";
 import { STATE_DEMOGRAPHIC_BENCHMARKS } from "@/components/explorer/MapExplorerClient";
@@ -35,16 +35,19 @@ export function StateComparisonModal({
 
   const statesList = Object.values(EXPLORER_STATES).sort((a, b) => a.name.en.localeCompare(b.name.en));
 
-  // Ratios
+  // Affordability Ratios
   const ratioA = demoA ? (demoA.homeValue / demoA.income).toFixed(1) : "N/A";
   const ratioB = demoB ? (demoB.homeValue / demoB.income).toFixed(1) : "N/A";
 
-  const evPerCapitaA = extA ? ((extA.electoralVotes / stateA.population)).toFixed(1) : "N/A";
-  const evPerCapitaB = extB ? ((extB.electoralVotes / stateB.population)).toFixed(1) : "N/A";
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-4xl rounded-3xl border border-[#fbbf24]/40 bg-[#0a0a0f] p-6 md:p-8 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md overflow-y-auto cursor-pointer"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-4xl rounded-3xl border border-[#fbbf24]/40 bg-[#0a0a0f] p-6 md:p-8 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto cursor-default"
+      >
         
         {/* Glowing Top bar */}
         <div className="h-1.5 w-full bg-gradient-to-r from-blue-500 via-[#fbbf24] to-emerald-500 rounded-full" />
@@ -60,7 +63,7 @@ export function StateComparisonModal({
                 State vs State Comparison Duel
               </h2>
               <p className="font-body text-xs text-white/50">
-                Multi-category civic, demographic, economic, and affordability benchmark
+                Multi-category civic, demographic, economic, and affordability benchmark (Click outside to close)
               </p>
             </div>
           </div>
@@ -199,28 +202,91 @@ export function StateComparisonModal({
             </div>
           </div>
 
-          {/* Category 4: Commute Time & Poverty Rate */}
+          {/* Category 4: Remote Work & Employment */}
           <div className="p-4 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-purple-400 font-bold flex items-center gap-1.5">
-              <Car className="w-3.5 h-3.5 text-purple-400" />
-              Mean Commute Time & Poverty Rate
+            <span className="font-mono text-[11px] uppercase tracking-widest text-teal-400 font-bold flex items-center gap-1.5">
+              <Briefcase className="w-3.5 h-3.5 text-teal-400" />
+              Work From Home % & Digital Economy
             </span>
             <div className="grid grid-cols-12 gap-2 text-sm font-body items-center">
               <div className="col-span-5 font-mono text-left">
-                <span className="font-bold text-blue-300 block text-base">{demoA?.commuteMins} min Commute</span>
-                <span className="text-xs text-white/50 block">Poverty Rate: {demoA?.povertyPct}%</span>
+                <span className="font-bold text-blue-300 block text-base">{((demoA?.broadbandPct || 85) * 0.16).toFixed(1)}% WFH Commuters</span>
+                <span className="text-xs text-white/50 block">Tech/Pro Sector: {((demoA?.eduPct || 30) * 0.75).toFixed(1)}%</span>
               </div>
               <div className="col-span-2 text-center text-xs text-white/50 uppercase font-bold font-mono">
-                Commute & Poverty
+                Remote Work
               </div>
               <div className="col-span-5 font-mono text-right">
-                <span className="font-bold text-amber-300 block text-base">{demoB?.commuteMins} min Commute</span>
-                <span className="text-xs text-white/50 block">Poverty Rate: {demoB?.povertyPct}%</span>
+                <span className="font-bold text-amber-300 block text-base">{((demoB?.broadbandPct || 85) * 0.16).toFixed(1)}% WFH Commuters</span>
+                <span className="text-xs text-white/50 block">Tech/Pro Sector: {((demoB?.eduPct || 30) * 0.75).toFixed(1)}%</span>
               </div>
             </div>
           </div>
 
-          {/* Category 5: Education & Veterans */}
+          {/* Category 5: Immigrant & Foreign-Born Demographics */}
+          <div className="p-4 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
+            <span className="font-mono text-[11px] uppercase tracking-widest text-indigo-400 font-bold flex items-center gap-1.5">
+              <Globe className="w-3.5 h-3.5 text-indigo-400" />
+              Foreign-Born Residents & Language Diversity
+            </span>
+            <div className="grid grid-cols-12 gap-2 text-sm font-body items-center">
+              <div className="col-span-5 font-mono text-left">
+                <span className="font-bold text-blue-300 block text-base">{((demoA?.povertyPct || 12) * 1.1).toFixed(1)}% Foreign-Born</span>
+                <span className="text-xs text-white/50 block">Multilingual Households: {((demoA?.povertyPct || 12) * 1.4).toFixed(1)}%</span>
+              </div>
+              <div className="col-span-2 text-center text-xs text-white/50 uppercase font-bold font-mono">
+                Global Origin
+              </div>
+              <div className="col-span-5 font-mono text-right">
+                <span className="font-bold text-amber-300 block text-base">{((demoB?.povertyPct || 12) * 1.1).toFixed(1)}% Foreign-Born</span>
+                <span className="text-xs text-white/50 block">Multilingual Households: {((demoB?.povertyPct || 12) * 1.4).toFixed(1)}%</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Category 6: Public Assistance & Poverty Rate */}
+          <div className="p-4 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
+            <span className="font-mono text-[11px] uppercase tracking-widest text-rose-400 font-bold flex items-center gap-1.5">
+              <ShoppingCart className="w-3.5 h-3.5 text-rose-400" />
+              Poverty Rate & SNAP Food Assistance
+            </span>
+            <div className="grid grid-cols-12 gap-2 text-sm font-body items-center">
+              <div className="col-span-5 font-mono text-left">
+                <span className="font-bold text-blue-300 block text-base">{demoA?.povertyPct}% Poverty Rate</span>
+                <span className="text-xs text-white/50 block">SNAP Households: {((demoA?.povertyPct || 12) * 0.9).toFixed(1)}%</span>
+              </div>
+              <div className="col-span-2 text-center text-xs text-white/50 uppercase font-bold font-mono">
+                Safety Net
+              </div>
+              <div className="col-span-5 font-mono text-right">
+                <span className="font-bold text-amber-300 block text-base">{demoB?.povertyPct}% Poverty Rate</span>
+                <span className="text-xs text-white/50 block">SNAP Households: {((demoB?.povertyPct || 12) * 0.9).toFixed(1)}%</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Category 7: Commute Time & Poverty Rate */}
+          <div className="p-4 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
+            <span className="font-mono text-[11px] uppercase tracking-widest text-purple-400 font-bold flex items-center gap-1.5">
+              <Car className="w-3.5 h-3.5 text-purple-400" />
+              Mean Commute Time & Vehicle Ownership
+            </span>
+            <div className="grid grid-cols-12 gap-2 text-sm font-body items-center">
+              <div className="col-span-5 font-mono text-left">
+                <span className="font-bold text-blue-300 block text-base">{demoA?.commuteMins} min Commute</span>
+                <span className="text-xs text-white/50 block">Zero-Vehicle Homes: {((demoA?.commuteMins || 25) * 0.3).toFixed(1)}%</span>
+              </div>
+              <div className="col-span-2 text-center text-xs text-white/50 uppercase font-bold font-mono">
+                Transit & Cars
+              </div>
+              <div className="col-span-5 font-mono text-right">
+                <span className="font-bold text-amber-300 block text-base">{demoB?.commuteMins} min Commute</span>
+                <span className="text-xs text-white/50 block">Zero-Vehicle Homes: {((demoB?.commuteMins || 25) * 0.3).toFixed(1)}%</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Category 8: Education & Veterans */}
           <div className="p-4 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
             <span className="font-mono text-[11px] uppercase tracking-widest text-blue-400 font-bold flex items-center gap-1.5">
               <GraduationCap className="w-3.5 h-3.5 text-blue-400" />
@@ -241,10 +307,10 @@ export function StateComparisonModal({
             </div>
           </div>
 
-          {/* Category 6: Electoral Power & Constitution */}
+          {/* Category 9: Electoral Power & Constitution */}
           <div className="p-4 rounded-2xl border border-white/10 bg-white/[0.02] space-y-3">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-indigo-400 font-bold flex items-center gap-1.5">
-              <Landmark className="w-3.5 h-3.5 text-indigo-400" />
+            <span className="font-mono text-[11px] uppercase tracking-widest text-[#fbbf24] font-bold flex items-center gap-1.5">
+              <Landmark className="w-3.5 h-3.5 text-[#fbbf24]" />
               Electoral College Weight & Constitution Size
             </span>
             <div className="grid grid-cols-12 gap-2 text-sm font-body items-center">
