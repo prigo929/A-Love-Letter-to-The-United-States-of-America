@@ -9,7 +9,7 @@
     "dev": "next dev --turbo",
     "dev:turbo": "next dev --webpack",
     "prebuild": "node scripts/cap-cache.mjs",
-    "build": "NEXT_TURBO=0 next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
