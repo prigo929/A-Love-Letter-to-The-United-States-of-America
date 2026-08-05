@@ -1,0 +1,144 @@
+/**
+ * U.S. Census Bureau Live API Service (`api.census.gov`)
+ * Official API Key Integration & American Community Survey (ACS) 5-Year Data Fetcher
+ */
+
+export interface CensusAcsData {
+  name: string;
+  medianIncome: number | null;
+  totalPopulation: number | null;
+  medianAge: number | null;
+  medianHomeValue: number | null;
+  medianRent: number | null;
+  bachelorOrHigherPct: number | null;
+  veteranPct: number | null;
+  workFromHomePct: number | null;
+  source: "live_api" | "benchmark_estimate";
+}
+
+const CENSUS_API_KEY = process.env.NEXT_PUBLIC_CENSUS_API_KEY || "e5ee914a911db64a0f18d46b9f3e106c4c9765dd";
+const CENSUS_BASE_URL = "https://api.census.gov/data/2023/acs/acs5";
+
+// In-memory cache for Census API responses
+const censusCache = new Map<string, CensusAcsData>();
+
+// Key ACS 5-Year Variables
+const ACS_VARS = [
+  "NAME",
+  "B19013_010E", // Median Household Income
+  "B01003_010E", // Total Population
+  "B01002_010E", // Median Age
+  "B25077_010E", // Median Owner Home Value
+  "B25064_010E", // Median Rent
+  "B15003_022E", // Bachelor's Degree
+  "B21001_002E", // Veteran Population
+  "B08301_021E", // Work From Home
+].join(",");
+
+/**
+ * Fetch live ACS 5-Year Census data for any feature based on FIPS / GEOID parameters
+ */
+export async function fetchCensusAcsData(params: {
+  stateFips?: string;
+  countyFips?: string;
+  tractCe?: string;
+  blkGrpCe?: string;
+  placeFips?: string;
+  cd119Fips?: string;
+  geoid?: string;
+  layerCode?: string;
+}): Promise<CensusAcsData | null> {
+  const cacheKey = `${params.layerCode || "geo"}:${params.geoid || ""}:${params.stateFips || ""}:${params.countyFips || ""}`;
+
+  if (censusCache.has(cacheKey)) {
+    return censusCache.get(cacheKey)!;
+  }
+
+  let forQuery = "";
+  let inQuery = "";
+
+  const st = params.stateFips ? params.stateFips.padStart(2, "0") : "";
+  const co = params.countyFips ? params.countyFips.padStart(3, "0") : "";
+
+  if (params.layerCode?.includes("state") && st) {
+    forQuery = `state:${st}`;
+  } else if (params.layerCode?.includes("county") && st && co) {
+    forQuery = `county:${co}`;
+    inQuery = `state:${st}`;
+  } else if (params.layerCode?.includes("cd119") && st && params.cd119Fips) {
+    forQuery = `congressional district:${params.cd119Fips.padStart(2, "0")}`;
+    inQuery = `state:${st}`;
+  } else if (params.layerCode?.includes("place") && st && params.placeFips) {
+    forQuery = `place:${params.placeFips.padStart(5, "0")}`;
+    inQuery = `state:${st}`;
+  } else if (params.layerCode?.includes("tract") && st && co && params.tractCe) {
+    forQuery = `tract:${params.tractCe.padStart(6, "0")}`;
+    inQuery = `state:${st} county:${co}`;
+  } else if (params.layerCode?.includes("bg") && st && co && params.tractCe && params.blkGrpCe) {
+    forQuery = `block group:${params.blkGrpCe}`;
+    inQuery = `state:${st} county:${co} tract:${params.tractCe.padStart(6, "0")}`;
+  } else if (st) {
+    forQuery = `state:${st}`;
+  }
+
+  if (!forQuery) {
+    return null;
+  }
+
+  const url = `${CENSUS_BASE_URL}?get=${ACS_VARS}&for=${encodeURIComponent(forQuery)}${
+    inQuery ? `&in=${encodeURIComponent(inQuery)}` : ""
+  }&key=${CENSUS_API_KEY}`;
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 4000);
+
+    const res = await fetch(url, { signal: controller.signal });
+    clearTimeout(timeoutId);
+
+    if (!res.ok) {
+      return null;
+    }
+
+    const data = await res.json();
+    if (!Array.isArray(data) || data.length < 2) {
+      return null;
+    }
+
+    const headers: string[] = data[0];
+    const row: any[] = data[1];
+
+    const getValue = (varName: string): number | null => {
+      const idx = headers.indexOf(varName);
+      if (idx === -1) return null;
+      const val = Number(row[idx]);
+      return isNaN(val) || val <= -666666666 ? null : val;
+    };
+
+    const nameIdx = headers.indexOf("NAME");
+    const name = nameIdx !== -1 ? String(row[nameIdx]) : "Census Area";
+
+    const pop = getValue("B01003_010E");
+    const bachelors = getValue("B15003_022E");
+    const veterans = getValue("B21001_002E");
+    const wfh = getValue("B08301_021E");
+
+    const result: CensusAcsData = {
+      name,
+      medianIncome: getValue("B19013_010E"),
+      totalPopulation: pop,
+      medianAge: getValue("B01002_010E"),
+      medianHomeValue: getValue("B25077_010E"),
+      medianRent: getValue("B25064_010E"),
+      bachelorOrHigherPct: pop && bachelors ? Number(((bachelors / pop) * 100).toFixed(1)) : null,
+      veteranPct: pop && veterans ? Number(((veterans / pop) * 100).toFixed(1)) : null,
+      workFromHomePct: pop && wfh ? Number(((wfh / pop) * 100).toFixed(1)) : null,
+      source: "live_api",
+    };
+
+    censusCache.set(cacheKey, result);
+    return result;
+  } catch (err) {
+    return null;
+  }
+}

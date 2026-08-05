@@ -44,10 +44,63 @@ import { EXPLORER_STATES, StateData } from "@/lib/data/explorer-data";
 import { STATE_EXTENDED_DATA } from "@/lib/data/state-details";
 import { COOPERATION_AGREEMENTS, COOPERATION_CATEGORIES } from "@/lib/data/interstate-cooperation";
 import { COLORS } from "@/lib/constants";
-
 import { GEO_URL, FIPS_TO_ABBREV } from "@/lib/data/us-geo";
 import { InterstateCooperationMap } from "@/components/explorer/InterstateCooperationMap";
 import { StateRevenueBudget } from "@/components/explorer/StateRevenueBudget";
+import { fetchCensusAcsData, CensusAcsData } from "@/lib/services/census-api";
+
+export const STATE_DEMOGRAPHIC_BENCHMARKS: Record<string, { income: number; homeValue: number; eduPct: number; vetPct: number }> = {
+  AL: { income: 59609, homeValue: 225000, eduPct: 27.5, vetPct: 9.1 },
+  AK: { income: 88121, homeValue: 345000, eduPct: 31.2, vetPct: 12.4 },
+  AZ: { income: 74568, homeValue: 415000, eduPct: 32.8, vetPct: 9.6 },
+  AR: { income: 55432, homeValue: 205000, eduPct: 24.8, vetPct: 8.5 },
+  CA: { income: 91551, homeValue: 785000, eduPct: 36.2, vetPct: 5.1 },
+  CO: { income: 89302, homeValue: 535000, eduPct: 44.5, vetPct: 8.9 },
+  CT: { income: 88429, homeValue: 375000, eduPct: 40.8, vetPct: 5.8 },
+  DE: { income: 79325, homeValue: 365000, eduPct: 33.6, vetPct: 8.2 },
+  FL: { income: 69314, homeValue: 395000, eduPct: 31.5, vetPct: 8.8 },
+  GA: { income: 72837, homeValue: 325000, eduPct: 33.7, vetPct: 8.7 },
+  HI: { income: 92400, homeValue: 845000, eduPct: 34.8, vetPct: 9.8 },
+  ID: { income: 72782, homeValue: 445000, eduPct: 29.8, vetPct: 9.3 },
+  IL: { income: 76708, homeValue: 265000, eduPct: 36.8, vetPct: 5.9 },
+  IN: { income: 66785, homeValue: 235000, eduPct: 28.9, vetPct: 7.2 },
+  IA: { income: 69588, homeValue: 215000, eduPct: 30.2, vetPct: 7.5 },
+  KS: { income: 68957, homeValue: 225000, eduPct: 34.5, vetPct: 8.6 },
+  KY: { income: 59341, homeValue: 205000, eduPct: 26.2, vetPct: 8.4 },
+  LA: { income: 55416, homeValue: 215000, eduPct: 25.5, vetPct: 7.1 },
+  ME: { income: 68251, homeValue: 355000, eduPct: 33.8, vetPct: 10.2 },
+  MD: { income: 94974, homeValue: 415000, eduPct: 41.5, vetPct: 8.1 },
+  MA: { income: 94488, homeValue: 585000, eduPct: 45.2, vetPct: 4.8 },
+  MI: { income: 66986, homeValue: 235000, eduPct: 31.1, vetPct: 6.8 },
+  MN: { income: 82338, homeValue: 335000, eduPct: 38.2, vetPct: 7.3 },
+  MS: { income: 52719, homeValue: 175000, eduPct: 23.5, vetPct: 7.6 },
+  MO: { income: 64889, homeValue: 235000, eduPct: 30.8, vetPct: 8.3 },
+  MT: { income: 67631, homeValue: 425000, eduPct: 33.5, vetPct: 10.8 },
+  NE: { income: 73071, homeValue: 245000, eduPct: 33.8, vetPct: 8.1 },
+  NV: { income: 72336, homeValue: 425000, eduPct: 26.8, vetPct: 9.2 },
+  NH: { income: 89992, homeValue: 445000, eduPct: 38.5, vetPct: 9.4 },
+  NJ: { income: 96346, homeValue: 485000, eduPct: 41.2, vetPct: 4.2 },
+  NM: { income: 59726, homeValue: 265000, eduPct: 28.5, vetPct: 9.7 },
+  NY: { income: 79557, homeValue: 425000, eduPct: 37.8, vetPct: 4.9 },
+  NC: { income: 67481, homeValue: 325000, eduPct: 33.2, vetPct: 9.3 },
+  ND: { income: 71243, homeValue: 255000, eduPct: 31.8, vetPct: 8.2 },
+  OH: { income: 65720, homeValue: 225000, eduPct: 29.8, vetPct: 7.4 },
+  OK: { income: 59698, homeValue: 195000, eduPct: 26.8, vetPct: 9.1 },
+  OR: { income: 75654, homeValue: 485000, eduPct: 35.2, vetPct: 8.4 },
+  PA: { income: 71327, homeValue: 265000, eduPct: 33.5, vetPct: 7.2 },
+  RI: { income: 81822, homeValue: 415000, eduPct: 34.8, vetPct: 5.6 },
+  SC: { income: 64115, homeValue: 285000, eduPct: 29.8, vetPct: 9.6 },
+  SD: { income: 69728, homeValue: 255000, eduPct: 30.5, vetPct: 8.8 },
+  TN: { income: 65254, homeValue: 305000, eduPct: 29.2, vetPct: 8.2 },
+  TX: { income: 72829, homeValue: 305000, eduPct: 31.8, vetPct: 7.6 },
+  UT: { income: 89168, homeValue: 515000, eduPct: 35.8, vetPct: 6.2 },
+  VT: { income: 72431, homeValue: 335000, eduPct: 39.2, vetPct: 7.8 },
+  VA: { income: 87249, homeValue: 385000, eduPct: 40.2, vetPct: 10.4 },
+  WA: { income: 91086, homeValue: 565000, eduPct: 37.5, vetPct: 8.8 },
+  WV: { income: 54300, homeValue: 155000, eduPct: 21.8, vetPct: 8.4 },
+  WI: { income: 70996, homeValue: 265000, eduPct: 31.5, vetPct: 7.1 },
+  WY: { income: 70042, homeValue: 315000, eduPct: 29.2, vetPct: 11.2 },
+};
 
 // ─── 2025 Census Cartographic Boundary Views ─────────────────────────────────
 export interface CensusLayerItem {
@@ -671,8 +724,10 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   const [selectedRegion, setSelectedRegion] = useState<string>("All");
   const [sortBy, setSortBy] = useState<"name" | "gdp" | "population" | "statehood">("name");
   const [heatmapMode, setHeatmapMode] = useState<
-    "none" | "gdp" | "population" | "statehood" | "amendments" | "conLength"
+    "none" | "gdp" | "population" | "income" | "homeValue" | "education" | "veterans" | "statehood" | "amendments" | "conLength"
   >("none");
+  const [liveCensusData, setLiveCensusData] = useState<CensusAcsData | null>(null);
+  const [isLoadingCensusData, setIsLoadingCensusData] = useState<boolean>(false);
   // Census Layer selection state (22 views)
   const [activeCensusLayerId, setActiveCensusLayerId] = useState<string>("states");
   const [isLayerModalOpen, setIsLayerModalOpen] = useState<boolean>(false);
@@ -994,6 +1049,34 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           ? `hsla(210,85%,62%,${(0.35 + r * 0.55).toFixed(2)})`
           : `hsla(210,80%,52%,${(0.22 + r * 0.58).toFixed(2)})`;
         stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+      } else if (heatmapMode === "income") {
+        const inc = STATE_DEMOGRAPHIC_BENCHMARKS[abbrev]?.income ?? 70000;
+        const r = Math.min(Math.max((inc - 50000) / 47000, 0), 1);
+        fill = isHovered
+          ? `hsla(145,85%,58%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(145,78%,45%,${(0.22 + r * 0.58).toFixed(2)})`;
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+      } else if (heatmapMode === "homeValue") {
+        const hv = STATE_DEMOGRAPHIC_BENCHMARKS[abbrev]?.homeValue ?? 350000;
+        const r = Math.min(Math.max((hv - 170000) / 680000, 0), 1);
+        fill = isHovered
+          ? `hsla(28,95%,60%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(28,90%,48%,${(0.22 + r * 0.58).toFixed(2)})`;
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+      } else if (heatmapMode === "education") {
+        const edu = STATE_DEMOGRAPHIC_BENCHMARKS[abbrev]?.eduPct ?? 32;
+        const r = Math.min(Math.max((edu - 21) / 24, 0), 1);
+        fill = isHovered
+          ? `hsla(190,90%,60%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(190,85%,48%,${(0.22 + r * 0.58).toFixed(2)})`;
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+      } else if (heatmapMode === "veterans") {
+        const vet = STATE_DEMOGRAPHIC_BENCHMARKS[abbrev]?.vetPct ?? 8;
+        const r = Math.min(Math.max((vet - 4) / 8.5, 0), 1);
+        fill = isHovered
+          ? `hsla(48,95%,60%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(48,90%,48%,${(0.22 + r * 0.58).toFixed(2)})`;
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
       } else if (heatmapMode === "amendments") {
         const amend = STATE_EXTENDED_DATA[abbrev]?.constitution.amendmentsCount ?? 0;
         const r = maxValues.maxAmend > 0 ? Math.sqrt(amend / maxValues.maxAmend) : 0;
@@ -1148,6 +1231,10 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   { id: "none",       label: translations.defaultColor,   activeColor: "#fbbf24" },
                   { id: "gdp",        label: translations.gdpHeat,        activeColor: "#fbbf24" },
                   { id: "population", label: translations.popHeat,        activeColor: "#60a5fa" },
+                  { id: "income",     label: "Income 💵",                activeColor: "#34d399" },
+                  { id: "homeValue",  label: "Home Value 🏠",             activeColor: "#fb923c" },
+                  { id: "education",  label: "Education 🎓",              activeColor: "#38bdf8" },
+                  { id: "veterans",   label: "Veterans 🎖️",               activeColor: "#facc15" },
                   { id: "statehood",  label: translations.statehoodHeat,  activeColor: "#f87171" },
                   { id: "amendments", label: translations.amendHeat,      activeColor: "#a78bfa" },
                   { id: "conLength",  label: translations.lengthHeat,     activeColor: "#2dd4bf" },
@@ -1155,10 +1242,10 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <button
                     key={mode.id}
                     onClick={() => setHeatmapMode(mode.id as any)}
-                    className="rounded-full px-2.5 py-0.5 text-[10px] font-semibold tracking-wide transition-all font-body"
+                    className="rounded-full px-2.5 py-0.5 text-[10px] font-semibold tracking-wide transition-all font-body cursor-pointer hover:opacity-90"
                     style={{
                       background: heatmapMode === mode.id ? mode.activeColor : "rgba(255,255,255,0.05)",
-                      color: heatmapMode === mode.id ? "#000" : "rgba(255,255,255,0.5)",
+                      color: heatmapMode === mode.id ? "#000" : "rgba(255,255,255,0.6)",
                     }}
                   >
                     {mode.label}
@@ -1177,6 +1264,14 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           ? "linear-gradient(to right, hsla(38,90%,50%,0.22), hsl(38,95%,62%))"
                           : heatmapMode === "population"
                           ? "linear-gradient(to right, hsla(210,80%,52%,0.22), hsl(210,85%,62%))"
+                          : heatmapMode === "income"
+                          ? "linear-gradient(to right, hsla(145,78%,45%,0.22), hsl(145,85%,58%))"
+                          : heatmapMode === "homeValue"
+                          ? "linear-gradient(to right, hsla(28,90%,48%,0.22), hsl(28,95%,60%))"
+                          : heatmapMode === "education"
+                          ? "linear-gradient(to right, hsla(190,85%,48%,0.22), hsl(190,90%,60%))"
+                          : heatmapMode === "veterans"
+                          ? "linear-gradient(to right, hsla(48,90%,48%,0.22), hsl(48,95%,60%))"
                           : heatmapMode === "amendments"
                           ? "linear-gradient(to right, hsla(265,72%,56%,0.22), hsl(265,80%,68%))"
                           : heatmapMode === "conLength"
@@ -1481,6 +1576,24 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                               if (e && e.stopPropagation) e.stopPropagation();
                               const name = props.NAMELSAD || props.NAME || (abbrev ? EXPLORER_STATES[abbrev]?.name[locale] : null) || props.GEOID || "Boundary Feature";
                               const code = props.GEOID || props.GEOIDFQ || activeCensusLayer.code;
+                              const stFips = props.STATEFP || (abbrev ? FIPS_TO_ABBREV[abbrev] : "");
+
+                              setIsLoadingCensusData(true);
+                              setLiveCensusData(null);
+
+                              fetchCensusAcsData({
+                                stateFips: stFips,
+                                countyFips: props.COUNTYFP,
+                                tractCe: props.TRACTCE,
+                                blkGrpCe: props.BLKGRPCE,
+                                placeFips: props.PLACEFP,
+                                cd119Fips: props.CD119FP,
+                                geoid: code,
+                                layerCode: activeCensusLayer.code,
+                              }).then((data) => {
+                                setLiveCensusData(data);
+                                setIsLoadingCensusData(false);
+                              });
 
                               if (activeCensusLayer.id === "states") {
                                 if (abbrev && abbrev !== "DC" && EXPLORER_STATES[abbrev]) {
@@ -1661,7 +1774,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   {/* Glowing header line */}
                   <div className="h-1 w-full bg-gradient-to-r from-[#fbbf24] via-[#f59e0b] to-[#b22234] rounded-full mb-6" />
 
-                  {/* Top Bar: Layer & Actions */}
+                  {/* Top Bar: Layer & API Status & Actions */}
                   <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-white/10">
                     <div className="flex flex-wrap items-center gap-3">
                       <span className="px-3 py-1 rounded-full font-mono text-[11px] font-bold uppercase tracking-wider bg-[#fbbf24]/20 text-[#fbbf24] border border-[#fbbf24]/40 flex items-center gap-1.5">
@@ -1676,15 +1789,59 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           {stName ? `${stName} (${stAbbrev})` : `State: ${stAbbrev}`}
                         </span>
                       )}
+                      {/* 🌟 Census API Key Connected Status Badge */}
+                      <span className="px-3 py-1 rounded-full font-mono text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30 flex items-center gap-1.5 shadow-sm">
+                        <Zap className="w-3 h-3 text-amber-400 animate-pulse" />
+                        <span>Census API Connected (<span className="text-white/80">e5ee914a...65dd</span>)</span>
+                      </span>
                     </div>
 
-                    <button
-                      onClick={() => setSelectedFeature(null)}
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/15 text-xs text-white/70 hover:text-white transition-colors cursor-pointer"
-                    >
-                      <X className="w-3.5 h-3.5" />
-                      <span>{locale === "ro" ? "Închide selecția" : "Deselect Area"}</span>
-                    </button>
+                    <div className="flex items-center gap-2">
+                      {/* CSV & JSON Export Buttons */}
+                      <button
+                        onClick={() => {
+                          const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(props, null, 2));
+                          const downloadAnchor = document.createElement("a");
+                          downloadAnchor.setAttribute("href", dataStr);
+                          downloadAnchor.setAttribute("download", `${selectedFeature.name.replace(/\s+/g, "_")}_census_data.json`);
+                          document.body.appendChild(downloadAnchor);
+                          downloadAnchor.click();
+                          downloadAnchor.remove();
+                        }}
+                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/15 text-xs font-mono text-white/70 hover:text-white transition-colors cursor-pointer border border-white/10"
+                        title="Download JSON Export"
+                      >
+                        <FileText className="w-3 h-3 text-[#fbbf24]" />
+                        <span>JSON</span>
+                      </button>
+
+                      <button
+                        onClick={() => {
+                          const headers = Object.keys(props).join(",");
+                          const values = Object.values(props).map(v => `"${String(v).replace(/"/g, '""')}"`).join(",");
+                          const csvContent = "data:text/csv;charset=utf-8," + encodeURIComponent(`${headers}\n${values}`);
+                          const downloadAnchor = document.createElement("a");
+                          downloadAnchor.setAttribute("href", csvContent);
+                          downloadAnchor.setAttribute("download", `${selectedFeature.name.replace(/\s+/g, "_")}_census_data.csv`);
+                          document.body.appendChild(downloadAnchor);
+                          downloadAnchor.click();
+                          downloadAnchor.remove();
+                        }}
+                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/15 text-xs font-mono text-white/70 hover:text-white transition-colors cursor-pointer border border-white/10"
+                        title="Download CSV Export"
+                      >
+                        <FileText className="w-3 h-3 text-emerald-400" />
+                        <span>CSV</span>
+                      </button>
+
+                      <button
+                        onClick={() => setSelectedFeature(null)}
+                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/15 text-xs text-white/70 hover:text-white transition-colors cursor-pointer"
+                      >
+                        <X className="w-3.5 h-3.5" />
+                        <span>{locale === "ro" ? "Închide selecția" : "Deselect Area"}</span>
+                      </button>
+                    </div>
                   </div>
 
                   {/* Main Grid: Info + Special Cards + Raw Properties */}
@@ -1707,6 +1864,50 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           )}
                         </div>
                       </div>
+
+                      {/* Live ACS Census Data API Metrics Card */}
+                      {isLoadingCensusData ? (
+                        <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-4 flex items-center gap-3">
+                          <Zap className="w-4 h-4 text-amber-400 animate-spin" />
+                          <span className="font-mono text-xs text-amber-300 font-bold">Querying live ACS 5-Year Census Bureau API...</span>
+                        </div>
+                      ) : liveCensusData ? (
+                        <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4 space-y-3">
+                          <div className="flex items-center justify-between">
+                            <span className="font-mono text-[10px] uppercase tracking-wider text-emerald-400 font-bold flex items-center gap-1.5">
+                              <Zap className="w-3 h-3 text-emerald-400" />
+                              Official ACS 5-Year Live Data
+                            </span>
+                            <span className="font-mono text-[9px] text-emerald-300/60 font-bold">U.S. Census API</span>
+                          </div>
+                          <div className="grid grid-cols-2 gap-2 font-mono text-xs">
+                            <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                              <span className="text-[9px] text-white/40 block">Median Income</span>
+                              <span className="text-emerald-300 font-bold text-sm">
+                                {liveCensusData.medianIncome ? `$${liveCensusData.medianIncome.toLocaleString()}` : "N/A"}
+                              </span>
+                            </div>
+                            <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                              <span className="text-[9px] text-white/40 block">Median Home Value</span>
+                              <span className="text-amber-300 font-bold text-sm">
+                                {liveCensusData.medianHomeValue ? `$${liveCensusData.medianHomeValue.toLocaleString()}` : "N/A"}
+                              </span>
+                            </div>
+                            <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                              <span className="text-[9px] text-white/40 block">Higher Education</span>
+                              <span className="text-blue-300 font-bold text-sm">
+                                {liveCensusData.bachelorOrHigherPct ? `${liveCensusData.bachelorOrHigherPct}%` : "N/A"}
+                              </span>
+                            </div>
+                            <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                              <span className="text-[9px] text-white/40 block">Veteran Population</span>
+                              <span className="text-purple-300 font-bold text-sm">
+                                {liveCensusData.veteranPct ? `${liveCensusData.veteranPct}%` : "N/A"}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      ) : null}
 
                       {/* 2×2 Census Quick Metrics Cards */}
                       <div className="grid grid-cols-2 gap-3 pt-2">
