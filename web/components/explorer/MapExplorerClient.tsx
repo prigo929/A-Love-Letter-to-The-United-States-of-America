@@ -1519,13 +1519,13 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
             </div>
 
             {/* 📜 Historical Territorial Expansion Timeline Slider (1776 – 1959) */}
-            <div className="relative z-20 m-3 flex flex-col gap-2 rounded-2xl border border-[#fbbf24]/30 bg-black/85 p-3 backdrop-blur-md max-w-none sm:absolute sm:top-4 sm:right-4 sm:m-0 sm:max-w-[260px] shadow-2xl">
-              <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-wider text-[#fbbf24] font-bold">
-                <span className="flex items-center gap-1.5">
-                  <History className="w-3.5 h-3.5 text-[#fbbf24]" />
-                  Statehood Era Timeline
+            <div className="relative z-20 m-3 flex flex-col gap-3 rounded-2xl border border-[#fbbf24]/40 bg-black/90 p-4.5 backdrop-blur-md max-w-none sm:absolute sm:top-4 sm:right-4 sm:m-0 sm:min-w-[340px] sm:max-w-[360px] shadow-2xl space-y-1">
+              <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-wider text-[#fbbf24] font-bold pb-0.5">
+                <span className="flex items-center gap-2">
+                  <History className="w-4 h-4 text-[#fbbf24]" />
+                  STATEHOOD ERA TIMELINE
                 </span>
-                <span className="text-white font-mono font-bold text-xs">{historicalYearFilter}</span>
+                <span className="text-white bg-[#fbbf24]/20 border border-[#fbbf24]/40 px-2.5 py-0.5 rounded-lg font-mono font-bold text-sm">{historicalYearFilter}</span>
               </div>
               <input
                 type="range"
@@ -1534,12 +1534,12 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 step={1}
                 value={historicalYearFilter}
                 onChange={(e) => setHistoricalYearFilter(Number(e.target.value))}
-                className="w-full accent-[#fbbf24] cursor-pointer"
+                className="w-full accent-[#fbbf24] cursor-pointer my-1.5 h-2"
               />
-              <div className="flex justify-between font-mono text-[9px] text-white/40 font-semibold">
-                <span>1776 (13 Orig.)</span>
-                <span>1803 (LA Purch.)</span>
-                <span>1959 (HI #50)</span>
+              <div className="flex items-center justify-between font-mono text-[10px] text-white/60 font-semibold px-0.5 pt-1 gap-2">
+                <span className="truncate">1776 (13 Orig.)</span>
+                <span className="truncate text-center">1803 (LA Purch.)</span>
+                <span className="truncate text-right">1959 (HI #50)</span>
               </div>
             </div>
 
@@ -1605,11 +1605,35 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 const rc = REGION_COLORS[hs.region];
                 const con = STATE_EXTENDED_DATA[hoveredStateAbbrev!]?.constitution;
 
+                const demoBench = STATE_DEMOGRAPHIC_BENCHMARKS[hoveredStateAbbrev!];
+                const el2024 = ELECTION_2024_STATES[hoveredStateAbbrev!];
+                const el2020 = ELECTION_2020_STATES[hoveredStateAbbrev!];
+
                 const metric: { label: string; value: string; rank: string; color: string } | null =
                   heatmapMode === "gdp"
                     ? { label: translations.gdp, value: `$${hs.gdp}B`, rank: `#${gdpRanked.indexOf(hs.abbrev) + 1} / 50`, color: "#fbbf24" }
                     : heatmapMode === "population"
                     ? { label: translations.population, value: `${hs.population}M`, rank: `#${popRanked.indexOf(hs.abbrev) + 1} / 50`, color: "#60a5fa" }
+                    : heatmapMode === "income" && demoBench
+                    ? { label: "Median Income", value: `$${demoBench.income.toLocaleString()}`, rank: "", color: "#34d399" }
+                    : heatmapMode === "homeValue" && demoBench
+                    ? { label: "Median Home Value", value: `$${demoBench.homeValue.toLocaleString()}`, rank: "", color: "#fb923c" }
+                    : heatmapMode === "education" && demoBench
+                    ? { label: "Higher Education", value: `${demoBench.eduPct}%`, rank: "", color: "#38bdf8" }
+                    : heatmapMode === "veterans" && demoBench
+                    ? { label: "Veteran Rate", value: `${demoBench.vetPct}%`, rank: "", color: "#facc15" }
+                    : heatmapMode === "broadband" && demoBench
+                    ? { label: "Broadband Internet", value: `${demoBench.broadbandPct}%`, rank: "", color: "#38bdf8" }
+                    : heatmapMode === "ownerPct" && demoBench
+                    ? { label: "Homeownership", value: `${demoBench.ownerPct}%`, rank: "", color: "#f59e0b" }
+                    : heatmapMode === "poverty" && demoBench
+                    ? { label: "Poverty Rate", value: `${demoBench.povertyPct}%`, rank: "", color: "#f43f5e" }
+                    : heatmapMode === "commute" && demoBench
+                    ? { label: "Mean Commute", value: `${demoBench.commuteMins} min`, rank: "", color: "#a855f7" }
+                    : heatmapMode === "election2024" && el2024
+                    ? { label: "2024 Result", value: `${el2024.winner === "GOP" ? "GOP (Trump)" : "DEM (Harris)"} +${Math.abs(el2024.marginPct)}%`, rank: `${el2024.electoralVotes} EV`, color: el2024.winner === "GOP" ? "#ef4444" : "#3b82f6" }
+                    : heatmapMode === "election2020" && el2020
+                    ? { label: "2020 Result", value: `${el2020.winner === "GOP" ? "GOP (Trump)" : "DEM (Biden)"} +${Math.abs(el2020.marginPct)}%`, rank: `${el2020.electoralVotes} EV`, color: el2020.winner === "GOP" ? "#ef4444" : "#3b82f6" }
                     : heatmapMode === "statehood"
                     ? { label: translations.statehood, value: `${hs.statehoodYear}`, rank: `#${hs.statehoodOrder} / 50`, color: "#f87171" }
                     : heatmapMode === "amendments" && con
@@ -1791,6 +1815,23 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                                   fill: activeCensusLayer.id === "states" ? "none" : "rgba(251, 191, 36, 0.50)",
                                   stroke: "#fbbf24",
                                   strokeWidth: 2.5,
+                                  outline: "none",
+                                  pointerEvents: "none",
+                                },
+                                hover: { outline: "none" },
+                                pressed: { outline: "none" },
+                              }}
+                            />
+                          )}
+                          {hoveredGeo && (
+                            <Geography
+                              key={`${hoveredGeo.rsmKey}-hover`}
+                              geography={hoveredGeo}
+                              style={{
+                                default: {
+                                  fill: "rgba(255, 255, 255, 0.45)",
+                                  stroke: "#ffffff",
+                                  strokeWidth: 2.2,
                                   outline: "none",
                                   pointerEvents: "none",
                                 },
