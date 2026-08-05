@@ -1,0 +1,28 @@
+# ─── Vercel Deployment Exclusions ──────────────────────────────────────────
+# Exclude non-web datasets, GIS shapefiles, and Jupyter notebooks to keep
+# Vercel build container lightweight and prevent build process timeouts.
+
+# Python & Jupyter Notebooks
+*.ipynb
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# Raw GIS Shapefiles & Archives (only processed TopoJSON/JSON are used by web)
+*.shp
+*.dbf
+*.shx
+*.prj
+*.zip
+
+# Heavy election raw data repositories and build working dirs
+Election data/
+cartography/2020/build/
+cartography/2024/build/
+*.dbf
+
+# Dev & Tooling
+.git/
+.github/
+.vscode/
+.idea/

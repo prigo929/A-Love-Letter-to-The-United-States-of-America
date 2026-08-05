@@ -1,0 +1,8 @@
+# Exclude raw GIS shapefiles, DBF files, and Jupyter notebooks from Next.js bundle tracing
+*.ipynb
+.ipynb_checkpoints/
+*.shp
+*.dbf
+*.shx
+*.prj
+*.zip
