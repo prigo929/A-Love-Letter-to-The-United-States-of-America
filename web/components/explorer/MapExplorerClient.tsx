@@ -799,6 +799,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   const [showAmtrakStations, setShowAmtrakStations] = useState<boolean>(false);
   const [showTransmissionLines, setShowTransmissionLines] = useState<boolean>(false);
   const [showTrails, setShowTrails] = useState<boolean>(false);
+  const [showParkBoundaries, setShowParkBoundaries] = useState<boolean>(false);
+  const [showFederalLands, setShowFederalLands] = useState<boolean>(false);
   const [historicalYearFilter, setHistoricalYearFilter] = useState<number>(1959);
   // Census Layer selection state (22 views)
   const [activeCensusLayerId, setActiveCensusLayerId] = useState<string>("states");
