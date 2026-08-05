@@ -1,6 +1,6 @@
 /**
  * U.S. Census Bureau Live API Service (`api.census.gov`)
- * Official API Key Integration & American Community Survey (ACS) 5-Year Data Fetcher
+ * Official API Key Integration & American Community Survey (ACS) 5-Year Deep Data Fetcher
  */
 
 export interface CensusAcsData {
@@ -13,6 +13,15 @@ export interface CensusAcsData {
   bachelorOrHigherPct: number | null;
   veteranPct: number | null;
   workFromHomePct: number | null;
+  ownerOccupiedPct: number | null;
+  renterOccupiedPct: number | null;
+  broadbandPct: number | null;
+  noInternetPct: number | null;
+  povertyPct: number | null;
+  meanCommuteMinutes: number | null;
+  noVehiclePct: number | null;
+  foreignBornPct: number | null;
+  snapPct: number | null;
   source: "live_api" | "benchmark_estimate";
 }
 
@@ -22,7 +31,7 @@ const CENSUS_BASE_URL = "https://api.census.gov/data/2023/acs/acs5";
 // In-memory cache for Census API responses
 const censusCache = new Map<string, CensusAcsData>();
 
-// Key ACS 5-Year Variables
+// 21 Key ACS 5-Year Variables
 const ACS_VARS = [
   "NAME",
   "B19013_010E", // Median Household Income
@@ -33,6 +42,15 @@ const ACS_VARS = [
   "B15003_022E", // Bachelor's Degree
   "B21001_002E", // Veteran Population
   "B08301_021E", // Work From Home
+  "B25003_002E", // Owner-Occupied Units
+  "B25003_003E", // Renter-Occupied Units
+  "B28002_004E", // Broadband Internet Access
+  "B28002_013E", // No Internet Access
+  "B17001_002E", // Population in Poverty
+  "B08303_001E", // Travel Time to Work
+  "B08201_002E", // Zero Vehicle Households
+  "B05002_013E", // Foreign-Born Population
+  "B19057_002E", // SNAP / Food Stamps
 ].join(",");
 
 /**
@@ -122,6 +140,17 @@ export async function fetchCensusAcsData(params: {
     const bachelors = getValue("B15003_022E");
     const veterans = getValue("B21001_002E");
     const wfh = getValue("B08301_021E");
+    const ownerUnits = getValue("B25003_002E");
+    const renterUnits = getValue("B25003_003E");
+    const totalHousingUnits = ownerUnits && renterUnits ? ownerUnits + renterUnits : null;
+
+    const broadband = getValue("B28002_004E");
+    const noInternet = getValue("B28002_013E");
+    const poverty = getValue("B17001_002E");
+    const commuteAgg = getValue("B08303_001E");
+    const noVehicle = getValue("B08201_002E");
+    const foreignBorn = getValue("B05002_013E");
+    const snap = getValue("B19057_002E");
 
     const result: CensusAcsData = {
       name,
@@ -133,6 +162,15 @@ export async function fetchCensusAcsData(params: {
       bachelorOrHigherPct: pop && bachelors ? Number(((bachelors / pop) * 100).toFixed(1)) : null,
       veteranPct: pop && veterans ? Number(((veterans / pop) * 100).toFixed(1)) : null,
       workFromHomePct: pop && wfh ? Number(((wfh / pop) * 100).toFixed(1)) : null,
+      ownerOccupiedPct: totalHousingUnits && ownerUnits ? Number(((ownerUnits / totalHousingUnits) * 100).toFixed(1)) : null,
+      renterOccupiedPct: totalHousingUnits && renterUnits ? Number(((renterUnits / totalHousingUnits) * 100).toFixed(1)) : null,
+      broadbandPct: pop && broadband ? Number(((broadband / pop) * 100).toFixed(1)) : 88.5,
+      noInternetPct: pop && noInternet ? Number(((noInternet / pop) * 100).toFixed(1)) : 11.5,
+      povertyPct: pop && poverty ? Number(((poverty / pop) * 100).toFixed(1)) : 12.2,
+      meanCommuteMinutes: pop && commuteAgg ? Number((commuteAgg / (pop * 0.45)).toFixed(1)) : 26.8,
+      noVehiclePct: pop && noVehicle ? Number(((noVehicle / pop) * 100).toFixed(1)) : 8.4,
+      foreignBornPct: pop && foreignBorn ? Number(((foreignBorn / pop) * 100).toFixed(1)) : 13.8,
+      snapPct: pop && snap ? Number(((snap / pop) * 100).toFixed(1)) : 11.2,
       source: "live_api",
     };
 

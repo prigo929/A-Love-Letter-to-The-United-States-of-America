@@ -62,57 +62,57 @@ import { MAJOR_INFRASTRUCTURE_NETWORKS } from "@/lib/data/infrastructure-data";
 import { StateComparisonModal } from "@/components/explorer/StateComparisonModal";
 import { StateFactsheetModal } from "@/components/explorer/StateFactsheetModal";
 
-export const STATE_DEMOGRAPHIC_BENCHMARKS: Record<string, { income: number; homeValue: number; eduPct: number; vetPct: number }> = {
-  AL: { income: 59609, homeValue: 225000, eduPct: 27.5, vetPct: 9.1 },
-  AK: { income: 88121, homeValue: 345000, eduPct: 31.2, vetPct: 12.4 },
-  AZ: { income: 74568, homeValue: 415000, eduPct: 32.8, vetPct: 9.6 },
-  AR: { income: 55432, homeValue: 205000, eduPct: 24.8, vetPct: 8.5 },
-  CA: { income: 91551, homeValue: 785000, eduPct: 36.2, vetPct: 5.1 },
-  CO: { income: 89302, homeValue: 535000, eduPct: 44.5, vetPct: 8.9 },
-  CT: { income: 88429, homeValue: 375000, eduPct: 40.8, vetPct: 5.8 },
-  DE: { income: 79325, homeValue: 365000, eduPct: 33.6, vetPct: 8.2 },
-  FL: { income: 69314, homeValue: 395000, eduPct: 31.5, vetPct: 8.8 },
-  GA: { income: 72837, homeValue: 325000, eduPct: 33.7, vetPct: 8.7 },
-  HI: { income: 92400, homeValue: 845000, eduPct: 34.8, vetPct: 9.8 },
-  ID: { income: 72782, homeValue: 445000, eduPct: 29.8, vetPct: 9.3 },
-  IL: { income: 76708, homeValue: 265000, eduPct: 36.8, vetPct: 5.9 },
-  IN: { income: 66785, homeValue: 235000, eduPct: 28.9, vetPct: 7.2 },
-  IA: { income: 69588, homeValue: 215000, eduPct: 30.2, vetPct: 7.5 },
-  KS: { income: 68957, homeValue: 225000, eduPct: 34.5, vetPct: 8.6 },
-  KY: { income: 59341, homeValue: 205000, eduPct: 26.2, vetPct: 8.4 },
-  LA: { income: 55416, homeValue: 215000, eduPct: 25.5, vetPct: 7.1 },
-  ME: { income: 68251, homeValue: 355000, eduPct: 33.8, vetPct: 10.2 },
-  MD: { income: 94974, homeValue: 415000, eduPct: 41.5, vetPct: 8.1 },
-  MA: { income: 94488, homeValue: 585000, eduPct: 45.2, vetPct: 4.8 },
-  MI: { income: 66986, homeValue: 235000, eduPct: 31.1, vetPct: 6.8 },
-  MN: { income: 82338, homeValue: 335000, eduPct: 38.2, vetPct: 7.3 },
-  MS: { income: 52719, homeValue: 175000, eduPct: 23.5, vetPct: 7.6 },
-  MO: { income: 64889, homeValue: 235000, eduPct: 30.8, vetPct: 8.3 },
-  MT: { income: 67631, homeValue: 425000, eduPct: 33.5, vetPct: 10.8 },
-  NE: { income: 73071, homeValue: 245000, eduPct: 33.8, vetPct: 8.1 },
-  NV: { income: 72336, homeValue: 425000, eduPct: 26.8, vetPct: 9.2 },
-  NH: { income: 89992, homeValue: 445000, eduPct: 38.5, vetPct: 9.4 },
-  NJ: { income: 96346, homeValue: 485000, eduPct: 41.2, vetPct: 4.2 },
-  NM: { income: 59726, homeValue: 265000, eduPct: 28.5, vetPct: 9.7 },
-  NY: { income: 79557, homeValue: 425000, eduPct: 37.8, vetPct: 4.9 },
-  NC: { income: 67481, homeValue: 325000, eduPct: 33.2, vetPct: 9.3 },
-  ND: { income: 71243, homeValue: 255000, eduPct: 31.8, vetPct: 8.2 },
-  OH: { income: 65720, homeValue: 225000, eduPct: 29.8, vetPct: 7.4 },
-  OK: { income: 59698, homeValue: 195000, eduPct: 26.8, vetPct: 9.1 },
-  OR: { income: 75654, homeValue: 485000, eduPct: 35.2, vetPct: 8.4 },
-  PA: { income: 71327, homeValue: 265000, eduPct: 33.5, vetPct: 7.2 },
-  RI: { income: 81822, homeValue: 415000, eduPct: 34.8, vetPct: 5.6 },
-  SC: { income: 64115, homeValue: 285000, eduPct: 29.8, vetPct: 9.6 },
-  SD: { income: 69728, homeValue: 255000, eduPct: 30.5, vetPct: 8.8 },
-  TN: { income: 65254, homeValue: 305000, eduPct: 29.2, vetPct: 8.2 },
-  TX: { income: 72829, homeValue: 305000, eduPct: 31.8, vetPct: 7.6 },
-  UT: { income: 89168, homeValue: 515000, eduPct: 35.8, vetPct: 6.2 },
-  VT: { income: 72431, homeValue: 335000, eduPct: 39.2, vetPct: 7.8 },
-  VA: { income: 87249, homeValue: 385000, eduPct: 40.2, vetPct: 10.4 },
-  WA: { income: 91086, homeValue: 565000, eduPct: 37.5, vetPct: 8.8 },
-  WV: { income: 54300, homeValue: 155000, eduPct: 21.8, vetPct: 8.4 },
-  WI: { income: 70996, homeValue: 265000, eduPct: 31.5, vetPct: 7.1 },
-  WY: { income: 70042, homeValue: 315000, eduPct: 29.2, vetPct: 11.2 },
+export const STATE_DEMOGRAPHIC_BENCHMARKS: Record<string, { income: number; homeValue: number; eduPct: number; vetPct: number; broadbandPct: number; ownerPct: number; povertyPct: number; commuteMins: number }> = {
+  AL: { income: 59609, homeValue: 225000, eduPct: 27.5, vetPct: 9.1, broadbandPct: 84.2, ownerPct: 69.2, povertyPct: 15.6, commuteMins: 25.1 },
+  AK: { income: 88121, homeValue: 345000, eduPct: 31.2, vetPct: 12.4, broadbandPct: 88.5, ownerPct: 65.4, povertyPct: 10.8, commuteMins: 19.4 },
+  AZ: { income: 74568, homeValue: 415000, eduPct: 32.8, vetPct: 9.6, broadbandPct: 90.1, ownerPct: 66.8, povertyPct: 12.8, commuteMins: 25.8 },
+  AR: { income: 55432, homeValue: 205000, eduPct: 24.8, vetPct: 8.5, broadbandPct: 82.5, ownerPct: 66.1, povertyPct: 16.2, commuteMins: 22.4 },
+  CA: { income: 91551, homeValue: 785000, eduPct: 36.2, vetPct: 5.1, broadbandPct: 92.4, ownerPct: 55.3, povertyPct: 12.1, commuteMins: 29.8 },
+  CO: { income: 89302, homeValue: 535000, eduPct: 44.5, vetPct: 8.9, broadbandPct: 93.1, ownerPct: 66.2, povertyPct: 9.6, commuteMins: 25.9 },
+  CT: { income: 88429, homeValue: 375000, eduPct: 40.8, vetPct: 5.8, broadbandPct: 91.8, ownerPct: 66.1, povertyPct: 10.1, commuteMins: 26.5 },
+  DE: { income: 79325, homeValue: 365000, eduPct: 33.6, vetPct: 8.2, broadbandPct: 90.5, ownerPct: 71.4, povertyPct: 11.4, commuteMins: 26.1 },
+  FL: { income: 69314, homeValue: 395000, eduPct: 31.5, vetPct: 8.8, broadbandPct: 90.8, ownerPct: 67.3, povertyPct: 13.1, commuteMins: 27.8 },
+  GA: { income: 72837, homeValue: 325000, eduPct: 33.7, vetPct: 8.7, broadbandPct: 88.9, ownerPct: 64.8, povertyPct: 13.5, commuteMins: 28.4 },
+  HI: { income: 92400, homeValue: 845000, eduPct: 34.8, vetPct: 9.8, broadbandPct: 91.2, ownerPct: 61.2, povertyPct: 9.2, commuteMins: 27.5 },
+  ID: { income: 72782, homeValue: 445000, eduPct: 29.8, vetPct: 9.3, broadbandPct: 89.2, ownerPct: 71.8, povertyPct: 10.7, commuteMins: 21.2 },
+  IL: { income: 76708, homeValue: 265000, eduPct: 36.8, vetPct: 5.9, broadbandPct: 89.8, ownerPct: 66.3, povertyPct: 11.9, commuteMins: 29.1 },
+  IN: { income: 66785, homeValue: 235000, eduPct: 28.9, vetPct: 7.2, broadbandPct: 86.8, ownerPct: 69.8, povertyPct: 12.2, commuteMins: 23.8 },
+  IA: { income: 69588, homeValue: 215000, eduPct: 30.2, vetPct: 7.5, broadbandPct: 87.5, ownerPct: 71.5, povertyPct: 11.1, commuteMins: 19.5 },
+  KS: { income: 68957, homeValue: 225000, eduPct: 34.5, vetPct: 8.6, broadbandPct: 88.1, ownerPct: 67.2, povertyPct: 11.5, commuteMins: 19.8 },
+  KY: { income: 59341, homeValue: 205000, eduPct: 26.2, vetPct: 8.4, broadbandPct: 85.2, ownerPct: 67.5, povertyPct: 16.1, commuteMins: 23.5 },
+  LA: { income: 55416, homeValue: 215000, eduPct: 25.5, vetPct: 7.1, broadbandPct: 83.1, ownerPct: 66.8, povertyPct: 18.8, commuteMins: 25.4 },
+  ME: { income: 68251, homeValue: 355000, eduPct: 33.8, vetPct: 10.2, broadbandPct: 87.8, ownerPct: 73.1, povertyPct: 10.9, commuteMins: 24.1 },
+  MD: { income: 94974, homeValue: 415000, eduPct: 41.5, vetPct: 8.1, broadbandPct: 92.8, ownerPct: 67.4, povertyPct: 9.8, commuteMins: 32.8 },
+  MA: { income: 94488, homeValue: 585000, eduPct: 45.2, vetPct: 4.8, broadbandPct: 92.5, ownerPct: 62.1, povertyPct: 10.4, commuteMins: 30.2 },
+  MI: { income: 66986, homeValue: 235000, eduPct: 31.1, vetPct: 6.8, broadbandPct: 88.2, ownerPct: 71.8, povertyPct: 13.1, commuteMins: 24.5 },
+  MN: { income: 82338, homeValue: 335000, eduPct: 38.2, vetPct: 7.3, broadbandPct: 90.8, ownerPct: 71.9, povertyPct: 9.3, commuteMins: 23.9 },
+  MS: { income: 52719, homeValue: 175000, eduPct: 23.5, vetPct: 7.6, broadbandPct: 81.2, ownerPct: 68.5, povertyPct: 19.1, commuteMins: 24.8 },
+  MO: { income: 64889, homeValue: 235000, eduPct: 30.8, vetPct: 8.3, broadbandPct: 86.9, ownerPct: 67.2, povertyPct: 12.8, commuteMins: 23.7 },
+  MT: { income: 67631, homeValue: 425000, eduPct: 33.5, vetPct: 10.8, broadbandPct: 86.1, ownerPct: 68.4, povertyPct: 11.8, commuteMins: 18.2 },
+  NE: { income: 73071, homeValue: 245000, eduPct: 33.8, vetPct: 8.1, broadbandPct: 88.8, ownerPct: 66.5, povertyPct: 10.5, commuteMins: 18.8 },
+  NV: { income: 72336, homeValue: 425000, eduPct: 26.8, vetPct: 9.2, broadbandPct: 90.2, ownerPct: 58.2, povertyPct: 12.9, commuteMins: 24.5 },
+  NH: { income: 89992, homeValue: 445000, eduPct: 38.5, vetPct: 9.4, broadbandPct: 92.1, ownerPct: 71.3, povertyPct: 7.2, commuteMins: 27.2 },
+  NJ: { income: 96346, homeValue: 485000, eduPct: 41.2, vetPct: 4.2, broadbandPct: 92.7, ownerPct: 63.8, povertyPct: 9.7, commuteMins: 31.8 },
+  NM: { income: 59726, homeValue: 265000, eduPct: 28.5, vetPct: 9.7, broadbandPct: 83.8, ownerPct: 68.2, povertyPct: 17.6, commuteMins: 22.1 },
+  NY: { income: 79557, homeValue: 425000, eduPct: 37.8, vetPct: 4.9, broadbandPct: 90.1, ownerPct: 53.9, povertyPct: 13.9, commuteMins: 33.5 },
+  NC: { income: 67481, homeValue: 325000, eduPct: 33.2, vetPct: 9.3, broadbandPct: 88.4, ownerPct: 65.5, povertyPct: 13.4, commuteMins: 24.9 },
+  ND: { income: 71243, homeValue: 255000, eduPct: 31.8, vetPct: 8.2, broadbandPct: 87.2, ownerPct: 62.8, povertyPct: 10.8, commuteMins: 17.5 },
+  OH: { income: 65720, homeValue: 225000, eduPct: 29.8, vetPct: 7.4, broadbandPct: 88.0, ownerPct: 66.4, povertyPct: 13.4, commuteMins: 23.8 },
+  OK: { income: 59698, homeValue: 195000, eduPct: 26.8, vetPct: 9.1, broadbandPct: 84.8, ownerPct: 65.8, povertyPct: 15.2, commuteMins: 21.9 },
+  OR: { income: 75654, homeValue: 485000, eduPct: 35.2, vetPct: 8.4, broadbandPct: 91.5, ownerPct: 63.2, povertyPct: 11.8, commuteMins: 23.9 },
+  PA: { income: 71327, homeValue: 265000, eduPct: 33.5, vetPct: 7.2, broadbandPct: 89.1, ownerPct: 68.9, povertyPct: 11.8, commuteMins: 26.9 },
+  RI: { income: 81822, homeValue: 415000, eduPct: 34.8, vetPct: 5.6, broadbandPct: 90.2, ownerPct: 62.5, povertyPct: 11.3, commuteMins: 25.1 },
+  SC: { income: 64115, homeValue: 285000, eduPct: 29.8, vetPct: 9.6, broadbandPct: 86.8, ownerPct: 70.1, povertyPct: 14.1, commuteMins: 24.8 },
+  SD: { income: 69728, homeValue: 255000, eduPct: 30.5, vetPct: 8.8, broadbandPct: 86.4, ownerPct: 67.9, povertyPct: 12.1, commuteMins: 17.2 },
+  TN: { income: 65254, homeValue: 305000, eduPct: 29.2, vetPct: 8.2, broadbandPct: 86.5, ownerPct: 66.8, povertyPct: 13.6, commuteMins: 25.2 },
+  TX: { income: 72829, homeValue: 305000, eduPct: 31.8, vetPct: 7.6, broadbandPct: 89.5, ownerPct: 62.4, povertyPct: 13.8, commuteMins: 26.8 },
+  UT: { income: 89168, homeValue: 515000, eduPct: 35.8, vetPct: 6.2, broadbandPct: 93.8, ownerPct: 70.5, povertyPct: 8.6, commuteMins: 21.8 },
+  VT: { income: 72431, homeValue: 335000, eduPct: 39.2, vetPct: 7.8, broadbandPct: 88.5, ownerPct: 71.9, povertyPct: 10.3, commuteMins: 22.8 },
+  VA: { income: 87249, homeValue: 385000, eduPct: 40.2, vetPct: 10.4, broadbandPct: 91.2, ownerPct: 66.5, povertyPct: 9.9, commuteMins: 28.5 },
+  WA: { income: 91086, homeValue: 565000, eduPct: 37.5, vetPct: 8.8, broadbandPct: 93.2, ownerPct: 63.5, povertyPct: 10.0, commuteMins: 27.6 },
+  WV: { income: 54300, homeValue: 155000, eduPct: 21.8, vetPct: 8.4, broadbandPct: 82.1, ownerPct: 73.8, povertyPct: 16.8, commuteMins: 26.2 },
+  WI: { income: 70996, homeValue: 265000, eduPct: 31.5, vetPct: 7.1, broadbandPct: 89.2, ownerPct: 67.5, povertyPct: 10.7, commuteMins: 22.1 },
+  WY: { income: 70042, homeValue: 315000, eduPct: 29.2, vetPct: 11.2, broadbandPct: 87.5, ownerPct: 71.2, povertyPct: 10.4, commuteMins: 18.5 },
 };
 
 // ─── 2025 Census Cartographic Boundary Views ─────────────────────────────────
@@ -737,7 +737,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   const [selectedRegion, setSelectedRegion] = useState<string>("All");
   const [sortBy, setSortBy] = useState<"name" | "gdp" | "population" | "statehood">("name");
   const [heatmapMode, setHeatmapMode] = useState<
-    "none" | "gdp" | "population" | "income" | "homeValue" | "education" | "veterans" | "election2024" | "election2020" | "statehood" | "amendments" | "conLength"
+    "none" | "gdp" | "population" | "income" | "homeValue" | "education" | "veterans" | "broadband" | "ownerPct" | "poverty" | "commute" | "election2024" | "election2020" | "statehood" | "amendments" | "conLength"
   >("none");
   const [liveCensusData, setLiveCensusData] = useState<CensusAcsData | null>(null);
   const [isLoadingCensusData, setIsLoadingCensusData] = useState<boolean>(false);
@@ -1108,6 +1108,34 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           ? `hsla(48,95%,60%,${(0.35 + r * 0.55).toFixed(2)})`
           : `hsla(48,90%,48%,${(0.22 + r * 0.58).toFixed(2)})`;
         stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+      } else if (heatmapMode === "broadband") {
+        const bb = STATE_DEMOGRAPHIC_BENCHMARKS[abbrev]?.broadbandPct ?? 88;
+        const r = Math.min(Math.max((bb - 80) / 14, 0), 1);
+        fill = isHovered
+          ? `hsla(200,95%,60%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(200,90%,48%,${(0.22 + r * 0.58).toFixed(2)})`;
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+      } else if (heatmapMode === "ownerPct") {
+        const own = STATE_DEMOGRAPHIC_BENCHMARKS[abbrev]?.ownerPct ?? 65;
+        const r = Math.min(Math.max((own - 52) / 22, 0), 1);
+        fill = isHovered
+          ? `hsla(32,95%,60%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(32,90%,48%,${(0.22 + r * 0.58).toFixed(2)})`;
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+      } else if (heatmapMode === "poverty") {
+        const pov = STATE_DEMOGRAPHIC_BENCHMARKS[abbrev]?.povertyPct ?? 12;
+        const r = Math.min(Math.max((pov - 7) / 13, 0), 1);
+        fill = isHovered
+          ? `hsla(350,90%,60%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(350,85%,48%,${(0.22 + r * 0.58).toFixed(2)})`;
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+      } else if (heatmapMode === "commute") {
+        const com = STATE_DEMOGRAPHIC_BENCHMARKS[abbrev]?.commuteMins ?? 25;
+        const r = Math.min(Math.max((com - 17) / 17, 0), 1);
+        fill = isHovered
+          ? `hsla(280,85%,62%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(280,80%,50%,${(0.22 + r * 0.58).toFixed(2)})`;
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
       } else if (heatmapMode === "amendments") {
         const amend = STATE_EXTENDED_DATA[abbrev]?.constitution.amendmentsCount ?? 0;
         const r = maxValues.maxAmend > 0 ? Math.sqrt(amend / maxValues.maxAmend) : 0;
@@ -1303,6 +1331,10 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   { id: "homeValue",  label: "Home Value 🏠",             activeColor: "#fb923c" },
                   { id: "education",  label: "Education 🎓",              activeColor: "#38bdf8" },
                   { id: "veterans",   label: "Veterans 🎖️",               activeColor: "#facc15" },
+                  { id: "broadband",  label: "Broadband 📶",             activeColor: "#38bdf8" },
+                  { id: "ownerPct",   label: "Homeowners 🏡",             activeColor: "#f59e0b" },
+                  { id: "poverty",    label: "Poverty 📉",                activeColor: "#f43f5e" },
+                  { id: "commute",    label: "Commute 🚗",                activeColor: "#a855f7" },
                   { id: "election2024", label: "2024 Vote 🗳️",           activeColor: "#ef4444" },
                   { id: "election2020", label: "2020 Vote 🗳️",           activeColor: "#3b82f6" },
                   { id: "statehood",  label: translations.statehoodHeat,  activeColor: "#f87171" },
@@ -1342,6 +1374,14 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           ? "linear-gradient(to right, hsla(190,85%,48%,0.22), hsl(190,90%,60%))"
                           : heatmapMode === "veterans"
                           ? "linear-gradient(to right, hsla(48,90%,48%,0.22), hsl(48,95%,60%))"
+                          : heatmapMode === "broadband"
+                          ? "linear-gradient(to right, hsla(200,90%,48%,0.22), hsl(200,95%,60%))"
+                          : heatmapMode === "ownerPct"
+                          ? "linear-gradient(to right, hsla(32,90%,48%,0.22), hsl(32,95%,60%))"
+                          : heatmapMode === "poverty"
+                          ? "linear-gradient(to right, hsla(350,85%,48%,0.22), hsl(350,90%,60%))"
+                          : heatmapMode === "commute"
+                          ? "linear-gradient(to right, hsla(280,80%,50%,0.22), hsl(280,85%,62%))"
                           : heatmapMode === "amendments"
                           ? "linear-gradient(to right, hsla(265,72%,56%,0.22), hsl(265,80%,68%))"
                           : heatmapMode === "conLength"
@@ -1995,34 +2035,64 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                             </span>
                             <span className="font-mono text-[9px] text-emerald-300/60 font-bold">U.S. Census API</span>
                           </div>
-                          <div className="grid grid-cols-2 gap-2 font-mono text-xs">
-                            <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
-                              <span className="text-[9px] text-white/40 block">Median Income</span>
-                              <span className="text-emerald-300 font-bold text-sm">
-                                {liveCensusData.medianIncome ? `$${liveCensusData.medianIncome.toLocaleString()}` : "N/A"}
-                              </span>
-                            </div>
-                            <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
-                              <span className="text-[9px] text-white/40 block">Median Home Value</span>
-                              <span className="text-amber-300 font-bold text-sm">
-                                {liveCensusData.medianHomeValue ? `$${liveCensusData.medianHomeValue.toLocaleString()}` : "N/A"}
-                              </span>
-                            </div>
-                            <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
-                              <span className="text-[9px] text-white/40 block">Higher Education</span>
-                              <span className="text-blue-300 font-bold text-sm">
-                                {liveCensusData.bachelorOrHigherPct ? `${liveCensusData.bachelorOrHigherPct}%` : "N/A"}
-                              </span>
-                            </div>
-                            <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
-                              <span className="text-[9px] text-white/40 block">Veteran Population</span>
-                              <span className="text-purple-300 font-bold text-sm">
-                                {liveCensusData.veteranPct ? `${liveCensusData.veteranPct}%` : "N/A"}
-                              </span>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-xs">
+                              <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                                <span className="text-[9px] text-white/40 block">Median Income</span>
+                                <span className="text-emerald-300 font-bold text-sm">
+                                  {liveCensusData.medianIncome ? `$${liveCensusData.medianIncome.toLocaleString()}` : "N/A"}
+                                </span>
+                              </div>
+                              <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                                <span className="text-[9px] text-white/40 block">Median Home Value</span>
+                                <span className="text-amber-300 font-bold text-sm">
+                                  {liveCensusData.medianHomeValue ? `$${liveCensusData.medianHomeValue.toLocaleString()}` : "N/A"}
+                                </span>
+                              </div>
+                              <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                                <span className="text-[9px] text-white/40 block">Higher Education</span>
+                                <span className="text-blue-300 font-bold text-sm">
+                                  {liveCensusData.bachelorOrHigherPct ? `${liveCensusData.bachelorOrHigherPct}%` : "N/A"}
+                                </span>
+                              </div>
+                              <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                                <span className="text-[9px] text-white/40 block">Veteran Rate</span>
+                                <span className="text-purple-300 font-bold text-sm">
+                                  {liveCensusData.veteranPct ? `${liveCensusData.veteranPct}%` : "N/A"}
+                                </span>
+                              </div>
+                              <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                                <span className="text-[9px] text-white/40 block">Broadband Internet</span>
+                                <span className="text-sky-300 font-bold text-sm">
+                                  {liveCensusData.broadbandPct ? `${liveCensusData.broadbandPct}%` : "N/A"}
+                                </span>
+                              </div>
+                              <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                                <span className="text-[9px] text-white/40 block">Homeownership Rate</span>
+                                <span className="text-orange-300 font-bold text-sm">
+                                  {liveCensusData.ownerOccupiedPct ? `${liveCensusData.ownerOccupiedPct}%` : "N/A"}
+                                </span>
+                              </div>
+                              <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                                <span className="text-[9px] text-white/40 block">Mean Commute</span>
+                                <span className="text-indigo-300 font-bold text-sm">
+                                  {liveCensusData.meanCommuteMinutes ? `${liveCensusData.meanCommuteMinutes} min` : "N/A"}
+                                </span>
+                              </div>
+                              <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                                <span className="text-[9px] text-white/40 block">Poverty Rate</span>
+                                <span className="text-rose-300 font-bold text-sm">
+                                  {liveCensusData.povertyPct ? `${liveCensusData.povertyPct}%` : "N/A"}
+                                </span>
+                              </div>
+                              <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                                <span className="text-[9px] text-white/40 block">Foreign-Born %</span>
+                                <span className="text-teal-300 font-bold text-sm">
+                                  {liveCensusData.foreignBornPct ? `${liveCensusData.foreignBornPct}%` : "N/A"}
+                                </span>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      ) : null}
+                        ) : null}
 
                       {/* 2×2 Census Quick Metrics Cards */}
                       <div className="grid grid-cols-2 gap-3 pt-2">
