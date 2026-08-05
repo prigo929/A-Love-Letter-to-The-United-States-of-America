@@ -59,7 +59,7 @@ import { fetchCensusAcsData, CensusAcsData } from "@/lib/services/census-api";
 
 import { ELECTION_2024_STATES, ELECTION_2020_STATES, getElectionColor } from "@/lib/data/election-data";
 import { US_NATIONAL_PARKS } from "@/lib/data/national-parks-data";
-import { INTERSTATE_HIGHWAYS, AMTRAK_RAIL_LINES } from "@/lib/data/infrastructure-data";
+import { HIGHWAY_ROUTES, RAIL_ROUTES } from "@/lib/data/infrastructure-network-data";
 import { StateComparisonModal } from "@/components/explorer/StateComparisonModal";
 import { StateFactsheetModal } from "@/components/explorer/StateFactsheetModal";
 
@@ -150,24 +150,14 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     description: { en: "Official 2025 50-State and Territory Boundaries", ro: "Granițele oficiale 2025 ale celor 50 de state și teritorii" },
   },
   {
-    id: "census_regions",
-    code: "cb_2025_us_region_500k",
-    name: { en: "2025 Census Regions", ro: "Regiuni Recensământ 2025" },
-    category: "states_regions",
-    categoryLabel: { en: "States & Regions", ro: "State și Regiuni" },
-    url: "/maps/census-regions.json",
-    badge: "4 Regions",
-    description: { en: "Northeast, Midwest, South, and West Macro-Regions", ro: "Macro-regiunile Nord-Est, Midwest, Sud și Vest" },
-  },
-  {
-    id: "census_divisions",
-    code: "cb_2025_us_division_500k",
-    name: { en: "2025 Census Divisions", ro: "Diviziuni Recensământ 2025" },
-    category: "states_regions",
-    categoryLabel: { en: "States & Regions", ro: "State și Regiuni" },
-    url: "/maps/census-divisions.json",
-    badge: "9 Divisions",
-    description: { en: "9 Official U.S. Census Geographic Divisions", ro: "Cele 9 diviziuni geografice oficiale ale Recensământului" },
+    id: "counties",
+    code: "cb_2025_us_county_500k",
+    name: { en: "2025 Counties", ro: "Comitate 2025" },
+    category: "metro",
+    categoryLabel: { en: "Metropolitan & Municipal", ro: "Metropolitan și Municipal" },
+    url: "/maps/counties.json",
+    badge: "3,144 Counties",
+    description: { en: "3,144 U.S. Counties and County Equivalents", ro: "Cele 3.144 de comitate și echivalente administrative" },
   },
   {
     id: "congressional_districts",
@@ -180,14 +170,24 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     description: { en: "435 U.S. House of Representatives Electoral Districts", ro: "Cele 435 de districte electorale pentru Camera Reprezentanților" },
   },
   {
-    id: "counties_in_cd119",
-    code: "cb_2025_us_county_within_cd119_500k",
-    name: { en: "2025 Counties within Congressional Districts 119th Congress", ro: "Comitate în Districte Congresionale 119th Congres" },
-    category: "political",
-    categoryLabel: { en: "Political & Legislative", ro: "Politic și Legislativ" },
-    url: "/maps/counties-within-cd119.json",
-    badge: "Intersections",
-    description: { en: "County Boundaries Intersected by 119th Congressional Districts", ro: "Granițele comitatelor intersectate de districtele congresionale" },
+    id: "places",
+    code: "cb_2025_us_place_500k",
+    name: { en: "2025 Places", ro: "Localități și Orașe 2025" },
+    category: "metro",
+    categoryLabel: { en: "Metropolitan & Municipal", ro: "Metropolitan și Municipal" },
+    url: "/maps/places.json",
+    badge: "Cities & CDPs",
+    description: { en: "Cities, Towns, Villages, & Census Designated Places", ro: "Orașe, sate și localități desemnate de recensământ" },
+  },
+  {
+    id: "cbsa",
+    code: "cb_2025_us_cbsa_500k",
+    name: { en: "2025 Core Based Statistical Areas", ro: "Zone Statistice Principale (CBSA)" },
+    category: "metro",
+    categoryLabel: { en: "Metropolitan & Municipal", ro: "Metropolitan și Municipal" },
+    url: "/maps/cbsa.json",
+    badge: "925 Metro/Micro",
+    description: { en: "Metropolitan & Micropolitan Statistical Hubs", ro: "Poluri statistice metropolitane și micropolitane" },
   },
   {
     id: "state_leg_upper",
@@ -210,16 +210,6 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     description: { en: "Lower Chamber State House / Assembly Legislative Boundaries", ro: "Circumscripțiile Camerei Deputaților/Adunării statelor" },
   },
   {
-    id: "counties",
-    code: "cb_2025_us_county_500k",
-    name: { en: "2025 Counties", ro: "Comitate 2025" },
-    category: "metro",
-    categoryLabel: { en: "Metropolitan & Municipal", ro: "Metropolitan și Municipal" },
-    url: "/maps/counties.json",
-    badge: "3,144 Counties",
-    description: { en: "3,144 U.S. Counties and County Equivalents", ro: "Cele 3.144 de comitate și echivalente administrative" },
-  },
-  {
     id: "county_subdivisions",
     code: "cb_2025_us_cousub_500k",
     name: { en: "2025 County Subdivisions", ro: "Subdiviziuni de Comitat 2025" },
@@ -230,14 +220,34 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     description: { en: "Minor Civil Divisions, Townships, & Local Subdivisions", ro: "Diviziuni civile minore, orășele și subdiviziuni locale" },
   },
   {
-    id: "cbsa",
-    code: "cb_2025_us_cbsa_500k",
-    name: { en: "2025 Core Based Statistical Areas", ro: "Zone Statistice Principale (CBSA)" },
-    category: "metro",
-    categoryLabel: { en: "Metropolitan & Municipal", ro: "Metropolitan și Municipal" },
-    url: "/maps/cbsa.json",
-    badge: "925 Metro/Micro",
-    description: { en: "Metropolitan & Micropolitan Statistical Hubs", ro: "Poluri statistice metropolitane și micropolitane" },
+    id: "census_regions",
+    code: "cb_2025_us_region_500k",
+    name: { en: "2025 Census Regions", ro: "Regiuni Recensământ 2025" },
+    category: "states_regions",
+    categoryLabel: { en: "States & Regions", ro: "State și Regiuni" },
+    url: "/maps/census-regions.json",
+    badge: "4 Regions",
+    description: { en: "Northeast, Midwest, South, and West Macro-Regions", ro: "Macro-regiunile Nord-Est, Midwest, Sud și Vest" },
+  },
+  {
+    id: "census_divisions",
+    code: "cb_2025_us_division_500k",
+    name: { en: "2025 Census Divisions", ro: "Diviziuni Recensământ 2025" },
+    category: "states_regions",
+    categoryLabel: { en: "States & Regions", ro: "State și Regiuni" },
+    url: "/maps/census-divisions.json",
+    badge: "9 Divisions",
+    description: { en: "9 Official U.S. Census Geographic Divisions", ro: "Cele 9 diviziuni geografice oficiale ale Recensământului" },
+  },
+  {
+    id: "counties_in_cd119",
+    code: "cb_2025_us_county_within_cd119_500k",
+    name: { en: "2025 Counties within Congressional Districts 119th Congress", ro: "Comitate în Districte Congresionale 119th Congres" },
+    category: "political",
+    categoryLabel: { en: "Political & Legislative", ro: "Politic și Legislativ" },
+    url: "/maps/counties-within-cd119.json",
+    badge: "Intersections",
+    description: { en: "County Boundaries Intersected by 119th Congressional Districts", ro: "Granițele comitatelor intersectate de districtele congresionale" },
   },
   {
     id: "csa",
@@ -258,16 +268,6 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     url: "/maps/metropolitan-divisions.json",
     badge: "Urban Divisions",
     description: { en: "Sub-divisions within Major Metropolitan Statistical Areas", ro: "Subdiviziuni în cadrul marilor arii metropolitane" },
-  },
-  {
-    id: "places",
-    code: "cb_2025_us_place_500k",
-    name: { en: "2025 Places", ro: "Localități și Orașe 2025" },
-    category: "metro",
-    categoryLabel: { en: "Metropolitan & Municipal", ro: "Metropolitan și Municipal" },
-    url: "/maps/places.json",
-    badge: "Cities & CDPs",
-    description: { en: "Cities, Towns, Villages, & Census Designated Places", ro: "Orașe, sate și localități desemnate de recensământ" },
   },
   {
     id: "consolidated_cities",
@@ -352,12 +352,12 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
   {
     id: "all_census_catalog",
     code: "cb_2025_us_all_500k",
-    name: { en: "cb_2025_us_all_500k", ro: "cb_2025_us_all_500k" },
+    name: { en: "2025 Full Cartographic Collection", ro: "Colecția Cartografică Completă 2025" },
     category: "catalog",
     categoryLabel: { en: "Full Dataset Catalog", ro: "Catalog Complet Set de Date" },
     url: "/maps/states-500k.json",
-    badge: "All 21 Layers",
-    description: { en: "Complete 2025 U.S. Census 500k Cartographic Boundary Collection", ro: "Colecția completă a tuturor celor 21 de seturi de date cartografice 2025" },
+    badge: "All 21 Layers Combined",
+    description: { en: "Master composite view of the complete 2025 U.S. Census 500k Cartographic Boundary collection", ro: "Vizualizare master compozită a întregului set de 21 de granițe cartografice 2025" },
   }
 ];
 
@@ -1018,13 +1018,67 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
         }
         if (isHovered) {
           return {
-            fill: "rgba(251, 191, 36, 0.35)",
-            stroke: "#fbbf24",
+            fill: "rgba(255, 255, 255, 0.45)",
+            stroke: "#ffffff",
             strokeWidth: 1.2,
             outline: "none",
             transition: "all 0.15s ease",
           };
         }
+
+        const stAbbrev = abbrev || (props.STATEFP ? FIPS_TO_ABBREV[props.STATEFP] : "");
+
+        if (heatmapMode === "income" && stAbbrev) {
+          const inc = STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.income ?? 70000;
+          const r = Math.min(Math.max((inc - 50000) / 47000, 0), 1);
+          return { fill: `hsla(145,78%,45%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
+        }
+        if (heatmapMode === "homeValue" && stAbbrev) {
+          const hv = STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.homeValue ?? 350000;
+          const r = Math.min(Math.max((hv - 170000) / 680000, 0), 1);
+          return { fill: `hsla(28,90%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
+        }
+        if (heatmapMode === "gdp" && stAbbrev) {
+          const stateData = EXPLORER_STATES[stAbbrev];
+          const r = stateData ? Math.sqrt(stateData.gdp / maxValues.maxGdp) : 0.5;
+          return { fill: `hsla(38,90%,50%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
+        }
+        if (heatmapMode === "population" && stAbbrev) {
+          const stateData = EXPLORER_STATES[stAbbrev];
+          const r = stateData ? Math.sqrt(stateData.population / maxValues.maxPop) : 0.5;
+          return { fill: `hsla(210,80%,52%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
+        }
+        if (heatmapMode === "education" && stAbbrev) {
+          const edu = STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.eduPct ?? 32;
+          const r = Math.min(Math.max((edu - 21) / 24, 0), 1);
+          return { fill: `hsla(190,85%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
+        }
+        if (heatmapMode === "veterans" && stAbbrev) {
+          const vet = STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.vetPct ?? 8;
+          const r = Math.min(Math.max((vet - 4) / 8.5, 0), 1);
+          return { fill: `hsla(48,90%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
+        }
+        if (heatmapMode === "broadband" && stAbbrev) {
+          const bb = STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.broadbandPct ?? 88;
+          const r = Math.min(Math.max((bb - 80) / 14, 0), 1);
+          return { fill: `hsla(200,90%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
+        }
+        if (heatmapMode === "ownerPct" && stAbbrev) {
+          const own = STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.ownerPct ?? 65;
+          const r = Math.min(Math.max((own - 52) / 22, 0), 1);
+          return { fill: `hsla(32,90%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
+        }
+        if (heatmapMode === "poverty" && stAbbrev) {
+          const pov = STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.povertyPct ?? 12;
+          const r = Math.min(Math.max((pov - 7) / 13, 0), 1);
+          return { fill: `hsla(350,85%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
+        }
+        if (heatmapMode === "commute" && stAbbrev) {
+          const com = STATE_DEMOGRAPHIC_BENCHMARKS[stAbbrev]?.commuteMins ?? 25;
+          const r = Math.min(Math.max((com - 17) / 17, 0), 1);
+          return { fill: `hsla(280,80%,50%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
+        }
+
         return {
           fill: "rgba(255, 255, 255, 0.08)",
           stroke: "rgba(255, 255, 255, 0.30)",
@@ -1231,15 +1285,14 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 {/* Census Boundary Layer Selector Button */}
                 <button
                   onClick={() => setIsLayerModalOpen(true)}
-                  className="flex items-center justify-between gap-2.5 rounded-full border border-[#fbbf24]/50 bg-[#fbbf24]/10 px-4.5 py-2.5 text-xs font-bold text-[#fbbf24] hover:bg-[#fbbf24]/20 hover:border-[#fbbf24] transition-all shadow-lg cursor-pointer"
+                  className="flex items-center gap-3 rounded-2xl border border-[#fbbf24]/50 bg-[#fbbf24]/10 px-4 py-2 text-xs font-bold text-[#fbbf24] hover:bg-[#fbbf24]/20 hover:border-[#fbbf24] transition-all shadow-lg cursor-pointer text-left"
                 >
-                  <div className="flex items-center gap-2">
-                    <Globe className="h-4 w-4 text-[#fbbf24]" />
-                    <span className="font-mono text-xs font-bold">{activeCensusLayer.name[locale]}</span>
+                  <Globe className="h-4.5 w-4.5 text-[#fbbf24] shrink-0" />
+                  <div className="flex flex-col min-w-0">
+                    <span className="font-bold text-white text-xs leading-none truncate max-w-[180px]">{activeCensusLayer.name[locale]}</span>
+                    <span className="font-mono text-[9px] font-extrabold text-[#fbbf24] uppercase tracking-wider mt-0.5">{activeCensusLayer.badge}</span>
                   </div>
-                  <span className="rounded-md bg-[#fbbf24]/20 px-2 py-0.5 text-[9px] font-mono font-bold text-white uppercase tracking-wider">
-                    {activeCensusLayer.badge}
-                  </span>
+                  <Layers className="h-3.5 w-3.5 text-[#fbbf24]/70 shrink-0 ml-1" />
                 </button>
 
                 {/* ⚔️ State Duel Comparison Button */}
@@ -1868,32 +1921,33 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     }}
                   </Geographies>
 
-                  {/* 🛣️ Interstate Highways Overlay */}
+                  {/* 🛣️ Interstate Highways Overlay (Full Non-Simplified Data) */}
                   {showInterstates &&
-                    INTERSTATE_HIGHWAYS.map((route) =>
-                      route.coordinates.slice(0, -1).map((pt, idx) => (
+                    HIGHWAY_ROUTES.map((route) =>
+                      route.waypoints.slice(0, -1).map((pt, idx) => (
                         <Line
                           key={`${route.id}-${idx}`}
                           from={pt}
-                          to={route.coordinates[idx + 1]}
+                          to={route.waypoints[idx + 1]}
                           stroke={route.color}
                           strokeWidth={2.5}
+                          strokeDasharray={route.dashed ? "4 3" : undefined}
                           strokeLinecap="round"
                         />
                       ))
                     )}
 
-                  {/* 🚆 Amtrak Passenger Rail Lines Overlay */}
+                  {/* 🚆 Amtrak Passenger & Freight Rail Lines Overlay (Full Non-Simplified Data) */}
                   {showAmtrakRail &&
-                    AMTRAK_RAIL_LINES.map((route) =>
-                      route.coordinates.slice(0, -1).map((pt, idx) => (
+                    RAIL_ROUTES.map((route) =>
+                      route.waypoints.slice(0, -1).map((pt, idx) => (
                         <Line
                           key={`${route.id}-${idx}`}
                           from={pt}
-                          to={route.coordinates[idx + 1]}
+                          to={route.waypoints[idx + 1]}
                           stroke={route.color}
                           strokeWidth={2.2}
-                          strokeDasharray={route.dashArray || "4 3"}
+                          strokeDasharray={route.dashed ? "5 3" : "4 3"}
                           strokeLinecap="round"
                         />
                       ))
@@ -1914,11 +1968,9 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         }}
                         onMouseLeave={() => setFeatureHoverInfo(null)}
                       >
-                        <g transform="translate(-10, -20)">
-                          <circle r={7} fill="#10b981" stroke="#ffffff" strokeWidth={2} className="animate-pulse" />
-                          <text y={-8} x={0} textAnchor="middle" fill="#ffffff" fontSize={8} fontWeight="bold">
-                            🌲
-                          </text>
+                        <g className="cursor-pointer">
+                          <circle r={5} fill="#10b981" stroke="#ffffff" strokeWidth={1.5} />
+                          <circle r={10} fill="rgba(16, 185, 129, 0.25)" className="animate-ping" pointerEvents="none" />
                         </g>
                       </Marker>
                     ))}
