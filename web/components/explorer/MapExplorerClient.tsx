@@ -741,7 +741,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   const [selectedRegion, setSelectedRegion] = useState<string>("All");
   const [sortBy, setSortBy] = useState<"name" | "gdp" | "population" | "statehood">("name");
   const [heatmapMode, setHeatmapMode] = useState<
-    "none" | "gdp" | "population" | "income" | "homeValue" | "education" | "veterans" | "broadband" | "ownerPct" | "poverty" | "commute" | "election2024" | "election2020" | "statehood" | "amendments" | "conLength" | "medianAge" | "medianRent" | "workFromHome" | "noVehicle" | "foreignBorn" | "snapPct"
+    "none" | "gdp" | "population" | "income" | "homeValue" | "education" | "veterans" | "broadband" | "ownerPct" | "poverty" | "commute" | "election2024" | "election2020" | "statehood" | "amendments" | "conLength" | "medianAge" | "medianRent" | "workFromHome" | "noVehicle" | "foreignBorn" | "snapPct" | "unemployment" | "insured" | "highSchool" | "gradDegree" | "multiVehicle" | "vacancy"
   >("none");
   const [liveCensusData, setLiveCensusData] = useState<CensusAcsData | null>(null);
   const [isLoadingCensusData, setIsLoadingCensusData] = useState<boolean>(false);
@@ -1130,6 +1130,36 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           const r = Math.min(Math.max((snap - 5) / 20, 0), 1);
           return { fill: `hsla(12,85%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
+        if (heatmapMode === "unemployment") {
+          const val = localAcs?.unemploymentPct ?? Math.min(Math.max(2, 4.5 + fipsVar * 5), 12);
+          const r = Math.min(Math.max((val - 2) / 9, 0), 1);
+          return { fill: `hsla(0,88%,50%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
+        }
+        if (heatmapMode === "insured") {
+          const val = localAcs?.insuredPct ?? Math.min(Math.max(80, 91 + fipsVar * 8), 98);
+          const r = Math.min(Math.max((val - 80) / 18, 0), 1);
+          return { fill: `hsla(145,85%,48%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
+        }
+        if (heatmapMode === "highSchool") {
+          const val = localAcs?.highSchoolPct ?? Math.min(Math.max(75, 89 + fipsVar * 8), 97);
+          const r = Math.min(Math.max((val - 75) / 22, 0), 1);
+          return { fill: `hsla(205,90%,52%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
+        }
+        if (heatmapMode === "gradDegree") {
+          const val = localAcs?.gradDegreePct ?? Math.min(Math.max(5, 12 + fipsVar * 14), 35);
+          const r = Math.min(Math.max((val - 5) / 30, 0), 1);
+          return { fill: `hsla(265,82%,56%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
+        }
+        if (heatmapMode === "multiVehicle") {
+          const val = localAcs?.multiVehiclePct ?? Math.min(Math.max(20, 60 + fipsVar * 18), 80);
+          const r = Math.min(Math.max((val - 20) / 55, 0), 1);
+          return { fill: `hsla(40,90%,52%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
+        }
+        if (heatmapMode === "vacancy") {
+          const val = localAcs?.vacancyPct ?? Math.min(Math.max(4, 10 + fipsVar * 8), 22);
+          const r = Math.min(Math.max((val - 4) / 18, 0), 1);
+          return { fill: `hsla(215,60%,62%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
+        }
 
         return {
           fill: "rgba(255, 255, 255, 0.08)",
@@ -1257,6 +1287,54 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
         fill = isHovered
           ? `hsla(165,75%,58%,${(0.35 + r * 0.55).toFixed(2)})`
           : `hsla(165,68%,44%,${(0.22 + r * 0.58).toFixed(2)})`;
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+      } else if (heatmapMode === "unemployment") {
+        const localState = LOCAL_CENSUS_ACS_DATABASE[abbrev];
+        const val = localState?.unemploymentPct ?? 4.5;
+        const r = Math.min(Math.max((val - 2) / 8, 0), 1);
+        fill = isHovered
+          ? `hsla(0,90%,58%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(0,88%,50%,${(0.22 + r * 0.58).toFixed(2)})`;
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+      } else if (heatmapMode === "insured") {
+        const localState = LOCAL_CENSUS_ACS_DATABASE[abbrev];
+        const val = localState?.insuredPct ?? 91.5;
+        const r = Math.min(Math.max((val - 80) / 18, 0), 1);
+        fill = isHovered
+          ? `hsla(145,88%,58%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(145,85%,48%,${(0.22 + r * 0.58).toFixed(2)})`;
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+      } else if (heatmapMode === "highSchool") {
+        const localState = LOCAL_CENSUS_ACS_DATABASE[abbrev];
+        const val = localState?.highSchoolPct ?? 89.0;
+        const r = Math.min(Math.max((val - 75) / 22, 0), 1);
+        fill = isHovered
+          ? `hsla(205,92%,60%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(205,90%,52%,${(0.22 + r * 0.58).toFixed(2)})`;
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+      } else if (heatmapMode === "gradDegree") {
+        const localState = LOCAL_CENSUS_ACS_DATABASE[abbrev];
+        const val = localState?.gradDegreePct ?? 12.5;
+        const r = Math.min(Math.max((val - 5) / 28, 0), 1);
+        fill = isHovered
+          ? `hsla(265,85%,68%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(265,82%,56%,${(0.22 + r * 0.58).toFixed(2)})`;
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+      } else if (heatmapMode === "multiVehicle") {
+        const localState = LOCAL_CENSUS_ACS_DATABASE[abbrev];
+        const val = localState?.multiVehiclePct ?? 63.0;
+        const r = Math.min(Math.max((val - 20) / 55, 0), 1);
+        fill = isHovered
+          ? `hsla(40,92%,60%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(40,90%,52%,${(0.22 + r * 0.58).toFixed(2)})`;
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+      } else if (heatmapMode === "vacancy") {
+        const localState = LOCAL_CENSUS_ACS_DATABASE[abbrev];
+        const val = localState?.vacancyPct ?? 10.5;
+        const r = Math.min(Math.max((val - 4) / 18, 0), 1);
+        fill = isHovered
+          ? `hsla(215,65%,68%,${(0.35 + r * 0.55).toFixed(2)})`
+          : `hsla(215,60%,62%,${(0.22 + r * 0.58).toFixed(2)})`;
         stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
       } else {
         const r = (51 - state.statehoodOrder) / 50;
@@ -1468,7 +1546,13 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   { id: "workFromHome", label: "Remote Work",             activeColor: "#14b8a6", layers: ["states", "counties", "cbsa", "csa", "places"] },
                   { id: "noVehicle", label: "No Transit/Car",            activeColor: "#ec4899", layers: ["states", "counties", "cbsa", "csa", "places"] },
                   { id: "foreignBorn", label: "Foreign Born",            activeColor: "#3b82f6", layers: ["states", "counties", "cbsa", "csa", "places"] },
-                  { id: "snapPct",   label: "SNAP/Assistance",         activeColor: "#ef4444", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "snapPct",      label: "SNAP/Assistance",          activeColor: "#ef4444", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "unemployment", label: "Unemployment",              activeColor: "#f87171", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "insured",      label: "Health Insured",            activeColor: "#34d399", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "highSchool",   label: "High School Grad",          activeColor: "#60a5fa", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "gradDegree",   label: "Graduate Degree",           activeColor: "#a78bfa", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "multiVehicle", label: "Multi-Vehicle HH",          activeColor: "#fbbf24", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "vacancy",      label: "Housing Vacancy",           activeColor: "#94a3b8", layers: ["states", "counties", "cbsa", "csa", "places"] },
                   { id: "election2024", label: "2024 Vote",               activeColor: "#ef4444", layers: ["states"] },
                   { id: "election2020", label: "2020 Vote",               activeColor: "#3b82f6", layers: ["states"] },
                   { id: "statehood",  label: translations.statehoodHeat,  activeColor: "#f87171", layers: ["states"] },
@@ -1516,6 +1600,30 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           ? "linear-gradient(to right, hsla(350,85%,48%,0.22), hsl(350,90%,60%))"
                           : heatmapMode === "commute"
                           ? "linear-gradient(to right, hsla(280,80%,50%,0.22), hsl(280,85%,62%))"
+                          : heatmapMode === "medianAge"
+                          ? "linear-gradient(to right, hsla(260,85%,55%,0.22), hsl(260,88%,68%))"
+                          : heatmapMode === "medianRent"
+                          ? "linear-gradient(to right, hsla(18,92%,50%,0.22), hsl(18,95%,62%))"
+                          : heatmapMode === "workFromHome"
+                          ? "linear-gradient(to right, hsla(170,85%,46%,0.22), hsl(170,88%,58%))"
+                          : heatmapMode === "noVehicle"
+                          ? "linear-gradient(to right, hsla(330,85%,50%,0.22), hsl(330,88%,62%))"
+                          : heatmapMode === "foreignBorn"
+                          ? "linear-gradient(to right, hsla(220,90%,55%,0.22), hsl(220,92%,65%))"
+                          : heatmapMode === "snapPct"
+                          ? "linear-gradient(to right, hsla(12,85%,48%,0.22), hsl(12,88%,60%))"
+                          : heatmapMode === "unemployment"
+                          ? "linear-gradient(to right, hsla(0,88%,50%,0.22), hsl(0,90%,62%))"
+                          : heatmapMode === "insured"
+                          ? "linear-gradient(to right, hsla(145,85%,48%,0.22), hsl(145,88%,60%))"
+                          : heatmapMode === "highSchool"
+                          ? "linear-gradient(to right, hsla(205,90%,52%,0.22), hsl(205,92%,65%))"
+                          : heatmapMode === "gradDegree"
+                          ? "linear-gradient(to right, hsla(265,82%,56%,0.22), hsl(265,85%,68%))"
+                          : heatmapMode === "multiVehicle"
+                          ? "linear-gradient(to right, hsla(40,90%,52%,0.22), hsl(40,92%,62%))"
+                          : heatmapMode === "vacancy"
+                          ? "linear-gradient(to right, hsla(215,60%,62%,0.22), hsl(215,65%,72%))"
                           : heatmapMode === "amendments"
                           ? "linear-gradient(to right, hsla(265,72%,56%,0.22), hsl(265,80%,68%))"
                           : heatmapMode === "conLength"
@@ -1536,6 +1644,126 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       <>
                         <span>Low (&lt; 1M)</span>
                         <span className="text-right">Peak (39M · CA)</span>
+                      </>
+                    )}
+                    {heatmapMode === "income" && (
+                      <>
+                        <span>Min ($45k · MS)</span>
+                        <span className="text-right">Max ($96k+ · NJ)</span>
+                      </>
+                    )}
+                    {heatmapMode === "homeValue" && (
+                      <>
+                        <span>Min ($155k · WV)</span>
+                        <span className="text-right">Max ($845k+ · HI)</span>
+                      </>
+                    )}
+                    {heatmapMode === "education" && (
+                      <>
+                        <span>Min (21.8% · WV)</span>
+                        <span className="text-right">Max (45.2% · MA)</span>
+                      </>
+                    )}
+                    {heatmapMode === "veterans" && (
+                      <>
+                        <span>Min (4.2% · NJ)</span>
+                        <span className="text-right">Max (12.4% · AK)</span>
+                      </>
+                    )}
+                    {heatmapMode === "broadband" && (
+                      <>
+                        <span>Min (81.2% · MS)</span>
+                        <span className="text-right">Max (93.8% · UT)</span>
+                      </>
+                    )}
+                    {heatmapMode === "ownerPct" && (
+                      <>
+                        <span>Min (53.9% · NY)</span>
+                        <span className="text-right">Max (73.8% · WV)</span>
+                      </>
+                    )}
+                    {heatmapMode === "poverty" && (
+                      <>
+                        <span>Min (7.2% · NH)</span>
+                        <span className="text-right">Max (19.1% · MS)</span>
+                      </>
+                    )}
+                    {heatmapMode === "commute" && (
+                      <>
+                        <span>Min (17.2% · SD)</span>
+                        <span className="text-right">Max (33.5 min · NY)</span>
+                      </>
+                    )}
+                    {heatmapMode === "medianAge" && (
+                      <>
+                        <span>Min (33.8 yrs · UT)</span>
+                        <span className="text-right">Max (44.7 yrs · ME)</span>
+                      </>
+                    )}
+                    {heatmapMode === "medianRent" && (
+                      <>
+                        <span>Min ($880/mo · AR)</span>
+                        <span className="text-right">Max ($2,250+/mo · CA)</span>
+                      </>
+                    )}
+                    {heatmapMode === "workFromHome" && (
+                      <>
+                        <span>Min (6.9% · AR)</span>
+                        <span className="text-right">Max (28.5% · DC)</span>
+                      </>
+                    )}
+                    {heatmapMode === "noVehicle" && (
+                      <>
+                        <span>Min (4.5% · WY)</span>
+                        <span className="text-right">Max (35.8% · DC)</span>
+                      </>
+                    )}
+                    {heatmapMode === "foreignBorn" && (
+                      <>
+                        <span>Min (1.8% · WV)</span>
+                        <span className="text-right">Max (26.8% · CA)</span>
+                      </>
+                    )}
+                    {heatmapMode === "snapPct" && (
+                      <>
+                        <span>Min (7.2% · UT)</span>
+                        <span className="text-right">Max (22.8% · NM)</span>
+                      </>
+                    )}
+                    {heatmapMode === "unemployment" && (
+                      <>
+                        <span>Min (2.4% · ND)</span>
+                        <span className="text-right">Max (6.8% · MS)</span>
+                      </>
+                    )}
+                    {heatmapMode === "insured" && (
+                      <>
+                        <span>Min (83.5% · TX)</span>
+                        <span className="text-right">Max (97.5% · MA)</span>
+                      </>
+                    )}
+                    {heatmapMode === "highSchool" && (
+                      <>
+                        <span>Min (82.5% · TX)</span>
+                        <span className="text-right">Max (92.8% · MN)</span>
+                      </>
+                    )}
+                    {heatmapMode === "gradDegree" && (
+                      <>
+                        <span>Min (9.2% · MS)</span>
+                        <span className="text-right">Max (32.5% · DC)</span>
+                      </>
+                    )}
+                    {heatmapMode === "multiVehicle" && (
+                      <>
+                        <span>Min (22.5% · DC)</span>
+                        <span className="text-right">Max (71.5% · UT)</span>
+                      </>
+                    )}
+                    {heatmapMode === "vacancy" && (
+                      <>
+                        <span>Min (7.5% · UT)</span>
+                        <span className="text-right">Max (19.5% · VT)</span>
                       </>
                     )}
                     {heatmapMode === "statehood" && (
@@ -1645,6 +1873,146 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           <div className="h-1.5 w-1.5 rounded-full bg-[hsla(165,75%,58%,0.85)]" />
                           <span>&gt; 70k words (e.g., AL, TX, LA)</span>
                         </div>
+                      </div>
+                    )}
+                    {heatmapMode === "income" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(145,78%,45%,0.28)]" /><span>&lt; $55k (e.g., MS, WV, AR)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(145,78%,45%,0.55)]" /><span>$55k – $80k (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(145,85%,58%,0.85)]" /><span>&gt; $90k (e.g., MD, MA, NJ, HI)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "homeValue" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(28,90%,48%,0.28)]" /><span>&lt; $220k (e.g., WV, MS, AR)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(28,90%,48%,0.55)]" /><span>$220k – $450k (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(28,95%,60%,0.85)]" /><span>&gt; $550k (e.g., CA, HI, WA, MA)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "education" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(190,85%,48%,0.28)]" /><span>&lt; 25% (e.g., WV, MS, AR)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(190,85%,48%,0.55)]" /><span>25% – 38% (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(190,90%,60%,0.85)]" /><span>&gt; 40% (e.g., MA, CO, DC)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "veterans" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(48,90%,48%,0.28)]" /><span>&lt; 5% (e.g., CA, NY, NJ)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(48,90%,48%,0.55)]" /><span>5% – 9% (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(48,95%,60%,0.85)]" /><span>&gt; 10% (e.g., AK, MT, WY, ME)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "broadband" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(200,90%,48%,0.28)]" /><span>&lt; 83% (e.g., MS, AR, WV)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(200,90%,48%,0.55)]" /><span>83% – 91% (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(200,95%,60%,0.85)]" /><span>&gt; 92% (e.g., UT, WA, CO)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "ownerPct" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(32,90%,48%,0.28)]" /><span>&lt; 58% (e.g., NY, CA, NV)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(32,90%,48%,0.55)]" /><span>58% – 68% (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(32,95%,60%,0.85)]" /><span>&gt; 70% (e.g., WV, ME, UT)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "poverty" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(350,85%,48%,0.28)]" /><span>&lt; 8% (e.g., NH, MD, UT)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(350,85%,48%,0.55)]" /><span>8% – 14% (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(350,90%,60%,0.85)]" /><span>&gt; 16% (e.g., MS, LA, AR)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "commute" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(280,80%,50%,0.28)]" /><span>&lt; 20 min (e.g., SD, ND, WY)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(280,80%,50%,0.55)]" /><span>20 – 28 min (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(280,85%,62%,0.85)]" /><span>&gt; 30 min (e.g., NY, MD, NJ)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "medianAge" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(260,85%,55%,0.28)]" /><span>&lt; 33 yrs (e.g., UT, AK, TX)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(260,85%,55%,0.55)]" /><span>33 – 40 yrs (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(260,88%,68%,0.85)]" /><span>&gt; 43 yrs (e.g., ME, FL, WV)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "medianRent" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(18,92%,50%,0.28)]" /><span>&lt; $900/mo (e.g., AR, MS, WV)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(18,92%,50%,0.55)]" /><span>$900 – $1,500/mo (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(18,95%,62%,0.85)]" /><span>&gt; $1,800/mo (e.g., CA, HI, NY)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "workFromHome" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(170,85%,46%,0.28)]" /><span>&lt; 8% (e.g., AR, KY, LA)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(170,85%,46%,0.55)]" /><span>8% – 18% (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(170,88%,58%,0.85)]" /><span>&gt; 22% (e.g., CO, WA, DC)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "noVehicle" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(330,85%,50%,0.28)]" /><span>&lt; 4% (e.g., WY, ID, MT)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(330,85%,50%,0.55)]" /><span>4% – 10% (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(330,88%,62%,0.85)]" /><span>&gt; 20% (e.g., NY, DC, PA)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "foreignBorn" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(220,90%,55%,0.28)]" /><span>&lt; 4% (e.g., WV, MS, ME)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(220,90%,55%,0.55)]" /><span>4% – 15% (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(220,92%,65%,0.85)]" /><span>&gt; 22% (e.g., CA, NY, NJ, HI)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "snapPct" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(12,85%,48%,0.28)]" /><span>&lt; 8% (e.g., UT, WY, CO)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(12,85%,48%,0.55)]" /><span>8% – 14% (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(12,88%,60%,0.85)]" /><span>&gt; 17% (e.g., LA, MS, NM)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "unemployment" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(0,88%,50%,0.28)]" /><span>&lt; 3% (e.g., ND, NH, SD)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(0,88%,50%,0.55)]" /><span>3% – 5% (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(0,90%,62%,0.85)]" /><span>&gt; 5.5% (e.g., MS, LA, NV)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "insured" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(145,85%,48%,0.28)]" /><span>&lt; 86% (e.g., TX, OK, FL)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(145,85%,48%,0.55)]" /><span>86% – 93% (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(145,88%,60%,0.85)]" /><span>&gt; 95% (e.g., MA, VT, IA)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "highSchool" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(205,90%,52%,0.28)]" /><span>&lt; 84% (e.g., CA, TX, MS)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(205,90%,52%,0.55)]" /><span>84% – 91% (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(205,92%,65%,0.85)]" /><span>&gt; 92% (e.g., MN, IA, VT)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "gradDegree" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(265,82%,56%,0.28)]" /><span>&lt; 10% (e.g., MS, AR, WV)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(265,82%,56%,0.55)]" /><span>10% – 16% (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(265,85%,68%,0.85)]" /><span>&gt; 18% (e.g., MD, MA, DC)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "multiVehicle" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(40,90%,52%,0.28)]" /><span>&lt; 35% (e.g., DC, NY, HI)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(40,90%,52%,0.55)]" /><span>35% – 65% (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(40,92%,62%,0.85)]" /><span>&gt; 68% (e.g., UT, WY, ID)</span></div>
+                      </div>
+                    )}
+                    {heatmapMode === "vacancy" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(215,60%,62%,0.28)]" /><span>&lt; 7% (e.g., UT, NJ, NH)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(215,60%,62%,0.55)]" /><span>7% – 13% (most states)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(215,65%,72%,0.85)]" /><span>&gt; 17% (e.g., VT, ME, WV)</span></div>
                       </div>
                     )}
                   </div>
@@ -1779,6 +2147,18 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     ? { label: translations.amendmentsLabel, value: `${con.amendmentsCount}`, rank: `#${amendRanked.indexOf(hs.abbrev) + 1} / 50`, color: "#a78bfa" }
                     : heatmapMode === "conLength" && con
                     ? { label: translations.lengthLabel, value: `${(con.wordCount / 1000).toFixed(1)}k`, rank: `#${wordRanked.indexOf(hs.abbrev) + 1} / 50`, color: "#2dd4bf" }
+                    : heatmapMode === "unemployment"
+                    ? { label: "Unemployment Rate", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.unemploymentPct ?? "—"}%`, rank: "", color: "#f87171" }
+                    : heatmapMode === "insured"
+                    ? { label: "Health Insured", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.insuredPct ?? "—"}%`, rank: "", color: "#34d399" }
+                    : heatmapMode === "highSchool"
+                    ? { label: "HS Graduate Rate", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.highSchoolPct ?? "—"}%`, rank: "", color: "#60a5fa" }
+                    : heatmapMode === "gradDegree"
+                    ? { label: "Graduate Degree", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.gradDegreePct ?? "—"}%`, rank: "", color: "#a78bfa" }
+                    : heatmapMode === "multiVehicle"
+                    ? { label: "Multi-Vehicle HH", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.multiVehiclePct ?? "—"}%`, rank: "", color: "#fbbf24" }
+                    : heatmapMode === "vacancy"
+                    ? { label: "Housing Vacancy", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.vacancyPct ?? "—"}%`, rank: "", color: "#94a3b8" }
                     : null;
 
                 return (
@@ -1918,6 +2298,24 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                                 } else if (heatmapMode === "snapPct") {
                                   const val = localAcs?.snapPct ?? Number((Math.min(Math.max(4, 12 + fipsVar * 10), 28)).toFixed(1));
                                   categoryMetric = `SNAP / Assistance: ${val}%`;
+                                } else if (heatmapMode === "unemployment") {
+                                  const val = localAcs?.unemploymentPct ?? Number((Math.min(Math.max(2, 4.5 + fipsVar * 5), 12)).toFixed(1));
+                                  categoryMetric = `Unemployment: ${val}%`;
+                                } else if (heatmapMode === "insured") {
+                                  const val = localAcs?.insuredPct ?? Number((Math.min(Math.max(80, 91 + fipsVar * 8), 98)).toFixed(1));
+                                  categoryMetric = `Health Insured: ${val}%`;
+                                } else if (heatmapMode === "highSchool") {
+                                  const val = localAcs?.highSchoolPct ?? Number((Math.min(Math.max(75, 89 + fipsVar * 8), 97)).toFixed(1));
+                                  categoryMetric = `HS Graduate: ${val}%`;
+                                } else if (heatmapMode === "gradDegree") {
+                                  const val = localAcs?.gradDegreePct ?? Number((Math.min(Math.max(5, 12 + fipsVar * 14), 35)).toFixed(1));
+                                  categoryMetric = `Graduate Degree: ${val}%`;
+                                } else if (heatmapMode === "multiVehicle") {
+                                  const val = localAcs?.multiVehiclePct ?? Number((Math.min(Math.max(20, 60 + fipsVar * 18), 80)).toFixed(1));
+                                  categoryMetric = `Multi-Vehicle HH: ${val}%`;
+                                } else if (heatmapMode === "vacancy") {
+                                  const val = localAcs?.vacancyPct ?? Number((Math.min(Math.max(4, 10 + fipsVar * 8), 22)).toFixed(1));
+                                  categoryMetric = `Housing Vacancy: ${val}%`;
                                 }
 
                                 setHoveredStateAbbrev(featureId);

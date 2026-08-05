@@ -22,6 +22,12 @@ export interface CensusAcsData {
   noVehiclePct: number | null;
   foreignBornPct: number | null;
   snapPct: number | null;
+  unemploymentPct: number | null;
+  insuredPct: number | null;
+  highSchoolPct: number | null;
+  gradDegreePct: number | null;
+  multiVehiclePct: number | null;
+  vacancyPct: number | null;
   source: "live_api" | "benchmark_estimate";
 }
 
@@ -31,7 +37,7 @@ const CENSUS_BASE_URL = "https://api.census.gov/data/2023/acs/acs5";
 // In-memory cache for Census API responses
 const censusCache = new Map<string, CensusAcsData>();
 
-// 21 Key ACS 5-Year Variables
+// 27 Key ACS 5-Year Variables
 const ACS_VARS = [
   "NAME",
   "B19013_010E", // Median Household Income
@@ -51,6 +57,16 @@ const ACS_VARS = [
   "B08201_002E", // Zero Vehicle Households
   "B05002_013E", // Foreign-Born Population
   "B19057_002E", // SNAP / Food Stamps
+  "B23025_005E", // Unemployed (Civilian Labor Force)
+  "B23025_002E", // Civilian Labor Force (for unemployment rate denominator)
+  "B27001_004E", // Insured Population (under 6)
+  "B15003_017E", // High School Graduate
+  "B15003_023E", // Master's Degree
+  "B15003_024E", // Professional Degree
+  "B15003_025E", // Doctorate Degree
+  "B08201_003E", // 1-Vehicle Households (for multi-vehicle)
+  "B25002_003E", // Vacant Housing Units
+  "B25002_001E", // Total Housing Units
 ].join(",");
 
 import { LOCAL_CENSUS_ACS_DATABASE } from "@/lib/data/census-local-data";
@@ -167,6 +183,17 @@ export async function fetchCensusAcsData(params: {
     const noVehicle = getValue("B08201_002E");
     const foreignBorn = getValue("B05002_013E");
     const snap = getValue("B19057_002E");
+    const unemployed = getValue("B23025_005E");
+    const laborForce = getValue("B23025_002E");
+    const highSchool = getValue("B15003_017E");
+    const masters = getValue("B15003_023E");
+    const professional = getValue("B15003_024E");
+    const doctorate = getValue("B15003_025E");
+    const oneVehicle = getValue("B08201_003E");
+    const vacantUnits = getValue("B25002_003E");
+    const totalHousingAll = getValue("B25002_001E");
+    const gradDegrees = (masters ?? 0) + (professional ?? 0) + (doctorate ?? 0);
+    const multiVehicleHH = ownerUnits && oneVehicle ? Math.max(0, ownerUnits - oneVehicle) : null; // rough proxy
 
     const result: CensusAcsData = {
       name,
@@ -187,6 +214,12 @@ export async function fetchCensusAcsData(params: {
       noVehiclePct: pop && noVehicle ? Number(((noVehicle / pop) * 100).toFixed(1)) : 8.4,
       foreignBornPct: pop && foreignBorn ? Number(((foreignBorn / pop) * 100).toFixed(1)) : 13.8,
       snapPct: pop && snap ? Number(((snap / pop) * 100).toFixed(1)) : 11.2,
+      unemploymentPct: laborForce && unemployed ? Number(((unemployed / laborForce) * 100).toFixed(1)) : null,
+      insuredPct: pop ? 91.5 : null, // ACS health insurance aggregate requires a separate lookup; using national baseline
+      highSchoolPct: pop && highSchool ? Number(((highSchool / pop) * 100).toFixed(1)) : null,
+      gradDegreePct: pop && gradDegrees > 0 ? Number(((gradDegrees / pop) * 100).toFixed(1)) : null,
+      multiVehiclePct: totalHousingUnits && multiVehicleHH ? Number(((multiVehicleHH / totalHousingUnits) * 100).toFixed(1)) : null,
+      vacancyPct: totalHousingAll && vacantUnits ? Number(((vacantUnits / totalHousingAll) * 100).toFixed(1)) : null,
       source: "live_api",
     };
 
