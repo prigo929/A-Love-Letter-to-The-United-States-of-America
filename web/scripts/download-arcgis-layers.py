@@ -66,6 +66,11 @@ LAYERS = {
         "fields": "StationName,Code,City,State,StaType",
         "page": 2000,
     },
+    "federal-lands": {
+        "url": "https://services.arcgis.com/v01gqwM5QqNysAAi/arcgis/rest/services/Federal_Fee_Managers_Authoritative_PADUS/FeatureServer/0",
+        "fields": "Unit_Nm,Mang_Name,Own_Name,Des_Tp,State_Nm,GIS_Acres",
+        "page": 500,
+    },
 }
 
 
