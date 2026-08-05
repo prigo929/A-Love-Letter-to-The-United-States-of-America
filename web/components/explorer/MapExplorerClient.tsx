@@ -45,6 +45,7 @@ import {
   Printer,
   History,
   TrainTrack,
+  Route,
   Vote,
 } from "lucide-react";
 import { EXPLORER_STATES, StateData } from "@/lib/data/explorer-data";
@@ -58,7 +59,7 @@ import { fetchCensusAcsData, CensusAcsData } from "@/lib/services/census-api";
 
 import { ELECTION_2024_STATES, ELECTION_2020_STATES, getElectionColor } from "@/lib/data/election-data";
 import { US_NATIONAL_PARKS } from "@/lib/data/national-parks-data";
-import { MAJOR_INFRASTRUCTURE_NETWORKS } from "@/lib/data/infrastructure-data";
+import { INTERSTATE_HIGHWAYS, AMTRAK_RAIL_LINES } from "@/lib/data/infrastructure-data";
 import { StateComparisonModal } from "@/components/explorer/StateComparisonModal";
 import { StateFactsheetModal } from "@/components/explorer/StateFactsheetModal";
 
@@ -746,7 +747,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   const [isComparisonModalOpen, setIsComparisonModalOpen] = useState<boolean>(false);
   const [isFactsheetModalOpen, setIsFactsheetModalOpen] = useState<boolean>(false);
   const [showNationalParks, setShowNationalParks] = useState<boolean>(false);
-  const [showInfrastructure, setShowInfrastructure] = useState<boolean>(false);
+  const [showInterstates, setShowInterstates] = useState<boolean>(false);
+  const [showAmtrakRail, setShowAmtrakRail] = useState<boolean>(false);
   const [historicalYearFilter, setHistoricalYearFilter] = useState<number>(1959);
   // Census Layer selection state (22 views)
   const [activeCensusLayerId, setActiveCensusLayerId] = useState<string>("states");
@@ -1025,8 +1027,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
         }
         return {
           fill: "rgba(255, 255, 255, 0.08)",
-          stroke: "rgba(255, 255, 255, 0.28)",
-          strokeWidth: 0.65,
+          stroke: "rgba(255, 255, 255, 0.30)",
+          strokeWidth: 0.35,
           outline: "none",
           transition: "fill 0.15s ease",
         };
@@ -1281,13 +1283,23 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
               </button>
 
               <button
-                onClick={() => setShowInfrastructure((prev) => !prev)}
+                onClick={() => setShowInterstates((prev) => !prev)}
                 className={`shrink-0 rounded-full px-3.5 py-1.5 text-[10px] font-bold uppercase transition-all flex items-center gap-1.5 cursor-pointer ${
-                  showInfrastructure ? "bg-amber-500/20 text-amber-300 border border-amber-500/50" : "bg-white/5 text-white/40 border border-white/10"
+                  showInterstates ? "bg-amber-500/20 text-amber-300 border border-amber-500/50" : "bg-white/5 text-white/40 border border-white/10"
                 }`}
               >
-                <TrainTrack className="w-3 h-3 text-amber-400" />
-                <span>Rail & Roads ({showInfrastructure ? "ON" : "OFF"})</span>
+                <Route className="w-3 h-3 text-amber-400" />
+                <span>Interstates 🛣️ ({showInterstates ? "ON" : "OFF"})</span>
+              </button>
+
+              <button
+                onClick={() => setShowAmtrakRail((prev) => !prev)}
+                className={`shrink-0 rounded-full px-3.5 py-1.5 text-[10px] font-bold uppercase transition-all flex items-center gap-1.5 cursor-pointer ${
+                  showAmtrakRail ? "bg-sky-500/20 text-sky-300 border border-sky-500/50" : "bg-white/5 text-white/40 border border-white/10"
+                }`}
+              >
+                <TrainTrack className="w-3 h-3 text-sky-400" />
+                <span>Amtrak Rail 🚆 ({showAmtrakRail ? "ON" : "OFF"})</span>
               </button>
 
               {regionButtons.map((reg) => {
@@ -1845,18 +1857,36 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     }}
                   </Geographies>
 
-                  {/* ⚡ Major Infrastructure Network Lines Overlay */}
-                  {showInfrastructure &&
-                    MAJOR_INFRASTRUCTURE_NETWORKS.map((line) => (
-                      <Line
-                        key={line.id}
-                        from={line.coordinates[0]}
-                        to={line.coordinates[line.coordinates.length - 1]}
-                        stroke={line.color}
-                        strokeWidth={2.5}
-                        strokeLinecap="round"
-                      />
-                    ))}
+                  {/* 🛣️ Interstate Highways Overlay */}
+                  {showInterstates &&
+                    INTERSTATE_HIGHWAYS.map((route) =>
+                      route.coordinates.slice(0, -1).map((pt, idx) => (
+                        <Line
+                          key={`${route.id}-${idx}`}
+                          from={pt}
+                          to={route.coordinates[idx + 1]}
+                          stroke={route.color}
+                          strokeWidth={2.5}
+                          strokeLinecap="round"
+                        />
+                      ))
+                    )}
+
+                  {/* 🚆 Amtrak Passenger Rail Lines Overlay */}
+                  {showAmtrakRail &&
+                    AMTRAK_RAIL_LINES.map((route) =>
+                      route.coordinates.slice(0, -1).map((pt, idx) => (
+                        <Line
+                          key={`${route.id}-${idx}`}
+                          from={pt}
+                          to={route.coordinates[idx + 1]}
+                          stroke={route.color}
+                          strokeWidth={2.2}
+                          strokeDasharray={route.dashArray || "4 3"}
+                          strokeLinecap="round"
+                        />
+                      ))
+                    )}
 
                   {/* 🌲 63 Official U.S. National Parks Interactive Markers Overlay */}
                   {showNationalParks &&

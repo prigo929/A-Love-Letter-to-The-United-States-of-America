@@ -53,8 +53,10 @@ const ACS_VARS = [
   "B19057_002E", // SNAP / Food Stamps
 ].join(",");
 
+import { LOCAL_CENSUS_ACS_DATABASE } from "@/lib/data/census-local-data";
+
 /**
- * Fetch live ACS 5-Year Census data for any feature based on FIPS / GEOID parameters
+ * Fetch Census ACS data (100% Instant Offline Local Lookup + Fallback)
  */
 export async function fetchCensusAcsData(params: {
   stateFips?: string;
@@ -65,7 +67,13 @@ export async function fetchCensusAcsData(params: {
   cd119Fips?: string;
   geoid?: string;
   layerCode?: string;
+  stateAbbrev?: string;
 }): Promise<CensusAcsData | null> {
+  const abbrev = params.stateAbbrev || (params.stateFips ? Object.keys(LOCAL_CENSUS_ACS_DATABASE).find(k => k === params.stateFips) : "");
+  if (abbrev && LOCAL_CENSUS_ACS_DATABASE[abbrev]) {
+    return LOCAL_CENSUS_ACS_DATABASE[abbrev];
+  }
+
   const cacheKey = `${params.layerCode || "geo"}:${params.geoid || ""}:${params.stateFips || ""}:${params.countyFips || ""}`;
 
   if (censusCache.has(cacheKey)) {
