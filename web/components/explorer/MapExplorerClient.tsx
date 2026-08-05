@@ -1222,104 +1222,115 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
         <div className="space-y-12">
 
-          {/* ── CONTROLS TOOLBAR ── */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-white/[0.06] mb-4">
-            {/* Search & Census Layer Switcher */}
-            <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:max-w-xl">
-              <div className="relative w-full">
-                <Search className="absolute top-1/2 left-3.5 h-4 w-4 -translate-y-1/2 text-white/30" />
+          {/* ── CONTROLS TOOLBAR (2 CLEAN ROWS) ── */}
+          <div className="space-y-4 pb-6 border-b border-white/[0.08] mb-4">
+            
+            {/* ROW 1: Layer Selector, Compare, Print, & BIG SEARCH BAR */}
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex flex-wrap items-center gap-3">
+                {/* Census Boundary Layer Selector Button */}
+                <button
+                  onClick={() => setIsLayerModalOpen(true)}
+                  className="flex items-center justify-between gap-2.5 rounded-full border border-[#fbbf24]/50 bg-[#fbbf24]/10 px-4.5 py-2.5 text-xs font-bold text-[#fbbf24] hover:bg-[#fbbf24]/20 hover:border-[#fbbf24] transition-all shadow-lg cursor-pointer"
+                >
+                  <div className="flex items-center gap-2">
+                    <Globe className="h-4 w-4 text-[#fbbf24]" />
+                    <span className="font-mono text-xs font-bold">{activeCensusLayer.name[locale]}</span>
+                  </div>
+                  <span className="rounded-md bg-[#fbbf24]/20 px-2 py-0.5 text-[9px] font-mono font-bold text-white uppercase tracking-wider">
+                    {activeCensusLayer.badge}
+                  </span>
+                </button>
+
+                {/* ⚔️ State Duel Comparison Button */}
+                <button
+                  onClick={() => setIsComparisonModalOpen(true)}
+                  className="flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-2.5 text-xs font-bold text-blue-400 hover:bg-blue-500/20 hover:border-blue-400 transition-all shadow-lg cursor-pointer"
+                >
+                  <Swords className="h-4 w-4 text-blue-400" />
+                  <span>Compare States</span>
+                </button>
+
+                {/* 🖨️ State Factsheet Generator Button */}
+                <button
+                  onClick={() => setIsFactsheetModalOpen(true)}
+                  className="flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-2.5 text-xs font-bold text-emerald-400 hover:bg-emerald-500/20 hover:border-emerald-400 transition-all shadow-lg cursor-pointer"
+                >
+                  <Printer className="h-4 w-4 text-emerald-400" />
+                  <span>Print Factsheet</span>
+                </button>
+              </div>
+
+              {/* 🔍 PROMINENT BIGGER SEARCH BAR */}
+              <div className="relative w-full sm:w-auto flex-1 max-w-md min-w-[280px]">
+                <Search className="absolute top-1/2 left-4 h-4.5 w-4.5 -translate-y-1/2 text-[#fbbf24]" />
                 <input
                   type="text"
                   placeholder={translations.searchPlaceholder}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full rounded-full border border-white/[0.08] bg-transparent py-2.5 pl-10 pr-4 text-sm text-white placeholder-white/20 focus:border-[#fbbf24]/50 focus:outline-none transition-colors"
+                  className="w-full rounded-full border-2 border-[#fbbf24]/40 bg-black/60 py-2.5 pl-11 pr-4 text-sm text-white font-medium placeholder-white/40 focus:border-[#fbbf24] focus:bg-black/90 focus:outline-none transition-all shadow-xl"
                 />
               </div>
-
-              {/* Census Boundary Layer Selector Button */}
-              <button
-                onClick={() => setIsLayerModalOpen(true)}
-                className="flex items-center justify-between gap-2.5 rounded-full border border-[#fbbf24]/40 bg-[#fbbf24]/10 px-4 py-2.5 text-xs font-bold text-[#fbbf24] hover:bg-[#fbbf24]/20 hover:border-[#fbbf24] transition-all shadow-lg shrink-0 w-full sm:w-auto cursor-pointer"
-              >
-                <div className="flex items-center gap-2">
-                  <Globe className="h-4 w-4 text-[#fbbf24]" />
-                  <span className="truncate max-w-[160px] font-mono text-xs">{activeCensusLayer.name[locale]}</span>
-                </div>
-                <span className="rounded-md bg-[#fbbf24]/20 px-2 py-0.5 text-[9px] font-mono font-bold text-white uppercase tracking-wider">
-                  {activeCensusLayer.badge}
-                </span>
-              </button>
-
-              {/* ⚔️ State Duel Comparison Button */}
-              <button
-                onClick={() => setIsComparisonModalOpen(true)}
-                className="flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-2.5 text-xs font-bold text-blue-400 hover:bg-blue-500/20 hover:border-blue-400 transition-all shadow-lg shrink-0 cursor-pointer"
-              >
-                <Swords className="h-4 w-4 text-blue-400" />
-                <span>Compare States</span>
-              </button>
-
-              {/* 🖨️ State Factsheet Generator Button */}
-              <button
-                onClick={() => setIsFactsheetModalOpen(true)}
-                className="flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-2.5 text-xs font-bold text-emerald-400 hover:bg-emerald-500/20 hover:border-emerald-400 transition-all shadow-lg shrink-0 cursor-pointer"
-              >
-                <Printer className="h-4 w-4 text-emerald-400" />
-                <span>Print Factsheet</span>
-              </button>
             </div>
 
-            {/* Region Filter Pills & Feature Toggles */}
-            <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto justify-start md:justify-end pb-2 md:pb-0">
-              <button
-                onClick={() => setShowNationalParks((prev) => !prev)}
-                className={`shrink-0 rounded-full px-3.5 py-1.5 text-[10px] font-bold uppercase transition-all flex items-center gap-1.5 cursor-pointer ${
-                  showNationalParks ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/50" : "bg-white/5 text-white/40 border border-white/10"
-                }`}
-              >
-                <Trees className="w-3 h-3 text-emerald-400" />
-                <span>63 Parks ({showNationalParks ? "ON" : "OFF"})</span>
-              </button>
+            {/* ROW 2: Overlay Toggles (Parks, Interstates, Amtrak) & Region Filters */}
+            <div className="flex flex-wrap items-center justify-between gap-3 pt-1 border-t border-white/5">
+              {/* Feature Toggles */}
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  onClick={() => setShowNationalParks((prev) => !prev)}
+                  className={`rounded-full px-4 py-2 text-xs font-bold uppercase transition-all flex items-center gap-2 cursor-pointer shadow-md ${
+                    showNationalParks ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/50" : "bg-white/5 text-white/50 border border-white/10 hover:bg-white/10"
+                  }`}
+                >
+                  <Trees className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>63 PARKS ({showNationalParks ? "ON" : "OFF"})</span>
+                </button>
 
-              <button
-                onClick={() => setShowInterstates((prev) => !prev)}
-                className={`shrink-0 rounded-full px-3.5 py-1.5 text-[10px] font-bold uppercase transition-all flex items-center gap-1.5 cursor-pointer ${
-                  showInterstates ? "bg-amber-500/20 text-amber-300 border border-amber-500/50" : "bg-white/5 text-white/40 border border-white/10"
-                }`}
-              >
-                <Route className="w-3 h-3 text-amber-400" />
-                <span>Interstates 🛣️ ({showInterstates ? "ON" : "OFF"})</span>
-              </button>
+                <button
+                  onClick={() => setShowInterstates((prev) => !prev)}
+                  className={`rounded-full px-4 py-2 text-xs font-bold uppercase transition-all flex items-center gap-2 cursor-pointer shadow-md ${
+                    showInterstates ? "bg-amber-500/20 text-amber-300 border border-amber-500/50" : "bg-white/5 text-white/50 border border-white/10 hover:bg-white/10"
+                  }`}
+                >
+                  <Route className="w-3.5 h-3.5 text-amber-400" />
+                  <span>INTERSTATES 🛣️ ({showInterstates ? "ON" : "OFF"})</span>
+                </button>
 
-              <button
-                onClick={() => setShowAmtrakRail((prev) => !prev)}
-                className={`shrink-0 rounded-full px-3.5 py-1.5 text-[10px] font-bold uppercase transition-all flex items-center gap-1.5 cursor-pointer ${
-                  showAmtrakRail ? "bg-sky-500/20 text-sky-300 border border-sky-500/50" : "bg-white/5 text-white/40 border border-white/10"
-                }`}
-              >
-                <TrainTrack className="w-3 h-3 text-sky-400" />
-                <span>Amtrak Rail 🚆 ({showAmtrakRail ? "ON" : "OFF"})</span>
-              </button>
+                <button
+                  onClick={() => setShowAmtrakRail((prev) => !prev)}
+                  className={`rounded-full px-4 py-2 text-xs font-bold uppercase transition-all flex items-center gap-2 cursor-pointer shadow-md ${
+                    showAmtrakRail ? "bg-sky-500/20 text-sky-300 border border-sky-500/50" : "bg-white/5 text-white/50 border border-white/10 hover:bg-white/10"
+                  }`}
+                >
+                  <TrainTrack className="w-3.5 h-3.5 text-sky-400" />
+                  <span>AMTRAK RAIL 🚆 ({showAmtrakRail ? "ON" : "OFF"})</span>
+                </button>
+              </div>
 
-              {regionButtons.map((reg) => {
-                const isActive = selectedRegion === reg.id;
-                return (
-                  <button
-                    key={reg.id}
-                    onClick={() => setSelectedRegion(reg.id)}
-                    className="shrink-0 rounded-full px-4 py-1.5 text-[10px] font-bold tracking-wider uppercase transition-all duration-200"
-                    style={{
-                      background: isActive ? `${reg.color}15` : "transparent",
-                      border: `1px solid ${isActive ? reg.color : "rgba(255,255,255,0.06)"}`,
-                      color: isActive ? reg.color : "rgba(255,255,255,0.4)",
-                    }}
-                  >
-                    {reg.label}
-                  </button>
-                );
-              })}
+              {/* Region Filter Buttons */}
+              <div className="flex flex-wrap items-center gap-1.5">
+                {regionButtons.map((reg) => {
+                  const isActive = selectedRegion === reg.id;
+                  return (
+                    <button
+                      key={reg.id}
+                      onClick={() => setSelectedRegion(reg.id)}
+                      className="rounded-full px-3.5 py-1.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer"
+                      style={{
+                        background: isActive ? `${reg.color}20` : "transparent",
+                        border: `1px solid ${isActive ? reg.color : "rgba(255,255,255,0.08)"}`,
+                        color: isActive ? reg.color : "rgba(255,255,255,0.5)",
+                      }}
+                    >
+                      {reg.label}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
+
           </div>
 
           {/* ── MAP CONTAINER ──
