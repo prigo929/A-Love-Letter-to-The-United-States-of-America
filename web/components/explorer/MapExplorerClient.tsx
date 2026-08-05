@@ -62,6 +62,7 @@ import { ELECTION_2024_STATES, ELECTION_2020_STATES, getElectionColor } from "@/
 import { US_NATIONAL_PARKS } from "@/lib/data/national-parks-data";
 import { HIGHWAY_ROUTES, RAIL_ROUTES } from "@/lib/data/infrastructure-network-data";
 import railData from "@/lib/data/rail-simplified.json";
+import interstateData from "@/lib/data/interstates-simplified.json";
 import { StateComparisonModal } from "@/components/explorer/StateComparisonModal";
 import { StateFactsheetModal } from "@/components/explorer/StateFactsheetModal";
 
@@ -2046,21 +2047,38 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     }}
                   </Geographies>
 
-                  {/* 🛣️ Interstate Highways Overlay (Full Non-Simplified Data) */}
-                  {showInterstates &&
-                    HIGHWAY_ROUTES.map((route) =>
-                      route.waypoints.slice(0, -1).map((pt, idx) => (
-                        <Line
-                          key={`${route.id}-${idx}`}
-                          from={pt}
-                          to={route.waypoints[idx + 1]}
-                          stroke={route.color}
-                          strokeWidth={2.5}
-                          strokeDasharray={route.dashed ? "4 3" : undefined}
-                          strokeLinecap="round"
-                        />
-                      ))
-                    )}
+                  {/* Interstate Highways Overlay (Full Non-Simplified Network) */}
+                  {showInterstates && (
+                    <>
+                      {Object.entries(interstateData).flatMap(([iNum, data]: [string, any]) =>
+                        (data.segments || []).flatMap((seg: any[], sIdx: number) =>
+                          seg.slice(0, -1).map((pt: any, pIdx: number) => (
+                            <Line
+                              key={`interstate-bg-${iNum}-${sIdx}-${pIdx}`}
+                              from={pt}
+                              to={seg[pIdx + 1]}
+                              stroke="#fbbf24"
+                              strokeWidth={1.2}
+                              strokeLinecap="round"
+                            />
+                          ))
+                        )
+                      )}
+                      {HIGHWAY_ROUTES.map((route) =>
+                        route.waypoints.slice(0, -1).map((pt, idx) => (
+                          <Line
+                            key={`${route.id}-${idx}`}
+                            from={pt}
+                            to={route.waypoints[idx + 1]}
+                            stroke={route.color}
+                            strokeWidth={2.8}
+                            strokeDasharray={route.dashed ? "4 3" : undefined}
+                            strokeLinecap="round"
+                          />
+                        ))
+                      )}
+                    </>
+                  )}
 
                   {/* Continental Rail Network Lines Overlay (Full Non-Simplified Network) */}
                   {showAmtrakRail && (
