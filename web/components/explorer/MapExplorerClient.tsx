@@ -77,7 +77,7 @@ import trailsData from "@/lib/data/trails-segments.json";
 import { StateComparisonModal } from "@/components/explorer/StateComparisonModal";
 import { StateFactsheetModal } from "@/components/explorer/StateFactsheetModal";
 import { MergedGeoOverlay, MergedLineOverlay } from "@/components/explorer/MergedGeoOverlay";
-import { FederalLandsMapGL } from "@/components/explorer/HeavyLayersMapGL";
+import { getTimeZoneForLocation, TIME_ZONES } from "@/lib/data/us-timezones";
 
 export const STATE_DEMOGRAPHIC_BENCHMARKS: Record<string, { income: number; homeValue: number; eduPct: number; vetPct: number; broadbandPct: number; ownerPct: number; povertyPct: number; commuteMins: number }> = {
   AL: { income: 59609, homeValue: 225000, eduPct: 27.5, vetPct: 9.1, broadbandPct: 84.2, ownerPct: 69.2, povertyPct: 15.6, commuteMins: 25.1 },
@@ -820,6 +820,12 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
     properties: Record<string, any>;
   } | null>(null);
 
+  // Automatically reset selected feature when switching Census layer views
+  useEffect(() => {
+    setSelectedFeature(null);
+    setLiveCensusData(null);
+  }, [activeCensusLayerId]);
+
   // Zoom & Pan position state
   const [zoomPosition, setZoomPosition] = useState<{ coordinates: [number, number]; zoom: number }>({
     coordinates: [-96, 38],
@@ -1082,7 +1088,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
         }
 
         const stAbbrev = abbrev || (props.STATEFP ? FIPS_TO_ABBREV[props.STATEFP] : "");
-        const geoidKey = props.GEOID || (props.STATEFP && props.COUNTYFP ? `${props.STATEFP}${props.COUNTYFP}` : "") || featureId;
+        const rawFips = String(props.GEOID || props.GEOIDFQ || (props.STATEFP && props.COUNTYFP ? `${props.STATEFP}${props.COUNTYFP}` : "") || geo.id || "");
+        const geoidKey = rawFips ? rawFips.padStart(5, "0") : featureId;
         const localAcs = LOCAL_CENSUS_ACS_DATABASE[geoidKey] || LOCAL_CENSUS_COUNTY_METRO_DATA[geoidKey];
 
         // Deterministic hash variance per FIPS code so every county & metro area renders unique heatmap shading
@@ -1213,18 +1220,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           return { fill: `hsla(215,60%,62%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
         if (heatmapMode === "timeZone") {
-          // Continuous gradient by standard-time UTC offset, sunrise-gold (east,
-          // UTC-5) through dusk-purple (west, Hawaii UTC-10) — a smooth hue ramp
-          // rather than flat per-zone colors, since the true zone boundary
-          // wiggles county by county and a hard color edge would overstate how
-          // precisely this state-level approximation actually tracks it.
-          const offset = stAbbrev ? STATE_UTC_OFFSET[stAbbrev] : undefined;
-          if (offset === undefined) {
-            return { fill: "rgba(255, 255, 255, 0.06)", stroke: "rgba(255, 255, 255, 0.2)", strokeWidth: 0.35, outline: "none" };
-          }
-          const t = Math.min(Math.max((-5 - offset) / 5, 0), 1); // 0 = UTC-5 (east), 1 = UTC-10 (Hawaii)
-          const hue = 45 + t * 215; // 45° gold → 260° violet
-          return { fill: `hsla(${hue.toFixed(0)},70%,55%,0.62)`, stroke: "rgba(255, 255, 255, 0.3)", strokeWidth: 0.35, outline: "none" };
+          const tz = getTimeZoneForLocation({ geoid: geoidKey, stateAbbrev: stAbbrev, stateFips: props.STATEFP });
+          return { fill: tz.color, stroke: "rgba(255, 255, 255, 0.35)", strokeWidth: 0.35, outline: "none" };
         }
 
         return {
@@ -2404,7 +2401,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                               } else {
                                 const name = props.NAMELSAD || props.NAME || props.GEOID || "Boundary Feature";
                                 const stFips = props.STATEFP ? FIPS_TO_ABBREV[props.STATEFP] || props.STATEFP : "";
-                                const code = props.GEOID || (props.STATEFP && props.COUNTYFP ? `${props.STATEFP}${props.COUNTYFP}` : "") || activeCensusLayer.code;
+                                const rawFips = String(props.GEOID || props.GEOIDFQ || (props.STATEFP && props.COUNTYFP ? `${props.STATEFP}${props.COUNTYFP}` : "") || geo.id || "");
+                                const code = rawFips ? rawFips.padStart(5, "0") : activeCensusLayer.code;
                                 const localAcs = LOCAL_CENSUS_ACS_DATABASE[code] || LOCAL_CENSUS_COUNTY_METRO_DATA[code];
 
                                 // Deterministic hash variance for unlisted FIPS
@@ -2484,8 +2482,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                                   const val = localAcs?.vacancyPct ?? Number((Math.min(Math.max(4, 10 + fipsVar * 8), 22)).toFixed(1));
                                   categoryMetric = `Housing Vacancy: ${val}%`;
                                 } else if (heatmapMode === "timeZone") {
-                                  const off = stFips ? STATE_UTC_OFFSET[stFips] : undefined;
-                                  categoryMetric = off !== undefined ? `Standard Time: UTC${off}` : "Standard Time: —";
+                                  const tz = getTimeZoneForLocation({ geoid: code, stateAbbrev: abbrev, stateFips: props.STATEFP });
+                                  categoryMetric = `${tz.name} (${tz.utcOffset})`;
                                 }
 
                                 setHoveredStateAbbrev(featureId);
@@ -2504,7 +2502,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                             onClick={(e: any) => {
                               if (e && e.stopPropagation) e.stopPropagation();
                               const name = props.NAMELSAD || props.NAME || (abbrev ? EXPLORER_STATES[abbrev]?.name[locale] : null) || props.GEOID || "Boundary Feature";
-                              const code = props.GEOID || props.GEOIDFQ || activeCensusLayer.code;
+                              const rawFips = String(props.GEOID || props.GEOIDFQ || (props.STATEFP && props.COUNTYFP ? `${props.STATEFP}${props.COUNTYFP}` : "") || geo.id || "");
+                              const code = rawFips ? rawFips.padStart(5, "0") : activeCensusLayer.code;
                               const stFips = props.STATEFP || (abbrev ? FIPS_TO_ABBREV[abbrev] : "");
 
                               setIsLoadingCensusData(true);
@@ -2677,18 +2676,42 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     <MergedGeoOverlay url="/maps/national-park-boundaries.json" fill="rgba(16, 185, 129, 0.32)" stroke="#10b981" strokeWidth={0.6} />
                   )}
 
-                  {/* Federal Lands no longer renders here — it's always GPU-rendered via
-                      FederalLandsMapGL below; the SVG merged-path technique above still
-                      works fine for Park Boundaries but wasn't reliable enough at Federal
-                      Lands' full ~5,260-parcel scale in the user's real browser. */}
+                  {/* 🏞️ Federal Lands Overlay (BLM, FWS, NPS, USFS, DOD, USACE, TRIB) — merged SVG path colored by managing agency */}
+                  {showFederalLands && (
+                    <MergedGeoOverlay
+                      url="/maps/federal-lands.json"
+                      categoryField="agency"
+                      colorMap={FEDERAL_AGENCY_COLORS}
+                      stroke="rgba(0, 0, 0, 0.35)"
+                      strokeWidth={0.35}
+                      defaultColor="rgba(245, 158, 11, 0.4)"
+                    />
+                  )}
 
-                  {/* 🏥 Hospitals & Clinics Overlay (HIFLD, 8,013 facilities) */}
+                  {/* 🏥 Hospitals & Clinics Overlay (HIFLD, 7,929 facilities) */}
                   {showHospitals &&
-                    (hospitalsData as any[]).map((h, i) => (
-                      <Marker key={`hosp-${i}`} coordinates={[h.lon, h.lat]}>
-                        <circle r={2} fill="#fb7185" fillOpacity={0.85} />
-                      </Marker>
-                    ))}
+                    (hospitalsData as any[]).map((h, i) => {
+                      const isClinic = ["REHABILITATION", "LONG TERM CARE", "PSYCHIATRIC", "SPECIAL", "CHRONIC DISEASE"].includes(h.t);
+                      return (
+                        <Marker
+                          key={`hosp-${i}`}
+                          coordinates={[h.lon, h.lat]}
+                          onMouseEnter={() => {
+                            setFeatureHoverInfo({
+                              label: h.n || "Healthcare Facility",
+                              details: `${h.c || ""}${h.s ? `, ${h.s}` : ""} • ${h.t || "Healthcare"}`,
+                              categoryMetric: h.b ? `Beds: ${h.b}${h.tr ? ` • Trauma: ${h.tr}` : ""}` : (h.tr ? `Trauma: ${h.tr}` : undefined),
+                              code: isClinic ? "Clinic" : "Hospital",
+                            });
+                          }}
+                          onMouseLeave={() => setFeatureHoverInfo(null)}
+                        >
+                          <g className="cursor-pointer">
+                            <circle r={2.2} fill={isClinic ? "#c084fc" : "#fb7185"} fillOpacity={0.85} stroke="#ffffff" strokeWidth={0.4} />
+                          </g>
+                        </Marker>
+                      );
+                    })}
 
                   {/* 🏫 Public Schools Overlay (NCES, 102,178 schools) */}
                   {showSchools &&
@@ -2773,27 +2796,9 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
             </div>
           </div>
 
-          {/* ── FEDERAL LANDS — GPU-RENDERED (MapLibre/WebGL) ──
-              Always rendered this way when the toggle is on; see FederalLandsMapGL
-              for why this dataset needs its own GPU map instead of the SVG technique
-              every other overlay on this page uses. */}
-          {showFederalLands && (
-            <div className="mt-6 rounded-3xl border border-amber-500/30 bg-[#070707] p-4 shadow-2xl">
-              <div className="flex items-center gap-2 mb-3 px-1">
-                <Flag className="w-4 h-4 text-amber-400" />
-                <span className="font-body text-xs font-bold uppercase tracking-widest text-amber-300">
-                  {locale === "ro" ? "Terenuri Federale" : "Federal Lands"}
-                </span>
-                <span className="font-mono text-[10px] text-white/30">— GPU / WebGL (MapLibre)</span>
-              </div>
-              <div className="relative h-[520px] w-full overflow-hidden rounded-2xl border border-white/10">
-                <FederalLandsMapGL />
-              </div>
-            </div>
-          )}
-
           {/* ── SELECTED FEATURE DATA INSPECTOR ── */}
-          {selectedFeature && (() => {
+          {selectedFeature && activeCensusLayerId !== "states" && (() => {
+
             const props = selectedFeature.properties || {};
             const aland = Number(props.ALAND || 0);
             const awater = Number(props.AWATER || 0);
