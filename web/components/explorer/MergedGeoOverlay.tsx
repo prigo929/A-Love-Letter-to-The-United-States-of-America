@@ -271,6 +271,8 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
             fill={g.color}
             stroke={stroke}
             strokeWidth={strokeWidth}
+            strokeLinejoin="round"
+            shapeRendering="geometricPrecision"
             className="transition-opacity hover:opacity-90"
             style={{ willChange: "transform", contain: "strict" }}
             pointerEvents="all"
@@ -290,6 +292,8 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
             fill={item.color}
             stroke={stroke}
             strokeWidth={strokeWidth}
+            strokeLinejoin="round"
+            shapeRendering="geometricPrecision"
             className="transition-opacity hover:opacity-85"
             onMouseEnter={() => onFeatureHover?.(item.hoverInfo)}
             onMouseLeave={() => onFeatureHover?.(null)}
@@ -307,7 +311,16 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
   return (
     <g className="pointer-events-none">
       {groups.map((g) => (
-        <path key={g.color} d={g.d} fill={g.color} stroke={stroke} strokeWidth={strokeWidth} pointerEvents="none" />
+        <path
+          key={g.color}
+          d={g.d}
+          fill={g.color}
+          stroke={stroke}
+          strokeWidth={strokeWidth}
+          strokeLinejoin="round"
+          shapeRendering="geometricPrecision"
+          pointerEvents="none"
+        />
       ))}
     </g>
   );

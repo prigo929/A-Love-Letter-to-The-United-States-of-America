@@ -7,7 +7,8 @@
 
 import { useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ComposableMap, Geographies, Geography, ZoomableGroup, useMapContext } from "react-simple-maps";
+import { ComposableMap, ZoomableGroup, useMapContext } from "react-simple-maps";
+import { MergedGeoOverlay } from "@/components/explorer/MergedGeoOverlay";
 import { GEO_URL } from "@/lib/data/us-geo";
 import damsBridgesData from "@/lib/data/dams-bridges.json";
 
@@ -222,20 +223,12 @@ export function DamsBridgesMap({ locale, labels }: { locale: "en" | "ro"; labels
               setPosition({ coordinates, zoom })
             }
           >
-            <Geographies geography={GEO_URL}>
-              {({ geographies }: { geographies: any[] }) => (
-                <>
-                  {geographies.map((geo) => (
-                    <Geography
-                      key={geo.rsmKey}
-                      geography={geo}
-                      style={{
-                        default: { fill: "#0a0a0a", stroke: "rgba(255,255,255,0.07)", strokeWidth: 0.6 / position.zoom, outline: "none" },
-                        hover: { fill: "#0a0a0a", outline: "none" },
-                        pressed: { outline: "none" },
-                      }}
-                    />
-                  ))}
+                  <MergedGeoOverlay
+                    url={GEO_URL}
+                    fill="#0a0a0a"
+                    stroke="rgba(255,255,255,0.07)"
+                    strokeWidth={0.6 / position.zoom}
+                  />
                   <MonumentsLayer
                     filter={filter}
                     selected={selected}
@@ -243,9 +236,6 @@ export function DamsBridgesMap({ locale, labels }: { locale: "en" | "ro"; labels
                     reducedMotion={!!reduced}
                     zoom={position.zoom}
                   />
-                </>
-              )}
-            </Geographies>
           </ZoomableGroup>
         </ComposableMap>
       </div>
