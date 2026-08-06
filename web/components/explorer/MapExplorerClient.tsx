@@ -65,7 +65,6 @@ import { LOCAL_CENSUS_ACS_DATABASE } from "@/lib/data/census-local-data";
 import { LOCAL_CENSUS_COUNTY_METRO_DATA } from "@/lib/data/census-county-metro-data";
 
 import { ELECTION_2024_STATES, ELECTION_2020_STATES, getElectionColor } from "@/lib/data/election-data";
-import { US_NATIONAL_PARKS } from "@/lib/data/national-parks-data";
 import railData from "@/lib/data/rail-simplified.json";
 import interstateData from "@/lib/data/interstates-simplified.json";
 import hospitalsData from "@/lib/data/hospitals-points.json";
@@ -76,6 +75,7 @@ import transmissionLinesData from "@/lib/data/transmission-lines-segments.json";
 import trailsData from "@/lib/data/trails-segments.json";
 import { StateComparisonModal } from "@/components/explorer/StateComparisonModal";
 import { StateFactsheetModal } from "@/components/explorer/StateFactsheetModal";
+import { MergedGeoOverlay, MergedLineOverlay } from "@/components/explorer/MergedGeoOverlay";
 
 export const STATE_DEMOGRAPHIC_BENCHMARKS: Record<string, { income: number; homeValue: number; eduPct: number; vetPct: number; broadbandPct: number; ownerPct: number; povertyPct: number; commuteMins: number }> = {
   AL: { income: 59609, homeValue: 225000, eduPct: 27.5, vetPct: 9.1, broadbandPct: 84.2, ownerPct: 69.2, povertyPct: 15.6, commuteMins: 25.1 },
@@ -128,6 +128,27 @@ export const STATE_DEMOGRAPHIC_BENCHMARKS: Record<string, { income: number; home
   WV: { income: 54300, homeValue: 155000, eduPct: 21.8, vetPct: 8.4, broadbandPct: 82.1, ownerPct: 73.8, povertyPct: 16.8, commuteMins: 26.2 },
   WI: { income: 70996, homeValue: 265000, eduPct: 31.5, vetPct: 7.1, broadbandPct: 89.2, ownerPct: 67.5, povertyPct: 10.7, commuteMins: 22.1 },
   WY: { income: 70042, homeValue: 315000, eduPct: 29.2, vetPct: 11.2, broadbandPct: 87.5, ownerPct: 71.2, povertyPct: 10.4, commuteMins: 18.5 },
+};
+
+// Each state's PREDOMINANT standard-time UTC offset (not DST-adjusted — DST
+// shifts every zone by the same hour, so it doesn't change the relative
+// gradient). A handful of states straddle two zones (e.g. western Texas/Kansas/
+// Nebraska/South Dakota reach into Mountain, east Tennessee is Eastern while the
+// rest is Central, northern Idaho is Pacific while the south is Mountain) — this
+// records the zone most of the state's area/population actually observes, which
+// is why the heatmap renders it as a smooth gradient by offset rather than flat
+// per-zone colors: the boundary itself is fuzzier than a state line, the
+// gradient reads honestly instead of implying a precision the data doesn't have.
+export const STATE_UTC_OFFSET: Record<string, number> = {
+  CT: -5, DE: -5, FL: -5, GA: -5, IN: -5, KY: -5, ME: -5, MD: -5, MA: -5, MI: -5,
+  NH: -5, NJ: -5, NY: -5, NC: -5, OH: -5, PA: -5, RI: -5, SC: -5, VT: -5, VA: -5,
+  WV: -5, DC: -5,
+  AL: -6, AR: -6, IL: -6, IA: -6, KS: -6, LA: -6, MN: -6, MS: -6, MO: -6,
+  NE: -6, ND: -6, OK: -6, SD: -6, TN: -6, TX: -6, WI: -6,
+  AZ: -7, CO: -7, ID: -7, MT: -7, NM: -7, UT: -7, WY: -7,
+  CA: -8, NV: -8, OR: -8, WA: -8,
+  AK: -9,
+  HI: -10,
 };
 
 // ─── 2025 Census Cartographic Boundary Views ─────────────────────────────────
@@ -282,26 +303,6 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     url: "/maps/zip-codes.json",
     badge: "32,294 ZIP Codes",
     description: { en: "USPS ZIP Code Tabulation Areas Nationwide", ro: "Zonele de tabulare a codurilor poștale USPS la nivel național" },
-  },
-  {
-    id: "time_zones",
-    code: "ntad_time_zones",
-    name: { en: "Time Zones", ro: "Fusuri Orare" },
-    category: "reference",
-    categoryLabel: { en: "Reference Boundaries", ro: "Granițe de Referință" },
-    url: "/maps/time-zones.json",
-    badge: "9 Zones",
-    description: { en: "The 9 Official U.S. Time Zones, Coast to Coast and Territories", ro: "Cele 9 fusuri orare oficiale ale SUA, coastă la coastă și teritorii" },
-  },
-  {
-    id: "national_park_boundaries",
-    code: "nps_boundary",
-    name: { en: "National Park Service Boundaries", ro: "Granițele Serviciului Parcurilor Naționale" },
-    category: "reference",
-    categoryLabel: { en: "Reference Boundaries", ro: "Granițe de Referință" },
-    url: "/maps/national-park-boundaries.json",
-    badge: "442 NPS Units",
-    description: { en: "Every National Park Service Unit: Parks, Monuments, Historic Sites & More", ro: "Fiecare unitate a Serviciului Parcurilor Naționale: parcuri, monumente, situri istorice" },
   },
   {
     id: "metro_divisions",
@@ -782,7 +783,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   const [selectedRegion, setSelectedRegion] = useState<string>("All");
   const [sortBy, setSortBy] = useState<"name" | "gdp" | "population" | "statehood">("name");
   const [heatmapMode, setHeatmapMode] = useState<
-    "none" | "gdp" | "population" | "income" | "homeValue" | "education" | "veterans" | "broadband" | "ownerPct" | "poverty" | "commute" | "election2024" | "election2020" | "statehood" | "amendments" | "conLength" | "medianAge" | "medianRent" | "workFromHome" | "noVehicle" | "foreignBorn" | "snapPct" | "unemployment" | "insured" | "highSchool" | "gradDegree" | "multiVehicle" | "vacancy"
+    "none" | "gdp" | "population" | "income" | "homeValue" | "education" | "veterans" | "broadband" | "ownerPct" | "poverty" | "commute" | "election2024" | "election2020" | "statehood" | "amendments" | "conLength" | "medianAge" | "medianRent" | "workFromHome" | "noVehicle" | "foreignBorn" | "snapPct" | "unemployment" | "insured" | "highSchool" | "gradDegree" | "multiVehicle" | "vacancy" | "timeZone"
   >("none");
   const [liveCensusData, setLiveCensusData] = useState<CensusAcsData | null>(null);
   const [isLoadingCensusData, setIsLoadingCensusData] = useState<boolean>(false);
@@ -790,7 +791,6 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   // 🌟 New Feature Modal & Overlay States
   const [isComparisonModalOpen, setIsComparisonModalOpen] = useState<boolean>(false);
   const [isFactsheetModalOpen, setIsFactsheetModalOpen] = useState<boolean>(false);
-  const [showNationalParks, setShowNationalParks] = useState<boolean>(false);
   const [showInterstates, setShowInterstates] = useState<boolean>(false);
   const [showAmtrakRail, setShowAmtrakRail] = useState<boolean>(false);
   const [showHospitals, setShowHospitals] = useState<boolean>(false);
@@ -1209,6 +1209,20 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           const r = Math.min(Math.max((val - 4) / 18, 0), 1);
           return { fill: `hsla(215,60%,62%,${(0.22 + r * 0.58).toFixed(2)})`, stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.35, outline: "none" };
         }
+        if (heatmapMode === "timeZone") {
+          // Continuous gradient by standard-time UTC offset, sunrise-gold (east,
+          // UTC-5) through dusk-purple (west, Hawaii UTC-10) — a smooth hue ramp
+          // rather than flat per-zone colors, since the true zone boundary
+          // wiggles county by county and a hard color edge would overstate how
+          // precisely this state-level approximation actually tracks it.
+          const offset = stAbbrev ? STATE_UTC_OFFSET[stAbbrev] : undefined;
+          if (offset === undefined) {
+            return { fill: "rgba(255, 255, 255, 0.06)", stroke: "rgba(255, 255, 255, 0.2)", strokeWidth: 0.35, outline: "none" };
+          }
+          const t = Math.min(Math.max((-5 - offset) / 5, 0), 1); // 0 = UTC-5 (east), 1 = UTC-10 (Hawaii)
+          const hue = 45 + t * 215; // 45° gold → 260° violet
+          return { fill: `hsla(${hue.toFixed(0)},70%,55%,0.62)`, stroke: "rgba(255, 255, 255, 0.3)", strokeWidth: 0.35, outline: "none" };
+        }
 
         return {
           fill: "rgba(255, 255, 255, 0.08)",
@@ -1385,6 +1399,17 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
           ? `hsla(215,65%,68%,${(0.35 + r * 0.55).toFixed(2)})`
           : `hsla(215,60%,62%,${(0.22 + r * 0.58).toFixed(2)})`;
         stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+      } else if (heatmapMode === "timeZone") {
+        const offset = STATE_UTC_OFFSET[abbrev];
+        if (offset === undefined) {
+          fill = "rgba(255,255,255,0.08)";
+          stroke = "rgba(255,255,255,0.30)";
+        } else {
+          const t = Math.min(Math.max((-5 - offset) / 5, 0), 1);
+          const hue = 45 + t * 215;
+          fill = isHovered ? `hsla(${hue.toFixed(0)},75%,62%,0.78)` : `hsla(${hue.toFixed(0)},70%,55%,0.62)`;
+          stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
+        }
       } else {
         const r = (51 - state.statehoodOrder) / 50;
         fill = isHovered
@@ -1510,16 +1535,6 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
             <div className="flex flex-wrap items-center justify-between gap-3 pt-1 border-t border-white/5">
               {/* Feature Toggles */}
               <div className="flex flex-wrap items-center gap-2">
-                <button
-                  onClick={() => setShowNationalParks((prev) => !prev)}
-                  className={`rounded-full px-4 py-2 text-xs font-bold uppercase transition-all flex items-center gap-2 cursor-pointer shadow-md ${
-                    showNationalParks ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/50" : "bg-white/5 text-white/50 border border-white/10 hover:bg-white/10"
-                  }`}
-                >
-                  <Trees className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>63 PARKS ({showNationalParks ? "ON" : "OFF"})</span>
-                </button>
-
                 <button
                   onClick={() => setShowInterstates((prev) => !prev)}
                   className={`rounded-full px-4 py-2 text-xs font-bold uppercase transition-all flex items-center gap-2 cursor-pointer shadow-md ${
@@ -1682,6 +1697,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   { id: "gradDegree",   label: "Graduate Degree",           activeColor: "#a78bfa", layers: ["states", "counties", "cbsa", "csa", "places"] },
                   { id: "multiVehicle", label: "Multi-Vehicle HH",          activeColor: "#fbbf24", layers: ["states", "counties", "cbsa", "csa", "places"] },
                   { id: "vacancy",      label: "Housing Vacancy",           activeColor: "#94a3b8", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "timeZone",     label: "Time Zone",                 activeColor: "#c084fc", layers: ["states", "counties", "cbsa", "csa", "places"] },
                   { id: "election2024", label: "2024 Vote",               activeColor: "#ef4444", layers: ["states"] },
                   { id: "election2020", label: "2020 Vote",               activeColor: "#3b82f6", layers: ["states"] },
                   { id: "statehood",  label: translations.statehoodHeat,  activeColor: "#f87171", layers: ["states"] },
@@ -1753,6 +1769,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           ? "linear-gradient(to right, hsla(40,90%,52%,0.22), hsl(40,92%,62%))"
                           : heatmapMode === "vacancy"
                           ? "linear-gradient(to right, hsla(215,60%,62%,0.22), hsl(215,65%,72%))"
+                          : heatmapMode === "timeZone"
+                          ? "linear-gradient(to right, hsl(45,70%,55%), hsl(260,70%,55%))"
                           : heatmapMode === "amendments"
                           ? "linear-gradient(to right, hsla(265,72%,56%,0.22), hsl(265,80%,68%))"
                           : heatmapMode === "conLength"
@@ -1893,6 +1911,12 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       <>
                         <span>Min (7.5% · UT)</span>
                         <span className="text-right">Max (19.5% · VT)</span>
+                      </>
+                    )}
+                    {heatmapMode === "timeZone" && (
+                      <>
+                        <span>Eastern (UTC−5)</span>
+                        <span className="text-right">Hawaii (UTC−10)</span>
                       </>
                     )}
                     {heatmapMode === "statehood" && (
@@ -2144,6 +2168,13 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full bg-[hsla(215,65%,72%,0.85)]" /><span>&gt; 17% (e.g., VT, ME, WV)</span></div>
                       </div>
                     )}
+                    {heatmapMode === "timeZone" && (
+                      <div className="space-y-1 text-[9px] font-body text-white/60">
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full" style={{ background: "hsl(45,70%,55%)" }} /><span>Eastern, UTC−5 (most of the East)</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full" style={{ background: "hsl(130,70%,55%)" }} /><span>Central / Mountain, UTC−6 / −7</span></div>
+                        <div className="flex items-center gap-1.5"><div className="h-1.5 w-1.5 rounded-full" style={{ background: "hsl(260,70%,55%)" }} /><span>Pacific → Hawaii, UTC−8 to −10</span></div>
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
@@ -2288,6 +2319,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     ? { label: "Multi-Vehicle HH", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.multiVehiclePct ?? "—"}%`, rank: "", color: "#fbbf24" }
                     : heatmapMode === "vacancy"
                     ? { label: "Housing Vacancy", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.vacancyPct ?? "—"}%`, rank: "", color: "#94a3b8" }
+                    : heatmapMode === "timeZone"
+                    ? { label: "Standard Time", value: STATE_UTC_OFFSET[hoveredStateAbbrev!] !== undefined ? `UTC${STATE_UTC_OFFSET[hoveredStateAbbrev!]}` : "—", rank: "", color: "#c084fc" }
                     : null;
 
                 return (
@@ -2445,6 +2478,9 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                                 } else if (heatmapMode === "vacancy") {
                                   const val = localAcs?.vacancyPct ?? Number((Math.min(Math.max(4, 10 + fipsVar * 8), 22)).toFixed(1));
                                   categoryMetric = `Housing Vacancy: ${val}%`;
+                                } else if (heatmapMode === "timeZone") {
+                                  const off = stFips ? STATE_UTC_OFFSET[stFips] : undefined;
+                                  categoryMetric = off !== undefined ? `Standard Time: UTC${off}` : "Standard Time: —";
                                 }
 
                                 setHoveredStateAbbrev(featureId);
@@ -2615,96 +2651,32 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       )
                     )}
 
-                  {/* ⚡ US Electric Power Transmission Lines Overlay (HIFLD, 74.5k segments) */}
-                  {showTransmissionLines &&
-                    transmissionLinesData.flatMap((line: any, lIdx: number) =>
-                      (line.segments || []).flatMap((seg: any[], sIdx: number) =>
-                        seg.slice(0, -1).map((pt: any, pIdx: number) => (
-                          <Line
-                            key={`transmission-${lIdx}-${sIdx}-${pIdx}`}
-                            from={pt}
-                            to={seg[pIdx + 1]}
-                            stroke="#facc15"
-                            strokeWidth={0.5}
-                            strokeOpacity={0.6}
-                          />
-                        ))
-                      )
-                    )}
-
-                  {/* 🥾 National Trails Overlay (USFS Motor Vehicle Use Maps, 23.3k trails) */}
-                  {showTrails &&
-                    trailsData.flatMap((trail: any, tIdx: number) =>
-                      (trail.segments || []).flatMap((seg: any[], sIdx: number) =>
-                        seg.slice(0, -1).map((pt: any, pIdx: number) => (
-                          <Line
-                            key={`trail-${tIdx}-${sIdx}-${pIdx}`}
-                            from={pt}
-                            to={seg[pIdx + 1]}
-                            stroke="#a3e635"
-                            strokeWidth={0.6}
-                            strokeDasharray="2 2"
-                            strokeOpacity={0.7}
-                          />
-                        ))
-                      )
-                    )}
-
-                  {/* 🏞️ National Park Service Boundaries Overlay (official NPS, 442 units) —
-                      real polygon shapes, so park SIZE is visible on the map, not just a point. */}
-                  {showParkBoundaries && (
-                    <Geographies geography="/maps/national-park-boundaries.json">
-                      {({ geographies }: { geographies: Array<{ rsmKey: string; properties: Record<string, string> }> }) =>
-                        geographies.map((geo) => (
-                          <Geography
-                            key={geo.rsmKey}
-                            geography={geo}
-                            onMouseEnter={() => {
-                              setFeatureHoverInfo({
-                                label: geo.properties.UNIT_NAME || geo.properties.PARKNAME || "NPS Unit",
-                                details: `${geo.properties.UNIT_TYPE || "NPS Unit"} · ${geo.properties.STATE || ""}`,
-                                code: geo.properties.UNIT_CODE || "",
-                              });
-                            }}
-                            onMouseLeave={() => setFeatureHoverInfo(null)}
-                            style={{
-                              default: { fill: "rgba(16, 185, 129, 0.32)", stroke: "#10b981", strokeWidth: 0.6, outline: "none" },
-                              hover: { fill: "rgba(16, 185, 129, 0.55)", stroke: "#34d399", strokeWidth: 1, outline: "none", cursor: "pointer" },
-                              pressed: { outline: "none" },
-                            }}
-                          />
-                        ))
-                      }
-                    </Geographies>
+                  {/* ⚡ US Electric Power Transmission Lines Overlay (HIFLD, 74.5k segments,
+                      436k points) — merged into one path (see MergedLineOverlay); previously
+                      one <Line> per point-pair (~360k DOM nodes) for a single toggle. */}
+                  {showTransmissionLines && (
+                    <MergedLineOverlay data={transmissionLinesData as any} stroke="#facc15" strokeWidth={0.5} strokeOpacity={0.6} />
                   )}
 
-                  {/* 🇺🇸 Federal Lands Overlay (USGS PAD-US Federal Fee Managers, 5,361 parcels) —
-                      real polygon shapes showing the actual footprint of federal land ownership. */}
+                  {/* 🥾 National Trails Overlay (USFS Motor Vehicle Use Maps, 23.3k trails,
+                      134k points) — merged into one path for the same reason as above. */}
+                  {showTrails && (
+                    <MergedLineOverlay data={trailsData as any} stroke="#a3e635" strokeWidth={0.6} strokeOpacity={0.7} strokeDasharray="2 2" />
+                  )}
+
+                  {/* 🏞️ National Park Service Boundaries Overlay (official NPS, 433 units) —
+                      real polygon shapes, so park SIZE is visible on the map, not just a point.
+                      Rendered as one merged SVG path (see MergedGeoOverlay) instead of 433
+                      separate react-simple-maps elements — same data, far less DOM/render cost. */}
+                  {showParkBoundaries && (
+                    <MergedGeoOverlay url="/maps/national-park-boundaries.json" fill="rgba(16, 185, 129, 0.32)" stroke="#10b981" strokeWidth={0.6} />
+                  )}
+
+                  {/* 🇺🇸 Federal Lands Overlay (USGS PAD-US Federal Fee Managers Authoritative,
+                      full 5,284-parcel dataset — every federally owned/managed tract nationwide,
+                      real polygon shapes, merged into one path for the same reason as above). */}
                   {showFederalLands && (
-                    <Geographies geography="/maps/federal-lands.json">
-                      {({ geographies }: { geographies: Array<{ rsmKey: string; properties: Record<string, string> }> }) =>
-                        geographies.map((geo) => (
-                          <Geography
-                            key={geo.rsmKey}
-                            geography={geo}
-                            onMouseEnter={() => {
-                              const acres = Number(geo.properties.GIS_Acres);
-                              setFeatureHoverInfo({
-                                label: geo.properties.Unit_Nm || geo.properties.Mang_Name || "Federal Land",
-                                details: `${geo.properties.Mang_Name || geo.properties.Own_Name || ""} · ${geo.properties.State_Nm || ""}`,
-                                code: acres ? `${Math.round(acres).toLocaleString()} acres` : "",
-                              });
-                            }}
-                            onMouseLeave={() => setFeatureHoverInfo(null)}
-                            style={{
-                              default: { fill: "rgba(245, 158, 11, 0.28)", stroke: "#f59e0b", strokeWidth: 0.5, outline: "none" },
-                              hover: { fill: "rgba(245, 158, 11, 0.5)", stroke: "#fbbf24", strokeWidth: 1, outline: "none", cursor: "pointer" },
-                              pressed: { outline: "none" },
-                            }}
-                          />
-                        ))
-                      }
-                    </Geographies>
+                    <MergedGeoOverlay url="/maps/federal-lands.json" fill="rgba(245, 158, 11, 0.28)" stroke="#f59e0b" strokeWidth={0.5} />
                   )}
 
                   {/* 🏥 Hospitals & Clinics Overlay (HIFLD, 8,013 facilities) */}
@@ -2765,84 +2737,6 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       </Marker>
                     ))}
 
-                  {/* 🏞️ National Park Service Unit Boundaries Overlay (official NPS, 433 units) —
-                      real polygon shapes, so park size/extent reads directly off the map. */}
-                  {showParkBoundaries && (
-                    <Geographies geography="/maps/national-park-boundaries.json">
-                      {({ geographies }: { geographies: Array<{ rsmKey: string; properties: Record<string, string> }> }) =>
-                        geographies.map((geo) => (
-                          <Geography
-                            key={geo.rsmKey}
-                            geography={geo}
-                            onMouseEnter={() => {
-                              setFeatureHoverInfo({
-                                label: geo.properties.UNIT_NAME || geo.properties.PARKNAME || "NPS Unit",
-                                details: `${geo.properties.UNIT_TYPE || ""} • ${geo.properties.STATE || ""}`,
-                                code: "NPS",
-                              });
-                            }}
-                            onMouseLeave={() => setFeatureHoverInfo(null)}
-                            style={{
-                              default: { fill: "rgba(16, 185, 129, 0.35)", stroke: "#10b981", strokeWidth: 0.6, outline: "none" },
-                              hover: { fill: "rgba(16, 185, 129, 0.55)", stroke: "#10b981", strokeWidth: 1, outline: "none", cursor: "pointer" },
-                              pressed: { outline: "none" },
-                            }}
-                          />
-                        ))
-                      }
-                    </Geographies>
-                  )}
-
-                  {/* 🇺🇸 Federal Lands Overlay (USGS PAD-US Federal Fee Managers, 5,284 parcels) —
-                      every federally owned/managed tract (USFS, BLM, NPS, FWS, DOD, etc.), real size. */}
-                  {showFederalLands && (
-                    <Geographies geography="/maps/federal-lands.json">
-                      {({ geographies }: { geographies: Array<{ rsmKey: string; properties: Record<string, string> }> }) =>
-                        geographies.map((geo) => (
-                          <Geography
-                            key={geo.rsmKey}
-                            geography={geo}
-                            onMouseEnter={() => {
-                              const acres = geo.properties.GIS_Acres ? Number(geo.properties.GIS_Acres).toLocaleString() : "";
-                              setFeatureHoverInfo({
-                                label: geo.properties.Unit_Nm || geo.properties.Mang_Name || "Federal Land",
-                                details: `${geo.properties.Mang_Name || ""} • ${geo.properties.State_Nm || ""}${acres ? ` • ${acres} acres` : ""}`,
-                                code: geo.properties.Des_Tp || "Federal",
-                              });
-                            }}
-                            onMouseLeave={() => setFeatureHoverInfo(null)}
-                            style={{
-                              default: { fill: "rgba(217, 119, 6, 0.30)", stroke: "#d97706", strokeWidth: 0.4, outline: "none" },
-                              hover: { fill: "rgba(217, 119, 6, 0.55)", stroke: "#d97706", strokeWidth: 1, outline: "none", cursor: "pointer" },
-                              pressed: { outline: "none" },
-                            }}
-                          />
-                        ))
-                      }
-                    </Geographies>
-                  )}
-
-                  {/* 🌲 63 Official U.S. National Parks Interactive Markers Overlay */}
-                  {showNationalParks &&
-                    US_NATIONAL_PARKS.map((park) => (
-                      <Marker
-                        key={park.id}
-                        coordinates={park.coordinates}
-                        onMouseEnter={() => {
-                          setFeatureHoverInfo({
-                            label: park.name,
-                            details: `State: ${park.state} • Est. ${park.established}`,
-                            code: `${(park.acres / 1000).toFixed(0)}k acres`,
-                          });
-                        }}
-                        onMouseLeave={() => setFeatureHoverInfo(null)}
-                      >
-                        <g className="cursor-pointer">
-                          <circle r={5} fill="#10b981" stroke="#ffffff" strokeWidth={1.5} />
-                          <circle r={10} fill="rgba(16, 185, 129, 0.25)" className="animate-ping" pointerEvents="none" />
-                        </g>
-                      </Marker>
-                    ))}
                 </ZoomableGroup>
               </ComposableMap>
 
@@ -2927,31 +2821,26 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -16 }}
                   transition={{ duration: 0.25 }}
-                  className="rounded-3xl border border-[#fbbf24]/50 bg-[#070709] p-6 md:p-8 shadow-2xl relative overflow-hidden mb-8"
+                  className="rounded-3xl border border-white/[0.06] bg-[#070707] p-6 md:p-8 shadow-2xl shadow-black/85 relative overflow-hidden mb-8"
                 >
-                  {/* Glowing header line */}
-                  <div className="h-1 w-full bg-gradient-to-r from-[#fbbf24] via-[#f59e0b] to-[#b22234] rounded-full mb-6" />
+                  {/* Accent header line */}
+                  <div className="h-0.5 w-full rounded-full mb-6 bg-[#fbbf24]" />
 
-                  {/* Top Bar: Layer & API Status & Actions */}
-                  <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-white/10">
+                  {/* Top Bar: Layer & Actions */}
+                  <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-white/[0.06]">
                     <div className="flex flex-wrap items-center gap-3">
-                      <span className="px-3 py-1 rounded-full font-mono text-[11px] font-bold uppercase tracking-wider bg-[#fbbf24]/20 text-[#fbbf24] border border-[#fbbf24]/40 flex items-center gap-1.5">
+                      <span className="px-3 py-1 rounded-full font-body text-[10px] font-bold uppercase tracking-widest bg-[#fbbf24]/10 text-[#fbbf24] border border-[#fbbf24]/25 flex items-center gap-1.5">
                         <Layers className="w-3 h-3" />
                         {selectedFeature.layerName}
                       </span>
-                      <span className="px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 font-mono text-xs text-white/50">
+                      <span className="px-2.5 py-0.5 rounded-md bg-white/[0.04] border border-white/[0.06] font-mono text-xs text-white/40">
                         {selectedFeature.layerCode}
                       </span>
                       {stAbbrev && (
-                        <span className="px-2.5 py-0.5 rounded-md bg-blue-500/10 border border-blue-500/30 font-mono text-xs text-blue-400 font-bold">
+                        <span className="px-2.5 py-0.5 rounded-md bg-white/[0.04] border border-white/[0.06] font-mono text-xs text-white/60 font-semibold">
                           {stName ? `${stName} (${stAbbrev})` : `State: ${stAbbrev}`}
                         </span>
                       )}
-                      {/* 🌟 Census API Key Connected Status Badge */}
-                      <span className="px-3 py-1 rounded-full font-mono text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30 flex items-center gap-1.5 shadow-sm">
-                        <Zap className="w-3 h-3 text-amber-400 animate-pulse" />
-                        <span>Census API Connected (<span className="text-white/80">e5ee914a...65dd</span>)</span>
-                      </span>
                     </div>
 
                     <div className="flex items-center gap-2">
@@ -2966,10 +2855,10 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           downloadAnchor.click();
                           downloadAnchor.remove();
                         }}
-                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/15 text-xs font-mono text-white/70 hover:text-white transition-colors cursor-pointer border border-white/10"
+                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.04] hover:bg-white/[0.1] text-xs font-mono text-white/60 hover:text-white transition-colors cursor-pointer border border-white/[0.06]"
                         title="Download JSON Export"
                       >
-                        <FileText className="w-3 h-3 text-[#fbbf24]" />
+                        <FileText className="w-3 h-3 text-white/40" />
                         <span>JSON</span>
                       </button>
 
@@ -2985,10 +2874,10 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           downloadAnchor.click();
                           downloadAnchor.remove();
                         }}
-                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/15 text-xs font-mono text-white/70 hover:text-white transition-colors cursor-pointer border border-white/10"
+                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.04] hover:bg-white/[0.1] text-xs font-mono text-white/60 hover:text-white transition-colors cursor-pointer border border-white/[0.06]"
                         title="Download CSV Export"
                       >
-                        <FileText className="w-3 h-3 text-emerald-400" />
+                        <FileText className="w-3 h-3 text-white/40" />
                         <span>CSV</span>
                       </button>
 
@@ -3025,71 +2914,71 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
                       {/* Live ACS Census Data API Metrics Card */}
                       {isLoadingCensusData ? (
-                        <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-4 flex items-center gap-3">
-                          <Zap className="w-4 h-4 text-amber-400 animate-spin" />
-                          <span className="font-mono text-xs text-amber-300 font-bold">Querying live ACS 5-Year Census Bureau API...</span>
+                        <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4 flex items-center gap-3">
+                          <Zap className="w-4 h-4 text-[#fbbf24] animate-spin" />
+                          <span className="font-body text-xs text-white/50 font-semibold">Querying live ACS 5-Year Census Bureau API...</span>
                         </div>
                       ) : liveCensusData ? (
-                        <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4 space-y-3">
+                        <div className="rounded-2xl border border-white/[0.06] bg-[#0c0c0c] p-4 space-y-3 shadow-sm">
                           <div className="flex items-center justify-between">
-                            <span className="font-mono text-[10px] uppercase tracking-wider text-emerald-400 font-bold flex items-center gap-1.5">
-                              <Zap className="w-3 h-3 text-emerald-400" />
+                            <span className="font-body text-[10px] uppercase tracking-widest text-white/30 font-semibold flex items-center gap-1.5">
+                              <Zap className="w-3 h-3 text-[#fbbf24]" />
                               Official ACS 5-Year Live Data
                             </span>
-                            <span className="font-mono text-[9px] text-emerald-300/60 font-bold">U.S. Census API</span>
+                            <span className="font-body text-[9px] text-white/25 font-semibold">U.S. Census API</span>
                           </div>
                             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-xs">
-                              <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                              <div className="bg-black/30 p-2 rounded-xl border border-white/[0.05]">
                                 <span className="text-[9px] text-white/40 block">Median Income</span>
-                                <span className="text-emerald-300 font-bold text-sm">
+                                <span className="text-white font-bold text-sm">
                                   {liveCensusData.medianIncome ? `$${liveCensusData.medianIncome.toLocaleString()}` : "N/A"}
                                 </span>
                               </div>
-                              <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                              <div className="bg-black/30 p-2 rounded-xl border border-white/[0.05]">
                                 <span className="text-[9px] text-white/40 block">Median Home Value</span>
-                                <span className="text-amber-300 font-bold text-sm">
+                                <span className="text-white font-bold text-sm">
                                   {liveCensusData.medianHomeValue ? `$${liveCensusData.medianHomeValue.toLocaleString()}` : "N/A"}
                                 </span>
                               </div>
-                              <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                              <div className="bg-black/30 p-2 rounded-xl border border-white/[0.05]">
                                 <span className="text-[9px] text-white/40 block">Higher Education</span>
-                                <span className="text-blue-300 font-bold text-sm">
+                                <span className="text-white font-bold text-sm">
                                   {liveCensusData.bachelorOrHigherPct ? `${liveCensusData.bachelorOrHigherPct}%` : "N/A"}
                                 </span>
                               </div>
-                              <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                              <div className="bg-black/30 p-2 rounded-xl border border-white/[0.05]">
                                 <span className="text-[9px] text-white/40 block">Veteran Rate</span>
-                                <span className="text-purple-300 font-bold text-sm">
+                                <span className="text-white font-bold text-sm">
                                   {liveCensusData.veteranPct ? `${liveCensusData.veteranPct}%` : "N/A"}
                                 </span>
                               </div>
-                              <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                              <div className="bg-black/30 p-2 rounded-xl border border-white/[0.05]">
                                 <span className="text-[9px] text-white/40 block">Broadband Internet</span>
-                                <span className="text-sky-300 font-bold text-sm">
+                                <span className="text-white font-bold text-sm">
                                   {liveCensusData.broadbandPct ? `${liveCensusData.broadbandPct}%` : "N/A"}
                                 </span>
                               </div>
-                              <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                              <div className="bg-black/30 p-2 rounded-xl border border-white/[0.05]">
                                 <span className="text-[9px] text-white/40 block">Homeownership Rate</span>
-                                <span className="text-orange-300 font-bold text-sm">
+                                <span className="text-white font-bold text-sm">
                                   {liveCensusData.ownerOccupiedPct ? `${liveCensusData.ownerOccupiedPct}%` : "N/A"}
                                 </span>
                               </div>
-                              <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                              <div className="bg-black/30 p-2 rounded-xl border border-white/[0.05]">
                                 <span className="text-[9px] text-white/40 block">Mean Commute</span>
-                                <span className="text-indigo-300 font-bold text-sm">
+                                <span className="text-white font-bold text-sm">
                                   {liveCensusData.meanCommuteMinutes ? `${liveCensusData.meanCommuteMinutes} min` : "N/A"}
                                 </span>
                               </div>
-                              <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                              <div className="bg-black/30 p-2 rounded-xl border border-white/[0.05]">
                                 <span className="text-[9px] text-white/40 block">Poverty Rate</span>
-                                <span className="text-rose-300 font-bold text-sm">
+                                <span className="text-white font-bold text-sm">
                                   {liveCensusData.povertyPct ? `${liveCensusData.povertyPct}%` : "N/A"}
                                 </span>
                               </div>
-                              <div className="bg-black/40 p-2 rounded-xl border border-emerald-500/20">
+                              <div className="bg-black/30 p-2 rounded-xl border border-white/[0.05]">
                                 <span className="text-[9px] text-white/40 block">Foreign-Born %</span>
-                                <span className="text-teal-300 font-bold text-sm">
+                                <span className="text-white font-bold text-sm">
                                   {liveCensusData.foreignBornPct ? `${liveCensusData.foreignBornPct}%` : "N/A"}
                                 </span>
                               </div>
@@ -3099,54 +2988,54 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
                       {/* 2×2 Census Quick Metrics Cards */}
                       <div className="grid grid-cols-2 gap-3 pt-2">
-                        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-3.5 space-y-1">
-                          <div className="flex items-center gap-1.5 text-white/40 font-mono text-[10px] uppercase font-bold">
+                        <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-3.5 space-y-1 shadow-sm">
+                          <div className="flex items-center gap-1.5 text-white/30 font-body text-[10px] uppercase tracking-wider font-semibold">
                             <Compass className="w-3 h-3 text-[#fbbf24]" />
                             <span>Land Area</span>
                           </div>
                           <div className="font-display text-lg font-bold text-white">
                             {sqMilesLand > 0 ? `${sqMilesLand.toLocaleString("en-US", { maximumFractionDigits: 1 })} sq mi` : "N/A"}
                           </div>
-                          <div className="font-mono text-[10px] text-white/40">
+                          <div className="font-mono text-[10px] text-white/30">
                             {aland > 0 ? `${(aland / 1e6).toFixed(1)} km² (${landPct}%)` : "Land area"}
                           </div>
                         </div>
 
-                        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-3.5 space-y-1">
-                          <div className="flex items-center gap-1.5 text-white/40 font-mono text-[10px] uppercase font-bold">
-                            <Globe className="w-3 h-3 text-blue-400" />
+                        <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-3.5 space-y-1 shadow-sm">
+                          <div className="flex items-center gap-1.5 text-white/30 font-body text-[10px] uppercase tracking-wider font-semibold">
+                            <Globe className="w-3 h-3 text-[#fbbf24]" />
                             <span>Water Area</span>
                           </div>
                           <div className="font-display text-lg font-bold text-white">
                             {sqMilesWater > 0 ? `${sqMilesWater.toLocaleString("en-US", { maximumFractionDigits: 1 })} sq mi` : "0 sq mi"}
                           </div>
-                          <div className="font-mono text-[10px] text-white/40">
+                          <div className="font-mono text-[10px] text-white/30">
                             {awater > 0 ? `${(awater / 1e6).toFixed(1)} km² (${waterPct}%)` : "Water surface"}
                           </div>
                         </div>
 
-                        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-3.5 space-y-1">
-                          <div className="flex items-center gap-1.5 text-white/40 font-mono text-[10px] uppercase font-bold">
-                            <Users className="w-3 h-3 text-emerald-400" />
+                        <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-3.5 space-y-1 shadow-sm">
+                          <div className="flex items-center gap-1.5 text-white/30 font-body text-[10px] uppercase tracking-wider font-semibold">
+                            <Users className="w-3 h-3 text-[#fbbf24]" />
                             <span>Census Est. Pop</span>
                           </div>
                           <div className="font-display text-lg font-bold text-white">
                             {estPop > 0 ? estPop.toLocaleString("en-US") : "N/A"}
                           </div>
-                          <div className="font-mono text-[10px] text-white/40">
+                          <div className="font-mono text-[10px] text-white/30">
                             Statistical estimate
                           </div>
                         </div>
 
-                        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-3.5 space-y-1">
-                          <div className="flex items-center gap-1.5 text-white/40 font-mono text-[10px] uppercase font-bold">
-                            <Landmark className="w-3 h-3 text-purple-400" />
+                        <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-3.5 space-y-1 shadow-sm">
+                          <div className="flex items-center gap-1.5 text-white/30 font-body text-[10px] uppercase tracking-wider font-semibold">
+                            <Landmark className="w-3 h-3 text-[#fbbf24]" />
                             <span>FIPS Identifiers</span>
                           </div>
                           <div className="font-mono text-sm font-bold text-white truncate">
                             {stFips ? `ST ${stFips}` : ""}{countyFips ? ` / CO ${countyFips}` : ""}
                           </div>
-                          <div className="font-mono text-[10px] text-white/40 truncate">
+                          <div className="font-mono text-[10px] text-white/30 truncate">
                             {csafp ? `CSA ${csafp}` : cbsafp ? `CBSA ${cbsafp}` : "Federal FIPS Code"}
                           </div>
                         </div>
@@ -3154,26 +3043,26 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
                       {/* Specialized Category Badges */}
                       {(loGrade || hiGrade || cdSession || lsyYear) && (
-                        <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-3.5 space-y-2">
-                          <span className="font-mono text-[10px] uppercase tracking-widest text-[#fbbf24] font-bold block">
+                        <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-3.5 space-y-2 shadow-sm">
+                          <span className="font-body text-[10px] uppercase tracking-widest text-white/30 font-semibold block">
                             Census Bureau Classification Insights
                           </span>
                           <div className="flex flex-wrap gap-2 text-xs font-mono">
                             {(loGrade || hiGrade) && (
-                              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300">
-                                <GraduationCap className="w-3.5 h-3.5" />
+                              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.06] text-white/70">
+                                <GraduationCap className="w-3.5 h-3.5 text-[#fbbf24]" />
                                 Grades: {loGrade || "PK"} to {hiGrade || "12"}
                               </span>
                             )}
                             {selectedFeature.layerCode.includes("cd119") && (
-                              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#fbbf24]/10 border border-[#fbbf24]/30 text-[#fbbf24]">
-                                <Landmark className="w-3.5 h-3.5" />
+                              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.06] text-white/70">
+                                <Landmark className="w-3.5 h-3.5 text-[#fbbf24]" />
                                 119th U.S. Congress (2025–2027)
                               </span>
                             )}
                             {(selectedFeature.layerCode.includes("sldl") || selectedFeature.layerCode.includes("sldu")) && (
-                              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-purple-500/10 border border-purple-500/30 text-purple-300">
-                                <Scale className="w-3.5 h-3.5" />
+                              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.06] text-white/70">
+                                <Scale className="w-3.5 h-3.5 text-[#fbbf24]" />
                                 {selectedFeature.layerCode.includes("sldl") ? "Lower Chamber Assembly" : "Upper Chamber Senate"} ({lsyYear})
                               </span>
                             )}
@@ -3183,13 +3072,13 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     </div>
 
                     {/* Column 2: Raw Census Properties Table (7 cols) */}
-                    <div className="lg:col-span-7 rounded-2xl border border-white/10 bg-black/70 p-4 space-y-3">
-                      <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                        <span className="font-mono text-[10px] uppercase tracking-widest text-white/50 font-bold flex items-center gap-1.5">
+                    <div className="lg:col-span-7 rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-4 space-y-3 shadow-sm">
+                      <div className="flex items-center justify-between pb-2 border-b border-white/[0.06]">
+                        <span className="font-body text-[10px] uppercase tracking-widest text-white/30 font-semibold flex items-center gap-1.5">
                           <FileText className="w-3 h-3 text-[#fbbf24]" />
                           {locale === "ro" ? "Atribute Cartografice Recensământ (Shapefile Properties)" : "Census Cartographic Properties (Raw Attributes)"}
                         </span>
-                        <span className="font-mono text-[10px] text-white/30">
+                        <span className="font-mono text-[10px] text-white/25">
                           {Object.keys(props).length} fields
                         </span>
                       </div>
@@ -3203,9 +3092,9 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                             displayValue = `${Number(v).toLocaleString()} m² (${sqMiles} sq mi)`;
                           }
                           return (
-                            <div key={k} className="flex flex-col bg-white/[0.03] p-2.5 rounded-xl border border-white/5 hover:border-white/15 transition-colors">
-                              <span className="text-[10px] text-white/40 font-bold tracking-wide">{k}</span>
-                              <span className="text-white/90 font-medium truncate" title={displayValue}>{displayValue}</span>
+                            <div key={k} className="flex flex-col bg-white/[0.02] p-2.5 rounded-xl border border-white/[0.05] hover:border-white/[0.12] transition-colors">
+                              <span className="text-[10px] text-white/30 font-bold tracking-wide">{k}</span>
+                              <span className="text-white/80 font-medium truncate" title={displayValue}>{displayValue}</span>
                             </div>
                           );
                         })}
