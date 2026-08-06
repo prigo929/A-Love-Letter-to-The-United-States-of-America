@@ -2367,7 +2367,47 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   center={zoomPosition.coordinates}
                   onMoveEnd={handleMoveEnd}
                 >
-                  <Geographies key={activeCensusLayer.id} geography={activeCensusLayer.url}>
+                  {activeCensusLayer.id === "places" ? (
+                    <MergedGeoOverlay
+                      url={activeCensusLayer.url}
+                      fill="rgba(56, 189, 248, 0.45)"
+                      stroke="rgba(255, 255, 255, 0.6)"
+                      strokeWidth={0.4}
+                      defaultColor="rgba(56, 189, 248, 0.45)"
+                      onFeatureHover={setFeatureHoverInfo}
+                      onFeatureClick={(feat) => {
+                        const props = (feat.properties || {}) as any;
+                        const name = props.NAMELSAD || props.NAME || "City / Place";
+                        const rawFips = String(props.GEOID || props.GEOIDFQ || (props.STATEFP && props.PLACEFP ? `${props.STATEFP}${props.PLACEFP}` : "") || feat.id || "");
+                        const code = rawFips ? rawFips.padStart(5, "0") : activeCensusLayer.code;
+                        const stFips = props.STATEFP || "";
+
+                        setIsLoadingCensusData(true);
+                        setLiveCensusData(null);
+
+                        fetchCensusAcsData({
+                          stateFips: stFips,
+                          placeFips: props.PLACEFP,
+                          geoid: code,
+                          layerCode: activeCensusLayer.code,
+                        }).then((data) => {
+                          setLiveCensusData(data);
+                          setIsLoadingCensusData(false);
+                        });
+
+                        setSelectedFeature({
+                          id: code || name,
+                          name,
+                          layerName: activeCensusLayer.name[locale],
+                          layerCode: activeCensusLayer.code,
+                          geoid: code,
+                          stateAbbrev: stFips ? FIPS_TO_ABBREV[stFips] || stFips : "",
+                          properties: props,
+                        });
+                      }}
+                    />
+                  ) : (
+                    <Geographies key={activeCensusLayer.id} geography={activeCensusLayer.url}>
                     {({ geographies }: { geographies: any[] }) => {
                       const baseGeos = geographies.map((geo) => {
                         const abbrev = getFeatureAbbrev(geo);
@@ -2598,7 +2638,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         </>
                       );
                     }}
-                  </Geographies>
+                    </Geographies>
+                  )}
 
                   {/* Interstate Highways Overlay — accurate NTAD-derived geometry only.
                       (HIGHWAY_ROUTES, a ~15-waypoint schematic stand-in built for the

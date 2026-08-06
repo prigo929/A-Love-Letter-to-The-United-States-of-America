@@ -7,6 +7,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { geoAlbersUsa, geoPath } from "d3-geo";
+import { feature as topojsonFeature } from "topojson-client";
 
 const PROJECTION = geoAlbersUsa().translate([400, 300]).scale(960);
 const PATH = geoPath(PROJECTION);
@@ -43,6 +44,7 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
   colorMap,
   defaultColor,
   onFeatureHover,
+  onFeatureClick,
 }: {
   url: string;
   fill?: string;
@@ -52,6 +54,7 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
   colorMap?: Record<string, string>;
   defaultColor?: string;
   onFeatureHover?: (info: HoverInfo | null) => void;
+  onFeatureClick?: (feature: GeoJSON.Feature) => void;
 }) {
   const [features, setFeatures] = useState<GeoJSON.Feature[] | null>(() => featureCache.get(url) || null);
 
@@ -63,11 +66,18 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
     let alive = true;
     fetch(url)
       .then((r) => r.json())
-      .then((geojson: GeoJSON.FeatureCollection) => {
-        if (alive) {
-          featureCache.set(url, geojson.features);
-          setFeatures(geojson.features);
+      .then((data: any) => {
+        if (!alive) return;
+        let feats: GeoJSON.Feature[] = [];
+        if (data.type === "Topology" && data.objects) {
+          const firstKey = Object.keys(data.objects)[0];
+          const featureColl = topojsonFeature(data, data.objects[firstKey]) as any;
+          feats = featureColl.features || [];
+        } else {
+          feats = data.features || [];
         }
+        featureCache.set(url, feats);
+        setFeatures(feats);
       })
       .catch(() => alive && setFeatures([]));
     return () => {
@@ -108,7 +118,7 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
   }, [features, categoryField, colorMap, fill, defaultColor, url, onFeatureHover]);
 
   const featureItems = useMemo(() => {
-    if (!onFeatureHover || !features || features.length === 0) return [];
+    if ((!onFeatureHover && !onFeatureClick) || !features || features.length === 0) return [];
     return features.map((f, i) => {
       const p = PATH(f as any);
       if (!p) return null;
@@ -116,29 +126,30 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
       const cat = categoryField ? props[categoryField] : undefined;
       const color = (cat && colorMap?.[cat]) ?? defaultColor ?? fill ?? "#888888";
       
-      const rawName = props.name || props.UNIT_NAME || props.PARKNAME || props.NAME || "Federal Land Parcel";
-      const agencyCode = props.agency || props.UNIT_TYPE || props.UNIT_CODE || "FED LAND";
+      const rawName = props.NAMELSAD || props.NAME || props.name || props.UNIT_NAME || props.PARKNAME || "Boundary Feature";
+      const agencyCode = props.agency || props.UNIT_TYPE || props.UNIT_CODE || props.GEOID || "FEATURE";
       const agencyName = AGENCY_NAMES[props.agency] || props.agency;
       const details = props.agency 
         ? `Managed by ${agencyName}` 
-        : (props.STATE ? `State: ${props.STATE}` : "Public Federal Land");
+        : (props.STATE_NAME ? `State: ${props.STATE_NAME}` : (props.STATE ? `State: ${props.STATE}` : "Public Federal Land"));
 
       return {
         id: i,
         d: p,
         color,
+        feature: f,
         hoverInfo: {
           label: rawName,
           details,
           code: agencyCode,
         },
       };
-    }).filter(Boolean) as { id: number; d: string; color: string; hoverInfo: HoverInfo }[];
-  }, [features, categoryField, colorMap, fill, defaultColor, onFeatureHover]);
+    }).filter(Boolean) as { id: number; d: string; color: string; feature: GeoJSON.Feature; hoverInfo: HoverInfo }[];
+  }, [features, categoryField, colorMap, fill, defaultColor, onFeatureHover, onFeatureClick]);
 
-  if (!onFeatureHover && groups.length === 0) return null;
+  if (!onFeatureHover && !onFeatureClick && groups.length === 0) return null;
 
-  if (onFeatureHover) {
+  if (onFeatureHover || onFeatureClick) {
     return (
       <g className="cursor-pointer">
         {featureItems.map((item) => (
@@ -149,8 +160,12 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
             stroke={stroke}
             strokeWidth={strokeWidth}
             className="transition-opacity hover:opacity-85"
-            onMouseEnter={() => onFeatureHover(item.hoverInfo)}
-            onMouseLeave={() => onFeatureHover(null)}
+            onMouseEnter={() => onFeatureHover?.(item.hoverInfo)}
+            onMouseLeave={() => onFeatureHover?.(null)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onFeatureClick?.(item.feature);
+            }}
             pointerEvents="all"
           />
         ))}
