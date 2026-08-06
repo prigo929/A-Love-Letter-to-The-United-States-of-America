@@ -198,6 +198,8 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
     }).filter(Boolean) as { id: number; d: string; color: string; feature: GeoJSON.Feature; hoverInfo: HoverInfo }[];
   }, [features, useHighDensityMode, categoryField, colorMap, fill, defaultColor, onFeatureHover, onFeatureClick]);
 
+  const rafIdRef = React.useRef<number | null>(null);
+
   const getEventCoords = (e: React.MouseEvent<SVGGElement>) => {
     const svg = e.currentTarget.ownerSVGElement;
     if (!svg) return null;
@@ -212,15 +214,24 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
     const cursor = getEventCoords(e);
     if (!cursor) return;
 
-    let hit = null;
-    for (let i = 0; i < spatialIndex.length; i++) {
-      const item = spatialIndex[i];
-      if (cursor.x >= item.minX && cursor.x <= item.maxX && cursor.y >= item.minY && cursor.y <= item.maxY) {
-        hit = item;
-        break;
-      }
+    if (rafIdRef.current !== null) {
+      cancelAnimationFrame(rafIdRef.current);
     }
-    onFeatureHover(hit ? hit.hoverInfo : null);
+
+    const cx = cursor.x;
+    const cy = cursor.y;
+
+    rafIdRef.current = requestAnimationFrame(() => {
+      let hit = null;
+      for (let i = 0; i < spatialIndex.length; i++) {
+        const item = spatialIndex[i];
+        if (cx >= item.minX && cx <= item.maxX && cy >= item.minY && cy <= item.maxY) {
+          hit = item;
+          break;
+        }
+      }
+      onFeatureHover(hit ? hit.hoverInfo : null);
+    });
   };
 
   const handleClick = (e: React.MouseEvent<SVGGElement>) => {
@@ -228,9 +239,12 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
     const cursor = getEventCoords(e);
     if (!cursor) return;
 
+    const cx = cursor.x;
+    const cy = cursor.y;
+
     for (let i = 0; i < spatialIndex.length; i++) {
       const item = spatialIndex[i];
-      if (cursor.x >= item.minX && cursor.x <= item.maxX && cursor.y >= item.minY && cursor.y <= item.maxY) {
+      if (cx >= item.minX && cx <= item.maxX && cy >= item.minY && cy <= item.maxY) {
         onFeatureClick(item.feature);
         break;
       }
@@ -244,7 +258,10 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
       <g
         className="cursor-pointer"
         onMouseMove={handleMouseMove}
-        onMouseLeave={() => onFeatureHover?.(null)}
+        onMouseLeave={() => {
+          if (rafIdRef.current !== null) cancelAnimationFrame(rafIdRef.current);
+          onFeatureHover?.(null);
+        }}
         onClick={handleClick}
       >
         {groups.map((g) => (
@@ -255,6 +272,7 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
             stroke={stroke}
             strokeWidth={strokeWidth}
             className="transition-opacity hover:opacity-90"
+            style={{ willChange: "transform", contain: "strict" }}
             pointerEvents="all"
           />
         ))}
