@@ -3488,6 +3488,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                             src={`/state-capitols/${selectedState.abbrev}.jpg`}
                             alt={`${selectedState.name[locale]}: ${translations.capitolLabel}`}
                             loading="lazy"
+                            style={{ dynamicRange: "standard" } as React.CSSProperties}
                             className="aspect-[3/2] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                           />
                           <span className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/60 opacity-0 transition-opacity group-hover:opacity-100">
@@ -4117,6 +4118,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                 src={symbol.src}
                 alt={symbol.label}
                 onClick={(e) => e.stopPropagation()}
+                style={{ dynamicRange: "standard" } as React.CSSProperties}
                 className="h-auto max-h-[85vh] w-auto max-w-[92vw] cursor-default object-contain"
               />
             </div>
