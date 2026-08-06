@@ -2765,6 +2765,63 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       </Marker>
                     ))}
 
+                  {/* 🏞️ National Park Service Unit Boundaries Overlay (official NPS, 433 units) —
+                      real polygon shapes, so park size/extent reads directly off the map. */}
+                  {showParkBoundaries && (
+                    <Geographies geography="/maps/national-park-boundaries.json">
+                      {({ geographies }: { geographies: Array<{ rsmKey: string; properties: Record<string, string> }> }) =>
+                        geographies.map((geo) => (
+                          <Geography
+                            key={geo.rsmKey}
+                            geography={geo}
+                            onMouseEnter={() => {
+                              setFeatureHoverInfo({
+                                label: geo.properties.UNIT_NAME || geo.properties.PARKNAME || "NPS Unit",
+                                details: `${geo.properties.UNIT_TYPE || ""} • ${geo.properties.STATE || ""}`,
+                                code: "NPS",
+                              });
+                            }}
+                            onMouseLeave={() => setFeatureHoverInfo(null)}
+                            style={{
+                              default: { fill: "rgba(16, 185, 129, 0.35)", stroke: "#10b981", strokeWidth: 0.6, outline: "none" },
+                              hover: { fill: "rgba(16, 185, 129, 0.55)", stroke: "#10b981", strokeWidth: 1, outline: "none", cursor: "pointer" },
+                              pressed: { outline: "none" },
+                            }}
+                          />
+                        ))
+                      }
+                    </Geographies>
+                  )}
+
+                  {/* 🇺🇸 Federal Lands Overlay (USGS PAD-US Federal Fee Managers, 5,284 parcels) —
+                      every federally owned/managed tract (USFS, BLM, NPS, FWS, DOD, etc.), real size. */}
+                  {showFederalLands && (
+                    <Geographies geography="/maps/federal-lands.json">
+                      {({ geographies }: { geographies: Array<{ rsmKey: string; properties: Record<string, string> }> }) =>
+                        geographies.map((geo) => (
+                          <Geography
+                            key={geo.rsmKey}
+                            geography={geo}
+                            onMouseEnter={() => {
+                              const acres = geo.properties.GIS_Acres ? Number(geo.properties.GIS_Acres).toLocaleString() : "";
+                              setFeatureHoverInfo({
+                                label: geo.properties.Unit_Nm || geo.properties.Mang_Name || "Federal Land",
+                                details: `${geo.properties.Mang_Name || ""} • ${geo.properties.State_Nm || ""}${acres ? ` • ${acres} acres` : ""}`,
+                                code: geo.properties.Des_Tp || "Federal",
+                              });
+                            }}
+                            onMouseLeave={() => setFeatureHoverInfo(null)}
+                            style={{
+                              default: { fill: "rgba(217, 119, 6, 0.30)", stroke: "#d97706", strokeWidth: 0.4, outline: "none" },
+                              hover: { fill: "rgba(217, 119, 6, 0.55)", stroke: "#d97706", strokeWidth: 1, outline: "none", cursor: "pointer" },
+                              pressed: { outline: "none" },
+                            }}
+                          />
+                        ))
+                      }
+                    </Geographies>
+                  )}
+
                   {/* 🌲 63 Official U.S. National Parks Interactive Markers Overlay */}
                   {showNationalParks &&
                     US_NATIONAL_PARKS.map((park) => (
