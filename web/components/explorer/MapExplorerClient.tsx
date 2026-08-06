@@ -52,6 +52,7 @@ import {
   Mountain,
   Footprints,
   TrainFront,
+  Cpu,
 } from "lucide-react";
 import { EXPLORER_STATES, StateData } from "@/lib/data/explorer-data";
 import { STATE_EXTENDED_DATA } from "@/lib/data/state-details";
@@ -76,6 +77,7 @@ import trailsData from "@/lib/data/trails-segments.json";
 import { StateComparisonModal } from "@/components/explorer/StateComparisonModal";
 import { StateFactsheetModal } from "@/components/explorer/StateFactsheetModal";
 import { MergedGeoOverlay, MergedLineOverlay } from "@/components/explorer/MergedGeoOverlay";
+import { HeavyLayersMapGL } from "@/components/explorer/HeavyLayersMapGL";
 
 export const STATE_DEMOGRAPHIC_BENCHMARKS: Record<string, { income: number; homeValue: number; eduPct: number; vetPct: number; broadbandPct: number; ownerPct: number; povertyPct: number; commuteMins: number }> = {
   AL: { income: 59609, homeValue: 225000, eduPct: 27.5, vetPct: 9.1, broadbandPct: 84.2, ownerPct: 69.2, povertyPct: 15.6, commuteMins: 25.1 },
@@ -149,6 +151,24 @@ export const STATE_UTC_OFFSET: Record<string, number> = {
   CA: -8, NV: -8, OR: -8, WA: -8,
   AK: -9,
   HI: -10,
+};
+
+// Federal-land parcel fill, keyed by managing agency (PAD-US `Mang_Name`) —
+// matches the standard federal-land-by-agency reference map convention
+// (FWS teal, NPS green, USFS olive, BLM gold, DOD red, tribal purple, etc.)
+// instead of one flat color for every parcel regardless of who manages it.
+const FEDERAL_AGENCY_COLORS: Record<string, string> = {
+  FWS: "rgba(34, 211, 238, 0.4)", // Fish & Wildlife Service
+  NPS: "rgba(16, 185, 129, 0.4)", // National Park Service
+  USFS: "rgba(132, 204, 22, 0.4)", // Forest Service
+  BLM: "rgba(234, 179, 8, 0.4)", // Bureau of Land Management
+  DOD: "rgba(239, 68, 68, 0.4)", // Department of Defense
+  TRIB: "rgba(168, 85, 247, 0.4)", // Tribal / BIA
+  USACE: "rgba(59, 130, 246, 0.4)", // Army Corps of Engineers
+  USBR: "rgba(56, 189, 248, 0.4)", // Bureau of Reclamation
+  OTHF: "rgba(156, 163, 175, 0.4)", // Other federal
+  SPR: "rgba(209, 213, 219, 0.4)", // State preserve
+  NGO: "rgba(229, 231, 235, 0.4)",
 };
 
 // ─── 2025 Census Cartographic Boundary Views ─────────────────────────────────
@@ -783,6 +803,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   const [showTrails, setShowTrails] = useState<boolean>(false);
   const [showParkBoundaries, setShowParkBoundaries] = useState<boolean>(false);
   const [showFederalLands, setShowFederalLands] = useState<boolean>(false);
+  const [showGpuMap, setShowGpuMap] = useState<boolean>(false);
   const [historicalYearFilter, setHistoricalYearFilter] = useState<number>(1959);
   // Census Layer selection state (22 views)
   const [activeCensusLayerId, setActiveCensusLayerId] = useState<string>("states");
@@ -805,6 +826,20 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
     coordinates: [-96, 38],
     zoom: 1,
   });
+
+  // Trails, converted once from the local {n, segments} format to a plain
+  // GeoJSON FeatureCollection for the GPU (MapLibre) map's GeoJSON source.
+  const trailsGeoJson = useMemo<GeoJSON.FeatureCollection>(
+    () => ({
+      type: "FeatureCollection",
+      features: (trailsData as any[]).map((t) => ({
+        type: "Feature",
+        properties: { n: t.n },
+        geometry: { type: "MultiLineString", coordinates: t.segments || [] },
+      })),
+    }),
+    []
+  );
 
   const handleZoomIn = useCallback(() => {
     setZoomPosition((prev) => ({ ...prev, zoom: Math.min(prev.zoom * 1.5, 8) }));
@@ -1616,6 +1651,17 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <Flag className="w-3.5 h-3.5 text-amber-400" />
                   <span>FEDERAL LANDS ({showFederalLands ? "ON" : "OFF"})</span>
                 </button>
+
+                <button
+                  onClick={() => setShowGpuMap((prev) => !prev)}
+                  title={locale === "ro" ? "Comută la randare GPU (WebGL) pentru straturile grele" : "Switch to GPU-accelerated (WebGL) rendering for the heavy layers above"}
+                  className={`rounded-full px-4 py-2 text-xs font-bold uppercase transition-all flex items-center gap-2 cursor-pointer shadow-md ${
+                    showGpuMap ? "bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/50" : "bg-white/5 text-white/50 border border-white/10 hover:bg-white/10"
+                  }`}
+                >
+                  <Cpu className="w-3.5 h-3.5 text-fuchsia-400" />
+                  <span>GPU MAP ({showGpuMap ? "ON" : "OFF"})</span>
+                </button>
               </div>
 
               {/* Region Filter Buttons */}
@@ -2348,6 +2394,18 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   </div>
                 );
               })()}
+              {showGpuMap ? (
+                // GPU-accelerated (WebGL/MapLibre) view for the heavy layers — see
+                // HeavyLayersMapGL for why this is a separate map instance rather
+                // than an overlay on the SVG map below (different projection systems,
+                // can't be pixel-aligned).
+                <HeavyLayersMapGL
+                  showFederalLands={showFederalLands}
+                  showParkBoundaries={showParkBoundaries}
+                  showTrails={showTrails}
+                  trailsGeoJson={trailsGeoJson}
+                />
+              ) : (
               <ComposableMap
                 projection="geoAlbersUsa"
                 projectionConfig={{ scale: 960 }}
@@ -2655,10 +2713,18 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   )}
 
                   {/* 🇺🇸 Federal Lands Overlay (USGS PAD-US Federal Fee Managers Authoritative,
-                      full 5,284-parcel dataset — every federally owned/managed tract nationwide,
-                      real polygon shapes, merged into one path for the same reason as above). */}
+                      every federally owned/managed tract nationwide, colored by managing
+                      agency to match the standard federal-land reference-map convention —
+                      one merged path per agency color instead of one flat color for all). */}
                   {showFederalLands && (
-                    <MergedGeoOverlay url="/maps/federal-lands.json" fill="rgba(245, 158, 11, 0.28)" stroke="#f59e0b" strokeWidth={0.5} />
+                    <MergedGeoOverlay
+                      url="/maps/federal-lands.json"
+                      categoryField="Mang_Name"
+                      colorMap={FEDERAL_AGENCY_COLORS}
+                      defaultColor="rgba(156, 163, 175, 0.4)"
+                      stroke="rgba(0,0,0,0.35)"
+                      strokeWidth={0.3}
+                    />
                   )}
 
                   {/* 🏥 Hospitals & Clinics Overlay (HIFLD, 8,013 facilities) */}
@@ -2721,8 +2787,11 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
                 </ZoomableGroup>
               </ComposableMap>
+              )}
 
-              {/* Floating Magnifying Glass Zoom Controls (+ / - / Reset) */}
+              {/* Floating Magnifying Glass Zoom Controls (+ / - / Reset) — SVG map only;
+                  the GPU map has its own MapLibre NavigationControl. */}
+              {!showGpuMap && (
               <div className="absolute bottom-12 right-4 z-20 flex flex-col items-center gap-1.5 rounded-2xl border border-[#fbbf24]/30 bg-black/90 p-2 backdrop-blur-md shadow-2xl">
                 <div className="flex items-center justify-center p-1 rounded-lg bg-[#fbbf24]/10 border border-[#fbbf24]/20 mb-0.5" title="Magnifying Glass Map Zoom">
                   <Search className="h-3.5 w-3.5 text-[#fbbf24]" />
@@ -2749,6 +2818,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <RotateCcw className="h-3.5 w-3.5" />
                 </button>
               </div>
+              )}
             </div>
           </div>
 

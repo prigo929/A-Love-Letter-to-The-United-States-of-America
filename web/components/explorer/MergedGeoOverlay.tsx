@@ -44,11 +44,21 @@ export function MergedGeoOverlay({
   fill,
   stroke,
   strokeWidth = 0.4,
+  categoryField,
+  colorMap,
+  defaultColor,
 }: {
   url: string;
-  fill: string;
+  // Either a flat single fill for every feature, or (with categoryField +
+  // colorMap) a distinct fill per feature-property value — e.g. federal-land
+  // parcels colored by managing agency, matching the standard reference-map
+  // convention. One merged <path> per color, not per feature.
+  fill?: string;
   stroke: string;
   strokeWidth?: number;
+  categoryField?: string;
+  colorMap?: Record<string, string>;
+  defaultColor?: string;
 }) {
   const [features, setFeatures] = useState<GeoJSON.Feature[] | null>(null);
 
@@ -65,19 +75,36 @@ export function MergedGeoOverlay({
     };
   }, [url]);
 
-  const mergedPath = useMemo(() => {
-    if (!features || features.length === 0) return "";
-    let d = "";
-    for (const f of features) {
-      const p = PATH(f as any);
-      if (p) d += p;
+  const groups = useMemo(() => {
+    if (!features || features.length === 0) return [];
+    if (!categoryField || !colorMap) {
+      let d = "";
+      for (const f of features) {
+        const p = PATH(f as any);
+        if (p) d += p;
+      }
+      return d ? [{ color: fill ?? defaultColor ?? "#888888", d }] : [];
     }
-    return d;
-  }, [features]);
+    const byColor = new Map<string, string>();
+    for (const f of features) {
+      const cat = (f.properties as any)?.[categoryField];
+      const color = colorMap[cat] ?? defaultColor ?? fill ?? "#888888";
+      const p = PATH(f as any);
+      if (!p) continue;
+      byColor.set(color, (byColor.get(color) ?? "") + p);
+    }
+    return Array.from(byColor.entries()).map(([color, d]) => ({ color, d }));
+  }, [features, categoryField, colorMap, fill, defaultColor]);
 
-  if (!mergedPath) return null;
+  if (groups.length === 0) return null;
 
-  return <path d={mergedPath} fill={fill} stroke={stroke} strokeWidth={strokeWidth} fillRule="evenodd" pointerEvents="none" />;
+  return (
+    <>
+      {groups.map((g) => (
+        <path key={g.color} d={g.d} fill={g.color} stroke={stroke} strokeWidth={strokeWidth} fillRule="evenodd" pointerEvents="none" />
+      ))}
+    </>
+  );
 }
 
 // ─── MergedLineOverlay ────────────────────────────────────────────────────────
