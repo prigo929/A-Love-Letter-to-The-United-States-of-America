@@ -2678,9 +2678,9 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   )}
 
                   {/* Federal Lands no longer renders here — it's always GPU-rendered via
-                      HeavyLayersMapGL below (see the toggle button's note); the SVG merged-
-                      path technique above works for Park Boundaries but wasn't reliable
-                      enough at Federal Lands' full 5,260-parcel scale in the user's browser. */}
+                      FederalLandsMapGL below; the SVG merged-path technique above still
+                      works fine for Park Boundaries but wasn't reliable enough at Federal
+                      Lands' full ~5,260-parcel scale in the user's real browser. */}
 
                   {/* 🏥 Hospitals & Clinics Overlay (HIFLD, 8,013 facilities) */}
                   {showHospitals &&
