@@ -1,0 +1,19 @@
+# GitHub Linguist language overrides
+# Hide Jupyter Notebooks, HTML, and Python helper scripts from repository language statistics
+
+*.ipynb linguist-detectable=false
+*.ipynb linguist-vendored
+.ipynb_checkpoints/** linguist-detectable=false
+.ipynb_checkpoints/** linguist-vendored
+
+*.html linguist-detectable=false
+*.html linguist-vendored
+
+*.py linguist-detectable=false
+*.py linguist-vendored
+
+web/scripts/** linguist-detectable=false
+web/scripts/** linguist-vendored
+
+web/ASSETS/** linguist-detectable=false
+web/ASSETS/** linguist-vendored

@@ -2773,6 +2773,25 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
             </div>
           </div>
 
+          {/* ── FEDERAL LANDS — GPU-RENDERED (MapLibre/WebGL) ──
+              Always rendered this way when the toggle is on; see FederalLandsMapGL
+              for why this dataset needs its own GPU map instead of the SVG technique
+              every other overlay on this page uses. */}
+          {showFederalLands && (
+            <div className="mt-6 rounded-3xl border border-amber-500/30 bg-[#070707] p-4 shadow-2xl">
+              <div className="flex items-center gap-2 mb-3 px-1">
+                <Flag className="w-4 h-4 text-amber-400" />
+                <span className="font-body text-xs font-bold uppercase tracking-widest text-amber-300">
+                  {locale === "ro" ? "Terenuri Federale" : "Federal Lands"}
+                </span>
+                <span className="font-mono text-[10px] text-white/30">— GPU / WebGL (MapLibre)</span>
+              </div>
+              <div className="relative h-[520px] w-full overflow-hidden rounded-2xl border border-white/10">
+                <FederalLandsMapGL />
+              </div>
+            </div>
+          )}
+
           {/* ── SELECTED FEATURE DATA INSPECTOR ── */}
           {selectedFeature && (() => {
             const props = selectedFeature.properties || {};
