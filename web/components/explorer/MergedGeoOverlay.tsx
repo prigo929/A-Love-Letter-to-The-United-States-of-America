@@ -15,6 +15,25 @@ const PATH = geoPath(PROJECTION);
 const featureCache = new Map<string, GeoJSON.Feature[]>();
 const pathGroupCache = new Map<string, { color: string; d: string }[]>();
 
+export interface HoverInfo {
+  label: string;
+  details: string;
+  code: string;
+  categoryMetric?: string;
+}
+
+const AGENCY_NAMES: Record<string, string> = {
+  DOD: "Department of Defense",
+  BLM: "Bureau of Land Management",
+  NPS: "National Park Service",
+  USFS: "U.S. Forest Service",
+  FWS: "Fish and Wildlife Service",
+  BIA: "Bureau of Indian Affairs",
+  USBR: "Bureau of Reclamation",
+  USACE: "Army Corps of Engineers",
+  TRIB: "Tribal Land / Reservation",
+};
+
 export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
   url,
   fill,
@@ -23,6 +42,7 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
   categoryField,
   colorMap,
   defaultColor,
+  onFeatureHover,
 }: {
   url: string;
   fill?: string;
@@ -31,6 +51,7 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
   categoryField?: string;
   colorMap?: Record<string, string>;
   defaultColor?: string;
+  onFeatureHover?: (info: HoverInfo | null) => void;
 }) {
   const [features, setFeatures] = useState<GeoJSON.Feature[] | null>(() => featureCache.get(url) || null);
 
@@ -55,7 +76,7 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
   }, [url]);
 
   const groups = useMemo(() => {
-    if (!features || features.length === 0) return [];
+    if (onFeatureHover || !features || features.length === 0) return [];
     const cacheKey = `${url}:${categoryField || "flat"}:${fill || ""}:${defaultColor || ""}`;
     if (pathGroupCache.has(cacheKey)) {
       return pathGroupCache.get(cacheKey)!;
@@ -84,9 +105,58 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
 
     pathGroupCache.set(cacheKey, result);
     return result;
-  }, [features, categoryField, colorMap, fill, defaultColor, url]);
+  }, [features, categoryField, colorMap, fill, defaultColor, url, onFeatureHover]);
 
-  if (groups.length === 0) return null;
+  const featureItems = useMemo(() => {
+    if (!onFeatureHover || !features || features.length === 0) return [];
+    return features.map((f, i) => {
+      const p = PATH(f as any);
+      if (!p) return null;
+      const props = (f.properties || {}) as any;
+      const cat = categoryField ? props[categoryField] : undefined;
+      const color = (cat && colorMap?.[cat]) ?? defaultColor ?? fill ?? "#888888";
+      
+      const rawName = props.name || props.UNIT_NAME || props.PARKNAME || props.NAME || "Federal Land Parcel";
+      const agencyCode = props.agency || props.UNIT_TYPE || props.UNIT_CODE || "FED LAND";
+      const agencyName = AGENCY_NAMES[props.agency] || props.agency;
+      const details = props.agency 
+        ? `Managed by ${agencyName}` 
+        : (props.STATE ? `State: ${props.STATE}` : "Public Federal Land");
+
+      return {
+        id: i,
+        d: p,
+        color,
+        hoverInfo: {
+          label: rawName,
+          details,
+          code: agencyCode,
+        },
+      };
+    }).filter(Boolean) as { id: number; d: string; color: string; hoverInfo: HoverInfo }[];
+  }, [features, categoryField, colorMap, fill, defaultColor, onFeatureHover]);
+
+  if (!onFeatureHover && groups.length === 0) return null;
+
+  if (onFeatureHover) {
+    return (
+      <g className="cursor-pointer">
+        {featureItems.map((item) => (
+          <path
+            key={item.id}
+            d={item.d}
+            fill={item.color}
+            stroke={stroke}
+            strokeWidth={strokeWidth}
+            className="transition-opacity hover:opacity-85"
+            onMouseEnter={() => onFeatureHover(item.hoverInfo)}
+            onMouseLeave={() => onFeatureHover(null)}
+            pointerEvents="all"
+          />
+        ))}
+      </g>
+    );
+  }
 
   return (
     <g className="pointer-events-none">

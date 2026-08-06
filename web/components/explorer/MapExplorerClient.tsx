@@ -1640,27 +1640,6 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <Cpu className="w-3 h-3 text-fuchsia-400" />
                 </button>
               </div>
-
-              {/* Region Filter Buttons */}
-              <div className="flex flex-wrap items-center gap-1.5">
-                {regionButtons.map((reg) => {
-                  const isActive = selectedRegion === reg.id;
-                  return (
-                    <button
-                      key={reg.id}
-                      onClick={() => setSelectedRegion(reg.id)}
-                      className="rounded-full px-3.5 py-1.5 text-xs font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer"
-                      style={{
-                        background: isActive ? `${reg.color}20` : "transparent",
-                        border: `1px solid ${isActive ? reg.color : "rgba(255,255,255,0.08)"}`,
-                        color: isActive ? reg.color : "rgba(255,255,255,0.5)",
-                      }}
-                    >
-                      {reg.label}
-                    </button>
-                  );
-                })}
-              </div>
             </div>
 
           </div>
@@ -2565,7 +2544,10 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         const abbrev = getFeatureAbbrev(geo);
                         const props = geo.properties || {};
                         const featureId = geo.id || props.GEOID || geo.rsmKey;
-                        return (abbrev && abbrev === selectedStateAbbrev) || selectedFeature?.id === featureId;
+                        if (activeCensusLayerId === "states") {
+                          return abbrev && abbrev === selectedStateAbbrev;
+                        }
+                        return selectedFeature && (selectedFeature.id === featureId || (props.GEOID && selectedFeature.geoid === props.GEOID));
                       });
                       const hoveredGeo = hoveredStateAbbrev
                         ? geographies.find((geo) => {
@@ -2677,7 +2659,13 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       Rendered as one merged SVG path (see MergedGeoOverlay) instead of 433
                       separate react-simple-maps elements — same data, far less DOM/render cost. */}
                   {showParkBoundaries && (
-                    <MergedGeoOverlay url="/maps/national-park-boundaries.json" fill="rgba(16, 185, 129, 0.32)" stroke="#10b981" strokeWidth={0.6} />
+                    <MergedGeoOverlay
+                      url="/maps/national-park-boundaries.json"
+                      fill="rgba(16, 185, 129, 0.32)"
+                      stroke="#10b981"
+                      strokeWidth={0.6}
+                      onFeatureHover={setFeatureHoverInfo}
+                    />
                   )}
 
                   {/* 🏞️ Federal Lands Overlay (BLM, FWS, NPS, USFS, DOD, USACE, TRIB) — merged SVG path colored by managing agency */}
@@ -2689,6 +2677,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       stroke="rgba(0, 0, 0, 0.35)"
                       strokeWidth={0.35}
                       defaultColor="rgba(245, 158, 11, 0.4)"
+                      onFeatureHover={setFeatureHoverInfo}
                     />
                   )}
 
