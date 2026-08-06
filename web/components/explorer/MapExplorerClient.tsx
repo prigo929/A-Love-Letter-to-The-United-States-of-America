@@ -785,8 +785,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   const [selectedRegion, setSelectedRegion] = useState<string>("All");
   const [sortBy, setSortBy] = useState<"name" | "gdp" | "population" | "statehood">("name");
   const [heatmapMode, setHeatmapMode] = useState<
-    "none" | "gdp" | "population" | "income" | "homeValue" | "education" | "veterans" | "broadband" | "ownerPct" | "poverty" | "commute" | "election2024" | "election2020" | "statehood" | "amendments" | "conLength" | "medianAge" | "medianRent" | "workFromHome" | "noVehicle" | "foreignBorn" | "snapPct" | "unemployment" | "insured" | "highSchool" | "gradDegree" | "multiVehicle" | "vacancy" | "timeZone"
-  >("none");
+    "none" | "regions" | "gdp" | "population" | "income" | "homeValue" | "education" | "veterans" | "broadband" | "ownerPct" | "poverty" | "commute" | "election2024" | "election2020" | "statehood" | "amendments" | "conLength" | "medianAge" | "medianRent" | "workFromHome" | "noVehicle" | "foreignBorn" | "snapPct" | "unemployment" | "insured" | "highSchool" | "gradDegree" | "multiVehicle" | "vacancy" | "timeZone"
+  >("regions");
   const [liveCensusData, setLiveCensusData] = useState<CensusAcsData | null>(null);
   const [isLoadingCensusData, setIsLoadingCensusData] = useState<boolean>(false);
 
@@ -1266,6 +1266,9 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
         fill = getElectionColor(res, isHovered);
         stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255,255,255,0.30)";
       } else if (heatmapMode === "none") {
+        fill = isHovered ? "rgba(255, 255, 255, 0.18)" : "rgba(255, 255, 255, 0.06)";
+        stroke = isStateSelected || isHovered ? "#fbbf24" : "rgba(255, 255, 255, 0.22)";
+      } else if (heatmapMode === "regions") {
         const rc = REGION_COLORS[state.region];
         fill = isHovered ? rc.hover : rc.base;
         stroke = isStateSelected || isHovered ? "#fbbf24" : rc.stroke;
@@ -1676,7 +1679,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
               </span>
               <div className="flex flex-wrap gap-1.5 mt-0.5">
                 {[
-                  { id: "none",       label: translations.defaultColor,   activeColor: "#fbbf24", layers: ["all"] },
+                  { id: "none",       label: locale === "ro" ? "Fără" : "None", activeColor: "#94a3b8", layers: ["all"] },
+                  { id: "regions",    label: translations.defaultColor,   activeColor: "#fbbf24", layers: ["all"] },
                   { id: "gdp",        label: translations.gdpHeat,        activeColor: "#fbbf24", layers: ["states"] },
                   { id: "population", label: translations.popHeat,        activeColor: "#60a5fa", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions"] },
                   { id: "income",     label: "Income",                    activeColor: "#34d399", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions", "congressional_districts"] },
@@ -2209,7 +2213,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
 
             {/* Region color legend: sits under the map on mobile, overlays it from `sm` up */}
             <div className="relative z-20 order-last flex flex-wrap items-center justify-center gap-x-5 gap-y-2 border-t border-white/[0.06] px-4 py-3 bg-black/60 backdrop-blur-sm sm:absolute sm:bottom-0 sm:left-0 sm:right-0 sm:flex-nowrap sm:px-6">
-              {heatmapMode === "none" ? (
+              {heatmapMode === "regions" ? (
                 Object.entries(REGION_COLORS).map(([region, rc]) => (
                   <button
                     key={region}
@@ -2815,6 +2819,14 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
             const stAbbrev = selectedFeature.stateAbbrev || (stFips ? FIPS_TO_ABBREV[stFips] : "") || props.STUSPS || "";
             const stName = props.STATE_NAME || (stAbbrev ? EXPLORER_STATES[stAbbrev]?.name[locale] : null) || "";
 
+            const stStateData = stAbbrev ? EXPLORER_STATES[stAbbrev] : null;
+            const stGdpRank = stStateData ? gdpRanked.indexOf(stStateData.abbrev) + 1 : 0;
+            const stPopRank = stStateData ? popRanked.indexOf(stStateData.abbrev) + 1 : 0;
+            const stAreaRank = stStateData ? areaRanked.indexOf(stStateData.abbrev) + 1 : 0;
+            const stGdpPerCapita = stStateData ? Math.round((stStateData.gdp * 1000000000) / (stStateData.population * 1000000)) : 0;
+            const stPopDensity = stStateData ? Math.round((stStateData.population * 1000000) / stStateData.area) : 0;
+            const stShareGdp = stStateData ? ((stStateData.gdp / 29200) * 100).toFixed(1) : "0.0";
+
             const loGrade = props.LOGRADE || "";
             const hiGrade = props.HIGRADE || "";
             const cdSession = props.CDSESSN || "119";
@@ -2917,6 +2929,88 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       </button>
                     </div>
                   </div>
+
+                  {/* ── PARENT STATE INFORMATION PROFILE CARD ── */}
+                  {stStateData && (
+                    <div className="mb-6 rounded-2xl border border-white/[0.08] bg-[#0c0c0d] p-5 shadow-lg space-y-4">
+                      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.06] pb-3">
+                        <div className="flex items-center gap-2">
+                          <span
+                            className="font-body text-[9px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-full"
+                            style={{
+                              color: REGION_COLORS[stStateData.region]?.label ?? "#fbbf24",
+                              background: `${REGION_COLORS[stStateData.region]?.base ?? "#fbbf24"}18`,
+                              border: `1px solid ${REGION_COLORS[stStateData.region]?.base ?? "#fbbf24"}40`,
+                            }}
+                          >
+                            {stStateData.region}
+                          </span>
+                          <span className="font-mono text-[10px] text-white/30 tracking-wider">
+                            FIPS {stStateData.fips}
+                          </span>
+                        </div>
+                        <div className="font-mono text-xs text-[#fbbf24] font-semibold">
+                          "{stStateData.nickname[locale]}"
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap items-baseline justify-between gap-3">
+                        <div>
+                          <h4 className="font-display text-2xl font-black text-white tracking-tight">
+                            {stStateData.name[locale]} <span className="text-[#fbbf24]">({stStateData.abbrev})</span>
+                          </h4>
+                        </div>
+                        <div className="flex flex-wrap items-center gap-3 font-mono text-xs text-white/60">
+                          <span>CAPITAL: <strong className="text-white">{stStateData.capital[locale]}</strong></span>
+                          <span>•</span>
+                          <span>STATEHOOD: <strong className="text-white">{stStateData.statehoodYear}</strong></span>
+                          <span>•</span>
+                          <span>ENTRY ORDER: <strong className="text-[#fbbf24]">#{stStateData.statehoodOrder} / 50</strong></span>
+                        </div>
+                      </div>
+
+                      {/* Key State Benchmark Stats Grid */}
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs pt-1">
+                        <div className="bg-black/40 p-3 rounded-xl border border-white/[0.05]">
+                          <span className="text-[9px] text-white/40 uppercase block">GDP & Rank</span>
+                          <span className="text-white font-bold text-sm">${stStateData.gdp}B</span>
+                          <span className="text-[10px] text-white/40 block mt-0.5">${stGdpPerCapita.toLocaleString()} per capita</span>
+                          <span className="text-[10px] text-[#fbbf24] font-semibold block mt-1">GDP Rank: #{stGdpRank} / 50</span>
+                        </div>
+
+                        <div className="bg-black/40 p-3 rounded-xl border border-white/[0.05]">
+                          <span className="text-[9px] text-white/40 uppercase block">Population & Rank</span>
+                          <span className="text-white font-bold text-sm">{stStateData.population}M</span>
+                          <span className="text-[10px] text-white/40 block mt-0.5">{stPopDensity} ppl/sq mi</span>
+                          <span className="text-[10px] text-[#60a5fa] font-semibold block mt-1">Pop Rank: #{stPopRank} / 50</span>
+                        </div>
+
+                        <div className="bg-black/40 p-3 rounded-xl border border-white/[0.05]">
+                          <span className="text-[9px] text-white/40 uppercase block">Area & Rank</span>
+                          <span className="text-white font-bold text-sm">{stStateData.area.toLocaleString()} sq mi</span>
+                          <span className="text-[10px] text-[#34d399] font-semibold block mt-1">Area Rank: #{stAreaRank} / 50</span>
+                        </div>
+
+                        <div className="bg-black/40 p-3 rounded-xl border border-white/[0.05]">
+                          <span className="text-[9px] text-white/40 uppercase block">US Economy Share</span>
+                          <span className="text-white font-bold text-sm">{stShareGdp}%</span>
+                          <span className="text-[10px] text-white/40 block mt-0.5">Of $29.2T US GDP</span>
+                        </div>
+                      </div>
+
+                      {/* Chronicle & Key Sectors */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-white/[0.05] text-xs">
+                        <div>
+                          <span className="font-body text-[10px] font-bold uppercase tracking-wider text-[#fbbf24] block mb-1">Regional Chronicle</span>
+                          <p className="font-body text-white/70 leading-relaxed">{stStateData.story[locale]}</p>
+                        </div>
+                        <div>
+                          <span className="font-body text-[10px] font-bold uppercase tracking-wider text-white/40 block mb-1">Key Sectors</span>
+                          <p className="font-body text-white/90 font-semibold leading-relaxed">{stStateData.industry[locale]}</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
 
                   {/* Main Grid: Info + Special Cards + Raw Properties */}
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
