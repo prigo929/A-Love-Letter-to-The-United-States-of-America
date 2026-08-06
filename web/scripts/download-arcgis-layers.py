@@ -69,7 +69,8 @@ LAYERS = {
     "federal-lands": {
         "url": "https://services.arcgis.com/v01gqwM5QqNysAAi/arcgis/rest/services/Federal_Fee_Managers_Authoritative_PADUS/FeatureServer/0",
         "fields": "Unit_Nm,Mang_Name,Own_Name,Des_Tp,State_Nm,GIS_Acres",
-        "page": 500,
+        "page": 100,
+        "offset": 0.004,  # coarser than default: some national-forest polygons are huge/complex
     },
 }
 
@@ -101,8 +102,8 @@ def download_layer(name, cfg):
             "resultRecordCount": page,
             "outSR": "4326",
             "geometryPrecision": "5",  # ~1m coordinate precision
-            "maxAllowableOffset": "0.001",  # ~100m server-side generalization; keeps
-            # dense polygons (park/timezone boundaries) from timing out or bloating.
+            "maxAllowableOffset": str(cfg.get("offset", 0.001)),  # server-side generalization;
+            # keeps dense polygons (park/timezone/federal-land boundaries) from timing out.
         }
         url = f"{base}/query?{urllib.parse.urlencode(q)}"
         data = fetch_json(url)
