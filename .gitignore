@@ -75,6 +75,7 @@ web/ASSETS/GeoJSON/Electric_Power_Transmission_Lines_shp.geojson
 web/ASSETS/GeoJSON/Preliminary Monthly Electric Generator Inventory.xlsx
 web/ASSETS/GeoJSON/Ports army corps of engineers data 2022.xlsx
 web/ASSETS/GeoJSON/NTAD_Amtrak_Routes_5503594535609073988.geojson
+web/ASSETS/GeoJSON/federal-lands.geojson
 web/ASSETS/Election data/County_Level_US_Elections_Data/ES_Replication_Files/county_geo_spatial_data_1870_2020.Rdata
 web/ASSETS/Election data/County_Level_US_Elections_Data/ES_Replication_Files
 web/ASSETS/Election data/GIS boundaries in GeoJSON format for all US Congressional Districts, 1789 to 2025
