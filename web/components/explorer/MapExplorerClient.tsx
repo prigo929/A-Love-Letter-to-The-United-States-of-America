@@ -643,20 +643,8 @@ interface MapExplorerClientProps {
   };
 }
 
-// ─── Animated Counter ─────────────────────────────────────────────────────────
+// ─── National Stats Banner ───────────────────────────────────────────────────
 function StatTicker({ locale }: { locale: "en" | "ro" }) {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.1 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
   const stats = [
     {
       icon: MapPin,
@@ -696,18 +684,12 @@ function StatTicker({ locale }: { locale: "en" | "ro" }) {
   ];
 
   return (
-    <div
-      ref={ref}
-      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5 w-full"
-    >
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5 w-full">
       {stats.map((stat, i) => {
         const Icon = stat.icon;
         return (
-          <motion.div
+          <div
             key={i}
-            initial={{ opacity: 0, y: 12 }}
-            animate={visible ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: i * 0.05, duration: 0.4 }}
             className="flex flex-col justify-between bg-[#070707] border border-white/[0.06] hover:border-white/[0.12] hover:bg-[#0c0c0c] rounded-2xl p-5 transition-all duration-300 group shadow-lg"
           >
             <div className="space-y-2">
@@ -727,7 +709,7 @@ function StatTicker({ locale }: { locale: "en" | "ro" }) {
                 </span>
               </div>
             </div>
-          </motion.div>
+          </div>
         );
       })}
     </div>
