@@ -103,7 +103,7 @@ const FOUNDER_GARAGES: GarageItem[] = [
     currentValuationRo: "Locul de naștere al Silicon Valley (Sit Istoric #976)",
     growthMultiplier: "Foundational Tech Origin",
     tagline: "The 12x18 ft wooden garage widely designated as the Birthplace of Silicon Valley",
-    taglineRo: "Garajul de lemn de 12x18 ft desemnat ca Locul de Naștere al Silicon Valley",
+    taglineRo: "Garajul de lemn de 3,7×5,5 m desemnat ca Locul de Naștere al Silicon Valley",
     story:
       "Stanford graduates Bill Hewlett and Dave Packard invested $538 in a 12x18 foot garage behind their Palo Alto apartment. Their first commercial product, the HP 200A audio oscillator, was purchased by Walt Disney Studios for the sound design of Fantasia.",
     storyRo:
@@ -181,7 +181,7 @@ const FOUNDER_GARAGES: GarageItem[] = [
     currentValuationRo: "Legendă Globală a Libertății de 120+ Ani",
     growthMultiplier: "Iconic American Legend",
     tagline: "The 10x15 foot wooden shed where William Harley and Arthur Davidson built their first motorcycle",
-    taglineRo: "Șopronul de lemn de 10x15 ft unde William Harley și Arthur Davidson au construit prima motocicletă",
+    taglineRo: "Șopronul de lemn de 3×4,6 m unde William Harley și Arthur Davidson au construit prima motocicletă",
     story:
       "In 1903, 21-year-old William S. Harley and Arthur Davidson built a small single-cylinder motor engine designed to fit a standard bicycle frame inside a 10x15 foot wooden backyard shed with 'Harley-Davidson Motor Co.' scrawled on the door.",
     storyRo:

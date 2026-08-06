@@ -285,7 +285,7 @@ const copyRo: AbundanceCopy = {
         },
         {
           title: "24,5 Mp de Spațiu Comercial Per Capita",
-          body: "SUA au 24,5 sq ft de spațiu comercial per persoană, față de o medie de doar 4,5 sq ft în Europa. Această infrastructură masivă de magazine de tip big-box, mall-uri și centre comerciale creează o concurență permanentă de prețuri și abundență de consum.",
+          body: "SUA au 2,3 mp de spațiu comercial per persoană, față de o medie de doar 0,4 mp în Europa. Această infrastructură masivă de magazine de tip big-box, mall-uri și centre comerciale creează o concurență permanentă de prețuri și abundență de consum.",
           source: "Statista Retail Space Report",
           sourceUrl:
             "https://www.statista.com/statistics/1058852/retail-space-per-capita-select-countries-worldwide/",

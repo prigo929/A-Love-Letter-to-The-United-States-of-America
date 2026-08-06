@@ -70,7 +70,7 @@ const CONTRIBUTIONS: Contribution[] = [
     worthKnowing:
       "Despite living thousands of miles away, Australian animals are among the most recognized characters in American children's literature, toy lines, and zoo exhibits.",
     worthKnowingRo:
-      "Desi traiesc la mii de mile departare, animalele australiene sunt printre cele mai recunoscute personaje din literatura americana pentru copii, liniile de jucarii si gradinile zoologice.",
+      "Desi traiesc la mii de kilometri departare, animalele australiene sunt printre cele mai recunoscute personaje din literatura americana pentru copii, liniile de jucarii si gradinile zoologice.",
   },
   {
     country: "Austria",

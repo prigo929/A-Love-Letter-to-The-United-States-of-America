@@ -63,7 +63,7 @@ const GC_EXTENDED_EN = [
 
 const GC_EXTENDED_RO = [
   { id: "gc-condor", fact: "Marele Canion a salvat condorul californian de la dispariție",       detail: "Odată redus la doar 27 de exemplare, condorii californieni au fost eliberați în 1996. Acum există peste 500, una dintre cele mai mari reușite ale conservării.", source: "USFWS / Peregrine Fund", color: "gold" as const },
-  { id: "gc-river",  fact: "Râul Colorado a sculptat întregul canion în doar 5–6 milioane de ani", detail: "Geologic, este un timp foarte scurt: râul a tăiat prin roci depuse pe parcursul a 1,8 miliarde de ani, expunând aproape jumătate din vârsta Pământului într-un singur mile vertical.", source: "USGS Grand Canyon Geology", color: "red"  as const },
+  { id: "gc-river",  fact: "Râul Colorado a sculptat întregul canion în doar 5–6 milioane de ani", detail: "Geologic, este un timp foarte scurt: râul a tăiat prin roci depuse pe parcursul a 1,8 miliarde de ani, expunând aproape jumătate din vârsta Pământului într-un singur kilometru și jumătate vertical.", source: "USGS Grand Canyon Geology", color: "red"  as const },
   { id: "gc-sky",    fact: "Pe vreme senină, poți vedea 320 km de pe South Rim",                  detail: "Scara Marelui Canion este atât de vastă încât experiezi o priveliște măsurată în zeci de mile. Malul opus este la 16+ km distanță; orizontul la peste 320 km în zilele senine de iarnă.", source: "NPS Visitor Center", color: "blue" as const },
   { id: "gc-dark",   fact: "Marele Canion este un Parc Internațional cu Cer Întunecat certificat",  detail: "Departe de luminile orașului, canionul oferă o priveliște spectaculoasă spre stele. Calea Lactee este vizibilă cu ochiul liber în nopțile senine.", source: "International Dark-Sky Association", color: "gold" as const },
 ];
@@ -76,10 +76,10 @@ export default async function GrandCanyonPage() {
   const extFacts = isRo ? GC_EXTENDED_RO : GC_EXTENDED_EN;
 
   const statWall = [
-    { value: 277,  suffix: " mi",    label: isRo ? "Lungime" : "Length",          sub: isRo ? "De-a lungul râului Colorado" : "Along the Colorado River",    color: "#C4956A" },
-    { value: 18,   suffix: " mi",    label: isRo ? "Lățime Max." : "Max Width",   sub: isRo ? "Margine la margine, la cel mai lat" : "Rim to rim at widest", color: "#8B8680" },
-    { value: 6093, suffix: " ft",    label: isRo ? "Ad. Maximă" : "Max Depth",    sub: isRo ? "Până la râul Colorado" : "To the Colorado River below",       color: "#C4956A" },
-    { value: 1800, suffix: "M yr",   label: isRo ? "Geologie Expusă" : "Geology Exposed", sub: isRo ? "Din istoria Pământului" : "Of Earth's history",      color: "#4ade80" },
+    { value: isRo ? 446  : 277,  suffix: isRo ? " km" : " mi",  label: isRo ? "Lungime" : "Length",          sub: isRo ? "De-a lungul râului Colorado" : "Along the Colorado River",    color: "#C4956A" },
+    { value: isRo ? 29   : 18,   suffix: isRo ? " km" : " mi",  label: isRo ? "Lățime Max." : "Max Width",   sub: isRo ? "Margine la margine, la cel mai lat" : "Rim to rim at widest", color: "#8B8680" },
+    { value: isRo ? 1857 : 6093, suffix: isRo ? " m"  : " ft",  label: isRo ? "Ad. Maximă" : "Max Depth",    sub: isRo ? "Până la râul Colorado" : "To the Colorado River below",       color: "#C4956A" },
+    { value: 1800, suffix: isRo ? " mil. ani" : "M yr",   label: isRo ? "Geologie Expusă" : "Geology Exposed", sub: isRo ? "Din istoria Pământului" : "Of Earth's history",      color: "#4ade80" },
   ];
 
   // Map shared facts to the expected color scheme if needed, or default to earth tones
@@ -166,7 +166,7 @@ export default async function GrandCanyonPage() {
             <div className="text-center max-w-4xl mx-auto px-6">
               <p className="nat-text-display" style={{ color: 'var(--nat-accent-earth)' }}>1.8 {isRo ? "MLD" : "BIL"}</p>
               <p className="nat-text-heading text-white mt-4">
-                {isRo ? "ani de geologie expusă într-un mile vertical" : "years of geology exposed in one vertical mile"}
+                {isRo ? "ani de geologie expusă într-un kilometru și jumătate vertical" : "years of geology exposed in one vertical mile"}
               </p>
             </div>
           </ParallaxImageBand>

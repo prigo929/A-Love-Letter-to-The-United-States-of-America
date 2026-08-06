@@ -23,16 +23,16 @@ export interface HoverInfo {
   categoryMetric?: string;
 }
 
-const AGENCY_NAMES: Record<string, string> = {
-  DOD: "Department of Defense",
-  BLM: "Bureau of Land Management",
-  NPS: "National Park Service",
-  USFS: "U.S. Forest Service",
-  FWS: "Fish and Wildlife Service",
-  BIA: "Bureau of Indian Affairs",
-  USBR: "Bureau of Reclamation",
-  USACE: "Army Corps of Engineers",
-  TRIB: "Tribal Land / Reservation",
+const AGENCY_NAMES: Record<string, { en: string; ro: string }> = {
+  DOD: { en: "Department of Defense", ro: "Departamentul Apărării" },
+  BLM: { en: "Bureau of Land Management", ro: "Biroul de Administrare a Terenurilor" },
+  NPS: { en: "National Park Service", ro: "Serviciul Național pentru Parcuri" },
+  USFS: { en: "U.S. Forest Service", ro: "Serviciul Silvic al SUA" },
+  FWS: { en: "Fish and Wildlife Service", ro: "Serviciul pentru Pescuit și Faună Sălbatică" },
+  BIA: { en: "Bureau of Indian Affairs", ro: "Biroul pentru Afaceri Indiene" },
+  USBR: { en: "Bureau of Reclamation", ro: "Biroul de Recuperare" },
+  USACE: { en: "Army Corps of Engineers", ro: "Corpul de Ingineri al Armatei" },
+  TRIB: { en: "Tribal Land / Reservation", ro: "Teren Tribal / Rezervație" },
 };
 
 const STATE_PALETTE: Record<string, string> = {
@@ -59,6 +59,7 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
   defaultColor,
   onFeatureHover,
   onFeatureClick,
+  locale = "en",
 }: {
   url: string;
   fill?: string;
@@ -69,7 +70,9 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
   defaultColor?: string;
   onFeatureHover?: (info: HoverInfo | null) => void;
   onFeatureClick?: (feature: GeoJSON.Feature) => void;
+  locale?: "en" | "ro";
 }) {
+  const isRo = locale === "ro";
   const [features, setFeatures] = useState<GeoJSON.Feature[] | null>(() => featureCache.get(url) || null);
 
   useEffect(() => {
@@ -145,12 +148,12 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
       }
 
       const props = (f.properties || {}) as any;
-      const rawName = props.NAMELSAD || props.NAME || props.name || props.UNIT_NAME || props.PARKNAME || "Boundary Feature";
+      const rawName = props.NAMELSAD || props.NAME || props.name || props.UNIT_NAME || props.PARKNAME || (isRo ? "Element de Graniță" : "Boundary Feature");
       const agencyCode = props.agency || props.UNIT_TYPE || props.UNIT_CODE || props.GEOID || "FEATURE";
-      const agencyName = AGENCY_NAMES[props.agency] || props.agency;
-      const details = props.agency 
-        ? `Managed by ${agencyName}` 
-        : (props.STATE_NAME ? `State: ${props.STATE_NAME}` : (props.STATE ? `State: ${props.STATE}` : "Public Federal Land"));
+      const agencyName = AGENCY_NAMES[props.agency]?.[locale] || props.agency;
+      const details = props.agency
+        ? (isRo ? `Administrat de ${agencyName}` : `Managed by ${agencyName}`)
+        : (props.STATE_NAME ? `${isRo ? "Stat" : "State"}: ${props.STATE_NAME}` : (props.STATE ? `${isRo ? "Stat" : "State"}: ${props.STATE}` : (isRo ? "Teren Federal Public" : "Public Federal Land")));
 
       list.push({
         minX,
@@ -166,7 +169,7 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
       });
     }
     return list;
-  }, [features, useHighDensityMode, onFeatureHover, onFeatureClick]);
+  }, [features, useHighDensityMode, onFeatureHover, onFeatureClick, locale]);
 
   const featureItems = useMemo(() => {
     if (useHighDensityMode || (!onFeatureHover && !onFeatureClick) || !features || features.length === 0) return [];
@@ -177,12 +180,12 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
       const cat = categoryField ? props[categoryField] : undefined;
       const color = (cat && colorMap?.[cat]) ?? defaultColor ?? fill ?? "#888888";
       
-      const rawName = props.NAMELSAD || props.NAME || props.name || props.UNIT_NAME || props.PARKNAME || "Boundary Feature";
+      const rawName = props.NAMELSAD || props.NAME || props.name || props.UNIT_NAME || props.PARKNAME || (isRo ? "Element de Graniță" : "Boundary Feature");
       const agencyCode = props.agency || props.UNIT_TYPE || props.UNIT_CODE || props.GEOID || "FEATURE";
-      const agencyName = AGENCY_NAMES[props.agency] || props.agency;
-      const details = props.agency 
-        ? `Managed by ${agencyName}` 
-        : (props.STATE_NAME ? `State: ${props.STATE_NAME}` : (props.STATE ? `State: ${props.STATE}` : "Public Federal Land"));
+      const agencyName = AGENCY_NAMES[props.agency]?.[locale] || props.agency;
+      const details = props.agency
+        ? (isRo ? `Administrat de ${agencyName}` : `Managed by ${agencyName}`)
+        : (props.STATE_NAME ? `${isRo ? "Stat" : "State"}: ${props.STATE_NAME}` : (props.STATE ? `${isRo ? "Stat" : "State"}: ${props.STATE}` : (isRo ? "Teren Federal Public" : "Public Federal Land")));
 
       return {
         id: i,
@@ -196,7 +199,7 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
         },
       };
     }).filter(Boolean) as { id: number; d: string; color: string; feature: GeoJSON.Feature; hoverInfo: HoverInfo }[];
-  }, [features, useHighDensityMode, categoryField, colorMap, fill, defaultColor, onFeatureHover, onFeatureClick]);
+  }, [features, useHighDensityMode, categoryField, colorMap, fill, defaultColor, onFeatureHover, onFeatureClick, locale]);
 
   const rafIdRef = React.useRef<number | null>(null);
 

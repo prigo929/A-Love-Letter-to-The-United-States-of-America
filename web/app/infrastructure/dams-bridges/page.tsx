@@ -52,8 +52,8 @@ export default async function DamsBridgesPage() {
         heroBody:
           "Când America a vrut să crească, a turnat betonul în canioanele Vestului și a întins oțelul peste golfurile ei. Rezultatul: structuri atât de mari încât au reașezat râuri, au aprins orașe și au redefinit ce poate construi o națiune.",
         heroStats: [
-          { value: "726 ft", label: "Barajul Hoover: cel mai înalt de pe Pământ în 1936" },
-          { value: "4.200 ft", label: "deschiderea principală Golden Gate" },
+          { value: "221 m", label: "Barajul Hoover: cel mai înalt de pe Pământ în 1936" },
+          { value: "1.280 m", label: "deschiderea principală Golden Gate" },
           { value: "6,6 mil. t", label: "beton în Barajul Hoover" },
         ],
         storyTitle: "Sublimul ingineresc american",
@@ -101,11 +101,11 @@ export default async function DamsBridgesPage() {
         bridgesIntro:
           "De la primul cablu de oțel întins peste East River până la cel mai lung arc din emisferă, podurile Americii sunt cataloage de îndrăzneală structurală.",
         bridgeCards: [
-          { name: "Podul Golden Gate", meta: "San Francisco · 1937", span: "deschidere de 4.200 ft", text: "Turnuri de 227 de metri vopsite în „Portocaliu Internațional”. Cea mai lungă deschidere suspendată din lume timp de 27 de ani și, poate, cel mai fotografiat pod de pe planetă." },
-          { name: "Podul Brooklyn", meta: "New York · 1883", span: "deschidere de 1.595 ft", text: "Primul pod suspendat pe cabluri de oțel din lume. John Roebling a murit din cauza lucrărilor; fiul său a rămas invalid, iar Emily Roebling a condus finalizarea vreme de unsprezece ani." },
-          { name: "Podul Verrazzano-Narrows", meta: "New York · 1964", span: "deschidere de 4.260 ft", text: "Cea mai lungă deschidere suspendată din SUA. Curbura Pământului este atât de vizibilă la scara sa încât vârfurile turnurilor sunt cu câțiva centimetri mai depărtate decât bazele lor." },
+          { name: "Podul Golden Gate", meta: "San Francisco · 1937", span: "deschidere de 1.280 m", text: "Turnuri de 227 de metri vopsite în „Portocaliu Internațional”. Cea mai lungă deschidere suspendată din lume timp de 27 de ani și, poate, cel mai fotografiat pod de pe planetă." },
+          { name: "Podul Brooklyn", meta: "New York · 1883", span: "deschidere de 486 m", text: "Primul pod suspendat pe cabluri de oțel din lume. John Roebling a murit din cauza lucrărilor; fiul său a rămas invalid, iar Emily Roebling a condus finalizarea vreme de unsprezece ani." },
+          { name: "Podul Verrazzano-Narrows", meta: "New York · 1964", span: "deschidere de 1.298 m", text: "Cea mai lungă deschidere suspendată din SUA. Curbura Pământului este atât de vizibilă la scara sa încât vârfurile turnurilor sunt cu câțiva centimetri mai depărtate decât bazele lor." },
           { name: "Podul Mackinac", meta: "Michigan · 1957", span: "lungime totală de ~5 mile", text: "„Mighty Mac” leagă cele două peninsule ale statului Michigan peste strâmtoarea unde se întâlnesc lacurile Michigan și Huron, una dintre cele mai lungi traversări suspendate din emisfera vestică." },
-          { name: "Podul New River Gorge", meta: "Virginia de Vest · 1977", span: "arc de oțel de 1.700 ft", text: "Cel mai lung arc de oțel din emisfera vestică vreme de decenii. O dată pe an, „Ziua Podului”, oamenii sar de pe el cu parașuta, la peste 250 de metri deasupra râului." },
+          { name: "Podul New River Gorge", meta: "Virginia de Vest · 1977", span: "arc de oțel de 518 m", text: "Cel mai lung arc de oțel din emisfera vestică vreme de decenii. O dată pe an, „Ziua Podului”, oamenii sar de pe el cu parașuta, la peste 250 de metri deasupra râului." },
         ],
         costTitle: "Prețul plătit",
         costP:

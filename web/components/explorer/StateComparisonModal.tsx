@@ -12,12 +12,15 @@ interface StateComparisonModalProps {
   onClose: () => void;
   initialStateA?: string;
   initialStateB?: string;
+  locale: "en" | "ro";
 }
 
 // A single neutral accent (gold) plus plain white/ink text for the two states —
 // no per-category rainbow. State A stays default white, State B is the accent.
 const ACCENT = "#C9A24A";
 
+// Translated Row labels/units are passed in fully-resolved by the caller,
+// which already has `isRo` in scope — Row itself stays locale-agnostic.
 function Row({
   icon: Icon,
   label,
@@ -68,7 +71,9 @@ export function StateComparisonModal({
   onClose,
   initialStateA = "TX",
   initialStateB = "CA",
+  locale,
 }: StateComparisonModalProps) {
+  const isRo = locale === "ro";
   const [stateCodeA, setStateCodeA] = useState<string>(initialStateA);
   const [stateCodeB, setStateCodeB] = useState<string>(initialStateB);
 
@@ -87,7 +92,7 @@ export function StateComparisonModal({
 
   if (!stateA || !stateB) return null;
 
-  const statesList = Object.values(EXPLORER_STATES).sort((a, b) => a.name.en.localeCompare(b.name.en));
+  const statesList = Object.values(EXPLORER_STATES).sort((a, b) => a.name[locale].localeCompare(b.name[locale]));
 
   const ratioA = demoA ? (demoA.homeValue / demoA.income).toFixed(1) : "N/A";
   const ratioB = demoB ? (demoB.homeValue / demoB.income).toFixed(1) : "N/A";
@@ -111,10 +116,10 @@ export function StateComparisonModal({
             </div>
             <div>
               <h2 className="font-display text-xl font-bold tracking-tight text-white">
-                State vs. State
+                {isRo ? "Stat vs. Stat" : "State vs. State"}
               </h2>
               <p className="font-body text-xs text-white/40">
-                Civic, demographic, and economic benchmarks · Census ACS 5-Year
+                {isRo ? "Repere civice, demografice și economice · Census ACS 5-Year" : "Civic, demographic, and economic benchmarks · Census ACS 5-Year"}
               </p>
             </div>
           </div>
@@ -129,7 +134,7 @@ export function StateComparisonModal({
         {/* State Selectors */}
         <div className="grid grid-cols-2 gap-3">
           <div className="space-y-1.5 rounded-xl border border-white/10 bg-white/[0.02] p-3">
-            <span className="font-mono text-[10px] font-semibold uppercase tracking-widest text-white/40">State A</span>
+            <span className="font-mono text-[10px] font-semibold uppercase tracking-widest text-white/40">{isRo ? "Stat A" : "State A"}</span>
             <select
               value={stateCodeA}
               onChange={(e) => setStateCodeA(e.target.value)}
@@ -137,14 +142,14 @@ export function StateComparisonModal({
             >
               {statesList.map((s) => (
                 <option key={s.abbrev} value={s.abbrev}>
-                  {s.name.en} ({s.abbrev})
+                  {s.name[locale]} ({s.abbrev})
                 </option>
               ))}
             </select>
           </div>
 
           <div className="space-y-1.5 rounded-xl border border-white/10 bg-white/[0.02] p-3">
-            <span className="font-mono text-[10px] font-semibold uppercase tracking-widest text-white/40">State B</span>
+            <span className="font-mono text-[10px] font-semibold uppercase tracking-widest text-white/40">{isRo ? "Stat B" : "State B"}</span>
             <select
               value={stateCodeB}
               onChange={(e) => setStateCodeB(e.target.value)}
@@ -153,7 +158,7 @@ export function StateComparisonModal({
             >
               {statesList.map((s) => (
                 <option key={s.abbrev} value={s.abbrev}>
-                  {s.name.en} ({s.abbrev})
+                  {s.name[locale]} ({s.abbrev})
                 </option>
               ))}
             </select>
@@ -165,7 +170,7 @@ export function StateComparisonModal({
           <div className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3">
             <span className="mb-2 flex items-center gap-1.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-white/40">
               <TrendingUp className="h-3 w-3" />
-              Gross State Product
+              {isRo ? "Produsul Intern Brut al Statului" : "Gross State Product"}
             </span>
             <div className="mb-2 grid grid-cols-2 gap-4 font-mono">
               <span className="text-lg font-bold text-white">${stateA.gdp}B</span>
@@ -179,78 +184,78 @@ export function StateComparisonModal({
 
           <Row
             icon={DollarSign}
-            label="Median Household Income"
+            label={isRo ? "Venitul Median al Gospodăriei" : "Median Household Income"}
             a={demoA ? `$${demoA.income.toLocaleString()}` : "N/A"}
             b={demoB ? `$${demoB.income.toLocaleString()}` : "N/A"}
-            subA={`Home value $${demoA?.homeValue.toLocaleString() ?? "N/A"} · ${ratioA}× income`}
-            subB={`Home value $${demoB?.homeValue.toLocaleString() ?? "N/A"} · ${ratioB}× income`}
+            subA={isRo ? `Valoare locuință $${demoA?.homeValue.toLocaleString() ?? "N/A"} · ${ratioA}× venit` : `Home value $${demoA?.homeValue.toLocaleString() ?? "N/A"} · ${ratioA}× income`}
+            subB={isRo ? `Valoare locuință $${demoB?.homeValue.toLocaleString() ?? "N/A"} · ${ratioB}× venit` : `Home value $${demoB?.homeValue.toLocaleString() ?? "N/A"} · ${ratioB}× income`}
           />
 
           <Row
             icon={Home}
-            label="Homeownership & Broadband"
+            label={isRo ? "Proprietate & Internet Bandă Largă" : "Homeownership & Broadband"}
             a={`${demoA?.ownerPct ?? "—"}%`}
             b={`${demoB?.ownerPct ?? "—"}%`}
-            unitA="own"
-            unitB="own"
-            subA={`Broadband access ${demoA?.broadbandPct ?? "—"}%`}
-            subB={`Broadband access ${demoB?.broadbandPct ?? "—"}%`}
+            unitA={isRo ? "proprietari" : "own"}
+            unitB={isRo ? "proprietari" : "own"}
+            subA={isRo ? `Acces bandă largă ${demoA?.broadbandPct ?? "—"}%` : `Broadband access ${demoA?.broadbandPct ?? "—"}%`}
+            subB={isRo ? `Acces bandă largă ${demoB?.broadbandPct ?? "—"}%` : `Broadband access ${demoB?.broadbandPct ?? "—"}%`}
           />
 
           <Row
             icon={Wifi}
-            label="Remote Work"
+            label={isRo ? "Muncă de la Distanță" : "Remote Work"}
             a={`${acsA?.workFromHomePct ?? "—"}%`}
             b={`${acsB?.workFromHomePct ?? "—"}%`}
-            unitA="WFH"
-            unitB="WFH"
+            unitA={isRo ? "de acasă" : "WFH"}
+            unitB={isRo ? "de acasă" : "WFH"}
           />
 
           <Row
             icon={Globe}
-            label="Foreign-Born Residents"
+            label={isRo ? "Rezidenți Născuți în Străinătate" : "Foreign-Born Residents"}
             a={`${acsA?.foreignBornPct ?? "—"}%`}
             b={`${acsB?.foreignBornPct ?? "—"}%`}
           />
 
           <Row
             icon={ShoppingCart}
-            label="Poverty & SNAP Assistance"
+            label={isRo ? "Sărăcie & Asistență SNAP" : "Poverty & SNAP Assistance"}
             a={`${demoA?.povertyPct ?? "—"}%`}
             b={`${demoB?.povertyPct ?? "—"}%`}
-            unitA="poverty"
-            unitB="poverty"
-            subA={`SNAP households ${acsA?.snapPct ?? "—"}%`}
-            subB={`SNAP households ${acsB?.snapPct ?? "—"}%`}
+            unitA={isRo ? "sărăcie" : "poverty"}
+            unitB={isRo ? "sărăcie" : "poverty"}
+            subA={isRo ? `Gospodării cu SNAP ${acsA?.snapPct ?? "—"}%` : `SNAP households ${acsA?.snapPct ?? "—"}%`}
+            subB={isRo ? `Gospodării cu SNAP ${acsB?.snapPct ?? "—"}%` : `SNAP households ${acsB?.snapPct ?? "—"}%`}
           />
 
           <Row
             icon={Car}
-            label="Commute & Vehicle Access"
+            label={isRo ? "Navetă & Acces la Vehicul" : "Commute & Vehicle Access"}
             a={`${demoA?.commuteMins ?? "—"} min`}
             b={`${demoB?.commuteMins ?? "—"} min`}
-            subA={`Zero-vehicle households ${acsA?.noVehiclePct ?? "—"}%`}
-            subB={`Zero-vehicle households ${acsB?.noVehiclePct ?? "—"}%`}
+            subA={isRo ? `Gospodării fără vehicul ${acsA?.noVehiclePct ?? "—"}%` : `Zero-vehicle households ${acsA?.noVehiclePct ?? "—"}%`}
+            subB={isRo ? `Gospodării fără vehicul ${acsB?.noVehiclePct ?? "—"}%` : `Zero-vehicle households ${acsB?.noVehiclePct ?? "—"}%`}
           />
 
           <Row
             icon={GraduationCap}
-            label="Education & Veterans"
+            label={isRo ? "Educație & Veterani" : "Education & Veterans"}
             a={`${demoA?.eduPct ?? "—"}%`}
             b={`${demoB?.eduPct ?? "—"}%`}
-            unitA="bachelor's+"
-            unitB="bachelor's+"
-            subA={`Veteran rate ${demoA?.vetPct ?? "—"}%`}
-            subB={`Veteran rate ${demoB?.vetPct ?? "—"}%`}
+            unitA={isRo ? "licență+" : "bachelor's+"}
+            unitB={isRo ? "licență+" : "bachelor's+"}
+            subA={isRo ? `Rata veteranilor ${demoA?.vetPct ?? "—"}%` : `Veteran rate ${demoA?.vetPct ?? "—"}%`}
+            subB={isRo ? `Rata veteranilor ${demoB?.vetPct ?? "—"}%` : `Veteran rate ${demoB?.vetPct ?? "—"}%`}
           />
 
           <Row
             icon={Landmark}
-            label="Electoral Weight"
+            label={isRo ? "Greutate Electorală" : "Electoral Weight"}
             a={`${extA?.electoralVotes ?? "N/A"}`}
             b={`${extB?.electoralVotes ?? "N/A"}`}
-            unitA="votes"
-            unitB="votes"
+            unitA={isRo ? "voturi" : "votes"}
+            unitB={isRo ? "voturi" : "votes"}
           />
         </div>
       </div>

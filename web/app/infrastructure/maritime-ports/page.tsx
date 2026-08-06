@@ -64,7 +64,7 @@ export default async function PortsPage() {
         numbersTitle: "Giganții în cifre",
         numbersStats: [
           { value: "293 mil. t", label: "tonaj anual procesat în Houston, pe primul loc în SUA" },
-          { value: "54 mile", label: "lungimea Portului South Louisiana de-a lungul fluviului Mississippi" },
+          { value: "87 km", label: "lungimea Portului South Louisiana de-a lungul fluviului Mississippi" },
           { value: "20 mil. TEU", label: "containere procesate anual în complexul LA / Long Beach" },
         ],
         mapTitle: "Harta Porturilor Comerciale",
@@ -94,7 +94,7 @@ export default async function PortsPage() {
           "Fiecare port major are un rol unic în economia americană, specializându-se pe categorii de mărfuri și rute comerciale globale.",
         portsFacts: [
           { fact: "Houston: Hubul energetic al continentului", detail: "Situat pe canalul de navigație Houston, procesează cea mai mare cantitate de mărfuri externe din țară, legând rafinăriile din Texas de restul lumii." },
-          { fact: "South Louisiana: Portalul agricol", detail: "Stins pe 54 de mile pe râul Mississippi, colectează barjele cu porumb, grâu și soia din Midwest pentru a le exporta pe tot globul." },
+          { fact: "South Louisiana: Portalul agricol", detail: "Stins pe 87 km pe râul Mississippi, colectează barjele cu porumb, grâu și soia din Midwest pentru a le exporta pe tot globul." },
           { fact: "New York & New Jersey: Gigantul Coastei de Est", detail: "Cel mai mare port de pe coasta Atlanticului, servește ca principal centru de aprovizionare pentru cea mai densă regiune de consumatori din SUA." },
           { fact: "Los Angeles & Long Beach: Giganții Containerelor", detail: "Cele două porturi vecine din California gestionează o flotă uriașă de nave portcontainere, fiind coloana vertebrală a comerțului transpacific." },
         ],
@@ -252,7 +252,7 @@ export default async function PortsPage() {
                   nameEn: "Interstate Highways",
                   nameRo: "Autostrăzi Interstatale",
                   descEn: "48,000 miles of continental asphalt.",
-                  descRo: "48.000 de mile de asfalt continental.",
+                  descRo: "77.249 km de asfalt continental.",
                 },
                 {
                   href: "/infrastructure/rail-network",

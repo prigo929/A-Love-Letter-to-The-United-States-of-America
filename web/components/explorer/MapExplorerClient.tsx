@@ -179,7 +179,7 @@ export interface CensusLayerItem {
   category: "states_regions" | "political" | "metro" | "education" | "micro" | "catalog" | "reference";
   categoryLabel: { en: string; ro: string };
   url: string;
-  badge: string;
+  badge: { en: string; ro: string };
   description: { en: string; ro: string };
 }
 
@@ -201,7 +201,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "states_regions",
     categoryLabel: { en: "States & Regions", ro: "State și Regiuni" },
     url: GEO_URL,
-    badge: "50 States + DC",
+    badge: { en: "50 States + DC", ro: "50 de State + DC" },
     description: { en: "Official 2025 50-State and Territory Boundaries", ro: "Granițele oficiale 2025 ale celor 50 de state și teritorii" },
   },
   {
@@ -211,7 +211,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "metro",
     categoryLabel: { en: "Metropolitan & Municipal", ro: "Metropolitan și Municipal" },
     url: "/maps/counties.json",
-    badge: "3,144 Counties",
+    badge: { en: "3,144 Counties", ro: "3.144 Comitate" },
     description: { en: "3,144 U.S. Counties and County Equivalents", ro: "Cele 3.144 de comitate și echivalente administrative" },
   },
   {
@@ -221,7 +221,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "political",
     categoryLabel: { en: "Political & Legislative", ro: "Politic și Legislativ" },
     url: "/maps/congressional-districts-119.json",
-    badge: "435 Districts",
+    badge: { en: "435 Districts", ro: "435 de Districte" },
     description: { en: "435 U.S. House of Representatives Electoral Districts", ro: "Cele 435 de districte electorale pentru Camera Reprezentanților" },
   },
   {
@@ -231,7 +231,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "metro",
     categoryLabel: { en: "Metropolitan & Municipal", ro: "Metropolitan și Municipal" },
     url: "/maps/places.json",
-    badge: "Cities & CDPs",
+    badge: { en: "Cities & CDPs", ro: "Orașe și Localități" },
     description: { en: "Cities, Towns, Villages, & Census Designated Places", ro: "Orașe, sate și localități desemnate de recensământ" },
   },
   {
@@ -241,7 +241,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "metro",
     categoryLabel: { en: "Metropolitan & Municipal", ro: "Metropolitan și Municipal" },
     url: "/maps/cbsa.json",
-    badge: "925 Metro/Micro",
+    badge: { en: "925 Metro/Micro", ro: "925 Metro/Micro" },
     description: { en: "Metropolitan & Micropolitan Statistical Hubs", ro: "Poluri statistice metropolitane și micropolitane" },
   },
   {
@@ -251,7 +251,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "political",
     categoryLabel: { en: "Political & Legislative", ro: "Politic și Legislativ" },
     url: "/maps/state-legislative-upper.json",
-    badge: "State Senate",
+    badge: { en: "State Senate", ro: "Senat de Stat" },
     description: { en: "Upper Chamber State Senate Legislative Boundaries", ro: "Circumscripțiile senatoriale legislative ale statelor" },
   },
   {
@@ -261,7 +261,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "political",
     categoryLabel: { en: "Political & Legislative", ro: "Politic și Legislativ" },
     url: "/maps/state-legislative-lower.json",
-    badge: "State House",
+    badge: { en: "State House", ro: "Cameră de Stat" },
     description: { en: "Lower Chamber State House / Assembly Legislative Boundaries", ro: "Circumscripțiile Camerei Deputaților/Adunării statelor" },
   },
   {
@@ -271,7 +271,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "metro",
     categoryLabel: { en: "Metropolitan & Municipal", ro: "Metropolitan și Municipal" },
     url: "/maps/county-subdivisions.json",
-    badge: "Townships & Subdivisions",
+    badge: { en: "Townships & Subdivisions", ro: "Orășele și Subdiviziuni" },
     description: { en: "Minor Civil Divisions, Townships, & Local Subdivisions", ro: "Diviziuni civile minore, orășele și subdiviziuni locale" },
   },
   {
@@ -281,7 +281,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "states_regions",
     categoryLabel: { en: "States & Regions", ro: "State și Regiuni" },
     url: "/maps/census-regions.json",
-    badge: "4 Regions",
+    badge: { en: "4 Regions", ro: "4 Regiuni" },
     description: { en: "Northeast, Midwest, South, and West Macro-Regions", ro: "Macro-regiunile Nord-Est, Midwest, Sud și Vest" },
   },
   {
@@ -291,7 +291,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "states_regions",
     categoryLabel: { en: "States & Regions", ro: "State și Regiuni" },
     url: "/maps/census-divisions.json",
-    badge: "9 Divisions",
+    badge: { en: "9 Divisions", ro: "9 Diviziuni" },
     description: { en: "9 Official U.S. Census Geographic Divisions", ro: "Cele 9 diviziuni geografice oficiale ale Recensământului" },
   },
   {
@@ -301,7 +301,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "political",
     categoryLabel: { en: "Political & Legislative", ro: "Politic și Legislativ" },
     url: "/maps/counties-within-cd119.json",
-    badge: "Intersections",
+    badge: { en: "Intersections", ro: "Intersecții" },
     description: { en: "County Boundaries Intersected by 119th Congressional Districts", ro: "Granițele comitatelor intersectate de districtele congresionale" },
   },
   {
@@ -311,7 +311,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "metro",
     categoryLabel: { en: "Metropolitan & Municipal", ro: "Metropolitan și Municipal" },
     url: "/maps/csa.json",
-    badge: "175 Combined Areas",
+    badge: { en: "175 Combined Areas", ro: "175 de Zone Combinate" },
     description: { en: "Regional Economic Combined Metropolitan Conurbations", ro: "Conurbații economice regionale combinate" },
   },
   {
@@ -321,7 +321,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "reference",
     categoryLabel: { en: "Reference Boundaries", ro: "Granițe de Referință" },
     url: "/maps/zip-codes.json",
-    badge: "32,294 ZIP Codes",
+    badge: { en: "32,294 ZIP Codes", ro: "32.294 Coduri Poștale" },
     description: { en: "USPS ZIP Code Tabulation Areas Nationwide", ro: "Zonele de tabulare a codurilor poștale USPS la nivel național" },
   },
   {
@@ -331,7 +331,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "metro",
     categoryLabel: { en: "Metropolitan & Municipal", ro: "Metropolitan și Municipal" },
     url: "/maps/metropolitan-divisions.json",
-    badge: "Urban Divisions",
+    badge: { en: "Urban Divisions", ro: "Diviziuni Urbane" },
     description: { en: "Sub-divisions within Major Metropolitan Statistical Areas", ro: "Subdiviziuni în cadrul marilor arii metropolitane" },
   },
   {
@@ -341,7 +341,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "metro",
     categoryLabel: { en: "Metropolitan & Municipal", ro: "Metropolitan și Municipal" },
     url: "/maps/consolidated-cities.json",
-    badge: "City-County",
+    badge: { en: "City-County", ro: "Oraș-Comitat" },
     description: { en: "Consolidated City-County Municipal Governments", ro: "Guverne municipale consolidate de tip oraș-comitat" },
   },
   {
@@ -351,7 +351,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "metro",
     categoryLabel: { en: "Metropolitan & Municipal", ro: "Metropolitan și Municipal" },
     url: "/maps/estates.json",
-    badge: "U.S. Virgin Islands",
+    badge: { en: "U.S. Virgin Islands", ro: "Insulele Virgine SUA" },
     description: { en: "Estate Divisions in U.S. Virgin Islands", ro: "Diviziuni domeniale din Insulele Virgine SUA" },
   },
   {
@@ -361,7 +361,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "education",
     categoryLabel: { en: "Education & Schools", ro: "Educație și Școli" },
     url: "/maps/unified-school-districts.json",
-    badge: "K-12 Unified",
+    badge: { en: "K-12 Unified", ro: "K-12 Unificat" },
     description: { en: "Unified Kindergarten through 12th Grade School Districts", ro: "Districte școlare unificate de la grădiniță până la clasa a XII-a" },
   },
   {
@@ -371,7 +371,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "education",
     categoryLabel: { en: "Education & Schools", ro: "Educație și Școli" },
     url: "/maps/elementary-school-districts.json",
-    badge: "Elementary",
+    badge: { en: "Elementary", ro: "Primar" },
     description: { en: "Primary and Elementary Level Public School Districts", ro: "Districte școlare publice primare" },
   },
   {
@@ -381,7 +381,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "education",
     categoryLabel: { en: "Education & Schools", ro: "Educație și Școli" },
     url: "/maps/secondary-school-districts.json",
-    badge: "High Schools",
+    badge: { en: "High Schools", ro: "Licee" },
     description: { en: "High School and Secondary Level Public School Districts", ro: "Districte școlare publice secundare (licee)" },
   },
   {
@@ -391,7 +391,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "education",
     categoryLabel: { en: "Education & Schools", ro: "Educație și Școli" },
     url: "/maps/school-district-admin-areas.json",
-    badge: "Admin Boundaries",
+    badge: { en: "Admin Boundaries", ro: "Granițe Administrative" },
     description: { en: "School District Administrative Region Boundaries", ro: "Granițele regiunilor administrative ale districtelor școlare" },
   },
   {
@@ -401,7 +401,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "micro",
     categoryLabel: { en: "Census Micro-Boundaries", ro: "Micro-Subdiviziuni Recensământ" },
     url: "/maps/census-tracts.json",
-    badge: "Neighborhood Level",
+    badge: { en: "Neighborhood Level", ro: "Nivel de Cartier" },
     description: { en: "Small, Relatively Permanent Neighborhood Subdivisions", ro: "Subdiviziuni de cartier la nivel micro" },
   },
   {
@@ -411,7 +411,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "micro",
     categoryLabel: { en: "Census Micro-Boundaries", ro: "Micro-Subdiviziuni Recensământ" },
     url: "/maps/census-block-groups.json",
-    badge: "Micro Block Groups",
+    badge: { en: "Micro Block Groups", ro: "Micro-Grupuri de Blocuri" },
     description: { en: "Clusters of Census Blocks within Tracts", ro: "Grupuri ultra-detaliate de blocuri în cadrul sectoarelor" },
   },
   {
@@ -421,7 +421,7 @@ export const CENSUS_LAYERS: CensusLayerItem[] = [
     category: "catalog",
     categoryLabel: { en: "Full Dataset Catalog", ro: "Catalog Complet Set de Date" },
     url: "/maps/counties-within-cd119.json",
-    badge: "All 21 Layers Combined",
+    badge: { en: "All 21 Layers Combined", ro: "Toate cele 21 de Straturi Combinate" },
     description: { en: "Master composite view of the complete 2025 U.S. Census 500k Cartographic Boundary collection", ro: "Vizualizare master compozită a întregului set de 21 de granițe cartografice 2025" },
   }
 ];
@@ -779,6 +779,8 @@ function PopRankBar({ rank, color, label }: { rank: number; color: string; label
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 export function MapExplorerClient({ locale, translations }: MapExplorerClientProps) {
+  const isRo = locale === "ro";
+  const onOff = (on: boolean) => (isRo ? (on ? "PORNIT" : "OPRIT") : on ? "ON" : "OFF");
   const [selectedStateAbbrev, setSelectedStateAbbrev] = useState<string>("TX");
   const [hoveredStateAbbrev, setHoveredStateAbbrev] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -1497,7 +1499,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <Globe className="h-4.5 w-4.5 text-[#fbbf24] shrink-0" />
                   <div className="flex flex-col min-w-0">
                     <span className="font-bold text-white text-xs leading-none truncate max-w-[180px]">{activeCensusLayer.name[locale]}</span>
-                    <span className="font-mono text-[9px] font-extrabold text-[#fbbf24] uppercase tracking-wider mt-0.5">{activeCensusLayer.badge}</span>
+                    <span className="font-mono text-[9px] font-extrabold text-[#fbbf24] uppercase tracking-wider mt-0.5">{activeCensusLayer.badge[locale]}</span>
                   </div>
                   <Layers className="h-3.5 w-3.5 text-[#fbbf24]/70 shrink-0 ml-1" />
                 </button>
@@ -1508,7 +1510,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   className="flex items-center gap-2 rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-2.5 text-xs font-bold text-blue-400 hover:bg-blue-500/20 hover:border-blue-400 transition-all shadow-lg cursor-pointer"
                 >
                   <Swords className="h-4 w-4 text-blue-400" />
-                  <span>Compare States</span>
+                  <span>{isRo ? "Compară Statele" : "Compare States"}</span>
                 </button>
 
                 {/* 🖨️ State Factsheet Generator Button */}
@@ -1517,7 +1519,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   className="flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-2.5 text-xs font-bold text-emerald-400 hover:bg-emerald-500/20 hover:border-emerald-400 transition-all shadow-lg cursor-pointer"
                 >
                   <Printer className="h-4 w-4 text-emerald-400" />
-                  <span>Print Factsheet</span>
+                  <span>{isRo ? "Printează Fișa" : "Print Factsheet"}</span>
                 </button>
               </div>
 
@@ -1545,7 +1547,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   }`}
                 >
                   <Route className="w-3.5 h-3.5 text-amber-400" />
-                  <span>INTERSTATES ({showInterstates ? "ON" : "OFF"})</span>
+                  <span>{isRo ? "AUTOSTRĂZI INTERSTATALE" : "INTERSTATES"} ({onOff(showInterstates)})</span>
                 </button>
 
                 <button
@@ -1555,7 +1557,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   }`}
                 >
                   <TrainTrack className="w-3.5 h-3.5 text-sky-400" />
-                  <span>AMTRAK RAIL ({showAmtrakRail ? "ON" : "OFF"})</span>
+                  <span>{isRo ? "CALE FERATĂ AMTRAK" : "AMTRAK RAIL"} ({onOff(showAmtrakRail)})</span>
                 </button>
 
                 <button
@@ -1565,7 +1567,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   }`}
                 >
                   <Hospital className="w-3.5 h-3.5 text-rose-400" />
-                  <span>HOSPITALS ({showHospitals ? "ON" : "OFF"})</span>
+                  <span>{isRo ? "SPITALE" : "HOSPITALS"} ({onOff(showHospitals)})</span>
                 </button>
 
                 <button
@@ -1575,7 +1577,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   }`}
                 >
                   <School className="w-3.5 h-3.5 text-indigo-400" />
-                  <span>PUBLIC SCHOOLS ({showSchools ? "ON" : "OFF"})</span>
+                  <span>{isRo ? "ȘCOLI PUBLICE" : "PUBLIC SCHOOLS"} ({onOff(showSchools)})</span>
                 </button>
 
                 <button
@@ -1585,7 +1587,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   }`}
                 >
                   <Mountain className="w-3.5 h-3.5 text-orange-400" />
-                  <span>VOLCANOES ({showVolcanoes ? "ON" : "OFF"})</span>
+                  <span>{isRo ? "VULCANI" : "VOLCANOES"} ({onOff(showVolcanoes)})</span>
                 </button>
 
                 <button
@@ -1595,7 +1597,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   }`}
                 >
                   <TrainFront className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>RAIL STATIONS ({showAmtrakStations ? "ON" : "OFF"})</span>
+                  <span>{isRo ? "STAȚII FEROVIARE" : "RAIL STATIONS"} ({onOff(showAmtrakStations)})</span>
                 </button>
 
                 <button
@@ -1605,7 +1607,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   }`}
                 >
                   <Zap className="w-3.5 h-3.5 text-yellow-400" />
-                  <span>POWER GRID ({showTransmissionLines ? "ON" : "OFF"})</span>
+                  <span>{isRo ? "REȚEA ELECTRICĂ" : "POWER GRID"} ({onOff(showTransmissionLines)})</span>
                 </button>
 
                 <button
@@ -1615,7 +1617,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   }`}
                 >
                   <Footprints className="w-3.5 h-3.5 text-lime-400" />
-                  <span>TRAILS ({showTrails ? "ON" : "OFF"})</span>
+                  <span>{isRo ? "TRASEE" : "TRAILS"} ({onOff(showTrails)})</span>
                 </button>
 
                 <button
@@ -1625,7 +1627,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   }`}
                 >
                   <Landmark className="w-3.5 h-3.5 text-teal-400" />
-                  <span>PARK BOUNDARIES ({showParkBoundaries ? "ON" : "OFF"})</span>
+                  <span>{isRo ? "LIMITE PARCURI" : "PARK BOUNDARIES"} ({onOff(showParkBoundaries)})</span>
                 </button>
 
                 <button
@@ -1636,7 +1638,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   }`}
                 >
                   <Flag className="w-3.5 h-3.5 text-amber-400" />
-                  <span>FEDERAL LANDS ({showFederalLands ? "ON" : "OFF"})</span>
+                  <span>{isRo ? "TERENURI FEDERALE" : "FEDERAL LANDS"} ({onOff(showFederalLands)})</span>
                   <Cpu className="w-3 h-3 text-fuchsia-400" />
                 </button>
               </div>
@@ -1662,29 +1664,29 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   { id: "regions",    label: translations.defaultColor,   activeColor: "#fbbf24", layers: ["all"] },
                   { id: "gdp",        label: translations.gdpHeat,        activeColor: "#fbbf24", layers: ["states"] },
                   { id: "population", label: translations.popHeat,        activeColor: "#60a5fa", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions"] },
-                  { id: "income",     label: "Income",                    activeColor: "#34d399", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions", "congressional_districts"] },
-                  { id: "homeValue",  label: "Home Value",                activeColor: "#fb923c", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions"] },
-                  { id: "education",  label: "Education",                 activeColor: "#38bdf8", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions", "congressional_districts"] },
-                  { id: "veterans",   label: "Veterans",                  activeColor: "#facc15", layers: ["states", "counties"] },
-                  { id: "broadband",  label: "Broadband",                 activeColor: "#38bdf8", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions"] },
-                  { id: "ownerPct",   label: "Homeowners",                activeColor: "#f59e0b", layers: ["states", "counties", "cbsa", "csa", "places"] },
-                  { id: "poverty",    label: "Poverty",                   activeColor: "#f43f5e", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions", "congressional_districts"] },
-                  { id: "commute",    label: "Commute",                   activeColor: "#a855f7", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions"] },
-                  { id: "medianAge",  label: "Median Age",                activeColor: "#a855f7", layers: ["states", "counties", "cbsa", "csa", "places"] },
-                  { id: "medianRent", label: "Median Rent",               activeColor: "#f97316", layers: ["states", "counties", "cbsa", "csa", "places"] },
-                  { id: "workFromHome", label: "Remote Work",             activeColor: "#14b8a6", layers: ["states", "counties", "cbsa", "csa", "places"] },
-                  { id: "noVehicle", label: "No Transit/Car",            activeColor: "#ec4899", layers: ["states", "counties", "cbsa", "csa", "places"] },
-                  { id: "foreignBorn", label: "Foreign Born",            activeColor: "#3b82f6", layers: ["states", "counties", "cbsa", "csa", "places"] },
-                  { id: "snapPct",      label: "SNAP/Assistance",          activeColor: "#ef4444", layers: ["states", "counties", "cbsa", "csa", "places"] },
-                  { id: "unemployment", label: "Unemployment",              activeColor: "#f87171", layers: ["states", "counties", "cbsa", "csa", "places"] },
-                  { id: "insured",      label: "Health Insured",            activeColor: "#34d399", layers: ["states", "counties", "cbsa", "csa", "places"] },
-                  { id: "highSchool",   label: "High School Grad",          activeColor: "#60a5fa", layers: ["states", "counties", "cbsa", "csa", "places"] },
-                  { id: "gradDegree",   label: "Graduate Degree",           activeColor: "#a78bfa", layers: ["states", "counties", "cbsa", "csa", "places"] },
-                  { id: "multiVehicle", label: "Multi-Vehicle HH",          activeColor: "#fbbf24", layers: ["states", "counties", "cbsa", "csa", "places"] },
-                  { id: "vacancy",      label: "Housing Vacancy",           activeColor: "#94a3b8", layers: ["states", "counties", "cbsa", "csa", "places"] },
-                  { id: "timeZone",     label: "Time Zone",                 activeColor: "#c084fc", layers: ["states", "counties", "cbsa", "csa", "places"] },
-                  { id: "election2024", label: "2024 Vote",               activeColor: "#ef4444", layers: ["states"] },
-                  { id: "election2020", label: "2020 Vote",               activeColor: "#3b82f6", layers: ["states"] },
+                  { id: "income",     label: isRo ? "Venit" : "Income",                    activeColor: "#34d399", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions", "congressional_districts"] },
+                  { id: "homeValue",  label: isRo ? "Valoare Locuință" : "Home Value",                activeColor: "#fb923c", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions"] },
+                  { id: "education",  label: isRo ? "Educație" : "Education",                 activeColor: "#38bdf8", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions", "congressional_districts"] },
+                  { id: "veterans",   label: isRo ? "Veterani" : "Veterans",                  activeColor: "#facc15", layers: ["states", "counties"] },
+                  { id: "broadband",  label: isRo ? "Internet de Bandă Largă" : "Broadband",                 activeColor: "#38bdf8", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions"] },
+                  { id: "ownerPct",   label: isRo ? "Proprietari de Locuințe" : "Homeowners",                activeColor: "#f59e0b", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "poverty",    label: isRo ? "Sărăcie" : "Poverty",                   activeColor: "#f43f5e", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions", "congressional_districts"] },
+                  { id: "commute",    label: isRo ? "Naveta" : "Commute",                   activeColor: "#a855f7", layers: ["states", "counties", "cbsa", "csa", "places", "metro_divisions"] },
+                  { id: "medianAge",  label: isRo ? "Vârsta Mediană" : "Median Age",                activeColor: "#a855f7", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "medianRent", label: isRo ? "Chirie Mediană" : "Median Rent",               activeColor: "#f97316", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "workFromHome", label: isRo ? "Muncă de la Distanță" : "Remote Work",             activeColor: "#14b8a6", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "noVehicle", label: isRo ? "Fără Transport/Mașină" : "No Transit/Car",            activeColor: "#ec4899", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "foreignBorn", label: isRo ? "Născuți în Străinătate" : "Foreign Born",            activeColor: "#3b82f6", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "snapPct",      label: isRo ? "Asistență SNAP" : "SNAP/Assistance",          activeColor: "#ef4444", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "unemployment", label: isRo ? "Șomaj" : "Unemployment",              activeColor: "#f87171", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "insured",      label: isRo ? "Asigurați Medical" : "Health Insured",            activeColor: "#34d399", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "highSchool",   label: isRo ? "Absolvenți Liceu" : "High School Grad",          activeColor: "#60a5fa", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "gradDegree",   label: isRo ? "Studii Postuniversitare" : "Graduate Degree",           activeColor: "#a78bfa", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "multiVehicle", label: isRo ? "Gospodării Multi-Vehicul" : "Multi-Vehicle HH",          activeColor: "#fbbf24", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "vacancy",      label: isRo ? "Locuințe Vacante" : "Housing Vacancy",           activeColor: "#94a3b8", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "timeZone",     label: isRo ? "Fus Orar" : "Time Zone",                 activeColor: "#c084fc", layers: ["states", "counties", "cbsa", "csa", "places"] },
+                  { id: "election2024", label: isRo ? "Vot 2024" : "2024 Vote",               activeColor: "#ef4444", layers: ["states"] },
+                  { id: "election2020", label: isRo ? "Vot 2020" : "2020 Vote",               activeColor: "#3b82f6", layers: ["states"] },
                   { id: "statehood",  label: translations.statehoodHeat,  activeColor: "#f87171", layers: ["states"] },
                   { id: "amendments", label: translations.amendHeat,      activeColor: "#a78bfa", layers: ["states"] },
                   { id: "conLength",  label: translations.lengthHeat,     activeColor: "#2dd4bf", layers: ["states"] },
@@ -1768,14 +1770,14 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   <div className="flex justify-between font-body text-[9px] text-white/50 leading-tight font-semibold">
                     {heatmapMode === "gdp" && (
                       <>
-                        <span>Low (&lt; $50B)</span>
-                        <span className="text-right">Peak ($3.9T · CA)</span>
+                        <span>{isRo ? "Minim" : "Low"} (&lt; $50B)</span>
+                        <span className="text-right">{isRo ? "Vârf" : "Peak"} ($3.9T · CA)</span>
                       </>
                     )}
                     {heatmapMode === "population" && (
                       <>
-                        <span>Low (&lt; 1M)</span>
-                        <span className="text-right">Peak (39M · CA)</span>
+                        <span>{isRo ? "Minim" : "Low"} (&lt; 1M)</span>
+                        <span className="text-right">{isRo ? "Vârf" : "Peak"} (39M · CA)</span>
                       </>
                     )}
                     {heatmapMode === "income" && (
@@ -2207,14 +2209,14 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
               ) : (
                 <span className="font-body text-[10px] text-white/30 uppercase tracking-wider font-bold">
                   {heatmapMode === "gdp"
-                    ? "GDP by State"
+                    ? (isRo ? "PIB pe Stat" : "GDP by State")
                     : heatmapMode === "population"
-                    ? "Population by State"
+                    ? (isRo ? "Populație pe Stat" : "Population by State")
                     : heatmapMode === "amendments"
-                    ? "Constitutional Amendments (most brightest)"
+                    ? (isRo ? "Amendamente Constituționale (cel mai luminos = cele mai multe)" : "Constitutional Amendments (most brightest)")
                     : heatmapMode === "conLength"
-                    ? "Constitution Length (longest brightest)"
-                    : "Statehood Order (oldest brightest)"}
+                    ? (isRo ? "Lungimea Constituției (cel mai luminos = cea mai lungă)" : "Constitution Length (longest brightest)")
+                    : (isRo ? "Ordinea Statalității (cel mai luminos = cel mai vechi)" : "Statehood Order (oldest brightest)")}
                 </span>
               )}
             </div>
@@ -2267,25 +2269,25 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     : heatmapMode === "population"
                     ? { label: translations.population, value: `${hs.population}M`, rank: `#${popRanked.indexOf(hs.abbrev) + 1} / 50`, color: "#60a5fa" }
                     : heatmapMode === "income" && demoBench
-                    ? { label: "Median Income", value: `$${demoBench.income.toLocaleString()}`, rank: "", color: "#34d399" }
+                    ? { label: isRo ? "Venit Median" : "Median Income", value: `$${demoBench.income.toLocaleString()}`, rank: "", color: "#34d399" }
                     : heatmapMode === "homeValue" && demoBench
-                    ? { label: "Median Home Value", value: `$${demoBench.homeValue.toLocaleString()}`, rank: "", color: "#fb923c" }
+                    ? { label: isRo ? "Valoare Mediană Locuință" : "Median Home Value", value: `$${demoBench.homeValue.toLocaleString()}`, rank: "", color: "#fb923c" }
                     : heatmapMode === "education" && demoBench
-                    ? { label: "Higher Education", value: `${demoBench.eduPct}%`, rank: "", color: "#38bdf8" }
+                    ? { label: isRo ? "Studii Superioare" : "Higher Education", value: `${demoBench.eduPct}%`, rank: "", color: "#38bdf8" }
                     : heatmapMode === "veterans" && demoBench
-                    ? { label: "Veteran Rate", value: `${demoBench.vetPct}%`, rank: "", color: "#facc15" }
+                    ? { label: isRo ? "Rata Veteranilor" : "Veteran Rate", value: `${demoBench.vetPct}%`, rank: "", color: "#facc15" }
                     : heatmapMode === "broadband" && demoBench
-                    ? { label: "Broadband Internet", value: `${demoBench.broadbandPct}%`, rank: "", color: "#38bdf8" }
+                    ? { label: isRo ? "Internet Bandă Largă" : "Broadband Internet", value: `${demoBench.broadbandPct}%`, rank: "", color: "#38bdf8" }
                     : heatmapMode === "ownerPct" && demoBench
-                    ? { label: "Homeownership", value: `${demoBench.ownerPct}%`, rank: "", color: "#f59e0b" }
+                    ? { label: isRo ? "Rata de Proprietate" : "Homeownership", value: `${demoBench.ownerPct}%`, rank: "", color: "#f59e0b" }
                     : heatmapMode === "poverty" && demoBench
-                    ? { label: "Poverty Rate", value: `${demoBench.povertyPct}%`, rank: "", color: "#f43f5e" }
+                    ? { label: isRo ? "Rata Sărăciei" : "Poverty Rate", value: `${demoBench.povertyPct}%`, rank: "", color: "#f43f5e" }
                     : heatmapMode === "commute" && demoBench
-                    ? { label: "Mean Commute", value: `${demoBench.commuteMins} min`, rank: "", color: "#a855f7" }
+                    ? { label: isRo ? "Naveta Medie" : "Mean Commute", value: `${demoBench.commuteMins} min`, rank: "", color: "#a855f7" }
                     : heatmapMode === "election2024" && el2024
-                    ? { label: "2024 Result", value: `${el2024.winner === "GOP" ? "GOP (Trump)" : "DEM (Harris)"} +${Math.abs(el2024.marginPct)}%`, rank: `${el2024.electoralVotes} EV`, color: el2024.winner === "GOP" ? "#ef4444" : "#3b82f6" }
+                    ? { label: isRo ? "Rezultat 2024" : "2024 Result", value: `${el2024.winner === "GOP" ? (isRo ? "Republican (Trump)" : "GOP (Trump)") : (isRo ? "Democrat (Harris)" : "DEM (Harris)")} +${Math.abs(el2024.marginPct)}%`, rank: `${el2024.electoralVotes} ${isRo ? "voturi electorale" : "EV"}`, color: el2024.winner === "GOP" ? "#ef4444" : "#3b82f6" }
                     : heatmapMode === "election2020" && el2020
-                    ? { label: "2020 Result", value: `${el2020.winner === "GOP" ? "GOP (Trump)" : "DEM (Biden)"} +${Math.abs(el2020.marginPct)}%`, rank: `${el2020.electoralVotes} EV`, color: el2020.winner === "GOP" ? "#ef4444" : "#3b82f6" }
+                    ? { label: isRo ? "Rezultat 2020" : "2020 Result", value: `${el2020.winner === "GOP" ? (isRo ? "Republican (Trump)" : "GOP (Trump)") : (isRo ? "Democrat (Biden)" : "DEM (Biden)")} +${Math.abs(el2020.marginPct)}%`, rank: `${el2020.electoralVotes} ${isRo ? "voturi electorale" : "EV"}`, color: el2020.winner === "GOP" ? "#ef4444" : "#3b82f6" }
                     : heatmapMode === "statehood"
                     ? { label: translations.statehood, value: `${hs.statehoodYear}`, rank: `#${hs.statehoodOrder} / 50`, color: "#f87171" }
                     : heatmapMode === "amendments" && con
@@ -2293,19 +2295,19 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     : heatmapMode === "conLength" && con
                     ? { label: translations.lengthLabel, value: `${(con.wordCount / 1000).toFixed(1)}k`, rank: `#${wordRanked.indexOf(hs.abbrev) + 1} / 50`, color: "#2dd4bf" }
                     : heatmapMode === "unemployment"
-                    ? { label: "Unemployment Rate", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.unemploymentPct ?? "—"}%`, rank: "", color: "#f87171" }
+                    ? { label: isRo ? "Rata Șomajului" : "Unemployment Rate", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.unemploymentPct ?? "—"}%`, rank: "", color: "#f87171" }
                     : heatmapMode === "insured"
-                    ? { label: "Health Insured", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.insuredPct ?? "—"}%`, rank: "", color: "#34d399" }
+                    ? { label: isRo ? "Asigurați Medical" : "Health Insured", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.insuredPct ?? "—"}%`, rank: "", color: "#34d399" }
                     : heatmapMode === "highSchool"
-                    ? { label: "HS Graduate Rate", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.highSchoolPct ?? "—"}%`, rank: "", color: "#60a5fa" }
+                    ? { label: isRo ? "Rata Absolvire Liceu" : "HS Graduate Rate", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.highSchoolPct ?? "—"}%`, rank: "", color: "#60a5fa" }
                     : heatmapMode === "gradDegree"
-                    ? { label: "Graduate Degree", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.gradDegreePct ?? "—"}%`, rank: "", color: "#a78bfa" }
+                    ? { label: isRo ? "Studii Postuniversitare" : "Graduate Degree", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.gradDegreePct ?? "—"}%`, rank: "", color: "#a78bfa" }
                     : heatmapMode === "multiVehicle"
-                    ? { label: "Multi-Vehicle HH", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.multiVehiclePct ?? "—"}%`, rank: "", color: "#fbbf24" }
+                    ? { label: isRo ? "Gospodării Multi-Vehicul" : "Multi-Vehicle HH", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.multiVehiclePct ?? "—"}%`, rank: "", color: "#fbbf24" }
                     : heatmapMode === "vacancy"
-                    ? { label: "Housing Vacancy", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.vacancyPct ?? "—"}%`, rank: "", color: "#94a3b8" }
+                    ? { label: isRo ? "Locuințe Vacante" : "Housing Vacancy", value: `${LOCAL_CENSUS_ACS_DATABASE[hoveredStateAbbrev!]?.vacancyPct ?? "—"}%`, rank: "", color: "#94a3b8" }
                     : heatmapMode === "timeZone"
-                    ? { label: "Standard Time", value: STATE_UTC_OFFSET[hoveredStateAbbrev!] !== undefined ? `UTC${STATE_UTC_OFFSET[hoveredStateAbbrev!]}` : "—", rank: "", color: "#c084fc" }
+                    ? { label: isRo ? "Ora Standard" : "Standard Time", value: STATE_UTC_OFFSET[hoveredStateAbbrev!] !== undefined ? `UTC${STATE_UTC_OFFSET[hoveredStateAbbrev!]}` : "—", rank: "", color: "#c084fc" }
                     : null;
 
                 return (
@@ -2706,6 +2708,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       stroke="#10b981"
                       strokeWidth={0.6}
                       onFeatureHover={setFeatureHoverInfo}
+                      locale={locale}
                     />
                   )}
 
@@ -2719,6 +2722,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       strokeWidth={0.35}
                       defaultColor="rgba(245, 158, 11, 0.4)"
                       onFeatureHover={setFeatureHoverInfo}
+                      locale={locale}
                     />
                   )}
 
@@ -2764,8 +2768,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         onMouseEnter={() => {
                           setFeatureHoverInfo({
                             label: v.n,
-                            details: `${v.c || "USGS Monitored"}${v.e ? ` • ${Math.round(v.e)} ft` : ""}`,
-                            code: v.al || "Volcano",
+                            details: `${v.c || (isRo ? "Monitorizat de USGS" : "USGS Monitored")}${v.e ? ` • ${isRo ? `${Math.round(v.e * 0.3048)} m` : `${Math.round(v.e)} ft`}` : ""}`,
+                            code: v.al || (isRo ? "Vulcan" : "Volcano"),
                           });
                         }}
                         onMouseLeave={() => setFeatureHoverInfo(null)}
@@ -2973,7 +2977,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                               border: `1px solid ${REGION_COLORS[stStateData.region]?.base ?? "#fbbf24"}40`,
                             }}
                           >
-                            {stStateData.region}
+                            {translations.regionNames?.[stStateData.region] ?? stStateData.region}
                           </span>
                           <span className="font-mono text-[10px] text-white/30 tracking-wider">
                             FIPS {stStateData.fips}
@@ -2991,51 +2995,55 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           </h4>
                         </div>
                         <div className="flex flex-wrap items-center gap-3 font-mono text-xs text-white/60">
-                          <span>CAPITAL: <strong className="text-white">{stStateData.capital[locale]}</strong></span>
+                          <span>{isRo ? "CAPITALĂ" : "CAPITAL"}: <strong className="text-white">{stStateData.capital[locale]}</strong></span>
                           <span>•</span>
-                          <span>STATEHOOD: <strong className="text-white">{stStateData.statehoodYear}</strong></span>
+                          <span>{isRo ? "AN ADERARE" : "STATEHOOD"}: <strong className="text-white">{stStateData.statehoodYear}</strong></span>
                           <span>•</span>
-                          <span>ENTRY ORDER: <strong className="text-[#fbbf24]">#{stStateData.statehoodOrder} / 50</strong></span>
+                          <span>{isRo ? "ORDINE INTRARE" : "ENTRY ORDER"}: <strong className="text-[#fbbf24]">#{stStateData.statehoodOrder} / 50</strong></span>
                         </div>
                       </div>
 
                       {/* Key State Benchmark Stats Grid */}
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs pt-1">
                         <div className="bg-black/40 p-3 rounded-xl border border-white/[0.05]">
-                          <span className="text-[9px] text-white/40 uppercase block">GDP & Rank</span>
+                          <span className="text-[9px] text-white/40 uppercase block">{isRo ? "PIB și Loc" : "GDP & Rank"}</span>
                           <span className="text-white font-bold text-sm">${stStateData.gdp}B</span>
-                          <span className="text-[10px] text-white/40 block mt-0.5">${stGdpPerCapita.toLocaleString()} per capita</span>
-                          <span className="text-[10px] text-[#fbbf24] font-semibold block mt-1">GDP Rank: #{stGdpRank} / 50</span>
+                          <span className="text-[10px] text-white/40 block mt-0.5">${stGdpPerCapita.toLocaleString()} {isRo ? "pe cap de locuitor" : "per capita"}</span>
+                          <span className="text-[10px] text-[#fbbf24] font-semibold block mt-1">{isRo ? "Loc PIB" : "GDP Rank"}: #{stGdpRank} / 50</span>
                         </div>
 
                         <div className="bg-black/40 p-3 rounded-xl border border-white/[0.05]">
-                          <span className="text-[9px] text-white/40 uppercase block">Population & Rank</span>
+                          <span className="text-[9px] text-white/40 uppercase block">{isRo ? "Populație și Loc" : "Population & Rank"}</span>
                           <span className="text-white font-bold text-sm">{stStateData.population}M</span>
-                          <span className="text-[10px] text-white/40 block mt-0.5">{stPopDensity} ppl/sq mi</span>
-                          <span className="text-[10px] text-[#60a5fa] font-semibold block mt-1">Pop Rank: #{stPopRank} / 50</span>
+                          <span className="text-[10px] text-white/40 block mt-0.5">
+                            {isRo ? `${Math.round(stPopDensity / 2.58999)} loc./km²` : `${stPopDensity} ppl/sq mi`}
+                          </span>
+                          <span className="text-[10px] text-[#60a5fa] font-semibold block mt-1">{isRo ? "Loc Populație" : "Pop Rank"}: #{stPopRank} / 50</span>
                         </div>
 
                         <div className="bg-black/40 p-3 rounded-xl border border-white/[0.05]">
-                          <span className="text-[9px] text-white/40 uppercase block">Area & Rank</span>
-                          <span className="text-white font-bold text-sm">{stStateData.area.toLocaleString()} sq mi</span>
-                          <span className="text-[10px] text-[#34d399] font-semibold block mt-1">Area Rank: #{stAreaRank} / 50</span>
+                          <span className="text-[9px] text-white/40 uppercase block">{isRo ? "Suprafață și Loc" : "Area & Rank"}</span>
+                          <span className="text-white font-bold text-sm">
+                            {isRo ? `${Math.round(stStateData.area * 2.58999).toLocaleString()} km²` : `${stStateData.area.toLocaleString()} sq mi`}
+                          </span>
+                          <span className="text-[10px] text-[#34d399] font-semibold block mt-1">{isRo ? "Loc Suprafață" : "Area Rank"}: #{stAreaRank} / 50</span>
                         </div>
 
                         <div className="bg-black/40 p-3 rounded-xl border border-white/[0.05]">
-                          <span className="text-[9px] text-white/40 uppercase block">US Economy Share</span>
+                          <span className="text-[9px] text-white/40 uppercase block">{isRo ? "Cotă din Economia SUA" : "US Economy Share"}</span>
                           <span className="text-white font-bold text-sm">{stShareGdp}%</span>
-                          <span className="text-[10px] text-white/40 block mt-0.5">Of $29.2T US GDP</span>
+                          <span className="text-[10px] text-white/40 block mt-0.5">{isRo ? "Din PIB-ul SUA de 29,2 mii mld. $" : "Of $29.2T US GDP"}</span>
                         </div>
                       </div>
 
                       {/* Chronicle & Key Sectors */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-white/[0.05] text-xs">
                         <div>
-                          <span className="font-body text-[10px] font-bold uppercase tracking-wider text-[#fbbf24] block mb-1">Regional Chronicle</span>
+                          <span className="font-body text-[10px] font-bold uppercase tracking-wider text-[#fbbf24] block mb-1">{isRo ? "Cronică Regională" : "Regional Chronicle"}</span>
                           <p className="font-body text-white/70 leading-relaxed">{stStateData.story[locale]}</p>
                         </div>
                         <div>
-                          <span className="font-body text-[10px] font-bold uppercase tracking-wider text-white/40 block mb-1">Key Sectors</span>
+                          <span className="font-body text-[10px] font-bold uppercase tracking-wider text-white/40 block mb-1">{isRo ? "Sectoare Cheie" : "Key Sectors"}</span>
                           <p className="font-body text-white/90 font-semibold leading-relaxed">{stStateData.industry[locale]}</p>
                         </div>
                       </div>
@@ -3067,68 +3075,68 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       {isLoadingCensusData ? (
                         <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-4 flex items-center gap-3">
                           <Zap className="w-4 h-4 text-[#fbbf24] animate-spin" />
-                          <span className="font-body text-xs text-white/50 font-semibold">Querying live ACS 5-Year Census Bureau API...</span>
+                          <span className="font-body text-xs text-white/50 font-semibold">{isRo ? "Se interoghează API-ul Census ACS 5-Year..." : "Querying live ACS 5-Year Census Bureau API..."}</span>
                         </div>
                       ) : liveCensusData ? (
                         <div className="rounded-2xl border border-white/[0.06] bg-[#0c0c0c] p-4 space-y-3 shadow-sm">
                           <div className="flex items-center justify-between">
                             <span className="font-body text-[10px] uppercase tracking-widest text-white/30 font-semibold flex items-center gap-1.5">
                               <Zap className="w-3 h-3 text-[#fbbf24]" />
-                              Official ACS 5-Year Live Data
+                              {isRo ? "Date Oficiale Live ACS 5-Year" : "Official ACS 5-Year Live Data"}
                             </span>
                             <span className="font-body text-[9px] text-white/25 font-semibold">U.S. Census API</span>
                           </div>
                             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-xs">
                               <div className="bg-black/30 p-2 rounded-xl border border-white/[0.05]">
-                                <span className="text-[9px] text-white/40 block">Median Income</span>
+                                <span className="text-[9px] text-white/40 block">{isRo ? "Venit Median" : "Median Income"}</span>
                                 <span className="text-white font-bold text-sm">
                                   {liveCensusData.medianIncome ? `$${liveCensusData.medianIncome.toLocaleString()}` : "N/A"}
                                 </span>
                               </div>
                               <div className="bg-black/30 p-2 rounded-xl border border-white/[0.05]">
-                                <span className="text-[9px] text-white/40 block">Median Home Value</span>
+                                <span className="text-[9px] text-white/40 block">{isRo ? "Valoare Mediană Locuință" : "Median Home Value"}</span>
                                 <span className="text-white font-bold text-sm">
                                   {liveCensusData.medianHomeValue ? `$${liveCensusData.medianHomeValue.toLocaleString()}` : "N/A"}
                                 </span>
                               </div>
                               <div className="bg-black/30 p-2 rounded-xl border border-white/[0.05]">
-                                <span className="text-[9px] text-white/40 block">Higher Education</span>
+                                <span className="text-[9px] text-white/40 block">{isRo ? "Studii Superioare" : "Higher Education"}</span>
                                 <span className="text-white font-bold text-sm">
                                   {liveCensusData.bachelorOrHigherPct ? `${liveCensusData.bachelorOrHigherPct}%` : "N/A"}
                                 </span>
                               </div>
                               <div className="bg-black/30 p-2 rounded-xl border border-white/[0.05]">
-                                <span className="text-[9px] text-white/40 block">Veteran Rate</span>
+                                <span className="text-[9px] text-white/40 block">{isRo ? "Rata Veteranilor" : "Veteran Rate"}</span>
                                 <span className="text-white font-bold text-sm">
                                   {liveCensusData.veteranPct ? `${liveCensusData.veteranPct}%` : "N/A"}
                                 </span>
                               </div>
                               <div className="bg-black/30 p-2 rounded-xl border border-white/[0.05]">
-                                <span className="text-[9px] text-white/40 block">Broadband Internet</span>
+                                <span className="text-[9px] text-white/40 block">{isRo ? "Internet Bandă Largă" : "Broadband Internet"}</span>
                                 <span className="text-white font-bold text-sm">
                                   {liveCensusData.broadbandPct ? `${liveCensusData.broadbandPct}%` : "N/A"}
                                 </span>
                               </div>
                               <div className="bg-black/30 p-2 rounded-xl border border-white/[0.05]">
-                                <span className="text-[9px] text-white/40 block">Homeownership Rate</span>
+                                <span className="text-[9px] text-white/40 block">{isRo ? "Rata de Proprietate" : "Homeownership Rate"}</span>
                                 <span className="text-white font-bold text-sm">
                                   {liveCensusData.ownerOccupiedPct ? `${liveCensusData.ownerOccupiedPct}%` : "N/A"}
                                 </span>
                               </div>
                               <div className="bg-black/30 p-2 rounded-xl border border-white/[0.05]">
-                                <span className="text-[9px] text-white/40 block">Mean Commute</span>
+                                <span className="text-[9px] text-white/40 block">{isRo ? "Naveta Medie" : "Mean Commute"}</span>
                                 <span className="text-white font-bold text-sm">
                                   {liveCensusData.meanCommuteMinutes ? `${liveCensusData.meanCommuteMinutes} min` : "N/A"}
                                 </span>
                               </div>
                               <div className="bg-black/30 p-2 rounded-xl border border-white/[0.05]">
-                                <span className="text-[9px] text-white/40 block">Poverty Rate</span>
+                                <span className="text-[9px] text-white/40 block">{isRo ? "Rata Sărăciei" : "Poverty Rate"}</span>
                                 <span className="text-white font-bold text-sm">
                                   {liveCensusData.povertyPct ? `${liveCensusData.povertyPct}%` : "N/A"}
                                 </span>
                               </div>
                               <div className="bg-black/30 p-2 rounded-xl border border-white/[0.05]">
-                                <span className="text-[9px] text-white/40 block">Foreign-Born %</span>
+                                <span className="text-[9px] text-white/40 block">{isRo ? "Născuți în Străinătate %" : "Foreign-Born %"}</span>
                                 <span className="text-white font-bold text-sm">
                                   {liveCensusData.foreignBornPct ? `${liveCensusData.foreignBornPct}%` : "N/A"}
                                 </span>
@@ -3142,52 +3150,52 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-3.5 space-y-1 shadow-sm">
                           <div className="flex items-center gap-1.5 text-white/30 font-body text-[10px] uppercase tracking-wider font-semibold">
                             <Compass className="w-3 h-3 text-[#fbbf24]" />
-                            <span>Land Area</span>
+                            <span>{isRo ? "Suprafață Teren" : "Land Area"}</span>
                           </div>
                           <div className="font-display text-lg font-bold text-white">
-                            {sqMilesLand > 0 ? `${sqMilesLand.toLocaleString("en-US", { maximumFractionDigits: 1 })} sq mi` : "N/A"}
+                            {sqMilesLand > 0 ? (isRo ? `${(aland / 1e6).toLocaleString("ro-RO", { maximumFractionDigits: 1 })} km²` : `${sqMilesLand.toLocaleString("en-US", { maximumFractionDigits: 1 })} sq mi`) : "N/A"}
                           </div>
                           <div className="font-mono text-[10px] text-white/30">
-                            {aland > 0 ? `${(aland / 1e6).toFixed(1)} km² (${landPct}%)` : "Land area"}
+                            {aland > 0 ? `${(aland / 1e6).toFixed(1)} km² (${landPct}%)` : (isRo ? "Suprafață teren" : "Land area")}
                           </div>
                         </div>
 
                         <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-3.5 space-y-1 shadow-sm">
                           <div className="flex items-center gap-1.5 text-white/30 font-body text-[10px] uppercase tracking-wider font-semibold">
                             <Globe className="w-3 h-3 text-[#fbbf24]" />
-                            <span>Water Area</span>
+                            <span>{isRo ? "Suprafață Apă" : "Water Area"}</span>
                           </div>
                           <div className="font-display text-lg font-bold text-white">
-                            {sqMilesWater > 0 ? `${sqMilesWater.toLocaleString("en-US", { maximumFractionDigits: 1 })} sq mi` : "0 sq mi"}
+                            {sqMilesWater > 0 ? (isRo ? `${(awater / 1e6).toLocaleString("ro-RO", { maximumFractionDigits: 1 })} km²` : `${sqMilesWater.toLocaleString("en-US", { maximumFractionDigits: 1 })} sq mi`) : (isRo ? "0 km²" : "0 sq mi")}
                           </div>
                           <div className="font-mono text-[10px] text-white/30">
-                            {awater > 0 ? `${(awater / 1e6).toFixed(1)} km² (${waterPct}%)` : "Water surface"}
+                            {awater > 0 ? `${(awater / 1e6).toFixed(1)} km² (${waterPct}%)` : (isRo ? "Suprafață apă" : "Water surface")}
                           </div>
                         </div>
 
                         <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-3.5 space-y-1 shadow-sm">
                           <div className="flex items-center gap-1.5 text-white/30 font-body text-[10px] uppercase tracking-wider font-semibold">
                             <Users className="w-3 h-3 text-[#fbbf24]" />
-                            <span>Census Est. Pop</span>
+                            <span>{isRo ? "Pop. Estimată (Census)" : "Census Est. Pop"}</span>
                           </div>
                           <div className="font-display text-lg font-bold text-white">
-                            {estPop > 0 ? estPop.toLocaleString("en-US") : "N/A"}
+                            {estPop > 0 ? estPop.toLocaleString(isRo ? "ro-RO" : "en-US") : "N/A"}
                           </div>
                           <div className="font-mono text-[10px] text-white/30">
-                            Statistical estimate
+                            {isRo ? "Estimare statistică" : "Statistical estimate"}
                           </div>
                         </div>
 
                         <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-3.5 space-y-1 shadow-sm">
                           <div className="flex items-center gap-1.5 text-white/30 font-body text-[10px] uppercase tracking-wider font-semibold">
                             <Landmark className="w-3 h-3 text-[#fbbf24]" />
-                            <span>FIPS Identifiers</span>
+                            <span>{isRo ? "Identificatori FIPS" : "FIPS Identifiers"}</span>
                           </div>
                           <div className="font-mono text-sm font-bold text-white truncate">
                             {stFips ? `ST ${stFips}` : ""}{countyFips ? ` / CO ${countyFips}` : ""}
                           </div>
                           <div className="font-mono text-[10px] text-white/30 truncate">
-                            {csafp ? `CSA ${csafp}` : cbsafp ? `CBSA ${cbsafp}` : "Federal FIPS Code"}
+                            {csafp ? `CSA ${csafp}` : cbsafp ? `CBSA ${cbsafp}` : (isRo ? "Cod Federal FIPS" : "Federal FIPS Code")}
                           </div>
                         </div>
                       </div>
@@ -3196,25 +3204,25 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       {(loGrade || hiGrade || cdSession || lsyYear) && (
                         <div className="rounded-2xl border border-white/[0.05] bg-[#0c0c0c] p-3.5 space-y-2 shadow-sm">
                           <span className="font-body text-[10px] uppercase tracking-widest text-white/30 font-semibold block">
-                            Census Bureau Classification Insights
+                            {isRo ? "Detalii de Clasificare ale Biroului de Recensământ" : "Census Bureau Classification Insights"}
                           </span>
                           <div className="flex flex-wrap gap-2 text-xs font-mono">
                             {(loGrade || hiGrade) && (
                               <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.06] text-white/70">
                                 <GraduationCap className="w-3.5 h-3.5 text-[#fbbf24]" />
-                                Grades: {loGrade || "PK"} to {hiGrade || "12"}
+                                {isRo ? "Clase" : "Grades"}: {loGrade || "PK"} {isRo ? "până la" : "to"} {hiGrade || "12"}
                               </span>
                             )}
                             {selectedFeature.layerCode.includes("cd119") && (
                               <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.06] text-white/70">
                                 <Landmark className="w-3.5 h-3.5 text-[#fbbf24]" />
-                                119th U.S. Congress (2025–2027)
+                                {isRo ? "Al 119-lea Congres al SUA (2025–2027)" : "119th U.S. Congress (2025–2027)"}
                               </span>
                             )}
                             {(selectedFeature.layerCode.includes("sldl") || selectedFeature.layerCode.includes("sldu")) && (
                               <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.06] text-white/70">
                                 <Scale className="w-3.5 h-3.5 text-[#fbbf24]" />
-                                {selectedFeature.layerCode.includes("sldl") ? "Lower Chamber Assembly" : "Upper Chamber Senate"} ({lsyYear})
+                                {selectedFeature.layerCode.includes("sldl") ? (isRo ? "Adunarea Camerei Inferioare" : "Lower Chamber Assembly") : (isRo ? "Senatul Camerei Superioare" : "Upper Chamber Senate")} ({lsyYear})
                               </span>
                             )}
                           </div>
@@ -3230,7 +3238,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           {locale === "ro" ? "Atribute Cartografice Recensământ (Shapefile Properties)" : "Census Cartographic Properties (Raw Attributes)"}
                         </span>
                         <span className="font-mono text-[10px] text-white/25">
-                          {Object.keys(props).length} fields
+                          {Object.keys(props).length} {isRo ? "câmpuri" : "fields"}
                         </span>
                       </div>
 
@@ -3239,8 +3247,9 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                           if (v === null || v === undefined) return null;
                           let displayValue = String(v);
                           if (k === "ALAND" || k === "AWATER") {
-                            const sqMiles = (Number(v) / 2589988.11).toFixed(2);
-                            displayValue = `${Number(v).toLocaleString()} m² (${sqMiles} sq mi)`;
+                            displayValue = isRo
+                              ? `${Number(v).toLocaleString()} m² (${(Number(v) / 1e6).toFixed(2)} km²)`
+                              : `${Number(v).toLocaleString()} m² (${(Number(v) / 2589988.11).toFixed(2)} sq mi)`;
                           }
                           return (
                             <div key={k} className="flex flex-col bg-white/[0.02] p-2.5 rounded-xl border border-white/[0.05] hover:border-white/[0.12] transition-colors">
@@ -3341,7 +3350,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         <span className="font-body text-[10px] uppercase tracking-wider text-white/30 font-semibold">{translations.population}</span>
                       </div>
                       <div className="font-hero text-3xl text-white">{selectedState.population}M</div>
-                      <div className="font-body text-[10px] text-white/30">{popDensity} {translations.perSqMiSuffix}</div>
+                      <div className="font-body text-[10px] text-white/30">{isRo ? Math.round(Number(popDensity) / 2.58999) : popDensity} {translations.perSqMiSuffix}</div>
                     </div>
 
                     {/* Area */}
@@ -3350,7 +3359,9 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                         <Maximize2 className="h-3 w-3 text-[#34d399]" />
                         <span className="font-body text-[10px] uppercase tracking-wider text-white/30 font-semibold">{translations.area}</span>
                       </div>
-                      <div className="font-hero text-2xl text-white">{selectedState.area.toLocaleString()}</div>
+                      <div className="font-hero text-2xl text-white">
+                        {isRo ? Math.round(selectedState.area * 2.58999).toLocaleString() : selectedState.area.toLocaleString()}
+                      </div>
                       <div className="font-body text-[10px] text-white/30">{translations.squareMilesLabel}</div>
                     </div>
 
@@ -3380,7 +3391,9 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     <span className="font-body text-[10px] uppercase tracking-wider text-white/30 font-semibold">{translations.areaRankLabel}</span>
                     <div className="flex items-center gap-2">
                       <span className="font-hero text-base text-[#34d399]">#{areaRank}</span>
-                      <span className="font-body text-[10px] text-white/25">/ 50 · {selectedState.area.toLocaleString()} sq mi</span>
+                      <span className="font-body text-[10px] text-white/25">
+                        / 50 · {isRo ? `${Math.round(selectedState.area * 2.58999).toLocaleString()} km²` : `${selectedState.area.toLocaleString()} sq mi`}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -4269,7 +4282,8 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     layer.name.en.toLowerCase().includes(q) ||
                     layer.name.ro.toLowerCase().includes(q) ||
                     layer.code.toLowerCase().includes(q) ||
-                    layer.badge.toLowerCase().includes(q);
+                    layer.badge.en.toLowerCase().includes(q) ||
+                    layer.badge.ro.toLowerCase().includes(q);
                   return matchesCat && matchesSearch;
                 }).map((layer) => {
                   const isSelected = activeCensusLayerId === layer.id;
@@ -4289,7 +4303,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                       <div>
                         <div className="flex items-center justify-between mb-2">
                           <span className="font-mono text-[9px] font-bold text-[#fbbf24] bg-[#fbbf24]/10 px-2 py-0.5 rounded-md border border-[#fbbf24]/20">
-                            {layer.badge}
+                            {layer.badge[locale]}
                           </span>
                           <span className="font-mono text-[9px] text-white/30 uppercase">
                             {layer.categoryLabel[locale]}
@@ -4331,6 +4345,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
         onClose={() => setIsComparisonModalOpen(false)}
         initialStateA={selectedStateAbbrev}
         initialStateB={selectedStateAbbrev === "CA" ? "TX" : "CA"}
+        locale={locale}
       />
 
       {/* 🖨️ Official State Factsheet PDF Generator Modal */}

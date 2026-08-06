@@ -190,7 +190,7 @@ const copyRo: HousingCopy = {
     {
       icon: Home,
       title: "Dimensiune, Spațiu și Scară Suburbană",
-      body: "Casa unifamilială americană medie depășește 2.300 sq ft: o amprentă care include mai multe dormitoare, un garaj pentru 2 mașini, o curte și adesea un subsol amenajat. Suburbiile care adăpostesc majoritatea americanilor sunt produsul sistemului Interstate, al terenurilor ieftine și al unei tradiții juridice a proprietății private depline.",
+      body: "Casa unifamilială americană medie depășește 214 mp: o amprentă care include mai multe dormitoare, un garaj pentru 2 mașini, o curte și adesea un subsol amenajat. Suburbiile care adăpostesc majoritatea americanilor sunt produsul sistemului Interstate, al terenurilor ieftine și al unei tradiții juridice a proprietății private depline.",
       source: "World Population Review 2026",
       sourceUrl:
         "https://worldpopulationreview.com/country-rankings/house-size-by-country",
@@ -226,7 +226,7 @@ const copyRo: HousingCopy = {
     },
     {
       title: "24,5 Mp de Spațiu Comercial Per Capita",
-      body: "SUA au 24,5 sq ft de spațiu comercial per persoană, față de o medie de doar 4,5 sq ft în Europa: o expresie fizică a infrastructurii de consum care înconjoară locuința americană.",
+      body: "SUA au 2,3 mp de spațiu comercial per persoană, față de o medie de doar 0,4 mp în Europa: o expresie fizică a infrastructurii de consum care înconjoară locuința americană.",
       source: "Statista Retail Space Report",
       sourceUrl:
         "https://www.statista.com/statistics/1058852/retail-space-per-capita-select-countries-worldwide/",
@@ -351,23 +351,26 @@ export default async function HousingPage() {
               />
               <CountryBarChart
                 locale={locale}
-                title={isRo ? "Mărimea mediană a locuinței (sq ft)" : "Median dwelling size (sq ft)"}
+                title={isRo ? "Mărimea mediană a locuinței (mp)" : "Median dwelling size (sq ft)"}
                 source="US Census Bureau · OECD · national statistics"
                 data={[
-                  { label: "Australia", value: 2303, display: "2,303" },
-                  { label: "New Zealand", value: 2174, display: "2,174" },
-                  { label: "USA", value: 2164, display: "2,164", isUS: true },
-                  { label: "Canada", value: 1948, display: "1,948" },
-                  { label: "Denmark", value: 1475, display: "1,475" },
-                  { label: "Luxembourg", value: 1359, display: "1,359" },
-                  { label: "Greece", value: 1356, display: "1,356" },
-                  { label: "Belgium", value: 1293, display: "1,293" },
-                  { label: "Netherlands", value: 1261, display: "1,261" },
-                  { label: "France", value: 1206, display: "1,206" },
-                  { label: "Germany", value: 1173, display: "1,173" },
-                  { label: "Japan", value: 1023, display: "1,023" },
-                  { label: "United Kingdom", value: 818, display: "818" },
-                ]}
+                  { label: "Australia", sqft: 2303 },
+                  { label: "New Zealand", sqft: 2174 },
+                  { label: "USA", sqft: 2164, isUS: true },
+                  { label: "Canada", sqft: 1948 },
+                  { label: "Denmark", sqft: 1475 },
+                  { label: "Luxembourg", sqft: 1359 },
+                  { label: "Greece", sqft: 1356 },
+                  { label: "Belgium", sqft: 1293 },
+                  { label: "Netherlands", sqft: 1261 },
+                  { label: "France", sqft: 1206 },
+                  { label: "Germany", sqft: 1173 },
+                  { label: "Japan", sqft: 1023 },
+                  { label: "United Kingdom", sqft: 818 },
+                ].map(({ label, sqft, isUS }) => {
+                  const value = isRo ? Math.round(sqft * 0.092903) : sqft;
+                  return { label, value, display: value.toLocaleString(isRo ? "ro-RO" : "en-US"), ...(isUS ? { isUS } : {}) };
+                })}
               />
               <CountryBarChart
                 locale={locale}

@@ -52,16 +52,16 @@ export default async function AqueductsWaterwaysPage() {
         heroBody:
           "De la legendarul Canal Erie care a propulsat ascensiunea New York-ului până la minunile inginerești ale Apeductului Californiei și Căii Navigabile Sf. Laurențiu, râurile artificiale și căile navigabile interioare ale Americii au transportat apă și comerț pentru a clădi o superputere continentală.",
         heroStats: [
-          { value: "3,000 mi", label: "lungimea coridorului de navigație Intracoastal Waterway" },
-          { value: "444 mi", label: "lungimea monumentalului Apeduct al Californiei" },
+          { value: "4.828 km", label: "lungimea coridorului de navigație Intracoastal Waterway" },
+          { value: "715 km", label: "lungimea monumentalului Apeduct al Californiei" },
           { value: "2.5 mld t", label: "marfă transportată prin Calea Sf. Laurențiu din 1959" },
         ],
         lede: "Apa a clădit marile metropole comerciale din Est. Redirecționarea apei a făcut posibilă supraviețuirea și înflorirea Occidentului arid.",
         storyTitle: "Arterele Comerțului și Supraviețuirii",
         storyP1:
-          "În 1817, guvernatorul DeWitt Clinton din New York a susținut un proiect pe care criticii l-au numit în râs „Șanțul lui Clinton”: un canal de 363 de mile săpat în sălbăticie cu mâna și cu animale de tracțiune, legând râul Hudson de Marile Lacuri. Finalizat în 1825, Canalul Erie a redus costurile de transport cu peste 90% și a transformat New York-ul în capitala financiară a emisferei vestice, dovedind că infrastructura poate uni și îmbogăți o republică în creștere.",
+          "În 1817, guvernatorul DeWitt Clinton din New York a susținut un proiect pe care criticii l-au numit în râs „Șanțul lui Clinton”: un canal de 584 km săpat în sălbăticie cu mâna și cu animale de tracțiune, legând râul Hudson de Marile Lacuri. Finalizat în 1825, Canalul Erie a redus costurile de transport cu peste 90% și a transformat New York-ul în capitala financiară a emisferei vestice, dovedind că infrastructura poate uni și îmbogăți o republică în creștere.",
         storyP2:
-          "În Occidentul arid, supraviețuirea a cerut o inginerie la o scară și mai mare. Construit sub viziunea lui William Mulholland, Apeductul din Los Angeles de 233 de mile s-a deschis în 1913, aducând apă din Owens Valley exclusiv prin gravitație pentru a transforma un oraș de coastă prăfuit într-o metropolă globală. Decenii mai târziu, proiectele federale și de stat precum Central Arizona Project și California State Water Project au creat râuri artificiale masive, pompând milioane de acri-picioare de apă peste lanțuri muntoase și deșerturi arzătoare pentru a susține zeci de milioane de vieți și a hrăni cele mai productive văi agricole ale națiunii.",
+          "În Occidentul arid, supraviețuirea a cerut o inginerie la o scară și mai mare. Construit sub viziunea lui William Mulholland, Apeductul din Los Angeles de 375 km s-a deschis în 1913, aducând apă din Owens Valley exclusiv prin gravitație pentru a transforma un oraș de coastă prăfuit într-o metropolă globală. Decenii mai târziu, proiectele federale și de stat precum Central Arizona Project și California State Water Project au creat râuri artificiale masive, pompând miliarde de metri cubi de apă peste lanțuri muntoase și deșerturi arzătoare pentru a susține zeci de milioane de vieți și a hrăni cele mai productive văi agricole ale națiunii.",
         pullWord: "APA ESTE AUR.",
         pullLabel:
           "Principiul călăuzitor al managementului apei în Vest. Fără aceste canale colosale, abundența agricolă din Central Valley a Californiei și orizonturile luminoase din deșertul de sud-vest pur și simplu nu ar putea exista.",
@@ -81,21 +81,21 @@ export default async function AqueductsWaterwaysPage() {
         },
         bandTitle: "Sistemul Mississippi și Intracoastal Waterway",
         bandP1:
-          "Bazinul fluviului Mississippi, combinat cu Intracoastal Waterway, formează cea mai extinsă rețea protejată de transport pe apă din lume. Întinzându-se pe 3.000 de mile, Intracoastal Waterway oferă o rută interioară sigură pentru ca barjele comerciale să transporte petrol, cărbune și produse agricole de-a lungul coastelor Atlanticului și Golfului, fără a se confrunta cu pericolele mării deschise.",
+          "Bazinul fluviului Mississippi, combinat cu Intracoastal Waterway, formează cea mai extinsă rețea protejată de transport pe apă din lume. Întinzându-se pe 4.828 km, Intracoastal Waterway oferă o rută interioară sigură pentru ca barjele comerciale să transporte petrol, cărbune și produse agricole de-a lungul coastelor Atlanticului și Golfului, fără a se confrunta cu pericolele mării deschise.",
         bandP2:
           "Integrat cu Marile Lacuri prin Canalul de Nave și Sanitar din Chicago, acest sistem leagă inima industrială a țării de rutele comerciale globale, facilitând transportul ieftin și eficient al mărfurilor vrac către porturile oceanice.",
         bandAlt: "Fluviul Mississippi curgând prin Minneapolis",
         engineeringTitle: "Ingineria Debitelor",
         stats: [
           { value: "≈650M gal", label: "livrate zilnic către New York prin tunelul Delaware" },
-          { value: "2,444 ft", label: "înălțimea de pompare atinsă de pompele Central Arizona Project" },
-          { value: "27 ft", label: "pescajul minim menținut de ecluzele Căii Sf. Laurențiu" },
+          { value: "745 m", label: "înălțimea de pompare atinsă de pompele Central Arizona Project" },
+          { value: "8,2 m", label: "pescajul minim menținut de ecluzele Căii Sf. Laurențiu" },
         ],
         facts: [
           {
             fact: "Apeductul Delaware: Cel mai lung tunel din lume",
             detail:
-              "Finalizat în 1945, Apeductul Delaware este un tunel continuu de beton de 85 de mile săpat în rocă masivă la adâncimi de până la 2.500 de picioare sub suprafață. Livrând jumătate din apa potabilă curată a New York-ului exclusiv prin gravitație, rămâne cel mai lung tunel subteran continuu de pe Pământ.",
+              "Finalizat în 1945, Apeductul Delaware este un tunel continuu de beton de 137 km săpat în rocă masivă la adâncimi de până la 762 de metri sub suprafață. Livrând jumătate din apa potabilă curată a New York-ului exclusiv prin gravitație, rămâne cel mai lung tunel subteran continuu de pe Pământ.",
           },
           {
             fact: "Inversarea cursului Râului Chicago",

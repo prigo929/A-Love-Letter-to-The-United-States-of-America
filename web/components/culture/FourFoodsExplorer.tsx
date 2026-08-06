@@ -24,6 +24,8 @@ const IMG = {
 
 interface FoodFact {
   stat: string;
+  /** Metric equivalent shown for the Romanian locale, when `stat` carries an imperial unit. */
+  statRo?: string;
   label: string;
   labelRo: string;
 }
@@ -90,10 +92,10 @@ const FOODS: Food[] = [
     story2:
       "Refrigerated railcars in the 1870s and pasteurization finally enabled clean milk to arrive from rural dairies, delivered daily by the iconic Milkman into insulated milk boxes built into Victorian home walls. The importation of Dutch Holstein cows in 1852 (producing 100 pounds of milk daily, double previous breeds) combined with the 1917 automatic vacuum milking pump to industrialize production. By 1945, average American consumption reached 45 gallons per year, and the Kellogg brothers invented breakfast cereal largely to encourage morning milk consumption.",
     story2Ro:
-      "Vagoanele frigorifice din anii 1870 si pasteurizarea au permis in sfarsit laptelui curat sa soseasca de la fermele rurale, livrat zilnic de laptar in cutiile de lapte izolate construite in peretii caselor victoriene. Importul vacilor olandeze Holstein in 1852 (care produceau 100 de livre de lapte zilnic, dublu fata de rasele anterioare) s-a combinat cu pompa de muls cu vid din 1917 pentru a industrializa productia. Pana in 1945, consumul mediu american a atins 45 de galoane pe an, iar fratii Kellogg au inventat cerealele de mic dejun in mare parte pentru a incuraja consumul de lapte dimineata.",
+      "Vagoanele frigorifice din anii 1870 si pasteurizarea au permis in sfarsit laptelui curat sa soseasca de la fermele rurale, livrat zilnic de laptar in cutiile de lapte izolate construite in peretii caselor victoriene. Importul vacilor olandeze Holstein in 1852 (care produceau 45 de kilograme de lapte zilnic, dublu fata de rasele anterioare) s-a combinat cu pompa de muls cu vid din 1917 pentru a industrializa productia. Pana in 1945, consumul mediu american a atins 170 de litri pe an, iar fratii Kellogg au inventat cerealele de mic dejun in mare parte pentru a incuraja consumul de lapte dimineata.",
     facts: [
-      { stat: "100 lb", label: "Holstein daily milk output", labelRo: "Producția zilnica Holstein" },
-      { stat: "45 gal", label: "Per person annual peak (1945)", labelRo: "Vârf anual pe persoana (1945)" },
+      { stat: "100 lb", statRo: "45 kg", label: "Holstein daily milk output", labelRo: "Producția zilnica Holstein" },
+      { stat: "45 gal", statRo: "170 L", label: "Per person annual peak (1945)", labelRo: "Vârf anual pe persoana (1945)" },
       { stat: "1906", label: "Cereal created to serve milk", labelRo: "Cereale create pentru lapte" },
     ],
     worthKnowing:
@@ -248,7 +250,7 @@ export function FourFoodsExplorer() {
             {active.facts.map((fact) => (
               <div key={fact.label} className="rounded-xl border border-[#0C0907]/8 bg-white/60 p-3">
                 <div className="font-macro-display text-2xl font-black text-[#E8391B] leading-none">
-                  {fact.stat}
+                  {ro && fact.statRo ? fact.statRo : fact.stat}
                 </div>
                 <div className="mt-1 font-body text-[11px] text-[#0C0907]/60 leading-tight">
                   {ro ? fact.labelRo : fact.label}

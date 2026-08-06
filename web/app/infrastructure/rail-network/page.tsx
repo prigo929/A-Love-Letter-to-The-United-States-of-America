@@ -56,16 +56,16 @@ export default async function RailNetworkPage() {
         heroBody:
           "În 1869, două echipe care construiau una spre cealaltă s-au întâlnit într-un deșert din Utah și au bătut un cui de aur. Călătoria de la un ocean la altul s-a prăbușit de la șase luni la o săptămână, iar America a devenit, peste noapte, o singură țară.",
         heroStats: [
-          { value: "1,776 mi", label: "de cale ferată nouă până în 1869" },
-          { value: "10 mi", label: "așezate într-o singură zi: record" },
-          { value: "140,000", label: "mile de rețea de marfă astăzi" },
+          { value: "2.858 km", label: "de cale ferată nouă până în 1869" },
+          { value: "16 km", label: "așezate într-o singură zi: record" },
+          { value: "225.308", label: "km de rețea de marfă astăzi" },
         ],
         lede: "Autostrada a făcut continentul accesibil. Calea ferată l-a făcut, mai întâi, posibil.",
         storyTitle: "Cursa către Promontory",
         storyP1:
           "În plin Război Civil, Abraham Lincoln a semnat Pacific Railway Act din 1862, un pariu că o națiune care se destrăma putea, în același timp, să se lege singură cu șine de oțel. Central Pacific a pornit din Sacramento spre est, prin granitul Sierrei Nevada: cincisprezece tuneluri săpate cu pulbere neagră de circa 15.000 de muncitori chinezi, ierni întregi petrecute sub zăpadă.",
         storyP2:
-          "Union Pacific a pornit din Omaha spre vest, prin Marile Câmpii, cu veterani ai războiului și imigranți irlandezi așezând câte o milă, apoi câte două, apoi, într-o singură zi de aprilie 1869, zece mile și 56 de picioare, un record care nu a fost egalat niciodată cu unelte de mână. Pe 10 mai 1869, la Promontory Summit, cele două linii s-au atins.",
+          "Union Pacific a pornit din Omaha spre vest, prin Marile Câmpii, cu veterani ai războiului și imigranți irlandezi așezând câte un kilometru și jumătate, apoi câte trei, apoi, într-o singură zi de aprilie 1869, 16 kilometri și 17 metri, un record care nu a fost egalat niciodată cu unelte de mână. Pe 10 mai 1869, la Promontory Summit, cele două linii s-au atins.",
         doneWord: "GATA.",
         doneLabel:
           "Telegrama de un singur cuvânt transmisă întregii națiuni în clipa în care ciocanul a atins cuiul de aur, pe 10 mai 1869. Au sunat clopote din San Francisco până în New York.",
@@ -106,7 +106,7 @@ export default async function RailNetworkPage() {
           {
             fact: "Moștenirea din 1869 lucrează și azi",
             detail:
-              "Ruta Overland a Union Pacific urmează, pe sute de mile, chiar traseul trasat în anii 1860. La North Platte, Nebraska, se află Bailey Yard: cel mai mare triaj feroviar din lume, sortând 14.000 de vagoane în fiecare zi.",
+              "Ruta Overland a Union Pacific urmează, pe sute de kilometri, chiar traseul trasat în anii 1860. La North Platte, Nebraska, se află Bailey Yard: cel mai mare triaj feroviar din lume, sortând 14.000 de vagoane în fiecare zi.",
           },
         ],
         quote: "Văd peste propriul meu continent calea ferată a Pacificului trecând peste fiecare barieră.",

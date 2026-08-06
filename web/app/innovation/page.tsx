@@ -136,9 +136,9 @@ export default async function InnovationPage() {
         heroDescription:
           "De la Silicon Valley la DARPA, Statele Unite reprezintă laboratorul principal al lumii moderne. Internetul, tranzistorul, smartphone-ul, cloud computing-ul și inteligența artificială au fost toate create și extinse aici.",
         heroStats: [
-          { value: "$800B+", label: "Cercetare & Dezvoltare", sub: "Investiții Anuale" },
-          { value: "1.170+", label: "Start-up-uri Unicorn", sub: "65% din totalul global" },
-          { value: "47%", label: "Finanțare VC", sub: "Cota globală a capitalului de risc" },
+          { value: "993 mld. $", label: "Cercetare & Dezvoltare", sub: "Cheltuieli totale, 2024 (NSF)" },
+          { value: "780+", label: "Start-up-uri Unicorn", sub: "~50% din totalul global (2025)" },
+          { value: "55%", label: "Finanțare VC", sub: "Cota globală, după valoare (2024)" },
         ],
         overviewEyebrow: "AVANTAJUL TEHNOLOGIC",
         overviewTitle: "Cum proiectează America viitorul digital",
@@ -158,9 +158,9 @@ export default async function InnovationPage() {
         heroDescription:
           "From Silicon Valley to DARPA, the United States is the primary laboratory of modern civilization. The internet, the transistor, the smartphone, cloud computing, and artificial intelligence were all invented and scaled here.",
         heroStats: [
-          { value: "$800B+", label: "R&D Spending", sub: "Annual public & private" },
-          { value: "1,170+", label: "Unicorn Companies", sub: "65% of global total" },
-          { value: "47%", label: "Venture Capital", sub: "Global VC funding share" },
+          { value: "$993B", label: "R&D Spending", sub: "Total, 2024 (NSF/NCSES)" },
+          { value: "780+", label: "Unicorn Companies", sub: "~50% of global total (2025)" },
+          { value: "55%", label: "Venture Capital", sub: "Global VC funding, by value (2024)" },
         ],
         overviewEyebrow: "THE TECHNOLOGICAL ADVANTAGE",
         overviewTitle: "How America Designs the Digital Future",
@@ -194,6 +194,24 @@ export default async function InnovationPage() {
           detail:
             "Trei furnizori americani (AWS, [Microsoft Azure](#deep-dive-Microsoft_Corporation) și [Google Cloud](#deep-dive-Google)) controlează peste 65% din piața mondială de infrastructură cloud, pe care rulează întreaga economie digitală.",
         },
+        {
+          id: "ai-investment-surge",
+          fact: "Avansul investițiilor în inteligența artificială",
+          detail:
+            "Investițiile private americane în IA au atins 109 miliarde de dolari în 2024 — de aproape 12 ori mai mult decât China (9,3 mld. $) și de 24 de ori mai mult decât Regatul Unit (Stanford HAI AI Index 2025).",
+        },
+        {
+          id: "patent-machine",
+          fact: "Cea mai productivă mașinărie de brevete",
+          detail:
+            "Biroul american de brevete (USPTO) a acordat 365.614 brevete în anul fiscal 2024, o creștere de 5,6% față de anul anterior — al doilea an consecutiv de creștere.",
+        },
+        {
+          id: "nobel-leadership",
+          fact: "Superputerea Premiilor Nobel",
+          detail:
+            "Laureații americani au primit 428 de Premii Nobel de-a lungul timpului, mai multe decât orice altă națiune, cu o pondere semnificativă provenind din cercetători imigranți.",
+        },
       ]
     : [
         {
@@ -213,6 +231,24 @@ export default async function InnovationPage() {
           fact: "Hyper-Scale Cloud Domination",
           detail:
             "Three American providers (AWS, [Microsoft Azure](#deep-dive-Microsoft_Corporation), and [Google Cloud](#deep-dive-Google)) host over 65% of the global cloud infrastructure, powering the modern digital commons.",
+        },
+        {
+          id: "ai-investment-surge",
+          fact: "The AI Investment Surge",
+          detail:
+            "US private AI investment hit $109 billion in 2024 — nearly 12 times China's total ($9.3B) and 24 times the UK's ($4.5B) (Stanford HAI AI Index 2025).",
+        },
+        {
+          id: "patent-machine",
+          fact: "The World's Most Productive Patent Machine",
+          detail:
+            "The USPTO granted 365,614 patents in fiscal year 2024, a 5.6% increase over the prior year — the second consecutive annual rise.",
+        },
+        {
+          id: "nobel-leadership",
+          fact: "The Nobel Prize Superpower",
+          detail:
+            "American laureates have won 428 Nobel Prizes across all categories over the prize's history, more than any other nation, with a substantial share going to immigrant researchers.",
         },
       ];
 

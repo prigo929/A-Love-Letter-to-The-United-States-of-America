@@ -67,9 +67,9 @@ export default async function RockiesPage() {
   const extFacts = isRo ? ROCKIES_EXTENDED_RO : ROCKIES_EXTENDED_EN;
 
   const statWall = [
-    { value: 3000, suffix: " mi",   label: isRo ? "Lungime Lanț Muntos" : "Mountain Length",      sub: isRo ? "De la New Mexico până în Canada" : "New Mexico to northern Canada",  color: "#C4956A" },
-    { value: 53,   suffix: "",      label: isRo ? "Vârfuri 14.000 ft" : "14,000 ft Peaks",         sub: isRo ? "Doar în Colorado" : "In Colorado alone",                              color: "#8B8680" },
-    { value: 14440,suffix: " ft",   label: isRo ? "Mt. Elbert (ft)" : "Mt. Elbert (ft)",           sub: isRo ? "Cel mai înalt din Munții Stâncoși" : "Highest in the Rockies",        color: "#60a5fa" },
+    { value: isRo ? 4828 : 3000, suffix: isRo ? " km" : " mi",   label: isRo ? "Lungime Lanț Muntos" : "Mountain Length",      sub: isRo ? "De la New Mexico până în Canada" : "New Mexico to northern Canada",  color: "#C4956A" },
+    { value: 53,   suffix: "",      label: isRo ? "Vârfuri peste 4.267 m" : "14,000 ft Peaks",         sub: isRo ? "Doar în Colorado" : "In Colorado alone",                              color: "#8B8680" },
+    { value: isRo ? 4401 : 14440, suffix: isRo ? " m" : " ft",   label: isRo ? "Mt. Elbert (m)" : "Mt. Elbert (ft)",           sub: isRo ? "Cel mai înalt din Munții Stâncoși" : "Highest in the Rockies",        color: "#60a5fa" },
     { value: 8,    suffix: "",      label: isRo ? "Parcuri Naționale Majore" : "Major National Parks", sub: isRo ? "Incl. Yellowstone & Grand Teton" : "Incl. Yellowstone & Grand Teton", color: "#4ade80" },
   ];
 
@@ -92,7 +92,7 @@ export default async function RockiesPage() {
           line2={isRo ? "VERTEBRALĂ" : "BACKBONE"}
           line2Color="var(--nat-accent-stone)"
           body={isRo 
-            ? "Întinzându-se pe 3.000 de mile din British Columbia până în New Mexico, Munții Stâncoși definesc peisajul vestic și sunt sursa marilor râuri ale continentului."
+            ? "Întinzându-se pe 4.828 km din British Columbia până în New Mexico, Munții Stâncoși definesc peisajul vestic și sunt sursa marilor râuri ale continentului."
             : "Stretching 3,000 miles from British Columbia to New Mexico, the Rockies define the Western landscape and serve as the headwaters for the continent's great rivers."}
         />
       </NatureSubPageHero>

@@ -98,12 +98,12 @@ export default async function HighwaySystemPage() {
         },
         pullStat: "1.16%",
         pullLabel:
-          "din lungimea drumurilor publice ale Americii este autostradă interstatală: dar duce 25,9% din toate milele parcurse de vehicule, conform FHWA 2024.",
+          "din lungimea drumurilor publice ale Americii este autostradă interstatală: dar duce 25,9% din toți kilometrii parcurși de vehicule, conform FHWA 2024.",
         engineeringEyebrow: "Regulile jocului",
         engineeringTitle: "Ingineria din spatele libertății",
         stats: [
-          { value: "12 ft", label: "lățimea standard a fiecărei benzi" },
-          { value: "11,158 ft", label: "punctul maxim: Tunelul Eisenhower, I-70" },
+          { value: "3,7 m", label: "lățimea standard a fiecărei benzi" },
+          { value: "3.401 m", label: "punctul maxim: Tunelul Eisenhower, I-70" },
           { value: "0", label: "semafoare pe întregul sistem" },
         ],
         facts: [

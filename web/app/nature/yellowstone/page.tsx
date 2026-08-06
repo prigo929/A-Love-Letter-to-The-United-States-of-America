@@ -147,8 +147,8 @@ export default async function YellowstonePage() {
                   {[
                     { n: "500+",  l: isRo ? "Gheizeri" : "Geysers"       },
                     { n: "10K+",  l: isRo ? "Total fenomene" : "Total features"   },
-                    { n: "370 ft",l: isRo ? "Izv. Prismatic" : "Grand Prismatic" },
-                    { n: "~200°F",l: isRo ? "Temp. medie" : "Avg. spring temp"   },
+                    { n: isRo ? "113 m" : "370 ft",l: isRo ? "Izv. Prismatic" : "Grand Prismatic" },
+                    { n: isRo ? "~93°C" : "~200°F",l: isRo ? "Temp. medie" : "Avg. spring temp"   },
                   ].map((s) => (
                     <div key={s.l}>
                       <div className="text-6xl md:text-7xl font-black tracking-tight text-white uppercase">

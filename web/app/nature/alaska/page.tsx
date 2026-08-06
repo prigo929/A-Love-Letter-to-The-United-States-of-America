@@ -70,8 +70,8 @@ export default async function AlaskaPage() {
   const extFacts = isRo ? ALASKA_EXTENDED_FACTS_RO : ALASKA_EXTENDED_FACTS_EN;
 
   const statWall = [
-    { value: 663,   suffix: "K mi²", label: isRo ? "Suprafață Totală" : "Total Area",          sub: isRo ? "De 2,5× mai mare decât Texas" : "2.5× the size of Texas",       color: "#8B8680" },
-    { value: 20310, suffix: " ft",   label: isRo ? "Altitudine Denali" : "Denali Elevation",   sub: isRo ? "Cel mai înalt vârf din America de Nord" : "Highest peak in N. America", color: "#C4956A" },
+    { value: isRo ? 1718 : 663,   suffix: isRo ? "K km²" : "K mi²", label: isRo ? "Suprafață Totală" : "Total Area",          sub: isRo ? "De 2,5× mai mare decât Texas" : "2.5× the size of Texas",       color: "#8B8680" },
+    { value: isRo ? 6190 : 20310, suffix: isRo ? " m" : " ft",   label: isRo ? "Altitudine Denali" : "Denali Elevation",   sub: isRo ? "Cel mai înalt vârf din America de Nord" : "Highest peak in N. America", color: "#C4956A" },
     { value: 100,   suffix: "K+",    label: isRo ? "Ghețari" : "Glaciers",                     sub: isRo ? "Mai mult decât restul lumii fără calote" : "More than rest of world outside poles", color: "#60a5fa" },
     { value: 3,     suffix: "M+",    label: isRo ? "Lacuri" : "Lakes",                         sub: isRo ? "Mai multe decât toate celelalte state" : "More than all other states", color: "#C4956A" },
   ];
@@ -95,7 +95,7 @@ export default async function AlaskaPage() {
           line2Color="var(--nat-accent-glacier)"
           body={
             isRo
-              ? "Cu 663.268 de mile pătrate de sălbăticie arctică, ghețari impunători și animale sălbatice unice, Alaska constituie un tărâm vast și distinct."
+              ? "Cu 1.717.854 de kilometri pătrați de sălbăticie arctică, ghețari impunători și animale sălbatice unice, Alaska constituie un tărâm vast și distinct."
               : "Spanning 663,268 square miles of Arctic wilderness, towering glaciers, and unique wildlife, Alaska represents a vast, distinct realm."
           }
         />
@@ -125,14 +125,14 @@ export default async function AlaskaPage() {
               </p>
               <p className="nat-text-body">
                 {isRo
-                  ? "Parcul Național Denali, la 6 milioane de acri, înconjoară muntele cu o sălbăticie mai mare decât întreg statul New Hampshire. Un singur drum, de 92 de mile, se aventurează în parc, o decizie deliberată de a păstra sălbăticia neîmblânzită."
+                  ? "Parcul Național Denali, la 24.281 km², înconjoară muntele cu o sălbăticie mai mare decât întreg statul New Hampshire. Un singur drum, de 148 km, se aventurează în parc, o decizie deliberată de a păstra sălbăticia neîmblânzită."
                   : "Denali National Park, at 6 million acres, surrounds the mountain in a wilderness larger than the entire state of New Hampshire. A single 92-mile road ventures into the park, a deliberate decision to keep the wilderness untamed."}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-16 gap-y-12 mt-12 border-t border-white/4 pt-12">
                 {[
-                  { value: "20,310 ft", label: isRo ? "Altitudine" : "Elevation"            },
-                  { value: "~18,000 ft",label: isRo ? "Ridicare" : "Base Rise" },
-                  { value: "6M acres",  label: isRo ? "Parc Național" : "National Park"     },
+                  { value: isRo ? "6190 m" : "20,310 ft", label: isRo ? "Altitudine" : "Elevation"            },
+                  { value: isRo ? "~5486 m" : "~18,000 ft",label: isRo ? "Ridicare" : "Base Rise" },
+                  { value: isRo ? "24281 km²" : "6M acres",  label: isRo ? "Parc Național" : "National Park"     },
                 ].map((s) => (
                   <div key={s.label}>
                     <div className="text-6xl md:text-7xl font-black tracking-tight text-white uppercase">
