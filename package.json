@@ -11,7 +11,7 @@
     "type-check": "npm run type-check --prefix web"
   },
   "dependencies": {
-    "@hookform/resolvers": "^5.2.2",
+    "@hookform/resolvers": "^5.4.0",
     "@supabase/ssr": "^0.10.2",
     "@supabase/supabase-js": "^2.104.0",
     "@types/d3-force": "^3.0.10",
