@@ -146,7 +146,6 @@ function GalleryTile({
 
 function PublicAssetTile({
   asset,
-  index = 0,
   onSelect,
   copy,
 }: {
@@ -165,23 +164,7 @@ function PublicAssetTile({
   };
 
   return (
-    <motion.div
-      layout
-      custom={index}
-      initial={{ opacity: 0, y: 16, scale: 0.95 }}
-      animate={{
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: {
-          delay: Math.min(index * 0.01, 0.25),
-          duration: 0.25,
-          ease: [0.25, 0.1, 0.25, 1],
-        },
-      }}
-      exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.15 } }}
-      className="group relative flex flex-col justify-between overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] p-4 transition duration-300 hover:border-glory-gold/50 hover:bg-white/[0.06]"
-    >
+    <div className="group relative flex flex-col justify-between overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] p-4 transition duration-200 hover:border-glory-gold/50 hover:bg-white/[0.06]">
       <button
         type="button"
         onClick={() => onSelect(asset)}
@@ -238,7 +221,7 @@ function PublicAssetTile({
           </a>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -854,41 +837,23 @@ export function GalleryExperience({
               </p>
             </div>
 
-            <AnimatePresence mode="wait">
-              {filteredPublicAssets.length === 0 ? (
-                <motion.div
-                  key="empty-state"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="py-20 text-center text-white/40"
-                >
-                  <FileCode className="mx-auto mb-3 h-10 w-10 opacity-30" />
-                  <p className="font-display text-lg">No assets match your search or filter.</p>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key={`asset-grid-${activeAssetCategory}-${assetSearchQuery}`}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.25, ease: "easeOut" }}
-                  className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
-                >
-                  <AnimatePresence mode="popLayout">
-                    {filteredPublicAssets.map((asset, idx) => (
-                      <PublicAssetTile
-                        key={asset.id}
-                        asset={asset}
-                        index={idx}
-                        onSelect={setSelectedAsset}
-                        copy={copy}
-                      />
-                    ))}
-                  </AnimatePresence>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {filteredPublicAssets.length === 0 ? (
+              <div className="py-20 text-center text-white/40">
+                <FileCode className="mx-auto mb-3 h-10 w-10 opacity-30" />
+                <p className="font-display text-lg">No assets match your search or filter.</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+                {filteredPublicAssets.map((asset) => (
+                  <PublicAssetTile
+                    key={asset.id}
+                    asset={asset}
+                    onSelect={setSelectedAsset}
+                    copy={copy}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         )}
       </section>
