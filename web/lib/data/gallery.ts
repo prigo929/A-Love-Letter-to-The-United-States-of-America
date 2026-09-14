@@ -1193,6 +1193,9 @@ function getCategory(path: string): Exclude<GalleryCategory, "All"> {
   if (first === "Architecture") {
     return "US Buildings";
   }
+  if (first === "Literature") {
+    return "History";
+  }
   return first as Exclude<GalleryCategory, "All">;
 }
 
@@ -1226,7 +1229,10 @@ export const GALLERY_IMAGES: GalleryImage[] = GALLERY_ASSETS.map((asset) => {
   const caption = toTitle(fileName);
   const override = CURATED_IMAGE_OVERRIDES[asset.path] ?? {};
   
-  const defaults = CATEGORY_DEFAULTS[category];
+  const defaults = CATEGORY_DEFAULTS[category] ?? {
+    location: "United States",
+    theme: "American Heritage",
+  };
 
   return {
     id: toId(asset.path),
