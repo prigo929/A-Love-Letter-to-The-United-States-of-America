@@ -175,6 +175,9 @@ function PublicAssetTile({
             fill
             unoptimized={asset.type === "svg"}
             className="object-contain transition-transform duration-300 group-hover:scale-105"
+            style={{
+              filter: "drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.45))",
+            }}
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
           />
         </div>
@@ -425,6 +428,7 @@ function PublicAssetDialog({
 }) {
   const [copied, setCopied] = useState(false);
   const [canvasBg, setCanvasBg] = useState<"dark" | "light" | "checkerboard">("dark");
+  const [haloGlow, setHaloGlow] = useState(true);
   const [zoomed, setZoomed] = useState(false);
 
   useEffect(() => {
@@ -514,6 +518,21 @@ function PublicAssetDialog({
               </button>
             </div>
 
+            {/* Contrast Halo Toggle */}
+            <button
+              type="button"
+              onClick={() => setHaloGlow((v) => !v)}
+              title={haloGlow ? "Halo Glow ON" : "Halo Glow OFF"}
+              className={cn(
+                "flex items-center gap-1 rounded-lg border border-white/10 px-2.5 py-1.5 font-body text-xs transition",
+                haloGlow
+                  ? "bg-glory-gold/20 border-glory-gold/50 text-glory-gold"
+                  : "bg-white/[0.05] text-white/50 hover:text-white"
+              )}
+            >
+              Halo
+            </button>
+
             <button
               type="button"
               onClick={onClose}
@@ -547,6 +566,12 @@ function PublicAssetDialog({
               fill
               unoptimized={asset.type === "svg"}
               className="object-contain transition-all duration-300"
+              style={{
+                filter:
+                  haloGlow && canvasBg !== "light"
+                    ? "drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.75))"
+                    : "none",
+              }}
             />
           </div>
         </div>
