@@ -150,7 +150,6 @@ function PublicAssetTile({
   copy,
 }: {
   asset: PublicAsset;
-  index?: number;
   onSelect: (asset: PublicAsset) => void;
   copy: GalleryCopy;
 }) {
@@ -837,23 +836,39 @@ export function GalleryExperience({
               </p>
             </div>
 
-            {filteredPublicAssets.length === 0 ? (
-              <div className="py-20 text-center text-white/40">
-                <FileCode className="mx-auto mb-3 h-10 w-10 opacity-30" />
-                <p className="font-display text-lg">No assets match your search or filter.</p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-                {filteredPublicAssets.map((asset) => (
-                  <PublicAssetTile
-                    key={asset.id}
-                    asset={asset}
-                    onSelect={setSelectedAsset}
-                    copy={copy}
-                  />
-                ))}
-              </div>
-            )}
+            <AnimatePresence mode="wait">
+              {filteredPublicAssets.length === 0 ? (
+                <motion.div
+                  key="empty-state"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                  className="py-20 text-center text-white/40"
+                >
+                  <FileCode className="mx-auto mb-3 h-10 w-10 opacity-30" />
+                  <p className="font-display text-lg">No assets match your search or filter.</p>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key={`asset-grid-${activeAssetCategory}-${assetSearchQuery}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.18, ease: "easeInOut" }}
+                  className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+                >
+                  {filteredPublicAssets.map((asset) => (
+                    <PublicAssetTile
+                      key={asset.id}
+                      asset={asset}
+                      onSelect={setSelectedAsset}
+                      copy={copy}
+                    />
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         )}
       </section>
