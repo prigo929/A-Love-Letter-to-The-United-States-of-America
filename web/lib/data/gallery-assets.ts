@@ -993,6 +993,190 @@ export type GalleryAssetRecord = {
   path: string;
   src: StaticImageData;
 };
+import galleryAdd0067 from "@/IMAGES/Architecture/Church_Niagara.jpg";
+import galleryAdd0068 from "@/IMAGES/Architecture/Cole_The_Oxbow.jpg";
+import galleryAdd0069 from "@/IMAGES/Architecture/Tour_Eiffel_Wikimedia_Commons.jpg";
+import galleryAdd0070 from "@/IMAGES/Culture/Aesthetics/1950s Retro Diner.jpg";
+import galleryAdd0071 from "@/IMAGES/Culture/Aesthetics/Circus Carnival Aesthetic.jpg";
+import galleryAdd0072 from "@/IMAGES/Culture/Aesthetics/Cozy Farmhouse Kitchen.png";
+import galleryAdd0073 from "@/IMAGES/Culture/Aesthetics/Industrial Loft Living.jpg";
+import galleryAdd0074 from "@/IMAGES/Culture/Aesthetics/Nautical Sailing Aesthetic.jpg";
+import galleryAdd0075 from "@/IMAGES/Culture/Aesthetics/Rustic Cabin Outdoors.jpg";
+import galleryAdd0076 from "@/IMAGES/Culture/Aesthetics/Suburban Shopping Mall.jpg";
+import galleryAdd0077 from "@/IMAGES/Culture/Aesthetics/Wild West Saloon.jpg";
+import galleryAdd0078 from "@/IMAGES/Culture/Americana/Blockbuster VHS Store.jpg";
+import galleryAdd0079 from "@/IMAGES/Culture/Americana/Day Glo Neon.jpg";
+import galleryAdd0080 from "@/IMAGES/Culture/Americana/Dnd Beholder Dice.jpg";
+import galleryAdd0081 from "@/IMAGES/Culture/Americana/Universal Frankenstein 1931.jpg";
+import galleryAdd0082 from "@/IMAGES/Culture/Brand Ads/Coca-Cola (1989) You Can't beat the feeling.jpg";
+import galleryAdd0083 from "@/IMAGES/Culture/Christmas/Christmas Stocking Hearth.jpg";
+import galleryAdd0084 from "@/IMAGES/Culture/Christmas/Gingerbread Man Cookie.jpg";
+import galleryAdd0085 from "@/IMAGES/Culture/Christmas/Holly Sprig Berries.jpg";
+import galleryAdd0086 from "@/IMAGES/Culture/Christmas/Peppermint Candy Cane.jpg";
+import galleryAdd0087 from "@/IMAGES/Culture/Christmas/Victorian Snowman.jpg";
+import galleryAdd0088 from "@/IMAGES/Culture/Collage/America collage Happy 4th\ud83c\uddfa\ud83c\uddf8 1.jpg";
+import galleryAdd0089 from "@/IMAGES/Culture/Collage/America collage Happy 4th\ud83c\uddfa\ud83c\uddf8 2.jpg";
+import galleryAdd0090 from "@/IMAGES/Culture/Collage/America collage Happy 4th\ud83c\uddfa\ud83c\uddf8 4.jpg";
+import galleryAdd0091 from "@/IMAGES/Culture/Collage/America collage Happy 4th\ud83c\uddfa\ud83c\uddf8 5.jpg";
+import galleryAdd0092 from "@/IMAGES/Culture/Companies/Founders Garages and Roots/Amazon Garage.jpg";
+import galleryAdd0093 from "@/IMAGES/Culture/Companies/Founders Garages and Roots/Apple Garage.jpg";
+import galleryAdd0094 from "@/IMAGES/Culture/Companies/Founders Garages and Roots/Google Garage.jpg";
+import galleryAdd0095 from "@/IMAGES/Culture/Companies/Founders Garages and Roots/HP Garage.jpg";
+import galleryAdd0096 from "@/IMAGES/Culture/Companies/Founders Garages and Roots/Harley Davidson Shed.jpg";
+import galleryAdd0097 from "@/IMAGES/Culture/Companies/Founders Garages and Roots/Walmart Walton 510 Store.jpg";
+import galleryAdd0098 from "@/IMAGES/Culture/Eras/1970s fast food restaurant - McDonald's.jpeg";
+import galleryAdd0099 from "@/IMAGES/Culture/Food/Chicken McNuggets.jpg";
+import galleryAdd0100 from "@/IMAGES/Culture/Food/Cotton Candy.jpg";
+import galleryAdd0101 from "@/IMAGES/Culture/Food/Glass of Milk.jpg";
+import galleryAdd0102 from "@/IMAGES/Culture/Food/Ham Sandwich.jpg";
+import galleryAdd0103 from "@/IMAGES/Culture/Food/Jello Mold.jpg";
+import galleryAdd0104 from "@/IMAGES/Culture/Food/McDonald's Menu with burger and fries and soda.jpeg";
+import galleryAdd0105 from "@/IMAGES/Culture/Food/McDonalds Fries.jpg";
+import galleryAdd0106 from "@/IMAGES/Culture/Food/S'mores.jpg";
+import galleryAdd0107 from "@/IMAGES/Culture/Food/Steak.jpg";
+import galleryAdd0108 from "@/IMAGES/Culture/Growing Up/Classroom.jpg";
+import galleryAdd0109 from "@/IMAGES/Culture/Growing Up/Football Night.jpg";
+import galleryAdd0110 from "@/IMAGES/Culture/Just America/McDonald's Restaurant in Bethlehem, Georgia.jpg";
+import galleryAdd0111 from "@/IMAGES/Culture/Magazines/TIME/Time magazine covers 00's.jpg";
+import galleryAdd0112 from "@/IMAGES/Culture/Magazines/TIME/Time magazine covers 50's.jpg";
+import galleryAdd0113 from "@/IMAGES/Culture/Magazines/TIME/Time magazine covers 60's.jpg";
+import galleryAdd0114 from "@/IMAGES/Culture/Magazines/TIME/Time magazine covers 70's.jpg";
+import galleryAdd0115 from "@/IMAGES/Culture/Magazines/TIME/Time magazine covers 80's.jpg";
+import galleryAdd0116 from "@/IMAGES/Culture/Magazines/TIME/Time magazine covers 90's.jpg";
+import galleryAdd0117 from "@/IMAGES/Culture/Mascots/Campbells Soup Kids.jpg";
+import galleryAdd0118 from "@/IMAGES/Culture/Mascots/Capn Crunch.jpg";
+import galleryAdd0119 from "@/IMAGES/Culture/Mascots/Geico Gecko.jpg";
+import galleryAdd0120 from "@/IMAGES/Culture/Mascots/Gritty Mascot.jpg";
+import galleryAdd0121 from "@/IMAGES/Culture/Mascots/Handsome Dan.avif";
+import galleryAdd0122 from "@/IMAGES/Culture/Mascots/Handsome Dan.jpg";
+import galleryAdd0123 from "@/IMAGES/Culture/Mascots/Mr Peanut.png";
+import galleryAdd0124 from "@/IMAGES/Culture/Mascots/Pillsbury Doughboy.jpg";
+import galleryAdd0125 from "@/IMAGES/Culture/Mascots/Quaker Oats Founder.jpg";
+import galleryAdd0126 from "@/IMAGES/Culture/Mascots/Tony the Tiger.jpg";
+import galleryAdd0127 from "@/IMAGES/Culture/School Supplies/Crayons.jpg";
+import galleryAdd0128 from "@/IMAGES/Culture/School Supplies/Eraser.jpg";
+import galleryAdd0129 from "@/IMAGES/Culture/School Supplies/Paper.jpg";
+import galleryAdd0130 from "@/IMAGES/Culture/School Supplies/Pen.jpg";
+import galleryAdd0131 from "@/IMAGES/Culture/School Supplies/Pencil.jpg";
+import galleryAdd0132 from "@/IMAGES/Culture/School Supplies/Ruler.jpg";
+import galleryAdd0133 from "@/IMAGES/Culture/School Supplies/Scissors.jpg";
+import galleryAdd0134 from "@/IMAGES/Culture/School/High School Hallway.jpg";
+import galleryAdd0135 from "@/IMAGES/Culture/Sports/Balls/Baseball.jpg";
+import galleryAdd0136 from "@/IMAGES/Culture/Sports/Balls/Basketball.png";
+import galleryAdd0137 from "@/IMAGES/Culture/Sports/Balls/Football.jpg";
+import galleryAdd0138 from "@/IMAGES/Culture/Sports/Balls/Golf Ball.jpg";
+import galleryAdd0139 from "@/IMAGES/Culture/Sports/Balls/Kickball.jpg";
+import galleryAdd0140 from "@/IMAGES/Culture/Sports/Balls/Soccer Ball.jpg";
+import galleryAdd0141 from "@/IMAGES/Culture/Sports/Balls/Tennis Ball.jpg";
+import galleryAdd0142 from "@/IMAGES/Culture/Sports/Balls/Volleyball.jpg";
+import galleryAdd0143 from "@/IMAGES/Culture/Sports/Stadiums/First pitch of the MLB Speedway Classic '25 at Bristol Motor Speedway.jpg";
+import galleryAdd0144 from "@/IMAGES/Infrastructure/Aerial photo of the California Aqueduct at the Interstate 205 crossing, east of Interstate 580 junction.jpg";
+import galleryAdd0145 from "@/IMAGES/Infrastructure/Pier-300-Channel.jpg";
+import galleryAdd0146 from "@/IMAGES/Infrastructure/Port-of-Los-Angeles-Main-Aerial.jpg";
+import galleryAdd0147 from "@/IMAGES/Infrastructure/San-Pedro-Bay-Port-Complex.jpg";
+import galleryAdd0148 from "@/IMAGES/Infrastructure/Southern-Aerial-View.jpg";
+import galleryAdd0149 from "@/IMAGES/Infrastructure/aerial-view-of-a-los-angeles-freeway-interchange.jpg";
+import galleryAdd0150 from "@/IMAGES/Infrastructure/aerial-view-of-the-high-five-interchange.jpg";
+import galleryAdd0151 from "@/IMAGES/Infrastructure/circle-interchange-near-downtown-chicago.jpg";
+import galleryAdd0152 from "@/IMAGES/Infrastructure/distant-view-of-washington-d-c-from-the-rosslyn-high-rise-neighborhood-of-northern-virginia.jpg";
+import galleryAdd0153 from "@/IMAGES/Infrastructure/diverging-diamond-interchange-on-interstate-70-in-st-louis-missouri.jpg";
+import galleryAdd0154 from "@/IMAGES/Infrastructure/high-five-interchange-in-dallas-tx.jpg";
+import galleryAdd0155 from "@/IMAGES/Infrastructure/highway-interchange-in-jacksonville.jpg";
+import galleryAdd0156 from "@/IMAGES/Infrastructure/highway-interchange-in-san-antonio-texas.jpg";
+import galleryAdd0157 from "@/IMAGES/Infrastructure/houston.jpg";
+import galleryAdd0158 from "@/IMAGES/Infrastructure/i-435-3-trails-crossing-in-kansas-city-missouri.jpg";
+import galleryAdd0159 from "@/IMAGES/Infrastructure/i-435-3-trails-crossing-in-kansas-city.jpg";
+import galleryAdd0160 from "@/IMAGES/Infrastructure/i-670-and-route-315-interchange.jpg";
+import galleryAdd0161 from "@/IMAGES/Infrastructure/i-85-i-485-turbine-interchange-in-north-carolina.jpg";
+import galleryAdd0162 from "@/IMAGES/Infrastructure/interchange-between-the-santa-monica-freeway-the-harbor-freeway.jpg";
+import galleryAdd0163 from "@/IMAGES/Infrastructure/interchange-in-the-greater-houston-area.jpg";
+import galleryAdd0164 from "@/IMAGES/Infrastructure/interchange-of-i-405-i-105-in-inglewood-ca.jpg";
+import galleryAdd0165 from "@/IMAGES/Infrastructure/jane-byrne-interchange-chicago.jpg";
+import galleryAdd0166 from "@/IMAGES/Infrastructure/jane-byrne-interchange-under-construction.jpg";
+import galleryAdd0167 from "@/IMAGES/Infrastructure/junction-of-i-405-and-i-605.jpg";
+import galleryAdd0168 from "@/IMAGES/Infrastructure/looking-west-from-the-fort-worth-mixmaster.jpg";
+import galleryAdd0169 from "@/IMAGES/Infrastructure/los-angeles-freeways.jpg";
+import galleryAdd0170 from "@/IMAGES/Infrastructure/the-circle-interchange-in-chicago-il.jpg";
+import galleryAdd0171 from "@/IMAGES/Infrastructure/the-jane-m-byrne-interchange-in-chicago-illinois.jpg";
+import galleryAdd0172 from "@/IMAGES/Infrastructure/traffic-in-dallas-texas.jpg";
+import galleryAdd0173 from "@/IMAGES/Infrastructure/us-75-at-texas-state-highway-loop-12.jpg";
+import galleryAdd0174 from "@/IMAGES/Infrastructure/us-75-i-635.jpg";
+import galleryAdd0175 from "@/IMAGES/Infrastructure/view-of-chicago-from-willis-tower.jpg";
+import galleryAdd0176 from "@/IMAGES/Leadership/President Reagan giving speech on the Centennial of the Statue of Liberty, Governor's Island, New York Taken on 4 July 1986.jpg";
+import galleryAdd0177 from "@/IMAGES/Leadership/President Ronald Reagan with George Bush and Thomas \"Tip\" O'Neil Applauding Giving The State of The Union Address to Congress and The Nation.jpg";
+import galleryAdd0178 from "@/IMAGES/Literature/Main reading room at the Library of Congress in Washington, D.C.jpg";
+import galleryAdd0179 from "@/IMAGES/Literature/Map Virginia John Smith The General 1624.jpg";
+import galleryAdd0180 from "@/IMAGES/Nature/Resources/stunning photo of a vineyard in early summer in Polk County, Oregon, part of the Willamette Valley's wine region.jpg";
+import galleryAdd0181 from "@/IMAGES/US Buildings/US State Capitols/Alabama State Capitol.jpg";
+import galleryAdd0182 from "@/IMAGES/US Buildings/US State Capitols/Alaska State Capitol.jpg";
+import galleryAdd0183 from "@/IMAGES/US Buildings/US State Capitols/Arizona State Capitol.jpg";
+import galleryAdd0184 from "@/IMAGES/US Buildings/US State Capitols/Arkansas State Capitol.jpg";
+import galleryAdd0185 from "@/IMAGES/US Buildings/US State Capitols/California State Capitol.jpg";
+import galleryAdd0186 from "@/IMAGES/US Buildings/US State Capitols/Colorado State Capitol.jpg";
+import galleryAdd0187 from "@/IMAGES/US Buildings/US State Capitols/Connecticut State Capitol.jpg";
+import galleryAdd0188 from "@/IMAGES/US Buildings/US State Capitols/Delaware State House.jpg";
+import galleryAdd0189 from "@/IMAGES/US Buildings/US State Capitols/Florida State Capitol.jpg";
+import galleryAdd0190 from "@/IMAGES/US Buildings/US State Capitols/Georgia State Capitol.jpg";
+import galleryAdd0191 from "@/IMAGES/US Buildings/US State Capitols/Hawaii State Capitol.jpg";
+import galleryAdd0192 from "@/IMAGES/US Buildings/US State Capitols/Idaho State Capitol.jpg";
+import galleryAdd0193 from "@/IMAGES/US Buildings/US State Capitols/Illinois State Capitol.jpg";
+import galleryAdd0194 from "@/IMAGES/US Buildings/US State Capitols/Indiana State Capitol.jpg";
+import galleryAdd0195 from "@/IMAGES/US Buildings/US State Capitols/Iowa State Capitol.jpg";
+import galleryAdd0196 from "@/IMAGES/US Buildings/US State Capitols/Kansas State Capitol.jpg";
+import galleryAdd0197 from "@/IMAGES/US Buildings/US State Capitols/Kentucky State Capitol.jpg";
+import galleryAdd0198 from "@/IMAGES/US Buildings/US State Capitols/Louisiana State Capitol.jpg";
+import galleryAdd0199 from "@/IMAGES/US Buildings/US State Capitols/Maine State House.jpg";
+import galleryAdd0200 from "@/IMAGES/US Buildings/US State Capitols/Maryland State House.jpg";
+import galleryAdd0201 from "@/IMAGES/US Buildings/US State Capitols/Massachusetts State House.jpg";
+import galleryAdd0202 from "@/IMAGES/US Buildings/US State Capitols/Michigan State Capitol.jpg";
+import galleryAdd0203 from "@/IMAGES/US Buildings/US State Capitols/Minnesota State Capitol.jpg";
+import galleryAdd0204 from "@/IMAGES/US Buildings/US State Capitols/Mississippi State Capitol.jpg";
+import galleryAdd0205 from "@/IMAGES/US Buildings/US State Capitols/Missouri State Capitol.jpg";
+import galleryAdd0206 from "@/IMAGES/US Buildings/US State Capitols/Montana State Capitol.jpg";
+import galleryAdd0207 from "@/IMAGES/US Buildings/US State Capitols/Nebraska State Capitol.jpg";
+import galleryAdd0208 from "@/IMAGES/US Buildings/US State Capitols/Nevada State Capitol.jpg";
+import galleryAdd0209 from "@/IMAGES/US Buildings/US State Capitols/New Hampshire State House.jpg";
+import galleryAdd0210 from "@/IMAGES/US Buildings/US State Capitols/New Jersey State House.jpg";
+import galleryAdd0211 from "@/IMAGES/US Buildings/US State Capitols/New Mexico State Capitol.jpg";
+import galleryAdd0212 from "@/IMAGES/US Buildings/US State Capitols/New York State Capitol.jpg";
+import galleryAdd0213 from "@/IMAGES/US Buildings/US State Capitols/North Carolina State Capitol.jpg";
+import galleryAdd0214 from "@/IMAGES/US Buildings/US State Capitols/North Dakota State Capitol.jpg";
+import galleryAdd0215 from "@/IMAGES/US Buildings/US State Capitols/Ohio State House.jpg";
+import galleryAdd0216 from "@/IMAGES/US Buildings/US State Capitols/Oklahoma State Capitol.jpg";
+import galleryAdd0217 from "@/IMAGES/US Buildings/US State Capitols/Oregon State Capitol.jpg";
+import galleryAdd0218 from "@/IMAGES/US Buildings/US State Capitols/Pennsylvania State Capitol.jpg";
+import galleryAdd0219 from "@/IMAGES/US Buildings/US State Capitols/Rhode Island State House.jpg";
+import galleryAdd0220 from "@/IMAGES/US Buildings/US State Capitols/South Carolina State Capitol.jpg";
+import galleryAdd0221 from "@/IMAGES/US Buildings/US State Capitols/South Dakota State Capitol.jpg";
+import galleryAdd0222 from "@/IMAGES/US Buildings/US State Capitols/Tennessee State Capitol.jpg";
+import galleryAdd0223 from "@/IMAGES/US Buildings/US State Capitols/Texas State Capitol.jpg";
+import galleryAdd0224 from "@/IMAGES/US Buildings/US State Capitols/Utah State Capitol.jpg";
+import galleryAdd0225 from "@/IMAGES/US Buildings/US State Capitols/Vermont State House.jpg";
+import galleryAdd0226 from "@/IMAGES/US Buildings/US State Capitols/Virginia State Capitol.jpg";
+import galleryAdd0227 from "@/IMAGES/US Buildings/US State Capitols/Washington State Capitol.jpg";
+import galleryAdd0228 from "@/IMAGES/US Buildings/US State Capitols/West Virginia State Capitol.jpg";
+import galleryAdd0229 from "@/IMAGES/US Buildings/US State Capitols/Wisconsin State Capitol.jpg";
+import galleryAdd0230 from "@/IMAGES/US Buildings/US State Capitols/Wyoming State Capitol.jpg";
+import galleryAdd0231 from "@/IMAGES/US Flags/Flag_of_the_United_States.png";
+import galleryAdd0232 from "@/IMAGES/Culture/Brand Ads/Coca-Cola (1989) You Can't beat the feeling.jpg";
+import galleryAdd0233 from "@/IMAGES/Culture/Collage/America collage Happy 4th\ud83c\uddfa\ud83c\uddf8 1.jpg";
+import galleryAdd0234 from "@/IMAGES/Culture/Collage/America collage Happy 4th\ud83c\uddfa\ud83c\uddf8 2.jpg";
+import galleryAdd0235 from "@/IMAGES/Culture/Collage/America collage Happy 4th\ud83c\uddfa\ud83c\uddf8 4.jpg";
+import galleryAdd0236 from "@/IMAGES/Culture/Collage/America collage Happy 4th\ud83c\uddfa\ud83c\uddf8 5.jpg";
+import galleryAdd0237 from "@/IMAGES/Culture/Eras/1970s fast food restaurant - McDonald's.jpeg";
+import galleryAdd0238 from "@/IMAGES/Culture/Food/McDonald's Menu with burger and fries and soda.jpeg";
+import galleryAdd0239 from "@/IMAGES/Culture/Food/S'mores.jpg";
+import galleryAdd0240 from "@/IMAGES/Culture/Just America/McDonald's Restaurant in Bethlehem, Georgia.jpg";
+import galleryAdd0241 from "@/IMAGES/Culture/Magazines/TIME/Time magazine covers 00's.jpg";
+import galleryAdd0242 from "@/IMAGES/Culture/Magazines/TIME/Time magazine covers 50's.jpg";
+import galleryAdd0243 from "@/IMAGES/Culture/Magazines/TIME/Time magazine covers 60's.jpg";
+import galleryAdd0244 from "@/IMAGES/Culture/Magazines/TIME/Time magazine covers 70's.jpg";
+import galleryAdd0245 from "@/IMAGES/Culture/Magazines/TIME/Time magazine covers 80's.jpg";
+import galleryAdd0246 from "@/IMAGES/Culture/Magazines/TIME/Time magazine covers 90's.jpg";
+import galleryAdd0247 from "@/IMAGES/Culture/Sports/Stadiums/First pitch of the MLB Speedway Classic '25 at Bristol Motor Speedway.jpg";
+import galleryAdd0248 from "@/IMAGES/Leadership/President Reagan giving speech on the Centennial of the Statue of Liberty, Governor's Island, New York Taken on 4 July 1986.jpg";
+import galleryAdd0249 from "@/IMAGES/Leadership/President Ronald Reagan with George Bush and Thomas \"Tip\" O'Neil Applauding Giving The State of The Union Address to Congress and The Nation.jpg";
+import galleryAdd0250 from "@/IMAGES/Nature/Resources/stunning photo of a vineyard in early summer in Polk County, Oregon, part of the Willamette Valley's wine region.jpg";
 
 const RAW_GALLERY_ASSETS = [
   { path: "Aerials/Aerial View of Dallas.jpg", src: asset0000 },
@@ -1980,6 +2164,190 @@ const RAW_GALLERY_ASSETS = [
   { path: "Aerials/Aerial view of the Pentagon in Arlington Virginia with the Potomac River and Washington Monument in the background.jpg", src: galleryAdd0064 },
   { path: "Aerials/Aerial view of the Washington Monument and Jefferson Memorial with the Potomac River and Reagan National Airport in Washington DC.jpg", src: galleryAdd0065 },
   { path: "Aerials/Aerial_view_from_above_the_U.S._Capitol,_looking_west_along_the_National_Mall,_Washington,_D.C_LCCN2011635406.jpg", src: galleryAdd0066 },
+  { path: "Architecture/Church_Niagara.jpg", src: galleryAdd0067 },
+  { path: "Architecture/Cole_The_Oxbow.jpg", src: galleryAdd0068 },
+  { path: "Architecture/Tour_Eiffel_Wikimedia_Commons.jpg", src: galleryAdd0069 },
+  { path: "Culture/Aesthetics/1950s Retro Diner.jpg", src: galleryAdd0070 },
+  { path: "Culture/Aesthetics/Circus Carnival Aesthetic.jpg", src: galleryAdd0071 },
+  { path: "Culture/Aesthetics/Cozy Farmhouse Kitchen.png", src: galleryAdd0072 },
+  { path: "Culture/Aesthetics/Industrial Loft Living.jpg", src: galleryAdd0073 },
+  { path: "Culture/Aesthetics/Nautical Sailing Aesthetic.jpg", src: galleryAdd0074 },
+  { path: "Culture/Aesthetics/Rustic Cabin Outdoors.jpg", src: galleryAdd0075 },
+  { path: "Culture/Aesthetics/Suburban Shopping Mall.jpg", src: galleryAdd0076 },
+  { path: "Culture/Aesthetics/Wild West Saloon.jpg", src: galleryAdd0077 },
+  { path: "Culture/Americana/Blockbuster VHS Store.jpg", src: galleryAdd0078 },
+  { path: "Culture/Americana/Day Glo Neon.jpg", src: galleryAdd0079 },
+  { path: "Culture/Americana/Dnd Beholder Dice.jpg", src: galleryAdd0080 },
+  { path: "Culture/Americana/Universal Frankenstein 1931.jpg", src: galleryAdd0081 },
+  { path: "Culture/Brand Ads/Coca-Cola (1989) You Can't beat the feeling.jpg", src: galleryAdd0082 },
+  { path: "Culture/Christmas/Christmas Stocking Hearth.jpg", src: galleryAdd0083 },
+  { path: "Culture/Christmas/Gingerbread Man Cookie.jpg", src: galleryAdd0084 },
+  { path: "Culture/Christmas/Holly Sprig Berries.jpg", src: galleryAdd0085 },
+  { path: "Culture/Christmas/Peppermint Candy Cane.jpg", src: galleryAdd0086 },
+  { path: "Culture/Christmas/Victorian Snowman.jpg", src: galleryAdd0087 },
+  { path: "Culture/Collage/America collage Happy 4th\ud83c\uddfa\ud83c\uddf8 1.jpg", src: galleryAdd0088 },
+  { path: "Culture/Collage/America collage Happy 4th\ud83c\uddfa\ud83c\uddf8 2.jpg", src: galleryAdd0089 },
+  { path: "Culture/Collage/America collage Happy 4th\ud83c\uddfa\ud83c\uddf8 4.jpg", src: galleryAdd0090 },
+  { path: "Culture/Collage/America collage Happy 4th\ud83c\uddfa\ud83c\uddf8 5.jpg", src: galleryAdd0091 },
+  { path: "Culture/Companies/Founders Garages and Roots/Amazon Garage.jpg", src: galleryAdd0092 },
+  { path: "Culture/Companies/Founders Garages and Roots/Apple Garage.jpg", src: galleryAdd0093 },
+  { path: "Culture/Companies/Founders Garages and Roots/Google Garage.jpg", src: galleryAdd0094 },
+  { path: "Culture/Companies/Founders Garages and Roots/HP Garage.jpg", src: galleryAdd0095 },
+  { path: "Culture/Companies/Founders Garages and Roots/Harley Davidson Shed.jpg", src: galleryAdd0096 },
+  { path: "Culture/Companies/Founders Garages and Roots/Walmart Walton 510 Store.jpg", src: galleryAdd0097 },
+  { path: "Culture/Eras/1970s fast food restaurant - McDonald's.jpeg", src: galleryAdd0098 },
+  { path: "Culture/Food/Chicken McNuggets.jpg", src: galleryAdd0099 },
+  { path: "Culture/Food/Cotton Candy.jpg", src: galleryAdd0100 },
+  { path: "Culture/Food/Glass of Milk.jpg", src: galleryAdd0101 },
+  { path: "Culture/Food/Ham Sandwich.jpg", src: galleryAdd0102 },
+  { path: "Culture/Food/Jello Mold.jpg", src: galleryAdd0103 },
+  { path: "Culture/Food/McDonald's Menu with burger and fries and soda.jpeg", src: galleryAdd0104 },
+  { path: "Culture/Food/McDonalds Fries.jpg", src: galleryAdd0105 },
+  { path: "Culture/Food/S'mores.jpg", src: galleryAdd0106 },
+  { path: "Culture/Food/Steak.jpg", src: galleryAdd0107 },
+  { path: "Culture/Growing Up/Classroom.jpg", src: galleryAdd0108 },
+  { path: "Culture/Growing Up/Football Night.jpg", src: galleryAdd0109 },
+  { path: "Culture/Just America/McDonald's Restaurant in Bethlehem, Georgia.jpg", src: galleryAdd0110 },
+  { path: "Culture/Magazines/TIME/Time magazine covers 00's.jpg", src: galleryAdd0111 },
+  { path: "Culture/Magazines/TIME/Time magazine covers 50's.jpg", src: galleryAdd0112 },
+  { path: "Culture/Magazines/TIME/Time magazine covers 60's.jpg", src: galleryAdd0113 },
+  { path: "Culture/Magazines/TIME/Time magazine covers 70's.jpg", src: galleryAdd0114 },
+  { path: "Culture/Magazines/TIME/Time magazine covers 80's.jpg", src: galleryAdd0115 },
+  { path: "Culture/Magazines/TIME/Time magazine covers 90's.jpg", src: galleryAdd0116 },
+  { path: "Culture/Mascots/Campbells Soup Kids.jpg", src: galleryAdd0117 },
+  { path: "Culture/Mascots/Capn Crunch.jpg", src: galleryAdd0118 },
+  { path: "Culture/Mascots/Geico Gecko.jpg", src: galleryAdd0119 },
+  { path: "Culture/Mascots/Gritty Mascot.jpg", src: galleryAdd0120 },
+  { path: "Culture/Mascots/Handsome Dan.avif", src: galleryAdd0121 },
+  { path: "Culture/Mascots/Handsome Dan.jpg", src: galleryAdd0122 },
+  { path: "Culture/Mascots/Mr Peanut.png", src: galleryAdd0123 },
+  { path: "Culture/Mascots/Pillsbury Doughboy.jpg", src: galleryAdd0124 },
+  { path: "Culture/Mascots/Quaker Oats Founder.jpg", src: galleryAdd0125 },
+  { path: "Culture/Mascots/Tony the Tiger.jpg", src: galleryAdd0126 },
+  { path: "Culture/School Supplies/Crayons.jpg", src: galleryAdd0127 },
+  { path: "Culture/School Supplies/Eraser.jpg", src: galleryAdd0128 },
+  { path: "Culture/School Supplies/Paper.jpg", src: galleryAdd0129 },
+  { path: "Culture/School Supplies/Pen.jpg", src: galleryAdd0130 },
+  { path: "Culture/School Supplies/Pencil.jpg", src: galleryAdd0131 },
+  { path: "Culture/School Supplies/Ruler.jpg", src: galleryAdd0132 },
+  { path: "Culture/School Supplies/Scissors.jpg", src: galleryAdd0133 },
+  { path: "Culture/School/High School Hallway.jpg", src: galleryAdd0134 },
+  { path: "Culture/Sports/Balls/Baseball.jpg", src: galleryAdd0135 },
+  { path: "Culture/Sports/Balls/Basketball.png", src: galleryAdd0136 },
+  { path: "Culture/Sports/Balls/Football.jpg", src: galleryAdd0137 },
+  { path: "Culture/Sports/Balls/Golf Ball.jpg", src: galleryAdd0138 },
+  { path: "Culture/Sports/Balls/Kickball.jpg", src: galleryAdd0139 },
+  { path: "Culture/Sports/Balls/Soccer Ball.jpg", src: galleryAdd0140 },
+  { path: "Culture/Sports/Balls/Tennis Ball.jpg", src: galleryAdd0141 },
+  { path: "Culture/Sports/Balls/Volleyball.jpg", src: galleryAdd0142 },
+  { path: "Culture/Sports/Stadiums/First pitch of the MLB Speedway Classic '25 at Bristol Motor Speedway.jpg", src: galleryAdd0143 },
+  { path: "Infrastructure/Aerial photo of the California Aqueduct at the Interstate 205 crossing, east of Interstate 580 junction.jpg", src: galleryAdd0144 },
+  { path: "Infrastructure/Pier-300-Channel.jpg", src: galleryAdd0145 },
+  { path: "Infrastructure/Port-of-Los-Angeles-Main-Aerial.jpg", src: galleryAdd0146 },
+  { path: "Infrastructure/San-Pedro-Bay-Port-Complex.jpg", src: galleryAdd0147 },
+  { path: "Infrastructure/Southern-Aerial-View.jpg", src: galleryAdd0148 },
+  { path: "Infrastructure/aerial-view-of-a-los-angeles-freeway-interchange.jpg", src: galleryAdd0149 },
+  { path: "Infrastructure/aerial-view-of-the-high-five-interchange.jpg", src: galleryAdd0150 },
+  { path: "Infrastructure/circle-interchange-near-downtown-chicago.jpg", src: galleryAdd0151 },
+  { path: "Infrastructure/distant-view-of-washington-d-c-from-the-rosslyn-high-rise-neighborhood-of-northern-virginia.jpg", src: galleryAdd0152 },
+  { path: "Infrastructure/diverging-diamond-interchange-on-interstate-70-in-st-louis-missouri.jpg", src: galleryAdd0153 },
+  { path: "Infrastructure/high-five-interchange-in-dallas-tx.jpg", src: galleryAdd0154 },
+  { path: "Infrastructure/highway-interchange-in-jacksonville.jpg", src: galleryAdd0155 },
+  { path: "Infrastructure/highway-interchange-in-san-antonio-texas.jpg", src: galleryAdd0156 },
+  { path: "Infrastructure/houston.jpg", src: galleryAdd0157 },
+  { path: "Infrastructure/i-435-3-trails-crossing-in-kansas-city-missouri.jpg", src: galleryAdd0158 },
+  { path: "Infrastructure/i-435-3-trails-crossing-in-kansas-city.jpg", src: galleryAdd0159 },
+  { path: "Infrastructure/i-670-and-route-315-interchange.jpg", src: galleryAdd0160 },
+  { path: "Infrastructure/i-85-i-485-turbine-interchange-in-north-carolina.jpg", src: galleryAdd0161 },
+  { path: "Infrastructure/interchange-between-the-santa-monica-freeway-the-harbor-freeway.jpg", src: galleryAdd0162 },
+  { path: "Infrastructure/interchange-in-the-greater-houston-area.jpg", src: galleryAdd0163 },
+  { path: "Infrastructure/interchange-of-i-405-i-105-in-inglewood-ca.jpg", src: galleryAdd0164 },
+  { path: "Infrastructure/jane-byrne-interchange-chicago.jpg", src: galleryAdd0165 },
+  { path: "Infrastructure/jane-byrne-interchange-under-construction.jpg", src: galleryAdd0166 },
+  { path: "Infrastructure/junction-of-i-405-and-i-605.jpg", src: galleryAdd0167 },
+  { path: "Infrastructure/looking-west-from-the-fort-worth-mixmaster.jpg", src: galleryAdd0168 },
+  { path: "Infrastructure/los-angeles-freeways.jpg", src: galleryAdd0169 },
+  { path: "Infrastructure/the-circle-interchange-in-chicago-il.jpg", src: galleryAdd0170 },
+  { path: "Infrastructure/the-jane-m-byrne-interchange-in-chicago-illinois.jpg", src: galleryAdd0171 },
+  { path: "Infrastructure/traffic-in-dallas-texas.jpg", src: galleryAdd0172 },
+  { path: "Infrastructure/us-75-at-texas-state-highway-loop-12.jpg", src: galleryAdd0173 },
+  { path: "Infrastructure/us-75-i-635.jpg", src: galleryAdd0174 },
+  { path: "Infrastructure/view-of-chicago-from-willis-tower.jpg", src: galleryAdd0175 },
+  { path: "Leadership/President Reagan giving speech on the Centennial of the Statue of Liberty, Governor's Island, New York Taken on 4 July 1986.jpg", src: galleryAdd0176 },
+  { path: "Leadership/President Ronald Reagan with George Bush and Thomas \"Tip\" O'Neil Applauding Giving The State of The Union Address to Congress and The Nation.jpg", src: galleryAdd0177 },
+  { path: "Literature/Main reading room at the Library of Congress in Washington, D.C.jpg", src: galleryAdd0178 },
+  { path: "Literature/Map Virginia John Smith The General 1624.jpg", src: galleryAdd0179 },
+  { path: "Nature/Resources/stunning photo of a vineyard in early summer in Polk County, Oregon, part of the Willamette Valley's wine region.jpg", src: galleryAdd0180 },
+  { path: "US Buildings/US State Capitols/Alabama State Capitol.jpg", src: galleryAdd0181 },
+  { path: "US Buildings/US State Capitols/Alaska State Capitol.jpg", src: galleryAdd0182 },
+  { path: "US Buildings/US State Capitols/Arizona State Capitol.jpg", src: galleryAdd0183 },
+  { path: "US Buildings/US State Capitols/Arkansas State Capitol.jpg", src: galleryAdd0184 },
+  { path: "US Buildings/US State Capitols/California State Capitol.jpg", src: galleryAdd0185 },
+  { path: "US Buildings/US State Capitols/Colorado State Capitol.jpg", src: galleryAdd0186 },
+  { path: "US Buildings/US State Capitols/Connecticut State Capitol.jpg", src: galleryAdd0187 },
+  { path: "US Buildings/US State Capitols/Delaware State House.jpg", src: galleryAdd0188 },
+  { path: "US Buildings/US State Capitols/Florida State Capitol.jpg", src: galleryAdd0189 },
+  { path: "US Buildings/US State Capitols/Georgia State Capitol.jpg", src: galleryAdd0190 },
+  { path: "US Buildings/US State Capitols/Hawaii State Capitol.jpg", src: galleryAdd0191 },
+  { path: "US Buildings/US State Capitols/Idaho State Capitol.jpg", src: galleryAdd0192 },
+  { path: "US Buildings/US State Capitols/Illinois State Capitol.jpg", src: galleryAdd0193 },
+  { path: "US Buildings/US State Capitols/Indiana State Capitol.jpg", src: galleryAdd0194 },
+  { path: "US Buildings/US State Capitols/Iowa State Capitol.jpg", src: galleryAdd0195 },
+  { path: "US Buildings/US State Capitols/Kansas State Capitol.jpg", src: galleryAdd0196 },
+  { path: "US Buildings/US State Capitols/Kentucky State Capitol.jpg", src: galleryAdd0197 },
+  { path: "US Buildings/US State Capitols/Louisiana State Capitol.jpg", src: galleryAdd0198 },
+  { path: "US Buildings/US State Capitols/Maine State House.jpg", src: galleryAdd0199 },
+  { path: "US Buildings/US State Capitols/Maryland State House.jpg", src: galleryAdd0200 },
+  { path: "US Buildings/US State Capitols/Massachusetts State House.jpg", src: galleryAdd0201 },
+  { path: "US Buildings/US State Capitols/Michigan State Capitol.jpg", src: galleryAdd0202 },
+  { path: "US Buildings/US State Capitols/Minnesota State Capitol.jpg", src: galleryAdd0203 },
+  { path: "US Buildings/US State Capitols/Mississippi State Capitol.jpg", src: galleryAdd0204 },
+  { path: "US Buildings/US State Capitols/Missouri State Capitol.jpg", src: galleryAdd0205 },
+  { path: "US Buildings/US State Capitols/Montana State Capitol.jpg", src: galleryAdd0206 },
+  { path: "US Buildings/US State Capitols/Nebraska State Capitol.jpg", src: galleryAdd0207 },
+  { path: "US Buildings/US State Capitols/Nevada State Capitol.jpg", src: galleryAdd0208 },
+  { path: "US Buildings/US State Capitols/New Hampshire State House.jpg", src: galleryAdd0209 },
+  { path: "US Buildings/US State Capitols/New Jersey State House.jpg", src: galleryAdd0210 },
+  { path: "US Buildings/US State Capitols/New Mexico State Capitol.jpg", src: galleryAdd0211 },
+  { path: "US Buildings/US State Capitols/New York State Capitol.jpg", src: galleryAdd0212 },
+  { path: "US Buildings/US State Capitols/North Carolina State Capitol.jpg", src: galleryAdd0213 },
+  { path: "US Buildings/US State Capitols/North Dakota State Capitol.jpg", src: galleryAdd0214 },
+  { path: "US Buildings/US State Capitols/Ohio State House.jpg", src: galleryAdd0215 },
+  { path: "US Buildings/US State Capitols/Oklahoma State Capitol.jpg", src: galleryAdd0216 },
+  { path: "US Buildings/US State Capitols/Oregon State Capitol.jpg", src: galleryAdd0217 },
+  { path: "US Buildings/US State Capitols/Pennsylvania State Capitol.jpg", src: galleryAdd0218 },
+  { path: "US Buildings/US State Capitols/Rhode Island State House.jpg", src: galleryAdd0219 },
+  { path: "US Buildings/US State Capitols/South Carolina State Capitol.jpg", src: galleryAdd0220 },
+  { path: "US Buildings/US State Capitols/South Dakota State Capitol.jpg", src: galleryAdd0221 },
+  { path: "US Buildings/US State Capitols/Tennessee State Capitol.jpg", src: galleryAdd0222 },
+  { path: "US Buildings/US State Capitols/Texas State Capitol.jpg", src: galleryAdd0223 },
+  { path: "US Buildings/US State Capitols/Utah State Capitol.jpg", src: galleryAdd0224 },
+  { path: "US Buildings/US State Capitols/Vermont State House.jpg", src: galleryAdd0225 },
+  { path: "US Buildings/US State Capitols/Virginia State Capitol.jpg", src: galleryAdd0226 },
+  { path: "US Buildings/US State Capitols/Washington State Capitol.jpg", src: galleryAdd0227 },
+  { path: "US Buildings/US State Capitols/West Virginia State Capitol.jpg", src: galleryAdd0228 },
+  { path: "US Buildings/US State Capitols/Wisconsin State Capitol.jpg", src: galleryAdd0229 },
+  { path: "US Buildings/US State Capitols/Wyoming State Capitol.jpg", src: galleryAdd0230 },
+  { path: "US Flags/Flag_of_the_United_States.png", src: galleryAdd0231 },
+  { path: "Culture/Brand Ads/Coca-Cola (1989) You Can't beat the feeling.jpg", src: galleryAdd0232 },
+  { path: "Culture/Collage/America collage Happy 4th\ud83c\uddfa\ud83c\uddf8 1.jpg", src: galleryAdd0233 },
+  { path: "Culture/Collage/America collage Happy 4th\ud83c\uddfa\ud83c\uddf8 2.jpg", src: galleryAdd0234 },
+  { path: "Culture/Collage/America collage Happy 4th\ud83c\uddfa\ud83c\uddf8 4.jpg", src: galleryAdd0235 },
+  { path: "Culture/Collage/America collage Happy 4th\ud83c\uddfa\ud83c\uddf8 5.jpg", src: galleryAdd0236 },
+  { path: "Culture/Eras/1970s fast food restaurant - McDonald's.jpeg", src: galleryAdd0237 },
+  { path: "Culture/Food/McDonald's Menu with burger and fries and soda.jpeg", src: galleryAdd0238 },
+  { path: "Culture/Food/S'mores.jpg", src: galleryAdd0239 },
+  { path: "Culture/Just America/McDonald's Restaurant in Bethlehem, Georgia.jpg", src: galleryAdd0240 },
+  { path: "Culture/Magazines/TIME/Time magazine covers 00's.jpg", src: galleryAdd0241 },
+  { path: "Culture/Magazines/TIME/Time magazine covers 50's.jpg", src: galleryAdd0242 },
+  { path: "Culture/Magazines/TIME/Time magazine covers 60's.jpg", src: galleryAdd0243 },
+  { path: "Culture/Magazines/TIME/Time magazine covers 70's.jpg", src: galleryAdd0244 },
+  { path: "Culture/Magazines/TIME/Time magazine covers 80's.jpg", src: galleryAdd0245 },
+  { path: "Culture/Magazines/TIME/Time magazine covers 90's.jpg", src: galleryAdd0246 },
+  { path: "Culture/Sports/Stadiums/First pitch of the MLB Speedway Classic '25 at Bristol Motor Speedway.jpg", src: galleryAdd0247 },
+  { path: "Leadership/President Reagan giving speech on the Centennial of the Statue of Liberty, Governor's Island, New York Taken on 4 July 1986.jpg", src: galleryAdd0248 },
+  { path: "Leadership/President Ronald Reagan with George Bush and Thomas \"Tip\" O'Neil Applauding Giving The State of The Union Address to Congress and The Nation.jpg", src: galleryAdd0249 },
+  { path: "Nature/Resources/stunning photo of a vineyard in early summer in Polk County, Oregon, part of the Willamette Valley's wine region.jpg", src: galleryAdd0250 },
 ] as const satisfies readonly GalleryAssetRecord[];
 
 export const GALLERY_ASSETS: readonly GalleryAssetRecord[] = Array.from(
