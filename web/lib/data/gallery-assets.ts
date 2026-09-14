@@ -1047,7 +1047,6 @@ import galleryAdd0117 from "@/IMAGES/Culture/Mascots/Campbells Soup Kids.jpg";
 import galleryAdd0118 from "@/IMAGES/Culture/Mascots/Capn Crunch.jpg";
 import galleryAdd0119 from "@/IMAGES/Culture/Mascots/Geico Gecko.jpg";
 import galleryAdd0120 from "@/IMAGES/Culture/Mascots/Gritty Mascot.jpg";
-import galleryAdd0121 from "@/IMAGES/Culture/Mascots/Handsome Dan.avif";
 import galleryAdd0122 from "@/IMAGES/Culture/Mascots/Handsome Dan.jpg";
 import galleryAdd0123 from "@/IMAGES/Culture/Mascots/Mr Peanut.png";
 import galleryAdd0124 from "@/IMAGES/Culture/Mascots/Pillsbury Doughboy.jpg";
@@ -2218,7 +2217,6 @@ const RAW_GALLERY_ASSETS = [
   { path: "Culture/Mascots/Capn Crunch.jpg", src: galleryAdd0118 },
   { path: "Culture/Mascots/Geico Gecko.jpg", src: galleryAdd0119 },
   { path: "Culture/Mascots/Gritty Mascot.jpg", src: galleryAdd0120 },
-  { path: "Culture/Mascots/Handsome Dan.avif", src: galleryAdd0121 },
   { path: "Culture/Mascots/Handsome Dan.jpg", src: galleryAdd0122 },
   { path: "Culture/Mascots/Mr Peanut.png", src: galleryAdd0123 },
   { path: "Culture/Mascots/Pillsbury Doughboy.jpg", src: galleryAdd0124 },

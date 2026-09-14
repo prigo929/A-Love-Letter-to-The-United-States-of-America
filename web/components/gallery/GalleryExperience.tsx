@@ -99,7 +99,6 @@ function GalleryTile({
 
   return (
     <motion.button
-      layout
       type="button"
       onClick={() => onSelect(image)}
       onPointerMove={handleTilt}
@@ -109,7 +108,7 @@ function GalleryTile({
           ? undefined
           : { rotateX: springRX, rotateY: springRY, transformPerspective: 900 }
       }
-      className="group overflow-hidden rounded-lg border border-white/10 bg-white/[0.04] text-left"
+      className="group overflow-hidden rounded-lg border border-white/10 bg-white/[0.04] text-left transition duration-200 hover:border-glory-gold/50"
     >
       <motion.div layoutId={`gallery-${image.path}`} className={cn("relative overflow-hidden", aspect)}>
         <Image
@@ -797,25 +796,29 @@ export function GalleryExperience({
       {/* Main Content Area */}
       <section className="px-4 py-14 sm:px-6 lg:px-8">
         {activeTab === "photos" ? (
-          <div className="mx-auto max-w-screen-xl space-y-14">
-            {groupedImages.map((group) => (
-              <section key={group.key} aria-labelledby={`${group.key}-heading`}>
-                <div className="mb-5 flex items-end justify-between gap-4 border-b border-white/10 pb-3">
-                  <h2
-                    id={`${group.key}-heading`}
-                    className="font-body text-xs font-semibold uppercase tracking-[0.24em] text-white/50"
-                  >
-                    {group.label}
-                  </h2>
-                  <p className="font-mono text-xs text-white/35">
-                    {group.images.length.toString().padStart(2, "0")}
-                  </p>
-                </div>
-                <motion.div
-                  layout
-                  className={cn("grid gap-4", getGridClass(group.key))}
-                >
-                  <AnimatePresence mode="popLayout">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`photo-grid-${activeCategory}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.18, ease: "easeInOut" }}
+              className="mx-auto max-w-screen-xl space-y-14"
+            >
+              {groupedImages.map((group) => (
+                <section key={group.key} aria-labelledby={`${group.key}-heading`}>
+                  <div className="mb-5 flex items-end justify-between gap-4 border-b border-white/10 pb-3">
+                    <h2
+                      id={`${group.key}-heading`}
+                      className="font-body text-xs font-semibold uppercase tracking-[0.24em] text-white/50"
+                    >
+                      {group.label}
+                    </h2>
+                    <p className="font-mono text-xs text-white/35">
+                      {group.images.length.toString().padStart(2, "0")}
+                    </p>
+                  </div>
+                  <div className={cn("grid gap-4", getGridClass(group.key))}>
                     {group.images.map((image) => (
                       <GalleryTile
                         key={image.path}
@@ -823,11 +826,11 @@ export function GalleryExperience({
                         onSelect={setSelectedImage}
                       />
                     ))}
-                  </AnimatePresence>
-                </motion.div>
-              </section>
-            ))}
-          </div>
+                  </div>
+                </section>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         ) : (
           <div className="mx-auto max-w-screen-xl">
             <div className="mb-6 flex items-center justify-between border-b border-white/10 pb-3">
