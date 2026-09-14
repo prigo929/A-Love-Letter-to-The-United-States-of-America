@@ -146,10 +146,12 @@ function GalleryTile({
 
 function PublicAssetTile({
   asset,
+  index = 0,
   onSelect,
   copy,
 }: {
   asset: PublicAsset;
+  index?: number;
   onSelect: (asset: PublicAsset) => void;
   copy: GalleryCopy;
 }) {
@@ -165,6 +167,19 @@ function PublicAssetTile({
   return (
     <motion.div
       layout
+      custom={index}
+      initial={{ opacity: 0, y: 16, scale: 0.95 }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: {
+          delay: Math.min(index * 0.01, 0.25),
+          duration: 0.25,
+          ease: [0.25, 0.1, 0.25, 1],
+        },
+      }}
+      exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.15 } }}
       className="group relative flex flex-col justify-between overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] p-4 transition duration-300 hover:border-glory-gold/50 hover:bg-white/[0.06]"
     >
       <button
@@ -694,7 +709,7 @@ export function GalleryExperience({
               type="button"
               onClick={() => setActiveTab("photos")}
               className={cn(
-                "flex items-center gap-2 rounded-md px-4 py-2 font-body text-xs font-semibold uppercase tracking-wider transition",
+                "flex items-center gap-2 rounded-md px-4 py-2 font-body text-xs font-semibold uppercase tracking-wider transition relative",
                 activeTab === "photos"
                   ? "bg-glory-gold text-black shadow-md"
                   : "text-white/60 hover:text-white"
@@ -707,7 +722,7 @@ export function GalleryExperience({
               type="button"
               onClick={() => setActiveTab("assets")}
               className={cn(
-                "flex items-center gap-2 rounded-md px-4 py-2 font-body text-xs font-semibold uppercase tracking-wider transition",
+                "flex items-center gap-2 rounded-md px-4 py-2 font-body text-xs font-semibold uppercase tracking-wider transition relative",
                 activeTab === "assets"
                   ? "bg-glory-gold text-black shadow-md"
                   : "text-white/60 hover:text-white"
@@ -741,39 +756,59 @@ export function GalleryExperience({
           )}
         </div>
 
-        {/* Category Chips */}
+        {/* Category Chips with Fluid Sliding Pill Highlight */}
         <div className="mx-auto mt-4 flex max-w-screen-xl gap-2 overflow-x-auto no-scrollbar">
           {activeTab === "photos"
-            ? categories.map((category) => (
-                <button
-                  key={category}
-                  type="button"
-                  onClick={() => setActiveCategory(category)}
-                  className={cn(
-                    "shrink-0 rounded-lg border px-4 py-2 font-body text-xs font-semibold uppercase tracking-[0.16em] transition",
-                    activeCategory === category
-                      ? "border-glory-gold/60 bg-glory-gold/15 text-glory-gold"
-                      : "border-white/10 bg-white/[0.03] text-white/55 hover:border-white/25 hover:text-white",
-                  )}
-                >
-                  {categoryLabel(category, copy.allLabel)}
-                </button>
-              ))
-            : publicAssetCategories.map((category) => (
-                <button
-                  key={category}
-                  type="button"
-                  onClick={() => setActiveAssetCategory(category)}
-                  className={cn(
-                    "shrink-0 rounded-lg border px-4 py-2 font-body text-xs font-semibold uppercase tracking-[0.16em] transition",
-                    activeAssetCategory === category
-                      ? "border-glory-gold/60 bg-glory-gold/15 text-glory-gold"
-                      : "border-white/10 bg-white/[0.03] text-white/55 hover:border-white/25 hover:text-white",
-                  )}
-                >
-                  {categoryLabel(category, copy.allLabel)}
-                </button>
-              ))}
+            ? categories.map((category) => {
+                const isActive = activeCategory === category;
+                return (
+                  <button
+                    key={category}
+                    type="button"
+                    onClick={() => setActiveCategory(category)}
+                    className={cn(
+                      "relative shrink-0 rounded-lg px-4 py-2 font-body text-xs font-semibold uppercase tracking-[0.16em] transition-colors duration-200 z-10",
+                      isActive
+                        ? "text-glory-gold"
+                        : "text-white/55 hover:text-white border border-white/10 bg-white/[0.03]"
+                    )}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeCategoryHighlight"
+                        className="absolute inset-0 rounded-lg border border-glory-gold/60 bg-glory-gold/15"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                    <span className="relative z-10">{categoryLabel(category, copy.allLabel)}</span>
+                  </button>
+                );
+              })
+            : publicAssetCategories.map((category) => {
+                const isActive = activeAssetCategory === category;
+                return (
+                  <button
+                    key={category}
+                    type="button"
+                    onClick={() => setActiveAssetCategory(category)}
+                    className={cn(
+                      "relative shrink-0 rounded-lg px-4 py-2 font-body text-xs font-semibold uppercase tracking-[0.16em] transition-colors duration-200 z-10",
+                      isActive
+                        ? "text-glory-gold"
+                        : "text-white/55 hover:text-white border border-white/10 bg-white/[0.03]"
+                    )}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeAssetCategoryHighlight"
+                        className="absolute inset-0 rounded-lg border border-glory-gold/60 bg-glory-gold/15"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                    <span className="relative z-10">{categoryLabel(category, copy.allLabel)}</span>
+                  </button>
+                );
+              })}
         </div>
       </section>
 
@@ -819,28 +854,41 @@ export function GalleryExperience({
               </p>
             </div>
 
-            {filteredPublicAssets.length === 0 ? (
-              <div className="py-20 text-center text-white/40">
-                <FileCode className="mx-auto mb-3 h-10 w-10 opacity-30" />
-                <p className="font-display text-lg">No assets match your search or filter.</p>
-              </div>
-            ) : (
-              <motion.div
-                layout
-                className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
-              >
-                <AnimatePresence mode="popLayout">
-                  {filteredPublicAssets.map((asset) => (
-                    <PublicAssetTile
-                      key={asset.id}
-                      asset={asset}
-                      onSelect={setSelectedAsset}
-                      copy={copy}
-                    />
-                  ))}
-                </AnimatePresence>
-              </motion.div>
-            )}
+            <AnimatePresence mode="wait">
+              {filteredPublicAssets.length === 0 ? (
+                <motion.div
+                  key="empty-state"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="py-20 text-center text-white/40"
+                >
+                  <FileCode className="mx-auto mb-3 h-10 w-10 opacity-30" />
+                  <p className="font-display text-lg">No assets match your search or filter.</p>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key={`asset-grid-${activeAssetCategory}-${assetSearchQuery}`}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+                >
+                  <AnimatePresence mode="popLayout">
+                    {filteredPublicAssets.map((asset, idx) => (
+                      <PublicAssetTile
+                        key={asset.id}
+                        asset={asset}
+                        index={idx}
+                        onSelect={setSelectedAsset}
+                        copy={copy}
+                      />
+                    ))}
+                  </AnimatePresence>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         )}
       </section>
