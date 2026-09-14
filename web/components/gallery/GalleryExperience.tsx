@@ -166,7 +166,7 @@ function PublicAssetTile({
       <button
         type="button"
         onClick={() => onSelect(asset)}
-        className="relative flex h-36 w-full items-center justify-center rounded-md bg-gradient-to-b from-white/[0.05] to-transparent p-3 focus:outline-none"
+        className="relative flex h-36 w-full items-center justify-center rounded-md bg-black p-3 focus:outline-none"
       >
         <div className="relative h-full w-full">
           <Image
@@ -176,7 +176,8 @@ function PublicAssetTile({
             unoptimized={asset.type === "svg"}
             className="object-contain transition-transform duration-300 group-hover:scale-105"
             style={{
-              filter: "drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.45))",
+              filter:
+                "drop-shadow(1px 0 0 rgba(255,255,255,0.75)) drop-shadow(-1px 0 0 rgba(255,255,255,0.75)) drop-shadow(0 1px 0 rgba(255,255,255,0.75)) drop-shadow(0 -1px 0 rgba(255,255,255,0.75)) drop-shadow(0 0 2px rgba(255,255,255,0.35))",
             }}
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
           />
@@ -461,7 +462,7 @@ function PublicAssetDialog({
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 20, scale: 0.98 }}
         transition={{ duration: 0.25 }}
-        className="fixed inset-4 z-50 m-auto flex max-h-[85vh] max-w-3xl flex-col overflow-hidden rounded-xl border border-white/10 bg-[#070911] shadow-2xl"
+        className="fixed inset-4 z-50 m-auto flex max-h-[85vh] max-w-3xl flex-col overflow-hidden rounded-xl border border-white/10 bg-black shadow-2xl"
         role="dialog"
         aria-modal="true"
         aria-label={asset.name}
@@ -547,7 +548,7 @@ function PublicAssetDialog({
         <div
           className={cn(
             "relative flex min-h-[360px] flex-1 items-center justify-center p-8 transition-colors duration-300 overflow-hidden",
-            canvasBg === "dark" && "bg-[#04060b]",
+            canvasBg === "dark" && "bg-black",
             canvasBg === "light" && "bg-slate-100",
             canvasBg === "checkerboard" &&
               "bg-[radial-gradient(#9ca3af_1px,transparent_1px)] [background-size:16px_16px] bg-slate-200"
@@ -569,14 +570,14 @@ function PublicAssetDialog({
               style={{
                 filter:
                   haloGlow && canvasBg !== "light"
-                    ? "drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.75))"
+                    ? "drop-shadow(1px 0 0 rgba(255,255,255,0.75)) drop-shadow(-1px 0 0 rgba(255,255,255,0.75)) drop-shadow(0 1px 0 rgba(255,255,255,0.75)) drop-shadow(0 -1px 0 rgba(255,255,255,0.75)) drop-shadow(0 0 2px rgba(255,255,255,0.35))"
                     : "none",
               }}
             />
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-white/10 bg-[#0a0d17] px-6 py-4">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-white/10 bg-black px-6 py-4">
           <div className="flex items-center gap-3">
             <span className="rounded bg-glory-gold/20 px-2 py-1 font-mono text-xs font-semibold text-glory-gold uppercase">
               {asset.type}
@@ -694,7 +695,7 @@ export function GalleryExperience({
   );
 
   return (
-    <main className="min-h-screen bg-[#05070d] text-white">
+    <main className="min-h-screen bg-black text-white">
       <section className="relative min-h-[60svh] overflow-hidden px-4 pb-14 pt-24 sm:px-6 lg:px-8">
         <div className="absolute inset-0" aria-hidden="true">
           <Image
@@ -710,7 +711,7 @@ export function GalleryExperience({
           <div className="absolute inset-0 bg-black/20" />
           <div className="absolute inset-0 bg-gradient-to-b from-black via-black/25 to-black/45" />
           <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-black via-black/75 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#05070d]/80 via-[#05070d]/35 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black via-black/40 to-transparent" />
         </div>
 
         <div className="relative mx-auto flex min-h-[calc(60svh-9.5rem)] max-w-screen-xl flex-col justify-end">
@@ -771,7 +772,7 @@ export function GalleryExperience({
       </section>
 
       {/* Main Mode Segment Switcher */}
-      <section className="border-y border-white/10 bg-[#080b13] px-4 py-4 sm:px-6 lg:px-8">
+      <section className="border-y border-white/10 bg-black px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto flex max-w-screen-xl items-center justify-between gap-4 flex-wrap">
           <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-black/40 p-1">
             <button
