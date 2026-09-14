@@ -6,7 +6,6 @@ export const PUBLIC_ASSET_CATEGORIES = [
   "Company Logos",
   "State Flags",
   "State Seals",
-  "State Capitols",
   "Media Posters",
 ] as const;
 
@@ -4131,1051 +4130,701 @@ export const PUBLIC_ASSETS: PublicAsset[] = [
     "type": "jpg"
   },
   {
-    "id": "pub-state-capitols-ak-jpg",
-    "name": "Ak",
-    "path": "/state-capitols/AK.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-al-jpg",
-    "name": "Al",
-    "path": "/state-capitols/AL.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-ar-jpg",
-    "name": "Ar",
-    "path": "/state-capitols/AR.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-az-jpg",
-    "name": "Az",
-    "path": "/state-capitols/AZ.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-ca-jpg",
-    "name": "Ca",
-    "path": "/state-capitols/CA.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-co-jpg",
-    "name": "Co",
-    "path": "/state-capitols/CO.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-ct-jpg",
-    "name": "Ct",
-    "path": "/state-capitols/CT.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-de-jpg",
-    "name": "De",
-    "path": "/state-capitols/DE.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-fl-jpg",
-    "name": "Fl",
-    "path": "/state-capitols/FL.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-ga-jpg",
-    "name": "Ga",
-    "path": "/state-capitols/GA.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-hi-jpg",
-    "name": "Hi",
-    "path": "/state-capitols/HI.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-ia-jpg",
-    "name": "Ia",
-    "path": "/state-capitols/IA.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-id-jpg",
-    "name": "Id",
-    "path": "/state-capitols/ID.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-il-jpg",
-    "name": "Il",
-    "path": "/state-capitols/IL.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-in-jpg",
-    "name": "In",
-    "path": "/state-capitols/IN.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-ks-jpg",
-    "name": "Ks",
-    "path": "/state-capitols/KS.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-ky-jpg",
-    "name": "Ky",
-    "path": "/state-capitols/KY.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-la-jpg",
-    "name": "La",
-    "path": "/state-capitols/LA.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-ma-jpg",
-    "name": "Ma",
-    "path": "/state-capitols/MA.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-md-jpg",
-    "name": "Md",
-    "path": "/state-capitols/MD.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-me-jpg",
-    "name": "Me",
-    "path": "/state-capitols/ME.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-mi-jpg",
-    "name": "Mi",
-    "path": "/state-capitols/MI.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-mn-jpg",
-    "name": "Mn",
-    "path": "/state-capitols/MN.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-mo-jpg",
-    "name": "Mo",
-    "path": "/state-capitols/MO.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-ms-jpg",
-    "name": "Ms",
-    "path": "/state-capitols/MS.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-mt-jpg",
-    "name": "Mt",
-    "path": "/state-capitols/MT.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-nc-jpg",
-    "name": "Nc",
-    "path": "/state-capitols/NC.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-nd-jpg",
-    "name": "Nd",
-    "path": "/state-capitols/ND.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-ne-jpg",
-    "name": "Ne",
-    "path": "/state-capitols/NE.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-nh-jpg",
-    "name": "Nh",
-    "path": "/state-capitols/NH.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-nj-jpg",
-    "name": "Nj",
-    "path": "/state-capitols/NJ.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-nm-jpg",
-    "name": "Nm",
-    "path": "/state-capitols/NM.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-nv-jpg",
-    "name": "Nv",
-    "path": "/state-capitols/NV.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-ny-jpg",
-    "name": "Ny",
-    "path": "/state-capitols/NY.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-oh-jpg",
-    "name": "Oh",
-    "path": "/state-capitols/OH.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-ok-jpg",
-    "name": "Ok",
-    "path": "/state-capitols/OK.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-or-jpg",
-    "name": "Or",
-    "path": "/state-capitols/OR.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-pa-jpg",
-    "name": "Pa",
-    "path": "/state-capitols/PA.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-ri-jpg",
-    "name": "Ri",
-    "path": "/state-capitols/RI.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-sc-jpg",
-    "name": "Sc",
-    "path": "/state-capitols/SC.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-sd-jpg",
-    "name": "Sd",
-    "path": "/state-capitols/SD.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-tn-jpg",
-    "name": "Tn",
-    "path": "/state-capitols/TN.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-tx-jpg",
-    "name": "Tx",
-    "path": "/state-capitols/TX.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-ut-jpg",
-    "name": "Ut",
-    "path": "/state-capitols/UT.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-va-jpg",
-    "name": "Va",
-    "path": "/state-capitols/VA.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-vt-jpg",
-    "name": "Vt",
-    "path": "/state-capitols/VT.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-wa-jpg",
-    "name": "Wa",
-    "path": "/state-capitols/WA.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-wi-jpg",
-    "name": "Wi",
-    "path": "/state-capitols/WI.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-wv-jpg",
-    "name": "Wv",
-    "path": "/state-capitols/WV.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
-    "id": "pub-state-capitols-wy-jpg",
-    "name": "Wy",
-    "path": "/state-capitols/WY.jpg",
-    "category": "State Capitols",
-    "type": "jpg"
-  },
-  {
     "id": "pub-state-symbols-flags-ak-svg",
-    "name": "Ak Flag",
+    "name": "AK Flag",
     "path": "/state-symbols/flags/AK.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-al-svg",
-    "name": "Al Flag",
+    "name": "AL Flag",
     "path": "/state-symbols/flags/AL.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-ar-svg",
-    "name": "Ar Flag",
+    "name": "AR Flag",
     "path": "/state-symbols/flags/AR.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-az-svg",
-    "name": "Az Flag",
+    "name": "AZ Flag",
     "path": "/state-symbols/flags/AZ.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-ca-svg",
-    "name": "Ca Flag",
+    "name": "CA Flag",
     "path": "/state-symbols/flags/CA.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-co-svg",
-    "name": "Co Flag",
+    "name": "CO Flag",
     "path": "/state-symbols/flags/CO.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-ct-svg",
-    "name": "Ct Flag",
+    "name": "CT Flag",
     "path": "/state-symbols/flags/CT.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-de-svg",
-    "name": "De Flag",
+    "name": "DE Flag",
     "path": "/state-symbols/flags/DE.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-fl-svg",
-    "name": "Fl Flag",
+    "name": "FL Flag",
     "path": "/state-symbols/flags/FL.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-ga-svg",
-    "name": "Ga Flag",
+    "name": "GA Flag",
     "path": "/state-symbols/flags/GA.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-hi-svg",
-    "name": "Hi Flag",
+    "name": "HI Flag",
     "path": "/state-symbols/flags/HI.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-ia-svg",
-    "name": "Ia Flag",
+    "name": "IA Flag",
     "path": "/state-symbols/flags/IA.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-id-svg",
-    "name": "Id Flag",
+    "name": "ID Flag",
     "path": "/state-symbols/flags/ID.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-il-svg",
-    "name": "Il Flag",
+    "name": "IL Flag",
     "path": "/state-symbols/flags/IL.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-in-svg",
-    "name": "In Flag",
+    "name": "IN Flag",
     "path": "/state-symbols/flags/IN.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-ks-svg",
-    "name": "Ks Flag",
+    "name": "KS Flag",
     "path": "/state-symbols/flags/KS.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-ky-svg",
-    "name": "Ky Flag",
+    "name": "KY Flag",
     "path": "/state-symbols/flags/KY.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-la-svg",
-    "name": "La Flag",
+    "name": "LA Flag",
     "path": "/state-symbols/flags/LA.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-ma-svg",
-    "name": "Ma Flag",
+    "name": "MA Flag",
     "path": "/state-symbols/flags/MA.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-md-svg",
-    "name": "Md Flag",
+    "name": "MD Flag",
     "path": "/state-symbols/flags/MD.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-me-svg",
-    "name": "Me Flag",
+    "name": "ME Flag",
     "path": "/state-symbols/flags/ME.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-mi-svg",
-    "name": "Mi Flag",
+    "name": "MI Flag",
     "path": "/state-symbols/flags/MI.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-mn-svg",
-    "name": "Mn Flag",
+    "name": "MN Flag",
     "path": "/state-symbols/flags/MN.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-mo-svg",
-    "name": "Mo Flag",
+    "name": "MO Flag",
     "path": "/state-symbols/flags/MO.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-ms-svg",
-    "name": "Ms Flag",
+    "name": "MS Flag",
     "path": "/state-symbols/flags/MS.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-mt-svg",
-    "name": "Mt Flag",
+    "name": "MT Flag",
     "path": "/state-symbols/flags/MT.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-nc-svg",
-    "name": "Nc Flag",
+    "name": "NC Flag",
     "path": "/state-symbols/flags/NC.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-nd-svg",
-    "name": "Nd Flag",
+    "name": "ND Flag",
     "path": "/state-symbols/flags/ND.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-ne-svg",
-    "name": "Ne Flag",
+    "name": "NE Flag",
     "path": "/state-symbols/flags/NE.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-nh-svg",
-    "name": "Nh Flag",
+    "name": "NH Flag",
     "path": "/state-symbols/flags/NH.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-nj-svg",
-    "name": "Nj Flag",
+    "name": "NJ Flag",
     "path": "/state-symbols/flags/NJ.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-nm-svg",
-    "name": "Nm Flag",
+    "name": "NM Flag",
     "path": "/state-symbols/flags/NM.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-nv-svg",
-    "name": "Nv Flag",
+    "name": "NV Flag",
     "path": "/state-symbols/flags/NV.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-ny-svg",
-    "name": "Ny Flag",
+    "name": "NY Flag",
     "path": "/state-symbols/flags/NY.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-oh-svg",
-    "name": "Oh Flag",
+    "name": "OH Flag",
     "path": "/state-symbols/flags/OH.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-ok-svg",
-    "name": "Ok Flag",
+    "name": "OK Flag",
     "path": "/state-symbols/flags/OK.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-or-svg",
-    "name": "Or Flag",
+    "name": "OR Flag",
     "path": "/state-symbols/flags/OR.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-pa-svg",
-    "name": "Pa Flag",
+    "name": "PA Flag",
     "path": "/state-symbols/flags/PA.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-ri-svg",
-    "name": "Ri Flag",
+    "name": "RI Flag",
     "path": "/state-symbols/flags/RI.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-sc-svg",
-    "name": "Sc Flag",
+    "name": "SC Flag",
     "path": "/state-symbols/flags/SC.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-sd-svg",
-    "name": "Sd Flag",
+    "name": "SD Flag",
     "path": "/state-symbols/flags/SD.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-tn-svg",
-    "name": "Tn Flag",
+    "name": "TN Flag",
     "path": "/state-symbols/flags/TN.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-tx-svg",
-    "name": "Tx Flag",
+    "name": "TX Flag",
     "path": "/state-symbols/flags/TX.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-ut-svg",
-    "name": "Ut Flag",
+    "name": "UT Flag",
     "path": "/state-symbols/flags/UT.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-va-svg",
-    "name": "Va Flag",
+    "name": "VA Flag",
     "path": "/state-symbols/flags/VA.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-vt-svg",
-    "name": "Vt Flag",
+    "name": "VT Flag",
     "path": "/state-symbols/flags/VT.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-wa-svg",
-    "name": "Wa Flag",
+    "name": "WA Flag",
     "path": "/state-symbols/flags/WA.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-wi-svg",
-    "name": "Wi Flag",
+    "name": "WI Flag",
     "path": "/state-symbols/flags/WI.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-wv-svg",
-    "name": "Wv Flag",
+    "name": "WV Flag",
     "path": "/state-symbols/flags/WV.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-flags-wy-svg",
-    "name": "Wy Flag",
+    "name": "WY Flag",
     "path": "/state-symbols/flags/WY.svg",
     "category": "State Flags",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-ak-svg",
-    "name": "Ak Seal",
+    "name": "AK Seal",
     "path": "/state-symbols/seals/AK.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-al-svg",
-    "name": "Al Seal",
+    "name": "AL Seal",
     "path": "/state-symbols/seals/AL.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-ar-svg",
-    "name": "Ar Seal",
+    "name": "AR Seal",
     "path": "/state-symbols/seals/AR.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-az-svg",
-    "name": "Az Seal",
+    "name": "AZ Seal",
     "path": "/state-symbols/seals/AZ.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-ca-svg",
-    "name": "Ca Seal",
+    "name": "CA Seal",
     "path": "/state-symbols/seals/CA.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-co-svg",
-    "name": "Co Seal",
+    "name": "CO Seal",
     "path": "/state-symbols/seals/CO.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-ct-svg",
-    "name": "Ct Seal",
+    "name": "CT Seal",
     "path": "/state-symbols/seals/CT.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-de-svg",
-    "name": "De Seal",
+    "name": "DE Seal",
     "path": "/state-symbols/seals/DE.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-fl-svg",
-    "name": "Fl Seal",
+    "name": "FL Seal",
     "path": "/state-symbols/seals/FL.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-ga-svg",
-    "name": "Ga Seal",
+    "name": "GA Seal",
     "path": "/state-symbols/seals/GA.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-hi-svg",
-    "name": "Hi Seal",
+    "name": "HI Seal",
     "path": "/state-symbols/seals/HI.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-ia-svg",
-    "name": "Ia Seal",
+    "name": "IA Seal",
     "path": "/state-symbols/seals/IA.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-id-svg",
-    "name": "Id Seal",
+    "name": "ID Seal",
     "path": "/state-symbols/seals/ID.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-il-svg",
-    "name": "Il Seal",
+    "name": "IL Seal",
     "path": "/state-symbols/seals/IL.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-in-svg",
-    "name": "In Seal",
+    "name": "IN Seal",
     "path": "/state-symbols/seals/IN.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-ks-svg",
-    "name": "Ks Seal",
+    "name": "KS Seal",
     "path": "/state-symbols/seals/KS.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-ky-svg",
-    "name": "Ky Seal",
+    "name": "KY Seal",
     "path": "/state-symbols/seals/KY.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-la-svg",
-    "name": "La Seal",
+    "name": "LA Seal",
     "path": "/state-symbols/seals/LA.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-ma-svg",
-    "name": "Ma Seal",
+    "name": "MA Seal",
     "path": "/state-symbols/seals/MA.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-md-svg",
-    "name": "Md Seal",
+    "name": "MD Seal",
     "path": "/state-symbols/seals/MD.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-me-svg",
-    "name": "Me Seal",
+    "name": "ME Seal",
     "path": "/state-symbols/seals/ME.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-mi-svg",
-    "name": "Mi Seal",
+    "name": "MI Seal",
     "path": "/state-symbols/seals/MI.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-mn-svg",
-    "name": "Mn Seal",
+    "name": "MN Seal",
     "path": "/state-symbols/seals/MN.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-mo-svg",
-    "name": "Mo Seal",
+    "name": "MO Seal",
     "path": "/state-symbols/seals/MO.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-ms-svg",
-    "name": "Ms Seal",
+    "name": "MS Seal",
     "path": "/state-symbols/seals/MS.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-mt-svg",
-    "name": "Mt Seal",
+    "name": "MT Seal",
     "path": "/state-symbols/seals/MT.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-nc-svg",
-    "name": "Nc Seal",
+    "name": "NC Seal",
     "path": "/state-symbols/seals/NC.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-nd-svg",
-    "name": "Nd Seal",
+    "name": "ND Seal",
     "path": "/state-symbols/seals/ND.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-ne-svg",
-    "name": "Ne Seal",
+    "name": "NE Seal",
     "path": "/state-symbols/seals/NE.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-nh-svg",
-    "name": "Nh Seal",
+    "name": "NH Seal",
     "path": "/state-symbols/seals/NH.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-nj-svg",
-    "name": "Nj Seal",
+    "name": "NJ Seal",
     "path": "/state-symbols/seals/NJ.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-nm-svg",
-    "name": "Nm Seal",
+    "name": "NM Seal",
     "path": "/state-symbols/seals/NM.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-nv-svg",
-    "name": "Nv Seal",
+    "name": "NV Seal",
     "path": "/state-symbols/seals/NV.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-ny-svg",
-    "name": "Ny Seal",
+    "name": "NY Seal",
     "path": "/state-symbols/seals/NY.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-oh-svg",
-    "name": "Oh Seal",
+    "name": "OH Seal",
     "path": "/state-symbols/seals/OH.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-ok-svg",
-    "name": "Ok Seal",
+    "name": "OK Seal",
     "path": "/state-symbols/seals/OK.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-or-svg",
-    "name": "Or Seal",
+    "name": "OR Seal",
     "path": "/state-symbols/seals/OR.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-pa-svg",
-    "name": "Pa Seal",
+    "name": "PA Seal",
     "path": "/state-symbols/seals/PA.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-ri-svg",
-    "name": "Ri Seal",
+    "name": "RI Seal",
     "path": "/state-symbols/seals/RI.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-sc-svg",
-    "name": "Sc Seal",
+    "name": "SC Seal",
     "path": "/state-symbols/seals/SC.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-sd-svg",
-    "name": "Sd Seal",
+    "name": "SD Seal",
     "path": "/state-symbols/seals/SD.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-tn-svg",
-    "name": "Tn Seal",
+    "name": "TN Seal",
     "path": "/state-symbols/seals/TN.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-tx-svg",
-    "name": "Tx Seal",
+    "name": "TX Seal",
     "path": "/state-symbols/seals/TX.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-ut-svg",
-    "name": "Ut Seal",
+    "name": "UT Seal",
     "path": "/state-symbols/seals/UT.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-va-svg",
-    "name": "Va Seal",
+    "name": "VA Seal",
     "path": "/state-symbols/seals/VA.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-vt-svg",
-    "name": "Vt Seal",
+    "name": "VT Seal",
     "path": "/state-symbols/seals/VT.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-wa-svg",
-    "name": "Wa Seal",
+    "name": "WA Seal",
     "path": "/state-symbols/seals/WA.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-wi-svg",
-    "name": "Wi Seal",
+    "name": "WI Seal",
     "path": "/state-symbols/seals/WI.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-wv-svg",
-    "name": "Wv Seal",
+    "name": "WV Seal",
     "path": "/state-symbols/seals/WV.svg",
     "category": "State Seals",
     "type": "svg"
   },
   {
     "id": "pub-state-symbols-seals-wy-svg",
-    "name": "Wy Seal",
+    "name": "WY Seal",
     "path": "/state-symbols/seals/WY.svg",
     "category": "State Seals",
     "type": "svg"
