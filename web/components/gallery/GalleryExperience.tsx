@@ -166,7 +166,7 @@ function PublicAssetTile({
       <button
         type="button"
         onClick={() => onSelect(asset)}
-        className="flex h-36 w-full items-center justify-center p-3 focus:outline-none"
+        className="relative flex h-36 w-full items-center justify-center rounded-md bg-gradient-to-b from-white/[0.05] to-transparent p-3 focus:outline-none"
       >
         <div className="relative h-full w-full">
           <Image
@@ -424,6 +424,8 @@ function PublicAssetDialog({
   onClose: () => void;
 }) {
   const [copied, setCopied] = useState(false);
+  const [canvasBg, setCanvasBg] = useState<"dark" | "light" | "checkerboard">("dark");
+  const [zoomed, setZoomed] = useState(false);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -455,7 +457,7 @@ function PublicAssetDialog({
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 20, scale: 0.98 }}
         transition={{ duration: 0.25 }}
-        className="fixed inset-4 z-50 m-auto flex max-h-[85vh] max-w-2xl flex-col overflow-hidden rounded-xl border border-white/10 bg-[#070911] shadow-2xl"
+        className="fixed inset-4 z-50 m-auto flex max-h-[85vh] max-w-3xl flex-col overflow-hidden rounded-xl border border-white/10 bg-[#070911] shadow-2xl"
         role="dialog"
         aria-modal="true"
         aria-label={asset.name}
@@ -467,23 +469,84 @@ function PublicAssetDialog({
             </span>
             <h2 className="font-display text-xl text-white">{asset.name}</h2>
           </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="rounded-lg bg-white/10 p-2 text-white/70 transition hover:bg-white/20 hover:text-white"
-          >
-            <X className="h-5 w-5" />
-          </button>
+
+          <div className="flex items-center gap-2">
+            {/* Canvas Backdrop Controls */}
+            <div className="flex items-center gap-1 rounded-lg border border-white/10 bg-black/40 p-1">
+              <button
+                type="button"
+                onClick={() => setCanvasBg("dark")}
+                title="Dark Canvas"
+                className={cn(
+                  "rounded p-1.5 text-xs transition",
+                  canvasBg === "dark"
+                    ? "bg-white/20 text-white"
+                    : "text-white/40 hover:text-white"
+                )}
+              >
+                Dark
+              </button>
+              <button
+                type="button"
+                onClick={() => setCanvasBg("light")}
+                title="Light Canvas (for dark logos)"
+                className={cn(
+                  "rounded p-1.5 text-xs transition",
+                  canvasBg === "light"
+                    ? "bg-white text-black font-semibold"
+                    : "text-white/40 hover:text-white"
+                )}
+              >
+                Light
+              </button>
+              <button
+                type="button"
+                onClick={() => setCanvasBg("checkerboard")}
+                title="Checkerboard Grid"
+                className={cn(
+                  "rounded p-1.5 text-xs transition",
+                  canvasBg === "checkerboard"
+                    ? "bg-white/20 text-white"
+                    : "text-white/40 hover:text-white"
+                )}
+              >
+                Grid
+              </button>
+            </div>
+
+            <button
+              type="button"
+              onClick={onClose}
+              className="rounded-lg bg-white/10 p-2 text-white/70 transition hover:bg-white/20 hover:text-white"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
         </div>
 
-        <div className="relative flex min-h-[300px] items-center justify-center bg-black/60 p-8">
-          <div className="relative h-64 w-full">
+        {/* Canvas Display Area */}
+        <div
+          className={cn(
+            "relative flex min-h-[360px] flex-1 items-center justify-center p-8 transition-colors duration-300 overflow-hidden",
+            canvasBg === "dark" && "bg-[#04060b]",
+            canvasBg === "light" && "bg-slate-100",
+            canvasBg === "checkerboard" &&
+              "bg-[radial-gradient(#9ca3af_1px,transparent_1px)] [background-size:16px_16px] bg-slate-200"
+          )}
+        >
+          <div
+            className={cn(
+              "relative h-72 w-full transition-transform duration-300 cursor-pointer",
+              zoomed ? "scale-[1.6]" : "scale-100"
+            )}
+            onClick={() => setZoomed((v) => !v)}
+          >
             <Image
               src={asset.path}
               alt={asset.name}
               fill
               unoptimized={asset.type === "svg"}
-              className="object-contain"
+              className="object-contain transition-all duration-300"
             />
           </div>
         </div>
