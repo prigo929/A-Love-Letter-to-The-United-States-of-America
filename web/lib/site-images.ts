@@ -624,6 +624,7 @@ export const SITE_IMAGES = {
   texasMedicalCenter: texasMedicalCenter.src,
   virginiaLibrary: virginiaLibrary.src,
   homeDeclarationIndependence: homeDeclarationIndependence.src,
+  outdoorsBaldEagle: outdoorsBaldEagle.src,
   homeGrandCanyon: homeGrandCanyon.src,
   homeGoldenGateBridge: chicagoSkyline.src,
   homeChicagoDowntownPortrait: homeChicagoDowntownPortrait.src,

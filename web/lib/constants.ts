@@ -686,6 +686,11 @@ export const NAV_SECTIONS = [
 // update the `alt` text so it still describes the new photo accurately.
 export const HERO_IMAGES = [
   {
+    id: "majestic-bald-eagle",
+    src: SITE_IMAGES.outdoorsBaldEagle,
+    alt: "Close-up portrait of a majestic bald eagle showcasing its fierce gaze and distinct white feathers with USA Flag in background",
+  },
+  {
     id: "declaration-independence",
     src: SITE_IMAGES.homeDeclarationIndependence,
     alt: "Declaration of Independence with patriotic styling and founding-era symbolism",

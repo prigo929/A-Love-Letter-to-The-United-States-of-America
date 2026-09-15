@@ -485,6 +485,7 @@ export function HeroSection() {
           exploreCta: "Explorează Națiunea",
           allSectionsCta: "Vezi Toate Secțiunile",
           imageAlts: [
+            "Portret cu un vultur pleșuv maiestuos și drapelul SUA în fundal",
             "Declarația de Independență și simboluri ale fondării Statelor Unite",
             "Podul Golden Gate peste golful San Francisco",
             "Lansare SpaceX pe cerul Floridei",
