@@ -215,6 +215,11 @@ export const NAV_SECTIONS = [
         href: "/constitution/democracy-track-record",
         description: "60 elections. Zero coups. Unbroken stability",
       },
+      {
+        label: "Citizenship Civics Quiz",
+        href: "/civics-quiz",
+        description: "Official naturalization exam practice",
+      },
     ],
   },
   {
@@ -565,6 +570,11 @@ export const NAV_SECTIONS = [
         description:
           "AI oracle: ask a question and get a sourced answer synthesized from all 12 verticals",
       },
+      {
+        label: "U.S. Civics Quiz",
+        href: "/civics-quiz",
+        description: "Official citizenship exam practice",
+      },
     ],
   },
   {
@@ -857,6 +867,10 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
         label: "Recordul de 250 de Ani",
         description: "60 de alegeri prezidențiale. Zero lovituri de stat. Stabilitate constituțională neîntreruptă",
       },
+      "/civics-quiz": {
+        label: "Testul Oficial de Cetățenie",
+        description: "Examenul de civică USCIS: 100 de întrebări oficiale",
+      },
     },
   },
   "/culture": {
@@ -1137,6 +1151,10 @@ const NAV_SECTION_TRANSLATIONS_RO: Record<
         label: "Oracolul Ask America",
         description:
           "Oracol AI: pune o întrebare și primești un răspuns documentat, sintetizat din toate cele 12 verticale",
+      },
+      "/civics-quiz": {
+        label: "Testul de Civică și Cetățenie",
+        description: "Examenul de civică USCIS: practică oficială",
       },
     },
   },

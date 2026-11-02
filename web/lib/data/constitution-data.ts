@@ -856,6 +856,14 @@ export const CONSTITUTION_SUB_PAGES = [
     imageAlt: "United States Supreme Court Building",
     badge: "Right to Bear Arms",
   },
+  {
+    href: "/civics-quiz",
+    title: "Citizenship Civics Quiz",
+    description: "Official USCIS naturalization exam practice. Test your constitutional and historical mastery",
+    imageSrc: SITE_IMAGES.constitution.declaration,
+    imageAlt: "Declaration of Independence and U.S. Constitution naturalization civics test",
+    badge: "Official Exam",
+  },
 ];
 
 // ─── i18n Getters ─────────────────────────────────────────────────────────────
@@ -871,6 +879,7 @@ export function getConstitutionSubPages(locale: Locale) {
       { ...CONSTITUTION_SUB_PAGES[5], title: "250 de Ani",                 description: "60 de alegeri, niciun coup: recordul neîntrerupt al democrației americane" },
       { ...CONSTITUTION_SUB_PAGES[6], title: "Doar în America",            description: "Procurori aleși, jurii mari, inițiative cetățenești: mecanisme democratice unice în lume" },
       { ...CONSTITUTION_SUB_PAGES[7], title: "Al Doilea Amendament",        description: "Dreptul individual la autoapărare și de a deține arme de foc" },
+      { ...CONSTITUTION_SUB_PAGES[8], title: "Testul Oficial de Cetățenie", description: "Examenul de civică USCIS: testează-ți cunoștințele constituționale și istorice" },
     ];
   }
   return CONSTITUTION_SUB_PAGES;

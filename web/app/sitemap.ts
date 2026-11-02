@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
     "",
     "/sitemap",
+    "/civics-quiz",
     "/interactive",
     "/explorer",
     "/data",
@@ -76,7 +77,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     
     // Culture
     "/culture",
-    "/culture/film-and-storytelling",
     "/culture/sports",
     "/culture/entertainment",
     "/culture/companies-brands",
