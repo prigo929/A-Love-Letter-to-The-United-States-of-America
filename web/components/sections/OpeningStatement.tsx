@@ -10,7 +10,7 @@ import { Star } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { yearsSince1776 } from "@/lib/utils";
-import { MonochromeVectorFlag } from "@/components/shared/MonochromeVectorFlag";
+import { MinimalistMonochromeFlag } from "@/components/shared/MinimalistMonochromeFlag";
 
 export function OpeningStatement() {
   const years = yearsSince1776();
@@ -49,16 +49,11 @@ export function OpeningStatement() {
       className="bg-navy-dark relative overflow-hidden text-white py-24 md:py-36 border-t border-white/[0.08]"
       aria-labelledby="opening-heading"
     >
-      {/* ── Ambient Monochrome Vector Flag Layer ──────────────────────────────
-          Slow-moving vector cloth wave in deep obsidian and titanium, running
-          at low opacity behind the archival quote. */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.09] pointer-events-none scale-110">
-        <MonochromeVectorFlag
-          amplitude={22}
-          speed={0.0013}
-          opacity={1}
-          vignette={true}
-        />
+      {/* ── Ambient Minimalist Monochrome Flag Layer ──────────────────────────────
+          Architectural banknote-engraved vector flag with titanium rules and
+          subtle light sweep, sitting softly behind the archival quote. */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.10] pointer-events-none scale-105">
+        <MinimalistMonochromeFlag opacity={1} sweep={true} />
       </div>
 
       {/* Subtle radial ambient warm bloom */}

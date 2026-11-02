@@ -36,7 +36,6 @@ import {
 import { getSiteTagline, HERO_IMAGES } from "@/lib/constants";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
-import { MonochromeVectorFlag } from "@/components/shared/MonochromeVectorFlag";
 
 // ─── Particle Stars Canvas ────────────────────────────────────────────────────
 
@@ -583,11 +582,6 @@ export function HeroSection() {
         }}
         aria-hidden="true"
       />
-
-      {/* ── Ambient Monochrome Vector Flag (Cloth Wave) ──────────────────── */}
-      <div className="absolute inset-0 z-[2] opacity-[0.08] pointer-events-none flex items-center justify-center scale-110">
-        <MonochromeVectorFlag amplitude={24} speed={0.0012} opacity={1} />
-      </div>
 
       {/* Bottom fade into next section
           Softens the transition from the hero into the deep black opening section. */}
