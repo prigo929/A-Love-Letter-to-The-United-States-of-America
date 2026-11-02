@@ -31,6 +31,7 @@ import {
   NatureFactModule,
 } from "@/components/nature/NatureAnimations";
 import { ParkVisitorsChart, BiodiversityChart } from "@/components/data/NatureCharts";
+import { TopographicContours } from "@/components/shared/TopographicContours";
 
 import { getServerLocale } from "@/lib/i18n/server";
 import { SITE_IMAGES }     from "@/lib/site-images";
@@ -197,8 +198,9 @@ export default async function NaturePage() {
       </section>
 
       {/* ── NATIONAL PARKS: chart ───────────────────────────────────────── */}
-      <section className="bg-(--nat-void,#030504) py-24 md:py-32">
-        <div className="mx-auto max-w-[1200px] px-6 md:px-12">
+      <section className="bg-(--nat-void,#030504) py-24 md:py-32 relative overflow-hidden">
+        <TopographicContours opacity={0.07} />
+        <div className="relative z-10 mx-auto max-w-[1200px] px-6 md:px-12">
           <p className="nat-text-label mb-6" style={{ color: 'var(--nat-accent-forest)' }}>
             {isRo ? "Sistemul Parcurilor Naționale" : "The National Parks System"}
           </p>

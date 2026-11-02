@@ -86,44 +86,72 @@ function QuoteContent({
   className?: string;
 }) {
   return (
-    <div className={`text-center px-10 md:px-14 lg:px-16 w-full ${className}`}>
-      {/* Quote mark */}
+    <div className={`text-center px-6 sm:px-10 md:px-16 w-full ${className}`}>
+      {/* Quote mark ornament */}
       <div
-        className="font-hero text-[120px] text-glory-gold/20 leading-none -mb-8 select-none"
+        className="font-hero text-[100px] md:text-[120px] text-glory-gold/15 leading-none -mb-8 select-none"
         aria-hidden="true"
       >
         "
       </div>
 
-      {/* Gold line */}
+      {/* Burnished gold hairline accent */}
       <div
-        className="w-16 h-0.5 bg-glory-gold mx-auto mb-6"
+        className="w-16 h-px bg-gradient-to-r from-transparent via-glory-gold/60 to-transparent mx-auto mb-8"
         aria-hidden="true"
       />
 
       <blockquote>
-        <p className="font-display text-2xl md:text-3xl lg:text-4xl text-white italic leading-relaxed mb-6">
+        <p className="font-display text-2xl md:text-3xl lg:text-4xl text-white/95 italic leading-relaxed mb-8 max-w-4xl mx-auto">
           "{quote.quote}"
         </p>
-        <footer className="flex flex-col items-center gap-1">
-          <div className="flex gap-1 mb-2" aria-hidden="true">
-            {[...Array(5)].map((_, i) => (
-              <Star
-                key={i}
-                className="w-3 h-3 fill-glory-gold text-glory-gold"
+        <footer className="flex flex-col items-center">
+          {/* Handcrafted Calligraphy Signature Text */}
+          <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+            className="relative flex flex-col items-center justify-center my-2"
+          >
+            <span className="font-signature text-4xl sm:text-5xl md:text-6xl text-glory-gold tracking-wide select-none drop-shadow-[0_2px_16px_rgba(255,215,0,0.22)]">
+              {quote.attribution}
+            </span>
+            {/* Animated Quill Flourish Stroke */}
+            <svg
+              className="w-44 md:w-56 h-4 overflow-visible -mt-1 select-none pointer-events-none"
+              viewBox="0 0 200 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient id="signatureGoldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#C8A96E" stopOpacity="0" />
+                  <stop offset="30%" stopColor="#FFD700" stopOpacity="0.85" />
+                  <stop offset="70%" stopColor="#E8C878" stopOpacity="0.85" />
+                  <stop offset="100%" stopColor="#C8A96E" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              <motion.path
+                d="M 5 8 C 50 1, 100 15, 150 6 S 195 9, 198 8"
+                stroke="url(#signatureGoldGradient)"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
               />
-            ))}
-          </div>
-          <cite className="not-italic font-body font-semibold text-white text-lg">
-           : {quote.attribution}
+            </svg>
+          </motion.div>
+
+          <cite className="not-italic font-body text-xs text-white/70 tracking-[0.25em] uppercase mt-2">
+            {quote.attribution}
             {quote.year && (
-              <span className="text-white/50 font-normal text-base ml-2">
-                ({quote.year})
-              </span>
+              <span className="text-white/40 ml-2 font-mono">[{quote.year}]</span>
             )}
           </cite>
           {quote.role && (
-            <span className="font-body text-sm text-white/60 max-w-md text-center">
+            <span className="font-body text-xs text-white/50 max-w-md text-center mt-1 leading-relaxed">
               {quote.role}
             </span>
           )}

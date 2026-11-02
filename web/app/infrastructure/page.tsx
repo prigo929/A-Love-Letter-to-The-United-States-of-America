@@ -20,6 +20,7 @@ import { SerifLede, Reveal, MegaTimeline } from "@/components/infrastructure/Inf
 import { MEGAPROJECTS } from "@/lib/data/infrastructure-network-data";
 import { SITE_IMAGES } from "@/lib/site-images";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
+import { DraftingSchematics } from "@/components/shared/DraftingSchematics";
 
 const getPageMetadata = (locale: Locale) => ({
   title: locale === "ro" ? "Infrastructură | America" : "Infrastructure | America",
@@ -359,7 +360,10 @@ export default async function InfrastructureHubPage() {
         stats={copy.heroStats}
       />
 
-      <div className="relative z-10 bg-[#000000] pb-32 pt-16">
+      <div className="relative z-10 bg-[#000000] pb-32 pt-16 overflow-hidden">
+        {/* Architectural drafting linework & CAD dimension callouts */}
+        <DraftingSchematics opacity={0.06} />
+
         <div className="mx-auto mb-24 max-w-[1600px] px-6 md:px-12">
           <Breadcrumb items={[{ label: copy.breadcrumb }]} />
         </div>
