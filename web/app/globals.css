@@ -442,3 +442,46 @@
     display: none;
   }
 }
+
+/* ─── Cinematic Effects Suite: Analog Grain, Chromatic Aberration & Blur ──── */
+
+/* 1. Ultra-fine 35mm Analog Film Grain (organic texture at 3.5% opacity) */
+.film-grain-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='fg'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23fg)' opacity='0.038'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* 2. Anamorphic Optical Chromatic Aberration (Subtle 0.8px optical fringe) */
+.chromatic-text {
+  text-shadow: 
+    0.8px 0 rgba(0, 220, 255, 0.32),
+    -0.8px 0 rgba(255, 60, 60, 0.32);
+}
+
+.chromatic-hover {
+  transition: text-shadow 0.4s ease;
+}
+
+.chromatic-hover:hover {
+  text-shadow: 
+    1.2px 0 rgba(0, 220, 255, 0.45),
+    -1.2px 0 rgba(255, 60, 60, 0.45);
+}
+
+/* 3. Smooth Depth-of-Field Blur Reveal Keyframes */
+@keyframes blurReveal {
+  from {
+    filter: blur(12px);
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    filter: blur(0px);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.blur-in {
+  animation: blurReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

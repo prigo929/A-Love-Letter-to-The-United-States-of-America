@@ -11,6 +11,7 @@ import { fadeUp, staggerContainer } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { yearsSince1776 } from "@/lib/utils";
 import { MinimalistMonochromeFlag } from "@/components/shared/MinimalistMonochromeFlag";
+import { BlurReveal } from "@/components/shared/CinematicEffects";
 
 export function OpeningStatement() {
   const years = yearsSince1776();
@@ -132,19 +133,18 @@ export function OpeningStatement() {
             aria-hidden="true"
           />
 
-          {/* Opening quote */}
-          <motion.p
-            variants={fadeUp}
-            className="font-display text-2xl md:text-4xl lg:text-5xl text-parchment italic leading-relaxed font-normal text-balance"
-          >
-            "
-            {copy.quoteStart}
-            <strong className="font-bold not-italic text-glory-gold">
-              {copy.emphasis}
-            </strong>
-            {copy.quoteEnd}
-            "
-          </motion.p>
+          {/* Opening quote with smooth Depth-of-Field Blur Reveal */}
+          <BlurReveal blurAmount={8} duration={1.2}>
+            <p className="font-display text-2xl md:text-4xl lg:text-5xl text-parchment italic leading-relaxed font-normal text-balance">
+              "
+              {copy.quoteStart}
+              <strong className="font-bold not-italic text-glory-gold chromatic-text">
+                {copy.emphasis}
+              </strong>
+              {copy.quoteEnd}
+              "
+            </p>
+          </BlurReveal>
 
           {/* Body paragraphs */}
           <motion.div
