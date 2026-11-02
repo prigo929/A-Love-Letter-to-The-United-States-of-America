@@ -12,7 +12,7 @@
 // Keep keys descriptive and stable. For example, `homeGrandCanyon` tells you
 // both where the image is used (home page) and what it shows (Grand Canyon).
 
-import chicagoSkyline from "@/IMAGES/Cities/Golden Gate Bridge.jpg";
+import goldenGateBridge from "@/IMAGES/Cities/Golden Gate Bridge.jpg";
 import homeChicagoDowntownPortrait from "@/IMAGES/Cities/Chicago Downtown portrait.jpg";
 import homeNycSunset from "@/IMAGES/Cities/New York Skyline at sunset.jpg";
 import homeNycSkyline from "@/IMAGES/Cities/Manhattan One World Trade Center Close-up.jpg";
@@ -29,7 +29,7 @@ import constitutionBillOfRights from "@/IMAGES/Constitution/Bill_of_Rights_Pg1of
 import constitutionDeclaration from "@/IMAGES/Constitution/Declaration_Pg1of1_AC.jpg";
 import constitutionDeclarationEngrav from "@/IMAGES/Constitution/Declaration_Engrav_Pg1of1_AC.jpg";
 import cultureFlagCrowd from "@/IMAGES/Culture/Iconic Things/Statue Of Liberty.jpg";
-import harvardCampus from "@/IMAGES/University/Columbia University.jpg";
+import harvardCampus from "@/IMAGES/University/Cambridge_-_USA_-_Harvard_University_-_Harry_Elkins_Widener_Memorial_Library_-_panoramio.jpg";
 import economyDollar from "@/IMAGES/Economy/100 dollar bill.jpg";
 import economyPaperMoney from "@/IMAGES/Economy/American paper money laid out vertically from small to large bills.jpg";
 import economyDollarObverse from "@/IMAGES/Economy/United_States_one_dollar_bill,_obverse.jpg";
@@ -626,7 +626,7 @@ export const SITE_IMAGES = {
   homeDeclarationIndependence: homeDeclarationIndependence.src,
   outdoorsBaldEagle: outdoorsBaldEagle.src,
   homeGrandCanyon: homeGrandCanyon.src,
-  homeGoldenGateBridge: chicagoSkyline.src,
+  homeGoldenGateBridge: goldenGateBridge.src,
   homeChicagoDowntownPortrait: homeChicagoDowntownPortrait.src,
   homeNycSunset: homeNycSunset.src,
   homeNycSkyline: homeNycSkyline.src,
@@ -640,7 +640,7 @@ export const SITE_IMAGES = {
   usaMapPeople: usaMapPeople.src,
   grandTeton: grandTeton.src,
   yellowstonePrismatic: yellowstoneNationalPark.src,
-  chicagoSkyline: chicagoSkyline.src,
+  chicagoSkyline: cityChicagoSkyline.src,
   harvardCampus: harvardCampus.src,
   siliconValleyOffice: siliconValleyOffice.src,
   cultureFlagCrowd: cultureFlagCrowd.src,

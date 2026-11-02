@@ -34,11 +34,13 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export function LanguageProvider({
   children,
+  initialLocale = DEFAULT_LOCALE,
 }: {
   children: React.ReactNode;
+  initialLocale?: Locale;
 }) {
   const router = useRouter();
-  const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE);
+  const [locale, setLocaleState] = useState<Locale>(initialLocale);
 
   const setLocale = (nextLocale: Locale) => {
     if (nextLocale === locale) {

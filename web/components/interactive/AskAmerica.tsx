@@ -558,6 +558,8 @@ export function AskAmerica({ locale }: AskAmericaProps) {
         <button
           type="submit"
           disabled={!inputValue.trim() || isTyping}
+          aria-label={isRo ? "Trimite întrebarea" : "Send question"}
+          title={isRo ? "Trimite întrebarea" : "Send question"}
           className="px-4 py-2 rounded-md bg-white hover:bg-zinc-200 text-black font-semibold disabled:opacity-50 transition-colors flex items-center justify-center"
         >
           <Send className="w-4 h-4" />

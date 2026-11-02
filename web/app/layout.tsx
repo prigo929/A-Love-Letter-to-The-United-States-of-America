@@ -17,6 +17,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BackToTop, ReadingProgressBar } from "@/components/layout/PageChrome";
 import { VideoAutoPause } from "@/components/shared/VideoAutoPause";
+import { CursorEffects } from "@/components/shared/CursorEffects";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { SITE } from "@/lib/constants";
 import { getServerLocale } from "@/lib/i18n/server";
@@ -221,7 +222,8 @@ export default async function RootLayout({
       </head>
 
       <body className="bg-navy-dark text-white antialiased font-body overflow-x-hidden">
-        <LanguageProvider>
+        <LanguageProvider initialLocale={locale}>
+          <CursorEffects />
           <ReadingProgressBar />
 
           {/* Skip to content link: accessibility */}
