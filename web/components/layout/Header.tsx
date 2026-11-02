@@ -13,6 +13,7 @@ import { Languages, Menu, X, ChevronDown, Star, Search } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { getLocalizedNavSections } from "@/lib/constants";
 import { SearchModal } from "@/components/layout/SearchModal";
+import { AnthemPlayer } from "@/components/shared/AnthemPlayer";
 import { getHeaderCopy } from "@/lib/i18n/messages/layout";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import {
@@ -391,6 +392,8 @@ export function Header() {
                 </AnimatePresence>
               </div>
 
+              <AnthemPlayer />
+
               <Button href="/sitemap" variant="ghost" size="sm">
                 {copy.viewAllCta}
               </Button>
@@ -410,6 +413,8 @@ export function Header() {
 
             {/* ── Mobile Actions ─────────────────────────────────────────── */}
             <div className="flex lg:hidden items-center gap-2">
+              <AnthemPlayer />
+
               <button
                 type="button"
                 onClick={() => setSearchOpen(true)}
