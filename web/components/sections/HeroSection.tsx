@@ -36,6 +36,7 @@ import {
 import { getSiteTagline, HERO_IMAGES } from "@/lib/constants";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
+import { MonochromeVectorFlag } from "@/components/shared/MonochromeVectorFlag";
 
 // ─── Particle Stars Canvas ────────────────────────────────────────────────────
 
@@ -573,22 +574,27 @@ export function HeroSection() {
       </motion.div>
 
       {/* ── Gradient Overlay ─────────────────────────────────────────────────
-          This darkens the photo so white text stays readable on top of it. */}
+          Deep #000000 obsidian vignette ensuring pristine text contrast and a cohesive void palette. */}
       <div
         className="absolute inset-0 z-1"
         style={{
           background:
-            "linear-gradient(135deg, rgba(10,10,30,0.90) 0%, rgba(60,59,110,0.70) 40%, rgba(139,26,38,0.60) 100%)",
+            "radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0.58) 0%, rgba(5,6,8,0.88) 65%, #000000 100%)",
         }}
         aria-hidden="true"
       />
 
+      {/* ── Ambient Monochrome Vector Flag (Cloth Wave) ──────────────────── */}
+      <div className="absolute inset-0 z-[2] opacity-[0.08] pointer-events-none flex items-center justify-center scale-110">
+        <MonochromeVectorFlag amplitude={24} speed={0.0012} opacity={1} />
+      </div>
+
       {/* Bottom fade into next section
-          This softens the transition from the hero into the darker section below. */}
+          Softens the transition from the hero into the deep black opening section. */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-40 z-2"
+        className="absolute bottom-0 left-0 right-0 h-44 z-[3]"
         style={{
-          background: "linear-gradient(to bottom, transparent, #0d1117)",
+          background: "linear-gradient(to bottom, transparent, #000000)",
         }}
         aria-hidden="true"
       />

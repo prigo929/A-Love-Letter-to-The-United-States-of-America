@@ -1,13 +1,16 @@
 "use client";
 
 // ─── Opening Statement Section ────────────────────────────────────────────────
-// Parchment background, large centered quote with editorial styling.
+// Deep obsidian #000000 background with ambient monochrome vector flag,
+// architectural hairline borders, horological coordinate stamps, and
+// editorial museum typography.
 
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { yearsSince1776 } from "@/lib/utils";
+import { MonochromeVectorFlag } from "@/components/shared/MonochromeVectorFlag";
 
 export function OpeningStatement() {
   const years = yearsSince1776();
@@ -16,6 +19,7 @@ export function OpeningStatement() {
     locale === "ro"
       ? {
           badge: `Fondată în 1776 · ${years} ani de măreție`,
+          coordinates: "38°53′52″N · 77°02′11″W · ARHIVELE REPUBLICII",
           quoteStart:
             "Nu a existat niciodată, în toată istoria omenirii, o națiune care să fi făcut mai mult pentru libertate, să fi creat mai multă bogăție, să fi produs mai multă inovație sau să fi oferit mai multe oportunități mai multor oameni decât",
           emphasis: " Statele Unite ale Americii",
@@ -28,6 +32,7 @@ export function OpeningStatement() {
         }
       : {
           badge: `Est. 1776 · ${years} Years of Greatness`,
+          coordinates: "38°53′52″N · 77°02′11″W · ARCHIVES OF THE REPUBLIC",
           quoteStart:
             "There has never been, in all of human history, a nation that has done more for freedom, created more wealth, produced more innovation, or offered more opportunity to more people than the",
           emphasis: " United States of America",
@@ -41,42 +46,62 @@ export function OpeningStatement() {
 
   return (
     <section
-      className="bg-parchment relative overflow-hidden"
+      className="bg-navy-dark relative overflow-hidden text-white py-24 md:py-36 border-t border-white/[0.08]"
       aria-labelledby="opening-heading"
     >
-      {/* Decorative noise texture overlay */}
+      {/* ── Ambient Monochrome Vector Flag Layer ──────────────────────────────
+          Slow-moving vector cloth wave in deep obsidian and titanium, running
+          at low opacity behind the archival quote. */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.09] pointer-events-none scale-110">
+        <MonochromeVectorFlag
+          amplitude={22}
+          speed={0.0013}
+          opacity={1}
+          vignette={true}
+        />
+      </div>
+
+      {/* Subtle radial ambient warm bloom */}
       <div
-        className="absolute inset-0 opacity-40 pointer-events-none bg-opening-noise"
+        className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(255,215,0,0.035)_0%,transparent_70%)] pointer-events-none"
         aria-hidden="true"
       />
 
-      {/* Decorative corner ornaments */}
+      {/* ── Architectural Hairline Corner Accents ─────────────────────────── */}
       <div
-        className="absolute top-8 left-8 text-glory-blue/15 font-hero text-8xl leading-none pointer-events-none select-none"
+        className="absolute top-6 left-6 text-white/20 font-mono text-xs select-none pointer-events-none"
         aria-hidden="true"
       >
-        ★
+        ┌
       </div>
       <div
-        className="absolute top-8 right-8 text-glory-blue/15 font-hero text-8xl leading-none pointer-events-none select-none"
+        className="absolute top-6 right-6 text-white/20 font-mono text-xs select-none pointer-events-none"
         aria-hidden="true"
       >
-        ★
+        ┐
       </div>
       <div
-        className="absolute bottom-8 left-8 text-glory-red/15 font-hero text-8xl leading-none pointer-events-none select-none"
+        className="absolute bottom-6 left-6 text-white/20 font-mono text-xs select-none pointer-events-none"
         aria-hidden="true"
       >
-        ★
+        └
       </div>
       <div
-        className="absolute bottom-8 right-8 text-glory-red/15 font-hero text-8xl leading-none pointer-events-none select-none"
+        className="absolute bottom-6 right-6 text-white/20 font-mono text-xs select-none pointer-events-none"
         aria-hidden="true"
       >
-        ★
+        ┘
       </div>
 
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-8 py-20 md:py-28 text-center">
+      {/* Archival micro-coordinate stamp */}
+      <div
+        className="absolute top-6 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.3em] font-mono text-white/30 uppercase select-none pointer-events-none hidden sm:block"
+        aria-hidden="true"
+      >
+        {copy.coordinates}
+      </div>
+
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-8 text-center">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -87,46 +112,46 @@ export function OpeningStatement() {
           {/* Est. badge */}
           <motion.div variants={fadeUp} className="flex items-center gap-3">
             <Star
-              className="w-4 h-4 fill-glory-gold text-glory-gold"
+              className="w-3.5 h-3.5 fill-glory-gold text-glory-gold"
               aria-hidden="true"
             />
             <span
               id="opening-heading"
-              className="font-body text-xs font-semibold text-glory-blue tracking-[0.35em] uppercase"
+              className="font-body text-xs font-semibold text-glory-gold tracking-[0.35em] uppercase"
             >
               {copy.badge}
             </span>
             <Star
-              className="w-4 h-4 fill-glory-gold text-glory-gold"
+              className="w-3.5 h-3.5 fill-glory-gold text-glory-gold"
               aria-hidden="true"
             />
           </motion.div>
 
-          {/* Gold line */}
+          {/* Burnished gold hairline accent rule */}
           <motion.div
-            className="w-24 h-0.5 bg-glory-gold"
+            className="w-24 h-0.5 bg-gradient-to-r from-transparent via-glory-gold to-transparent"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             aria-hidden="true"
           />
 
-          {/* Opening paragraph */}
+          {/* Opening quote */}
           <motion.p
             variants={fadeUp}
-            className="font-display text-2xl md:text-4xl lg:text-5xl text-navy-dark italic leading-relaxed font-normal text-balance"
+            className="font-display text-2xl md:text-4xl lg:text-5xl text-parchment italic leading-relaxed font-normal text-balance"
           >
             "
             {copy.quoteStart}
-            <strong className="font-bold not-italic text-glory-red">
+            <strong className="font-bold not-italic text-glory-gold">
               {copy.emphasis}
             </strong>
             {copy.quoteEnd}
             "
           </motion.p>
 
-          {/* Body text */}
+          {/* Body paragraphs */}
           <motion.div
             variants={fadeUp}
             className="max-w-2xl space-y-5 text-left md:text-center"
@@ -134,20 +159,20 @@ export function OpeningStatement() {
             {copy.paragraphs.map((paragraph) => (
               <p
                 key={paragraph}
-                className="font-body text-lg light-surface-copy leading-relaxed"
+                className="font-body text-base md:text-lg text-white/70 leading-relaxed"
               >
                 {paragraph}
               </p>
             ))}
           </motion.div>
 
-          {/* Bottom divider with stars */}
+          {/* Bottom divider with stars and hairline rules */}
           <motion.div
             variants={fadeUp}
-            className="flex items-center gap-4 w-full max-w-xs"
+            className="flex items-center gap-4 w-full max-w-xs pt-4"
             aria-hidden="true"
           >
-            <div className="flex-1 h-px bg-glory-blue/25" />
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent to-white/20" />
             <div className="flex gap-2">
               {[...Array(3)].map((_, i) => (
                 <Star
@@ -156,7 +181,7 @@ export function OpeningStatement() {
                 />
               ))}
             </div>
-            <div className="flex-1 h-px bg-glory-blue/25" />
+            <div className="flex-1 h-px bg-gradient-to-l from-transparent to-white/20" />
           </motion.div>
         </motion.div>
       </div>

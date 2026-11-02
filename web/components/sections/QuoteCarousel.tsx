@@ -240,14 +240,18 @@ export function QuoteCarousel() {
 
   return (
     <section
-      className="bg-glory-blue relative overflow-hidden py-20 md:py-32"
+      className="bg-navy-dark relative overflow-hidden py-20 md:py-32 border-y border-white/[0.08]"
       aria-labelledby="quotes-heading"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Background texture */}
+      {/* Background ambient lighting */}
       <div
-        className="absolute inset-0 opacity-10 pointer-events-none bg-star-pattern-quote"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,215,0,0.03)_0%,transparent_70%)] pointer-events-none"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 opacity-5 pointer-events-none bg-star-pattern-quote"
         aria-hidden="true"
       />
 
