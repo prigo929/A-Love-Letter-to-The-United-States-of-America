@@ -17,6 +17,7 @@ import { useMotionValue, animate } from "framer-motion";
 import Image from "next/image";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
 import { SITE_IMAGES } from "@/lib/site-images";
+import { QuoteSignature } from "@/components/shared/QuoteSignature";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 0. NatStyles: Spatial Editorial Design System
@@ -486,11 +487,10 @@ export function NatureQuoteBreak({ quote, attribution, title }: {
     >
       <div className="mx-auto max-w-4xl text-center">
         <div className="h-px w-16 bg-white/10 mx-auto mb-12" />
-        <p className="nat-text-section italic leading-[1.8] mb-20" style={{ fontSize: 'clamp(24px, 4vw, 48px)', fontWeight: 400, letterSpacing: '0.04em', wordSpacing: '0.1em' }}>
+        <p className="nat-text-section italic leading-[1.8] mb-12" style={{ fontSize: 'clamp(24px, 4vw, 48px)', fontWeight: 400, letterSpacing: '0.04em', wordSpacing: '0.1em' }}>
           &ldquo;{quote}&rdquo;
         </p>
-        <p className="nat-text-label" style={{ color: 'var(--nat-accent-earth)' }}>: {attribution}</p>
-        {title && <p className="nat-text-metadata mt-2">{title}</p>}
+        <QuoteSignature attribution={attribution} title={title} />
         <div className="h-px w-16 bg-white/10 mx-auto mt-12" />
       </div>
     </motion.div>

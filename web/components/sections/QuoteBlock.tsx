@@ -5,6 +5,7 @@ import Image from "next/image";
 import { fadeUp } from "@/lib/animations";
 import { cn } from "@/lib/utils";
 import { BLUR_PLACEHOLDER } from "@/lib/utils";
+import { QuoteSignature } from "@/components/shared/QuoteSignature";
 
 interface QuoteBlockProps {
   quote: string;
@@ -83,10 +84,10 @@ export function QuoteBlock({
         "{quote}"
       </p>
 
-      {/* Attribution */}
-      <footer className="flex flex-col items-center gap-3">
+      {/* Attribution with Spencerian Gold Signature */}
+      <div className="flex flex-col items-center">
         {imageSrc && (
-          <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-glory-gold">
+          <div className="relative w-14 h-14 rounded-full overflow-hidden border border-glory-gold/60 mb-2 shadow-lg">
             <Image
               src={imageSrc}
               alt={imageAlt ?? attribution}
@@ -97,30 +98,12 @@ export function QuoteBlock({
             />
           </div>
         )}
-        <div>
-          <cite
-            className={cn(
-              "not-italic font-body font-semibold text-base block",
-              isDark ? "text-white" : "text-navy-dark",
-            )}
-          >
-           : {attribution}
-            {year && (
-              <span className="font-normal opacity-60 ml-1">({year})</span>
-            )}
-          </cite>
-          {subtitle && (
-            <span
-              className={cn(
-                "text-sm font-body",
-                isDark ? "text-white/60" : "light-surface-copy-soft",
-              )}
-            >
-              {subtitle}
-            </span>
-          )}
-        </div>
-      </footer>
+        <QuoteSignature
+          attribution={attribution}
+          role={subtitle}
+          year={year}
+        />
+      </div>
     </motion.blockquote>
   );
 }

@@ -48,6 +48,7 @@ import { getStrategicBases, getRegionBriefs } from "@/lib/data/global-bases-data
 import { getOverseasBases } from "@/lib/data/overseas-bases-data";
 import { LayoutGroup } from "framer-motion";
 import { FloatingTOC } from "@/components/layout/FloatingTOC";
+import { QuoteSignature } from "@/components/shared/QuoteSignature";
 
 import { getServerLocale } from "@/lib/i18n/server";
 import type { Locale } from "@/lib/i18n/config";
@@ -611,23 +612,14 @@ export default async function MilitaryPage() {
         <div className="absolute inset-0 mil-dot-canvas opacity-30" />
         
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          <blockquote className="text-[clamp(28px,5vw,72px)] font-black tracking-wider leading-[1.7] text-white/90 mb-24" style={{ wordSpacing: '0.08em' }}>
+          <blockquote className="text-[clamp(28px,5vw,72px)] font-black tracking-wider leading-[1.7] text-white/90 mb-16" style={{ wordSpacing: '0.08em' }}>
             &ldquo;{quote.quote}&rdquo;
           </blockquote>
-          <div className="flex flex-col items-center justify-center gap-6">
-            <div className="flex items-center justify-center gap-4">
-              <div className="h-px w-12" style={{ background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.2))' }} />
-              <cite className="mil-text-metadata not-italic tracking-[0.4em] text-[11px] font-black uppercase text-white/70">
-                {quote.attribution}: {quote.title}
-              </cite>
-              <div className="h-px w-12" style={{ background: 'linear-gradient(to left, transparent, rgba(255,255,255,0.2))' }} />
-            </div>
-            {quote.note && (
-              <p className="mil-text-metadata max-w-xl mx-auto opacity-30 text-[10px] leading-relaxed italic">
-                {quote.note}
-              </p>
-            )}
-          </div>
+          <QuoteSignature
+            attribution={quote.attribution}
+            title={quote.title}
+            role={quote.note}
+          />
         </div>
       </div>
 
