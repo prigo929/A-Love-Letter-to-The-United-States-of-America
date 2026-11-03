@@ -312,6 +312,7 @@ export function BreathingSection({
     <div
       ref={ref}
       className="relative flex min-h-[70dvh] items-center justify-center overflow-hidden"
+      style={{ position: "relative" }}
     >
       {/* Marble texture ambient */}
       <div
@@ -558,7 +559,7 @@ export function WeThePeople({ isRo }: { isRo: boolean }) {
     <section
       ref={containerRef}
       className="relative bg-[#080B12]"
-      style={{ height: "120dvh" }}
+      style={{ height: "120dvh", position: "relative" }}
     >
       <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
         {/* Subtle marble ambient */}
@@ -609,7 +610,7 @@ export function ConservationSpotlight({
   const spotlightOpacity = useTransform(scrollYProgress, [0, 0.3, 0.8], [0, 0.7, 1]);
 
   return (
-    <div ref={ref} className={`relative ${className}`}>
+    <div ref={ref} className={`relative ${className}`} style={{ position: "relative" }}>
       {children}
       {/* Conservation-grade spotlight overlay */}
       <motion.div

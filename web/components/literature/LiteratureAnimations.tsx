@@ -142,13 +142,13 @@ export function ScrollIlluminatedText({
   const easedProgress = useTransform(scrollYProgress, (v) => 1 - Math.pow(1 - v, 3)); // cubic ease-out
 
   if (reduced || !armed) {
-    return <p ref={ref} className={className} style={{ color: lit }}>{children}</p>;
+    return <p ref={ref} className={`relative ${className || ""}`} style={{ color: lit, position: "relative" }}>{children}</p>;
   }
 
   const words = children.split(" ");
 
   return (
-    <p ref={ref} className={className}>
+    <p ref={ref} className={`relative ${className || ""}`} style={{ position: "relative" }}>
       {words.map((w, i) => (
         <ScrollWord
           key={i}
@@ -765,14 +765,14 @@ export function WordReveal({ children, className = "" }: WordRevealProps) {
 
   if (reduced || !armed) {
     return (
-      <p ref={ref} className={`lit-serif ${className}`} style={{ color: "rgba(255,255,255,0.97)" }}>
+      <p ref={ref} className={`relative lit-serif ${className || ""}`} style={{ color: "rgba(255,255,255,0.97)", position: "relative" }}>
         {children}
       </p>
     );
   }
 
   return (
-    <p ref={ref} className={`lit-serif ${className}`}>
+    <p ref={ref} className={`relative lit-serif ${className || ""}`} style={{ position: "relative" }}>
       {words.map((w, i) => (
         <Word key={i} progress={springProgress} index={i} total={words.length}>
           {w}

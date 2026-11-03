@@ -31,7 +31,7 @@ export function FooterSignature() {
   };
 
   return (
-    <div ref={ref} className="overflow-hidden px-2 pt-20 pb-6" aria-hidden="true">
+    <div ref={ref} className="relative overflow-hidden px-2 pt-20 pb-6" style={{ position: "relative" }} aria-hidden="true">
       <div className="relative">
         {/* Outlined base */}
         <span
