@@ -20,7 +20,6 @@ export function OpeningStatement() {
     locale === "ro"
       ? {
           badge: `Fondată în 1776 · ${years} ani de măreție`,
-          coordinates: "38°53′52″N · 77°02′11″W · ARHIVELE REPUBLICII",
           quoteStart:
             "Nu a existat niciodată, în toată istoria omenirii, o națiune care să fi făcut mai mult pentru libertate, să fi creat mai multă bogăție, să fi produs mai multă inovație sau să fi oferit mai multe oportunități mai multor oameni decât",
           emphasis: " Statele Unite ale Americii",
@@ -33,7 +32,6 @@ export function OpeningStatement() {
         }
       : {
           badge: `Est. 1776 · ${years} Years of Greatness`,
-          coordinates: "38°53′52″N · 77°02′11″W · ARCHIVES OF THE REPUBLIC",
           quoteStart:
             "There has never been, in all of human history, a nation that has done more for freedom, created more wealth, produced more innovation, or offered more opportunity to more people than the",
           emphasis: " United States of America",
@@ -67,40 +65,6 @@ export function OpeningStatement() {
         className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(255,215,0,0.035)_0%,transparent_70%)] pointer-events-none"
         aria-hidden="true"
       />
-
-      {/* ── Architectural Hairline Corner Accents ─────────────────────────── */}
-      <div
-        className="absolute top-6 left-6 text-white/20 font-mono text-xs select-none pointer-events-none"
-        aria-hidden="true"
-      >
-        ┌
-      </div>
-      <div
-        className="absolute top-6 right-6 text-white/20 font-mono text-xs select-none pointer-events-none"
-        aria-hidden="true"
-      >
-        ┐
-      </div>
-      <div
-        className="absolute bottom-6 left-6 text-white/20 font-mono text-xs select-none pointer-events-none"
-        aria-hidden="true"
-      >
-        └
-      </div>
-      <div
-        className="absolute bottom-6 right-6 text-white/20 font-mono text-xs select-none pointer-events-none"
-        aria-hidden="true"
-      >
-        ┘
-      </div>
-
-      {/* Archival micro-coordinate stamp */}
-      <div
-        className="absolute top-6 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.3em] font-mono text-white/30 uppercase select-none pointer-events-none hidden sm:block"
-        aria-hidden="true"
-      >
-        {copy.coordinates}
-      </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-8 text-center">
         <motion.div
@@ -143,7 +107,7 @@ export function OpeningStatement() {
             <p className="font-display text-2xl md:text-4xl lg:text-5xl text-parchment italic leading-relaxed font-normal text-balance">
               "
               {copy.quoteStart}
-              <strong className="font-bold not-italic text-glory-gold chromatic-text">
+              <strong className="font-bold not-italic text-glory-red chromatic-text">
                 {copy.emphasis}
               </strong>
               {copy.quoteEnd}

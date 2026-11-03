@@ -518,13 +518,8 @@ export function AnatomyDiagram({ locale }: AnatomyDiagramProps) {
         </svg>
       </div>
 
-      {/* ── Description Panel / HUD Interface (5 Cols) ── */}
+      {/* ── Description Panel / Specifications (5 Cols) ── */}
       <div className="lg:col-span-5 flex flex-col justify-between border border-white/5 rounded-2xl p-6 md:p-8 bg-[#040404] relative overflow-hidden">
-        
-        {/* HUD borders design */}
-        <div className="absolute top-0 right-0 w-24 h-24 border-t border-r border-white/5 pointer-events-none rounded-tr-2xl" />
-        <div className="absolute bottom-0 left-0 w-24 h-24 border-b border-l border-white/5 pointer-events-none rounded-bl-2xl" />
-
         <div className="flex-1 flex flex-col justify-center">
           <span className="font-sans text-[10px] uppercase tracking-[0.25em] text-[#E8B923] mb-4 block">
             {isRo ? "Sistem Metric & Specificații" : "Metric HUD & Specifications"}

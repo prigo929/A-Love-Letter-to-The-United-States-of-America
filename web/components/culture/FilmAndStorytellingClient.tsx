@@ -280,10 +280,6 @@ export function FilmAndStorytellingClient({
   // Dynamic viewfinder graphic per composition (dark-section only)
   const renderViewfinder = (index: number) => (
     <div className="relative w-full aspect-16/10 bg-black/40 border border-white/10 rounded-xl overflow-hidden mb-6 flex items-center justify-center group-hover:border-glory-gold/30 transition-colors duration-300">
-      <div className="absolute top-2.5 left-2.5 w-3 h-3 border-t-2 border-l-2 border-white/20 group-hover:border-glory-gold/50 transition-colors duration-300" />
-      <div className="absolute top-2.5 right-2.5 w-3 h-3 border-t-2 border-r-2 border-white/20 group-hover:border-glory-gold/50 transition-colors duration-300" />
-      <div className="absolute bottom-2.5 left-2.5 w-3 h-3 border-b-2 border-l-2 border-white/20 group-hover:border-glory-gold/50 transition-colors duration-300" />
-      <div className="absolute bottom-2.5 right-2.5 w-3 h-3 border-b-2 border-r-2 border-white/20 group-hover:border-glory-gold/50 transition-colors duration-300" />
       <span className="text-white/10 group-hover:text-glory-gold/30 font-sans text-sm select-none pointer-events-none transition-colors duration-300">+</span>
 
       {index === 0 && (

@@ -1282,8 +1282,6 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
                     transition={{ type: "spring", stiffness: 350, damping: 30 }}
                   />
                 )}
-                {/* Micro tech borders inside tabs */}
-                <div className="absolute top-0 right-0 h-1.5 w-1.5 border-t border-r border-white/10 group-hover:border-[#7d93ab]/50" />
                 
                 <div className="flex flex-col space-y-1 relative z-10">
                   <span className="text-[11px] tracking-[0.2em] font-black uppercase text-white group-hover:text-[#7d93ab] transition-colors duration-200">
@@ -1304,9 +1302,6 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
             <div className="lg:col-span-7 flex flex-col justify-between space-y-8">
               
               <div className="space-y-5 relative">
-                {/* Cyber corner brackets accent */}
-                <div className="absolute -top-4 -left-4 h-6 w-6 border-t-2 border-l-2 border-[#7d93ab]/20 pointer-events-none" />
-                
                 <h3 className="navy-font-display text-2xl sm:text-4.5xl font-black text-white leading-snug uppercase pt-1" style={{ wordSpacing: "0.25em", letterSpacing: "0.06em" }}>
                   {weapon.name}
                 </h3>
@@ -1397,10 +1392,6 @@ export function NavyWeaponsConsole({ locale = "en" }: { locale?: Locale }) {
               
               {/* High-Fidelity Tactical Weapon Frame */}
               <div className="relative w-full aspect-square max-w-[340px] rounded-lg border border-white/10 bg-black/40 overflow-hidden flex items-center justify-center p-2 group">
-                
-                {/* Cyber corner brackets accent */}
-                <div className="absolute top-2 left-2 right-2 bottom-2 rounded border border-white/5 pointer-events-none z-20" />
-
                 {/* Real Image component */}
                 <div className="relative z-10 w-full h-full">
                   <Image
