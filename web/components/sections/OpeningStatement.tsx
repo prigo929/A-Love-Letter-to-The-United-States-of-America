@@ -10,8 +10,6 @@ import { Star } from "lucide-react";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { yearsSince1776 } from "@/lib/utils";
-import { MonochromeVectorFlag } from "@/components/shared/MonochromeVectorFlag";
-import { BlurReveal } from "@/components/shared/CinematicEffects";
 
 export function OpeningStatement() {
   const years = yearsSince1776();
@@ -48,16 +46,30 @@ export function OpeningStatement() {
       className="bg-navy-dark relative overflow-hidden text-white py-24 md:py-36 border-t border-white/[0.08]"
       aria-labelledby="opening-heading"
     >
-      {/* ── Ambient Waving Monochrome Vector Flag Layer ─────────────────────────
-          Mathematical double-sine cloth wave physics in deep obsidian and titanium,
-          gently billowing in the background behind the archival quote. */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.12] pointer-events-none scale-110">
-        <MonochromeVectorFlag
-          amplitude={22}
-          speed={0.0014}
-          opacity={1}
-          vignette={true}
-        />
+      {/* Decorative corner ornaments */}
+      <div
+        className="absolute top-8 left-8 text-glory-blue/20 font-hero text-8xl leading-none pointer-events-none select-none"
+        aria-hidden="true"
+      >
+        ★
+      </div>
+      <div
+        className="absolute top-8 right-8 text-glory-blue/20 font-hero text-8xl leading-none pointer-events-none select-none"
+        aria-hidden="true"
+      >
+        ★
+      </div>
+      <div
+        className="absolute bottom-8 left-8 text-glory-red/20 font-hero text-8xl leading-none pointer-events-none select-none"
+        aria-hidden="true"
+      >
+        ★
+      </div>
+      <div
+        className="absolute bottom-8 right-8 text-glory-red/20 font-hero text-8xl leading-none pointer-events-none select-none"
+        aria-hidden="true"
+      >
+        ★
       </div>
 
       {/* Subtle radial ambient warm bloom */}
@@ -102,18 +114,19 @@ export function OpeningStatement() {
             aria-hidden="true"
           />
 
-          {/* Opening quote with smooth Depth-of-Field Blur Reveal */}
-          <BlurReveal blurAmount={8} duration={1.2}>
-            <p className="font-display text-2xl md:text-4xl lg:text-5xl text-parchment italic leading-relaxed font-normal text-balance">
-              "
-              {copy.quoteStart}
-              <strong className="font-bold not-italic text-glory-red chromatic-text">
-                {copy.emphasis}
-              </strong>
-              {copy.quoteEnd}
-              "
-            </p>
-          </BlurReveal>
+          {/* Opening quote */}
+          <motion.p
+            variants={fadeUp}
+            className="font-display text-2xl md:text-4xl lg:text-5xl text-parchment italic leading-relaxed font-normal text-balance"
+          >
+            "
+            {copy.quoteStart}
+            <strong className="font-bold not-italic text-glory-red">
+              {copy.emphasis}
+            </strong>
+            {copy.quoteEnd}
+            "
+          </motion.p>
 
           {/* Body paragraphs */}
           <motion.div
