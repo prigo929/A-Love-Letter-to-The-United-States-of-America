@@ -416,7 +416,7 @@
 /* ─── Cursor spotlight (applied by components/shared/CursorEffects.tsx) ────── */
 /* A gold radial glow that tracks the pointer across card surfaces. The JS    */
 /* delegation sets --spot-x/--spot-y/--spot-o on hovered cards.               */
-.spot-glow {
+.spot-glow:not(.absolute):not(.fixed) {
   position: relative;
 }
 

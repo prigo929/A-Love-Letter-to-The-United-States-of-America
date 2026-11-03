@@ -11,10 +11,10 @@
 import { useEffect } from "react";
 
 const CARD_SELECTOR = [
-  ".rounded-3xl.border",
-  ".rounded-2xl.border",
-  ".rounded-xl.border",
-  ".rounded-lg.border",
+  "main .rounded-3xl.border",
+  "main .rounded-2xl.border",
+  "main .rounded-xl.border",
+  "main .rounded-lg.border",
 ].join(", ");
 
 export function CursorEffects() {
@@ -32,12 +32,22 @@ export function CursorEffects() {
       const e = pending;
       if (!e) return;
       const target = e.target as Element | null;
+
+      // Ignore header chrome, nav dropdowns, popovers, and dialogs
+      if (target?.closest("header, nav, [role='menu'], [role='dialog'], [data-no-spotlight]")) {
+        if (lastCard) {
+          lastCard.style.setProperty("--spot-o", "0");
+          lastCard = null;
+        }
+        return;
+      }
+
       const card = (target?.closest?.(CARD_SELECTOR) as HTMLElement | null) ?? null;
 
       if (card !== lastCard && lastCard) {
         lastCard.style.setProperty("--spot-o", "0");
       }
-      if (card) {
+      if (card && !card.classList.contains("absolute") && !card.classList.contains("fixed")) {
         const rect = card.getBoundingClientRect();
         card.classList.add("spot-glow");
         card.style.setProperty("--spot-x", `${e.clientX - rect.left}px`);

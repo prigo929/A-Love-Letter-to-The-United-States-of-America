@@ -186,7 +186,7 @@ export function Header() {
 
             {/* ── Desktop Nav ────────────────────────────────────────────── */}
             <nav
-              className="hidden lg:flex items-stretch gap-1.5 xl:gap-3 h-full"
+              className="hidden lg:flex items-stretch gap-1 xl:gap-2.5 h-full"
               aria-label="Main navigation"
             >
               {primaryNav.map((section) => (
@@ -205,7 +205,7 @@ export function Header() {
                   <Link
                     href={section.href}
                     className={cn(
-                      "flex items-center gap-1 px-3.5 xl:px-4 py-2 rounded-lg font-body text-sm font-medium",
+                      "flex items-center gap-1 px-2.5 xl:px-3.5 py-1.5 xl:py-2 rounded-lg font-body text-xs xl:text-sm font-medium",
                       "transition-colors duration-150",
                       "text-white/80 hover:text-white hover:bg-white/10",
                       pathname.startsWith(section.href) &&
@@ -219,7 +219,7 @@ export function Header() {
                     {section.title}
                     <ChevronDown
                       className={cn(
-                        "w-3.5 h-3.5 transition-transform duration-200",
+                        "w-3 h-3 xl:w-3.5 xl:h-3.5 transition-transform duration-200",
                         activeMenu === section.title && "rotate-180",
                       )}
                       aria-hidden="true"
@@ -328,27 +328,29 @@ export function Header() {
 
             {/* ── Desktop CTA ────────────────────────────────────────────── */}
             <div 
-              className="hidden lg:flex items-center gap-3"
+              className="hidden lg:flex items-center gap-2 xl:gap-2.5 shrink-0"
               onMouseEnter={() => {
                 if (menuTimeout.current) clearTimeout(menuTimeout.current);
                 setActiveMenu(null);
               }}
             >
-              <div ref={languageMenuRef} className="relative">
+              <div ref={languageMenuRef} className="relative flex items-center shrink-0">
                 <button
                   type="button"
                   onClick={() => setLanguageMenuOpen((open) => !open)}
-                  className="flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-3 py-2 font-body text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
+                  className="flex items-center justify-center gap-1.5 rounded-xl border border-white/15 bg-white/5 px-2.5 py-1.5 font-body text-xs font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
                   aria-haspopup="menu"
                   aria-expanded={languageMenuOpen}
                   aria-label={copy.chooseLanguage}
+                  title={copy.chooseLanguage}
                 >
-                  <Languages className="h-4 w-4 text-glory-gold" />
-                  <span>{selectedLanguage.flag}</span>
-                  <span>{selectedLanguage.code}</span>
+                  <Languages className="h-3.5 w-3.5 text-glory-gold shrink-0" />
+                  <span className="text-base leading-none select-none" role="img" aria-hidden="true">
+                    {selectedLanguage.flag}
+                  </span>
                   <ChevronDown
                     className={cn(
-                      "h-3.5 w-3.5 transition-transform duration-200",
+                      "h-3 w-3 text-white/60 transition-transform duration-200 shrink-0",
                       languageMenuOpen && "rotate-180",
                     )}
                     aria-hidden="true"
@@ -358,11 +360,11 @@ export function Header() {
                 <AnimatePresence>
                   {languageMenuOpen && (
                     <motion.div
-                      initial={{ opacity: 0, y: 8 }}
+                      initial={{ opacity: 0, y: 4 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 8 }}
-                      transition={{ duration: 0.18 }}
-                      className="absolute right-0 top-full z-60 mt-2 w-44 overflow-hidden rounded-2xl border border-white/15 bg-navy-dark/80 shadow-2xl backdrop-blur-2xl"
+                      exit={{ opacity: 0, y: 4 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute right-0 top-full z-[70] mt-2 w-48 overflow-hidden rounded-2xl border border-white/15 bg-navy-dark/95 shadow-2xl backdrop-blur-2xl"
                       role="menu"
                     >
                        {languageOptions.map((language) => (
@@ -371,19 +373,19 @@ export function Header() {
                           type="button"
                           onClick={() => handleLanguageSelect(language)}
                           className={cn(
-                            "flex w-full items-center justify-center gap-3 px-4 py-3 text-center font-body text-sm transition-colors hover:bg-white/8",
+                            "flex w-full items-center justify-between px-3.5 py-2.5 text-left font-body text-xs transition-colors hover:bg-white/10",
                             selectedLanguage.code === language.code
-                              ? "bg-glory-gold/10 text-glory-gold"
+                              ? "bg-glory-gold/15 text-glory-gold font-medium"
                               : "text-white/80",
                           )}
                           role="menuitem"
                         >
                           <span className="flex items-center gap-2">
-                            <span>{language.flag}</span>
+                            <span className="text-sm">{language.flag}</span>
                             <span>{language.label}</span>
                           </span>
-                          <span className="text-xs tracking-widest opacity-60">
-                            ({language.code})
+                          <span className="text-[10px] uppercase font-mono tracking-wider opacity-60">
+                            {language.code}
                           </span>
                         </button>
                       ))}
@@ -394,18 +396,19 @@ export function Header() {
 
               <AnthemPlayer />
 
-              <Button href="/sitemap" variant="ghost" size="sm">
+              <Button href="/sitemap" variant="ghost" size="sm" className="hidden xl:inline-flex text-xs px-2.5 py-1.5 h-auto">
                 {copy.viewAllCta}
               </Button>
               <button
                 type="button"
                 onClick={() => setSearchOpen(true)}
-                className="flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-3 py-2 font-body text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
+                className="flex items-center justify-center gap-1.5 rounded-xl border border-white/15 bg-white/5 px-2.5 py-1.5 font-body text-xs font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold shrink-0"
                 aria-label={locale === "ro" ? "Caută pe site" : "Search site"}
+                title={locale === "ro" ? "Caută pe site (⌘K)" : "Search site (⌘K)"}
               >
-                <Search className="h-4 w-4 text-glory-gold" />
-                <span className="hidden xl:inline text-xs opacity-80">{locale === "ro" ? "Caută" : "Search"}</span>
-                <kbd className="hidden xl:inline-block select-none rounded bg-white/10 px-1.5 py-0.5 text-[9px] font-semibold text-white/40">
+                <Search className="h-3.5 w-3.5 text-glory-gold shrink-0" />
+                <span className="hidden 2xl:inline text-xs opacity-80">{locale === "ro" ? "Caută" : "Search"}</span>
+                <kbd className="hidden 2xl:inline-block select-none rounded bg-white/10 px-1 py-0.5 text-[9px] font-semibold text-white/40">
                   ⌘K
                 </kbd>
               </button>

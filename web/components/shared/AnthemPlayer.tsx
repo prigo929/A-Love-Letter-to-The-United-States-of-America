@@ -159,7 +159,7 @@ export function AnthemPlayer({ className }: { className?: string }) {
   };
 
   return (
-    <div ref={dropdownRef} className={cn("relative inline-block text-left", className)}>
+    <div ref={dropdownRef} className={cn("relative flex items-center shrink-0 text-left", className)}>
       {/* Hidden Audio Element */}
       <audio
         ref={audioRef}
@@ -179,33 +179,33 @@ export function AnthemPlayer({ className }: { className?: string }) {
       />
 
       {/* Main Pill Button */}
-      <div className="flex items-center rounded-xl border border-white/15 bg-white/5 backdrop-blur-md transition-all duration-200 hover:border-glory-gold/40 hover:bg-white/10">
+      <div className="flex items-center rounded-xl border border-white/15 bg-white/5 backdrop-blur-md transition-all duration-200 hover:border-glory-gold/40 hover:bg-white/10 shrink-0">
         {/* Play / Pause Toggle Button */}
         <button
           type="button"
           onClick={togglePlay}
-          className="flex items-center gap-2 px-3 py-2 text-white/90 hover:text-glory-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold rounded-l-xl transition-colors"
+          className="flex items-center gap-1.5 px-2.5 py-1.5 text-white/90 hover:text-glory-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold rounded-l-xl transition-colors"
           aria-label={isPlaying ? (isRo ? "Pauză imn" : "Pause anthem") : (isRo ? "Redă imnul național" : "Play national anthem")}
-          title={isPlaying ? (isRo ? "Pauză" : "Pause") : (isRo ? "Redă imnul național" : "Play anthem")}
+          title={isPlaying ? (isRo ? "Pauză imn" : "Pause anthem") : (isRo ? "Redă imnul național" : "Play national anthem")}
         >
           {isPlaying ? (
-            <Pause className="h-4 w-4 fill-glory-gold text-glory-gold animate-pulse" />
+            <Pause className="h-3.5 w-3.5 fill-glory-gold text-glory-gold animate-pulse shrink-0" />
           ) : (
-            <Play className="h-4 w-4 fill-glory-gold text-glory-gold" />
+            <Play className="h-3.5 w-3.5 fill-glory-gold text-glory-gold shrink-0" />
           )}
 
           {/* Equalizer animation bars */}
-          <div className="flex items-end gap-0.5 h-3.5 w-4 overflow-hidden" aria-hidden="true">
+          <div className="flex items-end gap-0.5 h-3 w-3 overflow-hidden shrink-0" aria-hidden="true">
             <span
               className={cn(
                 "w-0.5 rounded-full bg-glory-gold transition-all duration-300",
-                isPlaying ? "h-3 animate-[pulse_0.6s_ease-in-out_infinite]" : "h-1 opacity-50"
+                isPlaying ? "h-2.5 animate-[pulse_0.6s_ease-in-out_infinite]" : "h-1 opacity-50"
               )}
             />
             <span
               className={cn(
                 "w-0.5 rounded-full bg-glory-gold transition-all duration-300",
-                isPlaying ? "h-3.5 animate-[pulse_0.8s_ease-in-out_infinite_0.15s]" : "h-1.5 opacity-50"
+                isPlaying ? "h-3 animate-[pulse_0.8s_ease-in-out_infinite_0.15s]" : "h-1.5 opacity-50"
               )}
             />
             <span
@@ -214,30 +214,21 @@ export function AnthemPlayer({ className }: { className?: string }) {
                 isPlaying ? "h-2 animate-[pulse_0.5s_ease-in-out_infinite_0.3s]" : "h-1 opacity-50"
               )}
             />
-            <span
-              className={cn(
-                "w-0.5 rounded-full bg-glory-gold transition-all duration-300",
-                isPlaying ? "h-3.5 animate-[pulse_0.7s_ease-in-out_infinite_0.45s]" : "h-2 opacity-50"
-              )}
-            />
           </div>
-
-          <span className="hidden xl:inline font-body text-xs font-medium text-white/90 select-none">
-            {isRo ? "Imn" : "Anthem"}
-          </span>
         </button>
 
         {/* Dropdown open trigger */}
         <button
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
-          className="px-2 py-2 text-white/60 hover:text-white border-l border-white/10 rounded-r-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold"
-          aria-label={isRo ? "Opțiuni imn și piese" : "Anthem options and tracks"}
+          className="px-2 py-1.5 text-white/60 hover:text-white border-l border-white/10 rounded-r-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold shrink-0"
+          aria-label={isRo ? "Alege versiunea imnului" : "Select anthem version"}
           aria-expanded={isOpen}
+          title={isRo ? "Alege versiunea imnului" : "Select anthem version"}
         >
           <ChevronDown
             className={cn(
-              "h-3.5 w-3.5 transition-transform duration-200",
+              "h-3 w-3 transition-transform duration-200 shrink-0",
               isOpen && "rotate-180"
             )}
             aria-hidden="true"
@@ -249,11 +240,11 @@ export function AnthemPlayer({ className }: { className?: string }) {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 8, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 6, scale: 0.98 }}
-            transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute right-0 top-full mt-2 w-80 sm:w-96 overflow-hidden rounded-2xl border border-white/15 bg-navy-dark/95 shadow-2xl backdrop-blur-2xl z-50 p-4"
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 4 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="absolute right-0 top-full mt-2 w-[calc(100vw-2rem)] sm:w-84 max-w-sm overflow-hidden rounded-2xl border border-white/15 bg-navy-dark/95 shadow-2xl backdrop-blur-2xl z-[70] p-4"
           >
             {/* Header / Current Playing */}
             <div className="flex items-center justify-between pb-3 border-b border-white/10">
