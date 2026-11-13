@@ -62,6 +62,70 @@ export function Header() {
       "/data",
     ].includes(section.href)
   );
+  const exploreSections = navSections.filter((section) =>
+    [
+      "/history",
+      "/science",
+      "/universities",
+      "/infrastructure",
+      "/literature-philosophy",
+      "/art-architecture",
+      "/global-leadership",
+    ].includes(section.href)
+  );
+  const interactiveTools = [
+    {
+      href: "/explorer",
+      label: locale === "ro" ? "Explorator Hartă" : "Map Explorer",
+      description:
+        locale === "ro"
+          ? "GIS & demografie pe comitate"
+          : "County GIS & demographic layers",
+    },
+    {
+      href: "/gallery",
+      label: locale === "ro" ? "Galerie & Active" : "Photo & Asset Gallery",
+      description:
+        locale === "ro"
+          ? "1,100+ cadre foto și vectori"
+          : "1,100+ photo frames & vectors",
+    },
+    {
+      href: "/videos",
+      label: locale === "ro" ? "Teatru Video" : "Cinematic Video Theatre",
+      description:
+        locale === "ro"
+          ? "Documentare și momente naționale"
+          : "Curated national documentaries",
+    },
+    {
+      href: "/civics-quiz",
+      label: locale === "ro" ? "Examen Civică" : "Civics Examination",
+      description:
+        locale === "ro"
+          ? "Testul oficial de naturalizare"
+          : "USCIS naturalization civics test",
+    },
+    {
+      href: "/interactive",
+      label: locale === "ro" ? "Oracol AI America" : "Ask America AI Oracle",
+      description:
+        locale === "ro"
+          ? "Întrebări și răspunsuri ghidate"
+          : "Search knowledge base with AI",
+    },
+    {
+      href: "/united-states",
+      label: locale === "ro" ? "Profilul Națiunii" : "United States Overview",
+      description:
+        locale === "ro"
+          ? "Date esențiale despre cele 50 de state"
+          : "50 states & key national facts",
+    },
+  ];
+  const isExploreActive =
+    exploreSections.some((s) => pathname.startsWith(s.href)) ||
+    interactiveTools.some((t) => pathname.startsWith(t.href));
   const copy = getHeaderCopy(locale);
 
   // ── Scroll detection ───────────────────────────────────────────────────────
@@ -328,6 +392,154 @@ export function Header() {
                   </AnimatePresence>
                 </div>
               ))}
+
+              {/* ── Desktop "Explore / More" Mega-Menu ────────────────────── */}
+              <div
+                key="explore-more"
+                className="relative flex items-center self-center"
+                onMouseEnter={() => handleMenuEnter("explore-more")}
+                onMouseLeave={handleMenuLeave}
+              >
+                <button
+                  type="button"
+                  className={cn(
+                    "flex items-center gap-1 px-2.5 xl:px-3.5 py-1.5 xl:py-2 rounded-lg font-body text-xs xl:text-sm font-medium",
+                    "transition-colors duration-150",
+                    "text-white/80 hover:text-white hover:bg-white/10",
+                    (isExploreActive || activeMenu === "explore-more") &&
+                      "text-glory-gold bg-glory-gold/10",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glory-gold",
+                  )}
+                  aria-expanded={activeMenu === "explore-more"}
+                  aria-haspopup="menu"
+                >
+                  <span>{copy.exploreCta}</span>
+                  <ChevronDown
+                    className={cn(
+                      "w-3 h-3 xl:w-3.5 xl:h-3.5 transition-transform duration-200",
+                      activeMenu === "explore-more" && "rotate-180",
+                    )}
+                    aria-hidden="true"
+                  />
+                </button>
+
+                <AnimatePresence>
+                  {activeMenu === "explore-more" && (
+                    <motion.div
+                      variants={megaMenu}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      style={{ transformOrigin: "top right" }}
+                      className="absolute top-full right-0 w-[540px] xl:w-[620px] pt-2"
+                      role="menu"
+                    >
+                      <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-navy-dark/95 shadow-2xl backdrop-blur-2xl isolate">
+                        <div
+                          className="absolute inset-0 bg-gradient-to-b from-navy-dark/90 via-navy-dark/95 to-black backdrop-blur-2xl"
+                          aria-hidden="true"
+                        />
+
+                        {/* Section header */}
+                        <div className="relative z-10 px-5 py-3 border-b border-white/10 bg-white/5 flex items-center justify-between">
+                          <div>
+                            <p className="font-body text-xs text-glory-gold uppercase tracking-widest font-semibold">
+                              {locale === "ro"
+                                ? "Descoperă Toate Orizonturile"
+                                : "Explore All Horizons"}
+                            </p>
+                            <p className="font-body text-xs text-white/50 mt-0.5">
+                              {locale === "ro"
+                                ? "Cronici istorice, academice și unelte interactive"
+                                : "Historical chronicles, academic verticals & interactive tools"}
+                            </p>
+                          </div>
+                          <span className="font-mono text-[10px] uppercase tracking-wider text-glory-gold/70 px-2 py-0.5 rounded border border-glory-gold/30 bg-glory-gold/10">
+                            {locale === "ro" ? "13 Portale" : "13 Portals"}
+                          </span>
+                        </div>
+
+                        {/* Two-column layout */}
+                        <div className="relative z-10 grid grid-cols-2 divide-x divide-white/10 p-2">
+                          {/* Column 1: Verticals */}
+                          <div className="p-2 space-y-1">
+                            <p className="px-3 py-1 font-body text-[10px] font-bold uppercase tracking-widest text-white/40">
+                              {locale === "ro"
+                                ? "Secțiuni & Cronici"
+                                : "Chronicles & Disciplines"}
+                            </p>
+                            {exploreSections.map((sec) => (
+                              <Link
+                                key={sec.href}
+                                href={sec.href}
+                                className={cn(
+                                  "flex flex-col px-3 py-1.5 rounded-lg hover:bg-white/8 transition-colors duration-150",
+                                  pathname.startsWith(sec.href) &&
+                                    "bg-glory-gold/10 text-glory-gold",
+                                )}
+                                role="menuitem"
+                              >
+                                <span className="font-body text-xs font-semibold text-white/90 hover:text-white">
+                                  {sec.title}
+                                </span>
+                                <span className="font-body text-[11px] text-white/45 line-clamp-1 mt-0.5">
+                                  {sec.description}
+                                </span>
+                              </Link>
+                            ))}
+                          </div>
+
+                          {/* Column 2: Interactive Portals */}
+                          <div className="p-2 space-y-1">
+                            <p className="px-3 py-1 font-body text-[10px] font-bold uppercase tracking-widest text-glory-gold/70">
+                              {locale === "ro"
+                                ? "Unelte Interactive"
+                                : "Interactive Tools"}
+                            </p>
+                            {interactiveTools.map((tool) => (
+                              <Link
+                                key={tool.href}
+                                href={tool.href}
+                                className={cn(
+                                  "flex flex-col px-3 py-1.5 rounded-lg hover:bg-white/8 transition-colors duration-150",
+                                  pathname.startsWith(tool.href) &&
+                                    "bg-glory-gold/10 text-glory-gold",
+                                )}
+                                role="menuitem"
+                              >
+                                <span className="font-body text-xs font-semibold text-white/90 hover:text-white">
+                                  {tool.label}
+                                </span>
+                                <span className="font-body text-[11px] text-white/45 line-clamp-1 mt-0.5">
+                                  {tool.description}
+                                </span>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* View all link */}
+                        <div className="relative z-10 px-5 py-2.5 border-t border-white/10 bg-white/5 flex justify-between items-center text-xs">
+                          <Link
+                            href="/sitemap"
+                            className="font-body text-glory-gold hover:text-glory-gold-dark font-semibold tracking-wide uppercase flex items-center gap-1 transition-colors"
+                          >
+                            {copy.viewAllCta} →
+                          </Link>
+                          <Link
+                            href="/data/misconceptions"
+                            className="font-body text-white/50 hover:text-white transition-colors text-[11px]"
+                          >
+                            {locale === "ro"
+                              ? "Mituri vs Realitate"
+                              : "Misconceptions Index"}
+                          </Link>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
             </nav>
 
