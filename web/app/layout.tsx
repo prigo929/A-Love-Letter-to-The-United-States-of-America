@@ -37,9 +37,6 @@ const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  preload: true,
-  weight: ["400", "600", "700"],
-  style: ["normal", "italic"],
 });
 
 const inter = Inter({
@@ -47,7 +44,6 @@ const inter = Inter({
   variable: "--font-body",
   display: "swap",
   preload: true,
-  weight: ["300", "400", "500", "600", "700"],
 });
 
 const archivo = Archivo({
@@ -58,7 +54,7 @@ const archivo = Archivo({
 });
 
 const spaceMono = Space_Mono({
-  weight: ["400", "700"],
+  weight: "400",
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
