@@ -441,22 +441,17 @@ export function Header() {
                         />
 
                         {/* Section header */}
-                        <div className="relative z-10 px-5 py-3 border-b border-white/10 bg-white/5 flex items-center justify-between">
-                          <div>
-                            <p className="font-body text-xs text-glory-gold uppercase tracking-widest font-semibold">
-                              {locale === "ro"
-                                ? "Descoperă Toate Orizonturile"
-                                : "Explore All Horizons"}
-                            </p>
-                            <p className="font-body text-xs text-white/50 mt-0.5">
-                              {locale === "ro"
-                                ? "Cronici istorice, academice și unelte interactive"
-                                : "Historical chronicles, academic verticals & interactive tools"}
-                            </p>
-                          </div>
-                          <span className="font-mono text-[10px] uppercase tracking-wider text-glory-gold/70 px-2 py-0.5 rounded border border-glory-gold/30 bg-glory-gold/10">
-                            {locale === "ro" ? "13 Portale" : "13 Portals"}
-                          </span>
+                        <div className="relative z-10 px-5 py-3 border-b border-white/10 bg-white/5">
+                          <p className="font-body text-xs text-glory-gold uppercase tracking-widest font-semibold">
+                            {locale === "ro"
+                              ? "Descoperă Toate Orizonturile"
+                              : "Explore All Horizons"}
+                          </p>
+                          <p className="font-body text-xs text-white/50 mt-0.5">
+                            {locale === "ro"
+                              ? "Cronici istorice, academice și unelte interactive"
+                              : "Historical chronicles, academic verticals & interactive tools"}
+                          </p>
                         </div>
 
                         {/* Two-column layout */}
@@ -613,9 +608,6 @@ export function Header() {
 
               <AnthemPlayer />
 
-              <Button href="/sitemap" variant="ghost" size="sm" className="hidden xl:inline-flex text-xs px-2.5 py-1.5 h-auto">
-                {copy.viewAllCta}
-              </Button>
               <button
                 type="button"
                 onClick={() => setSearchOpen(true)}
@@ -680,7 +672,7 @@ export function Header() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="fixed top-0 right-0 bottom-0 z-70 w-80 max-w-[90vw] bg-navy-dark border-l border-white/10 overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 z-70 w-84 sm:w-96 max-w-[92vw] bg-navy-dark border-l border-white/10 overflow-y-auto"
               role="dialog"
               aria-modal="true"
               aria-label={copy.mobileMenuLabel}
@@ -716,19 +708,17 @@ export function Header() {
                           : "border-white/5 hover:border-white/10"
                       )}
                     >
-                      {/* Section row with split link/accordion trigger */}
-                      <div className="relative flex items-center w-full">
+                      {/* Section row with non-overlapping flex layout */}
+                      <div className="flex items-center justify-between w-full px-3.5 py-3 gap-2">
                         <Link
                           href={section.href}
-                          className={cn(
-                            "flex-1 flex items-center justify-center gap-3 py-4 text-center font-display font-medium text-sm tracking-wide transition-colors",
-                            section.items && section.items.length > 0 ? "pl-12 pr-12" : "px-4"
-                          )}
+                          onClick={() => setMobileOpen(false)}
+                          className="flex items-center gap-2.5 flex-1 min-w-0 py-0.5"
                         >
                           {/* Sequential index number */}
                           <span
                             className={cn(
-                              "font-hero text-xs tracking-wider",
+                              "font-hero text-xs tracking-wider shrink-0 w-5",
                               isExpanded || isParentActive
                                 ? "text-glory-gold"
                                 : "text-white/30"
@@ -738,7 +728,7 @@ export function Header() {
                           </span>
                           <span
                             className={cn(
-                              "transition-colors",
+                              "font-display font-medium text-sm tracking-wide truncate",
                               isExpanded || isParentActive
                                 ? "text-glory-gold font-semibold"
                                 : "text-white/90 hover:text-white"
@@ -746,17 +736,17 @@ export function Header() {
                           >
                             {section.title}
                           </span>
+                        </Link>
 
-                          {/* Badge inside Link flow to prevent overlapping */}
-                          {"badge" in section && (
-                            <span className="text-[10px] font-body text-glory-gold bg-glory-gold/10 border border-glory-gold/20 font-semibold px-2 py-0.5 rounded-full select-none flex-shrink-0 whitespace-nowrap leading-none">
+                        {/* Right: Badge & Accordion Toggle Chevron */}
+                        <div className="flex items-center gap-1.5 shrink-0">
+                          {"badge" in section && section.badge && (
+                            <span className="text-[10px] font-body text-glory-gold bg-glory-gold/10 border border-glory-gold/20 font-semibold px-2 py-0.5 rounded-full select-none shrink-0 whitespace-nowrap leading-none">
                               {section.badge}
                             </span>
                           )}
-                        </Link>
 
-                        {section.items && section.items.length > 0 && (
-                          <div className="absolute right-3 flex items-center">
+                          {section.items && section.items.length > 0 && (
                             <button
                               type="button"
                               onClick={() =>
@@ -765,8 +755,8 @@ export function Header() {
                                 )
                               }
                               className={cn(
-                                "p-2 rounded-lg text-white/40 hover:text-white hover:bg-white/5 transition-all duration-200",
-                                isExpanded && "text-glory-gold bg-glory-gold/5"
+                                "p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/10 transition-colors",
+                                isExpanded && "text-glory-gold bg-glory-gold/10"
                               )}
                               aria-expanded={isExpanded}
                               aria-label={`Toggle ${section.title} subpages`}
@@ -778,8 +768,8 @@ export function Header() {
                                 )}
                               />
                             </button>
-                          </div>
-                        )}
+                          )}
+                        </div>
                       </div>
 
                       {/* Expandable sub-items */}
@@ -799,14 +789,15 @@ export function Header() {
                                   <Link
                                     key={item.href}
                                     href={item.href}
+                                    onClick={() => setMobileOpen(false)}
                                     className={cn(
-                                      "group flex flex-col items-center text-center px-4 py-2.5 rounded-xl transition-all duration-150 hover:bg-white/5",
+                                      "group flex flex-col items-start text-left px-3.5 py-2 rounded-xl transition-all duration-150 hover:bg-white/5",
                                       isChildActive && "bg-glory-gold/5"
                                     )}
                                   >
                                     <span
                                       className={cn(
-                                        "font-body text-sm font-semibold transition-all duration-200",
+                                        "font-body text-xs font-semibold transition-all duration-200",
                                         isChildActive
                                           ? "text-glory-gold"
                                           : "text-white/70 group-hover:text-white"
@@ -837,24 +828,27 @@ export function Header() {
                   );
                 })}
 
-                <div className="mt-4 pt-4 border-t border-white/10 space-y-3">
+                <div className="mt-4 pt-4 border-t border-white/10 space-y-2">
                   <Link
                     href="/videos"
-                    className="flex items-center justify-center w-full px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center justify-center w-full px-4 py-2.5 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold text-sm transition-colors"
                   >
                     {locale === "ro" ? "Video" : "Videos"}
                   </Link>
                   <Link
                     href="/gallery"
-                    className="flex items-center justify-center w-full px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center justify-center w-full px-4 py-2.5 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold text-sm transition-colors"
                   >
                     {locale === "ro" ? "Galerie" : "Gallery"}
                   </Link>
                   <Link
                     href="/sitemap"
-                    className="flex items-center justify-center w-full px-4 py-3 rounded-xl font-body text-white/80 hover:bg-white/10 font-semibold"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center justify-center w-full px-4 py-3 rounded-xl font-body text-glory-gold bg-glory-gold/10 border border-glory-gold/30 hover:bg-glory-gold/20 font-semibold text-sm transition-colors"
                   >
-                    {copy.viewAllCta}
+                    {copy.viewAllCta} →
                   </Link>
                 </div>
 
