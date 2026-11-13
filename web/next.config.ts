@@ -158,6 +158,8 @@ const nextConfig: NextConfig = {
       { source: "/history/constitutional-battles", destination: "/history/reform-and-rights", permanent: true },
       { source: "/history/border-sovereignty-and-national-identity", destination: "/history/crisis-and-resilience", permanent: true },
       { source: "/history/border-sovereignty", destination: "/history/crisis-and-resilience", permanent: true },
+      // Culture section consolidation
+      { source: "/culture/film-and-storytelling", destination: "/culture/entertainment", permanent: true },
     ];
   },
 };

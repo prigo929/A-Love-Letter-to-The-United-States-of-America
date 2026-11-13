@@ -92,7 +92,7 @@ export default async function ElectoralMapPage() {
           {/* Quick stat pills */}
           <div className="mt-8 flex flex-wrap gap-3">
             {[
-              { label: isRo ? "Alegeri Acoperite" : "Elections Covered", value: "59" },
+              { label: isRo ? "Alegeri Acoperite" : "Elections Covered", value: "60" },
               { label: isRo ? "Perspective" : "Perspectives", value: "4" },
               { label: isRo ? "State" : "States", value: "50" },
             ].map((stat) => (

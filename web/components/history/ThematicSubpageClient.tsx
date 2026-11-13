@@ -110,9 +110,14 @@ export default function ThematicSubpageClient({
     if (typeof window !== "undefined") {
       const handleHashChange = () => {
         if (window.location.hash) {
-          const hash = decodeURIComponent(window.location.hash.replace("#", ""));
+          const rawHash = decodeURIComponent(window.location.hash.replace("#", ""));
+          const hash = rawHash.replace(/^deep-dive-/, "");
           const matched = topics.find(
-            (t) => t.id === hash || t.id.toLowerCase() === hash.toLowerCase()
+            (t) =>
+              t.id === hash ||
+              t.id.toLowerCase() === hash.toLowerCase() ||
+              t.id === rawHash ||
+              t.id.toLowerCase() === rawHash.toLowerCase()
           );
           if (matched) {
             setActiveTopicId(matched.id);

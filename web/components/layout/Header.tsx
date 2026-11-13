@@ -7,13 +7,18 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Languages, Menu, X, ChevronDown, Star, Search } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { getLocalizedNavSections } from "@/lib/constants";
-import { SearchModal } from "@/components/layout/SearchModal";
 import { AnthemPlayer } from "@/components/shared/AnthemPlayer";
+
+const SearchModal = dynamic(
+  () => import("@/components/layout/SearchModal").then((mod) => mod.SearchModal),
+  { ssr: false }
+);
 import { getHeaderCopy } from "@/lib/i18n/messages/layout";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import {

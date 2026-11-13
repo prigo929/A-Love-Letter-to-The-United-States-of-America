@@ -71,6 +71,13 @@ export function LanguageProvider({
     polyfillCountryFlagEmojis();
 
     try {
+      const searchParams = new URLSearchParams(window.location.search);
+      const langParam = searchParams.get("lang");
+      if (langParam && isLocale(langParam)) {
+        setLocale(langParam);
+        return;
+      }
+
       const storedLocale = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
       if (storedLocale && isLocale(storedLocale)) {
         setLocaleState(storedLocale);
