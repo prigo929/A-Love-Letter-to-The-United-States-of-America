@@ -206,8 +206,6 @@ export default async function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* DNS prefetch for CDN-hosted map data */}
-        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
         {/* Warm up the hero media path immediately so the masked `STATES` video is fetched as part of the initial page load. */}
         <link
           rel="preload"

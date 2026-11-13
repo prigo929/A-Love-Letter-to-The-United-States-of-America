@@ -16,7 +16,7 @@ import { COLORS } from "@/lib/constants";
 import { STATE_FACTS } from "@/lib/data/home";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 
-const GEO_URL = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
+const GEO_URL = "/maps/states-10m.json";
 
 // The map library gives us numeric FIPS codes for states.
 // Our fact data uses 2-letter abbreviations like "CA" and "TX".

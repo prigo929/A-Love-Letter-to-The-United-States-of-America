@@ -34,7 +34,7 @@ import type {
 } from "@/lib/data/global-bases-data";
 import type { OverseasBase } from "@/lib/data/overseas-bases-data";
 
-const WORLD_GEO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
+const WORLD_GEO_URL = "/maps/countries-110m.json";
 
 const REGION_VIEWPORTS: Record<GlobalBaseRegion, { coordinates: [number, number]; zoom: number }> = {
   "Europe": { coordinates: [15, 50], zoom: 2.8 },

@@ -13,7 +13,7 @@ import { ComposableMap } from "react-simple-maps";
 import { geoAlbersUsa, geoPath } from "d3-geo";
 import { feature as topojsonFeature } from "topojson-client";
 
-const GEO_URL = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
+const GEO_URL = "/maps/counties-10m.json";
 const RETURNS_URL = "/maps/county-returns.json";
 
 const PROJECTION = geoAlbersUsa().scale(1180).translate([480, 310]);

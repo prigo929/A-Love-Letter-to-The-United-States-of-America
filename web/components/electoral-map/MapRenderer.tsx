@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import type { ViewMode } from "@/lib/data/electoral-data";
 import { getStateData, getFlipData, STATE_ADMISSION, PARTY_COLORS, ELECTORAL_HISTORY, PARTY_FULL_NAMES, CONGRESS_DATA } from "@/lib/data/electoral-data";
 
-const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
+const geoUrl = "/maps/states-10m.json";
 function pc(p: string) { return PARTY_COLORS[p] || "#C9A84C"; }
 
 /**

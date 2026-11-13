@@ -1,7 +1,7 @@
 // Shared US map constants, used by both the state explorer map and the
 // interstate-cooperation network map.
 
-export const GEO_URL = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
+export const GEO_URL = "/maps/states-10m.json";
 
 // ─── FIPS → State Abbreviation ───────────────────────────────────────────────
 export const FIPS_TO_ABBREV: Record<string, string> = {
