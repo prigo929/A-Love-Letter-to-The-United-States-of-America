@@ -45,6 +45,7 @@ type GalleryCopy = {
   downloadAsset?: string;
   copyPath?: string;
   pathCopied?: string;
+  loadMore?: string;
 };
 
 type GalleryExperienceProps = {
@@ -641,9 +642,19 @@ export function GalleryExperience({
   const [activeCategory, setActiveCategory] = useState<GalleryCategory>("All");
   const [activeAssetCategory, setActiveAssetCategory] = useState<PublicAssetCategory>("All");
   const [assetSearchQuery, setAssetSearchQuery] = useState("");
+  const [photoLimit, setPhotoLimit] = useState(48);
+  const [assetLimit, setAssetLimit] = useState(48);
 
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [selectedAsset, setSelectedAsset] = useState<PublicAsset | null>(null);
+
+  useEffect(() => {
+    setPhotoLimit(48);
+  }, [activeCategory]);
+
+  useEffect(() => {
+    setAssetLimit(48);
+  }, [activeAssetCategory, assetSearchQuery]);
 
   const filteredImages = useMemo(
     () =>
@@ -653,15 +664,20 @@ export function GalleryExperience({
     [activeCategory, images],
   );
 
+  const paginatedImages = useMemo(
+    () => filteredImages.slice(0, photoLimit),
+    [filteredImages, photoLimit],
+  );
+
   const groupedImages = useMemo(
     () =>
       ORIENTATION_GROUPS.map((group) => ({
         ...group,
-        images: filteredImages.filter(
+        images: paginatedImages.filter(
           (image) => image.orientation === group.key,
         ),
       })).filter((group) => group.images.length > 0),
-    [filteredImages],
+    [paginatedImages],
   );
 
   const filteredPublicAssets = useMemo(() => {
@@ -675,6 +691,11 @@ export function GalleryExperience({
       return matchesCategory && matchesSearch;
     });
   }, [publicAssets, activeAssetCategory, assetSearchQuery]);
+
+  const paginatedPublicAssets = useMemo(
+    () => filteredPublicAssets.slice(0, assetLimit),
+    [filteredPublicAssets, assetLimit],
+  );
 
   const orderedImages = useMemo(
     () => groupedImages.flatMap((group) => group.images),
@@ -918,13 +939,25 @@ export function GalleryExperience({
                   </div>
                 </section>
               ))}
+
+              {photoLimit < filteredImages.length && (
+                <div className="pt-6 flex justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setPhotoLimit((prev) => prev + 48)}
+                    className="inline-flex items-center gap-2 rounded-lg border border-glory-gold/40 bg-glory-gold/10 px-8 py-3.5 font-body text-xs font-semibold uppercase tracking-[0.2em] text-glory-gold transition hover:border-glory-gold hover:bg-glory-gold/20"
+                  >
+                    {copy.loadMore || "Load More Frames"} ({paginatedImages.length} / {filteredImages.length})
+                  </button>
+                </div>
+              )}
             </motion.div>
           </AnimatePresence>
         ) : (
           <div className="mx-auto max-w-screen-xl">
             <div className="mb-6 flex items-center justify-between border-b border-white/10 pb-3">
               <p className="font-body text-xs uppercase tracking-[0.2em] text-white/50">
-                Showing {filteredPublicAssets.length} public asset{filteredPublicAssets.length === 1 ? "" : "s"}
+                Showing {paginatedPublicAssets.length} of {filteredPublicAssets.length} public asset{filteredPublicAssets.length === 1 ? "" : "s"}
               </p>
             </div>
 
@@ -942,23 +975,37 @@ export function GalleryExperience({
                   <p className="font-display text-lg">No assets match your search or filter.</p>
                 </motion.div>
               ) : (
-                <motion.div
-                  key={`asset-grid-${activeAssetCategory}-${assetSearchQuery}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.18, ease: "easeInOut" }}
-                  className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
-                >
-                  {filteredPublicAssets.map((asset) => (
-                    <PublicAssetTile
-                      key={asset.id}
-                      asset={asset}
-                      onSelect={setSelectedAsset}
-                      copy={copy}
-                    />
-                  ))}
-                </motion.div>
+                <>
+                  <motion.div
+                    key={`asset-grid-${activeAssetCategory}-${assetSearchQuery}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.18, ease: "easeInOut" }}
+                    className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+                  >
+                    {paginatedPublicAssets.map((asset) => (
+                      <PublicAssetTile
+                        key={asset.id}
+                        asset={asset}
+                        onSelect={setSelectedAsset}
+                        copy={copy}
+                      />
+                    ))}
+                  </motion.div>
+
+                  {assetLimit < filteredPublicAssets.length && (
+                    <div className="pt-12 flex justify-center">
+                      <button
+                        type="button"
+                        onClick={() => setAssetLimit((prev) => prev + 48)}
+                        className="inline-flex items-center gap-2 rounded-lg border border-glory-gold/40 bg-glory-gold/10 px-8 py-3.5 font-body text-xs font-semibold uppercase tracking-[0.2em] text-glory-gold transition hover:border-glory-gold hover:bg-glory-gold/20"
+                      >
+                        {copy.loadMore || "Load More Assets"} ({paginatedPublicAssets.length} / {filteredPublicAssets.length})
+                      </button>
+                    </div>
+                  )}
+                </>
               )}
             </AnimatePresence>
           </div>

@@ -40,6 +40,7 @@ export default async function GalleryPage() {
           downloadAsset: "Descarcă activul",
           copyPath: "Copiază cale",
           pathCopied: "Copiata!",
+          loadMore: "Încarcă Mai Multe",
         }
       : {
           breadcrumb: "Gallery",
@@ -60,6 +61,7 @@ export default async function GalleryPage() {
           downloadAsset: "Download asset",
           copyPath: "Copy path",
           pathCopied: "Copied!",
+          loadMore: "Load More",
         };
 
   return (
