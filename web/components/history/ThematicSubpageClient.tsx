@@ -6,10 +6,12 @@
 
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
+import Link from "next/link";
 import Image, { type StaticImageData } from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, BookOpen, Clock, X, Expand } from "lucide-react";
 import type { Locale } from "@/lib/i18n/config";
+import { cn } from "@/lib/utils";
 import { HistoryStyles } from "./HistoryStyles";
 
 /** A photo attached to a section, keyed by `${topicId}::${section.heading.en}`. */
@@ -146,6 +148,9 @@ export default function ThematicSubpageClient({
   }
 
   const activeTopic = topics.find((t) => t.id === activeTopicId) || topics[0];
+  const currentIndex = topics.findIndex((t) => t.id === activeTopic.id);
+  const prevTopic = currentIndex > 0 ? topics[currentIndex - 1] : null;
+  const nextTopic = currentIndex < topics.length - 1 ? topics[currentIndex + 1] : null;
 
   // Renders the figures attached to a given `${topicId}::${heading}` key, if any.
   // Used at both section and subsection level so photos can attach wherever they
@@ -401,6 +406,85 @@ export default function ThematicSubpageClient({
               })}
             </div>
 
+            {/* Sequential Chapter Navigation Footer */}
+            <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+              {prevTopic ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveTopicId(prevTopic.id);
+                    window.scrollTo({ top: 350, behavior: "smooth" });
+                  }}
+                  className="group flex flex-col items-start p-3 sm:p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.07] hover:border-glory-gold/40 transition duration-150 w-full sm:w-auto sm:max-w-xs text-left"
+                >
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-white/40 flex items-center gap-1 group-hover:text-glory-gold transition-colors">
+                    ← {currentLocale === "ro" ? "Subiectul Anterior" : "Previous Topic"}
+                  </span>
+                  <span className="font-display text-sm sm:text-base text-white/90 group-hover:text-white mt-1 line-clamp-1">
+                    {currentLocale === "ro" ? prevTopic.title.ro : prevTopic.title.en}
+                  </span>
+                </button>
+              ) : (
+                <div className="hidden sm:block" />
+              )}
+
+              <div className="text-center">
+                <span className="font-mono text-xs text-white/40">
+                  {currentLocale === "ro"
+                    ? `Capitolul ${currentIndex + 1} din ${topics.length}`
+                    : `Topic ${currentIndex + 1} of ${topics.length}`}
+                </span>
+                <div className="mt-1.5 flex items-center justify-center gap-1">
+                  {topics.map((t, idx) => (
+                    <button
+                      key={t.id}
+                      type="button"
+                      onClick={() => {
+                        setActiveTopicId(t.id);
+                        window.scrollTo({ top: 350, behavior: "smooth" });
+                      }}
+                      className={cn(
+                        "h-1.5 rounded-full transition-all duration-200",
+                        idx === currentIndex
+                          ? "w-6 bg-glory-gold"
+                          : "w-1.5 bg-white/20 hover:bg-white/40"
+                      )}
+                      aria-label={currentLocale === "ro" ? t.title.ro : t.title.en}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {nextTopic ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveTopicId(nextTopic.id);
+                    window.scrollTo({ top: 350, behavior: "smooth" });
+                  }}
+                  className="group flex flex-col items-end p-3 sm:p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.07] hover:border-glory-gold/40 transition duration-150 w-full sm:w-auto sm:max-w-xs text-right"
+                >
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-glory-gold flex items-center gap-1">
+                    {currentLocale === "ro" ? "Subiectul Următor" : "Next Topic"} →
+                  </span>
+                  <span className="font-display text-sm sm:text-base text-white/90 group-hover:text-white mt-1 line-clamp-1">
+                    {currentLocale === "ro" ? nextTopic.title.ro : nextTopic.title.en}
+                  </span>
+                </button>
+              ) : (
+                <Link
+                  href="/history"
+                  className="group flex flex-col items-end p-3 sm:p-4 rounded-xl border border-glory-gold/30 bg-glory-gold/10 hover:bg-glory-gold/20 transition duration-150 w-full sm:w-auto sm:max-w-xs text-right"
+                >
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-glory-gold">
+                    ✓ {currentLocale === "ro" ? "Capitol Finalizat" : "Chapter Completed"}
+                  </span>
+                  <span className="font-display text-sm sm:text-base text-white mt-1">
+                    {currentLocale === "ro" ? "Vezi Toate Cronicele →" : "Explore All Chronicles →"}
+                  </span>
+                </Link>
+              )}
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>

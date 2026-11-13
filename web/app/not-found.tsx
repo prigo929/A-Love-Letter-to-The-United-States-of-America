@@ -6,13 +6,50 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Star, MapPin, ArrowLeft, Compass } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { getServerLocale } from "@/lib/i18n/server";
 
 export const metadata: Metadata = {
   title: "404 — Territory Not Found",
   description: "The page you're looking for doesn't exist. Explore the rest of America instead.",
 };
 
-export default function NotFound() {
+export default async function NotFound() {
+  const locale = await getServerLocale();
+  const copy =
+    locale === "ro"
+      ? {
+          heading: "Teritoriu Negăsit",
+          description:
+            "Această parte a hărții nu a fost încă explorată. Pagina pe care o căutați a fost mutată, redenumită sau nu există.",
+          returnHome: "Înapoi Acasă",
+          allSections: "Toate Secțiunile",
+          destinations: "Destinații Populare",
+          links: [
+            { label: "Economie", href: "/economy" },
+            { label: "Armată", href: "/military" },
+            { label: "Natură", href: "/nature" },
+            { label: "Istorie", href: "/history" },
+            { label: "Constituție", href: "/constitution" },
+            { label: "Cultură", href: "/culture" },
+          ],
+        }
+      : {
+          heading: "Territory Not Found",
+          description:
+            "This part of the map hasn't been charted yet. The page you're looking for may have been moved, renamed, or doesn't exist.",
+          returnHome: "Return Home",
+          allSections: "View All Sections",
+          destinations: "Popular Destinations",
+          links: [
+            { label: "Economy", href: "/economy" },
+            { label: "Military", href: "/military" },
+            { label: "Nature", href: "/nature" },
+            { label: "History", href: "/history" },
+            { label: "Constitution", href: "/constitution" },
+            { label: "Culture", href: "/culture" },
+          ],
+        };
+
   return (
     <div className="min-h-screen-safe bg-navy-dark text-white flex flex-col items-center justify-center px-4 sm:px-6 relative overflow-hidden">
       {/* Background pattern */}
@@ -57,13 +94,12 @@ export default function NotFound() {
 
         {/* Heading */}
         <h1 className="font-display text-h2 text-white mb-4 text-balance">
-          Territory Not Found
+          {copy.heading}
         </h1>
 
         {/* Description */}
         <p className="font-body text-body-lg text-white/60 mb-4 max-w-md mx-auto leading-relaxed">
-          This part of the map hasn&apos;t been charted yet. The page you&apos;re looking for
-          may have been moved, renamed, or doesn&apos;t exist.
+          {copy.description}
         </p>
 
         {/* Decorative divider */}
@@ -77,31 +113,24 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button href="/" variant="gold" size="lg">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Return Home
+            {copy.returnHome}
           </Button>
           <Button href="/sitemap" variant="ghost" size="lg">
-            View All Sections
+            {copy.allSections}
           </Button>
         </div>
 
         {/* Quick links */}
         <div className="mt-12 pt-8 border-t border-white/10">
           <p className="font-body text-xs text-white/30 uppercase tracking-widest mb-4">
-            Popular Destinations
+            {copy.destinations}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            {[
-              { label: "Economy", href: "/economy" },
-              { label: "Military", href: "/military" },
-              { label: "Nature", href: "/nature" },
-              { label: "History", href: "/history" },
-              { label: "Constitution", href: "/constitution" },
-              { label: "Culture", href: "/culture" },
-            ].map((link) => (
+            {copy.links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-body text-sm text-white/50 hover:text-glory-gold px-3 py-1.5 rounded-lg border border-white/10 hover:border-glory-gold/30 transition-all duration-200"
+                className="font-body text-sm text-white/50 hover:text-glory-gold hover:underline transition-colors px-2 py-1"
               >
                 {link.label}
               </Link>
