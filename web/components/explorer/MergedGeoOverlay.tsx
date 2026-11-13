@@ -8,6 +8,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { geoAlbersUsa, geoPath } from "d3-geo";
 import { feature as topojsonFeature } from "topojson-client";
+import { useMapContext } from "react-simple-maps";
 
 const PROJECTION = geoAlbersUsa().translate([400, 300]).scale(960);
 const PATH = geoPath(PROJECTION);
@@ -75,6 +76,20 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
   const isRo = locale === "ro";
   const [features, setFeatures] = useState<GeoJSON.Feature[] | null>(() => featureCache.get(url) || null);
 
+  let mapContext: any = null;
+  try {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    mapContext = useMapContext();
+  } catch {
+    // outside ComposableMap
+  }
+
+  const effectivePath = useMemo(() => {
+    if (mapContext?.path) return mapContext.path;
+    if (mapContext?.projection) return geoPath(mapContext.projection);
+    return PATH;
+  }, [mapContext]);
+
   useEffect(() => {
     if (featureCache.has(url)) {
       setFeatures(featureCache.get(url)!);
@@ -108,7 +123,8 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
 
   const groups = useMemo(() => {
     if ((!useHighDensityMode && (onFeatureHover || onFeatureClick)) || !features || features.length === 0) return [];
-    const cacheKey = `${url}:${categoryField || "flat"}:${fill || ""}:${defaultColor || ""}:hd`;
+    const scaleKey = mapContext?.width ? `${mapContext.width}x${mapContext.height}` : "default";
+    const cacheKey = `${url}:${categoryField || "flat"}:${fill || ""}:${defaultColor || ""}:${scaleKey}:hd`;
     if (pathGroupCache.has(cacheKey)) {
       return pathGroupCache.get(cacheKey)!;
     }
@@ -120,24 +136,24 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
       const cat = categoryField ? props[categoryField] : undefined;
       const stFips = props.STATEFP;
       const color = (cat && colorMap?.[cat]) ?? (stFips && STATE_PALETTE[stFips]) ?? fill ?? defaultColor ?? "#38bdf8";
-      const p = PATH(f as any);
+      const p = effectivePath(f as any);
       if (!p) continue;
       byColor.set(color, (byColor.get(color) ?? "") + p);
     }
     const result = Array.from(byColor.entries()).map(([color, d]) => ({ color, d }));
     pathGroupCache.set(cacheKey, result);
     return result;
-  }, [features, categoryField, colorMap, fill, defaultColor, url, useHighDensityMode, onFeatureHover, onFeatureClick]);
+  }, [features, categoryField, colorMap, fill, defaultColor, url, useHighDensityMode, onFeatureHover, onFeatureClick, effectivePath, mapContext]);
 
   const spatialIndex = useMemo(() => {
     if (!useHighDensityMode || (!onFeatureHover && !onFeatureClick) || !features || features.length === 0) return [];
     const list: { minX: number; minY: number; maxX: number; maxY: number; feature: GeoJSON.Feature; hoverInfo: HoverInfo }[] = [];
     for (let i = 0; i < features.length; i++) {
       const f = features[i];
-      const p = PATH(f as any);
+      const p = effectivePath(f as any);
       if (!p) continue;
 
-      const coords = p.split(/[A-Za-z]/).filter(Boolean).flatMap(s => s.trim().split(',')).map(Number).filter(n => !isNaN(n));
+      const coords = p.split(/[A-Za-z]/).filter(Boolean).flatMap((s: string) => s.trim().split(',')).map(Number).filter((n: number) => !isNaN(n));
       if (coords.length < 4) continue;
       let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
       for (let j = 0; j < coords.length; j += 2) {
@@ -174,7 +190,7 @@ export const MergedGeoOverlay = React.memo(function MergedGeoOverlay({
   const featureItems = useMemo(() => {
     if (useHighDensityMode || (!onFeatureHover && !onFeatureClick) || !features || features.length === 0) return [];
     return features.map((f, i) => {
-      const p = PATH(f as any);
+      const p = effectivePath(f as any);
       if (!p) return null;
       const props = (f.properties || {}) as any;
       const cat = categoryField ? props[categoryField] : undefined;
@@ -343,11 +359,25 @@ export const MergedLineOverlay = React.memo(function MergedLineOverlay({
   strokeOpacity?: number;
   strokeDasharray?: string;
 }) {
+  let mapContext: any = null;
+  try {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    mapContext = useMapContext();
+  } catch {
+    // outside ComposableMap
+  }
+
+  const effectivePath = useMemo(() => {
+    if (mapContext?.path) return mapContext.path;
+    if (mapContext?.projection) return geoPath(mapContext.projection);
+    return PATH;
+  }, [mapContext]);
+
   const mergedPath = useMemo(() => {
     const coordinates = data.flatMap((item) => item.segments || []).filter((seg) => seg.length >= 2);
     if (coordinates.length === 0) return "";
-    return PATH({ type: "MultiLineString", coordinates } as any) || "";
-  }, [data]);
+    return effectivePath({ type: "MultiLineString", coordinates } as any) || "";
+  }, [data, effectivePath]);
 
   if (!mergedPath) return null;
 

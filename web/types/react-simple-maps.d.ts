@@ -12,5 +12,6 @@ declare module "react-simple-maps" {
     width: number;
     height: number;
     projection: (coords: [number, number]) => [number, number] | null;
+    path?: (feature: any) => string | null;
   };
 }

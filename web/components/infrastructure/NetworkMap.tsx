@@ -20,10 +20,11 @@ import { useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ComposableMap,
+  Geographies,
+  Geography,
   ZoomableGroup,
   useMapContext,
 } from "react-simple-maps";
-import { MergedGeoOverlay } from "@/components/explorer/MergedGeoOverlay";
 import { GEO_URL } from "@/lib/data/us-geo";
 import interstatesData from "@/lib/data/interstates-simplified.json";
 import powerPlantsData from "@/lib/data/power-plants.json";
@@ -1307,13 +1308,27 @@ export function NetworkMap({
               setPosition({ coordinates, zoom })
             }
           >
-                  <MergedGeoOverlay
-                    url={GEO_URL}
-                    fill="#0a0a0a"
-                    stroke="rgba(255,255,255,0.07)"
-                    strokeWidth={0.6 / position.zoom}
+            <Geographies geography={GEO_URL}>
+              {({ geographies }: { geographies: any[] }) =>
+                geographies.map((geo) => (
+                  <Geography
+                    key={geo.rsmKey}
+                    geography={geo}
+                    style={{
+                      default: {
+                        fill: "#0a0a0a",
+                        stroke: "rgba(255,255,255,0.07)",
+                        strokeWidth: 0.6 / position.zoom,
+                        outline: "none",
+                      },
+                      hover: { fill: "#0a0a0a", outline: "none" },
+                      pressed: { outline: "none" },
+                    }}
                   />
-                  <RoutesLayer
+                ))
+              }
+            </Geographies>
+            <RoutesLayer
                     routes={filteredCombinedRoutes}
                     nodes={nodes}
                     era={era}
