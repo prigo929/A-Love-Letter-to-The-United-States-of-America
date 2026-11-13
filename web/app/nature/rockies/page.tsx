@@ -27,6 +27,21 @@ import { getRockiesFacts }  from "@/lib/data/nature-data";
 export const metadata: Metadata = {
   title: "Rocky Mountains | Nature",
   description: "The Rocky Mountains: 3,000 miles long, 53 peaks over 14,000 feet, and the backbone of North America.",
+  alternates: { canonical: "/nature/rockies" },
+  openGraph: {
+    title: "The Rocky Mountains: Continental Backbone",
+    description:
+      "3,000 miles long, 53 peaks over 14,000 feet, Glacier National Park, and the Continental Divide.",
+    url: "/nature/rockies",
+    images: [
+      {
+        url: SITE_IMAGES.glacierNationalPark,
+        width: 1200,
+        height: 630,
+        alt: "Glacier National Park in the Rocky Mountains",
+      },
+    ],
+  },
 };
 
 const ROCKIES_PARKS_EN = [

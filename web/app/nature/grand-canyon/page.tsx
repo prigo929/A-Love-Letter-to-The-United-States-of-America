@@ -30,6 +30,21 @@ import { getGrandCanyonFacts } from "@/lib/data/nature-data";
 export const metadata: Metadata = {
   title: "Grand Canyon | Nature",
   description: "277 miles long, 18 miles wide, one mile deep: exposing 1.8 billion years of Earth's geological history.",
+  alternates: { canonical: "/nature/grand-canyon" },
+  openGraph: {
+    title: "Grand Canyon: 1.8 Billion Years of Earth's History",
+    description:
+      "277 miles long, 18 miles wide, one mile deep: carved by the Colorado River through ancient strata.",
+    url: "/nature/grand-canyon",
+    images: [
+      {
+        url: SITE_IMAGES.homeGrandCanyon,
+        width: 1200,
+        height: 630,
+        alt: "Grand Canyon",
+      },
+    ],
+  },
 };
 
 const GEOLOGY_LAYERS_EN = [

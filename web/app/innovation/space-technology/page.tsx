@@ -16,10 +16,25 @@ import {
   CountUp, 
   InfrastructureBand 
 } from "@/components/economy/EconomyAnimations";
+import { SITE_IMAGES } from "@/lib/site-images";
 
 export const metadata: Metadata = {
   title: "Space Technology | Innovation & Technology",
   description: "Explore how American private enterprise and venture capital revolutionized access to orbit, breaking the space monopolies of nation-states.",
+  alternates: { canonical: "/innovation/space-technology" },
+  openGraph: {
+    title: "American Space Technology: The Commercial Revolution",
+    description: "How American innovation, private enterprise, and reusable rocketry revolutionized orbital access.",
+    url: "/innovation/space-technology",
+    images: [
+      {
+        url: SITE_IMAGES.homeSpacexLaunch,
+        width: 1200,
+        height: 630,
+        alt: "SpaceX Rocket Launching to Orbit",
+      },
+    ],
+  },
 };
 
 interface SpaceCopy {

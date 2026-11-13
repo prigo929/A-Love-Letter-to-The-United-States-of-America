@@ -31,6 +31,21 @@ import { getYellowstoneFacts } from "@/lib/data/nature-data";
 export const metadata: Metadata = {
   title: "Yellowstone | Nature",
   description: "Yellowstone: the world's first national park. 10,000 hydrothermal features, 5,000 bison, and a supervolcano.",
+  alternates: { canonical: "/nature/yellowstone" },
+  openGraph: {
+    title: "Yellowstone: The World's First National Park",
+    description:
+      "10,000 hydrothermal features, Old Faithful, Grand Prismatic Spring, 5,000 wild bison, and an active supervolcano.",
+    url: "/nature/yellowstone",
+    images: [
+      {
+        url: SITE_IMAGES.yellowstonePrismatic,
+        width: 1200,
+        height: 630,
+        alt: "Grand Prismatic Spring in Yellowstone",
+      },
+    ],
+  },
 };
 
 const HYDROTHERMAL_FEATURES_EN = [

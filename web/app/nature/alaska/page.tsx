@@ -33,6 +33,20 @@ export const metadata: Metadata = {
   description:
     "Alaska: 663,268 square miles, Denali at 20,310 ft, 100,000 glaciers, 3 million lakes, and the greatest concentration of wilderness remaining on Earth.",
   alternates: { canonical: "/nature/alaska" },
+  openGraph: {
+    title: "Alaska: The Last Frontier | America's Wildest Wilderness",
+    description:
+      "663,268 square miles, Denali at 20,310 ft, 100,000 glaciers, and the greatest concentration of wilderness remaining on Earth.",
+    url: "/nature/alaska",
+    images: [
+      {
+        url: SITE_IMAGES.denaliNationalPark,
+        width: 1200,
+        height: 630,
+        alt: "Denali National Park in Alaska",
+      },
+    ],
+  },
 };
 
 const ALASKA_WILDLIFE = [

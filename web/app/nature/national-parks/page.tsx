@@ -27,6 +27,21 @@ import { getTopParksVisitors, getFeaturedParks } from "@/lib/data/nature-data";
 export const metadata: Metadata = {
   title: "National Parks | Nature",
   description: "63 national parks, 423 NPS sites, 85 million protected acres. The world's first and greatest national park system.",
+  alternates: { canonical: "/nature/national-parks" },
+  openGraph: {
+    title: "America's National Parks: The World's Best Idea",
+    description:
+      "63 national parks, 423 NPS units, and 85 million protected acres spanning from Acadia to Zion.",
+    url: "/nature/national-parks",
+    images: [
+      {
+        url: SITE_IMAGES.yosemiteNationalPark,
+        width: 1200,
+        height: 630,
+        alt: "Yosemite National Park Valley View",
+      },
+    ],
+  },
 };
 
 const ALL_PARKS = [
