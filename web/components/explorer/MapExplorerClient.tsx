@@ -63,17 +63,12 @@ import { InterstateCooperationMap } from "@/components/explorer/InterstateCooper
 import { StateRevenueBudget } from "@/components/explorer/StateRevenueBudget";
 import { fetchCensusAcsData, CensusAcsData } from "@/lib/services/census-api";
 import { LOCAL_CENSUS_ACS_DATABASE } from "@/lib/data/census-local-data";
-import { LOCAL_CENSUS_COUNTY_METRO_DATA } from "@/lib/data/census-county-metro-data";
 
 import { ELECTION_2024_STATES, ELECTION_2020_STATES, getElectionColor } from "@/lib/data/election-data";
 import railData from "@/lib/data/rail-simplified.json";
 import interstateData from "@/lib/data/interstates-simplified.json";
-import hospitalsData from "@/lib/data/hospitals-points.json";
-import schoolsData from "@/lib/data/schools-points.json";
 import volcanoesData from "@/lib/data/volcanoes-points.json";
 import amtrakStationsData from "@/lib/data/amtrak-stations-points.json";
-import transmissionLinesData from "@/lib/data/transmission-lines-segments.json";
-import trailsData from "@/lib/data/trails-segments.json";
 import { StateComparisonModal } from "@/components/explorer/StateComparisonModal";
 import { StateFactsheetModal } from "@/components/explorer/StateFactsheetModal";
 import { MergedGeoOverlay, MergedLineOverlay } from "@/components/explorer/MergedGeoOverlay";
@@ -803,11 +798,47 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
   const [showAmtrakStations, setShowAmtrakStations] = useState<boolean>(false);
   const [showTransmissionLines, setShowTransmissionLines] = useState<boolean>(false);
   const [showTrails, setShowTrails] = useState<boolean>(false);
+  const [transmissionLinesData, setTransmissionLinesData] = useState<any>(null);
+  const [trailsData, setTrailsData] = useState<any>(null);
+  const [hospitalsData, setHospitalsData] = useState<any[] | null>(null);
+  const [schoolsData, setSchoolsData] = useState<any[] | null>(null);
+  const [countyMetroCensusData, setCountyMetroCensusData] = useState<Record<string, any>>({});
+
+  useEffect(() => {
+    if (showTransmissionLines && !transmissionLinesData) {
+      import("@/lib/data/transmission-lines-segments.json").then((m) => setTransmissionLinesData(m.default || m));
+    }
+  }, [showTransmissionLines, transmissionLinesData]);
+
+  useEffect(() => {
+    if (showTrails && !trailsData) {
+      import("@/lib/data/trails-segments.json").then((m) => setTrailsData(m.default || m));
+    }
+  }, [showTrails, trailsData]);
+
+  useEffect(() => {
+    if (showHospitals && !hospitalsData) {
+      import("@/lib/data/hospitals-points.json").then((m) => setHospitalsData(m.default || m));
+    }
+  }, [showHospitals, hospitalsData]);
+
+  useEffect(() => {
+    if (showSchools && !schoolsData) {
+      import("@/lib/data/schools-points.json").then((m) => setSchoolsData(m.default || m));
+    }
+  }, [showSchools, schoolsData]);
+
   const [showParkBoundaries, setShowParkBoundaries] = useState<boolean>(false);
   const [showFederalLands, setShowFederalLands] = useState<boolean>(false);
   const [historicalYearFilter, setHistoricalYearFilter] = useState<number>(1959);
   // Census Layer selection state (22 views)
   const [activeCensusLayerId, setActiveCensusLayerId] = useState<string>("states");
+
+  useEffect(() => {
+    if (activeCensusLayerId !== "states" && Object.keys(countyMetroCensusData).length === 0) {
+      import("@/lib/data/census-county-metro-data").then((m) => setCountyMetroCensusData(m.LOCAL_CENSUS_COUNTY_METRO_DATA || {}));
+    }
+  }, [activeCensusLayerId, countyMetroCensusData]);
   const [isLayerModalOpen, setIsLayerModalOpen] = useState<boolean>(false);
   const [layerSearchQuery, setLayerSearchQuery] = useState<string>("");
   const [layerCategoryFilter, setLayerCategoryFilter] = useState<string>("all");
@@ -1092,7 +1123,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
         const stAbbrev = abbrev || (props.STATEFP ? FIPS_TO_ABBREV[props.STATEFP] : "");
         const rawFips = String(props.GEOID || props.GEOIDFQ || (props.STATEFP && props.COUNTYFP ? `${props.STATEFP}${props.COUNTYFP}` : "") || geo.id || "");
         const geoidKey = rawFips ? rawFips.padStart(5, "0") : featureId;
-        const localAcs = LOCAL_CENSUS_ACS_DATABASE[geoidKey] || LOCAL_CENSUS_COUNTY_METRO_DATA[geoidKey];
+        const localAcs = LOCAL_CENSUS_ACS_DATABASE[geoidKey] || countyMetroCensusData[geoidKey];
 
         // Deterministic hash variance per FIPS code so every county & metro area renders unique heatmap shading
         let hash = 0;
@@ -2428,7 +2459,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                                 const stFips = props.STATEFP ? FIPS_TO_ABBREV[props.STATEFP] || props.STATEFP : "";
                                 const rawFips = String(props.GEOID || props.GEOIDFQ || (props.STATEFP && props.COUNTYFP ? `${props.STATEFP}${props.COUNTYFP}` : "") || geo.id || "");
                                 const code = rawFips ? rawFips.padStart(5, "0") : activeCensusLayer.code;
-                                const localAcs = LOCAL_CENSUS_ACS_DATABASE[code] || LOCAL_CENSUS_COUNTY_METRO_DATA[code];
+                                const localAcs = LOCAL_CENSUS_ACS_DATABASE[code] || countyMetroCensusData[code];
 
                                 // Deterministic hash variance for unlisted FIPS
                                 let hash = 0;
@@ -2687,13 +2718,13 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   {/* ⚡ US Electric Power Transmission Lines Overlay (HIFLD, 74.5k segments,
                       436k points) — merged into one path (see MergedLineOverlay); previously
                       one <Line> per point-pair (~360k DOM nodes) for a single toggle. */}
-                  {showTransmissionLines && (
+                  {showTransmissionLines && transmissionLinesData && (
                     <MergedLineOverlay data={transmissionLinesData as any} stroke="#facc15" strokeWidth={0.5} strokeOpacity={0.6} />
                   )}
 
                   {/* 🥾 National Trails Overlay (USFS Motor Vehicle Use Maps, 23.3k trails,
                       134k points) — merged into one path for the same reason as above. */}
-                  {showTrails && (
+                  {showTrails && trailsData && (
                     <MergedLineOverlay data={trailsData as any} stroke="#a3e635" strokeWidth={0.6} strokeOpacity={0.7} strokeDasharray="2 2" />
                   )}
 
@@ -2727,7 +2758,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                   )}
 
                   {/* 🏥 Hospitals & Clinics Overlay (HIFLD, 7,929 facilities) */}
-                  {showHospitals &&
+                  {showHospitals && hospitalsData &&
                     (hospitalsData as any[]).map((h, i) => {
                       const isClinic = ["REHABILITATION", "LONG TERM CARE", "PSYCHIATRIC", "SPECIAL", "CHRONIC DISEASE"].includes(h.t);
                       return (
@@ -2752,7 +2783,7 @@ export function MapExplorerClient({ locale, translations }: MapExplorerClientPro
                     })}
 
                   {/* 🏫 Public Schools Overlay (NCES, 102,178 schools) */}
-                  {showSchools &&
+                  {showSchools && schoolsData &&
                     (schoolsData as any[]).map((s, i) => (
                       <Marker key={`school-${i}`} coordinates={[s.lon, s.lat]}>
                         <circle r={1.4} fill="#818cf8" fillOpacity={0.75} />
