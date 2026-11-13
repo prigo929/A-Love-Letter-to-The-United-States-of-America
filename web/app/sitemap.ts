@@ -152,6 +152,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/history/we-must-fight",
   ];
 
+  const LAST_RELEASE_DATE = new Date("2026-11-13T00:00:00.000Z");
+
   return paths.map((path) => {
     const isRoot = path === "";
     const isCategoryRoot = !isRoot && path.split("/").length === 2;
@@ -172,9 +174,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     
     return {
       url: `${baseUrl}${path}`,
-      lastModified: new Date(),
+      lastModified: LAST_RELEASE_DATE,
       changeFrequency,
       priority,
+      alternates: {
+        languages: {
+          en: `${baseUrl}${path}`,
+          ro: `${baseUrl}${path}?lang=ro`,
+        },
+      },
     };
   });
 }

@@ -150,10 +150,10 @@
     font-family: "Playfair Display", Georgia, serif, var(--font-emoji);
   }
   .font-hero {
-    font-family: "Bebas Neue", Impact, sans-serif, var(--font-emoji);
+    font-family: var(--font-hero), "Bebas Neue", Impact, sans-serif, var(--font-emoji);
   }
   .font-body {
-    font-family: "Inter", system-ui, sans-serif, var(--font-emoji);
+    font-family: var(--font-body), "Inter", system-ui, sans-serif, var(--font-emoji);
   }
   .font-signature {
     font-family: var(--font-signature), cursive, var(--font-emoji);

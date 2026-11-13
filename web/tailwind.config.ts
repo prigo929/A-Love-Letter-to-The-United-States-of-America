@@ -39,9 +39,9 @@ const config: Config = {
           "var(--font-emoji)",
         ],
         // Large hero numbers & display text
-        hero: ['"Bebas Neue"', "Impact", "sans-serif", "var(--font-emoji)"],
+        hero: ["var(--font-hero)", '"Bebas Neue"', "Impact", "sans-serif", "var(--font-emoji)"],
         // Body copy — clean & readable
-        body: ['"Inter"', "system-ui", "sans-serif", "var(--font-emoji)"],
+        body: ["var(--font-body)", '"Inter"', "system-ui", "sans-serif", "var(--font-emoji)"],
         signature: ["var(--font-signature)", "cursive", "var(--font-emoji)"],
       },
 
